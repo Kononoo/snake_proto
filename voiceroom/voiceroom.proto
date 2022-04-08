@@ -1,0 +1,468 @@
+syntax = "proto3";
+
+package voiceroom;
+
+option go_package = "git.17zjh.com/snake/snake_proto/voiceroom";
+
+// 一般约定：请求响应的消息名的前半部分和opType相同，请求后缀req，响应后缀rsp，push后缀msg
+// 为了避免大房间的push过多，push结构尽量设计成数组的方式，方便服务器缓存发出
+
+enum VoiceOpType {
+  vUndef = 0;
+  NewRoom = 1; // 创建房间
+  MyPreRoom = 2; // 历史房间，创建前请求
+  EnterRoom = 3; // 进入房间
+  UpdateSetting = 4; // 改房间信息/设置
+  ExitRoom = 5; // 退出房间
+  LockSeat = 6; // 开关麦位
+  PlayerManager = 7; // 房主管理成员
+  SeatInvite = 8; // 邀请上麦
+  HandleSeatInvite = 9; // 处理邀请上麦
+  UseSeat = 10; // 上下麦位
+  MicOpt = 11; // 自己开关麦需要别人看到，只有座位上的人操作需要请求
+  SendRedPack = 12; // 发红包，领红包复用receive_red_pack接口
+  GetNearby = 13; // 附近的人
+  GetRoomList = 14; // 获取房间列表
+  SearchRoom = 15; // 搜索房间
+  SendChat = 17; // 公屏发送聊天信息
+  SendGift = 18; // 送礼物
+  StartPk = 19; // 开始PK
+  PkVote = 20; // PK投票
+  SendEmoji = 21; // 发送表情
+  GetMemberList = 22; // 获取成员列表
+  Lottery = 23; // 抽奖
+  SeatKick = 24; // 房主踢人下麦
+  GetPkInfo = 25; // 获取PK信息
+  PkSendGift = 26; // PK送礼物
+
+  PuUpdateSetting = 101; // 改房间信息push
+  PuPlayerChange = 102; // 成员变化push
+  PuSeatInvite = 103; // 邀请上麦push
+  PuSeatChange = 104; // 麦位变化push
+  PuRoomClose = 105; // 房间解散push
+  PuRedPack = 106; // 通知有红包
+  PuRoomChat = 107; // 聊天信息/系统提示push
+  PuPkResult = 108; // PK结果push
+  PuSendEmoji = 109; // 表情push
+  PuSendGift = 110; // 礼物弹幕push
+  PuLotteryResult = 111; //抽奖结果push
+  PuSeatKick = 112; // 自己被从麦位上踢下
+  PuStartPk = 113; // 开始PK
+}
+
+message roomInfo {
+  int32 room_id = 1;
+  string owner = 2;
+  roomSetting setting = 3;
+  repeated seatInfo seatList = 4; // 座位列表
+  bool music_open = 5;
+  pkInfo pk = 6;
+  repeated string black_list = 7; // 房主才有，黑名单
+  int32 online_player = 8;
+}
+
+message roomSetting {
+  string name = 1;
+  string announce = 2;
+  int32 tag_id = 3;
+  string password = 4;
+  int32 bg_id = 5; //背景
+  bool ban_chat = 6; //禁止公屏聊天
+  bool ban_red_pack = 7; //禁止发红包
+}
+
+message seatInfo {
+  int32 index = 1; // 编号0-8，房主0其他依次往后
+  bool lock = 2;
+  string uid = 3;
+  bool ban_mic = 4; // true为闭麦
+}
+
+message pkInfo {
+  bool open = 1;
+  int64 start_time = 2; //开始时间戳(s)
+  int32 period = 3; //持续时间
+  string left_uid = 4;
+  int64 left_score = 5;
+  string right_uid = 6;
+  int64 right_score = 7;
+  PkType type = 8;
+}
+
+message location {
+  double longitude = 1; //经度
+  double latitude = 2; //纬度
+}
+
+// 房主创建房间了直接进入，如果enterRoom要加的参数这里也要加
+message NewRoomReq {
+  roomSetting param = 1;
+  location pos = 2;
+  int32 show = 3;
+}
+
+message NewRoomRsp {
+  roomInfo room = 1;
+}
+
+message MyPreRoomReq {
+}
+
+message MyPreRoomRsp {
+  roomSetting setting = 1;
+}
+
+message EnterRoomReq {
+  int32 target_room_id = 1;
+  string password = 2;
+  location pos = 3;
+  int32 show = 4;
+}
+
+message EnterRoomRsp {
+  bool need_password = 1; // 如果需要密码但是没传的，这里返回true，没有roomInfo
+  roomInfo room = 2;
+}
+
+message UpdateSettingReq {
+  roomSetting setting = 1; //传全量数据
+}
+
+message UpdateSettingRsp {
+}
+
+// 房间修改的push
+message PuUpdateSettingMsg {
+  roomSetting setting = 1;
+}
+
+message ExitRoomReq {
+}
+
+message ExitRoomRsp {
+}
+
+message GetMemberListReq {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message MemberListItem {
+  string uid = 1;
+  int64 show = 2;
+}
+
+message GetMemberListRsp {
+  repeated MemberListItem members = 1;
+}
+
+enum lotteryType {
+  tpUndef = 0;
+  MicUser = 1; //麦上玩家
+  AllUser = 2; //所有玩家
+}
+
+message LotteryReq {
+  lotteryType opt = 1;
+  int32 num = 2; //抽奖人数
+}
+
+message LotteryRsp {
+}
+
+message PuLotteryResultMsg {
+  repeated string join_uids = 1; //参与人员
+  repeated string lucky_uids = 2; //中奖人员
+}
+
+message playerChangeItem {
+  string uid = 1;
+  int32 type = 2; //1加入，2退出
+}
+
+message PuPlayerChangeMsg {
+  repeated playerChangeItem change_list = 1;
+  int32 online_player = 2; //最新的在线人数
+}
+
+message PuSeatChangeMsg {
+  repeated seatInfo seatList = 1; // 变化的座位列表
+}
+
+message LockSeatReq {
+  int32 opt = 1; // 1打开，2禁用
+  int32 index = 2;
+}
+
+message LockSeatRsp {
+}
+
+enum playerManagerType {
+  pmUndef = 0;
+  MicBan = 1; //禁麦
+  MicOpen = 2; //取消禁麦
+  ChatBan = 3;
+  ChatOPen = 4;
+  Kick = 5;
+  BlackAdd = 6; //拉黑
+  BlackCancel = 7; //取消拉黑
+}
+
+message PlayerManagerReq {
+  string target_uid = 1;
+  playerManagerType opt = 2;
+}
+
+message PlayerManagerRsp {
+}
+
+message SeatInviteReq {
+  string target_uid = 1;
+  int32 index = 2;
+}
+
+message SeatInviteRsp {
+}
+
+message PuSeatInviteMsg {
+  int32 seat_index = 1;
+}
+
+message HandleSeatInviteReq {
+  int32 opt = 1; // 1同意，2拒绝
+  bool mic_open = 2; //自己的麦是否开了
+  int32 seat_index = 3;
+}
+
+message HandleSeatInviteRsp {
+}
+
+message UseSeatReq {
+  int32 opt = 1; // 1坐下，2站起
+  int32 index = 2;
+  bool mic_open = 3; //自己的麦是否开了
+}
+
+message UseSeatRsp {
+}
+
+message PuRoomCloseMsg {
+}
+
+message MicOptReq {
+  int32 opt = 1; //1打开，2关闭
+}
+
+message MicOptRsp {
+}
+
+message SendRedPackReq {
+  int32 prop_id = 1;
+  int32 source = 2;
+  int32 target_num = 3; //发多少份
+  string message = 4; //红包封面留言
+}
+
+message SendRedPackRsp {
+}
+
+message PuRedPackMsg {
+  string sender_uid = 1;
+  string red_pack_id = 2;
+  int32 expire_time = 3; //过期时间
+}
+
+message userGeoInfo {
+  string uid = 1;
+  int32 gender = 2;
+  string nickname = 3;
+  string avatar = 4;
+  int32 box_id = 5;
+  int32 show = 6;
+  int32 distance = 7; //距离米
+  int32 room_id = 8;
+}
+
+message GetNearbyReq {
+  location pos = 1;
+}
+
+message GetNearbyRsp {
+  repeated userGeoInfo users = 1; //附近的人的信息
+}
+
+message GetRoomListReq {
+  int32 tag_id = 1; //房间类型
+  int32 page = 2; //第几页，从1开始
+  int32 size = 3; //每页多少条
+  location pos = 4;
+}
+
+message RoomListItem {
+  int32 room_id = 1;
+  int32 tag_id = 2;
+  string name = 3; //房间名称
+  string nickname = 4; //房主昵称
+  int32 gender = 5;
+  string avatar = 6;
+  int32 box_id = 7;
+  int32 total_player = 8; //房间人数
+  bool has_friend = 9; //是否有好友在该房间
+  int32 min_distance = 10; //房间内成员离我最近的距离
+  bool in_topk = 11; //是否是大神房间
+}
+
+message GetRoomListRsp {
+  repeated RoomListItem rooms = 1;
+  int32 total = 2; //总共多少条
+}
+
+message SearchRoomReq {
+  int64 id = 1; //房间id或房主id
+  location pos = 2;
+}
+
+message SearchRoomRsp {
+  repeated RoomListItem rooms = 1;
+}
+
+enum PkType {
+  ptUndef = 0;
+  Vote = 1; // 投票
+  Gift = 2; // 刷礼物
+}
+
+message StartPkReq {
+  string left_uid = 1;
+  string left_nickname = 2;
+  string right_uid = 3;
+  string right_nickname = 4;
+  int32 seconds = 5;
+  PkType type = 6; // 1 投票，2 刷礼物
+}
+
+message StartPkRsp {
+  pkInfo pk_info = 1;
+}
+
+message PuStartPkMsg {
+  pkInfo pk_info = 1;
+}
+
+message GetPkInfoReq {
+}
+
+message GetPkInfoRsp {
+  pkInfo pk_info = 1;
+}
+
+message PuPkResultMsg {
+  string winner_uid = 1;
+  int64 score = 2;
+  bool is_draw = 3; // 是否平局, 如果是则winner_uid为空
+}
+
+message RoomChatMsg {
+  string sender_uid = 1;
+  int32 chat_type = 2; // 8:语音房消息
+  int32 message_type = 3; // 25:系统消息, 为系统消息时仅有content和timestamp是有效的
+  string content = 4;
+  string message_id = 5;
+  string nickname = 6;
+  string ext = 7;
+  int32 rated_level = 8;
+  int32 sub_type = 9;
+  int64 timestamp = 10;
+}
+
+message PuRoomChatMsg {
+  repeated RoomChatMsg messages = 1;
+}
+
+message PkVoteReq {
+  string target_uid = 1;
+}
+
+message PkVoteRsp {
+  pkInfo pk_info = 1;
+}
+
+message PkSendGiftReq {
+  string target_uid = 1;
+  string target_nickname = 2;
+  int32 source = 3;
+  bool is_free = 4;
+  int32 gift_id = 5;
+  int32 count = 6;
+  int32 bag_count = 7;
+  int32 message_index = 8;
+  int32 charm = 9;
+  string ext = 10;
+}
+
+message PkSendGiftRsp {
+  pkInfo pk_info = 1;
+}
+
+message SendChatReq {
+  int32 chat_type = 1;
+  int32 message_type = 2;
+  string content = 3;
+  string message_id = 4;
+  string nickname = 5;
+  string ext = 6;
+  int32 rated_level = 7;
+  int32 sub_type = 8;
+}
+
+message SendChatRsp {
+  bool success = 1;
+}
+
+message SendGiftReq {
+  string target_uid = 1;
+  string target_nickname = 2;
+  int32 source = 3;
+  bool is_free = 4;
+  int32 gift_id = 5;
+  int32 count = 6;
+  int32 bag_count = 7;
+  int32 message_index = 8;
+  int32 charm = 9;
+  string ext = 10;
+}
+
+message SendGiftRsp {
+}
+
+message PuSendGiftMsg {
+  string sender_uid = 1;
+  string target_uid = 2;
+  int32 gift_id = 3;
+  int32 gift_num = 4;
+}
+
+message SendEmojiReq {
+  int32 emoji_id = 1;
+  int32 seat_index = 2;
+}
+
+message SendEmojiRsp {
+  int32 value = 1; // 如果是骰子表情则是骰子的结果, 1-6, 其余表情该值为 0
+}
+
+message PuSendEmojiMsg {
+  int32 seat_index = 1;
+  int32 emoji_id = 2;
+  int32 value = 3; // 骰子表情随机数结果
+}
+
+message SeatKickReq {
+  int32 index = 1;
+}
+
+message SeatKickRsp {
+}
+
+message PuSeatKickMsg {
+}

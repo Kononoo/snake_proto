@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package voiceroom;
+
+option go_package = "git.17zjh.com/snake/snake_proto/voiceroom";
+
+// 客户端忽略
+
+message userAttr {
+  string uid = 1;
+  string version = 2;
+  string market = 4;
+  int32 rid = 5; //请求头上的rid字段
+  int32 platform = 6;
+}
+
+// 内部rpc请求参数，对应pb/rq_commonMsg
+message rpcReqParam {
+  int32 op_type = 1;
+  int32 rid = 2;
+  bytes body = 3;
+  userAttr user = 4;
+}
+
+// 内部rpc返回值，对应pb/rs_commonMsg
+message rpcRspData {
+  int32 code = 1; // 一般200成功，500失败
+  string msg = 2; // 失败的msg
+  bytes body = 3;
+}
+
+service VoiceRoomServer {
+  rpc commonReq (rpcReqParam) returns (rpcRspData) {
+  }
+}
+
+service MusicServer {
+  rpc commonReq (rpcReqParam) returns (rpcRspData) {
+  }
+}
