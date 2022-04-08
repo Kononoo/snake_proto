@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package rpc;
+
+option go_package = "git.17zjh.com/snake/snake_proto/rpc";
+
+enum cmd {
+  Undef = 0;
+  VoiceRoom = 1;
+  Music = 2;
+}

@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package voiceroom;
+
+option go_package = "git.17zjh.com/snake/snake_proto/voiceroom";
+
+enum musicOpType {
+  mUndef = 0;
+  GetMusicList = 1;//分页拉取音乐列表
+  GetFavoriteMusic = 2;//获取收藏的音乐
+  UpdateFavoriteMusic = 3;//收藏、取消收藏音乐
+  PlayMusic = 4; //播放音乐
+
+  PuPlayMusic = 101;//房主播放、暂停音乐推送
+}
+
+message GetMusicListReq {
+  int32 page = 1;//第几页，从1开始
+  int32 size = 2;//每页拉取多少条
+}
+message musicInfo {
+  int64 id = 1;
+  string title = 2; //标题
+  string artist = 3;//歌手
+  string music = 4;//音乐链接
+  string accompaniment = 5;//伴奏链接
+  int32 music_duration = 6;//音乐时长（秒）
+  int32 accompaniment_duration = 7;//伴奏时长（秒）
+  string uploader = 8;//上传者uid
+  bool is_favorite = 9;//是否已收藏
+}
+
+message GetMusicListRsp {
+  repeated musicInfo musics = 1;
+  int32 total = 2;//总数
+}
+
+message GetFavoriteMusicReq {
+}
+message GetFavoriteMusicRsp {
+  repeated musicInfo musics = 1;
+}
+
+message UpdateFavoriteMusicReq {
+  int64 id = 1;//音乐id
+  bool is_add = 2; //收藏或者取消
+}
+message UpdateFavoriteMusicRsp {
+}
+
+message PlayMusicReq {
+  int64 id = 1; //音乐id
+  bool is_pause = 2; //是否暂停
+}
+message PlayMusicRsp {
+}
+
+message PuPlayMusicMsg {
+  int64 id = 1;
+  string title = 2;
+  string artist = 3;
+  bool is_pause = 4;
+}

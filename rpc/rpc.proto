@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package voiceroom;
+package rpc;
 
-option go_package = "git.17zjh.com/snake/snake_proto/voiceroom";
+option go_package = "git.17zjh.com/snake/snake_proto/rpc";
 
 // 客户端忽略
 
