@@ -191,9 +191,10 @@ enum innerCallType {
 
 message InnerCallReq {
   innerCallType call_type = 1;
+  string CallToken = 2;
 }
 
-message InerCallRsp {
+message InnerCallRsp {
 }
 
 message playerChangeItem {
