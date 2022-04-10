@@ -2,5 +2,8 @@
 --proto_path 或者 -I 参数用以指定所编译源码（包括直接编译的和被导入的 proto 文件）的搜索路径，
 proto 文件中使用 import 关键字导入的路径一定是要基于 --proto_path 参数所指定的路径的。该参数如果不指定，默认为 pwd ，也可以指定多个以包含所有所需文件。
 
+打tag方式：
+git tag v1.0.0
+git push --tags
 
 
