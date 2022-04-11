@@ -10,5 +10,8 @@ git push --tags
 git tag -d v1.0.0  
 git push origin :refs/tags/v1.0.0
 
+升级到最新版本：  
+go get git.17zjh.com/snake/snake_proto@master
+
 
 
