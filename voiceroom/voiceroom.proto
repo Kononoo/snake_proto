@@ -377,6 +377,7 @@ message GetPkInfoReq {
 
 message GetPkInfoRsp {
   pkInfo pk_info = 1;
+  bool Voted = 2;
 }
 
 message PuPkResultMsg {
