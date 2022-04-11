@@ -81,13 +81,14 @@ message seatInfo {
 
 message pkInfo {
   bool open = 1;
-  int64 start_time = 2; //开始时间戳(s)
-  int32 period = 3; //持续时间
-  string left_uid = 4;
-  int64 left_score = 5;
-  string right_uid = 6;
-  int64 right_score = 7;
-  PkType type = 8;
+  bool voted = 2; // 如果是投票模式, 用户是否已经投过票
+  int64 start_time = 3; //开始时间戳(s)
+  int32 period = 4; //持续时间
+  string left_uid = 5;
+  int64 left_score = 6;
+  string right_uid = 7;
+  int64 right_score = 8;
+  PkType type = 9;
 }
 
 message location {
@@ -377,7 +378,6 @@ message GetPkInfoReq {
 
 message GetPkInfoRsp {
   pkInfo pk_info = 1;
-  bool voted = 2;
 }
 
 message PuPkResultMsg {
