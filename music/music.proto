@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package voiceroom;
+package music;
 
-option go_package = "git.17zjh.com/snake/snake_proto/voiceroom";
+option go_package = "git.17zjh.com/snake/snake_proto/music";
 
 enum musicOpType {
   mUndef = 0;
