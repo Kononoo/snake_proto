@@ -81,13 +81,14 @@ message seatInfo {
 
 message pkInfo {
   bool open = 1;
-  int64 start_time = 2; //开始时间戳(s)
-  int32 period = 3; //持续时间
-  string left_uid = 4;
-  int64 left_score = 5;
-  string right_uid = 6;
-  int64 right_score = 7;
-  PkType type = 8;
+  bool voted = 2; // 如果是投票模式, 用户是否已经投过票
+  int64 start_time = 3; //开始时间戳(s)
+  int32 period = 4; //持续时间
+  string left_uid = 5;
+  int64 left_score = 6;
+  string right_uid = 7;
+  int64 right_score = 8;
+  PkType type = 9;
 }
 
 message location {
@@ -359,11 +360,9 @@ enum PkType {
 
 message StartPkReq {
   string left_uid = 1;
-  string left_nickname = 2;
-  string right_uid = 3;
-  string right_nickname = 4;
-  int32 seconds = 5;
-  PkType type = 6; // 1 投票，2 刷礼物
+  string right_uid = 2;
+  int32 seconds = 3;
+  PkType type = 4; // 1 投票，2 刷礼物
 }
 
 message StartPkRsp {
@@ -391,13 +390,14 @@ message RoomChatMsg {
   string sender_uid = 1;
   int32 chat_type = 2; // 8:语音房消息
   int32 message_type = 3; // 25:系统消息, 为系统消息时仅有content和timestamp是有效的
-  string content = 4;
-  string message_id = 5;
-  string nickname = 6;
-  string ext = 7;
-  int32 rated_level = 8;
-  int32 sub_type = 9;
-  int64 timestamp = 10;
+  int32 sysmsg_type = 4; // 当message_type为25时有效 1.PK结果, 2.进入直播间, 3.抽奖结果
+  string content = 5;
+  string message_id = 6;
+  string nickname = 7;
+  string ext = 8;
+  int32 rated_level = 9;
+  int32 sub_type = 10;
+  int64 timestamp = 11;
 }
 
 message PuRoomChatMsg {
