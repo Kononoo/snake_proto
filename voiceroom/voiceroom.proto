@@ -390,13 +390,14 @@ message RoomChatMsg {
   string sender_uid = 1;
   int32 chat_type = 2; // 8:语音房消息
   int32 message_type = 3; // 25:系统消息, 为系统消息时仅有content和timestamp是有效的
-  string content = 4;
-  string message_id = 5;
-  string nickname = 6;
-  string ext = 7;
-  int32 rated_level = 8;
-  int32 sub_type = 9;
-  int64 timestamp = 10;
+  int32 sysmsg_type = 4; // 当message_type为25时有效 1.PK结果, 2.进入直播间, 3.抽奖结果
+  string content = 5;
+  string message_id = 6;
+  string nickname = 7;
+  string ext = 8;
+  int32 rated_level = 9;
+  int32 sub_type = 10;
+  int64 timestamp = 11;
 }
 
 message PuRoomChatMsg {
