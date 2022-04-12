@@ -358,11 +358,9 @@ enum PkType {
 
 message StartPkReq {
   string left_uid = 1;
-  string left_nickname = 2;
-  string right_uid = 3;
-  string right_nickname = 4;
-  int32 seconds = 5;
-  PkType type = 6; // 1 投票，2 刷礼物
+  string right_uid = 2;
+  int32 seconds = 3;
+  PkType type = 4; // 1 投票，2 刷礼物
 }
 
 message StartPkRsp {
