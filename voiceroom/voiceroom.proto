@@ -83,7 +83,7 @@ message seatInfo {
 
 message pkInfo {
   bool open = 1;
-  bool voted = 2; // 如果是投票模式, 用户是否已经投过票
+  string voted_user = 2; // 如果是投票模式, 用户投票的对象, 如果未投票则是空
   int64 start_time = 3; //开始时间戳(s)
   int32 period = 4; //持续时间
   string left_uid = 5;
