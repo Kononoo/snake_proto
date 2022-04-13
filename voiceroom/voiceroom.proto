@@ -207,11 +207,12 @@ message InnerCallRsp {
 
 message adminRoomInfo {
   int32 room_id = 1;
-  string owner = 2;
-  roomSetting setting = 3;
-  repeated string uids = 4; // 座位列表
+  string room_name = 2;
+  string room_announce = 3;
+  int32 room_tag_id = 4;
   int32 online_player = 5;
   int64 hot = 6;
+  repeated string uids = 7; // 座位列表
 }
 
 
