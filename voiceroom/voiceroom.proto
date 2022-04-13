@@ -197,6 +197,7 @@ message InnerCallReq {
   innerCallType call_type = 1;
   string CallToken = 2;
   int32 room_id = 3;
+  string uid = 4;
 }
 
 message InnerCallRsp {
