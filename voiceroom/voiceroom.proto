@@ -178,19 +178,14 @@ message PuLotteryResultMsg {
   repeated string join_uids = 1; //参与人员
   repeated string lucky_uids = 2; //中奖人员
 }
-//1: 获取房间信息，2: 封禁语音房公屏发言，3：封禁语音房上麦，4：封禁禁止创建房间
-//5: 语音房间拉下列表，6：语音房间锁房(对外不可见)，7：语音房间解散，8：重置语音房间房名，9：重置语音房间公告
+//1: 获取房间信息，2：封禁语音房上麦，3：语音房间解散，4：重置语音房间房名，5：重置语音房间公告
 enum innerCallType {
   icUndef = 0;
   GetRoomInfo = 1;
-  BanUserChat = 2;
-  BanUserMic = 3;
-  BanUserCreateRoom = 4;
-  VoiceRoomDelTopList = 5;
-  VoiceRoomLock = 6;
-  VoiceRoomDissolve = 7;
-  VoiceRoomResetName = 8;
-  VoiceRoomResetAnnounce = 9;
+  BanUserSeatMic = 2;
+  VoiceRoomDissolve = 3;
+  VoiceRoomResetName = 4;
+  VoiceRoomResetAnnounce = 5;
 }
 
 message InnerCallReq {
