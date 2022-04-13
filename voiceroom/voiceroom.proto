@@ -178,29 +178,42 @@ message PuLotteryResultMsg {
   repeated string join_uids = 1; //参与人员
   repeated string lucky_uids = 2; //中奖人员
 }
-//1: 封禁语音房公屏发言，2：封禁语音房上麦，3：封禁禁止创建房间
-//4: 语音房间拉下列表，5：语音房间锁房(对外不可见)，6：语音房间解散，7：重置语音房间房名，8：重置语音房间公告
+//1: 获取房间信息，2: 封禁语音房公屏发言，3：封禁语音房上麦，4：封禁禁止创建房间
+//5: 语音房间拉下列表，6：语音房间锁房(对外不可见)，7：语音房间解散，8：重置语音房间房名，9：重置语音房间公告
 enum innerCallType {
   icUndef = 0;
-  BanUserChat = 1;
-  BanUserMic = 2;
-  BanUserCreateRoom = 3;
-  VoiceRoomDelTopList = 4;
-  VoiceRoomLock = 5;
-  VoiceRoomDissolve = 6;
-  VoiceRoomResetName = 7;
-  VoiceRoomResetAnnounce = 8;
+  GetRoomInfo = 1;
+  BanUserChat = 2;
+  BanUserMic = 3;
+  BanUserCreateRoom = 4;
+  VoiceRoomDelTopList = 5;
+  VoiceRoomLock = 6;
+  VoiceRoomDissolve = 7;
+  VoiceRoomResetName = 8;
+  VoiceRoomResetAnnounce = 9;
 }
 
 message InnerCallReq {
   innerCallType call_type = 1;
   string CallToken = 2;
+  int32 room_id = 3;
 }
 
 message InnerCallRsp {
   int32 code = 1;
   string msg = 2;
+  adminRoomInfo room_info = 3;
 }
+
+message adminRoomInfo {
+  int32 room_id = 1;
+  string owner = 2;
+  roomSetting setting = 3;
+  repeated string uids = 4; // 座位列表
+  int32 online_player = 5;
+  int64 hot = 6;
+}
+
 
 message playerChangeItem {
   string uid = 1;
