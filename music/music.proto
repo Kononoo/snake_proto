@@ -10,6 +10,7 @@ enum musicOpType {
   GetFavoriteMusic = 2;//获取收藏的音乐
   UpdateFavoriteMusic = 3;//收藏、取消收藏音乐
   PlayMusic = 4; //播放音乐
+  SearchMusic = 5; //搜索音乐
 
   PuPlayMusic = 101;//房主播放、暂停音乐推送
 }
@@ -60,4 +61,11 @@ message PuPlayMusicMsg {
   string title = 2;
   string artist = 3;
   bool is_pause = 4;
+}
+
+message SearchMusicReq {
+  string key = 1; //搜索关键字
+}
+message SearchMusicRsp {
+  repeated musicInfo musics = 1;
 }
