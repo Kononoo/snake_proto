@@ -390,7 +390,7 @@ message PuPkResultMsg {
 
 message RoomChatMsg {
   string sender_uid = 1;
-  int32 chat_type = 2; // 8:语音房消息
+  int32 chat_type = 2; // 119:语音房消息
   int32 message_type = 3; // 25:系统消息, 为系统消息时仅有content和timestamp是有效的
   int32 sysmsg_type = 4; // 当message_type为25时有效 1.PK结果, 2.进入直播间, 3.抽奖结果
   string content = 5;
