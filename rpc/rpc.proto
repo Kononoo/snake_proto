@@ -29,8 +29,18 @@ message rpcRspData {
   bytes body = 3;
 }
 
+message userStateReq {
+  string uid = 1;
+}
+
+message userStateRsp {
+  int32 rid = 2;
+}
+
 service VoiceRoomServer {
   rpc commonReq (rpcReqParam) returns (rpcRspData) {
+  }
+  rpc checkUserState (userStateReq) returns (userStateRsp) {
   }
 }
 
