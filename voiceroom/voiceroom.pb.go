@@ -3776,7 +3776,7 @@ type RoomChatMsg struct {
 	unknownFields protoimpl.UnknownFields
 
 	SenderUid   string `protobuf:"bytes,1,opt,name=sender_uid,json=senderUid,proto3" json:"sender_uid,omitempty"`
-	ChatType    int32  `protobuf:"varint,2,opt,name=chat_type,json=chatType,proto3" json:"chat_type,omitempty"`          // 8:语音房消息
+	ChatType    int32  `protobuf:"varint,2,opt,name=chat_type,json=chatType,proto3" json:"chat_type,omitempty"`          // 119:语音房消息
 	MessageType int32  `protobuf:"varint,3,opt,name=message_type,json=messageType,proto3" json:"message_type,omitempty"` // 25:系统消息, 为系统消息时仅有content和timestamp是有效的
 	SysmsgType  int32  `protobuf:"varint,4,opt,name=sysmsg_type,json=sysmsgType,proto3" json:"sysmsg_type,omitempty"`    // 当message_type为25时有效 1.PK结果, 2.进入直播间, 3.抽奖结果
 	Content     string `protobuf:"bytes,5,opt,name=content,proto3" json:"content,omitempty"`
