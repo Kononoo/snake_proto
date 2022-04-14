@@ -34,6 +34,7 @@ enum VoiceOpType {
   SeatKick = 24; // 房主踢人下麦
   GetPkInfo = 25; // 获取PK信息
   PkSendGift = 26; // PK送礼物
+  RoomInvite = 27; //邀请进语音房
 
   InnerCall = 100; //内部调用接口
   PuUpdateSetting = 101; // 改房间信息push
@@ -49,6 +50,7 @@ enum VoiceOpType {
   PuLotteryResult = 111; //抽奖结果push
   PuSeatKick = 112; // 自己被从麦位上踢下
   PuStartPk = 113; // 开始PK
+  PuRoomInvite = 114; // 邀请进房
 }
 
 message roomInfo {
@@ -502,4 +504,17 @@ message SeatKickRsp {
 }
 
 message PuSeatKickMsg {
+}
+
+// 邀请进房间
+message RoomInviteReq {
+  string target_uid = 1;
+}
+
+message RoomInviteRsp {
+}
+
+message PuRoomInviteMsg {
+  string invite_uid = 1;
+  int32 rid = 2;
 }
