@@ -28,8 +28,7 @@ message musicInfo {
   int32 music_duration = 6;//音乐时长（秒）
   int32 accompaniment_duration = 7;//伴奏时长（秒）
   string uploader = 8;//上传者uid
-  bool is_favorite = 9;//是否已收藏
-  string uploader_name = 10; //上传中昵称
+  string uploader_name = 10; //上传者昵称
 }
 
 message GetMusicListRsp {
