@@ -105,6 +105,7 @@ message NewRoomReq {
   roomSetting param = 1;
   location pos = 2;
   int32 show = 3;
+  int32 mode_version = 4; // 第一版40001
 }
 
 message NewRoomRsp {
@@ -123,6 +124,7 @@ message EnterRoomReq {
   string password = 2;
   location pos = 3;
   int32 show = 4;
+  int32 mode_version = 5;
 }
 
 message EnterRoomRsp {
