@@ -58,12 +58,18 @@ message roomInfo {
   string owner = 2;
   roomSetting setting = 3;
   repeated seatInfo seatList = 4; // 座位列表
-  bool music_open = 5;
   pkInfo pk = 6; // 可能为空
   repeated string black_list = 7; // 房主才有，黑名单
   int32 online_player = 8;
   repeated string ban_mic_list = 9; // 房主才有，禁麦列表
   repeated string ban_chat_list = 10; // 房主才有，禁言列表
+  musicInfo music = 11; //正在播放的音乐
+}
+
+message musicInfo {
+  int64 id = 1;
+  string title = 2;
+  string artist = 3;
 }
 
 message roomSetting {
