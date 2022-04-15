@@ -47,9 +47,16 @@ message UpdateFavoriteMusicReq {
 message UpdateFavoriteMusicRsp {
 }
 
+enum musicStatus {
+  invalidStatus = 0;
+  Open = 1; //播放
+  Pause = 2; //暂停
+  Close = 3; //关闭
+}
+
 message PlayMusicReq {
   int64 id = 1; //音乐id
-  bool is_pause = 2; //是否暂停
+  musicStatus status = 3; //状态
 }
 message PlayMusicRsp {
 }

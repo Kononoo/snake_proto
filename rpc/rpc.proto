@@ -42,7 +42,7 @@ message playMusicReq {
   int32 rid = 2;
   string music_name = 3;
   string artist = 4;
-  bool is_pause = 5;
+  int32 status = 6; //1：播放，2:暂停，3:停止
 }
 message playMusicRsp {
 }
