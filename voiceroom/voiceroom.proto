@@ -67,10 +67,18 @@ message roomInfo {
   musicInfo music = 11; //正在播放的音乐
 }
 
+enum musicStatus {
+  invalidStatus = 0;
+  Open = 1; //播放
+  Pause = 2; //暂停
+  Close = 3; //关闭
+}
+
 message musicInfo {
   int64 id = 1;
   string title = 2;
   string artist = 3;
+  musicStatus status = 4;
 }
 
 message roomSetting {
@@ -526,16 +534,8 @@ message PuRoomInviteMsg {
   int32 rid = 2;
 }
 
-enum musicStatus {
-  invalidStatus = 0;
-  Open = 1; //播放
-  Pause = 2; //暂停
-  Close = 3; //关闭
-}
+
 
 message PuPlayMusicMsg {
-  int64 id = 1;
-  string title = 2;
-  string artist = 3;
-  musicStatus status = 5;
+  musicInfo music = 1;
 }
