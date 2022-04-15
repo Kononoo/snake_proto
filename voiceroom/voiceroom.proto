@@ -140,6 +140,7 @@ message EnterRoomReq {
   location pos = 3;
   int32 show = 4;
   int32 mode_version = 5;
+  bool recover = 6; // cut恢复时为true
 }
 
 message EnterRoomRsp {
@@ -533,7 +534,6 @@ message PuRoomInviteMsg {
   string invite_uid = 1;
   int32 rid = 2;
 }
-
 
 
 message PuPlayMusicMsg {

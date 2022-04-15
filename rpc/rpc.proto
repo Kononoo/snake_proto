@@ -9,6 +9,7 @@ option go_package = "git.17zjh.com/snake/snake_proto/rpc";
 message userAttr {
   string uid = 1;
   string version = 2;
+  string device_id = 3;
   string market = 4;
   int32 rid = 5; //请求头上的rid字段
   int32 platform = 6;
@@ -52,9 +53,11 @@ service VoiceRoomServer {
   }
   rpc checkUserState (userStateReq) returns (userStateRsp) {
   }
-  rpc playMusic (playMusicReq) returns (playMusicRsp) {}
+  rpc playMusic (playMusicReq) returns (playMusicRsp) {
+  }
 }
 
 service MusicServer {
-  rpc commonReq (rpcReqParam) returns (rpcRspData) {}
+  rpc commonReq (rpcReqParam) returns (rpcRspData) {
+  }
 }
