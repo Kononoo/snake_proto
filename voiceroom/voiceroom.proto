@@ -51,6 +51,7 @@ enum VoiceOpType {
   PuSeatKick = 112; // 自己被从麦位上踢下
   PuStartPk = 113; // 开始PK
   PuRoomInvite = 114; // 邀请进房
+  PuPlayMusic = 115;//房主播放、暂停音乐推送
 }
 
 message roomInfo {
@@ -525,4 +526,11 @@ message RoomInviteRsp {
 message PuRoomInviteMsg {
   string invite_uid = 1;
   int32 rid = 2;
+}
+
+message PuPlayMusicMsg {
+  int64 id = 1;
+  string title = 2;
+  string artist = 3;
+  bool is_pause = 4;
 }
