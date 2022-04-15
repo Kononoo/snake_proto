@@ -42,6 +42,7 @@ message playMusicReq {
   int32 rid = 2;
   string music_name = 3;
   string artist = 4;
+  bool is_pause = 5;
 }
 message playMusicRsp {
 }
