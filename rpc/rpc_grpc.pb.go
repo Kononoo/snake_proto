@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 type VoiceRoomServerClient interface {
 	CommonReq(ctx context.Context, in *RpcReqParam, opts ...grpc.CallOption) (*RpcRspData, error)
 	CheckUserState(ctx context.Context, in *UserStateReq, opts ...grpc.CallOption) (*UserStateRsp, error)
+	PlayMusic(ctx context.Context, in *PlayMusicReq, opts ...grpc.CallOption) (*PlayMusicRsp, error)
 }
 
 type voiceRoomServerClient struct {
@@ -48,12 +49,22 @@ func (c *voiceRoomServerClient) CheckUserState(ctx context.Context, in *UserStat
 	return out, nil
 }
 
+func (c *voiceRoomServerClient) PlayMusic(ctx context.Context, in *PlayMusicReq, opts ...grpc.CallOption) (*PlayMusicRsp, error) {
+	out := new(PlayMusicRsp)
+	err := c.cc.Invoke(ctx, "/rpc.VoiceRoomServer/playMusic", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VoiceRoomServerServer is the server API for VoiceRoomServer service.
 // All implementations should embed UnimplementedVoiceRoomServerServer
 // for forward compatibility
 type VoiceRoomServerServer interface {
 	CommonReq(context.Context, *RpcReqParam) (*RpcRspData, error)
 	CheckUserState(context.Context, *UserStateReq) (*UserStateRsp, error)
+	PlayMusic(context.Context, *PlayMusicReq) (*PlayMusicRsp, error)
 }
 
 // UnimplementedVoiceRoomServerServer should be embedded to have forward compatible implementations.
@@ -65,6 +76,9 @@ func (UnimplementedVoiceRoomServerServer) CommonReq(context.Context, *RpcReqPara
 }
 func (UnimplementedVoiceRoomServerServer) CheckUserState(context.Context, *UserStateReq) (*UserStateRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckUserState not implemented")
+}
+func (UnimplementedVoiceRoomServerServer) PlayMusic(context.Context, *PlayMusicReq) (*PlayMusicRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PlayMusic not implemented")
 }
 
 // UnsafeVoiceRoomServerServer may be embedded to opt out of forward compatibility for this service.
@@ -114,6 +128,24 @@ func _VoiceRoomServer_CheckUserState_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VoiceRoomServer_PlayMusic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PlayMusicReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VoiceRoomServerServer).PlayMusic(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/rpc.VoiceRoomServer/playMusic",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VoiceRoomServerServer).PlayMusic(ctx, req.(*PlayMusicReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VoiceRoomServer_ServiceDesc is the grpc.ServiceDesc for VoiceRoomServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -129,6 +161,10 @@ var VoiceRoomServer_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "checkUserState",
 			Handler:    _VoiceRoomServer_CheckUserState_Handler,
 		},
+		{
+			MethodName: "playMusic",
+			Handler:    _VoiceRoomServer_PlayMusic_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "rpc/rpc.proto",
@@ -139,7 +175,6 @@ var VoiceRoomServer_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MusicServerClient interface {
 	CommonReq(ctx context.Context, in *RpcReqParam, opts ...grpc.CallOption) (*RpcRspData, error)
-	PlayMusic(ctx context.Context, in *PlayMusicReq, opts ...grpc.CallOption) (*PlayMusicRsp, error)
 }
 
 type musicServerClient struct {
@@ -159,21 +194,11 @@ func (c *musicServerClient) CommonReq(ctx context.Context, in *RpcReqParam, opts
 	return out, nil
 }
 
-func (c *musicServerClient) PlayMusic(ctx context.Context, in *PlayMusicReq, opts ...grpc.CallOption) (*PlayMusicRsp, error) {
-	out := new(PlayMusicRsp)
-	err := c.cc.Invoke(ctx, "/rpc.MusicServer/playMusic", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // MusicServerServer is the server API for MusicServer service.
 // All implementations should embed UnimplementedMusicServerServer
 // for forward compatibility
 type MusicServerServer interface {
 	CommonReq(context.Context, *RpcReqParam) (*RpcRspData, error)
-	PlayMusic(context.Context, *PlayMusicReq) (*PlayMusicRsp, error)
 }
 
 // UnimplementedMusicServerServer should be embedded to have forward compatible implementations.
@@ -182,9 +207,6 @@ type UnimplementedMusicServerServer struct {
 
 func (UnimplementedMusicServerServer) CommonReq(context.Context, *RpcReqParam) (*RpcRspData, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CommonReq not implemented")
-}
-func (UnimplementedMusicServerServer) PlayMusic(context.Context, *PlayMusicReq) (*PlayMusicRsp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PlayMusic not implemented")
 }
 
 // UnsafeMusicServerServer may be embedded to opt out of forward compatibility for this service.
@@ -216,24 +238,6 @@ func _MusicServer_CommonReq_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MusicServer_PlayMusic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PlayMusicReq)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MusicServerServer).PlayMusic(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/rpc.MusicServer/playMusic",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MusicServerServer).PlayMusic(ctx, req.(*PlayMusicReq))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // MusicServer_ServiceDesc is the grpc.ServiceDesc for MusicServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -244,10 +248,6 @@ var MusicServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "commonReq",
 			Handler:    _MusicServer_CommonReq_Handler,
-		},
-		{
-			MethodName: "playMusic",
-			Handler:    _MusicServer_PlayMusic_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
