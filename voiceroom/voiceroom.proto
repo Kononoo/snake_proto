@@ -458,7 +458,6 @@ message SendChatReq {
   string message_id = 4;
   string nickname = 5;
   string ext = 6;
-  int32 rated_level = 7;
   int32 sub_type = 8;
 }
 
