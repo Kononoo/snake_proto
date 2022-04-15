@@ -51,9 +51,9 @@ service VoiceRoomServer {
   }
   rpc checkUserState (userStateReq) returns (userStateRsp) {
   }
+  rpc playMusic (playMusicReq) returns (playMusicRsp) {}
 }
 
 service MusicServer {
   rpc commonReq (rpcReqParam) returns (rpcRspData) {}
-  rpc playMusic (playMusicReq) returns (playMusicRsp) {}
 }
