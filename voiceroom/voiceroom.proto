@@ -409,7 +409,7 @@ message SearchRoomRsp {
   int32 show = 13; //房主show值
   int32 charm = 14; //房主魅力值
   int32 star = 15; //段位
-  topShowMember top_member = 16;
+  repeated topShowMember top_member = 16;
 }
 
 enum PkType {
