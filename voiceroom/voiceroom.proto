@@ -329,6 +329,7 @@ message PuRedPackMsg {
   string sender_uid = 1;
   string red_pack_id = 2;
   int32 expire_time = 3; //过期时间
+  string message = 4; // 透传
 }
 
 message userGeoInfo {
