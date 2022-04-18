@@ -64,7 +64,7 @@ message roomInfo {
   int32 online_player = 8;
   repeated string ban_mic_list = 9; // 房主才有，禁麦列表
   repeated string ban_chat_list = 10; // 房主才有，禁言列表
-  musicInfo music = 11; //正在播放的音乐
+  voiceRoomMusicInfo music = 11; //正在播放的音乐
 }
 
 enum musicStatus {
@@ -74,7 +74,7 @@ enum musicStatus {
   Close = 3; //关闭
 }
 
-message musicInfo {
+message voiceRoomMusicInfo {
   int64 id = 1;
   string title = 2;
   string artist = 3;
@@ -545,5 +545,5 @@ message PuRoomInviteMsg {
 
 
 message PuPlayMusicMsg {
-  musicInfo music = 1;
+  voiceRoomMusicInfo music = 1;
 }
