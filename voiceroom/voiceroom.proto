@@ -67,7 +67,7 @@ message roomInfo {
   voiceRoomMusicInfo music = 11; //正在播放的音乐
 }
 
-enum musicStatus {
+enum voiceRoomMusicStatus {
   invalidStatus = 0;
   Open = 1; //播放
   Pause = 2; //暂停
@@ -78,7 +78,7 @@ message voiceRoomMusicInfo {
   int64 id = 1;
   string title = 2;
   string artist = 3;
-  musicStatus status = 4;
+  voiceRoomMusicStatus status = 4;
   string music = 5;//音乐链接
   string accompaniment = 6;//伴奏链接
   int32 music_duration = 7;//音乐时长（秒）
