@@ -388,8 +388,28 @@ message SearchRoomReq {
   location pos = 2;
 }
 
+message topShowMember {
+  string uid = 1;
+  string avatar = 2;
+}
+
 message SearchRoomRsp {
-  repeated RoomListItem rooms = 1;
+  int32 room_id = 1;
+  int32 tag_id = 2;
+  string name = 3; //房间名称
+  string nickname = 4; //房主昵称
+  int32 gender = 5;
+  string avatar = 6;
+  int32 box_id = 7;
+  int32 total_player = 8; //房间人数
+  bool has_friend = 9; //是否有好友在该房间
+  int32 min_distance = 10; //房间内成员离我最近的距离
+  bool in_topk = 11; //是否是大神房间
+  string owner_id = 12; //房主uid
+  int32 show = 13; //房主show值
+  int32 charm = 14; //房主魅力值
+  int32 star = 15; //段位
+  topShowMember top_member = 16;
 }
 
 enum PkType {
