@@ -79,6 +79,12 @@ message musicInfo {
   string title = 2;
   string artist = 3;
   musicStatus status = 4;
+  string music = 5;//音乐链接
+  string accompaniment = 6;//伴奏链接
+  int32 music_duration = 7;//音乐时长（秒）
+  int32 accompaniment_duration = 8;//伴奏时长（秒）
+  string uploader = 9;//上传者uid
+  string uploader_name = 10; //上传者昵称
 }
 
 message roomSetting {
