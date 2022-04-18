@@ -3690,22 +3690,22 @@ type SearchRoomRsp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoomId      int32          `protobuf:"varint,1,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	TagId       int32          `protobuf:"varint,2,opt,name=tag_id,json=tagId,proto3" json:"tag_id,omitempty"`
-	Name        string         `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`         //房间名称
-	Nickname    string         `protobuf:"bytes,4,opt,name=nickname,proto3" json:"nickname,omitempty"` //房主昵称
-	Gender      int32          `protobuf:"varint,5,opt,name=gender,proto3" json:"gender,omitempty"`
-	Avatar      string         `protobuf:"bytes,6,opt,name=avatar,proto3" json:"avatar,omitempty"`
-	BoxId       int32          `protobuf:"varint,7,opt,name=box_id,json=boxId,proto3" json:"box_id,omitempty"`
-	TotalPlayer int32          `protobuf:"varint,8,opt,name=total_player,json=totalPlayer,proto3" json:"total_player,omitempty"`  //房间人数
-	HasFriend   bool           `protobuf:"varint,9,opt,name=has_friend,json=hasFriend,proto3" json:"has_friend,omitempty"`        //是否有好友在该房间
-	MinDistance int32          `protobuf:"varint,10,opt,name=min_distance,json=minDistance,proto3" json:"min_distance,omitempty"` //房间内成员离我最近的距离
-	InTopk      bool           `protobuf:"varint,11,opt,name=in_topk,json=inTopk,proto3" json:"in_topk,omitempty"`                //是否是大神房间
-	OwnerId     string         `protobuf:"bytes,12,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`              //房主uid
-	Show        int32          `protobuf:"varint,13,opt,name=show,proto3" json:"show,omitempty"`                                  //房主show值
-	Charm       int32          `protobuf:"varint,14,opt,name=charm,proto3" json:"charm,omitempty"`                                //房主魅力值
-	Star        int32          `protobuf:"varint,15,opt,name=star,proto3" json:"star,omitempty"`                                  //段位
-	TopMember   *TopShowMember `protobuf:"bytes,16,opt,name=top_member,json=topMember,proto3" json:"top_member,omitempty"`
+	RoomId      int32            `protobuf:"varint,1,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
+	TagId       int32            `protobuf:"varint,2,opt,name=tag_id,json=tagId,proto3" json:"tag_id,omitempty"`
+	Name        string           `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`         //房间名称
+	Nickname    string           `protobuf:"bytes,4,opt,name=nickname,proto3" json:"nickname,omitempty"` //房主昵称
+	Gender      int32            `protobuf:"varint,5,opt,name=gender,proto3" json:"gender,omitempty"`
+	Avatar      string           `protobuf:"bytes,6,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	BoxId       int32            `protobuf:"varint,7,opt,name=box_id,json=boxId,proto3" json:"box_id,omitempty"`
+	TotalPlayer int32            `protobuf:"varint,8,opt,name=total_player,json=totalPlayer,proto3" json:"total_player,omitempty"`  //房间人数
+	HasFriend   bool             `protobuf:"varint,9,opt,name=has_friend,json=hasFriend,proto3" json:"has_friend,omitempty"`        //是否有好友在该房间
+	MinDistance int32            `protobuf:"varint,10,opt,name=min_distance,json=minDistance,proto3" json:"min_distance,omitempty"` //房间内成员离我最近的距离
+	InTopk      bool             `protobuf:"varint,11,opt,name=in_topk,json=inTopk,proto3" json:"in_topk,omitempty"`                //是否是大神房间
+	OwnerId     string           `protobuf:"bytes,12,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`              //房主uid
+	Show        int32            `protobuf:"varint,13,opt,name=show,proto3" json:"show,omitempty"`                                  //房主show值
+	Charm       int32            `protobuf:"varint,14,opt,name=charm,proto3" json:"charm,omitempty"`                                //房主魅力值
+	Star        int32            `protobuf:"varint,15,opt,name=star,proto3" json:"star,omitempty"`                                  //段位
+	TopMember   []*TopShowMember `protobuf:"bytes,16,rep,name=top_member,json=topMember,proto3" json:"top_member,omitempty"`
 }
 
 func (x *SearchRoomRsp) Reset() {
@@ -3845,7 +3845,7 @@ func (x *SearchRoomRsp) GetStar() int32 {
 	return 0
 }
 
-func (x *SearchRoomRsp) GetTopMember() *TopShowMember {
+func (x *SearchRoomRsp) GetTopMember() []*TopShowMember {
 	if x != nil {
 		return x.TopMember
 	}
@@ -5790,7 +5790,7 @@ var file_voiceroom_voiceroom_proto_rawDesc = []byte{
 	0x68, 0x61, 0x72, 0x6d, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x63, 0x68, 0x61, 0x72,
 	0x6d, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x74, 0x61, 0x72, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x05, 0x52,
 	0x04, 0x73, 0x74, 0x61, 0x72, 0x12, 0x37, 0x0a, 0x0a, 0x74, 0x6f, 0x70, 0x5f, 0x6d, 0x65, 0x6d,
-	0x62, 0x65, 0x72, 0x18, 0x10, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x76, 0x6f, 0x69, 0x63,
+	0x62, 0x65, 0x72, 0x18, 0x10, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x76, 0x6f, 0x69, 0x63,
 	0x65, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x74, 0x6f, 0x70, 0x53, 0x68, 0x6f, 0x77, 0x4d, 0x65, 0x6d,
 	0x62, 0x65, 0x72, 0x52, 0x09, 0x74, 0x6f, 0x70, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x85,
 	0x01, 0x0a, 0x0a, 0x53, 0x74, 0x61, 0x72, 0x74, 0x50, 0x6b, 0x52, 0x65, 0x71, 0x12, 0x19, 0x0a,
