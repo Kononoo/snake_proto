@@ -79,11 +79,11 @@ message voiceRoomMusicInfo {
   string title = 2;
   string artist = 3;
   voiceRoomMusicStatus status = 4;
-  string music = 5;//音乐链接
-  string accompaniment = 6;//伴奏链接
-  int32 music_duration = 7;//音乐时长（秒）
-  int32 accompaniment_duration = 8;//伴奏时长（秒）
-  string uploader = 9;//上传者uid
+  string music = 5; //音乐链接
+  string accompaniment = 6; //伴奏链接
+  int32 music_duration = 7; //音乐时长（秒）
+  int32 accompaniment_duration = 8; //伴奏时长（秒）
+  string uploader = 9; //上传者uid
   string uploader_name = 10; //上传者昵称
 }
 
@@ -101,7 +101,8 @@ message seatInfo {
   int32 index = 1; // 编号0-8，房主0其他依次往后
   bool lock = 2;
   string uid = 3;
-  bool ban_mic = 4; // true为闭麦
+  bool ban_mic = 4; // 房主闭麦
+  bool self_ban_mic = 5; // 自己闭麦
 }
 
 message pkInfo {
