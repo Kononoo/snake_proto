@@ -393,6 +393,7 @@ message SearchRoomReq {
 message topShowMember {
   string uid = 1;
   string avatar = 2;
+  int32 box_id = 3;
 }
 
 message SearchRoomRsp {
