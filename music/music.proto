@@ -63,7 +63,10 @@ message PlayMusicRsp {
 
 message SearchMusicReq {
   string key = 1; //搜索关键字
+  int32 page = 2; //从1开始
+  int32 size = 3;
 }
 message SearchMusicRsp {
   repeated musicInfo musics = 1;
+  int32 total = 2;
 }
