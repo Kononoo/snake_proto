@@ -473,16 +473,7 @@ message PkVoteRsp {
 }
 
 message PkSendGiftReq {
-  string target_uid = 1;
-  string target_nickname = 2;
-  int32 source = 3;
-  bool is_free = 4;
-  int32 gift_id = 5;
-  int32 count = 6;
-  int32 bag_count = 7;
-  int32 message_index = 8;
-  int32 charm = 9;
-  string ext = 10;
+  SendGiftInfo info = 1;
 }
 
 message PkSendGiftRsp {
@@ -496,7 +487,7 @@ message SendChatReq {
   string message_id = 4;
   string nickname = 5;
   string ext = 6;
-  int32 sub_type = 8;
+  int32 sub_type = 7;
 }
 
 message SendChatRsp {
@@ -504,16 +495,21 @@ message SendChatRsp {
 }
 
 message SendGiftReq {
+  SendGiftInfo info = 1;
+}
+
+message SendGiftInfo {
   string target_uid = 1;
   string target_nickname = 2;
   int32 source = 3;
   bool is_free = 4;
   int32 gift_id = 5;
-  int32 count = 6;
-  int32 bag_count = 7;
-  int32 message_index = 8;
-  int32 charm = 9;
-  string ext = 10;
+  string gift_name = 6;
+  int32 count = 7;
+  int32 bag_count = 8;
+  int32 message_index = 9;
+  int32 charm = 10;
+  string ext = 11;
 }
 
 message SendGiftRsp {
