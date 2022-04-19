@@ -295,7 +295,7 @@ message PuSeatInviteMsg {
 }
 
 message HandleSeatInviteReq {
-  int32 opt = 1; // 1同意，2拒绝
+  //  int32 opt = 1; // 1同意，2拒绝
   bool mic_open = 2; //自己的麦是否开了
   int32 seat_index = 3;
 }
