@@ -482,6 +482,7 @@ message PkSendGiftReq {
 
 message PkSendGiftRsp {
   pkInfo pk_info = 1;
+  SendGiftRspInfo gift_info = 2;
 }
 
 message SendChatReq {
@@ -516,7 +517,19 @@ message SendGiftInfo {
   string ext = 11;
 }
 
+message SendGiftRspInfo {
+  int32 state = 1;
+  int32 bag_count = 2;
+  int64 charm = 3;
+  int64 remain = 4;
+  int32 care = 5;
+  string extra = 6;
+  string reward_desc = 7;
+  string buff_info = 8;
+}
+
 message SendGiftRsp {
+  SendGiftRspInfo info = 1;
 }
 
 message PuSendGiftMsg {
