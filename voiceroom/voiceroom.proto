@@ -554,6 +554,7 @@ message PuSeatKickMsg {
 // 邀请进房间
 message RoomInviteReq {
   string target_uid = 1;
+  string nickname = 2; // 自己的昵称
 }
 
 message RoomInviteRsp {
