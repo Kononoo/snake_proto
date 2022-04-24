@@ -157,6 +157,7 @@ message EnterRoomReq {
 message EnterRoomRsp {
   bool need_password = 1; // 如果需要密码但是没传的，这里返回true，没有roomInfo
   roomInfo room = 2;
+  int64 ban_timestamp = 3; //封禁时间戳，-1永久封禁
 }
 
 message UpdateSettingReq {
