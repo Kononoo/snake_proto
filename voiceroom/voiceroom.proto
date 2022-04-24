@@ -568,6 +568,7 @@ message PuSeatKickMsg {
 message RoomInviteReq {
   string target_uid = 1;
   string nickname = 2; // 自己的昵称
+  string chat_ext = 3; // 私聊天自己的ext(气泡框)
 }
 
 message RoomInviteRsp {
