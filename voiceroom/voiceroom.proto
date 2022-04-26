@@ -241,6 +241,7 @@ message adminRoomInfo {
   int32 online_player = 5;
   int64 hot = 6;
   repeated string uids = 7; // 座位列表
+  int32 room_type = 8;
 }
 
 
