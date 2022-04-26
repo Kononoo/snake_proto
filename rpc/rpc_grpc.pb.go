@@ -21,6 +21,7 @@ type VoiceRoomServerClient interface {
 	CommonReq(ctx context.Context, in *RpcReqParam, opts ...grpc.CallOption) (*RpcRspData, error)
 	CheckUserState(ctx context.Context, in *UserStateReq, opts ...grpc.CallOption) (*UserStateRsp, error)
 	PlayMusic(ctx context.Context, in *PlayMusicReq, opts ...grpc.CallOption) (*PlayMusicRsp, error)
+	NoticeOffline(ctx context.Context, in *NoticeOfflineReq, opts ...grpc.CallOption) (*Empty, error)
 }
 
 type voiceRoomServerClient struct {
@@ -58,6 +59,15 @@ func (c *voiceRoomServerClient) PlayMusic(ctx context.Context, in *PlayMusicReq,
 	return out, nil
 }
 
+func (c *voiceRoomServerClient) NoticeOffline(ctx context.Context, in *NoticeOfflineReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/rpc.VoiceRoomServer/noticeOffline", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VoiceRoomServerServer is the server API for VoiceRoomServer service.
 // All implementations should embed UnimplementedVoiceRoomServerServer
 // for forward compatibility
@@ -65,6 +75,7 @@ type VoiceRoomServerServer interface {
 	CommonReq(context.Context, *RpcReqParam) (*RpcRspData, error)
 	CheckUserState(context.Context, *UserStateReq) (*UserStateRsp, error)
 	PlayMusic(context.Context, *PlayMusicReq) (*PlayMusicRsp, error)
+	NoticeOffline(context.Context, *NoticeOfflineReq) (*Empty, error)
 }
 
 // UnimplementedVoiceRoomServerServer should be embedded to have forward compatible implementations.
@@ -79,6 +90,9 @@ func (UnimplementedVoiceRoomServerServer) CheckUserState(context.Context, *UserS
 }
 func (UnimplementedVoiceRoomServerServer) PlayMusic(context.Context, *PlayMusicReq) (*PlayMusicRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayMusic not implemented")
+}
+func (UnimplementedVoiceRoomServerServer) NoticeOffline(context.Context, *NoticeOfflineReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NoticeOffline not implemented")
 }
 
 // UnsafeVoiceRoomServerServer may be embedded to opt out of forward compatibility for this service.
@@ -146,6 +160,24 @@ func _VoiceRoomServer_PlayMusic_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VoiceRoomServer_NoticeOffline_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NoticeOfflineReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VoiceRoomServerServer).NoticeOffline(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/rpc.VoiceRoomServer/noticeOffline",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VoiceRoomServerServer).NoticeOffline(ctx, req.(*NoticeOfflineReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VoiceRoomServer_ServiceDesc is the grpc.ServiceDesc for VoiceRoomServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -164,6 +196,10 @@ var VoiceRoomServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "playMusic",
 			Handler:    _VoiceRoomServer_PlayMusic_Handler,
+		},
+		{
+			MethodName: "noticeOffline",
+			Handler:    _VoiceRoomServer_NoticeOffline_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
