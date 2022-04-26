@@ -250,7 +250,7 @@ message playerChangeItem {
 }
 
 message PuPlayerChangeMsg {
-  repeated playerChangeItem change_list = 1;
+  //  repeated playerChangeItem change_list = 1;
   int32 online_player = 2; //最新的在线人数
 }
 

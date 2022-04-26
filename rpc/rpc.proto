@@ -15,6 +15,9 @@ message userAttr {
   int32 platform = 6;
 }
 
+message empty {
+}
+
 // 内部rpc请求参数，对应pb/rq_commonMsg
 message rpcReqParam {
   int32 op_type = 1;
@@ -44,14 +47,18 @@ message playMusicReq {
   string music_name = 3;
   string artist = 4;
   int32 status = 6; //1：播放，2:暂停，3:停止
-  string music = 7;//音乐链接
-  string accompaniment = 8;//伴奏链接
-  int32 music_duration = 9;//音乐时长（秒）
-  int32 accompaniment_duration = 10;//伴奏时长（秒）
-  string uploader = 11;//上传者uid
+  string music = 7; //音乐链接
+  string accompaniment = 8; //伴奏链接
+  int32 music_duration = 9; //音乐时长（秒）
+  int32 accompaniment_duration = 10; //伴奏时长（秒）
+  string uploader = 11; //上传者uid
   string uploader_name = 12; //上传者昵称
 }
 message playMusicRsp {
+}
+
+message noticeOfflineReq {
+  string uid = 1;
 }
 
 service VoiceRoomServer {
@@ -60,6 +67,8 @@ service VoiceRoomServer {
   rpc checkUserState (userStateReq) returns (userStateRsp) {
   }
   rpc playMusic (playMusicReq) returns (playMusicRsp) {
+  }
+  rpc noticeOffline (noticeOfflineReq) returns (empty) {
   }
 }
 
