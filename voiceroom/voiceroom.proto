@@ -210,7 +210,8 @@ message PuLotteryResultMsg {
   repeated string join_uids = 1; //参与人员
   repeated string lucky_uids = 2; //中奖人员
 }
-//1: 获取房间信息，2：封禁语音房上麦，3：语音房间解散，4：重置语音房间房名，5：重置语音房间公告
+//1: 获取房间信息，2：封禁语音房上麦，3：语音房间解散，4：重置语音房间房名，5：重置语音房间公告，6：用户当前房间拉下推荐
+//7：push房间公告
 enum innerCallType {
   icUndef = 0;
   GetRoomInfo = 1;
@@ -218,6 +219,8 @@ enum innerCallType {
   VoiceRoomDissolve = 3;
   VoiceRoomResetName = 4;
   VoiceRoomResetAnnounce = 5;
+  UserVoiceRoomDownRecommend = 6;
+  VoiceRoomPushAlert = 7;
 }
 
 message InnerCallReq {
@@ -225,6 +228,7 @@ message InnerCallReq {
   string CallToken = 2;
   int32 room_id = 3;
   string uid = 4;
+  string msg = 5;
 }
 
 message InnerCallRsp {
