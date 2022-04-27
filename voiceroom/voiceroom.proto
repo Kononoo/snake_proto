@@ -221,6 +221,7 @@ enum innerCallType {
   VoiceRoomResetAnnounce = 5;
   UserVoiceRoomDownRecommend = 6;
   VoiceRoomPushAlert = 7;
+  UserVoiceRoomExit = 8;
 }
 
 message InnerCallReq {
@@ -229,6 +230,7 @@ message InnerCallReq {
   int32 room_id = 3;
   string uid = 4;
   string msg = 5;
+  int32 time = 6;
 }
 
 message InnerCallRsp {
