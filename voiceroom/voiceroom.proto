@@ -3,6 +3,7 @@ syntax = "proto3";
 package voiceroom;
 
 option go_package = "git.17zjh.com/snake/snake_proto/voiceroom";
+option objc_class_prefix = "SNKPBVR";
 
 // 一般约定：请求响应的消息名的前半部分和opType相同，请求后缀req，响应后缀rsp，push后缀msg
 // 为了避免大房间的push过多，push结构尽量设计成数组的方式，方便服务器缓存发出

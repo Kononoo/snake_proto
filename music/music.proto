@@ -3,6 +3,8 @@ syntax = "proto3";
 package music;
 
 option go_package = "git.17zjh.com/snake/snake_proto/music";
+option objc_class_prefix = "SNKPBMUSIC";
+
 
 enum musicOpType {
   mUndef = 0;
