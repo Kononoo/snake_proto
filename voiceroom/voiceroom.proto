@@ -390,6 +390,7 @@ message RoomListItem {
   int32 min_distance = 10; //房间内成员离我最近的距离
   bool in_topk = 11; //是否是大神房间
   string owner_id = 12; //房主uid
+  int32 sst_status = 13; //1：是sst认证
 }
 
 message GetRoomListRsp {
