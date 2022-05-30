@@ -212,7 +212,7 @@ message PuLotteryResultMsg {
   repeated string lucky_uids = 2; //中奖人员
 }
 //1: 获取房间信息，2：封禁语音房上麦，3：语音房间解散，4：重置语音房间房名，5：重置语音房间公告，6：用户当前房间拉下推荐
-//7：push房间公告
+//7：push房间公告，8：踢出房间，9：发送个人消息
 enum innerCallType {
   icUndef = 0;
   GetRoomInfo = 1;
@@ -223,6 +223,7 @@ enum innerCallType {
   UserVoiceRoomDownRecommend = 6;
   VoiceRoomPushAlert = 7;
   UserVoiceRoomExit = 8;
+  UserVoiceRoomMsg = 9;
 }
 
 message InnerCallReq {
