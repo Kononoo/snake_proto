@@ -98,6 +98,7 @@ message roomSetting {
   int32 bg_id = 5; //背景
   bool ban_chat = 6; //禁止公屏聊天
   bool ban_red_pack = 7; //禁止发红包
+  bool ban_intimate = 8; //禁止亲密房主
 }
 
 message seatInfo {
