@@ -601,4 +601,3 @@ message PuPlayMusicMsg {
 message PuBanChatMsg {
   int32 opt = 1; // 1禁聊天，2打开
 }
-
