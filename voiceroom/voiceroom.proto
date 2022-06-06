@@ -397,6 +397,10 @@ message GetRoomListReq {
   location pos = 4;
 }
 
+message PuRoomBlackUpdateMsg {
+  RoomBlackType black_type = 1;
+}
+
 message RoomListItem {
   int32 room_id = 1;
   int32 tag_id = 2;
