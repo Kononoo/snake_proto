@@ -54,6 +54,7 @@ enum VoiceOpType {
   PuRoomInvite = 114; // 邀请进房
   PuPlayMusic = 115; //房主播放、暂停音乐推送
   PuBanChat = 116; // 被房主禁言，被禁的收到
+  GetBlackList = 117; //获取拉黑列表
 }
 
 message roomInfo {
@@ -600,3 +601,4 @@ message PuPlayMusicMsg {
 message PuBanChatMsg {
   int32 opt = 1; // 1禁聊天，2打开
 }
+
