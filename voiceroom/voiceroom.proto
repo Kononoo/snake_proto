@@ -373,6 +373,23 @@ message GetNearbyRsp {
   repeated userGeoInfo users = 1; //附近的人的信息
 }
 
+message GetBlackListReq {
+  RoomBlackType black_type = 1;
+}
+
+message GetBlackListRsp {
+  repeated string ban_mic_list = 1; //闭麦列表
+  repeated string ban_chat_list = 2; //禁言列表
+  repeated string black_user_list = 3; //拉黑列表
+}
+
+enum RoomBlackType {
+  vUndef = 0;
+  BanMic = 1; //禁麦列表
+  BanChat = 2; //禁言列表
+  BlackUser = 3; //拉黑列表
+}
+
 message GetRoomListReq {
   int32 tag_id = 1; //房间类型
   int32 page = 2; //第几页，从1开始
