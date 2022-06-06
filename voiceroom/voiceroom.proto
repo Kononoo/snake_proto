@@ -384,7 +384,7 @@ message GetBlackListRsp {
 }
 
 enum RoomBlackType {
-  vUndef = 0;
+  BlackTypeUndef = 0;
   BanMic = 1; //禁麦列表
   BanChat = 2; //禁言列表
   BlackUser = 3; //拉黑列表
