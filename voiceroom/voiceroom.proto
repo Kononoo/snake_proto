@@ -36,6 +36,7 @@ enum VoiceOpType {
   GetPkInfo = 25; // 获取PK信息
   PkSendGift = 26; // PK送礼物
   RoomInvite = 27; //邀请进语音房
+  GetBlackList = 28; // 获取拉黑列表
 
   InnerCall = 100; //内部调用接口
   PuUpdateSetting = 101; // 改房间信息push
@@ -54,7 +55,7 @@ enum VoiceOpType {
   PuRoomInvite = 114; // 邀请进房
   PuPlayMusic = 115; //房主播放、暂停音乐推送
   PuBanChat = 116; // 被房主禁言，被禁的收到
-  GetBlackList = 117; //获取拉黑列表
+  PuBlackList = 117; // 拉黑列表
 }
 
 message roomInfo {
