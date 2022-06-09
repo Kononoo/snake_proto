@@ -70,6 +70,7 @@ message roomInfo {
   repeated string ban_mic_list = 9; // 房主才有，禁麦列表
   repeated string ban_chat_list = 10; // 房主才有，禁言列表
   voiceRoomMusicInfo music = 11; //正在播放的音乐
+  int32 mode_version = 12;
 }
 
 enum voiceRoomMusicStatus {
