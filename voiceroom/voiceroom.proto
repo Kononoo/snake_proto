@@ -626,8 +626,8 @@ message PuBanChatMsg {
 }
 
 enum spyType {
-  tpUndef = 0;
-  MicUser = 1; //麦上玩家
+  spyTypeUndef = 0;
+  spyTypMicUser = 1; //麦上玩家
 }
 message StartSpyReq {
   spyType opt = 1; // 参与玩家，目前只有 1:麦上玩家
