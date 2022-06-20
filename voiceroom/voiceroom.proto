@@ -624,3 +624,50 @@ message PuPlayMusicMsg {
 message PuBanChatMsg {
   int32 opt = 1; // 1禁聊天，2打开
 }
+
+enum spyType {
+  tpUndef = 0;
+  MicUser = 1; //麦上玩家
+}
+message StartSpyReq {
+  spyType opt = 1; // 参与玩家，目前只有 1:麦上玩家
+  int32 spy_num = 2;
+  bool allow_chat = 3; //是否允许公屏文字聊天
+}
+message StartSpyRsp {
+}
+message PuSpyWordMsg { // 下发谁是卧底词汇，每个用户单独push
+  string word = 1;
+}
+
+message StartSpyVoteReq {
+}
+message StartSpyVoteRsp {
+  int32 vote_time = 1; // 投票时间(秒)
+}
+message PuStartSpyVoteMsg {
+  repeated int32 vote_indexs = 1; // 可以投票的麦位
+}
+message PuSpyVoteResMsg { // 投票结果push
+  repeated string vote_res = 1; // 投票结果
+  repeated int32 vote_detail = 2; // 投票详情
+}
+enum spyGameRes {
+  gsUndef = 0;
+  CivilianWin = 1; // 平民胜利
+  SpyWin = 2; // 卧底胜利
+
+}
+message PuSpyEndResMsg { // 游戏结束结果push
+  string spy_word = 1; // 卧底词汇
+  string civilian_word = 2; // 平民词汇
+  spyGameRes game_res = 3; // 游戏结果，1
+  repeated string spy_uids = 4; // 卧底uid
+}
+
+message EndSpyGameReq { // 房主主动结束游戏
+}
+message EndSpyGameRsp {
+}
+message PuEndSpyGameMsg { // 房主主动结束游戏push
+}
