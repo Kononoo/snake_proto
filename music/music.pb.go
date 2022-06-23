@@ -23,31 +23,49 @@ const (
 type MusicOpType int32
 
 const (
-	MusicOpType_mUndef              MusicOpType = 0
-	MusicOpType_GetMusicList        MusicOpType = 1 //分页拉取音乐列表
-	MusicOpType_GetFavoriteMusic    MusicOpType = 2 //获取收藏的音乐
-	MusicOpType_UpdateFavoriteMusic MusicOpType = 3 //收藏、取消收藏音乐
-	MusicOpType_PlayMusic           MusicOpType = 4 //播放音乐
-	MusicOpType_SearchMusic         MusicOpType = 5 //搜索音乐
+	MusicOpType_mUndef                           MusicOpType = 0
+	MusicOpType_GetMusicList                     MusicOpType = 1  //分页拉取音乐列表
+	MusicOpType_GetFavoriteMusic                 MusicOpType = 2  //获取收藏的音乐
+	MusicOpType_UpdateFavoriteMusic              MusicOpType = 3  //收藏、取消收藏音乐
+	MusicOpType_PlayMusic                        MusicOpType = 4  //播放音乐
+	MusicOpType_SearchMusic                      MusicOpType = 5  //搜索音乐
+	MusicOpType_GetTencentCloudMusicList         MusicOpType = 6  //获取腾讯云音乐列表
+	MusicOpType_GetTencentCloudMusicDetail       MusicOpType = 7  //获取腾讯云音乐详情
+	MusicOpType_SearchTencentCloudMusic          MusicOpType = 8  //搜索腾讯云音乐
+	MusicOpType_UpdateTencentCloudFavoriteMusic  MusicOpType = 9  //收藏、取消收藏音乐
+	MusicOpType_GetTencentCloudFavoriteMusicList MusicOpType = 10 //获取收藏列表
+	MusicOpType_PlayTencentCloudMusic            MusicOpType = 11 //播放音乐
 )
 
 // Enum value maps for MusicOpType.
 var (
 	MusicOpType_name = map[int32]string{
-		0: "mUndef",
-		1: "GetMusicList",
-		2: "GetFavoriteMusic",
-		3: "UpdateFavoriteMusic",
-		4: "PlayMusic",
-		5: "SearchMusic",
+		0:  "mUndef",
+		1:  "GetMusicList",
+		2:  "GetFavoriteMusic",
+		3:  "UpdateFavoriteMusic",
+		4:  "PlayMusic",
+		5:  "SearchMusic",
+		6:  "GetTencentCloudMusicList",
+		7:  "GetTencentCloudMusicDetail",
+		8:  "SearchTencentCloudMusic",
+		9:  "UpdateTencentCloudFavoriteMusic",
+		10: "GetTencentCloudFavoriteMusicList",
+		11: "PlayTencentCloudMusic",
 	}
 	MusicOpType_value = map[string]int32{
-		"mUndef":              0,
-		"GetMusicList":        1,
-		"GetFavoriteMusic":    2,
-		"UpdateFavoriteMusic": 3,
-		"PlayMusic":           4,
-		"SearchMusic":         5,
+		"mUndef":                           0,
+		"GetMusicList":                     1,
+		"GetFavoriteMusic":                 2,
+		"UpdateFavoriteMusic":              3,
+		"PlayMusic":                        4,
+		"SearchMusic":                      5,
+		"GetTencentCloudMusicList":         6,
+		"GetTencentCloudMusicDetail":       7,
+		"SearchTencentCloudMusic":          8,
+		"UpdateTencentCloudFavoriteMusic":  9,
+		"GetTencentCloudFavoriteMusicList": 10,
+		"PlayTencentCloudMusic":            11,
 	}
 )
 
@@ -740,6 +758,653 @@ func (x *SearchMusicRsp) GetTotal() int32 {
 	return 0
 }
 
+type TencentCloudMusicBaseInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id       string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`              //歌曲id
+	Title    string   `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`        //歌曲名称
+	Singers  []string `protobuf:"bytes,3,rep,name=singers,proto3" json:"singers,omitempty"`    //歌手名称列表
+	Duration int32    `protobuf:"varint,4,opt,name=duration,proto3" json:"duration,omitempty"` //播放时长
+}
+
+func (x *TencentCloudMusicBaseInfo) Reset() {
+	*x = TencentCloudMusicBaseInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TencentCloudMusicBaseInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TencentCloudMusicBaseInfo) ProtoMessage() {}
+
+func (x *TencentCloudMusicBaseInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TencentCloudMusicBaseInfo.ProtoReflect.Descriptor instead.
+func (*TencentCloudMusicBaseInfo) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *TencentCloudMusicBaseInfo) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *TencentCloudMusicBaseInfo) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *TencentCloudMusicBaseInfo) GetSingers() []string {
+	if x != nil {
+		return x.Singers
+	}
+	return nil
+}
+
+func (x *TencentCloudMusicBaseInfo) GetDuration() int32 {
+	if x != nil {
+		return x.Duration
+	}
+	return 0
+}
+
+type GetTencentCloudMusicListReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetTencentCloudMusicListReq) Reset() {
+	*x = GetTencentCloudMusicListReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTencentCloudMusicListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTencentCloudMusicListReq) ProtoMessage() {}
+
+func (x *GetTencentCloudMusicListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTencentCloudMusicListReq.ProtoReflect.Descriptor instead.
+func (*GetTencentCloudMusicListReq) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{12}
+}
+
+type GetTencentCloudMusicListRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Musics []*TencentCloudMusicBaseInfo `protobuf:"bytes,1,rep,name=musics,proto3" json:"musics,omitempty"` //音乐基础信息
+	Total  int32                        `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`  //总数
+}
+
+func (x *GetTencentCloudMusicListRsp) Reset() {
+	*x = GetTencentCloudMusicListRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTencentCloudMusicListRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTencentCloudMusicListRsp) ProtoMessage() {}
+
+func (x *GetTencentCloudMusicListRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTencentCloudMusicListRsp.ProtoReflect.Descriptor instead.
+func (*GetTencentCloudMusicListRsp) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetTencentCloudMusicListRsp) GetMusics() []*TencentCloudMusicBaseInfo {
+	if x != nil {
+		return x.Musics
+	}
+	return nil
+}
+
+func (x *GetTencentCloudMusicListRsp) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+type GetTencentCloudMusicDetailReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` //歌曲id
+}
+
+func (x *GetTencentCloudMusicDetailReq) Reset() {
+	*x = GetTencentCloudMusicDetailReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTencentCloudMusicDetailReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTencentCloudMusicDetailReq) ProtoMessage() {}
+
+func (x *GetTencentCloudMusicDetailReq) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTencentCloudMusicDetailReq.ProtoReflect.Descriptor instead.
+func (*GetTencentCloudMusicDetailReq) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GetTencentCloudMusicDetailReq) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetTencentCloudMusicDetailRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	PlayToken string `protobuf:"bytes,1,opt,name=play_token,json=playToken,proto3" json:"play_token,omitempty"` //播放凭证
+}
+
+func (x *GetTencentCloudMusicDetailRsp) Reset() {
+	*x = GetTencentCloudMusicDetailRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTencentCloudMusicDetailRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTencentCloudMusicDetailRsp) ProtoMessage() {}
+
+func (x *GetTencentCloudMusicDetailRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTencentCloudMusicDetailRsp.ProtoReflect.Descriptor instead.
+func (*GetTencentCloudMusicDetailRsp) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetTencentCloudMusicDetailRsp) GetPlayToken() string {
+	if x != nil {
+		return x.PlayToken
+	}
+	return ""
+}
+
+type SearchTencentCloudMusicReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	KeyWord string `protobuf:"bytes,1,opt,name=key_word,json=keyWord,proto3" json:"key_word,omitempty"` //搜索关键词
+	Page    int32  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`                     //第几页，从1开始
+	Size    int32  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`                     //最大为100
+}
+
+func (x *SearchTencentCloudMusicReq) Reset() {
+	*x = SearchTencentCloudMusicReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SearchTencentCloudMusicReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchTencentCloudMusicReq) ProtoMessage() {}
+
+func (x *SearchTencentCloudMusicReq) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchTencentCloudMusicReq.ProtoReflect.Descriptor instead.
+func (*SearchTencentCloudMusicReq) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *SearchTencentCloudMusicReq) GetKeyWord() string {
+	if x != nil {
+		return x.KeyWord
+	}
+	return ""
+}
+
+func (x *SearchTencentCloudMusicReq) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *SearchTencentCloudMusicReq) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+type SearchTencentCloudMusicRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Musics []*TencentCloudMusicBaseInfo `protobuf:"bytes,1,rep,name=musics,proto3" json:"musics,omitempty"` //音乐基础信息
+	Total  int32                        `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`  //总数
+}
+
+func (x *SearchTencentCloudMusicRsp) Reset() {
+	*x = SearchTencentCloudMusicRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SearchTencentCloudMusicRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchTencentCloudMusicRsp) ProtoMessage() {}
+
+func (x *SearchTencentCloudMusicRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchTencentCloudMusicRsp.ProtoReflect.Descriptor instead.
+func (*SearchTencentCloudMusicRsp) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *SearchTencentCloudMusicRsp) GetMusics() []*TencentCloudMusicBaseInfo {
+	if x != nil {
+		return x.Musics
+	}
+	return nil
+}
+
+func (x *SearchTencentCloudMusicRsp) GetTotal() int32 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+type UpdateTencentCloudFavoriteMusicReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id    string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                     //音乐id
+	IsAdd bool   `protobuf:"varint,2,opt,name=is_add,json=isAdd,proto3" json:"is_add,omitempty"` //收藏或者取消
+}
+
+func (x *UpdateTencentCloudFavoriteMusicReq) Reset() {
+	*x = UpdateTencentCloudFavoriteMusicReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateTencentCloudFavoriteMusicReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTencentCloudFavoriteMusicReq) ProtoMessage() {}
+
+func (x *UpdateTencentCloudFavoriteMusicReq) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTencentCloudFavoriteMusicReq.ProtoReflect.Descriptor instead.
+func (*UpdateTencentCloudFavoriteMusicReq) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *UpdateTencentCloudFavoriteMusicReq) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UpdateTencentCloudFavoriteMusicReq) GetIsAdd() bool {
+	if x != nil {
+		return x.IsAdd
+	}
+	return false
+}
+
+type UpdateTencentCloudFavoriteMusicRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *UpdateTencentCloudFavoriteMusicRsp) Reset() {
+	*x = UpdateTencentCloudFavoriteMusicRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[19]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateTencentCloudFavoriteMusicRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateTencentCloudFavoriteMusicRsp) ProtoMessage() {}
+
+func (x *UpdateTencentCloudFavoriteMusicRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[19]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateTencentCloudFavoriteMusicRsp.ProtoReflect.Descriptor instead.
+func (*UpdateTencentCloudFavoriteMusicRsp) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{19}
+}
+
+type GetTencentCloudFavoriteMusicListReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetTencentCloudFavoriteMusicListReq) Reset() {
+	*x = GetTencentCloudFavoriteMusicListReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[20]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTencentCloudFavoriteMusicListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTencentCloudFavoriteMusicListReq) ProtoMessage() {}
+
+func (x *GetTencentCloudFavoriteMusicListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[20]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTencentCloudFavoriteMusicListReq.ProtoReflect.Descriptor instead.
+func (*GetTencentCloudFavoriteMusicListReq) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{20}
+}
+
+type GetTencentCloudFavoriteMusicListRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Musics []*TencentCloudMusicBaseInfo `protobuf:"bytes,1,rep,name=musics,proto3" json:"musics,omitempty"`
+}
+
+func (x *GetTencentCloudFavoriteMusicListRsp) Reset() {
+	*x = GetTencentCloudFavoriteMusicListRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTencentCloudFavoriteMusicListRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTencentCloudFavoriteMusicListRsp) ProtoMessage() {}
+
+func (x *GetTencentCloudFavoriteMusicListRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTencentCloudFavoriteMusicListRsp.ProtoReflect.Descriptor instead.
+func (*GetTencentCloudFavoriteMusicListRsp) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *GetTencentCloudFavoriteMusicListRsp) GetMusics() []*TencentCloudMusicBaseInfo {
+	if x != nil {
+		return x.Musics
+	}
+	return nil
+}
+
+type PlayTencentCloudMusicReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id     string      `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                 //音乐id
+	Status MusicStatus `protobuf:"varint,2,opt,name=status,proto3,enum=music.MusicStatus" json:"status,omitempty"` //状态
+}
+
+func (x *PlayTencentCloudMusicReq) Reset() {
+	*x = PlayTencentCloudMusicReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[22]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PlayTencentCloudMusicReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlayTencentCloudMusicReq) ProtoMessage() {}
+
+func (x *PlayTencentCloudMusicReq) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[22]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlayTencentCloudMusicReq.ProtoReflect.Descriptor instead.
+func (*PlayTencentCloudMusicReq) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *PlayTencentCloudMusicReq) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *PlayTencentCloudMusicReq) GetStatus() MusicStatus {
+	if x != nil {
+		return x.Status
+	}
+	return MusicStatus_invalidStatus
+}
+
+type PlayTencentCloudMusicRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *PlayTencentCloudMusicRsp) Reset() {
+	*x = PlayTencentCloudMusicRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_music_music_proto_msgTypes[23]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PlayTencentCloudMusicRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlayTencentCloudMusicRsp) ProtoMessage() {}
+
+func (x *PlayTencentCloudMusicRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_music_music_proto_msgTypes[23]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlayTencentCloudMusicRsp.ProtoReflect.Descriptor instead.
+func (*PlayTencentCloudMusicRsp) Descriptor() ([]byte, []int) {
+	return file_music_music_proto_rawDescGZIP(), []int{23}
+}
+
 var File_music_music_proto protoreflect.FileDescriptor
 
 var file_music_music_proto_rawDesc = []byte{
@@ -798,23 +1463,94 @@ var file_music_music_proto_rawDesc = []byte{
 	0x6d, 0x75, 0x73, 0x69, 0x63, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x6d,
 	0x75, 0x73, 0x69, 0x63, 0x2e, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x06,
 	0x6d, 0x75, 0x73, 0x69, 0x63, 0x73, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x2a, 0x7a, 0x0a, 0x0b,
-	0x6d, 0x75, 0x73, 0x69, 0x63, 0x4f, 0x70, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0a, 0x0a, 0x06, 0x6d,
-	0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12, 0x10, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x4d, 0x75,
-	0x73, 0x69, 0x63, 0x4c, 0x69, 0x73, 0x74, 0x10, 0x01, 0x12, 0x14, 0x0a, 0x10, 0x47, 0x65, 0x74,
-	0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74, 0x65, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x02, 0x12,
-	0x17, 0x0a, 0x13, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74,
-	0x65, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x03, 0x12, 0x0d, 0x0a, 0x09, 0x50, 0x6c, 0x61, 0x79,
-	0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x04, 0x12, 0x0f, 0x0a, 0x0b, 0x53, 0x65, 0x61, 0x72, 0x63,
-	0x68, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x05, 0x2a, 0x40, 0x0a, 0x0b, 0x6d, 0x75, 0x73, 0x69,
-	0x63, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x11, 0x0a, 0x0d, 0x69, 0x6e, 0x76, 0x61, 0x6c,
-	0x69, 0x64, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x4f, 0x70,
-	0x65, 0x6e, 0x10, 0x01, 0x12, 0x09, 0x0a, 0x05, 0x50, 0x61, 0x75, 0x73, 0x65, 0x10, 0x02, 0x12,
-	0x09, 0x0a, 0x05, 0x43, 0x6c, 0x6f, 0x73, 0x65, 0x10, 0x03, 0x42, 0x34, 0x5a, 0x25, 0x67, 0x69,
-	0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
-	0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d, 0x75,
-	0x73, 0x69, 0x63, 0xa2, 0x02, 0x0a, 0x53, 0x4e, 0x4b, 0x50, 0x42, 0x4d, 0x55, 0x53, 0x49, 0x43,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x22, 0x77, 0x0a, 0x19,
+	0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69,
+	0x63, 0x42, 0x61, 0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74,
+	0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12,
+	0x18, 0x0a, 0x07, 0x73, 0x69, 0x6e, 0x67, 0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09,
+	0x52, 0x07, 0x73, 0x69, 0x6e, 0x67, 0x65, 0x72, 0x73, 0x12, 0x1a, 0x0a, 0x08, 0x64, 0x75, 0x72,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x64, 0x75, 0x72,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x1d, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x54, 0x65, 0x6e, 0x63,
+	0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x65, 0x71, 0x22, 0x6d, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x54, 0x65, 0x6e, 0x63, 0x65,
+	0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x73, 0x70, 0x12, 0x38, 0x0a, 0x06, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x73, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x2e, 0x54, 0x65, 0x6e, 0x63,
+	0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x42, 0x61, 0x73,
+	0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x06, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x73, 0x12, 0x14, 0x0a,
+	0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x74, 0x6f,
+	0x74, 0x61, 0x6c, 0x22, 0x2f, 0x0a, 0x1d, 0x47, 0x65, 0x74, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e,
+	0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x44, 0x65, 0x74, 0x61, 0x69,
+	0x6c, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x02, 0x69, 0x64, 0x22, 0x3e, 0x0a, 0x1d, 0x47, 0x65, 0x74, 0x54, 0x65, 0x6e, 0x63, 0x65,
+	0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x44, 0x65, 0x74, 0x61,
+	0x69, 0x6c, 0x52, 0x73, 0x70, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x6c, 0x61, 0x79, 0x5f, 0x74, 0x6f,
+	0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x70, 0x6c, 0x61, 0x79, 0x54,
+	0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x5f, 0x0a, 0x1a, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x54, 0x65,
+	0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x52,
+	0x65, 0x71, 0x12, 0x19, 0x0a, 0x08, 0x6b, 0x65, 0x79, 0x5f, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6b, 0x65, 0x79, 0x57, 0x6f, 0x72, 0x64, 0x12, 0x12, 0x0a,
+	0x04, 0x70, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x70, 0x61, 0x67,
+	0x65, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x04, 0x73, 0x69, 0x7a, 0x65, 0x22, 0x6c, 0x0a, 0x1a, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x54,
+	0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63,
+	0x52, 0x73, 0x70, 0x12, 0x38, 0x0a, 0x06, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x73, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x2e, 0x54, 0x65, 0x6e, 0x63,
+	0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x42, 0x61, 0x73,
+	0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x06, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x73, 0x12, 0x14, 0x0a,
+	0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x74, 0x6f,
+	0x74, 0x61, 0x6c, 0x22, 0x4b, 0x0a, 0x22, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x65, 0x6e,
+	0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74,
+	0x65, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x15, 0x0a, 0x06, 0x69, 0x73, 0x5f,
+	0x61, 0x64, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x05, 0x69, 0x73, 0x41, 0x64, 0x64,
+	0x22, 0x24, 0x0a, 0x22, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e,
+	0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74, 0x65, 0x4d, 0x75,
+	0x73, 0x69, 0x63, 0x52, 0x73, 0x70, 0x22, 0x25, 0x0a, 0x23, 0x47, 0x65, 0x74, 0x54, 0x65, 0x6e,
+	0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74,
+	0x65, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x22, 0x5f, 0x0a,
+	0x23, 0x47, 0x65, 0x74, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64,
+	0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74, 0x65, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x73, 0x70, 0x12, 0x38, 0x0a, 0x06, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x73, 0x18, 0x01,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x2e, 0x54, 0x65, 0x6e,
+	0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x42, 0x61,
+	0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x06, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x73, 0x22, 0x56,
+	0x0a, 0x18, 0x50, 0x6c, 0x61, 0x79, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f,
+	0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x2a, 0x0a, 0x06, 0x73, 0x74,
+	0x61, 0x74, 0x75, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x12, 0x2e, 0x6d, 0x75, 0x73,
+	0x69, 0x63, 0x2e, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x06,
+	0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x1a, 0x0a, 0x18, 0x50, 0x6c, 0x61, 0x79, 0x54, 0x65,
+	0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x52,
+	0x73, 0x70, 0x2a, 0xbb, 0x02, 0x0a, 0x0b, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x4f, 0x70, 0x54, 0x79,
+	0x70, 0x65, 0x12, 0x0a, 0x0a, 0x06, 0x6d, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12, 0x10,
+	0x0a, 0x0c, 0x47, 0x65, 0x74, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x4c, 0x69, 0x73, 0x74, 0x10, 0x01,
+	0x12, 0x14, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74, 0x65, 0x4d,
+	0x75, 0x73, 0x69, 0x63, 0x10, 0x02, 0x12, 0x17, 0x0a, 0x13, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74, 0x65, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x03, 0x12,
+	0x0d, 0x0a, 0x09, 0x50, 0x6c, 0x61, 0x79, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x04, 0x12, 0x0f,
+	0x0a, 0x0b, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x05, 0x12,
+	0x1c, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f,
+	0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x4c, 0x69, 0x73, 0x74, 0x10, 0x06, 0x12, 0x1e, 0x0a,
+	0x1a, 0x47, 0x65, 0x74, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64,
+	0x4d, 0x75, 0x73, 0x69, 0x63, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x10, 0x07, 0x12, 0x1b, 0x0a,
+	0x17, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c,
+	0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x08, 0x12, 0x23, 0x0a, 0x1f, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64,
+	0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74, 0x65, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x09, 0x12,
+	0x24, 0x0a, 0x20, 0x47, 0x65, 0x74, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f,
+	0x75, 0x64, 0x46, 0x61, 0x76, 0x6f, 0x72, 0x69, 0x74, 0x65, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x4c,
+	0x69, 0x73, 0x74, 0x10, 0x0a, 0x12, 0x19, 0x0a, 0x15, 0x50, 0x6c, 0x61, 0x79, 0x54, 0x65, 0x6e,
+	0x63, 0x65, 0x6e, 0x74, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x10, 0x0b,
+	0x2a, 0x40, 0x0a, 0x0b, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12,
+	0x11, 0x0a, 0x0d, 0x69, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
+	0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x4f, 0x70, 0x65, 0x6e, 0x10, 0x01, 0x12, 0x09, 0x0a, 0x05,
+	0x50, 0x61, 0x75, 0x73, 0x65, 0x10, 0x02, 0x12, 0x09, 0x0a, 0x05, 0x43, 0x6c, 0x6f, 0x73, 0x65,
+	0x10, 0x03, 0x42, 0x34, 0x5a, 0x25, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e,
+	0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d, 0x75, 0x73, 0x69, 0x63, 0xa2, 0x02, 0x0a, 0x53, 0x4e,
+	0x4b, 0x50, 0x42, 0x4d, 0x55, 0x53, 0x49, 0x43, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -830,32 +1566,49 @@ func file_music_music_proto_rawDescGZIP() []byte {
 }
 
 var file_music_music_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_music_music_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_music_music_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_music_music_proto_goTypes = []interface{}{
-	(MusicOpType)(0),               // 0: music.musicOpType
-	(MusicStatus)(0),               // 1: music.musicStatus
-	(*GetMusicListReq)(nil),        // 2: music.GetMusicListReq
-	(*MusicInfo)(nil),              // 3: music.musicInfo
-	(*GetMusicListRsp)(nil),        // 4: music.GetMusicListRsp
-	(*GetFavoriteMusicReq)(nil),    // 5: music.GetFavoriteMusicReq
-	(*GetFavoriteMusicRsp)(nil),    // 6: music.GetFavoriteMusicRsp
-	(*UpdateFavoriteMusicReq)(nil), // 7: music.UpdateFavoriteMusicReq
-	(*UpdateFavoriteMusicRsp)(nil), // 8: music.UpdateFavoriteMusicRsp
-	(*PlayMusicReq)(nil),           // 9: music.PlayMusicReq
-	(*PlayMusicRsp)(nil),           // 10: music.PlayMusicRsp
-	(*SearchMusicReq)(nil),         // 11: music.SearchMusicReq
-	(*SearchMusicRsp)(nil),         // 12: music.SearchMusicRsp
+	(MusicOpType)(0),                            // 0: music.musicOpType
+	(MusicStatus)(0),                            // 1: music.musicStatus
+	(*GetMusicListReq)(nil),                     // 2: music.GetMusicListReq
+	(*MusicInfo)(nil),                           // 3: music.musicInfo
+	(*GetMusicListRsp)(nil),                     // 4: music.GetMusicListRsp
+	(*GetFavoriteMusicReq)(nil),                 // 5: music.GetFavoriteMusicReq
+	(*GetFavoriteMusicRsp)(nil),                 // 6: music.GetFavoriteMusicRsp
+	(*UpdateFavoriteMusicReq)(nil),              // 7: music.UpdateFavoriteMusicReq
+	(*UpdateFavoriteMusicRsp)(nil),              // 8: music.UpdateFavoriteMusicRsp
+	(*PlayMusicReq)(nil),                        // 9: music.PlayMusicReq
+	(*PlayMusicRsp)(nil),                        // 10: music.PlayMusicRsp
+	(*SearchMusicReq)(nil),                      // 11: music.SearchMusicReq
+	(*SearchMusicRsp)(nil),                      // 12: music.SearchMusicRsp
+	(*TencentCloudMusicBaseInfo)(nil),           // 13: music.TencentCloudMusicBaseInfo
+	(*GetTencentCloudMusicListReq)(nil),         // 14: music.GetTencentCloudMusicListReq
+	(*GetTencentCloudMusicListRsp)(nil),         // 15: music.GetTencentCloudMusicListRsp
+	(*GetTencentCloudMusicDetailReq)(nil),       // 16: music.GetTencentCloudMusicDetailReq
+	(*GetTencentCloudMusicDetailRsp)(nil),       // 17: music.GetTencentCloudMusicDetailRsp
+	(*SearchTencentCloudMusicReq)(nil),          // 18: music.SearchTencentCloudMusicReq
+	(*SearchTencentCloudMusicRsp)(nil),          // 19: music.SearchTencentCloudMusicRsp
+	(*UpdateTencentCloudFavoriteMusicReq)(nil),  // 20: music.UpdateTencentCloudFavoriteMusicReq
+	(*UpdateTencentCloudFavoriteMusicRsp)(nil),  // 21: music.UpdateTencentCloudFavoriteMusicRsp
+	(*GetTencentCloudFavoriteMusicListReq)(nil), // 22: music.GetTencentCloudFavoriteMusicListReq
+	(*GetTencentCloudFavoriteMusicListRsp)(nil), // 23: music.GetTencentCloudFavoriteMusicListRsp
+	(*PlayTencentCloudMusicReq)(nil),            // 24: music.PlayTencentCloudMusicReq
+	(*PlayTencentCloudMusicRsp)(nil),            // 25: music.PlayTencentCloudMusicRsp
 }
 var file_music_music_proto_depIdxs = []int32{
-	3, // 0: music.GetMusicListRsp.musics:type_name -> music.musicInfo
-	3, // 1: music.GetFavoriteMusicRsp.musics:type_name -> music.musicInfo
-	1, // 2: music.PlayMusicReq.status:type_name -> music.musicStatus
-	3, // 3: music.SearchMusicRsp.musics:type_name -> music.musicInfo
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	3,  // 0: music.GetMusicListRsp.musics:type_name -> music.musicInfo
+	3,  // 1: music.GetFavoriteMusicRsp.musics:type_name -> music.musicInfo
+	1,  // 2: music.PlayMusicReq.status:type_name -> music.musicStatus
+	3,  // 3: music.SearchMusicRsp.musics:type_name -> music.musicInfo
+	13, // 4: music.GetTencentCloudMusicListRsp.musics:type_name -> music.TencentCloudMusicBaseInfo
+	13, // 5: music.SearchTencentCloudMusicRsp.musics:type_name -> music.TencentCloudMusicBaseInfo
+	13, // 6: music.GetTencentCloudFavoriteMusicListRsp.musics:type_name -> music.TencentCloudMusicBaseInfo
+	1,  // 7: music.PlayTencentCloudMusicReq.status:type_name -> music.musicStatus
+	8,  // [8:8] is the sub-list for method output_type
+	8,  // [8:8] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_music_music_proto_init() }
@@ -996,6 +1749,162 @@ func file_music_music_proto_init() {
 				return nil
 			}
 		}
+		file_music_music_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TencentCloudMusicBaseInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTencentCloudMusicListReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTencentCloudMusicListRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTencentCloudMusicDetailReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTencentCloudMusicDetailRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SearchTencentCloudMusicReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SearchTencentCloudMusicRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateTencentCloudFavoriteMusicReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateTencentCloudFavoriteMusicRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTencentCloudFavoriteMusicListReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTencentCloudFavoriteMusicListRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PlayTencentCloudMusicReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_music_music_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PlayTencentCloudMusicRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1003,7 +1912,7 @@ func file_music_music_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_music_music_proto_rawDesc,
 			NumEnums:      2,
-			NumMessages:   11,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
