@@ -37,6 +37,10 @@ enum VoiceOpType {
   PkSendGift = 26; // PK送礼物
   RoomInvite = 27; //邀请进语音房
   GetBlackList = 28; // 获取拉黑列表
+  UpdateAuctionSetting = 29; //设置拍卖选项
+  StartAuction = 30; //开始拍卖
+  AuctionBid = 31; //拍卖出价
+  FinishAuction = 32; //结束拍卖
 
   InnerCall = 100; //内部调用接口
   PuUpdateSetting = 101; // 改房间信息push
@@ -56,6 +60,10 @@ enum VoiceOpType {
   PuPlayMusic = 115; //房主播放、暂停音乐推送
   PuBanChat = 116; // 被房主禁言，被禁的收到
   PuBlackList = 117; // 拉黑列表
+  PuAuctionSetting = 118; //设置拍卖选项push
+  PuStartAuction = 119; //开始拍卖push
+  PuAuctionBid = 120; //出价信息push
+  PuAuctionResult = 121; //拍卖结果push
 }
 
 message roomInfo {
@@ -71,6 +79,7 @@ message roomInfo {
   repeated string ban_chat_list = 10; // 房主才有，禁言列表
   voiceRoomMusicInfo music = 11; //正在播放的音乐
   int32 mode_version = 12;
+  AuctionInfo auction = 13; //拍卖相关信息
 }
 
 enum voiceRoomMusicStatus {
@@ -670,4 +679,57 @@ message EndSpyGameReq { // 房主主动结束游戏
 message EndSpyGameRsp {
 }
 message PuEndSpyGameMsg { // 房主主动结束游戏push
+}
+
+message AuctionSetting {
+  string content = 1; //拍卖内容
+  int32 gift_id = 2; //礼物id
+  int32 num = 3; //起拍礼物数量
+}
+
+message UpdateAuctionSettingReq {
+  AuctionSetting setting = 1; //拍卖设置
+}
+message UpdateAuctionSettingRsp {
+}
+
+message PuAuctionSettingMsg {
+  AuctionSetting setting = 1; //拍卖设置
+}
+
+message StartAuctionReq {
+}
+message StartAuctionRsp {
+}
+
+message PuStartAuctionMsg {
+}
+
+message AuctionBidReq {
+  int32 delta = 1; // 拍卖加价数量（增加的数量）
+}
+message AuctionBidRsp {
+}
+
+message PuAuctionBidMsg {
+  string uid = 1; //出价者uid
+  int32 gift_num = 2; //最高出价的礼物数量
+}
+
+message FinishAuctionReq {
+}
+message FinishAuctinRsp {
+}
+
+message PuAuctionResultMsg {
+  string seller = 1; //拍卖者uid
+  string buyer = 2; //买家uid,为空表示流拍
+  int32 gift_id = 3; //礼物id
+  int32 gift_num = 4; //最终礼物数量
+}
+
+message AuctionInfo {
+  AuctionSetting setting = 1; //拍卖设置信息
+  string uid = 2; //当前最高出价者uid
+  int32 gift_num = 3; //当前最高出价礼物数
 }
