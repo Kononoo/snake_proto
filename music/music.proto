@@ -13,6 +13,12 @@ enum musicOpType {
   UpdateFavoriteMusic = 3;//收藏、取消收藏音乐
   PlayMusic = 4; //播放音乐
   SearchMusic = 5; //搜索音乐
+  GetTencentCloudMusicList = 6; //获取腾讯云音乐列表
+  GetTencentCloudMusicDetail = 7; //获取腾讯云音乐详情
+  SearchTencentCloudMusic = 8; //搜索腾讯云音乐
+  UpdateTencentCloudFavoriteMusic = 9; //收藏、取消收藏音乐
+  GetTencentCloudFavoriteMusicList = 10; //获取收藏列表
+  PlayTencentCloudMusic = 11; //播放音乐
 }
 
 message GetMusicListReq {
@@ -71,4 +77,56 @@ message SearchMusicReq {
 message SearchMusicRsp {
   repeated musicInfo musics = 1;
   int32 total = 2;
+}
+
+message TencentCloudMusicBaseInfo {
+  string id = 1; //歌曲id
+  string title = 2; //歌曲名称
+  repeated string singers = 3;//歌手名称列表
+  int32 duration = 4; //播放时长
+}
+
+message GetTencentCloudMusicListReq {
+}
+
+message GetTencentCloudMusicListRsp {
+  repeated TencentCloudMusicBaseInfo musics = 1; //音乐基础信息
+  int32 total = 2;//总数
+}
+
+message GetTencentCloudMusicDetailReq {
+  string id = 1;//歌曲id
+}
+message GetTencentCloudMusicDetailRsp {
+  string play_token = 1; //播放凭证
+}
+
+message SearchTencentCloudMusicReq {
+  string key_word = 1; //搜索关键词
+  int32 page = 2; //第几页，从1开始
+  int32 size = 3; //最大为100
+}
+message SearchTencentCloudMusicRsp {
+  repeated TencentCloudMusicBaseInfo musics = 1; //音乐基础信息
+  int32 total = 2;//总数
+}
+
+message UpdateTencentCloudFavoriteMusicReq {
+  string id = 1;//音乐id
+  bool is_add = 2; //收藏或者取消
+}
+message UpdateTencentCloudFavoriteMusicRsp {
+}
+
+message GetTencentCloudFavoriteMusicListReq {
+}
+message GetTencentCloudFavoriteMusicListRsp {
+  repeated TencentCloudMusicBaseInfo musics = 1;
+}
+
+message PlayTencentCloudMusicReq {
+  string id = 1; //音乐id
+  musicStatus status = 2; //状态
+}
+message PlayTencentCloudMusicRsp {
 }
