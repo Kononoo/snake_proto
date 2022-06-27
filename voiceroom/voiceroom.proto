@@ -41,6 +41,9 @@ enum VoiceOpType {
   StartAuction = 30; //开始拍卖
   AuctionBid = 31; //拍卖出价
   FinishAuction = 32; //结束拍卖
+  StartSpy = 33; // 开始谁是卧底游戏
+  StartSpyVote = 34; // 开始投票
+  EndSpyGame = 35; // 房主主动结束游戏
 
   InnerCall = 100; //内部调用接口
   PuUpdateSetting = 101; // 改房间信息push
@@ -64,6 +67,12 @@ enum VoiceOpType {
   PuStartAuction = 119; //开始拍卖push
   PuAuctionBid = 120; //出价信息push
   PuAuctionResult = 121; //拍卖结果push
+  PuSpyWord = 122; // 谁是卧底词语push
+  PuStartSpyVote = 123;// 开始投票push
+  PuSpyVoteRes = 124; // 投票结果push
+  PuSpyEliminate = 125; // 淘汰push
+  PuEndSpyGame = 126; // 房主主动结束游戏push
+  PuSpyEndRes = 127; // 游戏结束结果push
 }
 
 message roomInfo {
@@ -669,6 +678,9 @@ message PuStartSpyVoteMsg {
 message PuSpyVoteResMsg { // 投票结果push
   repeated string vote_res = 1; // 投票结果
   repeated int32 vote_detail = 2; // 投票详情
+}
+message PuSpyEliminateMsg { // 房主主动结束游戏push
+  repeated int32 eliminate_indexs = 1;
 }
 enum spyGameRes {
   gsUndef = 0;
