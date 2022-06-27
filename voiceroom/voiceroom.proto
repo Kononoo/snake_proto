@@ -73,6 +73,7 @@ enum VoiceOpType {
   PuSpyEliminate = 125; // 淘汰push
   PuEndSpyGame = 126; // 房主主动结束游戏push
   PuSpyEndRes = 127; // 游戏结束结果push
+  PuPlayTencentCloudMusic = 128; //房主播放、暂停腾讯云音乐推送
 }
 
 message roomInfo {
@@ -753,4 +754,8 @@ message AuctionInfo {
   AuctionSetting setting = 1; //拍卖设置信息
   string uid = 2; //当前最高出价者uid
   int32 gift_num = 3; //当前最高出价礼物数
+}
+
+message PuPlayTencentCloudMusicMsg {
+  VoiceRoomTencentCloudMusicInfo music = 1;
 }
