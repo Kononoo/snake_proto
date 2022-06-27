@@ -55,6 +55,9 @@ const (
 	VoiceOpType_StartAuction         VoiceOpType = 30  //开始拍卖
 	VoiceOpType_AuctionBid           VoiceOpType = 31  //拍卖出价
 	VoiceOpType_FinishAuction        VoiceOpType = 32  //结束拍卖
+	VoiceOpType_StartSpy             VoiceOpType = 33  // 开始谁是卧底游戏
+	VoiceOpType_StartSpyVote         VoiceOpType = 34  // 开始投票
+	VoiceOpType_EndSpyGame           VoiceOpType = 35  // 房主主动结束游戏
 	VoiceOpType_InnerCall            VoiceOpType = 100 //内部调用接口
 	VoiceOpType_PuUpdateSetting      VoiceOpType = 101 // 改房间信息push
 	VoiceOpType_PuPlayerChange       VoiceOpType = 102 // 成员变化push
@@ -77,6 +80,12 @@ const (
 	VoiceOpType_PuStartAuction       VoiceOpType = 119 //开始拍卖push
 	VoiceOpType_PuAuctionBid         VoiceOpType = 120 //出价信息push
 	VoiceOpType_PuAuctionResult      VoiceOpType = 121 //拍卖结果push
+	VoiceOpType_PuSpyWord            VoiceOpType = 122 // 谁是卧底词语push
+	VoiceOpType_PuStartSpyVote       VoiceOpType = 123 // 开始投票push
+	VoiceOpType_PuSpyVoteRes         VoiceOpType = 124 // 投票结果push
+	VoiceOpType_PuSpyEliminate       VoiceOpType = 125 // 淘汰push
+	VoiceOpType_PuEndSpyGame         VoiceOpType = 126 // 房主主动结束游戏push
+	VoiceOpType_PuSpyEndRes          VoiceOpType = 127 // 游戏结束结果push
 )
 
 // Enum value maps for VoiceOpType.
@@ -114,6 +123,9 @@ var (
 		30:  "StartAuction",
 		31:  "AuctionBid",
 		32:  "FinishAuction",
+		33:  "StartSpy",
+		34:  "StartSpyVote",
+		35:  "EndSpyGame",
 		100: "InnerCall",
 		101: "PuUpdateSetting",
 		102: "PuPlayerChange",
@@ -136,6 +148,12 @@ var (
 		119: "PuStartAuction",
 		120: "PuAuctionBid",
 		121: "PuAuctionResult",
+		122: "PuSpyWord",
+		123: "PuStartSpyVote",
+		124: "PuSpyVoteRes",
+		125: "PuSpyEliminate",
+		126: "PuEndSpyGame",
+		127: "PuSpyEndRes",
 	}
 	VoiceOpType_value = map[string]int32{
 		"vUndef":               0,
@@ -170,6 +188,9 @@ var (
 		"StartAuction":         30,
 		"AuctionBid":           31,
 		"FinishAuction":        32,
+		"StartSpy":             33,
+		"StartSpyVote":         34,
+		"EndSpyGame":           35,
 		"InnerCall":            100,
 		"PuUpdateSetting":      101,
 		"PuPlayerChange":       102,
@@ -192,6 +213,12 @@ var (
 		"PuStartAuction":       119,
 		"PuAuctionBid":         120,
 		"PuAuctionResult":      121,
+		"PuSpyWord":            122,
+		"PuStartSpyVote":       123,
+		"PuSpyVoteRes":         124,
+		"PuSpyEliminate":       125,
+		"PuEndSpyGame":         126,
+		"PuSpyEndRes":          127,
 	}
 )
 
@@ -6465,6 +6492,53 @@ func (x *PuSpyVoteResMsg) GetVoteDetail() []int32 {
 	return nil
 }
 
+type PuSpyEliminateMsg struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	EliminateIndexs []int32 `protobuf:"varint,1,rep,packed,name=eliminate_indexs,json=eliminateIndexs,proto3" json:"eliminate_indexs,omitempty"`
+}
+
+func (x *PuSpyEliminateMsg) Reset() {
+	*x = PuSpyEliminateMsg{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[96]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PuSpyEliminateMsg) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PuSpyEliminateMsg) ProtoMessage() {}
+
+func (x *PuSpyEliminateMsg) ProtoReflect() protoreflect.Message {
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[96]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PuSpyEliminateMsg.ProtoReflect.Descriptor instead.
+func (*PuSpyEliminateMsg) Descriptor() ([]byte, []int) {
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{96}
+}
+
+func (x *PuSpyEliminateMsg) GetEliminateIndexs() []int32 {
+	if x != nil {
+		return x.EliminateIndexs
+	}
+	return nil
+}
+
 type PuSpyEndResMsg struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -6479,7 +6553,7 @@ type PuSpyEndResMsg struct {
 func (x *PuSpyEndResMsg) Reset() {
 	*x = PuSpyEndResMsg{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[96]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[97]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6492,7 +6566,7 @@ func (x *PuSpyEndResMsg) String() string {
 func (*PuSpyEndResMsg) ProtoMessage() {}
 
 func (x *PuSpyEndResMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[96]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[97]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6505,7 +6579,7 @@ func (x *PuSpyEndResMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PuSpyEndResMsg.ProtoReflect.Descriptor instead.
 func (*PuSpyEndResMsg) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{96}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{97}
 }
 
 func (x *PuSpyEndResMsg) GetSpyWord() string {
@@ -6545,7 +6619,7 @@ type EndSpyGameReq struct {
 func (x *EndSpyGameReq) Reset() {
 	*x = EndSpyGameReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[97]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[98]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6558,7 +6632,7 @@ func (x *EndSpyGameReq) String() string {
 func (*EndSpyGameReq) ProtoMessage() {}
 
 func (x *EndSpyGameReq) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[97]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[98]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6571,7 +6645,7 @@ func (x *EndSpyGameReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndSpyGameReq.ProtoReflect.Descriptor instead.
 func (*EndSpyGameReq) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{97}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{98}
 }
 
 type EndSpyGameRsp struct {
@@ -6583,7 +6657,7 @@ type EndSpyGameRsp struct {
 func (x *EndSpyGameRsp) Reset() {
 	*x = EndSpyGameRsp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[98]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[99]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6596,7 +6670,7 @@ func (x *EndSpyGameRsp) String() string {
 func (*EndSpyGameRsp) ProtoMessage() {}
 
 func (x *EndSpyGameRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[98]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[99]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6609,7 +6683,7 @@ func (x *EndSpyGameRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndSpyGameRsp.ProtoReflect.Descriptor instead.
 func (*EndSpyGameRsp) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{98}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{99}
 }
 
 type PuEndSpyGameMsg struct {
@@ -6621,7 +6695,7 @@ type PuEndSpyGameMsg struct {
 func (x *PuEndSpyGameMsg) Reset() {
 	*x = PuEndSpyGameMsg{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[99]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[100]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6634,7 +6708,7 @@ func (x *PuEndSpyGameMsg) String() string {
 func (*PuEndSpyGameMsg) ProtoMessage() {}
 
 func (x *PuEndSpyGameMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[99]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[100]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6647,7 +6721,7 @@ func (x *PuEndSpyGameMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PuEndSpyGameMsg.ProtoReflect.Descriptor instead.
 func (*PuEndSpyGameMsg) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{99}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{100}
 }
 
 type AuctionSetting struct {
@@ -6663,7 +6737,7 @@ type AuctionSetting struct {
 func (x *AuctionSetting) Reset() {
 	*x = AuctionSetting{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[100]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[101]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6676,7 +6750,7 @@ func (x *AuctionSetting) String() string {
 func (*AuctionSetting) ProtoMessage() {}
 
 func (x *AuctionSetting) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[100]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[101]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6689,7 +6763,7 @@ func (x *AuctionSetting) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuctionSetting.ProtoReflect.Descriptor instead.
 func (*AuctionSetting) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{100}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{101}
 }
 
 func (x *AuctionSetting) GetContent() string {
@@ -6724,7 +6798,7 @@ type UpdateAuctionSettingReq struct {
 func (x *UpdateAuctionSettingReq) Reset() {
 	*x = UpdateAuctionSettingReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[101]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[102]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6737,7 +6811,7 @@ func (x *UpdateAuctionSettingReq) String() string {
 func (*UpdateAuctionSettingReq) ProtoMessage() {}
 
 func (x *UpdateAuctionSettingReq) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[101]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[102]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6750,7 +6824,7 @@ func (x *UpdateAuctionSettingReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAuctionSettingReq.ProtoReflect.Descriptor instead.
 func (*UpdateAuctionSettingReq) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{101}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{102}
 }
 
 func (x *UpdateAuctionSettingReq) GetSetting() *AuctionSetting {
@@ -6769,7 +6843,7 @@ type UpdateAuctionSettingRsp struct {
 func (x *UpdateAuctionSettingRsp) Reset() {
 	*x = UpdateAuctionSettingRsp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[102]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[103]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6782,7 +6856,7 @@ func (x *UpdateAuctionSettingRsp) String() string {
 func (*UpdateAuctionSettingRsp) ProtoMessage() {}
 
 func (x *UpdateAuctionSettingRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[102]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[103]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6795,7 +6869,7 @@ func (x *UpdateAuctionSettingRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateAuctionSettingRsp.ProtoReflect.Descriptor instead.
 func (*UpdateAuctionSettingRsp) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{102}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{103}
 }
 
 type PuAuctionSettingMsg struct {
@@ -6809,7 +6883,7 @@ type PuAuctionSettingMsg struct {
 func (x *PuAuctionSettingMsg) Reset() {
 	*x = PuAuctionSettingMsg{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[103]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[104]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6822,7 +6896,7 @@ func (x *PuAuctionSettingMsg) String() string {
 func (*PuAuctionSettingMsg) ProtoMessage() {}
 
 func (x *PuAuctionSettingMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[103]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[104]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6835,7 +6909,7 @@ func (x *PuAuctionSettingMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PuAuctionSettingMsg.ProtoReflect.Descriptor instead.
 func (*PuAuctionSettingMsg) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{103}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{104}
 }
 
 func (x *PuAuctionSettingMsg) GetSetting() *AuctionSetting {
@@ -6854,7 +6928,7 @@ type StartAuctionReq struct {
 func (x *StartAuctionReq) Reset() {
 	*x = StartAuctionReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[104]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[105]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6867,7 +6941,7 @@ func (x *StartAuctionReq) String() string {
 func (*StartAuctionReq) ProtoMessage() {}
 
 func (x *StartAuctionReq) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[104]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[105]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6880,7 +6954,7 @@ func (x *StartAuctionReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartAuctionReq.ProtoReflect.Descriptor instead.
 func (*StartAuctionReq) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{104}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{105}
 }
 
 type StartAuctionRsp struct {
@@ -6892,7 +6966,7 @@ type StartAuctionRsp struct {
 func (x *StartAuctionRsp) Reset() {
 	*x = StartAuctionRsp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[105]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[106]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6905,7 +6979,7 @@ func (x *StartAuctionRsp) String() string {
 func (*StartAuctionRsp) ProtoMessage() {}
 
 func (x *StartAuctionRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[105]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[106]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6918,7 +6992,7 @@ func (x *StartAuctionRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartAuctionRsp.ProtoReflect.Descriptor instead.
 func (*StartAuctionRsp) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{105}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{106}
 }
 
 type PuStartAuctionMsg struct {
@@ -6930,7 +7004,7 @@ type PuStartAuctionMsg struct {
 func (x *PuStartAuctionMsg) Reset() {
 	*x = PuStartAuctionMsg{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[106]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[107]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6943,7 +7017,7 @@ func (x *PuStartAuctionMsg) String() string {
 func (*PuStartAuctionMsg) ProtoMessage() {}
 
 func (x *PuStartAuctionMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[106]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[107]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6956,7 +7030,7 @@ func (x *PuStartAuctionMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PuStartAuctionMsg.ProtoReflect.Descriptor instead.
 func (*PuStartAuctionMsg) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{106}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{107}
 }
 
 type AuctionBidReq struct {
@@ -6970,7 +7044,7 @@ type AuctionBidReq struct {
 func (x *AuctionBidReq) Reset() {
 	*x = AuctionBidReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[107]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[108]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6983,7 +7057,7 @@ func (x *AuctionBidReq) String() string {
 func (*AuctionBidReq) ProtoMessage() {}
 
 func (x *AuctionBidReq) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[107]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[108]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6996,7 +7070,7 @@ func (x *AuctionBidReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuctionBidReq.ProtoReflect.Descriptor instead.
 func (*AuctionBidReq) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{107}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{108}
 }
 
 func (x *AuctionBidReq) GetDelta() int32 {
@@ -7015,7 +7089,7 @@ type AuctionBidRsp struct {
 func (x *AuctionBidRsp) Reset() {
 	*x = AuctionBidRsp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[108]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[109]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7028,7 +7102,7 @@ func (x *AuctionBidRsp) String() string {
 func (*AuctionBidRsp) ProtoMessage() {}
 
 func (x *AuctionBidRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[108]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[109]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7041,7 +7115,7 @@ func (x *AuctionBidRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuctionBidRsp.ProtoReflect.Descriptor instead.
 func (*AuctionBidRsp) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{108}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{109}
 }
 
 type PuAuctionBidMsg struct {
@@ -7056,7 +7130,7 @@ type PuAuctionBidMsg struct {
 func (x *PuAuctionBidMsg) Reset() {
 	*x = PuAuctionBidMsg{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[109]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[110]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7069,7 +7143,7 @@ func (x *PuAuctionBidMsg) String() string {
 func (*PuAuctionBidMsg) ProtoMessage() {}
 
 func (x *PuAuctionBidMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[109]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[110]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7082,7 +7156,7 @@ func (x *PuAuctionBidMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PuAuctionBidMsg.ProtoReflect.Descriptor instead.
 func (*PuAuctionBidMsg) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{109}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{110}
 }
 
 func (x *PuAuctionBidMsg) GetUid() string {
@@ -7108,7 +7182,7 @@ type FinishAuctionReq struct {
 func (x *FinishAuctionReq) Reset() {
 	*x = FinishAuctionReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[110]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[111]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7121,7 +7195,7 @@ func (x *FinishAuctionReq) String() string {
 func (*FinishAuctionReq) ProtoMessage() {}
 
 func (x *FinishAuctionReq) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[110]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[111]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7134,7 +7208,7 @@ func (x *FinishAuctionReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FinishAuctionReq.ProtoReflect.Descriptor instead.
 func (*FinishAuctionReq) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{110}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{111}
 }
 
 type FinishAuctinRsp struct {
@@ -7146,7 +7220,7 @@ type FinishAuctinRsp struct {
 func (x *FinishAuctinRsp) Reset() {
 	*x = FinishAuctinRsp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[111]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[112]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7159,7 +7233,7 @@ func (x *FinishAuctinRsp) String() string {
 func (*FinishAuctinRsp) ProtoMessage() {}
 
 func (x *FinishAuctinRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[111]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[112]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7172,7 +7246,7 @@ func (x *FinishAuctinRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FinishAuctinRsp.ProtoReflect.Descriptor instead.
 func (*FinishAuctinRsp) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{111}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{112}
 }
 
 type PuAuctionResultMsg struct {
@@ -7189,7 +7263,7 @@ type PuAuctionResultMsg struct {
 func (x *PuAuctionResultMsg) Reset() {
 	*x = PuAuctionResultMsg{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[112]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[113]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7202,7 +7276,7 @@ func (x *PuAuctionResultMsg) String() string {
 func (*PuAuctionResultMsg) ProtoMessage() {}
 
 func (x *PuAuctionResultMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[112]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[113]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7215,7 +7289,7 @@ func (x *PuAuctionResultMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PuAuctionResultMsg.ProtoReflect.Descriptor instead.
 func (*PuAuctionResultMsg) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{112}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{113}
 }
 
 func (x *PuAuctionResultMsg) GetSeller() string {
@@ -7259,7 +7333,7 @@ type AuctionInfo struct {
 func (x *AuctionInfo) Reset() {
 	*x = AuctionInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_voiceroom_voiceroom_proto_msgTypes[113]
+		mi := &file_voiceroom_voiceroom_proto_msgTypes[114]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7272,7 +7346,7 @@ func (x *AuctionInfo) String() string {
 func (*AuctionInfo) ProtoMessage() {}
 
 func (x *AuctionInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_voiceroom_voiceroom_proto_msgTypes[113]
+	mi := &file_voiceroom_voiceroom_proto_msgTypes[114]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7285,7 +7359,7 @@ func (x *AuctionInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AuctionInfo.ProtoReflect.Descriptor instead.
 func (*AuctionInfo) Descriptor() ([]byte, []int) {
-	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{113}
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{114}
 }
 
 func (x *AuctionInfo) GetSetting() *AuctionSetting {
@@ -7911,7 +7985,11 @@ var file_voiceroom_voiceroom_proto_rawDesc = []byte{
 	0x74, 0x65, 0x5f, 0x72, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x76, 0x6f,
 	0x74, 0x65, 0x52, 0x65, 0x73, 0x12, 0x1f, 0x0a, 0x0b, 0x76, 0x6f, 0x74, 0x65, 0x5f, 0x64, 0x65,
 	0x74, 0x61, 0x69, 0x6c, 0x18, 0x02, 0x20, 0x03, 0x28, 0x05, 0x52, 0x0a, 0x76, 0x6f, 0x74, 0x65,
-	0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x22, 0x9d, 0x01, 0x0a, 0x0e, 0x50, 0x75, 0x53, 0x70, 0x79,
+	0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x22, 0x3e, 0x0a, 0x11, 0x50, 0x75, 0x53, 0x70, 0x79, 0x45,
+	0x6c, 0x69, 0x6d, 0x69, 0x6e, 0x61, 0x74, 0x65, 0x4d, 0x73, 0x67, 0x12, 0x29, 0x0a, 0x10, 0x65,
+	0x6c, 0x69, 0x6d, 0x69, 0x6e, 0x61, 0x74, 0x65, 0x5f, 0x69, 0x6e, 0x64, 0x65, 0x78, 0x73, 0x18,
+	0x01, 0x20, 0x03, 0x28, 0x05, 0x52, 0x0f, 0x65, 0x6c, 0x69, 0x6d, 0x69, 0x6e, 0x61, 0x74, 0x65,
+	0x49, 0x6e, 0x64, 0x65, 0x78, 0x73, 0x22, 0x9d, 0x01, 0x0a, 0x0e, 0x50, 0x75, 0x53, 0x70, 0x79,
 	0x45, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x4d, 0x73, 0x67, 0x12, 0x19, 0x0a, 0x08, 0x73, 0x70, 0x79,
 	0x5f, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x73, 0x70, 0x79,
 	0x57, 0x6f, 0x72, 0x64, 0x12, 0x23, 0x0a, 0x0d, 0x63, 0x69, 0x76, 0x69, 0x6c, 0x69, 0x61, 0x6e,
@@ -7969,7 +8047,7 @@ var file_voiceroom_voiceroom_proto_rawDesc = []byte{
 	0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x07, 0x73, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x12,
 	0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69,
 	0x64, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x69, 0x66, 0x74, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x07, 0x67, 0x69, 0x66, 0x74, 0x4e, 0x75, 0x6d, 0x2a, 0x8d, 0x07, 0x0a,
+	0x01, 0x28, 0x05, 0x52, 0x07, 0x67, 0x69, 0x66, 0x74, 0x4e, 0x75, 0x6d, 0x2a, 0xa9, 0x08, 0x0a,
 	0x0b, 0x56, 0x6f, 0x69, 0x63, 0x65, 0x4f, 0x70, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0a, 0x0a, 0x06,
 	0x76, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x4e, 0x65, 0x77, 0x52,
 	0x6f, 0x6f, 0x6d, 0x10, 0x01, 0x12, 0x0d, 0x0a, 0x09, 0x4d, 0x79, 0x50, 0x72, 0x65, 0x52, 0x6f,
@@ -8002,7 +8080,10 @@ var file_voiceroom_voiceroom_proto_rawDesc = []byte{
 	0x10, 0x1d, 0x12, 0x10, 0x0a, 0x0c, 0x53, 0x74, 0x61, 0x72, 0x74, 0x41, 0x75, 0x63, 0x74, 0x69,
 	0x6f, 0x6e, 0x10, 0x1e, 0x12, 0x0e, 0x0a, 0x0a, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x42,
 	0x69, 0x64, 0x10, 0x1f, 0x12, 0x11, 0x0a, 0x0d, 0x46, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x41, 0x75,
-	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x10, 0x20, 0x12, 0x0d, 0x0a, 0x09, 0x49, 0x6e, 0x6e, 0x65, 0x72,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x10, 0x20, 0x12, 0x0c, 0x0a, 0x08, 0x53, 0x74, 0x61, 0x72, 0x74,
+	0x53, 0x70, 0x79, 0x10, 0x21, 0x12, 0x10, 0x0a, 0x0c, 0x53, 0x74, 0x61, 0x72, 0x74, 0x53, 0x70,
+	0x79, 0x56, 0x6f, 0x74, 0x65, 0x10, 0x22, 0x12, 0x0e, 0x0a, 0x0a, 0x45, 0x6e, 0x64, 0x53, 0x70,
+	0x79, 0x47, 0x61, 0x6d, 0x65, 0x10, 0x23, 0x12, 0x0d, 0x0a, 0x09, 0x49, 0x6e, 0x6e, 0x65, 0x72,
 	0x43, 0x61, 0x6c, 0x6c, 0x10, 0x64, 0x12, 0x13, 0x0a, 0x0f, 0x50, 0x75, 0x55, 0x70, 0x64, 0x61,
 	0x74, 0x65, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x10, 0x65, 0x12, 0x12, 0x0a, 0x0e, 0x50,
 	0x75, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x10, 0x66, 0x12,
@@ -8026,56 +8107,63 @@ var file_voiceroom_voiceroom_proto_rawDesc = []byte{
 	0x76, 0x12, 0x12, 0x0a, 0x0e, 0x50, 0x75, 0x53, 0x74, 0x61, 0x72, 0x74, 0x41, 0x75, 0x63, 0x74,
 	0x69, 0x6f, 0x6e, 0x10, 0x77, 0x12, 0x10, 0x0a, 0x0c, 0x50, 0x75, 0x41, 0x75, 0x63, 0x74, 0x69,
 	0x6f, 0x6e, 0x42, 0x69, 0x64, 0x10, 0x78, 0x12, 0x13, 0x0a, 0x0f, 0x50, 0x75, 0x41, 0x75, 0x63,
-	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x10, 0x79, 0x2a, 0x49, 0x0a, 0x14,
-	0x76, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x53, 0x74,
-	0x61, 0x74, 0x75, 0x73, 0x12, 0x11, 0x0a, 0x0d, 0x69, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x53,
-	0x74, 0x61, 0x74, 0x75, 0x73, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x4f, 0x70, 0x65, 0x6e, 0x10,
-	0x01, 0x12, 0x09, 0x0a, 0x05, 0x50, 0x61, 0x75, 0x73, 0x65, 0x10, 0x02, 0x12, 0x09, 0x0a, 0x05,
-	0x43, 0x6c, 0x6f, 0x73, 0x65, 0x10, 0x03, 0x2a, 0x34, 0x0a, 0x0b, 0x6c, 0x6f, 0x74, 0x74, 0x65,
-	0x72, 0x79, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0b, 0x0a, 0x07, 0x74, 0x70, 0x55, 0x6e, 0x64, 0x65,
-	0x66, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x4d, 0x69, 0x63, 0x55, 0x73, 0x65, 0x72, 0x10, 0x01,
-	0x12, 0x0b, 0x0a, 0x07, 0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x10, 0x02, 0x2a, 0xf1, 0x01,
-	0x0a, 0x0d, 0x69, 0x6e, 0x6e, 0x65, 0x72, 0x43, 0x61, 0x6c, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x12,
-	0x0b, 0x0a, 0x07, 0x69, 0x63, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12, 0x0f, 0x0a, 0x0b,
-	0x47, 0x65, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x49, 0x6e, 0x66, 0x6f, 0x10, 0x01, 0x12, 0x12, 0x0a,
-	0x0e, 0x42, 0x61, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x53, 0x65, 0x61, 0x74, 0x4d, 0x69, 0x63, 0x10,
-	0x02, 0x12, 0x15, 0x0a, 0x11, 0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x44, 0x69,
-	0x73, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x10, 0x03, 0x12, 0x16, 0x0a, 0x12, 0x56, 0x6f, 0x69, 0x63,
-	0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x65, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x10, 0x04,
-	0x12, 0x1a, 0x0a, 0x16, 0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x73,
-	0x65, 0x74, 0x41, 0x6e, 0x6e, 0x6f, 0x75, 0x6e, 0x63, 0x65, 0x10, 0x05, 0x12, 0x1e, 0x0a, 0x1a,
-	0x55, 0x73, 0x65, 0x72, 0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x44, 0x6f, 0x77,
-	0x6e, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x10, 0x06, 0x12, 0x16, 0x0a, 0x12,
-	0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x50, 0x75, 0x73, 0x68, 0x41, 0x6c, 0x65,
-	0x72, 0x74, 0x10, 0x07, 0x12, 0x15, 0x0a, 0x11, 0x55, 0x73, 0x65, 0x72, 0x56, 0x6f, 0x69, 0x63,
-	0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x45, 0x78, 0x69, 0x74, 0x10, 0x08, 0x12, 0x14, 0x0a, 0x10, 0x55,
-	0x73, 0x65, 0x72, 0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x4d, 0x73, 0x67, 0x10,
-	0x09, 0x2a, 0x7d, 0x0a, 0x11, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x4d, 0x61, 0x6e, 0x61, 0x67,
-	0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0b, 0x0a, 0x07, 0x70, 0x6d, 0x55, 0x6e, 0x64, 0x65,
-	0x66, 0x10, 0x00, 0x12, 0x0a, 0x0a, 0x06, 0x4d, 0x69, 0x63, 0x42, 0x61, 0x6e, 0x10, 0x01, 0x12,
-	0x0b, 0x0a, 0x07, 0x4d, 0x69, 0x63, 0x4f, 0x70, 0x65, 0x6e, 0x10, 0x02, 0x12, 0x0b, 0x0a, 0x07,
-	0x43, 0x68, 0x61, 0x74, 0x42, 0x61, 0x6e, 0x10, 0x03, 0x12, 0x0c, 0x0a, 0x08, 0x43, 0x68, 0x61,
-	0x74, 0x4f, 0x50, 0x65, 0x6e, 0x10, 0x04, 0x12, 0x08, 0x0a, 0x04, 0x4b, 0x69, 0x63, 0x6b, 0x10,
-	0x05, 0x12, 0x0c, 0x0a, 0x08, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x41, 0x64, 0x64, 0x10, 0x06, 0x12,
-	0x0f, 0x0a, 0x0b, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x10, 0x07,
-	0x2a, 0x4b, 0x0a, 0x0d, 0x52, 0x6f, 0x6f, 0x6d, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x54, 0x79, 0x70,
-	0x65, 0x12, 0x12, 0x0a, 0x0e, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x55, 0x6e,
-	0x64, 0x65, 0x66, 0x10, 0x00, 0x12, 0x0a, 0x0a, 0x06, 0x42, 0x61, 0x6e, 0x4d, 0x69, 0x63, 0x10,
-	0x01, 0x12, 0x0b, 0x0a, 0x07, 0x42, 0x61, 0x6e, 0x43, 0x68, 0x61, 0x74, 0x10, 0x02, 0x12, 0x0d,
-	0x0a, 0x09, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x55, 0x73, 0x65, 0x72, 0x10, 0x03, 0x2a, 0x29, 0x0a,
-	0x06, 0x50, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0b, 0x0a, 0x07, 0x70, 0x74, 0x55, 0x6e, 0x64,
-	0x65, 0x66, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x56, 0x6f, 0x74, 0x65, 0x10, 0x01, 0x12, 0x08,
-	0x0a, 0x04, 0x47, 0x69, 0x66, 0x74, 0x10, 0x02, 0x2a, 0x2e, 0x0a, 0x07, 0x73, 0x70, 0x79, 0x54,
-	0x79, 0x70, 0x65, 0x12, 0x10, 0x0a, 0x0c, 0x73, 0x70, 0x79, 0x54, 0x79, 0x70, 0x65, 0x55, 0x6e,
-	0x64, 0x65, 0x66, 0x10, 0x00, 0x12, 0x11, 0x0a, 0x0d, 0x73, 0x70, 0x79, 0x54, 0x79, 0x70, 0x4d,
-	0x69, 0x63, 0x55, 0x73, 0x65, 0x72, 0x10, 0x01, 0x2a, 0x36, 0x0a, 0x0a, 0x73, 0x70, 0x79, 0x47,
-	0x61, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x12, 0x0b, 0x0a, 0x07, 0x67, 0x73, 0x55, 0x6e, 0x64, 0x65,
-	0x66, 0x10, 0x00, 0x12, 0x0f, 0x0a, 0x0b, 0x43, 0x69, 0x76, 0x69, 0x6c, 0x69, 0x61, 0x6e, 0x57,
-	0x69, 0x6e, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x53, 0x70, 0x79, 0x57, 0x69, 0x6e, 0x10, 0x02,
-	0x42, 0x35, 0x5a, 0x29, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f,
-	0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x72, 0x6f, 0x6f, 0x6d, 0xa2, 0x02, 0x07,
-	0x53, 0x4e, 0x4b, 0x50, 0x42, 0x56, 0x52, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x10, 0x79, 0x12, 0x0d, 0x0a, 0x09,
+	0x50, 0x75, 0x53, 0x70, 0x79, 0x57, 0x6f, 0x72, 0x64, 0x10, 0x7a, 0x12, 0x12, 0x0a, 0x0e, 0x50,
+	0x75, 0x53, 0x74, 0x61, 0x72, 0x74, 0x53, 0x70, 0x79, 0x56, 0x6f, 0x74, 0x65, 0x10, 0x7b, 0x12,
+	0x10, 0x0a, 0x0c, 0x50, 0x75, 0x53, 0x70, 0x79, 0x56, 0x6f, 0x74, 0x65, 0x52, 0x65, 0x73, 0x10,
+	0x7c, 0x12, 0x12, 0x0a, 0x0e, 0x50, 0x75, 0x53, 0x70, 0x79, 0x45, 0x6c, 0x69, 0x6d, 0x69, 0x6e,
+	0x61, 0x74, 0x65, 0x10, 0x7d, 0x12, 0x10, 0x0a, 0x0c, 0x50, 0x75, 0x45, 0x6e, 0x64, 0x53, 0x70,
+	0x79, 0x47, 0x61, 0x6d, 0x65, 0x10, 0x7e, 0x12, 0x0f, 0x0a, 0x0b, 0x50, 0x75, 0x53, 0x70, 0x79,
+	0x45, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x10, 0x7f, 0x2a, 0x49, 0x0a, 0x14, 0x76, 0x6f, 0x69, 0x63,
+	0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
+	0x12, 0x11, 0x0a, 0x0d, 0x69, 0x6e, 0x76, 0x61, 0x6c, 0x69, 0x64, 0x53, 0x74, 0x61, 0x74, 0x75,
+	0x73, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x4f, 0x70, 0x65, 0x6e, 0x10, 0x01, 0x12, 0x09, 0x0a,
+	0x05, 0x50, 0x61, 0x75, 0x73, 0x65, 0x10, 0x02, 0x12, 0x09, 0x0a, 0x05, 0x43, 0x6c, 0x6f, 0x73,
+	0x65, 0x10, 0x03, 0x2a, 0x34, 0x0a, 0x0b, 0x6c, 0x6f, 0x74, 0x74, 0x65, 0x72, 0x79, 0x54, 0x79,
+	0x70, 0x65, 0x12, 0x0b, 0x0a, 0x07, 0x74, 0x70, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12,
+	0x0b, 0x0a, 0x07, 0x4d, 0x69, 0x63, 0x55, 0x73, 0x65, 0x72, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07,
+	0x41, 0x6c, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x10, 0x02, 0x2a, 0xf1, 0x01, 0x0a, 0x0d, 0x69, 0x6e,
+	0x6e, 0x65, 0x72, 0x43, 0x61, 0x6c, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0b, 0x0a, 0x07, 0x69,
+	0x63, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12, 0x0f, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x52,
+	0x6f, 0x6f, 0x6d, 0x49, 0x6e, 0x66, 0x6f, 0x10, 0x01, 0x12, 0x12, 0x0a, 0x0e, 0x42, 0x61, 0x6e,
+	0x55, 0x73, 0x65, 0x72, 0x53, 0x65, 0x61, 0x74, 0x4d, 0x69, 0x63, 0x10, 0x02, 0x12, 0x15, 0x0a,
+	0x11, 0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x44, 0x69, 0x73, 0x73, 0x6f, 0x6c,
+	0x76, 0x65, 0x10, 0x03, 0x12, 0x16, 0x0a, 0x12, 0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f,
+	0x6d, 0x52, 0x65, 0x73, 0x65, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x10, 0x04, 0x12, 0x1a, 0x0a, 0x16,
+	0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x65, 0x74, 0x41, 0x6e,
+	0x6e, 0x6f, 0x75, 0x6e, 0x63, 0x65, 0x10, 0x05, 0x12, 0x1e, 0x0a, 0x1a, 0x55, 0x73, 0x65, 0x72,
+	0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x44, 0x6f, 0x77, 0x6e, 0x52, 0x65, 0x63,
+	0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x10, 0x06, 0x12, 0x16, 0x0a, 0x12, 0x56, 0x6f, 0x69, 0x63,
+	0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x50, 0x75, 0x73, 0x68, 0x41, 0x6c, 0x65, 0x72, 0x74, 0x10, 0x07,
+	0x12, 0x15, 0x0a, 0x11, 0x55, 0x73, 0x65, 0x72, 0x56, 0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f,
+	0x6d, 0x45, 0x78, 0x69, 0x74, 0x10, 0x08, 0x12, 0x14, 0x0a, 0x10, 0x55, 0x73, 0x65, 0x72, 0x56,
+	0x6f, 0x69, 0x63, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x4d, 0x73, 0x67, 0x10, 0x09, 0x2a, 0x7d, 0x0a,
+	0x11, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x72, 0x54, 0x79,
+	0x70, 0x65, 0x12, 0x0b, 0x0a, 0x07, 0x70, 0x6d, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12,
+	0x0a, 0x0a, 0x06, 0x4d, 0x69, 0x63, 0x42, 0x61, 0x6e, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x4d,
+	0x69, 0x63, 0x4f, 0x70, 0x65, 0x6e, 0x10, 0x02, 0x12, 0x0b, 0x0a, 0x07, 0x43, 0x68, 0x61, 0x74,
+	0x42, 0x61, 0x6e, 0x10, 0x03, 0x12, 0x0c, 0x0a, 0x08, 0x43, 0x68, 0x61, 0x74, 0x4f, 0x50, 0x65,
+	0x6e, 0x10, 0x04, 0x12, 0x08, 0x0a, 0x04, 0x4b, 0x69, 0x63, 0x6b, 0x10, 0x05, 0x12, 0x0c, 0x0a,
+	0x08, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x41, 0x64, 0x64, 0x10, 0x06, 0x12, 0x0f, 0x0a, 0x0b, 0x42,
+	0x6c, 0x61, 0x63, 0x6b, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x10, 0x07, 0x2a, 0x4b, 0x0a, 0x0d,
+	0x52, 0x6f, 0x6f, 0x6d, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x12, 0x12, 0x0a,
+	0x0e, 0x42, 0x6c, 0x61, 0x63, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10,
+	0x00, 0x12, 0x0a, 0x0a, 0x06, 0x42, 0x61, 0x6e, 0x4d, 0x69, 0x63, 0x10, 0x01, 0x12, 0x0b, 0x0a,
+	0x07, 0x42, 0x61, 0x6e, 0x43, 0x68, 0x61, 0x74, 0x10, 0x02, 0x12, 0x0d, 0x0a, 0x09, 0x42, 0x6c,
+	0x61, 0x63, 0x6b, 0x55, 0x73, 0x65, 0x72, 0x10, 0x03, 0x2a, 0x29, 0x0a, 0x06, 0x50, 0x6b, 0x54,
+	0x79, 0x70, 0x65, 0x12, 0x0b, 0x0a, 0x07, 0x70, 0x74, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00,
+	0x12, 0x08, 0x0a, 0x04, 0x56, 0x6f, 0x74, 0x65, 0x10, 0x01, 0x12, 0x08, 0x0a, 0x04, 0x47, 0x69,
+	0x66, 0x74, 0x10, 0x02, 0x2a, 0x2e, 0x0a, 0x07, 0x73, 0x70, 0x79, 0x54, 0x79, 0x70, 0x65, 0x12,
+	0x10, 0x0a, 0x0c, 0x73, 0x70, 0x79, 0x54, 0x79, 0x70, 0x65, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10,
+	0x00, 0x12, 0x11, 0x0a, 0x0d, 0x73, 0x70, 0x79, 0x54, 0x79, 0x70, 0x4d, 0x69, 0x63, 0x55, 0x73,
+	0x65, 0x72, 0x10, 0x01, 0x2a, 0x36, 0x0a, 0x0a, 0x73, 0x70, 0x79, 0x47, 0x61, 0x6d, 0x65, 0x52,
+	0x65, 0x73, 0x12, 0x0b, 0x0a, 0x07, 0x67, 0x73, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12,
+	0x0f, 0x0a, 0x0b, 0x43, 0x69, 0x76, 0x69, 0x6c, 0x69, 0x61, 0x6e, 0x57, 0x69, 0x6e, 0x10, 0x01,
+	0x12, 0x0a, 0x0a, 0x06, 0x53, 0x70, 0x79, 0x57, 0x69, 0x6e, 0x10, 0x02, 0x42, 0x35, 0x5a, 0x29,
+	0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
+	0x76, 0x6f, 0x69, 0x63, 0x65, 0x72, 0x6f, 0x6f, 0x6d, 0xa2, 0x02, 0x07, 0x53, 0x4e, 0x4b, 0x50,
+	0x42, 0x56, 0x52, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -8091,7 +8179,7 @@ func file_voiceroom_voiceroom_proto_rawDescGZIP() []byte {
 }
 
 var file_voiceroom_voiceroom_proto_enumTypes = make([]protoimpl.EnumInfo, 9)
-var file_voiceroom_voiceroom_proto_msgTypes = make([]protoimpl.MessageInfo, 114)
+var file_voiceroom_voiceroom_proto_msgTypes = make([]protoimpl.MessageInfo, 115)
 var file_voiceroom_voiceroom_proto_goTypes = []interface{}{
 	(VoiceOpType)(0),                       // 0: voiceroom.VoiceOpType
 	(VoiceRoomMusicStatus)(0),              // 1: voiceroom.voiceRoomMusicStatus
@@ -8198,31 +8286,32 @@ var file_voiceroom_voiceroom_proto_goTypes = []interface{}{
 	(*StartSpyVoteRsp)(nil),                // 102: voiceroom.StartSpyVoteRsp
 	(*PuStartSpyVoteMsg)(nil),              // 103: voiceroom.PuStartSpyVoteMsg
 	(*PuSpyVoteResMsg)(nil),                // 104: voiceroom.PuSpyVoteResMsg
-	(*PuSpyEndResMsg)(nil),                 // 105: voiceroom.PuSpyEndResMsg
-	(*EndSpyGameReq)(nil),                  // 106: voiceroom.EndSpyGameReq
-	(*EndSpyGameRsp)(nil),                  // 107: voiceroom.EndSpyGameRsp
-	(*PuEndSpyGameMsg)(nil),                // 108: voiceroom.PuEndSpyGameMsg
-	(*AuctionSetting)(nil),                 // 109: voiceroom.AuctionSetting
-	(*UpdateAuctionSettingReq)(nil),        // 110: voiceroom.UpdateAuctionSettingReq
-	(*UpdateAuctionSettingRsp)(nil),        // 111: voiceroom.UpdateAuctionSettingRsp
-	(*PuAuctionSettingMsg)(nil),            // 112: voiceroom.PuAuctionSettingMsg
-	(*StartAuctionReq)(nil),                // 113: voiceroom.StartAuctionReq
-	(*StartAuctionRsp)(nil),                // 114: voiceroom.StartAuctionRsp
-	(*PuStartAuctionMsg)(nil),              // 115: voiceroom.PuStartAuctionMsg
-	(*AuctionBidReq)(nil),                  // 116: voiceroom.AuctionBidReq
-	(*AuctionBidRsp)(nil),                  // 117: voiceroom.AuctionBidRsp
-	(*PuAuctionBidMsg)(nil),                // 118: voiceroom.PuAuctionBidMsg
-	(*FinishAuctionReq)(nil),               // 119: voiceroom.FinishAuctionReq
-	(*FinishAuctinRsp)(nil),                // 120: voiceroom.FinishAuctinRsp
-	(*PuAuctionResultMsg)(nil),             // 121: voiceroom.PuAuctionResultMsg
-	(*AuctionInfo)(nil),                    // 122: voiceroom.AuctionInfo
+	(*PuSpyEliminateMsg)(nil),              // 105: voiceroom.PuSpyEliminateMsg
+	(*PuSpyEndResMsg)(nil),                 // 106: voiceroom.PuSpyEndResMsg
+	(*EndSpyGameReq)(nil),                  // 107: voiceroom.EndSpyGameReq
+	(*EndSpyGameRsp)(nil),                  // 108: voiceroom.EndSpyGameRsp
+	(*PuEndSpyGameMsg)(nil),                // 109: voiceroom.PuEndSpyGameMsg
+	(*AuctionSetting)(nil),                 // 110: voiceroom.AuctionSetting
+	(*UpdateAuctionSettingReq)(nil),        // 111: voiceroom.UpdateAuctionSettingReq
+	(*UpdateAuctionSettingRsp)(nil),        // 112: voiceroom.UpdateAuctionSettingRsp
+	(*PuAuctionSettingMsg)(nil),            // 113: voiceroom.PuAuctionSettingMsg
+	(*StartAuctionReq)(nil),                // 114: voiceroom.StartAuctionReq
+	(*StartAuctionRsp)(nil),                // 115: voiceroom.StartAuctionRsp
+	(*PuStartAuctionMsg)(nil),              // 116: voiceroom.PuStartAuctionMsg
+	(*AuctionBidReq)(nil),                  // 117: voiceroom.AuctionBidReq
+	(*AuctionBidRsp)(nil),                  // 118: voiceroom.AuctionBidRsp
+	(*PuAuctionBidMsg)(nil),                // 119: voiceroom.PuAuctionBidMsg
+	(*FinishAuctionReq)(nil),               // 120: voiceroom.FinishAuctionReq
+	(*FinishAuctinRsp)(nil),                // 121: voiceroom.FinishAuctinRsp
+	(*PuAuctionResultMsg)(nil),             // 122: voiceroom.PuAuctionResultMsg
+	(*AuctionInfo)(nil),                    // 123: voiceroom.AuctionInfo
 }
 var file_voiceroom_voiceroom_proto_depIdxs = []int32{
 	12,  // 0: voiceroom.roomInfo.setting:type_name -> voiceroom.roomSetting
 	13,  // 1: voiceroom.roomInfo.seatList:type_name -> voiceroom.seatInfo
 	14,  // 2: voiceroom.roomInfo.pk:type_name -> voiceroom.pkInfo
 	11,  // 3: voiceroom.roomInfo.music:type_name -> voiceroom.voiceRoomMusicInfo
-	122, // 4: voiceroom.roomInfo.auction:type_name -> voiceroom.AuctionInfo
+	123, // 4: voiceroom.roomInfo.auction:type_name -> voiceroom.AuctionInfo
 	10,  // 5: voiceroom.roomInfo.tencent_cloud_music:type_name -> voiceroom.VoiceRoomTencentCloudMusicInfo
 	1,   // 6: voiceroom.VoiceRoomTencentCloudMusicInfo.status:type_name -> voiceroom.voiceRoomMusicStatus
 	1,   // 7: voiceroom.voiceRoomMusicInfo.status:type_name -> voiceroom.voiceRoomMusicStatus
@@ -8263,9 +8352,9 @@ var file_voiceroom_voiceroom_proto_depIdxs = []int32{
 	11,  // 42: voiceroom.PuPlayMusicMsg.music:type_name -> voiceroom.voiceRoomMusicInfo
 	7,   // 43: voiceroom.StartSpyReq.opt:type_name -> voiceroom.spyType
 	8,   // 44: voiceroom.PuSpyEndResMsg.game_res:type_name -> voiceroom.spyGameRes
-	109, // 45: voiceroom.UpdateAuctionSettingReq.setting:type_name -> voiceroom.AuctionSetting
-	109, // 46: voiceroom.PuAuctionSettingMsg.setting:type_name -> voiceroom.AuctionSetting
-	109, // 47: voiceroom.AuctionInfo.setting:type_name -> voiceroom.AuctionSetting
+	110, // 45: voiceroom.UpdateAuctionSettingReq.setting:type_name -> voiceroom.AuctionSetting
+	110, // 46: voiceroom.PuAuctionSettingMsg.setting:type_name -> voiceroom.AuctionSetting
+	110, // 47: voiceroom.AuctionInfo.setting:type_name -> voiceroom.AuctionSetting
 	48,  // [48:48] is the sub-list for method output_type
 	48,  // [48:48] is the sub-list for method input_type
 	48,  // [48:48] is the sub-list for extension type_name
@@ -9432,7 +9521,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[96].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PuSpyEndResMsg); i {
+			switch v := v.(*PuSpyEliminateMsg); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9444,7 +9533,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[97].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndSpyGameReq); i {
+			switch v := v.(*PuSpyEndResMsg); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9456,7 +9545,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[98].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndSpyGameRsp); i {
+			switch v := v.(*EndSpyGameReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9468,7 +9557,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[99].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PuEndSpyGameMsg); i {
+			switch v := v.(*EndSpyGameRsp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9480,7 +9569,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[100].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AuctionSetting); i {
+			switch v := v.(*PuEndSpyGameMsg); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9492,7 +9581,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[101].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateAuctionSettingReq); i {
+			switch v := v.(*AuctionSetting); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9504,7 +9593,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[102].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateAuctionSettingRsp); i {
+			switch v := v.(*UpdateAuctionSettingReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9516,7 +9605,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[103].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PuAuctionSettingMsg); i {
+			switch v := v.(*UpdateAuctionSettingRsp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9528,7 +9617,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[104].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartAuctionReq); i {
+			switch v := v.(*PuAuctionSettingMsg); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9540,7 +9629,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[105].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StartAuctionRsp); i {
+			switch v := v.(*StartAuctionReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9552,7 +9641,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[106].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PuStartAuctionMsg); i {
+			switch v := v.(*StartAuctionRsp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9564,7 +9653,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[107].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AuctionBidReq); i {
+			switch v := v.(*PuStartAuctionMsg); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9576,7 +9665,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[108].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AuctionBidRsp); i {
+			switch v := v.(*AuctionBidReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9588,7 +9677,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[109].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PuAuctionBidMsg); i {
+			switch v := v.(*AuctionBidRsp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9600,7 +9689,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[110].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FinishAuctionReq); i {
+			switch v := v.(*PuAuctionBidMsg); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9612,7 +9701,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[111].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FinishAuctinRsp); i {
+			switch v := v.(*FinishAuctionReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9624,7 +9713,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[112].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PuAuctionResultMsg); i {
+			switch v := v.(*FinishAuctinRsp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -9636,6 +9725,18 @@ func file_voiceroom_voiceroom_proto_init() {
 			}
 		}
 		file_voiceroom_voiceroom_proto_msgTypes[113].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PuAuctionResultMsg); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_voiceroom_voiceroom_proto_msgTypes[114].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AuctionInfo); i {
 			case 0:
 				return &v.state
@@ -9654,7 +9755,7 @@ func file_voiceroom_voiceroom_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_voiceroom_voiceroom_proto_rawDesc,
 			NumEnums:      9,
-			NumMessages:   114,
+			NumMessages:   115,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
