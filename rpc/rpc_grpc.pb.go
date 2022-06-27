@@ -22,6 +22,7 @@ type VoiceRoomServerClient interface {
 	CheckUserState(ctx context.Context, in *UserStateReq, opts ...grpc.CallOption) (*UserStateRsp, error)
 	PlayMusic(ctx context.Context, in *PlayMusicReq, opts ...grpc.CallOption) (*PlayMusicRsp, error)
 	NoticeOffline(ctx context.Context, in *NoticeOfflineReq, opts ...grpc.CallOption) (*Empty, error)
+	PlayTencentCloudMusic(ctx context.Context, in *PlayTencentCloudMusicReq, opts ...grpc.CallOption) (*PlayTencentCloudMusicRsp, error)
 }
 
 type voiceRoomServerClient struct {
@@ -68,6 +69,15 @@ func (c *voiceRoomServerClient) NoticeOffline(ctx context.Context, in *NoticeOff
 	return out, nil
 }
 
+func (c *voiceRoomServerClient) PlayTencentCloudMusic(ctx context.Context, in *PlayTencentCloudMusicReq, opts ...grpc.CallOption) (*PlayTencentCloudMusicRsp, error) {
+	out := new(PlayTencentCloudMusicRsp)
+	err := c.cc.Invoke(ctx, "/rpc.VoiceRoomServer/playTencentCloudMusic", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VoiceRoomServerServer is the server API for VoiceRoomServer service.
 // All implementations should embed UnimplementedVoiceRoomServerServer
 // for forward compatibility
@@ -76,6 +86,7 @@ type VoiceRoomServerServer interface {
 	CheckUserState(context.Context, *UserStateReq) (*UserStateRsp, error)
 	PlayMusic(context.Context, *PlayMusicReq) (*PlayMusicRsp, error)
 	NoticeOffline(context.Context, *NoticeOfflineReq) (*Empty, error)
+	PlayTencentCloudMusic(context.Context, *PlayTencentCloudMusicReq) (*PlayTencentCloudMusicRsp, error)
 }
 
 // UnimplementedVoiceRoomServerServer should be embedded to have forward compatible implementations.
@@ -93,6 +104,9 @@ func (UnimplementedVoiceRoomServerServer) PlayMusic(context.Context, *PlayMusicR
 }
 func (UnimplementedVoiceRoomServerServer) NoticeOffline(context.Context, *NoticeOfflineReq) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NoticeOffline not implemented")
+}
+func (UnimplementedVoiceRoomServerServer) PlayTencentCloudMusic(context.Context, *PlayTencentCloudMusicReq) (*PlayTencentCloudMusicRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PlayTencentCloudMusic not implemented")
 }
 
 // UnsafeVoiceRoomServerServer may be embedded to opt out of forward compatibility for this service.
@@ -178,6 +192,24 @@ func _VoiceRoomServer_NoticeOffline_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VoiceRoomServer_PlayTencentCloudMusic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PlayTencentCloudMusicReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VoiceRoomServerServer).PlayTencentCloudMusic(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/rpc.VoiceRoomServer/playTencentCloudMusic",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VoiceRoomServerServer).PlayTencentCloudMusic(ctx, req.(*PlayTencentCloudMusicReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VoiceRoomServer_ServiceDesc is the grpc.ServiceDesc for VoiceRoomServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -200,6 +232,10 @@ var VoiceRoomServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "noticeOffline",
 			Handler:    _VoiceRoomServer_NoticeOffline_Handler,
+		},
+		{
+			MethodName: "playTencentCloudMusic",
+			Handler:    _VoiceRoomServer_PlayTencentCloudMusic_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
