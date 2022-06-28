@@ -44,6 +44,7 @@ enum VoiceOpType {
   StartSpy = 33; // 开始谁是卧底游戏
   StartSpyVote = 34; // 开始投票
   EndSpyGame = 35; // 房主主动结束游戏
+  SpyVote = 36; // 投票
 
   InnerCall = 100; //内部调用接口
   PuUpdateSetting = 101; // 改房间信息push
@@ -673,6 +674,14 @@ message StartSpyVoteReq {
 message StartSpyVoteRsp {
   int32 vote_time = 1; // 投票时间(秒)
 }
+
+message SpyVoteReq {
+  int32 vote_index = 1;
+}
+
+message SpyVoteRsp {
+}
+
 message PuStartSpyVoteMsg {
   repeated int32 vote_indexs = 1; // 可以投票的麦位
 }
