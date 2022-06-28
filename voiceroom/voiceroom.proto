@@ -92,6 +92,8 @@ message roomInfo {
   int32 mode_version = 12;
   AuctionInfo auction = 13; //拍卖相关信息
   VoiceRoomTencentCloudMusicInfo tencent_cloud_music = 14; //正在播放的腾讯云音乐
+  SpyInfo spy_info = 15; // 谁是卧底相关
+  repeated string avatar_list = 16; //头像列表，推荐列表中展示房间内top6魅力值头像
 }
 
 enum voiceRoomMusicStatus {
@@ -710,6 +712,17 @@ message EndSpyGameReq { // 房主主动结束游戏
 message EndSpyGameRsp {
 }
 message PuEndSpyGameMsg { // 房主主动结束游戏push
+}
+
+message SpyInfo {
+  int64  start_time = 1; //开始时间戳
+  string spy_word = 2;
+  string civ_word = 3;
+  repeated string spy_uids = 4; //卧底uids
+  repeated string civ_uids = 5; //平民uids
+  int32 voted_times = 6; //投票轮次
+  repeated int32 survival_indexs = 7; //没有被淘汰的麦位
+  repeated int32 last_vote_res = 8; //上一轮投票结果(麦位)
 }
 
 message AuctionSetting {
