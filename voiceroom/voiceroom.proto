@@ -721,8 +721,9 @@ message SpyInfo {
   repeated string spy_uids = 4; //卧底uids
   repeated string civ_uids = 5; //平民uids
   int32 voted_times = 6; //投票轮次
-  repeated int32 survival_indexs = 7; //没有被淘汰的麦位
-  repeated int32 last_vote_res = 8; //上一轮投票结果(麦位)
+  int64 cur_vote_et = 7; //当前投票轮次结束时间戳
+  repeated int32 survival_indexs = 8; //没有被淘汰的麦位
+  repeated int32 last_vote_res = 9; //上一轮投票结果(麦位)
 }
 
 message AuctionSetting {
