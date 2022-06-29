@@ -93,7 +93,6 @@ message roomInfo {
   AuctionInfo auction = 13; //拍卖相关信息
   VoiceRoomTencentCloudMusicInfo tencent_cloud_music = 14; //正在播放的腾讯云音乐
   SpyInfo spy_info = 15; // 谁是卧底相关
-  repeated string avatar_list = 16; //头像列表，推荐列表中展示房间内top6魅力值头像
 }
 
 enum voiceRoomMusicStatus {
@@ -448,6 +447,7 @@ message RoomListItem {
   bool in_topk = 11; //是否是大神房间
   string owner_id = 12; //房主uid
   int32 sst_status = 13; //1：是sst认证
+  repeated string avatar_list = 14; //头像列表，推荐列表中展示房间内top6魅力值头像
 }
 
 message GetRoomListRsp {
