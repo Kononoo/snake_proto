@@ -768,10 +768,17 @@ message PuAuctionResultMsg {
   int32 gift_num = 4; //最终礼物数量
 }
 
+enum AuctionState {
+  Init = 0; //初始状态
+  AlreadySetting = 1; //已经设置过拍卖选项
+  Started = 2; //拍卖已开始
+}
+
 message AuctionInfo {
   AuctionSetting setting = 1; //拍卖设置信息
   string uid = 2; //当前最高出价者uid
   int32 gift_num = 3; //当前最高出价礼物数
+  AuctionState state = 4; //拍卖房状态
 }
 
 message PuPlayTencentCloudMusicMsg {
