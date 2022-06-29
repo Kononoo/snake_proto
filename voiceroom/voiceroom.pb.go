@@ -685,6 +685,55 @@ func (SpyGameRes) EnumDescriptor() ([]byte, []int) {
 	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{8}
 }
 
+type AuctionState int32
+
+const (
+	AuctionState_Init           AuctionState = 0 //初始状态
+	AuctionState_AlreadySetting AuctionState = 1 //已经设置过拍卖选项
+	AuctionState_Started        AuctionState = 2 //拍卖已开始
+)
+
+// Enum value maps for AuctionState.
+var (
+	AuctionState_name = map[int32]string{
+		0: "Init",
+		1: "AlreadySetting",
+		2: "Started",
+	}
+	AuctionState_value = map[string]int32{
+		"Init":           0,
+		"AlreadySetting": 1,
+		"Started":        2,
+	}
+)
+
+func (x AuctionState) Enum() *AuctionState {
+	p := new(AuctionState)
+	*p = x
+	return p
+}
+
+func (x AuctionState) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (AuctionState) Descriptor() protoreflect.EnumDescriptor {
+	return file_voiceroom_voiceroom_proto_enumTypes[9].Descriptor()
+}
+
+func (AuctionState) Type() protoreflect.EnumType {
+	return &file_voiceroom_voiceroom_proto_enumTypes[9]
+}
+
+func (x AuctionState) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use AuctionState.Descriptor instead.
+func (AuctionState) EnumDescriptor() ([]byte, []int) {
+	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{9}
+}
+
 type RoomInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -7477,9 +7526,10 @@ type AuctionInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Setting *AuctionSetting `protobuf:"bytes,1,opt,name=setting,proto3" json:"setting,omitempty"`                 //拍卖设置信息
-	Uid     string          `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`                         //当前最高出价者uid
-	GiftNum int32           `protobuf:"varint,3,opt,name=gift_num,json=giftNum,proto3" json:"gift_num,omitempty"` //当前最高出价礼物数
+	Setting *AuctionSetting `protobuf:"bytes,1,opt,name=setting,proto3" json:"setting,omitempty"`                          //拍卖设置信息
+	Uid     string          `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`                                  //当前最高出价者uid
+	GiftNum int32           `protobuf:"varint,3,opt,name=gift_num,json=giftNum,proto3" json:"gift_num,omitempty"`          //当前最高出价礼物数
+	State   AuctionState    `protobuf:"varint,4,opt,name=state,proto3,enum=voiceroom.AuctionState" json:"state,omitempty"` //拍卖房状态
 }
 
 func (x *AuctionInfo) Reset() {
@@ -7533,6 +7583,13 @@ func (x *AuctionInfo) GetGiftNum() int32 {
 		return x.GiftNum
 	}
 	return 0
+}
+
+func (x *AuctionInfo) GetState() AuctionState {
+	if x != nil {
+		return x.State
+	}
+	return AuctionState_Init
 }
 
 type PuPlayTencentCloudMusicMsg struct {
@@ -8259,14 +8316,17 @@ var file_voiceroom_voiceroom_proto_rawDesc = []byte{
 	0x28, 0x09, 0x52, 0x05, 0x62, 0x75, 0x79, 0x65, 0x72, 0x12, 0x17, 0x0a, 0x07, 0x67, 0x69, 0x66,
 	0x74, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x67, 0x69, 0x66, 0x74,
 	0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x69, 0x66, 0x74, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x67, 0x69, 0x66, 0x74, 0x4e, 0x75, 0x6d, 0x22, 0x6f, 0x0a,
-	0x0b, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x33, 0x0a, 0x07,
-	0x73, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e,
-	0x76, 0x6f, 0x69, 0x63, 0x65, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f,
-	0x6e, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x07, 0x73, 0x65, 0x74, 0x74, 0x69, 0x6e,
-	0x67, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x75, 0x69, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x69, 0x66, 0x74, 0x5f, 0x6e, 0x75, 0x6d, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x67, 0x69, 0x66, 0x74, 0x4e, 0x75, 0x6d, 0x22, 0x5d,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x67, 0x69, 0x66, 0x74, 0x4e, 0x75, 0x6d, 0x22, 0x9e, 0x01,
+	0x0a, 0x0b, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x33, 0x0a,
+	0x07, 0x73, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19,
+	0x2e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x41, 0x75, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x07, 0x73, 0x65, 0x74, 0x74, 0x69,
+	0x6e, 0x67, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x75, 0x69, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x67, 0x69, 0x66, 0x74, 0x5f, 0x6e, 0x75, 0x6d,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x67, 0x69, 0x66, 0x74, 0x4e, 0x75, 0x6d, 0x12,
+	0x2d, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x17,
+	0x2e, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x72, 0x6f, 0x6f, 0x6d, 0x2e, 0x41, 0x75, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x5d,
 	0x0a, 0x1a, 0x50, 0x75, 0x50, 0x6c, 0x61, 0x79, 0x54, 0x65, 0x6e, 0x63, 0x65, 0x6e, 0x74, 0x43,
 	0x6c, 0x6f, 0x75, 0x64, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x4d, 0x73, 0x67, 0x12, 0x3f, 0x0a, 0x05,
 	0x6d, 0x75, 0x73, 0x69, 0x63, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x76, 0x6f,
@@ -8386,11 +8446,14 @@ var file_voiceroom_voiceroom_proto_rawDesc = []byte{
 	0x73, 0x70, 0x79, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x12, 0x0b, 0x0a, 0x07, 0x67, 0x73,
 	0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12, 0x0f, 0x0a, 0x0b, 0x43, 0x69, 0x76, 0x69, 0x6c,
 	0x69, 0x61, 0x6e, 0x57, 0x69, 0x6e, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x53, 0x70, 0x79, 0x57,
-	0x69, 0x6e, 0x10, 0x02, 0x42, 0x35, 0x5a, 0x29, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a,
-	0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
-	0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x72, 0x6f, 0x6f,
-	0x6d, 0xa2, 0x02, 0x07, 0x53, 0x4e, 0x4b, 0x50, 0x42, 0x56, 0x52, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x69, 0x6e, 0x10, 0x02, 0x2a, 0x39, 0x0a, 0x0c, 0x41, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x53,
+	0x74, 0x61, 0x74, 0x65, 0x12, 0x08, 0x0a, 0x04, 0x49, 0x6e, 0x69, 0x74, 0x10, 0x00, 0x12, 0x12,
+	0x0a, 0x0e, 0x41, 0x6c, 0x72, 0x65, 0x61, 0x64, 0x79, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67,
+	0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x53, 0x74, 0x61, 0x72, 0x74, 0x65, 0x64, 0x10, 0x02, 0x42,
+	0x35, 0x5a, 0x29, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2f, 0x76, 0x6f, 0x69, 0x63, 0x65, 0x72, 0x6f, 0x6f, 0x6d, 0xa2, 0x02, 0x07, 0x53,
+	0x4e, 0x4b, 0x50, 0x42, 0x56, 0x52, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -8405,7 +8468,7 @@ func file_voiceroom_voiceroom_proto_rawDescGZIP() []byte {
 	return file_voiceroom_voiceroom_proto_rawDescData
 }
 
-var file_voiceroom_voiceroom_proto_enumTypes = make([]protoimpl.EnumInfo, 9)
+var file_voiceroom_voiceroom_proto_enumTypes = make([]protoimpl.EnumInfo, 10)
 var file_voiceroom_voiceroom_proto_msgTypes = make([]protoimpl.MessageInfo, 118)
 var file_voiceroom_voiceroom_proto_goTypes = []interface{}{
 	(VoiceOpType)(0),                       // 0: voiceroom.VoiceOpType
@@ -8417,181 +8480,183 @@ var file_voiceroom_voiceroom_proto_goTypes = []interface{}{
 	(PkType)(0),                            // 6: voiceroom.PkType
 	(SpyType)(0),                           // 7: voiceroom.spyType
 	(SpyGameRes)(0),                        // 8: voiceroom.spyGameRes
-	(*RoomInfo)(nil),                       // 9: voiceroom.roomInfo
-	(*VoiceRoomTencentCloudMusicInfo)(nil), // 10: voiceroom.VoiceRoomTencentCloudMusicInfo
-	(*VoiceRoomMusicInfo)(nil),             // 11: voiceroom.voiceRoomMusicInfo
-	(*RoomSetting)(nil),                    // 12: voiceroom.roomSetting
-	(*SeatInfo)(nil),                       // 13: voiceroom.seatInfo
-	(*PkInfo)(nil),                         // 14: voiceroom.pkInfo
-	(*Location)(nil),                       // 15: voiceroom.location
-	(*NewRoomReq)(nil),                     // 16: voiceroom.NewRoomReq
-	(*NewRoomRsp)(nil),                     // 17: voiceroom.NewRoomRsp
-	(*MyPreRoomReq)(nil),                   // 18: voiceroom.MyPreRoomReq
-	(*MyPreRoomRsp)(nil),                   // 19: voiceroom.MyPreRoomRsp
-	(*EnterRoomReq)(nil),                   // 20: voiceroom.EnterRoomReq
-	(*EnterRoomRsp)(nil),                   // 21: voiceroom.EnterRoomRsp
-	(*UpdateSettingReq)(nil),               // 22: voiceroom.UpdateSettingReq
-	(*UpdateSettingRsp)(nil),               // 23: voiceroom.UpdateSettingRsp
-	(*PuUpdateSettingMsg)(nil),             // 24: voiceroom.PuUpdateSettingMsg
-	(*ExitRoomReq)(nil),                    // 25: voiceroom.ExitRoomReq
-	(*ExitRoomRsp)(nil),                    // 26: voiceroom.ExitRoomRsp
-	(*GetMemberListReq)(nil),               // 27: voiceroom.GetMemberListReq
-	(*MemberListItem)(nil),                 // 28: voiceroom.MemberListItem
-	(*GetMemberListRsp)(nil),               // 29: voiceroom.GetMemberListRsp
-	(*LotteryReq)(nil),                     // 30: voiceroom.LotteryReq
-	(*LotteryRsp)(nil),                     // 31: voiceroom.LotteryRsp
-	(*PuLotteryResultMsg)(nil),             // 32: voiceroom.PuLotteryResultMsg
-	(*InnerCallReq)(nil),                   // 33: voiceroom.InnerCallReq
-	(*InnerCallRsp)(nil),                   // 34: voiceroom.InnerCallRsp
-	(*AdminRoomInfo)(nil),                  // 35: voiceroom.adminRoomInfo
-	(*PlayerChangeItem)(nil),               // 36: voiceroom.playerChangeItem
-	(*PuPlayerChangeMsg)(nil),              // 37: voiceroom.PuPlayerChangeMsg
-	(*PuSeatChangeMsg)(nil),                // 38: voiceroom.PuSeatChangeMsg
-	(*LockSeatReq)(nil),                    // 39: voiceroom.LockSeatReq
-	(*LockSeatRsp)(nil),                    // 40: voiceroom.LockSeatRsp
-	(*PlayerManagerReq)(nil),               // 41: voiceroom.PlayerManagerReq
-	(*PlayerManagerRsp)(nil),               // 42: voiceroom.PlayerManagerRsp
-	(*SeatInviteReq)(nil),                  // 43: voiceroom.SeatInviteReq
-	(*SeatInviteRsp)(nil),                  // 44: voiceroom.SeatInviteRsp
-	(*PuSeatInviteMsg)(nil),                // 45: voiceroom.PuSeatInviteMsg
-	(*HandleSeatInviteReq)(nil),            // 46: voiceroom.HandleSeatInviteReq
-	(*HandleSeatInviteRsp)(nil),            // 47: voiceroom.HandleSeatInviteRsp
-	(*UseSeatReq)(nil),                     // 48: voiceroom.UseSeatReq
-	(*UseSeatRsp)(nil),                     // 49: voiceroom.UseSeatRsp
-	(*PuRoomCloseMsg)(nil),                 // 50: voiceroom.PuRoomCloseMsg
-	(*MicOptReq)(nil),                      // 51: voiceroom.MicOptReq
-	(*MicOptRsp)(nil),                      // 52: voiceroom.MicOptRsp
-	(*SendRedPackReq)(nil),                 // 53: voiceroom.SendRedPackReq
-	(*SendRedPackRsp)(nil),                 // 54: voiceroom.SendRedPackRsp
-	(*PuRedPackMsg)(nil),                   // 55: voiceroom.PuRedPackMsg
-	(*UserGeoInfo)(nil),                    // 56: voiceroom.userGeoInfo
-	(*GetNearbyReq)(nil),                   // 57: voiceroom.GetNearbyReq
-	(*GetNearbyRsp)(nil),                   // 58: voiceroom.GetNearbyRsp
-	(*GetBlackListReq)(nil),                // 59: voiceroom.GetBlackListReq
-	(*GetBlackListRsp)(nil),                // 60: voiceroom.GetBlackListRsp
-	(*GetRoomListReq)(nil),                 // 61: voiceroom.GetRoomListReq
-	(*PuRoomBlackUpdateMsg)(nil),           // 62: voiceroom.PuRoomBlackUpdateMsg
-	(*RoomListItem)(nil),                   // 63: voiceroom.RoomListItem
-	(*GetRoomListRsp)(nil),                 // 64: voiceroom.GetRoomListRsp
-	(*SearchRoomReq)(nil),                  // 65: voiceroom.SearchRoomReq
-	(*TopShowMember)(nil),                  // 66: voiceroom.topShowMember
-	(*SearchRoomRsp)(nil),                  // 67: voiceroom.SearchRoomRsp
-	(*StartPkReq)(nil),                     // 68: voiceroom.StartPkReq
-	(*StartPkRsp)(nil),                     // 69: voiceroom.StartPkRsp
-	(*PuStartPkMsg)(nil),                   // 70: voiceroom.PuStartPkMsg
-	(*GetPkInfoReq)(nil),                   // 71: voiceroom.GetPkInfoReq
-	(*GetPkInfoRsp)(nil),                   // 72: voiceroom.GetPkInfoRsp
-	(*PuPkResultMsg)(nil),                  // 73: voiceroom.PuPkResultMsg
-	(*RoomChatMsg)(nil),                    // 74: voiceroom.RoomChatMsg
-	(*PuRoomChatMsg)(nil),                  // 75: voiceroom.PuRoomChatMsg
-	(*PkVoteReq)(nil),                      // 76: voiceroom.PkVoteReq
-	(*PkVoteRsp)(nil),                      // 77: voiceroom.PkVoteRsp
-	(*PkSendGiftReq)(nil),                  // 78: voiceroom.PkSendGiftReq
-	(*PkSendGiftRsp)(nil),                  // 79: voiceroom.PkSendGiftRsp
-	(*SendChatReq)(nil),                    // 80: voiceroom.SendChatReq
-	(*SendChatRsp)(nil),                    // 81: voiceroom.SendChatRsp
-	(*SendGiftReq)(nil),                    // 82: voiceroom.SendGiftReq
-	(*SendGiftInfo)(nil),                   // 83: voiceroom.SendGiftInfo
-	(*SendGiftRspInfo)(nil),                // 84: voiceroom.SendGiftRspInfo
-	(*SendGiftRsp)(nil),                    // 85: voiceroom.SendGiftRsp
-	(*PuSendGiftMsg)(nil),                  // 86: voiceroom.PuSendGiftMsg
-	(*SendEmojiReq)(nil),                   // 87: voiceroom.SendEmojiReq
-	(*SendEmojiRsp)(nil),                   // 88: voiceroom.SendEmojiRsp
-	(*PuSendEmojiMsg)(nil),                 // 89: voiceroom.PuSendEmojiMsg
-	(*SeatKickReq)(nil),                    // 90: voiceroom.SeatKickReq
-	(*SeatKickRsp)(nil),                    // 91: voiceroom.SeatKickRsp
-	(*PuSeatKickMsg)(nil),                  // 92: voiceroom.PuSeatKickMsg
-	(*RoomInviteReq)(nil),                  // 93: voiceroom.RoomInviteReq
-	(*RoomInviteRsp)(nil),                  // 94: voiceroom.RoomInviteRsp
-	(*PuRoomInviteMsg)(nil),                // 95: voiceroom.PuRoomInviteMsg
-	(*PuPlayMusicMsg)(nil),                 // 96: voiceroom.PuPlayMusicMsg
-	(*PuBanChatMsg)(nil),                   // 97: voiceroom.PuBanChatMsg
-	(*StartSpyReq)(nil),                    // 98: voiceroom.StartSpyReq
-	(*StartSpyRsp)(nil),                    // 99: voiceroom.StartSpyRsp
-	(*PuSpyWordMsg)(nil),                   // 100: voiceroom.PuSpyWordMsg
-	(*StartSpyVoteReq)(nil),                // 101: voiceroom.StartSpyVoteReq
-	(*StartSpyVoteRsp)(nil),                // 102: voiceroom.StartSpyVoteRsp
-	(*SpyVoteReq)(nil),                     // 103: voiceroom.SpyVoteReq
-	(*SpyVoteRsp)(nil),                     // 104: voiceroom.SpyVoteRsp
-	(*PuStartSpyVoteMsg)(nil),              // 105: voiceroom.PuStartSpyVoteMsg
-	(*PuSpyVoteResMsg)(nil),                // 106: voiceroom.PuSpyVoteResMsg
-	(*PuSpyEndResMsg)(nil),                 // 107: voiceroom.PuSpyEndResMsg
-	(*EndSpyGameReq)(nil),                  // 108: voiceroom.EndSpyGameReq
-	(*EndSpyGameRsp)(nil),                  // 109: voiceroom.EndSpyGameRsp
-	(*PuEndSpyGameMsg)(nil),                // 110: voiceroom.PuEndSpyGameMsg
-	(*SpyInfo)(nil),                        // 111: voiceroom.SpyInfo
-	(*AuctionSetting)(nil),                 // 112: voiceroom.AuctionSetting
-	(*UpdateAuctionSettingReq)(nil),        // 113: voiceroom.UpdateAuctionSettingReq
-	(*UpdateAuctionSettingRsp)(nil),        // 114: voiceroom.UpdateAuctionSettingRsp
-	(*PuAuctionSettingMsg)(nil),            // 115: voiceroom.PuAuctionSettingMsg
-	(*StartAuctionReq)(nil),                // 116: voiceroom.StartAuctionReq
-	(*StartAuctionRsp)(nil),                // 117: voiceroom.StartAuctionRsp
-	(*PuStartAuctionMsg)(nil),              // 118: voiceroom.PuStartAuctionMsg
-	(*AuctionBidReq)(nil),                  // 119: voiceroom.AuctionBidReq
-	(*AuctionBidRsp)(nil),                  // 120: voiceroom.AuctionBidRsp
-	(*PuAuctionBidMsg)(nil),                // 121: voiceroom.PuAuctionBidMsg
-	(*FinishAuctionReq)(nil),               // 122: voiceroom.FinishAuctionReq
-	(*FinishAuctinRsp)(nil),                // 123: voiceroom.FinishAuctinRsp
-	(*PuAuctionResultMsg)(nil),             // 124: voiceroom.PuAuctionResultMsg
-	(*AuctionInfo)(nil),                    // 125: voiceroom.AuctionInfo
-	(*PuPlayTencentCloudMusicMsg)(nil),     // 126: voiceroom.PuPlayTencentCloudMusicMsg
+	(AuctionState)(0),                      // 9: voiceroom.AuctionState
+	(*RoomInfo)(nil),                       // 10: voiceroom.roomInfo
+	(*VoiceRoomTencentCloudMusicInfo)(nil), // 11: voiceroom.VoiceRoomTencentCloudMusicInfo
+	(*VoiceRoomMusicInfo)(nil),             // 12: voiceroom.voiceRoomMusicInfo
+	(*RoomSetting)(nil),                    // 13: voiceroom.roomSetting
+	(*SeatInfo)(nil),                       // 14: voiceroom.seatInfo
+	(*PkInfo)(nil),                         // 15: voiceroom.pkInfo
+	(*Location)(nil),                       // 16: voiceroom.location
+	(*NewRoomReq)(nil),                     // 17: voiceroom.NewRoomReq
+	(*NewRoomRsp)(nil),                     // 18: voiceroom.NewRoomRsp
+	(*MyPreRoomReq)(nil),                   // 19: voiceroom.MyPreRoomReq
+	(*MyPreRoomRsp)(nil),                   // 20: voiceroom.MyPreRoomRsp
+	(*EnterRoomReq)(nil),                   // 21: voiceroom.EnterRoomReq
+	(*EnterRoomRsp)(nil),                   // 22: voiceroom.EnterRoomRsp
+	(*UpdateSettingReq)(nil),               // 23: voiceroom.UpdateSettingReq
+	(*UpdateSettingRsp)(nil),               // 24: voiceroom.UpdateSettingRsp
+	(*PuUpdateSettingMsg)(nil),             // 25: voiceroom.PuUpdateSettingMsg
+	(*ExitRoomReq)(nil),                    // 26: voiceroom.ExitRoomReq
+	(*ExitRoomRsp)(nil),                    // 27: voiceroom.ExitRoomRsp
+	(*GetMemberListReq)(nil),               // 28: voiceroom.GetMemberListReq
+	(*MemberListItem)(nil),                 // 29: voiceroom.MemberListItem
+	(*GetMemberListRsp)(nil),               // 30: voiceroom.GetMemberListRsp
+	(*LotteryReq)(nil),                     // 31: voiceroom.LotteryReq
+	(*LotteryRsp)(nil),                     // 32: voiceroom.LotteryRsp
+	(*PuLotteryResultMsg)(nil),             // 33: voiceroom.PuLotteryResultMsg
+	(*InnerCallReq)(nil),                   // 34: voiceroom.InnerCallReq
+	(*InnerCallRsp)(nil),                   // 35: voiceroom.InnerCallRsp
+	(*AdminRoomInfo)(nil),                  // 36: voiceroom.adminRoomInfo
+	(*PlayerChangeItem)(nil),               // 37: voiceroom.playerChangeItem
+	(*PuPlayerChangeMsg)(nil),              // 38: voiceroom.PuPlayerChangeMsg
+	(*PuSeatChangeMsg)(nil),                // 39: voiceroom.PuSeatChangeMsg
+	(*LockSeatReq)(nil),                    // 40: voiceroom.LockSeatReq
+	(*LockSeatRsp)(nil),                    // 41: voiceroom.LockSeatRsp
+	(*PlayerManagerReq)(nil),               // 42: voiceroom.PlayerManagerReq
+	(*PlayerManagerRsp)(nil),               // 43: voiceroom.PlayerManagerRsp
+	(*SeatInviteReq)(nil),                  // 44: voiceroom.SeatInviteReq
+	(*SeatInviteRsp)(nil),                  // 45: voiceroom.SeatInviteRsp
+	(*PuSeatInviteMsg)(nil),                // 46: voiceroom.PuSeatInviteMsg
+	(*HandleSeatInviteReq)(nil),            // 47: voiceroom.HandleSeatInviteReq
+	(*HandleSeatInviteRsp)(nil),            // 48: voiceroom.HandleSeatInviteRsp
+	(*UseSeatReq)(nil),                     // 49: voiceroom.UseSeatReq
+	(*UseSeatRsp)(nil),                     // 50: voiceroom.UseSeatRsp
+	(*PuRoomCloseMsg)(nil),                 // 51: voiceroom.PuRoomCloseMsg
+	(*MicOptReq)(nil),                      // 52: voiceroom.MicOptReq
+	(*MicOptRsp)(nil),                      // 53: voiceroom.MicOptRsp
+	(*SendRedPackReq)(nil),                 // 54: voiceroom.SendRedPackReq
+	(*SendRedPackRsp)(nil),                 // 55: voiceroom.SendRedPackRsp
+	(*PuRedPackMsg)(nil),                   // 56: voiceroom.PuRedPackMsg
+	(*UserGeoInfo)(nil),                    // 57: voiceroom.userGeoInfo
+	(*GetNearbyReq)(nil),                   // 58: voiceroom.GetNearbyReq
+	(*GetNearbyRsp)(nil),                   // 59: voiceroom.GetNearbyRsp
+	(*GetBlackListReq)(nil),                // 60: voiceroom.GetBlackListReq
+	(*GetBlackListRsp)(nil),                // 61: voiceroom.GetBlackListRsp
+	(*GetRoomListReq)(nil),                 // 62: voiceroom.GetRoomListReq
+	(*PuRoomBlackUpdateMsg)(nil),           // 63: voiceroom.PuRoomBlackUpdateMsg
+	(*RoomListItem)(nil),                   // 64: voiceroom.RoomListItem
+	(*GetRoomListRsp)(nil),                 // 65: voiceroom.GetRoomListRsp
+	(*SearchRoomReq)(nil),                  // 66: voiceroom.SearchRoomReq
+	(*TopShowMember)(nil),                  // 67: voiceroom.topShowMember
+	(*SearchRoomRsp)(nil),                  // 68: voiceroom.SearchRoomRsp
+	(*StartPkReq)(nil),                     // 69: voiceroom.StartPkReq
+	(*StartPkRsp)(nil),                     // 70: voiceroom.StartPkRsp
+	(*PuStartPkMsg)(nil),                   // 71: voiceroom.PuStartPkMsg
+	(*GetPkInfoReq)(nil),                   // 72: voiceroom.GetPkInfoReq
+	(*GetPkInfoRsp)(nil),                   // 73: voiceroom.GetPkInfoRsp
+	(*PuPkResultMsg)(nil),                  // 74: voiceroom.PuPkResultMsg
+	(*RoomChatMsg)(nil),                    // 75: voiceroom.RoomChatMsg
+	(*PuRoomChatMsg)(nil),                  // 76: voiceroom.PuRoomChatMsg
+	(*PkVoteReq)(nil),                      // 77: voiceroom.PkVoteReq
+	(*PkVoteRsp)(nil),                      // 78: voiceroom.PkVoteRsp
+	(*PkSendGiftReq)(nil),                  // 79: voiceroom.PkSendGiftReq
+	(*PkSendGiftRsp)(nil),                  // 80: voiceroom.PkSendGiftRsp
+	(*SendChatReq)(nil),                    // 81: voiceroom.SendChatReq
+	(*SendChatRsp)(nil),                    // 82: voiceroom.SendChatRsp
+	(*SendGiftReq)(nil),                    // 83: voiceroom.SendGiftReq
+	(*SendGiftInfo)(nil),                   // 84: voiceroom.SendGiftInfo
+	(*SendGiftRspInfo)(nil),                // 85: voiceroom.SendGiftRspInfo
+	(*SendGiftRsp)(nil),                    // 86: voiceroom.SendGiftRsp
+	(*PuSendGiftMsg)(nil),                  // 87: voiceroom.PuSendGiftMsg
+	(*SendEmojiReq)(nil),                   // 88: voiceroom.SendEmojiReq
+	(*SendEmojiRsp)(nil),                   // 89: voiceroom.SendEmojiRsp
+	(*PuSendEmojiMsg)(nil),                 // 90: voiceroom.PuSendEmojiMsg
+	(*SeatKickReq)(nil),                    // 91: voiceroom.SeatKickReq
+	(*SeatKickRsp)(nil),                    // 92: voiceroom.SeatKickRsp
+	(*PuSeatKickMsg)(nil),                  // 93: voiceroom.PuSeatKickMsg
+	(*RoomInviteReq)(nil),                  // 94: voiceroom.RoomInviteReq
+	(*RoomInviteRsp)(nil),                  // 95: voiceroom.RoomInviteRsp
+	(*PuRoomInviteMsg)(nil),                // 96: voiceroom.PuRoomInviteMsg
+	(*PuPlayMusicMsg)(nil),                 // 97: voiceroom.PuPlayMusicMsg
+	(*PuBanChatMsg)(nil),                   // 98: voiceroom.PuBanChatMsg
+	(*StartSpyReq)(nil),                    // 99: voiceroom.StartSpyReq
+	(*StartSpyRsp)(nil),                    // 100: voiceroom.StartSpyRsp
+	(*PuSpyWordMsg)(nil),                   // 101: voiceroom.PuSpyWordMsg
+	(*StartSpyVoteReq)(nil),                // 102: voiceroom.StartSpyVoteReq
+	(*StartSpyVoteRsp)(nil),                // 103: voiceroom.StartSpyVoteRsp
+	(*SpyVoteReq)(nil),                     // 104: voiceroom.SpyVoteReq
+	(*SpyVoteRsp)(nil),                     // 105: voiceroom.SpyVoteRsp
+	(*PuStartSpyVoteMsg)(nil),              // 106: voiceroom.PuStartSpyVoteMsg
+	(*PuSpyVoteResMsg)(nil),                // 107: voiceroom.PuSpyVoteResMsg
+	(*PuSpyEndResMsg)(nil),                 // 108: voiceroom.PuSpyEndResMsg
+	(*EndSpyGameReq)(nil),                  // 109: voiceroom.EndSpyGameReq
+	(*EndSpyGameRsp)(nil),                  // 110: voiceroom.EndSpyGameRsp
+	(*PuEndSpyGameMsg)(nil),                // 111: voiceroom.PuEndSpyGameMsg
+	(*SpyInfo)(nil),                        // 112: voiceroom.SpyInfo
+	(*AuctionSetting)(nil),                 // 113: voiceroom.AuctionSetting
+	(*UpdateAuctionSettingReq)(nil),        // 114: voiceroom.UpdateAuctionSettingReq
+	(*UpdateAuctionSettingRsp)(nil),        // 115: voiceroom.UpdateAuctionSettingRsp
+	(*PuAuctionSettingMsg)(nil),            // 116: voiceroom.PuAuctionSettingMsg
+	(*StartAuctionReq)(nil),                // 117: voiceroom.StartAuctionReq
+	(*StartAuctionRsp)(nil),                // 118: voiceroom.StartAuctionRsp
+	(*PuStartAuctionMsg)(nil),              // 119: voiceroom.PuStartAuctionMsg
+	(*AuctionBidReq)(nil),                  // 120: voiceroom.AuctionBidReq
+	(*AuctionBidRsp)(nil),                  // 121: voiceroom.AuctionBidRsp
+	(*PuAuctionBidMsg)(nil),                // 122: voiceroom.PuAuctionBidMsg
+	(*FinishAuctionReq)(nil),               // 123: voiceroom.FinishAuctionReq
+	(*FinishAuctinRsp)(nil),                // 124: voiceroom.FinishAuctinRsp
+	(*PuAuctionResultMsg)(nil),             // 125: voiceroom.PuAuctionResultMsg
+	(*AuctionInfo)(nil),                    // 126: voiceroom.AuctionInfo
+	(*PuPlayTencentCloudMusicMsg)(nil),     // 127: voiceroom.PuPlayTencentCloudMusicMsg
 }
 var file_voiceroom_voiceroom_proto_depIdxs = []int32{
-	12,  // 0: voiceroom.roomInfo.setting:type_name -> voiceroom.roomSetting
-	13,  // 1: voiceroom.roomInfo.seatList:type_name -> voiceroom.seatInfo
-	14,  // 2: voiceroom.roomInfo.pk:type_name -> voiceroom.pkInfo
-	11,  // 3: voiceroom.roomInfo.music:type_name -> voiceroom.voiceRoomMusicInfo
-	125, // 4: voiceroom.roomInfo.auction:type_name -> voiceroom.AuctionInfo
-	10,  // 5: voiceroom.roomInfo.tencent_cloud_music:type_name -> voiceroom.VoiceRoomTencentCloudMusicInfo
-	111, // 6: voiceroom.roomInfo.spy_info:type_name -> voiceroom.SpyInfo
+	13,  // 0: voiceroom.roomInfo.setting:type_name -> voiceroom.roomSetting
+	14,  // 1: voiceroom.roomInfo.seatList:type_name -> voiceroom.seatInfo
+	15,  // 2: voiceroom.roomInfo.pk:type_name -> voiceroom.pkInfo
+	12,  // 3: voiceroom.roomInfo.music:type_name -> voiceroom.voiceRoomMusicInfo
+	126, // 4: voiceroom.roomInfo.auction:type_name -> voiceroom.AuctionInfo
+	11,  // 5: voiceroom.roomInfo.tencent_cloud_music:type_name -> voiceroom.VoiceRoomTencentCloudMusicInfo
+	112, // 6: voiceroom.roomInfo.spy_info:type_name -> voiceroom.SpyInfo
 	1,   // 7: voiceroom.VoiceRoomTencentCloudMusicInfo.status:type_name -> voiceroom.voiceRoomMusicStatus
 	1,   // 8: voiceroom.voiceRoomMusicInfo.status:type_name -> voiceroom.voiceRoomMusicStatus
 	6,   // 9: voiceroom.pkInfo.type:type_name -> voiceroom.PkType
-	12,  // 10: voiceroom.NewRoomReq.param:type_name -> voiceroom.roomSetting
-	15,  // 11: voiceroom.NewRoomReq.pos:type_name -> voiceroom.location
-	9,   // 12: voiceroom.NewRoomRsp.room:type_name -> voiceroom.roomInfo
-	12,  // 13: voiceroom.MyPreRoomRsp.setting:type_name -> voiceroom.roomSetting
-	15,  // 14: voiceroom.EnterRoomReq.pos:type_name -> voiceroom.location
-	9,   // 15: voiceroom.EnterRoomRsp.room:type_name -> voiceroom.roomInfo
-	12,  // 16: voiceroom.UpdateSettingReq.setting:type_name -> voiceroom.roomSetting
-	12,  // 17: voiceroom.PuUpdateSettingMsg.setting:type_name -> voiceroom.roomSetting
-	28,  // 18: voiceroom.GetMemberListRsp.members:type_name -> voiceroom.MemberListItem
+	13,  // 10: voiceroom.NewRoomReq.param:type_name -> voiceroom.roomSetting
+	16,  // 11: voiceroom.NewRoomReq.pos:type_name -> voiceroom.location
+	10,  // 12: voiceroom.NewRoomRsp.room:type_name -> voiceroom.roomInfo
+	13,  // 13: voiceroom.MyPreRoomRsp.setting:type_name -> voiceroom.roomSetting
+	16,  // 14: voiceroom.EnterRoomReq.pos:type_name -> voiceroom.location
+	10,  // 15: voiceroom.EnterRoomRsp.room:type_name -> voiceroom.roomInfo
+	13,  // 16: voiceroom.UpdateSettingReq.setting:type_name -> voiceroom.roomSetting
+	13,  // 17: voiceroom.PuUpdateSettingMsg.setting:type_name -> voiceroom.roomSetting
+	29,  // 18: voiceroom.GetMemberListRsp.members:type_name -> voiceroom.MemberListItem
 	2,   // 19: voiceroom.LotteryReq.opt:type_name -> voiceroom.lotteryType
 	3,   // 20: voiceroom.InnerCallReq.call_type:type_name -> voiceroom.innerCallType
-	35,  // 21: voiceroom.InnerCallRsp.room_info:type_name -> voiceroom.adminRoomInfo
-	13,  // 22: voiceroom.PuSeatChangeMsg.seatList:type_name -> voiceroom.seatInfo
+	36,  // 21: voiceroom.InnerCallRsp.room_info:type_name -> voiceroom.adminRoomInfo
+	14,  // 22: voiceroom.PuSeatChangeMsg.seatList:type_name -> voiceroom.seatInfo
 	4,   // 23: voiceroom.PlayerManagerReq.opt:type_name -> voiceroom.playerManagerType
-	15,  // 24: voiceroom.GetNearbyReq.pos:type_name -> voiceroom.location
-	56,  // 25: voiceroom.GetNearbyRsp.users:type_name -> voiceroom.userGeoInfo
+	16,  // 24: voiceroom.GetNearbyReq.pos:type_name -> voiceroom.location
+	57,  // 25: voiceroom.GetNearbyRsp.users:type_name -> voiceroom.userGeoInfo
 	5,   // 26: voiceroom.GetBlackListReq.black_type:type_name -> voiceroom.RoomBlackType
-	15,  // 27: voiceroom.GetRoomListReq.pos:type_name -> voiceroom.location
+	16,  // 27: voiceroom.GetRoomListReq.pos:type_name -> voiceroom.location
 	5,   // 28: voiceroom.PuRoomBlackUpdateMsg.black_type:type_name -> voiceroom.RoomBlackType
-	63,  // 29: voiceroom.GetRoomListRsp.rooms:type_name -> voiceroom.RoomListItem
-	15,  // 30: voiceroom.SearchRoomReq.pos:type_name -> voiceroom.location
-	66,  // 31: voiceroom.SearchRoomRsp.top_member:type_name -> voiceroom.topShowMember
+	64,  // 29: voiceroom.GetRoomListRsp.rooms:type_name -> voiceroom.RoomListItem
+	16,  // 30: voiceroom.SearchRoomReq.pos:type_name -> voiceroom.location
+	67,  // 31: voiceroom.SearchRoomRsp.top_member:type_name -> voiceroom.topShowMember
 	6,   // 32: voiceroom.StartPkReq.type:type_name -> voiceroom.PkType
-	14,  // 33: voiceroom.StartPkRsp.pk_info:type_name -> voiceroom.pkInfo
-	14,  // 34: voiceroom.PuStartPkMsg.pk_info:type_name -> voiceroom.pkInfo
-	14,  // 35: voiceroom.GetPkInfoRsp.pk_info:type_name -> voiceroom.pkInfo
-	74,  // 36: voiceroom.PuRoomChatMsg.messages:type_name -> voiceroom.RoomChatMsg
-	14,  // 37: voiceroom.PkVoteRsp.pk_info:type_name -> voiceroom.pkInfo
-	83,  // 38: voiceroom.PkSendGiftReq.info:type_name -> voiceroom.SendGiftInfo
-	14,  // 39: voiceroom.PkSendGiftRsp.pk_info:type_name -> voiceroom.pkInfo
-	84,  // 40: voiceroom.PkSendGiftRsp.gift_info:type_name -> voiceroom.SendGiftRspInfo
-	83,  // 41: voiceroom.SendGiftReq.info:type_name -> voiceroom.SendGiftInfo
-	84,  // 42: voiceroom.SendGiftRsp.info:type_name -> voiceroom.SendGiftRspInfo
-	11,  // 43: voiceroom.PuPlayMusicMsg.music:type_name -> voiceroom.voiceRoomMusicInfo
+	15,  // 33: voiceroom.StartPkRsp.pk_info:type_name -> voiceroom.pkInfo
+	15,  // 34: voiceroom.PuStartPkMsg.pk_info:type_name -> voiceroom.pkInfo
+	15,  // 35: voiceroom.GetPkInfoRsp.pk_info:type_name -> voiceroom.pkInfo
+	75,  // 36: voiceroom.PuRoomChatMsg.messages:type_name -> voiceroom.RoomChatMsg
+	15,  // 37: voiceroom.PkVoteRsp.pk_info:type_name -> voiceroom.pkInfo
+	84,  // 38: voiceroom.PkSendGiftReq.info:type_name -> voiceroom.SendGiftInfo
+	15,  // 39: voiceroom.PkSendGiftRsp.pk_info:type_name -> voiceroom.pkInfo
+	85,  // 40: voiceroom.PkSendGiftRsp.gift_info:type_name -> voiceroom.SendGiftRspInfo
+	84,  // 41: voiceroom.SendGiftReq.info:type_name -> voiceroom.SendGiftInfo
+	85,  // 42: voiceroom.SendGiftRsp.info:type_name -> voiceroom.SendGiftRspInfo
+	12,  // 43: voiceroom.PuPlayMusicMsg.music:type_name -> voiceroom.voiceRoomMusicInfo
 	7,   // 44: voiceroom.StartSpyReq.opt:type_name -> voiceroom.spyType
 	8,   // 45: voiceroom.PuSpyEndResMsg.game_res:type_name -> voiceroom.spyGameRes
-	112, // 46: voiceroom.UpdateAuctionSettingReq.setting:type_name -> voiceroom.AuctionSetting
-	112, // 47: voiceroom.PuAuctionSettingMsg.setting:type_name -> voiceroom.AuctionSetting
-	112, // 48: voiceroom.AuctionInfo.setting:type_name -> voiceroom.AuctionSetting
-	10,  // 49: voiceroom.PuPlayTencentCloudMusicMsg.music:type_name -> voiceroom.VoiceRoomTencentCloudMusicInfo
-	50,  // [50:50] is the sub-list for method output_type
-	50,  // [50:50] is the sub-list for method input_type
-	50,  // [50:50] is the sub-list for extension type_name
-	50,  // [50:50] is the sub-list for extension extendee
-	0,   // [0:50] is the sub-list for field type_name
+	113, // 46: voiceroom.UpdateAuctionSettingReq.setting:type_name -> voiceroom.AuctionSetting
+	113, // 47: voiceroom.PuAuctionSettingMsg.setting:type_name -> voiceroom.AuctionSetting
+	113, // 48: voiceroom.AuctionInfo.setting:type_name -> voiceroom.AuctionSetting
+	9,   // 49: voiceroom.AuctionInfo.state:type_name -> voiceroom.AuctionState
+	11,  // 50: voiceroom.PuPlayTencentCloudMusicMsg.music:type_name -> voiceroom.VoiceRoomTencentCloudMusicInfo
+	51,  // [51:51] is the sub-list for method output_type
+	51,  // [51:51] is the sub-list for method input_type
+	51,  // [51:51] is the sub-list for extension type_name
+	51,  // [51:51] is the sub-list for extension extendee
+	0,   // [0:51] is the sub-list for field type_name
 }
 
 func init() { file_voiceroom_voiceroom_proto_init() }
@@ -10022,7 +10087,7 @@ func file_voiceroom_voiceroom_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_voiceroom_voiceroom_proto_rawDesc,
-			NumEnums:      9,
+			NumEnums:      10,
 			NumMessages:   118,
 			NumExtensions: 0,
 			NumServices:   0,
