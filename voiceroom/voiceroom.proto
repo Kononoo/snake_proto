@@ -688,11 +688,8 @@ message PuStartSpyVoteMsg {
   repeated int32 vote_indexs = 1; // 可以投票的麦位
 }
 message PuSpyVoteResMsg { // 投票结果push
-  repeated string vote_res = 1; // 投票结果
+  repeated int32 eliminate_indexs = 1; // 淘汰列表
   repeated int32 vote_detail = 2; // 投票详情
-}
-message PuSpyEliminateMsg { // 房主主动结束游戏push
-  repeated int32 eliminate_indexs = 1;
 }
 enum spyGameRes {
   gsUndef = 0;
@@ -715,16 +712,13 @@ message PuEndSpyGameMsg { // 房主主动结束游戏push
 }
 
 message SpyInfo {
-  bool is_start = 1;
-  int64  start_time = 2; //开始时间戳
-  string spy_word = 3;
-  string civ_word = 4;
-  repeated string spy_uids = 5; //卧底uids
-  repeated string civ_uids = 6; //平民uids
-  int32 voted_times = 7; //投票轮次
-  int64 cur_vote_et = 8; //当前投票轮次结束时间戳
-  repeated int32 survival_indexs = 9; //没有被淘汰的麦位
-  repeated int32 last_vote_res = 10; //上一轮投票结果(麦位)
+  bool is_start = 1; // 游戏是否开始
+  repeated int32 survival_indexs = 2; // 存活玩家麦位列表
+  string word = 3; // 玩家词语
+  bool is_voting = 4; // 是否正在投票中
+  int64 cur_vote_et = 5; //当前投票轮次结束时间戳
+  repeated int32 voting_indexs = 6; //当前可以投票的麦位
+  repeated int32 vote_detail = 7; //当前投票的情况
 }
 
 message AuctionSetting {
