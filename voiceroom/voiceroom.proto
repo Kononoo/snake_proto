@@ -45,6 +45,7 @@ enum VoiceOpType {
   StartSpyVote = 34; // 开始投票
   EndSpyGame = 35; // 房主主动结束游戏
   SpyVote = 36; // 投票
+  GetRoomState = 37; // 获取房间在线状态
 
   InnerCall = 100; //内部调用接口
   PuUpdateSetting = 101; // 改房间信息push
@@ -286,6 +287,13 @@ message adminRoomInfo {
   int32 platform = 9;
 }
 
+message GetRoomStateReq {
+  repeated int32 room_ids = 1;
+}
+
+message GetRoomStateRsp {
+  repeated int32 online_room_ids = 1;
+}
 
 message playerChangeItem {
   string uid = 1;
@@ -666,7 +674,7 @@ message StartSpyReq {
 }
 message StartSpyRsp {
 }
-message PuSpyWordMsg { // 下发谁是卧底词汇，每个用户单独push
+message PuSpyWordMsg {// 下发谁是卧底词汇，每个用户单独push
   string word = 1;
 }
 
@@ -686,7 +694,7 @@ message SpyVoteRsp {
 message PuStartSpyVoteMsg {
   repeated int32 vote_indexs = 1; // 可以投票的麦位
 }
-message PuSpyVoteResMsg { // 投票结果push
+message PuSpyVoteResMsg {// 投票结果push
   repeated int32 eliminate_indexs = 1; // 淘汰列表
   repeated int32 vote_detail = 2; // 投票详情
 }
@@ -696,18 +704,18 @@ enum spyGameRes {
   SpyWin = 2; // 卧底胜利
 
 }
-message PuSpyEndResMsg { // 游戏结束结果push
+message PuSpyEndResMsg {// 游戏结束结果push
   string spy_word = 1; // 卧底词汇
   string civilian_word = 2; // 平民词汇
   spyGameRes game_res = 3; // 游戏结果，1
   repeated string spy_uids = 4; // 卧底uid
 }
 
-message EndSpyGameReq { // 房主主动结束游戏
+message EndSpyGameReq {// 房主主动结束游戏
 }
 message EndSpyGameRsp {
 }
-message PuEndSpyGameMsg { // 房主主动结束游戏push
+message PuEndSpyGameMsg {// 房主主动结束游戏push
 }
 
 message SpyInfo {
