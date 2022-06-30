@@ -681,7 +681,6 @@ message PuSpyWordMsg {// 下发谁是卧底词汇，每个用户单独push
 message StartSpyVoteReq {
 }
 message StartSpyVoteRsp {
-  int32 vote_time = 1; // 投票时间(秒)
 }
 
 message SpyVoteReq {
@@ -692,7 +691,8 @@ message SpyVoteRsp {
 }
 
 message PuStartSpyVoteMsg {
-  repeated int32 vote_indexs = 1; // 可以投票的麦位
+  int64 cur_vote_et = 1; //投票结束时间戳
+  repeated int32 vote_indexs = 2; // 可以投票的麦位
 }
 message PuSpyVoteResMsg {// 投票结果push
   repeated int32 eliminate_indexs = 1; // 淘汰列表
