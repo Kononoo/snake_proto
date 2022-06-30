@@ -692,7 +692,8 @@ message SpyVoteRsp {
 
 message PuStartSpyVoteMsg {
   int64 cur_vote_et = 1; //投票结束时间戳
-  repeated int32 vote_indexs = 2; // 可以投票的麦位
+  repeated int32 voter_indexs = 2; // 投票人麦位
+  repeated int32 voted_indexs = 3; // 可以被投的麦位
 }
 message PuSpyVoteResMsg {// 投票结果push
   repeated int32 eliminate_indexs = 1; // 淘汰列表
