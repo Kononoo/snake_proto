@@ -725,8 +725,8 @@ message SpyInfo {
   string word = 3; // 玩家词语
   bool is_voting = 4; // 是否正在投票中
   int64 cur_vote_et = 5; //当前投票轮次结束时间戳
-  repeated int32 voting_indexs = 6; //当前可以投票的麦位
-  repeated int32 vote_detail = 7; //当前投票的情况
+  repeated int32 voted_indexs = 6; // 当前可以被投票的麦位
+  bool can_vote = 7; // 当前是否可以投票
 }
 
 message AuctionSetting {
