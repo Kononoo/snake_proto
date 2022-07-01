@@ -71,7 +71,7 @@ enum VoiceOpType {
   PuAuctionResult = 121; //拍卖结果push
   PuSpyWord = 122; // 谁是卧底词语push
   PuStartSpyVote = 123;// 开始投票push
-  PuSpyVoteRes = 124; // 投票结果push
+  PuSpyEliminate = 124; // 淘汰push
   PuEndSpyGame = 126; // 房主主动结束游戏push
   PuSpyEndRes = 127; // 游戏结束结果push
   PuPlayTencentCloudMusic = 128; //房主播放、暂停腾讯云音乐推送
@@ -697,7 +697,7 @@ message PuStartSpyVoteMsg {
   repeated int32 voter_indexs = 2; // 投票人麦位
   repeated int32 voted_indexs = 3; // 可以被投的麦位
 }
-message PuSpyVoteResMsg {// 投票结果push
+message PuSpyEliminateMsg {// 淘汰push
   repeated int32 eliminate_indexs = 1; // 淘汰列表
   repeated int32 vote_detail = 2; // 投票详情
 }
