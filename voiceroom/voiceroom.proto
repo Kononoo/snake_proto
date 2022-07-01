@@ -614,6 +614,7 @@ message PuSendGiftMsg {
   string target_uid = 2;
   int32 gift_id = 3;
   int32 gift_num = 4;
+  int32 source = 5; //送礼物场景，拍卖房：27
 }
 
 message SendEmojiReq {
