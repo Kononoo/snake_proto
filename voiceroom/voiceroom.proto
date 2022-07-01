@@ -712,7 +712,7 @@ message PuSpyEndResMsg {// 游戏结束结果push
   string spy_word = 1; // 卧底词汇
   string civilian_word = 2; // 平民词汇
   spyGameRes game_res = 3; // 游戏结果，1
-  repeated string spy_uids = 4; // 卧底uid
+  repeated string winners = 4; // 胜利者uids
 }
 
 message EndSpyGameReq {// 房主主动结束游戏
