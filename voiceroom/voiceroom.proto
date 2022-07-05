@@ -707,6 +707,8 @@ enum spyGameRes {
   gsUndef = 0;
   CivilianWin = 1; // 平民胜利
   SpyWin = 2; // 卧底胜利
+  EndActive = 3; // 主动结束
+  EndAbormal = 4; // 异常结束
 
 }
 message PuSpyEndResMsg {// 游戏结束结果push
