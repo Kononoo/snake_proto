@@ -7586,10 +7586,10 @@ type PuAuctionResultMsg struct {
 	Seller          string `protobuf:"bytes,1,opt,name=seller,proto3" json:"seller,omitempty"`                                             //拍卖者uid
 	Buyer           string `protobuf:"bytes,2,opt,name=buyer,proto3" json:"buyer,omitempty"`                                               //买家uid,为空表示流拍
 	GiftId          int32  `protobuf:"varint,3,opt,name=gift_id,json=giftId,proto3" json:"gift_id,omitempty"`                              //礼物id
-	GiftNum         int32  `protobuf:"varint,4,opt,name=gift_num,json=giftNum,proto3" json:"gift_num,omitempty"`                           //最终送的礼物数量
+	GiftNum         int32  `protobuf:"varint,4,opt,name=gift_num,json=giftNum,proto3" json:"gift_num,omitempty"`                           //最终送的礼物数量(流拍时无意义)
 	LimitGiftId     int32  `protobuf:"varint,5,opt,name=limit_gift_id,json=limitGiftId,proto3" json:"limit_gift_id,omitempty"`             //永久礼物对应的限时礼物id
-	LimitGiftRemain int32  `protobuf:"varint,6,opt,name=limit_gift_remain,json=limitGiftRemain,proto3" json:"limit_gift_remain,omitempty"` //背包中该限时礼物剩余数量
-	GiftRemain      int32  `protobuf:"varint,7,opt,name=gift_remain,json=giftRemain,proto3" json:"gift_remain,omitempty"`                  //背包中该永久礼物剩余数量
+	LimitGiftRemain int32  `protobuf:"varint,6,opt,name=limit_gift_remain,json=limitGiftRemain,proto3" json:"limit_gift_remain,omitempty"` //背包中该限时礼物剩余数量(流拍时无意义)
+	GiftRemain      int32  `protobuf:"varint,7,opt,name=gift_remain,json=giftRemain,proto3" json:"gift_remain,omitempty"`                  //背包中该永久礼物剩余数量(流拍时无意义)
 }
 
 func (x *PuAuctionResultMsg) Reset() {
