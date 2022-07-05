@@ -71,7 +71,7 @@ enum VoiceOpType {
   PuAuctionResult = 121; //拍卖结果push
   PuSpyWord = 122; // 谁是卧底词语push
   PuStartSpyVote = 123;// 开始投票push
-  PuSpyVoteRes = 124; // 投票结果push
+  PuSpyEliminate = 124; // 淘汰push
   PuEndSpyGame = 126; // 房主主动结束游戏push
   PuSpyEndRes = 127; // 游戏结束结果push
   PuPlayTencentCloudMusic = 128; //房主播放、暂停腾讯云音乐推送
@@ -615,6 +615,7 @@ message PuSendGiftMsg {
   string target_uid = 2;
   int32 gift_id = 3;
   int32 gift_num = 4;
+  int32 source = 5; //送礼物场景，拍卖房：27
 }
 
 message SendEmojiReq {
@@ -698,7 +699,7 @@ message PuStartSpyVoteMsg {
   repeated int32 voter_indexs = 2; // 投票人麦位
   repeated int32 voted_indexs = 3; // 可以被投的麦位
 }
-message PuSpyVoteResMsg {// 投票结果push
+message PuSpyEliminateMsg {// 淘汰push
   repeated int32 eliminate_indexs = 1; // 淘汰列表
   repeated int32 vote_detail = 2; // 投票详情
 }
@@ -712,7 +713,7 @@ message PuSpyEndResMsg {// 游戏结束结果push
   string spy_word = 1; // 卧底词汇
   string civilian_word = 2; // 平民词汇
   spyGameRes game_res = 3; // 游戏结果，1
-  repeated string spy_uids = 4; // 卧底uid
+  repeated string winners = 4; // 胜利者uids
 }
 
 message EndSpyGameReq {// 房主主动结束游戏
@@ -776,7 +777,10 @@ message PuAuctionResultMsg {
   string seller = 1; //拍卖者uid
   string buyer = 2; //买家uid,为空表示流拍
   int32 gift_id = 3; //礼物id
-  int32 gift_num = 4; //最终礼物数量
+  int32 gift_num = 4; //最终送的礼物数量(流拍时无意义)
+  int32 limit_gift_id = 5; //永久礼物对应的限时礼物id
+  int32 limit_gift_remain = 6; //背包中该限时礼物剩余数量(流拍时无意义)
+  int32 gift_remain = 7; //背包中该永久礼物剩余数量(流拍时无意义)
 }
 
 enum AuctionState {
