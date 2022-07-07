@@ -780,9 +780,9 @@ message PuAuctionResultMsg {
   string buyer = 2; //买家uid,为空表示流拍
   int32 gift_id = 3; //礼物id
   int32 gift_num = 4; //最终送的礼物数量(流拍时无意义)
-  int32 limit_gift_id = 5; //永久礼物对应的限时礼物id
-  int32 limit_gift_remain = 6; //最后一位出价者当前背包中该限时礼物剩余数量(流拍时无意义)
-  int32 gift_remain = 7; //最后一位出价者当前背包中该永久礼物剩余数量(流拍时无意义)
+  //int32 limit_gift_id = 5; //永久礼物对应的限时礼物id
+  //int32 limit_gift_remain = 6; //最后一位出价者当前背包中该限时礼物剩余数量(流拍时无意义)
+  //int32 gift_remain = 7; //最后一位出价者当前背包中该永久礼物剩余数量(流拍时无意义)
 }
 
 enum AuctionState {
