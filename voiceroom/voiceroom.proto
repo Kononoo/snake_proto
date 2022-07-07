@@ -288,6 +288,7 @@ message adminRoomInfo {
   int32 platform = 9;
   int32 voice_type = 10;
   int64 start_time = 11;
+  int64 charm = 12;
 }
 
 message GetRoomStateReq {
