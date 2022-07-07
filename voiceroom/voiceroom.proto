@@ -75,6 +75,7 @@ enum VoiceOpType {
   PuEndSpyGame = 126; // 房主主动结束游戏push
   PuSpyEndRes = 127; // 游戏结束结果push
   PuPlayTencentCloudMusic = 128; //房主播放、暂停腾讯云音乐推送
+  PuAuctionUnfreeze = 129; // 返还上个出价者预扣资产时的推送
 }
 
 message roomInfo {
@@ -763,6 +764,7 @@ message AuctionBidReq {
   int32 delta = 1; // 拍卖加价数量（增加的数量）
 }
 message AuctionBidRsp {
+  AuctionFreezeInfo freeze_info = 1; //预扣除相关信息
 }
 
 message PuAuctionBidMsg {
@@ -781,8 +783,10 @@ message PuAuctionResultMsg {
   int32 gift_id = 3; //礼物id
   int32 gift_num = 4; //最终送的礼物数量(流拍时无意义)
   int32 limit_gift_id = 5; //永久礼物对应的限时礼物id
-  int32 limit_gift_remain = 6; //背包中该限时礼物剩余数量(流拍时无意义)
-  int32 gift_remain = 7; //背包中该永久礼物剩余数量(流拍时无意义)
+  int32 limit_gift_remain = 6; //最后一位出价者当前背包中该限时礼物剩余数量
+  int32 gift_remain = 7; //最后一位出价者当前背包中该永久礼物剩余数量
+  int32 diamond = 8; //最后一位出价者当前背包中苹果数量
+  string last_buyer = 9; //最后一位出价者
 }
 
 enum AuctionState {
@@ -796,8 +800,24 @@ message AuctionInfo {
   string uid = 2; //当前最高出价者uid
   int32 gift_num = 3; //当前最高出价礼物数
   AuctionState state = 4; //拍卖房状态
+  AuctionFreezeInfo freeze_info = 5; //预扣除相关信息
 }
 
 message PuPlayTencentCloudMusicMsg {
   VoiceRoomTencentCloudMusicInfo music = 1;
+}
+
+message AuctionFreezeInfo {
+  int32 remain_diamond = 1; //可用的苹果数
+  int32 freeze_diamond = 2; //预扣的苹果
+  int32 limit_giftID = 3; //限时礼物id
+  int32 remain_limit_gift = 4; //可用的限时礼物数量
+  int32 freeze_limit_gift = 5; //预扣除的限时礼物数量
+  int32 gift_id = 6; //礼物id
+  int32 remain_gift = 7; //可用的礼物数量
+  int32 freeze_gift = 8; //预扣除的礼物数量
+}
+
+message PuAuctionUnfreezeMsg {
+  AuctionFreezeInfo freeze_info = 1;
 }
