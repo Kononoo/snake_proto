@@ -708,6 +708,8 @@ enum spyGameRes {
   gsUndef = 0;
   CivilianWin = 1; // 平民胜利
   SpyWin = 2; // 卧底胜利
+  EndActive = 3; // 主动结束
+  EndAbormal = 4; // 异常结束
 
 }
 message PuSpyEndResMsg {// 游戏结束结果push
@@ -780,8 +782,8 @@ message PuAuctionResultMsg {
   int32 gift_id = 3; //礼物id
   int32 gift_num = 4; //最终送的礼物数量(流拍时无意义)
   int32 limit_gift_id = 5; //永久礼物对应的限时礼物id
-  int32 limit_gift_remain = 6; //背包中该限时礼物剩余数量(流拍时无意义)
-  int32 gift_remain = 7; //背包中该永久礼物剩余数量(流拍时无意义)
+  int32 limit_gift_remain = 6; //最后一位出价者当前背包中该限时礼物剩余数量(流拍时无意义)
+  int32 gift_remain = 7; //最后一位出价者当前背包中该永久礼物剩余数量(流拍时无意义)
 }
 
 enum AuctionState {
