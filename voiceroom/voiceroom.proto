@@ -438,6 +438,7 @@ message GetRoomListReq {
   int32 page = 2; //第几页，从1开始
   int32 size = 3; //每页多少条
   location pos = 4;
+  int32 mode_version = 5;
 }
 
 message PuRoomBlackUpdateMsg {
