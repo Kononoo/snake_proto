@@ -75,6 +75,7 @@ enum VoiceOpType {
   PuEndSpyGame = 126; // 房主主动结束游戏push
   PuSpyEndRes = 127; // 游戏结束结果push
   PuPlayTencentCloudMusic = 128; //房主播放、暂停腾讯云音乐推送
+  PuSpyGameStart = 129; // 谁是卧底游戏开始全员push
 }
 
 message roomInfo {
@@ -682,6 +683,9 @@ message StartSpyRsp {
 }
 message PuSpyWordMsg {// 下发谁是卧底词汇，每个用户单独push
   string word = 1;
+}
+
+message PuSpyGameStart { // 游戏开始push
 }
 
 message StartSpyVoteReq {
