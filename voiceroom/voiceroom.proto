@@ -685,7 +685,7 @@ message PuSpyWordMsg {// 下发谁是卧底词汇，每个用户单独push
   string word = 1;
 }
 
-message PuSpyGameStart { // 游戏开始push
+message PuSpyGameStartMsg { // 游戏开始push
 }
 
 message StartSpyVoteReq {
