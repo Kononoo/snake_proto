@@ -46,6 +46,7 @@ enum VoiceOpType {
   EndSpyGame = 35; // 房主主动结束游戏
   SpyVote = 36; // 投票
   GetRoomState = 37; // 获取房间在线状态
+  GetNewbieRoom = 38; // 获取萌新房间相关信息
 
   InnerCall = 100; //内部调用接口
   PuUpdateSetting = 101; // 改房间信息push
@@ -76,6 +77,7 @@ enum VoiceOpType {
   PuSpyEndRes = 127; // 游戏结束结果push
   PuPlayTencentCloudMusic = 128; //房主播放、暂停腾讯云音乐推送
   PuSpyGameStart = 129; // 谁是卧底游戏开始全员push
+  PuStarPartyChangeStar = 130; // 星光派对星光值变化时push
 }
 
 message roomInfo {
@@ -94,6 +96,7 @@ message roomInfo {
   AuctionInfo auction = 13; //拍卖相关信息
   VoiceRoomTencentCloudMusicInfo tencent_cloud_music = 14; //正在播放的腾讯云音乐
   SpyInfo spy_info = 15; // 谁是卧底相关
+  StarParty star_party = 16; //星光派对
 }
 
 enum voiceRoomMusicStatus {
@@ -101,6 +104,11 @@ enum voiceRoomMusicStatus {
   Open = 1; //播放
   Pause = 2; //暂停
   Close = 3; //关闭
+}
+
+message StarParty {
+  int32 current_star = 1; // 当前星光值，活动未开启时为0
+  int32 total_star = 2; // 当前总星光值，活动未开启时为0
 }
 
 message VoiceRoomTencentCloudMusicInfo {
@@ -461,6 +469,7 @@ message RoomListItem {
   string owner_id = 12; //房主uid
   int32 sst_status = 13; //1：是sst认证
   repeated string avatar_list = 14; //头像列表，推荐列表中展示房间内top6魅力值头像
+  bool is_newbie_room = 15; // 是否是萌新房间
 }
 
 message GetRoomListRsp {
@@ -806,4 +815,18 @@ message AuctionInfo {
 
 message PuPlayTencentCloudMusicMsg {
   VoiceRoomTencentCloudMusicInfo music = 1;
+}
+
+message PuStarPartyChangeStarMsg {
+  int32 current_star = 1; // 当前星光值
+  int32 total_star = 2; // 当前总星光值
+  int32 old_lv = 3; // 星光值变化前的等级
+  int32 new_lv = 4; // 星光值变化后的等级
+}
+
+message GetNewbieRoomReq {
+}
+message GetNewbieRoomRsp {
+  bool is_newbie = 1; // 是否是萌新用户
+  int32 newbie_room_id = 2; //萌新房间id 房间不存在时为0
 }
