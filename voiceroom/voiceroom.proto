@@ -78,6 +78,7 @@ enum VoiceOpType {
   PuPlayTencentCloudMusic = 128; //房主播放、暂停腾讯云音乐推送
   PuSpyGameStart = 129; // 谁是卧底游戏开始全员push
   PuStarPartyChangeStar = 130; // 星光派对星光值变化时push
+  PuEnterEffects = 131; // 用户入场特效push
 }
 
 message roomInfo {
@@ -197,12 +198,18 @@ message EnterRoomReq {
   int32 mode_version = 5;
   bool recover = 6; // cut恢复时为true
   int32 source = 7; // 1:休闲区首页 2:他人邀请 3:跟房（个人资料页、好友列表）4:附近的人 5:搜索进入
+  int64 enter_effects = 8; //用户入场特效
 }
 
 message EnterRoomRsp {
   bool need_password = 1; // 如果需要密码但是没传的，这里返回true，没有roomInfo
   roomInfo room = 2;
   int64 ban_timestamp = 3; //封禁时间戳，-1永久封禁
+}
+
+message PuEnterEffectsMsg {// 入场特效push
+  string uid = 1;
+  int64 effect_id = 2;
 }
 
 message UpdateSettingReq {
