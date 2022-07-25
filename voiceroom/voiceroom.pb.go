@@ -927,8 +927,8 @@ type StarParty struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CurrentStar int32 `protobuf:"varint,1,opt,name=current_star,json=currentStar,proto3" json:"current_star,omitempty"` // 当前星光值，活动未开启时为0
-	TotalStar   int32 `protobuf:"varint,2,opt,name=total_star,json=totalStar,proto3" json:"total_star,omitempty"`       // 当前总星光值，活动未开启时为0
+	CurrentStar int32 `protobuf:"varint,1,opt,name=current_star,json=currentStar,proto3" json:"current_star,omitempty"` // 当前星光值，不在活动时间内为0
+	TotalStar   int32 `protobuf:"varint,2,opt,name=total_star,json=totalStar,proto3" json:"total_star,omitempty"`       // 当前总星光值，不在活动时间内为0
 }
 
 func (x *StarParty) Reset() {
@@ -7986,8 +7986,8 @@ type PuStarPartyChangeStarMsg struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	CurrentStar int32 `protobuf:"varint,1,opt,name=current_star,json=currentStar,proto3" json:"current_star,omitempty"` // 当前星光值
-	TotalStar   int32 `protobuf:"varint,2,opt,name=total_star,json=totalStar,proto3" json:"total_star,omitempty"`       // 当前总星光值
+	CurrentStar int32 `protobuf:"varint,1,opt,name=current_star,json=currentStar,proto3" json:"current_star,omitempty"` // 当前星光值，不在活动时间内为0
+	TotalStar   int32 `protobuf:"varint,2,opt,name=total_star,json=totalStar,proto3" json:"total_star,omitempty"`       // 当前总星光值，不在活动时间内为0
 	OldLv       int32 `protobuf:"varint,3,opt,name=old_lv,json=oldLv,proto3" json:"old_lv,omitempty"`                   // 星光值变化前的等级
 	NewLv       int32 `protobuf:"varint,4,opt,name=new_lv,json=newLv,proto3" json:"new_lv,omitempty"`                   // 星光值变化后的等级
 }
