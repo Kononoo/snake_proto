@@ -108,8 +108,8 @@ enum voiceRoomMusicStatus {
 }
 
 message StarParty {
-  int32 current_star = 1; // 当前星光值，活动未开启时为0
-  int32 total_star = 2; // 当前总星光值，活动未开启时为0
+  int32 current_star = 1; // 当前星光值，不在活动时间内为0
+  int32 total_star = 2; // 当前总星光值，不在活动时间内为0
 }
 
 message VoiceRoomTencentCloudMusicInfo {
@@ -832,8 +832,8 @@ message PuPlayTencentCloudMusicMsg {
 }
 
 message PuStarPartyChangeStarMsg {
-  int32 current_star = 1; // 当前星光值
-  int32 total_star = 2; // 当前总星光值
+  int32 current_star = 1; // 当前星光值，不在活动时间内为0
+  int32 total_star = 2; // 当前总星光值，不在活动时间内为0
   int32 old_lv = 3; // 星光值变化前的等级
   int32 new_lv = 4; // 星光值变化后的等级
 }
