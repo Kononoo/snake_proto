@@ -78,7 +78,7 @@ enum VoiceOpType {
   PuPlayTencentCloudMusic = 128; //房主播放、暂停腾讯云音乐推送
   PuSpyGameStart = 129; // 谁是卧底游戏开始全员push
   PuStarPartyChangeStar = 130; // 星光派对星光值变化时push
-  PuEnterEffects = 131; // 用户入场特效push
+//  PuEnterEffects = 131; // 用户入场特效push 已废弃
 }
 
 message roomInfo {
@@ -207,11 +207,6 @@ message EnterRoomRsp {
   int64 ban_timestamp = 3; //封禁时间戳，-1永久封禁
 }
 
-message PuEnterEffectsMsg {// 入场特效push
-  string uid = 1;
-  int64 effect_id = 2;
-}
-
 message UpdateSettingReq {
   roomSetting setting = 1; //传全量数据
 }
@@ -323,6 +318,18 @@ message playerChangeItem {
 message PuPlayerChangeMsg {
   //  repeated playerChangeItem change_list = 1;
   int32 online_player = 2; //最新的在线人数
+  PlayerChangeDetail detail = 3;
+}
+
+message PlayerChangeDetail {
+  string uid = 1;
+  int32 type = 2; //1加入，2退出
+  int64 effect_id = 3;
+}
+
+message PuEnterEffectsMsg {// 入场特效push 已废弃
+  string uid = 1;
+  int64 effect_id = 2;
 }
 
 message PuSeatChangeMsg {
