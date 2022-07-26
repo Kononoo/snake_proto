@@ -176,6 +176,8 @@ message NewRoomReq {
   location pos = 2;
   int32 show = 3;
   int32 mode_version = 4; // 第一版40001
+  int64 enter_effects = 5; // 用户入场特效
+  int64 userinfo_bg = 6; // 用户个人资料背景
 }
 
 message NewRoomRsp {
@@ -198,7 +200,8 @@ message EnterRoomReq {
   int32 mode_version = 5;
   bool recover = 6; // cut恢复时为true
   int32 source = 7; // 1:休闲区首页 2:他人邀请 3:跟房（个人资料页、好友列表）4:附近的人 5:搜索进入
-  int64 enter_effects = 8; //用户入场特效
+  int64 enter_effects = 8; // 用户入场特效
+  int64 userinfo_bg = 9; // 用户个人资料背景
 }
 
 message EnterRoomRsp {
