@@ -273,6 +273,7 @@ enum innerCallType {
   VoiceRoomPushAlert = 7;
   UserVoiceRoomExit = 8;
   UserVoiceRoomMsg = 9;
+  MGetRidByUID = 10; // 批量获取玩家所在的房间id
 }
 
 message InnerCallReq {
