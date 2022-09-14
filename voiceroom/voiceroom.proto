@@ -773,7 +773,7 @@ message SpyInfo {
 }
 
 message SendRocketReq {
-  string send_uid = 1; //送火箭玩家uid
+  SendGiftInfo info = 1;
 }
 
 message SendRocketRsp {
