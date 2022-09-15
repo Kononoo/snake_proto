@@ -51,6 +51,7 @@ enum VoiceOpType {
   SendRocket = 40; // 送火箭
   SendFuel = 41; // 送燃料
   GetRocketState = 42; //获取火箭状态信息
+  GetMemberListV2 = 43; // 获取房间内成员列表
 
   InnerCall = 100; //内部调用接口
   PuUpdateSetting = 101; // 改房间信息push
@@ -84,6 +85,7 @@ enum VoiceOpType {
   PuStarPartyChangeStar = 130; // 星光派对星光值变化时push
   PuRocketLevelUp = 131; // 火箭升级push
   PuRocketReward = 132; // 火箭奖励结算push
+  PuTopMemberScore = 133; // 房间成员前三守护值push
 }
 
 message roomInfo {
@@ -909,4 +911,22 @@ message MGetRidByUIDReq {
 }
 message MGetRidByUIDRsp {
   map<string, int32> rids = 1;
+}
+
+message GetMemberListV2Req {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message MemberListItemV2 {
+  string uid = 1;
+  int64 score = 2;
+}
+
+message GetMemberListV2Rsp {
+  repeated MemberListItemV2 members = 1;
+}
+
+message PuTopMemberScoreMsg {
+  repeated MemberListItemV2 top_members = 1;
 }
