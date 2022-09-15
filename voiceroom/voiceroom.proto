@@ -789,7 +789,7 @@ message PuRocketMsg {
 }
 
 message SendFuelReq {
-  string send_uid = 1; //送燃料玩家uid
+  SendGiftInfo info = 1;
 }
 
 message SendFuelRsp {
