@@ -821,7 +821,7 @@ message GetRocketStateReq {
 
 message GetRocketStateRsp {
   int32 rocket_level = 1; // 当前火箭等级(阶段)
-  int32 need_fuel = 2; // 当前需要燃料数升级
+  int32 total_fuel = 2; // 当前燃料总数
   int64 fuel_count = 3; // 当前个人送出总燃料数
   repeated MarqueeItem marquee = 4; // 跑马灯数据
 }
