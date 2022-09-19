@@ -796,6 +796,7 @@ message SendFuelRsp {
   int64 fuel_count = 1; // 当前个人送出总燃料数
   int32 rocket_level = 2; // 当前火箭等级(阶段)
   int64 total_fuel = 3; // 当前总燃料数
+  SendGiftRspInfo gift_info = 4;
 }
 
 message PuRocketRewardMsg {
@@ -806,6 +807,7 @@ message SimpleReward {
   string name = 1;
   string imgurl = 2;
   int64 num = 3;
+  int32 level = 4;
 }
 
 message MarqueeItem {
