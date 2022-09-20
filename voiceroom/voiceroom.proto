@@ -105,6 +105,7 @@ message roomInfo {
   VoiceRoomTencentCloudMusicInfo tencent_cloud_music = 14; //正在播放的腾讯云音乐
   SpyInfo spy_info = 15; // 谁是卧底相关
   StarParty star_party = 16; //星光派对
+  RocketInfo rocket_info = 17; // 火箭房相关
 }
 
 enum voiceRoomMusicStatus {
@@ -824,6 +825,12 @@ message GetRocketStateRsp {
   int64 total_fuel = 2; // 当前燃料总数
   int64 fuel_count = 3; // 当前个人送出总燃料数
   repeated MarqueeItem marquee = 4; // 跑马灯数据
+}
+
+message RocketInfo {
+  string rocket_uid = 1; // 送火箭玩家的uid
+  int32 rocket_level = 2; // 当前火箭等级
+  int32 level_act_sec = 3; // 当前火箭等级还剩多少秒结束
 }
 
 
