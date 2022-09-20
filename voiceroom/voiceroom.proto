@@ -495,6 +495,7 @@ message RoomListItem {
   int32 sst_status = 13; //1：是sst认证
   repeated string avatar_list = 14; //头像列表，推荐列表中展示房间内top6魅力值头像
   bool is_newbie_room = 15; // 是否是萌新房间
+  int32 rocket_status = 16; //1：是火箭房
 }
 
 message GetRoomListRsp {
