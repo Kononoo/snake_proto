@@ -781,6 +781,7 @@ message SendRocketReq {
 }
 
 message SendRocketRsp {
+  SendGiftRspInfo gift_info = 1;
 }
 
 message PuRocketMsg {
