@@ -786,6 +786,7 @@ message PuRocketMsg {
   int32 countdown = 2; // 当前阶段倒计时(秒)
   string toast_msg = 3; // toast显示信息
   int32 pool_index = 4; //当前奖池索引(默认0)
+  string rocket_uid = 5; // 送火箭玩家uid
 }
 
 message SendFuelReq {
