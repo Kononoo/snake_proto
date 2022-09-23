@@ -828,6 +828,7 @@ message GetRocketStateRsp {
   int64 cur_level_fuel = 2; // 当前等级燃料数
   int64 fuel_count = 3; // 当前个人送出总燃料数
   repeated MarqueeItem marquee = 4; // 跑马灯数据
+  int32 pool_index = 5; //当前奖池索引
 }
 
 message RocketInfo {
