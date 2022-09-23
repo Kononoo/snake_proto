@@ -796,7 +796,7 @@ message SendFuelReq {
 message SendFuelRsp {
   int64 fuel_count = 1; // 当前个人送出总燃料数
   int32 rocket_level = 2; // 当前火箭等级(阶段)
-  int64 total_fuel = 3; // 当前总燃料数
+  int64 cur_level_fuel = 3; // 当前等级燃料数
   SendGiftRspInfo gift_info = 4;
 }
 
@@ -822,7 +822,7 @@ message GetRocketStateReq {
 
 message GetRocketStateRsp {
   int32 rocket_level = 1; // 当前火箭等级(阶段)
-  int64 total_fuel = 2; // 当前燃料总数
+  int64 cur_level_fuel = 2; // 当前等级燃料数
   int64 fuel_count = 3; // 当前个人送出总燃料数
   repeated MarqueeItem marquee = 4; // 跑马灯数据
 }
