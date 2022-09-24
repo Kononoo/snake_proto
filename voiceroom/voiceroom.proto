@@ -52,6 +52,7 @@ enum VoiceOpType {
   SendFuel = 41; // 送燃料
   GetRocketState = 42; //获取火箭状态信息
   GetMemberListV2 = 43; // 获取房间内成员列表
+  AuctionDiamondMsg = 44;// 拍卖房暴苹果消息通知
 
   InnerCall = 100; //内部调用接口
   PuUpdateSetting = 101; // 改房间信息push
@@ -945,4 +946,13 @@ message GetMemberListV2Rsp {
 
 message PuTopMemberScoreMsg {
   repeated MemberListItemV2 top_members = 1;
+}
+
+message AuctionDiamondMsgReq{
+  string host_uid = 1;
+  string msg = 2;
+  bool to_all = 3;
+}
+
+message AuctionDiamondMsgRsp{
 }
