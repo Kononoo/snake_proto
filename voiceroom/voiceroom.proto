@@ -720,7 +720,7 @@ message PuSpyWordMsg {// 下发谁是卧底词汇，每个用户单独push
   string word = 1;
 }
 
-message PuSpyGameStartMsg { // 游戏开始push
+message PuSpyGameStartMsg {// 游戏开始push
 }
 
 message StartSpyVoteReq {
@@ -812,6 +812,9 @@ message SimpleReward {
   string imgurl = 2;
   int64 num = 3;
   int32 level = 4;
+  int32 type = 5;
+  int32 skin_id = 6;
+  string use_info = 7;
 }
 
 message MarqueeItem {
