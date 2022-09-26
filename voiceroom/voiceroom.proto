@@ -952,6 +952,7 @@ message AuctionDiamondMsgReq{
   string host_uid = 1;
   string msg = 2;
   bool to_all = 3;
+  int32 platform = 4;
 }
 
 message AuctionDiamondMsgRsp{
