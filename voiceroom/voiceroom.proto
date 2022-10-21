@@ -953,6 +953,7 @@ message AuctionDiamondMsgReq{
   string msg = 2;
   bool to_all = 3;
   int32 platform = 4;
+  bool ignore_private = 5;
 }
 
 message AuctionDiamondMsgRsp{
