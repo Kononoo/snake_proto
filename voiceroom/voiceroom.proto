@@ -107,6 +107,7 @@ message roomInfo {
   SpyInfo spy_info = 15; // 谁是卧底相关
   StarParty star_party = 16; //星光派对
   RocketInfo rocket_info = 17; // 火箭房相关
+  int32 charm_exp_level = 18; // 房主魅力值勋章等级
 }
 
 enum voiceRoomMusicStatus {
@@ -497,6 +498,7 @@ message RoomListItem {
   repeated string avatar_list = 14; //头像列表，推荐列表中展示房间内top6魅力值头像
   bool is_newbie_room = 15; // 是否是萌新房间
   int32 rocket_status = 16; //1：是火箭房
+  int32 charm_exp_level = 17; // 房主魅力值勋章等级
 }
 
 message GetRoomListRsp {
