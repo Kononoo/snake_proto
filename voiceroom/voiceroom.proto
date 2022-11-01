@@ -87,6 +87,7 @@ enum VoiceOpType {
   PuRocketLevelUp = 131; // 火箭升级push
   PuRocketReward = 132; // 火箭奖励结算push
   PuTopMemberScore = 133; // 房间成员前三守护值push
+  PuCharmExpLevel = 134; // 房主魅力勋章等级变化push
 }
 
 message roomInfo {
@@ -271,7 +272,7 @@ message PuLotteryResultMsg {
   repeated string lucky_uids = 2; //中奖人员
 }
 //1: 获取房间信息，2：封禁语音房上麦，3：语音房间解散，4：重置语音房间房名，5：重置语音房间公告，6：用户当前房间拉下推荐
-//7：push房间公告，8：踢出房间，9：发送个人消息
+//7：push房间公告，8：踢出房间，9：发送个人消息, 10：push房主魅力勋章等级变化
 enum innerCallType {
   icUndef = 0;
   GetRoomInfo = 1;
@@ -283,6 +284,7 @@ enum innerCallType {
   VoiceRoomPushAlert = 7;
   UserVoiceRoomExit = 8;
   UserVoiceRoomMsg = 9;
+  UpdateCharmExpLevel = 10;
 }
 
 message InnerCallReq {
@@ -959,4 +961,8 @@ message AuctionDiamondMsgReq{
 }
 
 message AuctionDiamondMsgRsp{
+}
+
+message PuPuCharmExpLevelMsg {
+  int32 charm_exp_level = 1;
 }
