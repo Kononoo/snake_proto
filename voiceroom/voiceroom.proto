@@ -536,6 +536,7 @@ message SearchRoomRsp {
   int32 charm = 14; //房主魅力值
   int32 star = 15; //段位
   repeated topShowMember top_member = 16;
+  int32 charm_exp_level = 17; // 魅力勋章等级
 }
 
 enum PkType {
