@@ -444,6 +444,7 @@ message userGeoInfo {
   int32 show = 6;
   int32 distance = 7; //距离米
   int32 room_id = 8;
+  int32 charm_exp_level = 9;
 }
 
 message GetNearbyReq {
