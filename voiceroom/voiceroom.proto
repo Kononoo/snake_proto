@@ -867,9 +867,11 @@ message PuAuctionSettingMsg {
 message StartAuctionReq {
 }
 message StartAuctionRsp {
+  int32 discount = 1; //礼物折扣，0和100表示原价
 }
 
 message PuStartAuctionMsg {
+  int32 discount = 1; //礼物折扣，0和100表示原价
 }
 
 message AuctionBidReq {
@@ -909,6 +911,7 @@ message AuctionInfo {
   string uid = 2; //当前最高出价者uid
   int32 gift_num = 3; //当前最高出价礼物数
   AuctionState state = 4; //拍卖房状态
+  int32 discount = 5; //礼物折扣，0和100表示原价
 }
 
 message PuPlayTencentCloudMusicMsg {
