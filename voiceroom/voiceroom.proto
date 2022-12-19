@@ -294,6 +294,7 @@ message InnerCallReq {
   string uid = 4;
   string msg = 5;
   int32 time = 6;
+  string ext = 7;
 }
 
 message InnerCallRsp {
