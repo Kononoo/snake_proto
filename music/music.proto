@@ -105,10 +105,12 @@ message SearchTencentCloudMusicReq {
   string key_word = 1; //搜索关键词
   int32 page = 2; //第几页，从1开始
   int32 size = 3; //最大为100
+  string scroll_token = 4;// 翻页token
 }
 message SearchTencentCloudMusicRsp {
   repeated TencentCloudMusicBaseInfo musics = 1; //音乐基础信息
   int32 total = 2;//总数
+  string scroll_token = 3;// 翻页token
 }
 
 message UpdateTencentCloudFavoriteMusicReq {
