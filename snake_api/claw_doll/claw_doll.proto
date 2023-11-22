@@ -5,78 +5,10 @@ package class_doll;
 option go_package = "git.17zjh.com/snake/snake_proto/snake_api/claw_doll";
 option objc_class_prefix = "SNKPBCLAWDOLL";
 
-enum ClawDollOpType {
-   cdUndef = 0;
-   GetInfo = 1;
-   DoClaw = 2;
-   OpenGiftBox = 3;
-   ClasHistory = 4;
-   BuyClawCoin = 5;
-   GetAdRewards = 6;
-   GetTaskRewards = 7;
-}
-
-// 通用请求结构
-message CommonReq {
-   string uid = 1;           // uid
-   string sid = 2;           // sid
-   Platform platform = 3;    // 操作系统平台
-   string device_id = 4;     // 设备id
-   string market = 5;        // 渠道
-   string version = 6;       // 客户端版本 5.x.x
-   string api_source = 7;    // 请求来源, unity, h5, ..
-}
-
-enum Platform {
-   UnknownPlatform = 0;
-   Ios = 1;
-   Android = 2;
-}
-
-// 奖励
-message RewardItem {
-   int32 type = 1;                     // 奖励类型
-   int32 skin_id = 2;                  // 奖励 id
-   int64 num = 3;                      // 奖励数量
-   optional string big_num = 4;        // 奖励数量，大数
-   string name = 5;                    // 奖励名称
-   optional string use_info = 6;       // 有效期，单位秒
-   optional int32 index = 7;           // 奖励序号
-   int32 worth_level = 8;              // 稀有度
-   optional int32 mark_id = 9;         // 来源标签id
-   repeated Convert convert = 10;      // 奖励折算
-}
-
-// 奖励折算结构
-message Convert {
-   int32 type = 1;     // 类型
-   int64 num = 2;      // 数量
-   int32 skin_id = 3;  // id
-}
-
-// 任务信息
-message EventTask {
-   int32 task_id = 1;                          // 任务id
-   int32 event_id = 2;                         // 任务所属任务活动id
-   int64 need_num = 3;                         // 所属数量
-   string desc = 4;                            // 任务描述，将 {} 替换成 need_num
-   string btn_link = 5;                        // 跳转链接
-   string btn_type = 6;                        // 跳转类型
-   TaskState state = 7;                        // 任务状态
-   int64 progress_num = 8;                     // 玩家进度
-   repeated RewardItem reward_item_list = 9;   // 奖励列表
-}
-
-// 任务状态
-enum TaskState {
-   UnDef     = 0;     // 未定义
-   Init      = 1;     // 初始化
-   CanReward = 2;     // 可领奖
-   Finish    = 3;     // 已领奖
-}
+import "snake_api/base.proto";
 
 message GetInfoReq {
-   CommonReq common = 1;
+  base.CommonReq common = 1;
 }
 
 message GetInfoResp {
@@ -87,7 +19,7 @@ message GetInfoResp {
    repeated ClawBeltRewardItem belt_rewards = 5;   // 传送带上的奖励情况
    int64 ad_watch_times = 6;                       // 广告已看次数
    int64 ad_can_reward = 7;                        // 是否可以领取广告奖励
-   repeated EventTask task_infos = 8;              // 任务信息
+   repeated base.EventTask task_infos = 8;              // 任务信息
    bool begin = 9;                                 // 是否完成新手引导
    repeated ClawBigRewardList big_reward_list = 10;// 奖励大赏列表
 }
@@ -119,7 +51,7 @@ message Reward_list {
 }
 
 message DoClawReq {
-   CommonReq common = 1;
+  base.CommonReq common = 1;
    int32 pos = 2;        // 夹中的位置
    int32 reward_id = 3;  // 夹中的奖励id，未夹中传0
 }
@@ -131,16 +63,16 @@ message DoClawResp {
 }
 
 message OpenGiftBoxReq {
-   CommonReq common = 1;
+  base.CommonReq common = 1;
 }
 
 message OpenGiftBoxResp {
-   repeated RewardItem reward_item = 1;    // 奖励列表
+   repeated base.RewardItem reward_item = 1;    // 奖励列表
    int64 next_gift_box_time = 2;           // 下一个可以领取礼物盒的时间
 }
 
 message HistoryReq {
-   CommonReq common = 1;
+  base.CommonReq common = 1;
 }
 
 message HistoryResp {
@@ -154,7 +86,7 @@ message History {
 
 
 message BuyClawCoinReq {
-   CommonReq common = 1;
+   base.CommonReq common = 1;
    int32 PackId = 2;    // 苹果礼包id
 }
 
@@ -164,22 +96,22 @@ message BuyClawCoinResp {
 }
 
 message GetAdRewardsReq {
-   CommonReq common = 1;
+  base.CommonReq common = 1;
 }
 
 message GetAdRewardsResp {
-   repeated RewardItem rewards = 1;  // 奖励列表
+   repeated base.RewardItem rewards = 1;  // 奖励列表
    int64 claw_coin_count = 2;        // 娃娃币数量
 }
 
 message GetTaskRewardsReq {
-   CommonReq common = 1;
+   base.CommonReq common = 1;
    int32 event_id = 2;   // 任务活动id
    int32 task_id = 3;    // 任务id
 }
 
 message GetTaskRewardsResp {
-   repeated RewardItem rewards = 1;  // 奖励列表
+   repeated base.RewardItem rewards = 1;  // 奖励列表
    int64 claw_coin_count = 2;        // 娃娃币数量
 }
 
