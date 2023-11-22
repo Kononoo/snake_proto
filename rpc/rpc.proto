@@ -92,19 +92,7 @@ service MusicServer {
   }
 }
 
-service ClawDollServer {
-  rpc GetInfo (rpcReqParam) returns (rpcRspData) {
-  }
-  rpc DoClaw (rpcReqParam) returns (rpcRspData) {
-  }
-  rpc OpenGiftBox (rpcReqParam) returns (rpcRspData) {
-  }
-  rpc ClasHistory (rpcReqParam) returns (rpcRspData) {
-  }
-  rpc BuyClawCoin (rpcReqParam) returns (rpcRspData) {
-  }
-  rpc GetAdRewards (rpcReqParam) returns (rpcRspData) {
-  }
-  rpc GetTaskRewards (rpcReqParam) returns (rpcRspData) {
+service SnakeApiServer {
+  rpc commonReq (rpcReqParam) returns (rpcRspData) {
   }
 }
