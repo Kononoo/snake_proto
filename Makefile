@@ -1,7 +1,7 @@
 
-.PHONY: rpc voiceroom music
+.PHONY: rpc voiceroom music snakeapi
 
-all: rpc voiceroom music
+all: rpc voiceroom music snakeapi
 
 rpc:
 	protoc --proto_path=. --go_out=. --go_opt=paths=source_relative \
