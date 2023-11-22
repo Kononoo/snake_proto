@@ -8,4 +8,5 @@ enum cmd {
   Undef = 0;
   VoiceRoom = 1;
   Music = 2;
+  SnakeApi = 3;
 }
