@@ -5,10 +5,10 @@ package class_doll;
 option go_package = "git.17zjh.com/snake/snake_proto/snake_api/claw_doll";
 option objc_class_prefix = "SNKPBCLAWDOLL";
 
-import "snake_api/base.proto";
+import "snakeapi/base.proto";
 
 message GetInfoReq {
-  base.CommonReq common = 1;
+  snakeapi.CommonReq common = 1;
 }
 
 message GetInfoResp {
@@ -19,7 +19,7 @@ message GetInfoResp {
    repeated ClawBeltRewardItem belt_rewards = 5;   // 传送带上的奖励情况
    int64 ad_watch_times = 6;                       // 广告已看次数
    int64 ad_can_reward = 7;                        // 是否可以领取广告奖励
-   repeated base.EventTask task_infos = 8;              // 任务信息
+   repeated snakeapi.EventTask task_infos = 8;              // 任务信息
    bool begin = 9;                                 // 是否完成新手引导
    repeated ClawBigRewardList big_reward_list = 10;// 奖励大赏列表
 }
@@ -51,7 +51,7 @@ message Reward_list {
 }
 
 message DoClawReq {
-  base.CommonReq common = 1;
+   snakeapi.CommonReq common = 1;
    int32 pos = 2;        // 夹中的位置
    int32 reward_id = 3;  // 夹中的奖励id，未夹中传0
 }
@@ -63,16 +63,16 @@ message DoClawResp {
 }
 
 message OpenGiftBoxReq {
-  base.CommonReq common = 1;
+  snakeapi.CommonReq common = 1;
 }
 
 message OpenGiftBoxResp {
-   repeated base.RewardItem reward_item = 1;    // 奖励列表
+   repeated snakeapi.RewardItem reward_item = 1;    // 奖励列表
    int64 next_gift_box_time = 2;           // 下一个可以领取礼物盒的时间
 }
 
 message HistoryReq {
-  base.CommonReq common = 1;
+  snakeapi.CommonReq common = 1;
 }
 
 message HistoryResp {
@@ -86,7 +86,7 @@ message History {
 
 
 message BuyClawCoinReq {
-   base.CommonReq common = 1;
+   snakeapi.CommonReq common = 1;
    int32 PackId = 2;    // 苹果礼包id
 }
 
@@ -96,22 +96,22 @@ message BuyClawCoinResp {
 }
 
 message GetAdRewardsReq {
-  base.CommonReq common = 1;
+   snakeapi.CommonReq common = 1;
 }
 
 message GetAdRewardsResp {
-   repeated base.RewardItem rewards = 1;  // 奖励列表
+   repeated snakeapi.RewardItem rewards = 1;  // 奖励列表
    int64 claw_coin_count = 2;        // 娃娃币数量
 }
 
 message GetTaskRewardsReq {
-   base.CommonReq common = 1;
+   snakeapi.CommonReq common = 1;
    int32 event_id = 2;   // 任务活动id
    int32 task_id = 3;    // 任务id
 }
 
 message GetTaskRewardsResp {
-   repeated base.RewardItem rewards = 1;  // 奖励列表
+   repeated snakeapi.RewardItem rewards = 1;  // 奖励列表
    int64 claw_coin_count = 2;        // 娃娃币数量
 }
 
