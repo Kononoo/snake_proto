@@ -1,0 +1,133 @@
+syntax = "proto3";
+
+package class_doll;
+
+option go_package = "git.17zjh.com/snake/snake_proto/snake_api/claw_doll";
+option objc_class_prefix = "SNKPBCLAWDOLL";
+
+import "snake_api/base.proto";
+
+message GetInfoReq {
+  base.CommonReq common = 1;
+}
+
+message GetInfoResp {
+   int64 diamond_count = 1;                        // 苹果数量
+   int64 claw_coin_count = 2;                      // 娃娃币数量
+   int32 claw_progress = 3;                        // 抓取进度(0~100)
+   int64 next_gift_box_time = 4;                   // 下一个可以领取礼物盒的时间
+   repeated ClawBeltRewardItem belt_rewards = 5;   // 传送带上的奖励情况
+   int64 ad_watch_times = 6;                       // 广告已看次数
+   int64 ad_can_reward = 7;                        // 是否可以领取广告奖励
+   repeated base.EventTask task_infos = 8;              // 任务信息
+   bool begin = 9;                                 // 是否完成新手引导
+   repeated ClawBigRewardList big_reward_list = 10;// 奖励大赏列表
+}
+
+message ClawBeltRewardItem {
+   int32        pos = 1;              // 奖励的位置
+   int32        reward_id = 2;        // 奖励序号，每个奖励有一个唯一序号
+   RewardState  reward_state = 3;    //  奖励的状态
+   int64        end_time = 4;        //  下次补货时间、预售开启时间
+}
+
+// 奖励状态
+enum RewardState {
+   Undef      = 0;
+   Available  = 1;  // 可抓取
+   Restock    = 2;  // 补货中
+   NotOnline  = 3;  // 等待上线
+}
+
+message ClawBigRewardList {
+   string type = 1;
+   int32 got = 2;
+   int32 all = 3;
+   repeated Reward_list reward_list = 4;
+}
+message Reward_list {
+   int32 reward_id = 1;
+   bool got = 2;
+}
+
+message DoClawReq {
+  base.CommonReq common = 1;
+   int32 pos = 2;        // 夹中的位置
+   int32 reward_id = 3;  // 夹中的奖励id，未夹中传0
+}
+
+message DoClawResp {
+   int32 claw_progress = 1;        // 抓取进度(0~100)
+   int32 claw_coin_count = 2;      // 玩家剩余娃娃币
+   ClawBeltRewardItem belt_reward = 3; // 夹中的位置的奖励新信息
+}
+
+message OpenGiftBoxReq {
+  base.CommonReq common = 1;
+}
+
+message OpenGiftBoxResp {
+   repeated base.RewardItem reward_item = 1;    // 奖励列表
+   int64 next_gift_box_time = 2;           // 下一个可以领取礼物盒的时间
+}
+
+message HistoryReq {
+  base.CommonReq common = 1;
+}
+
+message HistoryResp {
+   repeated History history = 1;
+}
+
+message History {
+   int64 timestamp = 1;
+   int32 reward_id = 2;
+}
+
+
+message BuyClawCoinReq {
+   base.CommonReq common = 1;
+   int32 PackId = 2;    // 苹果礼包id
+}
+
+message BuyClawCoinResp {
+   int64 diamond_count = 1;        // 苹果数量
+   int64 claw_coin_count = 2;      // 玩家剩余娃娃币
+}
+
+message GetAdRewardsReq {
+  base.CommonReq common = 1;
+}
+
+message GetAdRewardsResp {
+   repeated base.RewardItem rewards = 1;  // 奖励列表
+   int64 claw_coin_count = 2;        // 娃娃币数量
+}
+
+message GetTaskRewardsReq {
+   base.CommonReq common = 1;
+   int32 event_id = 2;   // 任务活动id
+   int32 task_id = 3;    // 任务id
+}
+
+message GetTaskRewardsResp {
+   repeated base.RewardItem rewards = 1;  // 奖励列表
+   int64 claw_coin_count = 2;        // 娃娃币数量
+}
+
+service ClawDollServer {
+    rpc GetInfo (GetInfoReq) returns (GetInfoResp) {
+    }
+    rpc DoClaw (DoClawReq) returns (DoClawResp) {
+    }
+    rpc OpenGiftBox (OpenGiftBoxReq) returns (OpenGiftBoxResp) {
+    }
+    rpc ClasHistory (HistoryReq) returns (HistoryResp) {
+    }
+    rpc BuyClawCoin (BuyClawCoinReq) returns (BuyClawCoinResp) {
+    }
+    rpc GetAdRewards (GetAdRewardsReq) returns (GetAdRewardsResp) {
+    }
+    rpc GetTaskRewards (GetTaskRewardsReq) returns (GetTaskRewardsResp) {
+    }
+}
