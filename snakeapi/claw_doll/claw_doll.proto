@@ -114,20 +114,3 @@ message GetTaskRewardsResp {
    repeated snakeapi.RewardItem rewards = 1;  // 奖励列表
    int64 claw_coin_count = 2;        // 娃娃币数量
 }
-
-service ClawDollServer {
-    rpc GetInfo (GetInfoReq) returns (GetInfoResp) {
-    }
-    rpc DoClaw (DoClawReq) returns (DoClawResp) {
-    }
-    rpc OpenGiftBox (OpenGiftBoxReq) returns (OpenGiftBoxResp) {
-    }
-    rpc ClasHistory (HistoryReq) returns (HistoryResp) {
-    }
-    rpc BuyClawCoin (BuyClawCoinReq) returns (BuyClawCoinResp) {
-    }
-    rpc GetAdRewards (GetAdRewardsReq) returns (GetAdRewardsResp) {
-    }
-    rpc GetTaskRewards (GetTaskRewardsReq) returns (GetTaskRewardsResp) {
-    }
-}

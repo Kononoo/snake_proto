@@ -91,3 +91,8 @@ service MusicServer {
   rpc commonReq (rpcReqParam) returns (rpcRspData) {
   }
 }
+
+service SnakeApiServer {
+  rpc commonReq (rpcReqParam) returns (rpcRspData) {
+  }
+}
