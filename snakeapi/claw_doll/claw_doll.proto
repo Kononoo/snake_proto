@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package class_doll;
 
-option go_package = "git.17zjh.com/snake/snake_proto/snake_api/claw_doll";
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/claw_doll";
 option objc_class_prefix = "SNKPBCLAWDOLL";
 
 import "snakeapi/base.proto";
