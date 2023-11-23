@@ -2,8 +2,7 @@ syntax = "proto3";
 
 package snakeapi;
 
-option go_package = "git.17zjh.com/snake/snake_proto/snake_api";
-option objc_class_prefix = "SNKPBAPI";
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi";
 
 enum snakeApiOpType {
   cdUndef = 0;
