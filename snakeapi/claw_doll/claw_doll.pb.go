@@ -7,7 +7,7 @@
 package claw_doll
 
 import (
-	snake_api "git.17zjh.com/snake/snake_proto/snake_api"
+	snakeapi "git.17zjh.com/snake/snake_proto/snakeapi"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -79,7 +79,7 @@ type GetInfoReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Common *snake_api.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
+	Common *snakeapi.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
 }
 
 func (x *GetInfoReq) Reset() {
@@ -114,7 +114,7 @@ func (*GetInfoReq) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetInfoReq) GetCommon() *snake_api.CommonReq {
+func (x *GetInfoReq) GetCommon() *snakeapi.CommonReq {
 	if x != nil {
 		return x.Common
 	}
@@ -126,16 +126,16 @@ type GetInfoResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DiamondCount    int64                  `protobuf:"varint,1,opt,name=diamond_count,json=diamondCount,proto3" json:"diamond_count,omitempty"`              // 苹果数量
-	ClawCoinCount   int64                  `protobuf:"varint,2,opt,name=claw_coin_count,json=clawCoinCount,proto3" json:"claw_coin_count,omitempty"`         // 娃娃币数量
-	ClawProgress    int32                  `protobuf:"varint,3,opt,name=claw_progress,json=clawProgress,proto3" json:"claw_progress,omitempty"`              // 抓取进度(0~100)
-	NextGiftBoxTime int64                  `protobuf:"varint,4,opt,name=next_gift_box_time,json=nextGiftBoxTime,proto3" json:"next_gift_box_time,omitempty"` // 下一个可以领取礼物盒的时间
-	BeltRewards     []*ClawBeltRewardItem  `protobuf:"bytes,5,rep,name=belt_rewards,json=beltRewards,proto3" json:"belt_rewards,omitempty"`                  // 传送带上的奖励情况
-	AdWatchTimes    int64                  `protobuf:"varint,6,opt,name=ad_watch_times,json=adWatchTimes,proto3" json:"ad_watch_times,omitempty"`            // 广告已看次数
-	AdCanReward     int64                  `protobuf:"varint,7,opt,name=ad_can_reward,json=adCanReward,proto3" json:"ad_can_reward,omitempty"`               // 是否可以领取广告奖励
-	TaskInfos       []*snake_api.EventTask `protobuf:"bytes,8,rep,name=task_infos,json=taskInfos,proto3" json:"task_infos,omitempty"`                        // 任务信息
-	Begin           bool                   `protobuf:"varint,9,opt,name=begin,proto3" json:"begin,omitempty"`                                                // 是否完成新手引导
-	BigRewardList   []*ClawBigRewardList   `protobuf:"bytes,10,rep,name=big_reward_list,json=bigRewardList,proto3" json:"big_reward_list,omitempty"`         // 奖励大赏列表
+	DiamondCount    int64                 `protobuf:"varint,1,opt,name=diamond_count,json=diamondCount,proto3" json:"diamond_count,omitempty"`              // 苹果数量
+	ClawCoinCount   int64                 `protobuf:"varint,2,opt,name=claw_coin_count,json=clawCoinCount,proto3" json:"claw_coin_count,omitempty"`         // 娃娃币数量
+	ClawProgress    int32                 `protobuf:"varint,3,opt,name=claw_progress,json=clawProgress,proto3" json:"claw_progress,omitempty"`              // 抓取进度(0~100)
+	NextGiftBoxTime int64                 `protobuf:"varint,4,opt,name=next_gift_box_time,json=nextGiftBoxTime,proto3" json:"next_gift_box_time,omitempty"` // 下一个可以领取礼物盒的时间
+	BeltRewards     []*ClawBeltRewardItem `protobuf:"bytes,5,rep,name=belt_rewards,json=beltRewards,proto3" json:"belt_rewards,omitempty"`                  // 传送带上的奖励情况
+	AdWatchTimes    int64                 `protobuf:"varint,6,opt,name=ad_watch_times,json=adWatchTimes,proto3" json:"ad_watch_times,omitempty"`            // 广告已看次数
+	AdCanReward     int64                 `protobuf:"varint,7,opt,name=ad_can_reward,json=adCanReward,proto3" json:"ad_can_reward,omitempty"`               // 是否可以领取广告奖励
+	TaskInfos       []*snakeapi.EventTask `protobuf:"bytes,8,rep,name=task_infos,json=taskInfos,proto3" json:"task_infos,omitempty"`                        // 任务信息
+	Begin           bool                  `protobuf:"varint,9,opt,name=begin,proto3" json:"begin,omitempty"`                                                // 是否完成新手引导
+	BigRewardList   []*ClawBigRewardList  `protobuf:"bytes,10,rep,name=big_reward_list,json=bigRewardList,proto3" json:"big_reward_list,omitempty"`         // 奖励大赏列表
 }
 
 func (x *GetInfoResp) Reset() {
@@ -219,7 +219,7 @@ func (x *GetInfoResp) GetAdCanReward() int64 {
 	return 0
 }
 
-func (x *GetInfoResp) GetTaskInfos() []*snake_api.EventTask {
+func (x *GetInfoResp) GetTaskInfos() []*snakeapi.EventTask {
 	if x != nil {
 		return x.TaskInfos
 	}
@@ -442,9 +442,9 @@ type DoClawReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Common   *snake_api.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
-	Pos      int32                `protobuf:"varint,2,opt,name=pos,proto3" json:"pos,omitempty"`                           // 夹中的位置
-	RewardId int32                `protobuf:"varint,3,opt,name=reward_id,json=rewardId,proto3" json:"reward_id,omitempty"` // 夹中的奖励id，未夹中传0
+	Common   *snakeapi.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
+	Pos      int32               `protobuf:"varint,2,opt,name=pos,proto3" json:"pos,omitempty"`                           // 夹中的位置
+	RewardId int32               `protobuf:"varint,3,opt,name=reward_id,json=rewardId,proto3" json:"reward_id,omitempty"` // 夹中的奖励id，未夹中传0
 }
 
 func (x *DoClawReq) Reset() {
@@ -479,7 +479,7 @@ func (*DoClawReq) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *DoClawReq) GetCommon() *snake_api.CommonReq {
+func (x *DoClawReq) GetCommon() *snakeapi.CommonReq {
 	if x != nil {
 		return x.Common
 	}
@@ -568,7 +568,7 @@ type OpenGiftBoxReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Common *snake_api.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
+	Common *snakeapi.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
 }
 
 func (x *OpenGiftBoxReq) Reset() {
@@ -603,7 +603,7 @@ func (*OpenGiftBoxReq) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *OpenGiftBoxReq) GetCommon() *snake_api.CommonReq {
+func (x *OpenGiftBoxReq) GetCommon() *snakeapi.CommonReq {
 	if x != nil {
 		return x.Common
 	}
@@ -615,8 +615,8 @@ type OpenGiftBoxResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RewardItem      []*snake_api.RewardItem `protobuf:"bytes,1,rep,name=reward_item,json=rewardItem,proto3" json:"reward_item,omitempty"`                     // 奖励列表
-	NextGiftBoxTime int64                   `protobuf:"varint,2,opt,name=next_gift_box_time,json=nextGiftBoxTime,proto3" json:"next_gift_box_time,omitempty"` // 下一个可以领取礼物盒的时间
+	RewardItem      []*snakeapi.RewardItem `protobuf:"bytes,1,rep,name=reward_item,json=rewardItem,proto3" json:"reward_item,omitempty"`                     // 奖励列表
+	NextGiftBoxTime int64                  `protobuf:"varint,2,opt,name=next_gift_box_time,json=nextGiftBoxTime,proto3" json:"next_gift_box_time,omitempty"` // 下一个可以领取礼物盒的时间
 }
 
 func (x *OpenGiftBoxResp) Reset() {
@@ -651,7 +651,7 @@ func (*OpenGiftBoxResp) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *OpenGiftBoxResp) GetRewardItem() []*snake_api.RewardItem {
+func (x *OpenGiftBoxResp) GetRewardItem() []*snakeapi.RewardItem {
 	if x != nil {
 		return x.RewardItem
 	}
@@ -670,7 +670,7 @@ type HistoryReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Common *snake_api.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
+	Common *snakeapi.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
 }
 
 func (x *HistoryReq) Reset() {
@@ -705,7 +705,7 @@ func (*HistoryReq) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *HistoryReq) GetCommon() *snake_api.CommonReq {
+func (x *HistoryReq) GetCommon() *snakeapi.CommonReq {
 	if x != nil {
 		return x.Common
 	}
@@ -819,8 +819,8 @@ type BuyClawCoinReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Common *snake_api.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
-	PackId int32                `protobuf:"varint,2,opt,name=PackId,proto3" json:"PackId,omitempty"` // 苹果礼包id
+	Common *snakeapi.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
+	PackId int32               `protobuf:"varint,2,opt,name=PackId,proto3" json:"PackId,omitempty"` // 苹果礼包id
 }
 
 func (x *BuyClawCoinReq) Reset() {
@@ -855,7 +855,7 @@ func (*BuyClawCoinReq) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *BuyClawCoinReq) GetCommon() *snake_api.CommonReq {
+func (x *BuyClawCoinReq) GetCommon() *snakeapi.CommonReq {
 	if x != nil {
 		return x.Common
 	}
@@ -929,7 +929,7 @@ type GetAdRewardsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Common *snake_api.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
+	Common *snakeapi.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
 }
 
 func (x *GetAdRewardsReq) Reset() {
@@ -964,7 +964,7 @@ func (*GetAdRewardsReq) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *GetAdRewardsReq) GetCommon() *snake_api.CommonReq {
+func (x *GetAdRewardsReq) GetCommon() *snakeapi.CommonReq {
 	if x != nil {
 		return x.Common
 	}
@@ -976,8 +976,8 @@ type GetAdRewardsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rewards       []*snake_api.RewardItem `protobuf:"bytes,1,rep,name=rewards,proto3" json:"rewards,omitempty"`                                     // 奖励列表
-	ClawCoinCount int64                   `protobuf:"varint,2,opt,name=claw_coin_count,json=clawCoinCount,proto3" json:"claw_coin_count,omitempty"` // 娃娃币数量
+	Rewards       []*snakeapi.RewardItem `protobuf:"bytes,1,rep,name=rewards,proto3" json:"rewards,omitempty"`                                     // 奖励列表
+	ClawCoinCount int64                  `protobuf:"varint,2,opt,name=claw_coin_count,json=clawCoinCount,proto3" json:"claw_coin_count,omitempty"` // 娃娃币数量
 }
 
 func (x *GetAdRewardsResp) Reset() {
@@ -1012,7 +1012,7 @@ func (*GetAdRewardsResp) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *GetAdRewardsResp) GetRewards() []*snake_api.RewardItem {
+func (x *GetAdRewardsResp) GetRewards() []*snakeapi.RewardItem {
 	if x != nil {
 		return x.Rewards
 	}
@@ -1031,9 +1031,9 @@ type GetTaskRewardsReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Common  *snake_api.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
-	EventId int32                `protobuf:"varint,2,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"` // 任务活动id
-	TaskId  int32                `protobuf:"varint,3,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`    // 任务id
+	Common  *snakeapi.CommonReq `protobuf:"bytes,1,opt,name=common,proto3" json:"common,omitempty"`
+	EventId int32               `protobuf:"varint,2,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"` // 任务活动id
+	TaskId  int32               `protobuf:"varint,3,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`    // 任务id
 }
 
 func (x *GetTaskRewardsReq) Reset() {
@@ -1068,7 +1068,7 @@ func (*GetTaskRewardsReq) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *GetTaskRewardsReq) GetCommon() *snake_api.CommonReq {
+func (x *GetTaskRewardsReq) GetCommon() *snakeapi.CommonReq {
 	if x != nil {
 		return x.Common
 	}
@@ -1094,8 +1094,8 @@ type GetTaskRewardsResp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Rewards       []*snake_api.RewardItem `protobuf:"bytes,1,rep,name=rewards,proto3" json:"rewards,omitempty"`                                     // 奖励列表
-	ClawCoinCount int64                   `protobuf:"varint,2,opt,name=claw_coin_count,json=clawCoinCount,proto3" json:"claw_coin_count,omitempty"` // 娃娃币数量
+	Rewards       []*snakeapi.RewardItem `protobuf:"bytes,1,rep,name=rewards,proto3" json:"rewards,omitempty"`                                     // 奖励列表
+	ClawCoinCount int64                  `protobuf:"varint,2,opt,name=claw_coin_count,json=clawCoinCount,proto3" json:"claw_coin_count,omitempty"` // 娃娃币数量
 }
 
 func (x *GetTaskRewardsResp) Reset() {
@@ -1130,7 +1130,7 @@ func (*GetTaskRewardsResp) Descriptor() ([]byte, []int) {
 	return file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *GetTaskRewardsResp) GetRewards() []*snake_api.RewardItem {
+func (x *GetTaskRewardsResp) GetRewards() []*snakeapi.RewardItem {
 	if x != nil {
 		return x.Rewards
 	}
@@ -1286,11 +1286,10 @@ var file_snakeapi_claw_doll_claw_doll_proto_rawDesc = []byte{
 	0x65, 0x12, 0x09, 0x0a, 0x05, 0x55, 0x6e, 0x64, 0x65, 0x66, 0x10, 0x00, 0x12, 0x0d, 0x0a, 0x09,
 	0x41, 0x76, 0x61, 0x69, 0x6c, 0x61, 0x62, 0x6c, 0x65, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x52,
 	0x65, 0x73, 0x74, 0x6f, 0x63, 0x6b, 0x10, 0x02, 0x12, 0x0d, 0x0a, 0x09, 0x4e, 0x6f, 0x74, 0x4f,
-	0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x10, 0x03, 0x42, 0x44, 0x5a, 0x32, 0x67, 0x69, 0x74, 0x2e, 0x31,
+	0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x10, 0x03, 0x42, 0x34, 0x5a, 0x32, 0x67, 0x69, 0x74, 0x2e, 0x31,
 	0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73,
 	0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x61, 0x70, 0x69, 0x2f, 0x63, 0x6c, 0x61, 0x77, 0x5f, 0x64, 0x6f, 0x6c, 0x6c, 0xa2, 0x02, 0x0d,
-	0x53, 0x4e, 0x4b, 0x50, 0x42, 0x43, 0x4c, 0x41, 0x57, 0x44, 0x4f, 0x4c, 0x4c, 0x62, 0x06, 0x70,
+	0x61, 0x70, 0x69, 0x2f, 0x63, 0x6c, 0x61, 0x77, 0x5f, 0x64, 0x6f, 0x6c, 0x6c, 0x62, 0x06, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
@@ -1309,28 +1308,28 @@ func file_snakeapi_claw_doll_claw_doll_proto_rawDescGZIP() []byte {
 var file_snakeapi_claw_doll_claw_doll_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_snakeapi_claw_doll_claw_doll_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_snakeapi_claw_doll_claw_doll_proto_goTypes = []interface{}{
-	(RewardState)(0),             // 0: class_doll.RewardState
-	(*GetInfoReq)(nil),           // 1: class_doll.GetInfoReq
-	(*GetInfoResp)(nil),          // 2: class_doll.GetInfoResp
-	(*ClawBeltRewardItem)(nil),   // 3: class_doll.ClawBeltRewardItem
-	(*ClawBigRewardList)(nil),    // 4: class_doll.ClawBigRewardList
-	(*RewardList)(nil),           // 5: class_doll.Reward_list
-	(*DoClawReq)(nil),            // 6: class_doll.DoClawReq
-	(*DoClawResp)(nil),           // 7: class_doll.DoClawResp
-	(*OpenGiftBoxReq)(nil),       // 8: class_doll.OpenGiftBoxReq
-	(*OpenGiftBoxResp)(nil),      // 9: class_doll.OpenGiftBoxResp
-	(*HistoryReq)(nil),           // 10: class_doll.HistoryReq
-	(*HistoryResp)(nil),          // 11: class_doll.HistoryResp
-	(*History)(nil),              // 12: class_doll.History
-	(*BuyClawCoinReq)(nil),       // 13: class_doll.BuyClawCoinReq
-	(*BuyClawCoinResp)(nil),      // 14: class_doll.BuyClawCoinResp
-	(*GetAdRewardsReq)(nil),      // 15: class_doll.GetAdRewardsReq
-	(*GetAdRewardsResp)(nil),     // 16: class_doll.GetAdRewardsResp
-	(*GetTaskRewardsReq)(nil),    // 17: class_doll.GetTaskRewardsReq
-	(*GetTaskRewardsResp)(nil),   // 18: class_doll.GetTaskRewardsResp
-	(*snake_api.CommonReq)(nil),  // 19: snakeapi.CommonReq
-	(*snake_api.EventTask)(nil),  // 20: snakeapi.EventTask
-	(*snake_api.RewardItem)(nil), // 21: snakeapi.RewardItem
+	(RewardState)(0),            // 0: class_doll.RewardState
+	(*GetInfoReq)(nil),          // 1: class_doll.GetInfoReq
+	(*GetInfoResp)(nil),         // 2: class_doll.GetInfoResp
+	(*ClawBeltRewardItem)(nil),  // 3: class_doll.ClawBeltRewardItem
+	(*ClawBigRewardList)(nil),   // 4: class_doll.ClawBigRewardList
+	(*RewardList)(nil),          // 5: class_doll.Reward_list
+	(*DoClawReq)(nil),           // 6: class_doll.DoClawReq
+	(*DoClawResp)(nil),          // 7: class_doll.DoClawResp
+	(*OpenGiftBoxReq)(nil),      // 8: class_doll.OpenGiftBoxReq
+	(*OpenGiftBoxResp)(nil),     // 9: class_doll.OpenGiftBoxResp
+	(*HistoryReq)(nil),          // 10: class_doll.HistoryReq
+	(*HistoryResp)(nil),         // 11: class_doll.HistoryResp
+	(*History)(nil),             // 12: class_doll.History
+	(*BuyClawCoinReq)(nil),      // 13: class_doll.BuyClawCoinReq
+	(*BuyClawCoinResp)(nil),     // 14: class_doll.BuyClawCoinResp
+	(*GetAdRewardsReq)(nil),     // 15: class_doll.GetAdRewardsReq
+	(*GetAdRewardsResp)(nil),    // 16: class_doll.GetAdRewardsResp
+	(*GetTaskRewardsReq)(nil),   // 17: class_doll.GetTaskRewardsReq
+	(*GetTaskRewardsResp)(nil),  // 18: class_doll.GetTaskRewardsResp
+	(*snakeapi.CommonReq)(nil),  // 19: snakeapi.CommonReq
+	(*snakeapi.EventTask)(nil),  // 20: snakeapi.EventTask
+	(*snakeapi.RewardItem)(nil), // 21: snakeapi.RewardItem
 }
 var file_snakeapi_claw_doll_claw_doll_proto_depIdxs = []int32{
 	19, // 0: class_doll.GetInfoReq.common:type_name -> snakeapi.CommonReq
