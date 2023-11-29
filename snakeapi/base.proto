@@ -74,3 +74,13 @@ enum TaskState {
   CanReward = 2;     // 可领奖
   Finish    = 3;     // 已领奖
 }
+
+message Pack {
+  uint32 pack_id = 1;
+  string name = 2;
+  uint32 goods_id = 3;
+  uint32 price = 4;
+  uint32 buy_count = 5;
+  uint32 buy_limit = 6;
+  repeated RewardItem reward_item_list = 7;   // 奖励列表
+}
