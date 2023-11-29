@@ -100,6 +100,7 @@ message HistoryResp {
 message History {
    int64 timestamp = 1;
    int32 reward_id = 2;
+   int32 toast_id  = 3;
 }
 
 
