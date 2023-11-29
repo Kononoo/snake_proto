@@ -6,6 +6,16 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/claw_doll";
 
 import "snakeapi/base.proto";
 
+message ConfigReq {
+   snakeapi.CommonReq common = 1;
+   int64 config_version = 2;
+}
+
+message ConfigResp {
+   string config = 1;
+   string config_version = 2;
+}
+
 message GetInfoReq {
   snakeapi.CommonReq common = 1;
 }
@@ -14,13 +24,21 @@ message GetInfoResp {
    int64 diamond_count = 1;                        // 苹果数量
    int64 claw_coin_count = 2;                      // 娃娃币数量
    int32 claw_progress = 3;                        // 抓取进度(0~100)
-   int64 next_gift_box_time = 4;                   // 下一个可以领取礼物盒的时间
+   int64 last_gift_box_time = 4;                   // 上一次领取礼物盒的时间
    repeated ClawBeltRewardItem belt_rewards = 5;   // 传送带上的奖励情况
-   int64 ad_watch_times = 6;                       // 广告已看次数
-   int64 ad_can_reward = 7;                        // 是否可以领取广告奖励
-   repeated snakeapi.EventTask task_infos = 8;              // 任务信息
-   bool begin = 9;                                 // 是否完成新手引导
-   repeated ClawBigRewardList big_reward_list = 10;// 奖励大赏列表
+   int64 ad_watch_cnt = 6;                        // 广告已看次数
+   repeated snakeapi.EventTask task_infos = 7;              // 任务信息
+   BeginnerState begin = 8;                        // 新手引导完成状态
+   repeated ClawBigRewardList big_reward_list = 9;// 奖励大赏列表
+   int32 pvp_count = 10;                           // 双人模式游戏局数
+   repeated snakeapi.Pack pack_list = 11;                   // 苹果礼包列表
+}
+
+// 新手标记位
+enum BeginnerState {
+   Beginner = 0; // 纯新手
+   Clawed = 1;   // 已经抓取过
+   Opened = 2;  // 已经打开了礼盒
 }
 
 message ClawBeltRewardItem {
@@ -81,6 +99,7 @@ message HistoryResp {
 message History {
    int64 timestamp = 1;
    int32 reward_id = 2;
+   int32 toast_id  = 3;
 }
 
 
