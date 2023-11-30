@@ -13,7 +13,7 @@ message ConfigReq {
 
 message ConfigResp {
    string config = 1;
-   string config_version = 2;
+   int64 config_version = 2;
 }
 
 message GetInfoReq {
@@ -27,11 +27,10 @@ message GetInfoResp {
    int64 last_gift_box_time = 4;                   // 上一次领取礼物盒的时间
    repeated ClawBeltRewardItem belt_rewards = 5;   // 传送带上的奖励情况
    int64 ad_watch_cnt = 6;                        // 广告已看次数
-   repeated snakeapi.EventTask task_infos = 7;              // 任务信息
-   BeginnerState begin = 8;                        // 新手引导完成状态
-   repeated ClawBigRewardList big_reward_list = 9;// 奖励大赏列表
-   int32 pvp_count = 10;                           // 双人模式游戏局数
-   repeated snakeapi.Pack pack_list = 11;                   // 苹果礼包列表
+   BeginnerState begin = 7;                        // 新手引导完成状态
+   repeated ClawBigRewardList big_reward_list = 8;// 奖励大赏列表
+   int32 pvp_count = 9;                           // 双人模式游戏局数
+   repeated snakeapi.Pack pack_list = 10;                   // 苹果礼包列表
 }
 
 // 新手标记位
@@ -121,6 +120,15 @@ message GetAdRewardsResp {
    repeated snakeapi.RewardItem rewards = 1;  // 奖励列表
    int64 claw_coin_count = 2;        // 娃娃币数量
 }
+
+message GetTaskInfoReq {
+   snakeapi.CommonReq common = 1;
+}
+
+message GetTaskInfoResp {
+   repeated snakeapi.EventTask task_infos = 1;              // 任务信息
+}
+
 
 message GetTaskRewardsReq {
    snakeapi.CommonReq common = 1;
