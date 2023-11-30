@@ -56,14 +56,16 @@ enum RewardState {
 }
 
 message ClawBigRewardList {
-   string type = 1;
+   int32 level = 1;
    int32 got = 2;
    int32 all = 3;
    repeated Reward_list reward_list = 4;
 }
+
 message Reward_list {
    int32 reward_id = 1;
    bool got = 2;
+   int64 in_pool_time = 3;
 }
 
 message DoClawReq {
@@ -83,8 +85,8 @@ message OpenGiftBoxReq {
 }
 
 message OpenGiftBoxResp {
-   repeated snakeapi.RewardItem reward_item = 1;    // 奖励列表
-   int64 next_gift_box_time = 2;           // 下一个可以领取礼物盒的时间
+   snakeapi.RewardItem reward_item = 1;             // 奖励
+   int64 last_gift_box_time = 2;                   // 上一次领取礼物盒的时间
 }
 
 message HistoryReq {
@@ -127,6 +129,7 @@ message GetTaskInfoReq {
 
 message GetTaskInfoResp {
    repeated snakeapi.EventTask task_infos = 1;              // 任务信息
+   int64 claw_coin_count = 2;        // 娃娃币数量
 }
 
 
