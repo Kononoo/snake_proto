@@ -14,7 +14,8 @@ enum snakeApiOpType {
   ClasHistory = 5;
   BuyClawCoin = 6;
   GetAdRewards = 7;
-  GetTaskRewards = 8;
+  GetTaskInfo = 8;
+  GetTaskRewards = 9;
 }
 
 // 通用请求结构
@@ -34,18 +35,18 @@ enum Platform {
   Android = 2;
 }
 
-// 奖励
 message RewardItem {
   int32 type = 1;                     // 奖励类型
   int32 skin_id = 2;                  // 奖励 id
   int64 num = 3;                      // 奖励数量
   optional string big_num = 4;        // 奖励数量，大数
   string name = 5;                    // 奖励名称
-  optional string use_info = 6;       // 有效期，单位秒
-  optional int32 index = 7;           // 奖励序号
-  int32 worth_level = 8;              // 稀有度
-  optional int32 mark_id = 9;         // 来源标签id
-  repeated Convert convert = 10;      // 奖励折算
+  string imgurl = 6;                  // 奖励图片
+  optional string use_info = 7;       // 有效期，单位秒
+  optional int32 index = 8;           // 奖励序号
+  int32 worth_level = 9;              // 稀有度
+  optional int32 mark_id = 10;         // 来源标签id
+  repeated Convert convert = 11;      // 奖励折算
 }
 
 // 奖励折算结构
