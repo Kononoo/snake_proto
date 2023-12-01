@@ -15,6 +15,7 @@ message userAttr {
   int32 platform = 6;
   int64 enter_effects = 7; // 用户入场特效
   int64 userinfo_bg = 8; // 用户个人资料背景
+  string sid = 9;
 }
 
 message empty {
