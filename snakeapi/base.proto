@@ -17,23 +17,6 @@ enum snakeApiOpType {
   GetTaskRewards = 9;
 }
 
-// 通用请求结构
-message CommonReq {
-  string uid = 1;           // uid
-  string sid = 2;           // sid
-  Platform platform = 3;    // 操作系统平台
-  string device_id = 4;     // 设备id
-  string market = 5;        // 渠道
-  string version = 6;       // 客户端版本 5.x.x
-  string api_source = 7;    // 请求来源, unity, h5, ..
-}
-
-enum Platform {
-  UnknownPlatform = 0;
-  Ios = 1;
-  Android = 2;
-}
-
 message RewardItem {
   int32 type = 1;                     // 奖励类型
   int32 skin_id = 2;                  // 奖励 id
