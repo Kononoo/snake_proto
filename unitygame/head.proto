@@ -13,7 +13,7 @@ enum GameMode {
   UnityKuromi = 902; // 库洛米双人玩法
 }
 
-enum UnityRspCode {
+enum RspCode {
   Undefined = 0;
   Ok = 200;
   Err = 500;
