@@ -3,10 +3,19 @@ package head;
 
 option go_package = "git.17zjh.com/snake/snake_proto/unitygame";
 
+// 用户语言
+enum Lang {
+  _ = 0;
+  zh_CN = 8; //简体中文
+  zh_TC = 9; //繁体中文
+  en = 14; //英语
+  ja = 27; //日语
+  ko = 28; //韩语
+}
 
 //游戏模式，除100可得gameId
 enum GameMode {
-  UndefineGM = 0;
+  Undef = 0;
 
   UnityPlatform = 900; // unity
   UnityQualifying = 901; // unity 团战
@@ -29,6 +38,7 @@ message UnityReqHead {
   int32 type = 2; // 标记具体请求，值见不同包下OpType
   int64 rid = 3; // 游戏房间id，暂只在游戏服请求有用
   int32 pid = 4; // 请求包id，每次请求唯一
+  Lang lang = 5;
 }
 
 message UnityRspHead {
