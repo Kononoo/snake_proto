@@ -8,8 +8,7 @@ option objc_class_prefix = "SNKPBCLAWDOLL";
 import "snakeapi/base.proto";
 
 message ConfigReq {
-   snakeapi.CommonReq common = 1;
-   int64 config_version = 2;
+   int64 config_version = 1;
 }
 
 message ConfigResp {
@@ -18,7 +17,6 @@ message ConfigResp {
 }
 
 message GetInfoReq {
-  snakeapi.CommonReq common = 1;
 }
 
 message GetInfoResp {
@@ -70,9 +68,7 @@ message Reward_list {
 }
 
 message DoClawReq {
-   snakeapi.CommonReq common = 1;
-   int32 pos = 2;        // 夹中的位置
-   int32 reward_id = 3;  // 夹中的奖励id，未夹中传0
+   int32 reward_id = 1;  // 夹中的奖励id，未夹中传0
 }
 
 message DoClawResp {
@@ -82,7 +78,6 @@ message DoClawResp {
 }
 
 message OpenGiftBoxReq {
-  snakeapi.CommonReq common = 1;
 }
 
 message OpenGiftBoxResp {
@@ -91,7 +86,6 @@ message OpenGiftBoxResp {
 }
 
 message HistoryReq {
-  snakeapi.CommonReq common = 1;
 }
 
 message HistoryResp {
@@ -106,7 +100,6 @@ message History {
 
 
 message BuyClawCoinReq {
-   snakeapi.CommonReq common = 1;
    int32 PackId = 2;    // 苹果礼包id
 }
 
@@ -116,7 +109,6 @@ message BuyClawCoinResp {
 }
 
 message GetAdRewardsReq {
-   snakeapi.CommonReq common = 1;
 }
 
 message GetAdRewardsResp {
@@ -125,7 +117,6 @@ message GetAdRewardsResp {
 }
 
 message GetTaskInfoReq {
-   snakeapi.CommonReq common = 1;
 }
 
 message GetTaskInfoResp {
@@ -135,9 +126,8 @@ message GetTaskInfoResp {
 
 
 message GetTaskRewardsReq {
-   snakeapi.CommonReq common = 1;
-   int32 event_id = 2;   // 任务活动id
-   int32 task_id = 3;    // 任务id
+   int32 event_id = 1;   // 任务活动id
+   int32 task_id =  2;    // 任务id
 }
 
 message GetTaskRewardsResp {
