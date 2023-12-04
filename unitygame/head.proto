@@ -49,3 +49,20 @@ message UnityRspHead {
   string msg = 6; // 一般500时有用，弹toast
   int32 pid = 7; // 透传请求值
 }
+
+
+//--------------grpc做网关(忽略)-------------
+message CommonUnityReqMsg {
+  UnityReqHead head = 1;
+  bytes body = 2;
+}
+
+message CommonUnityRspMsg {
+  UnityRspHead head = 1;
+  bytes body = 2;
+}
+
+service Gateway {
+  rpc unityGrpc (stream CommonUnityReqMsg) returns (stream CommonUnityRspMsg) {
+  }
+}
