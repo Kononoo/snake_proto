@@ -5,27 +5,26 @@ option go_package = "git.17zjh.com/snake/snake_proto/unitygame";
 
 enum SnakeOpType {
   Undefined = 0;
-  Command = 6002;
-  Signal = 6003;
-  HistoryFrame = 6004;
-  Snapshot = 6005;
-  CheckSum = 6006;
-  Bind = 6010;
-  HeartBeat = 6011;
-  ReportScore = 6012;
-  ExitGame = 6013;
-  Action = 6014;
-  ReportRoomLockState = 6015;
-  Loading = 6016;
-  ReportKuromiScore = 6017;
+  Command = 9002;
+  Signal = 9003;
+  HistoryFrame = 9004;
+  Snapshot = 9005;
+  CheckSum = 9006;
+  Bind = 9010;
+  HeartBeat = 9011;
+  ReportScore = 9012;
+  ExitGame = 9013;
+  Action = 9014;
+  ReportRoomLockState = 9015;
+  Loading = 9016;
 
-  PuGameStart = 6101;
-  PuFrame = 6102;
-  PuSignal = 6103;
-  PuAbnormal = 6104;
-  PuGameEnd = 6105;
-  PuLoading = 6106;
-  PuScoreAbnormal = 6107; // 成绩异常
+  PuGameStart = 9101;
+  PuFrame = 9102;
+  PuSignal = 9103;
+  PuAbnormal = 9104;
+  PuGameEnd = 9105;
+  PuLoading = 9106;
+  PuScoreAbnormal = 9107; // 成绩异常
 }
 
 //push:通知游戏开始
