@@ -90,55 +90,6 @@ func (SnakeApiOpType) EnumDescriptor() ([]byte, []int) {
 	return file_snakeapi_base_proto_rawDescGZIP(), []int{0}
 }
 
-type Platform int32
-
-const (
-	Platform_UnknownPlatform Platform = 0
-	Platform_Ios             Platform = 1
-	Platform_Android         Platform = 2
-)
-
-// Enum value maps for Platform.
-var (
-	Platform_name = map[int32]string{
-		0: "UnknownPlatform",
-		1: "Ios",
-		2: "Android",
-	}
-	Platform_value = map[string]int32{
-		"UnknownPlatform": 0,
-		"Ios":             1,
-		"Android":         2,
-	}
-)
-
-func (x Platform) Enum() *Platform {
-	p := new(Platform)
-	*p = x
-	return p
-}
-
-func (x Platform) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (Platform) Descriptor() protoreflect.EnumDescriptor {
-	return file_snakeapi_base_proto_enumTypes[1].Descriptor()
-}
-
-func (Platform) Type() protoreflect.EnumType {
-	return &file_snakeapi_base_proto_enumTypes[1]
-}
-
-func (x Platform) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use Platform.Descriptor instead.
-func (Platform) EnumDescriptor() ([]byte, []int) {
-	return file_snakeapi_base_proto_rawDescGZIP(), []int{1}
-}
-
 // 任务状态
 type TaskState int32
 
@@ -176,11 +127,11 @@ func (x TaskState) String() string {
 }
 
 func (TaskState) Descriptor() protoreflect.EnumDescriptor {
-	return file_snakeapi_base_proto_enumTypes[2].Descriptor()
+	return file_snakeapi_base_proto_enumTypes[1].Descriptor()
 }
 
 func (TaskState) Type() protoreflect.EnumType {
-	return &file_snakeapi_base_proto_enumTypes[2]
+	return &file_snakeapi_base_proto_enumTypes[1]
 }
 
 func (x TaskState) Number() protoreflect.EnumNumber {
@@ -189,103 +140,7 @@ func (x TaskState) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use TaskState.Descriptor instead.
 func (TaskState) EnumDescriptor() ([]byte, []int) {
-	return file_snakeapi_base_proto_rawDescGZIP(), []int{2}
-}
-
-// 通用请求结构
-type CommonReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Uid       string   `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                                   // uid
-	Sid       string   `protobuf:"bytes,2,opt,name=sid,proto3" json:"sid,omitempty"`                                   // sid
-	Platform  Platform `protobuf:"varint,3,opt,name=platform,proto3,enum=snakeapi.Platform" json:"platform,omitempty"` // 操作系统平台
-	DeviceId  string   `protobuf:"bytes,4,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`         // 设备id
-	Market    string   `protobuf:"bytes,5,opt,name=market,proto3" json:"market,omitempty"`                             // 渠道
-	Version   string   `protobuf:"bytes,6,opt,name=version,proto3" json:"version,omitempty"`                           // 客户端版本 5.x.x
-	ApiSource string   `protobuf:"bytes,7,opt,name=api_source,json=apiSource,proto3" json:"api_source,omitempty"`      // 请求来源, unity, h5, ..
-}
-
-func (x *CommonReq) Reset() {
-	*x = CommonReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_base_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CommonReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CommonReq) ProtoMessage() {}
-
-func (x *CommonReq) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_base_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CommonReq.ProtoReflect.Descriptor instead.
-func (*CommonReq) Descriptor() ([]byte, []int) {
-	return file_snakeapi_base_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *CommonReq) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-func (x *CommonReq) GetSid() string {
-	if x != nil {
-		return x.Sid
-	}
-	return ""
-}
-
-func (x *CommonReq) GetPlatform() Platform {
-	if x != nil {
-		return x.Platform
-	}
-	return Platform_UnknownPlatform
-}
-
-func (x *CommonReq) GetDeviceId() string {
-	if x != nil {
-		return x.DeviceId
-	}
-	return ""
-}
-
-func (x *CommonReq) GetMarket() string {
-	if x != nil {
-		return x.Market
-	}
-	return ""
-}
-
-func (x *CommonReq) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
-
-func (x *CommonReq) GetApiSource() string {
-	if x != nil {
-		return x.ApiSource
-	}
-	return ""
+	return file_snakeapi_base_proto_rawDescGZIP(), []int{1}
 }
 
 type RewardItem struct {
@@ -309,7 +164,7 @@ type RewardItem struct {
 func (x *RewardItem) Reset() {
 	*x = RewardItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_base_proto_msgTypes[1]
+		mi := &file_snakeapi_base_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -322,7 +177,7 @@ func (x *RewardItem) String() string {
 func (*RewardItem) ProtoMessage() {}
 
 func (x *RewardItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_base_proto_msgTypes[1]
+	mi := &file_snakeapi_base_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -335,7 +190,7 @@ func (x *RewardItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RewardItem.ProtoReflect.Descriptor instead.
 func (*RewardItem) Descriptor() ([]byte, []int) {
-	return file_snakeapi_base_proto_rawDescGZIP(), []int{1}
+	return file_snakeapi_base_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RewardItem) GetType() int32 {
@@ -429,7 +284,7 @@ type Convert struct {
 func (x *Convert) Reset() {
 	*x = Convert{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_base_proto_msgTypes[2]
+		mi := &file_snakeapi_base_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -442,7 +297,7 @@ func (x *Convert) String() string {
 func (*Convert) ProtoMessage() {}
 
 func (x *Convert) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_base_proto_msgTypes[2]
+	mi := &file_snakeapi_base_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -455,7 +310,7 @@ func (x *Convert) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Convert.ProtoReflect.Descriptor instead.
 func (*Convert) Descriptor() ([]byte, []int) {
-	return file_snakeapi_base_proto_rawDescGZIP(), []int{2}
+	return file_snakeapi_base_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Convert) GetType() int32 {
@@ -499,7 +354,7 @@ type EventTask struct {
 func (x *EventTask) Reset() {
 	*x = EventTask{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_base_proto_msgTypes[3]
+		mi := &file_snakeapi_base_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -512,7 +367,7 @@ func (x *EventTask) String() string {
 func (*EventTask) ProtoMessage() {}
 
 func (x *EventTask) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_base_proto_msgTypes[3]
+	mi := &file_snakeapi_base_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -525,7 +380,7 @@ func (x *EventTask) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EventTask.ProtoReflect.Descriptor instead.
 func (*EventTask) Descriptor() ([]byte, []int) {
-	return file_snakeapi_base_proto_rawDescGZIP(), []int{3}
+	return file_snakeapi_base_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *EventTask) GetTaskId() int32 {
@@ -608,7 +463,7 @@ type Pack struct {
 func (x *Pack) Reset() {
 	*x = Pack{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_base_proto_msgTypes[4]
+		mi := &file_snakeapi_base_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -621,7 +476,7 @@ func (x *Pack) String() string {
 func (*Pack) ProtoMessage() {}
 
 func (x *Pack) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_base_proto_msgTypes[4]
+	mi := &file_snakeapi_base_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -634,7 +489,7 @@ func (x *Pack) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Pack.ProtoReflect.Descriptor instead.
 func (*Pack) Descriptor() ([]byte, []int) {
-	return file_snakeapi_base_proto_rawDescGZIP(), []int{4}
+	return file_snakeapi_base_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Pack) GetPackId() uint32 {
@@ -691,19 +546,6 @@ var File_snakeapi_base_proto protoreflect.FileDescriptor
 var file_snakeapi_base_proto_rawDesc = []byte{
 	0x0a, 0x13, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x61, 0x70, 0x69, 0x2f, 0x62, 0x61, 0x73, 0x65, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x61, 0x70, 0x69, 0x22,
-	0xcd, 0x01, 0x0a, 0x09, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x12, 0x10, 0x0a,
-	0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12,
-	0x10, 0x0a, 0x03, 0x73, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x73, 0x69,
-	0x64, 0x12, 0x2e, 0x0a, 0x08, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x0e, 0x32, 0x12, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x61, 0x70, 0x69, 0x2e, 0x50,
-	0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x52, 0x08, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
-	0x6d, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x49, 0x64, 0x12, 0x16,
-	0x0a, 0x06, 0x6d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x6d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f,
-	0x6e, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
-	0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x70, 0x69, 0x5f, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x18, 0x07,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61, 0x70, 0x69, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x22,
 	0xeb, 0x02, 0x0a, 0x0a, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x12,
 	0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x74, 0x79,
 	0x70, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6b, 0x69, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20,
@@ -775,18 +617,14 @@ var file_snakeapi_base_proto_rawDesc = []byte{
 	0x6f, 0x69, 0x6e, 0x10, 0x06, 0x12, 0x10, 0x0a, 0x0c, 0x47, 0x65, 0x74, 0x41, 0x64, 0x52, 0x65,
 	0x77, 0x61, 0x72, 0x64, 0x73, 0x10, 0x07, 0x12, 0x0f, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x54, 0x61,
 	0x73, 0x6b, 0x49, 0x6e, 0x66, 0x6f, 0x10, 0x08, 0x12, 0x12, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x54,
-	0x61, 0x73, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x10, 0x09, 0x2a, 0x35, 0x0a, 0x08,
-	0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x12, 0x13, 0x0a, 0x0f, 0x55, 0x6e, 0x6b, 0x6e,
-	0x6f, 0x77, 0x6e, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x10, 0x00, 0x12, 0x07, 0x0a,
-	0x03, 0x49, 0x6f, 0x73, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x41, 0x6e, 0x64, 0x72, 0x6f, 0x69,
-	0x64, 0x10, 0x02, 0x2a, 0x3b, 0x0a, 0x09, 0x54, 0x61, 0x73, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x65,
-	0x12, 0x09, 0x0a, 0x05, 0x55, 0x6e, 0x44, 0x65, 0x66, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x49,
-	0x6e, 0x69, 0x74, 0x10, 0x01, 0x12, 0x0d, 0x0a, 0x09, 0x43, 0x61, 0x6e, 0x52, 0x65, 0x77, 0x61,
-	0x72, 0x64, 0x10, 0x02, 0x12, 0x0a, 0x0a, 0x06, 0x46, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x10, 0x03,
-	0x42, 0x2a, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f,
-	0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x61, 0x73, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x10, 0x09, 0x2a, 0x3b, 0x0a, 0x09,
+	0x54, 0x61, 0x73, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x09, 0x0a, 0x05, 0x55, 0x6e, 0x44,
+	0x65, 0x66, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x49, 0x6e, 0x69, 0x74, 0x10, 0x01, 0x12, 0x0d,
+	0x0a, 0x09, 0x43, 0x61, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x10, 0x02, 0x12, 0x0a, 0x0a,
+	0x06, 0x46, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x10, 0x03, 0x42, 0x2a, 0x5a, 0x28, 0x67, 0x69, 0x74,
+	0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
+	0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61,
+	0x6b, 0x65, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -801,29 +639,26 @@ func file_snakeapi_base_proto_rawDescGZIP() []byte {
 	return file_snakeapi_base_proto_rawDescData
 }
 
-var file_snakeapi_base_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_snakeapi_base_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_snakeapi_base_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_snakeapi_base_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_snakeapi_base_proto_goTypes = []interface{}{
 	(SnakeApiOpType)(0), // 0: snakeapi.snakeApiOpType
-	(Platform)(0),       // 1: snakeapi.Platform
-	(TaskState)(0),      // 2: snakeapi.TaskState
-	(*CommonReq)(nil),   // 3: snakeapi.CommonReq
-	(*RewardItem)(nil),  // 4: snakeapi.RewardItem
-	(*Convert)(nil),     // 5: snakeapi.Convert
-	(*EventTask)(nil),   // 6: snakeapi.EventTask
-	(*Pack)(nil),        // 7: snakeapi.Pack
+	(TaskState)(0),      // 1: snakeapi.TaskState
+	(*RewardItem)(nil),  // 2: snakeapi.RewardItem
+	(*Convert)(nil),     // 3: snakeapi.Convert
+	(*EventTask)(nil),   // 4: snakeapi.EventTask
+	(*Pack)(nil),        // 5: snakeapi.Pack
 }
 var file_snakeapi_base_proto_depIdxs = []int32{
-	1, // 0: snakeapi.CommonReq.platform:type_name -> snakeapi.Platform
-	5, // 1: snakeapi.RewardItem.convert:type_name -> snakeapi.Convert
-	2, // 2: snakeapi.EventTask.state:type_name -> snakeapi.TaskState
-	4, // 3: snakeapi.EventTask.reward_item_list:type_name -> snakeapi.RewardItem
-	4, // 4: snakeapi.Pack.reward_item_list:type_name -> snakeapi.RewardItem
-	5, // [5:5] is the sub-list for method output_type
-	5, // [5:5] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	3, // 0: snakeapi.RewardItem.convert:type_name -> snakeapi.Convert
+	1, // 1: snakeapi.EventTask.state:type_name -> snakeapi.TaskState
+	2, // 2: snakeapi.EventTask.reward_item_list:type_name -> snakeapi.RewardItem
+	2, // 3: snakeapi.Pack.reward_item_list:type_name -> snakeapi.RewardItem
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_snakeapi_base_proto_init() }
@@ -833,18 +668,6 @@ func file_snakeapi_base_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_snakeapi_base_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CommonReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakeapi_base_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RewardItem); i {
 			case 0:
 				return &v.state
@@ -856,7 +679,7 @@ func file_snakeapi_base_proto_init() {
 				return nil
 			}
 		}
-		file_snakeapi_base_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_snakeapi_base_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Convert); i {
 			case 0:
 				return &v.state
@@ -868,7 +691,7 @@ func file_snakeapi_base_proto_init() {
 				return nil
 			}
 		}
-		file_snakeapi_base_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_snakeapi_base_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*EventTask); i {
 			case 0:
 				return &v.state
@@ -880,7 +703,7 @@ func file_snakeapi_base_proto_init() {
 				return nil
 			}
 		}
-		file_snakeapi_base_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_snakeapi_base_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Pack); i {
 			case 0:
 				return &v.state
@@ -893,14 +716,14 @@ func file_snakeapi_base_proto_init() {
 			}
 		}
 	}
-	file_snakeapi_base_proto_msgTypes[1].OneofWrappers = []interface{}{}
+	file_snakeapi_base_proto_msgTypes[0].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakeapi_base_proto_rawDesc,
-			NumEnums:      3,
-			NumMessages:   5,
+			NumEnums:      2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
