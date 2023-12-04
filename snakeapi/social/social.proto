@@ -4,12 +4,9 @@ package kuromi;
 
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/social";
 
-import "snakeapi/base.proto";
-
 
 // 获取最近一起玩过的玩家列表
 message GetRecentPlayerListReq {
-  snakeapi.CommonReq common = 1;
   int32 mode = 2;  // 游戏模式
 }
 
