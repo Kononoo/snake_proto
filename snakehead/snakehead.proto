@@ -1,7 +1,7 @@
 syntax = "proto3";
-package head;
+package snakehead;
 
-option go_package = "git.17zjh.com/snake/snake_proto/head";
+option go_package = "git.17zjh.com/snake/snake_proto/snakehead";
 
 // 用户语言
 enum Lang {
