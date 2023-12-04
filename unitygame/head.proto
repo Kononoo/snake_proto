@@ -15,14 +15,14 @@ enum Lang {
 
 //游戏模式，除100可得gameId
 enum GameMode {
-  Undef = 0;
+  UndefineGM = 0;
 
   UnityPlatform = 900; // unity
   UnityQualifying = 901; // unity 团战
   UnityKuromi = 902; // 库洛米双人玩法
 }
 
-enum RspCode {
+enum UnityRspCode {
   Undefined = 0;
   Ok = 200;
   Err = 500;
