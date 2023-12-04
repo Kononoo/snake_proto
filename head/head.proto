@@ -1,7 +1,7 @@
 syntax = "proto3";
 package head;
 
-option go_package = "git.17zjh.com/snake/snake_proto/unitygame";
+option go_package = "git.17zjh.com/snake/snake_proto/head";
 
 // 用户语言
 enum Lang {

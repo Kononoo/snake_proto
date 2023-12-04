@@ -1,7 +1,10 @@
 
-.PHONY: rpc voiceroom music unitygame snakeapi
+.PHONY: head rpc voiceroom music unitygame snakeapi
 
-all: rpc voiceroom music unitygame snakeapi
+all: head rpc voiceroom music unitygame snakeapi
+
+head:
+	protoc --go_out=. --go_opt=paths=source_relative ./head/*.proto
 
 rpc:
 	protoc --proto_path=. --go_out=. --go_opt=paths=source_relative \
