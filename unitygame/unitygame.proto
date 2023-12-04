@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package unitygame;
-option go_package = "git.17zjh.com/snake/snake_party_proto/unitygame";
+option go_package = "git.17zjh.com/snake/snake_proto/unitygame";
 
 enum SnakeOpType {
   Undefined = 0;
