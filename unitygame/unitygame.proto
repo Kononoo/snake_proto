@@ -17,6 +17,7 @@ enum SnakeOpType {
   Action = 9014;
   ReportRoomLockState = 9015;
   Loading = 9016;
+  ReportKuromiScore = 9017;
 
   PuGameStart = 9101;
   PuFrame = 9102;
