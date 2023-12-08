@@ -204,6 +204,8 @@ message ReportScoreReq {
 message PlayerScore {
   // 个人信息
   string uid = 1;
+  string team_id = 24; // 阵营id
+  string num = 25;  // 玩家位置
 
   // 游戏数据
   sint32 length = 3;   // 长度
