@@ -261,9 +261,15 @@ message ReportRoomLockStateRsp {
 
 // 上报 kuromi 成绩
 message ReportKuromiScoreReq {
-  repeated KuromiPlayerScore score_list = 1;
+  repeated KuromiTeamScore team_scores = 1;
   int32 action_no = 2;  // 帧号
   sint32 pid = 3;
+  int32 rid = 4; // 房间号
+}
+
+message KuromiTeamScore {
+  int32 team_id = 1;
+  repeated KuromiPlayerScore player_scores = 2;
 }
 
 message KuromiPlayerScore {
@@ -288,4 +294,6 @@ message KuromiPlayerScore {
   sint32 use_speed_shoes_times = 16; // 使用加速鞋次数
   int64 fragment_score = 17;   // 碎片分数
   int64 treasure_count = 18;   // 宝藏个数
+  int32 group_id = 19;  // 队伍 id
+  int32 num = 20; // 房间位置
 }
