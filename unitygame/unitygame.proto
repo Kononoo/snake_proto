@@ -277,23 +277,23 @@ message KuromiPlayerScore {
   string uid = 1;
 
   // 游戏数据
-  sint32 length = 2;   // 长度
-  sint32 kill = 3;     // 击杀数量
-  repeated sint32 item_scores = 4;    // 拾取道具
-  sint32 revive_count = 5;   // 复活次数
+  int32 length = 2;   // 长度
+  int32 kill = 3;     // 击杀数量
+  repeated int32 item_scores = 4;    // 拾取道具
+  int32 revive_count = 5;   // 复活次数
   repeated string event_ids = 6;  // 触发事件（勇往直前...）分数
-  sint32 eat = 7;            // 累计长度，只加不减
-  sint32 killed_num = 8;     // 被击杀次数
-  sint32 destroy_length = 9; // 击杀的敌人的长度的累加
-  sint32 collect_color_dot_score = 10;  // 收集彩点分数
-  sint32 hit_wall_times = 11;  // 撞墙次数
-  sint32 collect_wreck_score = 12;  // 收集残骸分数
-  sint32 kill_bonus_score = 13;  // show 加成击杀收益分数
-  sint32 use_shield_times = 14;  // 使用护盾次数
-  sint32 die_time = 15; // 游戏结束前最后一次死亡时间(毫秒)
-  sint32 use_speed_shoes_times = 16; // 使用加速鞋次数
-  int64 fragment_score = 17;   // 碎片分数
-  int64 treasure_count = 18;   // 宝藏个数
+  int32 eat = 7;            // 累计长度，只加不减
+  int32 killed_num = 8;     // 被击杀次数
+  int32 destroy_length = 9; // 击杀的敌人的长度的累加
+  int32 collect_color_dot_score = 10;  // 收集彩点分数
+  int32 hit_wall_times = 11;  // 撞墙次数
+  int32 collect_wreck_score = 12;  // 收集残骸分数
+  int32 kill_bonus_score = 13;  // show 加成击杀收益分数
+  int32 use_shield_times = 14;  // 使用护盾次数
+  int32 die_time = 15; // 游戏结束前最后一次死亡时间(毫秒)
+  int32 use_speed_shoes_times = 16; // 使用加速鞋次数
+  int32 fragment_score = 17;   // 碎片分数
+  int32 treasure_count = 18;   // 宝藏个数
   int32 group_id = 19;  // 队伍 id
   int32 num = 20; // 房间位置
 }
