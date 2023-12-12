@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package kuromi;
+
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/social";
+
+
+// 获取最近一起玩过的玩家列表
+message GetRecentPlayerListReq {
+  int32 mode = 2;  // 游戏模式
+}
+
+message GetRecentPlayerResp {
+  repeated RecentPlayer list = 1;
+}
+
+message RecentPlayer {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+  int32 gender = 4;
+  int32 box_id = 5;
+  int32 star = 6;
+  int32 ultimate = 7;  // 是否王者，0：否，1：是
+  int32 is_partner = 8;
+  string desc = 9;
+  int32 verified = 10;
+}

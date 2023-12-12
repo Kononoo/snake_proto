@@ -1,0 +1,299 @@
+syntax = "proto3";
+
+package unitygame;
+option go_package = "git.17zjh.com/snake/snake_proto/unitygame";
+
+enum SnakeOpType {
+  Undefined = 0;
+  Command = 9002;
+  Signal = 9003;
+  HistoryFrame = 9004;
+  Snapshot = 9005;
+  CheckSum = 9006;
+  Bind = 9010;
+  HeartBeat = 9011;
+  ReportScore = 9012;
+  ExitGame = 9013;
+  Action = 9014;
+  ReportRoomLockState = 9015;
+  Loading = 9016;
+  ReportKuromiScore = 9017;
+
+  PuGameStart = 9101;
+  PuFrame = 9102;
+  PuSignal = 9103;
+  PuAbnormal = 9104;
+  PuGameEnd = 9105;
+  PuLoading = 9106;
+  PuScoreAbnormal = 9107; // 成绩异常
+}
+
+//push:通知游戏开始
+message PuGameStartMsg {
+  int64 start_time = 1; //游戏开始时间
+  int32 turn_interval = 2; //服务器发帧间隔(ms)，客户端按除2的间隔发帧
+}
+
+//push:发的信号
+message PuSignalMsg {
+  int32 num = 1;
+  int32 signal = 2;
+  int32 param = 3;
+}
+
+//push:游戏结束
+message PuGameEndMsg {
+  int32 action_no = 1;
+}
+
+//push:出现不一致(如果要上传日志就push给所有人，发现是自己的弹游戏异常)
+message PuAbnormalMsg {
+  int32 abnormal_num = 1;
+  int32 action_no = 2;
+  bool upload_log = 3; //1本场需要上传日志
+  string checksum = 4; // 上报的checksum
+  string correct=5; // 正确的checksum
+}
+
+//push:结算成绩不一致
+message PuScoreAbnormalMsg {
+  int32 abnormal_num = 1;
+}
+
+//push:发帧
+message PuFrameMsg {
+  repeated frameItem frame_list = 1;
+}
+
+message PuLoadingMsg {
+  repeated numProgress loading = 1; // num => progress
+}
+
+message numProgress {
+  int64 num = 1;
+  int64 progress =2;
+}
+
+message frameItem {
+  int32 action_no = 1;
+  repeated gameAction action_list = 2; // [{},{},{}]
+}
+
+//游戏帧的具体内容
+message gameAction {
+  int32 num = 1;
+  int32 cmd = 2; //0为移动，1复活，2中途加入，3用游戏道具，4玩家退出，5语音；如果没有某个玩家说明没发帧，按之前方向移动
+  int32 param = 3; //根据cmd代表不同属性：0为movement，3道具id
+  userAttribute attr = 4; //根据cmd代表不同属性：2中途加入人的属性
+}
+
+//游戏内的用户属性。(头像昵称等从http请求)
+message userAttribute {
+  int64 uid = 1;
+  int32 team_id = 2;
+  int32 num = 3;
+  int32 role_id = 4;
+  int32 role_level = 5;
+  repeated int32 suit = 7; // 装扮
+  bool allow_follower_join = 8;
+  bool allow_recent_join = 9;
+  int32 wreck_id = 10; //击杀效果
+  int32 ai_score = 11; //0非机器人，其余为ai段位
+  int32 star = 12; // 段位
+  string nickname = 13; //昵称
+  string avatar = 14; // 头像
+}
+
+enum command {
+  CommandAction = 0;
+  CommandRevive = 1;
+  CommandJoin = 2;
+  CommandUseProp = 3;
+  CommandExitGame = 4;
+  CommandSetVoite = 5;
+}
+
+//发游戏内指令和帧
+message CommandReq {
+  int32 action_no = 1; //客户端希望写入的帧号
+  command cmd = 2;
+  int32 param = 3; //属性根据命令不同填不同的值
+  userAttribute attr = 4;
+  int32 preRtt = 5; // 上个请求时延
+}
+
+message CommandRsp {
+  int32 action_no = 1; // command写入帧号
+  int32 tick_no = 2; // 服务器当前帧号
+}
+
+//1资源加载中(可每秒一次)，2加载好可以开始。其他自定[10及以上]：快捷短语、集合
+message SignalReq {
+  int32 signal = 1;
+  int32 param = 2; //目前用于资源加载进度
+}
+
+message SignalRsp {
+}
+
+//拉取历史帧
+message HistoryFrameReq {
+  int32 start_action_no = 1; //服务器给的会包含这一帧
+  bool need_snapshot = 2;
+}
+
+message HistoryFrameRsp {
+  repeated frameItem frame_list = 1;
+  int32 snapshot_action_no = 2;
+  bytes snapshot = 3;
+}
+
+//上传快照
+message SnapshotReq {
+  int32 action_no = 1;
+  bytes snapshot = 2;
+}
+
+message SnapshotRsp {
+}
+
+//校验是否出现不一致
+message CheckSumReq {
+  int32 action_no = 1;
+  string checksum = 2;
+}
+
+message CheckSumRsp {
+}
+
+//绑定游戏服
+message BindReq {
+  int32 seed = 1;
+  int32 num = 2;
+  int64 match_time = 3;
+  bytes relay_sign = 4;
+  int32 game_mode = 5;
+  int32 mode_version = 6;
+  int32 time_limit = 7;
+  int32 player_count = 8;
+  int32 platform = 9;
+}
+
+message BindRsp {
+  int32 state = 1; //1未开始；2已开始；3结束
+  PuGameStartMsg start_info = 2;
+  int32 heartbeat_second = 3; //心跳间隔
+  int32 actionNo =4;// 房间开始了，返回当前帧号
+}
+
+//心跳请求
+message HeartBeatReq {
+}
+
+message HeartBeatRsp {
+}
+
+//上报成绩
+message ReportScoreReq {
+  repeated PlayerScore scoreList = 1;
+  int32 action_no = 3;  // 帧号
+  repeated bossScore boss_score = 4;  // 击杀boss分数
+  sint32 pid = 5;
+}
+
+message PlayerScore {
+  // 个人信息
+  string uid = 1;
+  string team_id = 24; // 阵营id
+  string num = 25;  // 玩家位置
+
+  // 游戏数据
+  sint32 length = 3;   // 长度
+  sint32 kill = 4;     // 击杀数量
+  sint32 star_score = 5;  // 吃星星分数
+  repeated sint32 item_scores = 8;    // 拾取道具
+  sint32 revive_count = 9;   // 复活次数
+  repeated string event_ids = 10;  // 触发事件（双杀...）分数
+  sint32 eat = 11;            // 累计长度，只加不减
+  sint32 killed_num = 12;     // 被击杀次数
+  sint32 destroy_length = 13; // 击杀的敌人的长度的累加
+  sint32 boss_kill_num = 14;   // boss 击杀数
+  sint32 collect_star_score = 15;  // 收集星星分数
+  sint32 collect_color_dot_score = 16;  // 收集彩点分数
+  sint32 hit_wall_times = 17;  // 撞墙次数
+  sint32 collect_wreck_score = 18;  // 收集残骸分数
+  sint32 kill_bonus_score = 19;  // show 加成击杀收益分数
+  sint32 use_shield_times = 20;  // 使用护盾次数
+  sint32 die_time = 22; // 游戏结束前最后一次死亡时间(毫秒)
+  sint32 use_speed_shoes_times = 23; // 使用加速鞋次数
+}
+
+// 击杀boss分数
+message bossScore {
+  sint32 team_id = 1;
+  sint32 count = 2;
+}
+
+
+message ReportScoreRsp {
+}
+
+//加载进度
+message LoadingReq {
+  int64 progress = 1; // 总进度100
+}
+
+message LoadingRsp {
+}
+
+
+// 上报房间是否可以加入的状态
+//state = 1:游戏即将结束（不给加入）
+//state = 2:游戏中（可以加入）
+message ReportRoomLockStateReq {
+  sint32 state = 1;
+  sint32 actionNo = 2;
+  sint32 pid = 3;
+}
+
+message ReportRoomLockStateRsp {
+}
+
+// 上报 kuromi 成绩
+message ReportKuromiScoreReq {
+  repeated KuromiTeamScore team_scores = 1;
+  int32 action_no = 2;  // 帧号
+  sint32 pid = 3;
+  int32 rid = 4; // 房间号
+}
+
+message KuromiTeamScore {
+  int32 team_id = 1;
+  repeated KuromiPlayerScore player_scores = 2;
+}
+
+message KuromiPlayerScore {
+  // 个人信息
+  string uid = 1;
+
+  // 游戏数据
+  int32 length = 2;   // 长度
+  int32 kill = 3;     // 击杀数量
+  repeated int32 item_scores = 4;    // 拾取道具
+  int32 revive_count = 5;   // 复活次数
+  repeated string event_ids = 6;  // 触发事件（勇往直前...）分数
+  int32 eat = 7;            // 累计长度，只加不减
+  int32 killed_num = 8;     // 被击杀次数
+  int32 destroy_length = 9; // 击杀的敌人的长度的累加
+  int32 collect_color_dot_score = 10;  // 收集彩点分数
+  int32 hit_wall_times = 11;  // 撞墙次数
+  int32 collect_wreck_score = 12;  // 收集残骸分数
+  int32 kill_bonus_score = 13;  // show 加成击杀收益分数
+  int32 use_shield_times = 14;  // 使用护盾次数
+  int32 die_time = 15; // 游戏结束前最后一次死亡时间(毫秒)
+  int32 use_speed_shoes_times = 16; // 使用加速鞋次数
+  int32 fragment_score = 17;   // 碎片分数
+  int32 treasure_count = 18;   // 宝藏个数
+  int32 group_id = 19;  // 队伍 id
+  int32 num = 20; // 房间位置
+}
