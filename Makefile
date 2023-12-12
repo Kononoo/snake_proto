@@ -28,4 +28,4 @@ snakeapi:
 	protoc  --proto_path=.  --go_out=. --go_opt=paths=source_relative \
 	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./snakeapi/claw_doll/claw_doll.proto
 	protoc  --proto_path=.  --go_out=. --go_opt=paths=source_relative \
-    	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./snakeapi/social/social.proto
+       --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./snakeapi/social/social.proto
