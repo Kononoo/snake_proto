@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package kuromi;
+package social;
 
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/social";
 

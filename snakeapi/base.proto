@@ -15,6 +15,7 @@ enum snakeApiOpType {
   GetAdRewards = 7;
   GetTaskInfo = 8;
   GetTaskRewards = 9;
+  GetKuromiResult = 10;
 }
 
 message RewardItem {

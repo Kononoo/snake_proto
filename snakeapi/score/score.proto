@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package score;
+
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/score";
+
+
+message GetKuromiResultReq {
+  string uid  = 1;
+  int64 rid = 2;
+}
+
+message GetKuromiResultResp {
+  int32 win_team_id = 1;      // 胜利的阵营 id
+  int64 claw_coin_count = 2;   // 玩家娃娃币数量
+  repeated KuromiTeamScore team_scores = 3; // 阵营分数
+}
+
+message KuromiTeamScore {
+  int32 team_id = 1;    // 阵营ID
+  repeated KuromiUserScore user_scores = 2; // 阵营成员分数
+}
+
+message KuromiUserScore {
+  string uid = 1;
+  int64 fragment_score = 2;   // 碎片分数
+  int64 treasure_count = 3;   // 获得宝藏个数
+  int32 kill_count = 4;  // 击杀个数
+  repeated string event_ids = 5; // 游戏评价
+  int32 skin_id = 6;  // 穿戴皮肤 id
+  string avatar = 7; // 头像
+  string nickname = 8; // 昵称
+  int32 show_value = 9; // 玩家 show 值
+  int64 add_claw_coin = 10; // 本局获得的娃娃币数量
+  bool is_followed = 11;  // 是否已关注当前玩家
+}
+
