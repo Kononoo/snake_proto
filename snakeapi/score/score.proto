@@ -23,8 +23,8 @@ message KuromiTeamScore {
 
 message KuromiUserScore {
   string uid = 1;
-  int64 fragment_score = 2;   // 碎片分数
-  int64 treasure_count = 3;   // 获得宝藏个数
+  int32 fragment_score = 2;   // 碎片分数
+  int32 treasure_count = 3;   // 获得宝藏个数
   int32 kill_count = 4;  // 击杀个数
   repeated string event_ids = 5; // 游戏评价
   int32 skin_id = 6;  // 穿戴皮肤 id
