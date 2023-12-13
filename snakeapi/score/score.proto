@@ -11,8 +11,9 @@ message GetKuromiResultReq {
 
 message GetKuromiResultResp {
   int32 win_team_id = 1;      // 胜利的阵营 id
-  int64 claw_coin_count = 2;   // 玩家娃娃币数量
-  repeated KuromiTeamScore team_scores = 3; // 阵营分数
+  int64 claw_coin_count = 2;   // 当前玩家娃娃币数量
+  int64 pvp_count = 3;        // 当前玩家游戏局数（结算了才算）
+  repeated KuromiTeamScore team_scores = 4; // 阵营分数
 }
 
 message KuromiTeamScore {
