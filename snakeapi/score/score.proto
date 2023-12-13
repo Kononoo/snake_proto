@@ -6,8 +6,7 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/score";
 
 
 message GetKuromiResultReq {
-  string uid  = 1;
-  int64 rid = 2;
+  int64 rid = 1;
 }
 
 message GetKuromiResultResp {
