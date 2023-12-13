@@ -7,6 +7,7 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/social";
 
 // 获取最近 3 天一起玩过的队友，只保留 100 人
 message GetKuromiRecentPlayerListReq {
+  sint32 list_version = 1;  // 最近队友列表的 version，如果
 }
 
 message GetKuromiRecentPlayerResp {
