@@ -39,10 +39,9 @@ enum BeginnerState {
 }
 
 message ClawBeltRewardItem {
-   int32        pos = 1;              // 奖励的位置
-   int32        reward_id = 2;        // 奖励序号，每个奖励有一个唯一序号
-   RewardState  reward_state = 3;    //  奖励的状态
-   int64        end_time = 4;        //  下次补货时间、预售开启时间
+   int32        reward_id = 1;        // 奖励序号，每个奖励有一个唯一序号
+   RewardState  reward_state = 2;    //  奖励的状态
+   int64        end_time = 3;        //  下次补货时间、预售开启时间
 }
 
 // 奖励状态
@@ -113,6 +112,7 @@ message GetAdRewardsReq {
 message GetAdRewardsResp {
    repeated snakeapi.RewardItem rewards = 1;  // 奖励列表
    int64 claw_coin_count = 2;        // 娃娃币数量
+   int64 remain_ad_cnt = 3;         // 剩余广告观看次数
 }
 
 message GetTaskInfoReq {
