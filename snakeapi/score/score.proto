@@ -30,7 +30,7 @@ message KuromiUserScore {
   int32 skin_id = 6;  // 穿戴皮肤 id
   string avatar = 7; // 头像
   string nickname = 8; // 昵称
-  int32 show_value = 9; // 玩家 show 值
+  int64 show_value = 9; // 玩家 show 值
   int64 add_claw_coin = 10; // 本局获得的娃娃币数量
   bool is_followed = 11;  // 是否已关注当前玩家
 }
