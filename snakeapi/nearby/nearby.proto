@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package nearby;
+
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/nearby";
+
+import "snakeapi/base.proto";
+
+// UploadLocationReq 上传位置
+message UploadLocationReq {
+  float longitude = 1;
+  float latitude = 2;
+}
+
+message UploadLocationResp {
+}
+
+
+// 拉取附近的人
+message GetNearbyReq {
+  float longitude = 1;
+  float latitude = 2;
+}
+
+message GetNearbyResp {
+  repeated UserGeoInfo nearby_list = 1; // 附近的人列表
+}
+
+// 附近的人玩家信息
+message UserGeoInfo {
+  string uid = 1;
+  sint32 gender = 2;
+  string nickname = 3;
+  string avatar = 4;
+  string signature = 5;  // 签名
+  snakeapi.GradeInfo grade_info = 6;
+  int32 distance = 7; // 距离
+  int32 box_id = 8; // 头像框id
+  int32 charm_exp_level = 9; // 魅力勋章等级
+  sint32 verified = 10; // 是否已认证
+  int32 social_bg_id = 11;  // 社交背景id
+}
