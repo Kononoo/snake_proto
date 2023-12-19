@@ -1,10 +1,11 @@
 syntax = "proto3";
 
-package score;
+package kuromi;
 
-option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/score";
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/kuromi";
 
 
+// 获取游戏结果
 message GetKuromiResultReq {
   int64 rid = 1;
 }
@@ -35,3 +36,26 @@ message KuromiUserScore {
   bool is_followed = 11;  // 是否已关注当前玩家
 }
 
+
+// 获取最近 3 天一起玩过的队友，只保留 100 人
+message GetKuromiRecentPlayerListReq {
+  sint32 list_version = 1;  // 最近队友列表的 version，如果
+}
+
+message GetKuromiRecentPlayerResp {
+  repeated RecentPlayer list = 1;
+}
+
+message RecentPlayer {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+  int32 gender = 4;
+  int32 box_id = 5;
+  int32 star = 6;
+  int32 ultimate = 7;  // 是否王者，0：否，1：是
+  int32 is_partner = 8;
+  string desc = 9;
+  int32 verified = 10;
+  bool is_followed = 11; // 是否已关注
+}
