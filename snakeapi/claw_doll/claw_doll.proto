@@ -28,7 +28,7 @@ message GetInfoResp {
    BeginnerState begin = 7;                        // 新手引导完成状态
    repeated ClawBigRewardList big_reward_list = 8;// 奖励大赏列表
    int32 total_pvp_count = 9;                           // 双人模式总游戏局数
-   int32 totay_pvp_count = 10;                    // 今日双人游戏局数
+   int32 today_pvp_count = 10;                    // 今日双人游戏局数
    repeated snakeapi.Pack pack_list = 11;                   // 苹果礼包列表
 }
 
