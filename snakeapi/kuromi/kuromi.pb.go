@@ -321,228 +321,6 @@ func (x *KuromiUserScore) GetIsFollowed() bool {
 	return false
 }
 
-// 获取最近 3 天一起玩过的队友，只保留 100 人
-type GetKuromiRecentPlayerListReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	ListVersion int32 `protobuf:"zigzag32,1,opt,name=list_version,json=listVersion,proto3" json:"list_version,omitempty"` // 最近队友列表的 version，如果
-}
-
-func (x *GetKuromiRecentPlayerListReq) Reset() {
-	*x = GetKuromiRecentPlayerListReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_kuromi_kuromi_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetKuromiRecentPlayerListReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetKuromiRecentPlayerListReq) ProtoMessage() {}
-
-func (x *GetKuromiRecentPlayerListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_kuromi_kuromi_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetKuromiRecentPlayerListReq.ProtoReflect.Descriptor instead.
-func (*GetKuromiRecentPlayerListReq) Descriptor() ([]byte, []int) {
-	return file_snakeapi_kuromi_kuromi_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *GetKuromiRecentPlayerListReq) GetListVersion() int32 {
-	if x != nil {
-		return x.ListVersion
-	}
-	return 0
-}
-
-type GetKuromiRecentPlayerResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	List []*RecentPlayer `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-}
-
-func (x *GetKuromiRecentPlayerResp) Reset() {
-	*x = GetKuromiRecentPlayerResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_kuromi_kuromi_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetKuromiRecentPlayerResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetKuromiRecentPlayerResp) ProtoMessage() {}
-
-func (x *GetKuromiRecentPlayerResp) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_kuromi_kuromi_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetKuromiRecentPlayerResp.ProtoReflect.Descriptor instead.
-func (*GetKuromiRecentPlayerResp) Descriptor() ([]byte, []int) {
-	return file_snakeapi_kuromi_kuromi_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *GetKuromiRecentPlayerResp) GetList() []*RecentPlayer {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-type RecentPlayer struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Uid        string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
-	Nickname   string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
-	Avatar     string `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`
-	Gender     int32  `protobuf:"varint,4,opt,name=gender,proto3" json:"gender,omitempty"`
-	BoxId      int32  `protobuf:"varint,5,opt,name=box_id,json=boxId,proto3" json:"box_id,omitempty"`
-	Star       int32  `protobuf:"varint,6,opt,name=star,proto3" json:"star,omitempty"`
-	Ultimate   int32  `protobuf:"varint,7,opt,name=ultimate,proto3" json:"ultimate,omitempty"` // 是否王者，0：否，1：是
-	IsPartner  int32  `protobuf:"varint,8,opt,name=is_partner,json=isPartner,proto3" json:"is_partner,omitempty"`
-	Desc       string `protobuf:"bytes,9,opt,name=desc,proto3" json:"desc,omitempty"`
-	Verified   int32  `protobuf:"varint,10,opt,name=verified,proto3" json:"verified,omitempty"`
-	IsFollowed bool   `protobuf:"varint,11,opt,name=is_followed,json=isFollowed,proto3" json:"is_followed,omitempty"` // 是否已关注
-}
-
-func (x *RecentPlayer) Reset() {
-	*x = RecentPlayer{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_kuromi_kuromi_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *RecentPlayer) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecentPlayer) ProtoMessage() {}
-
-func (x *RecentPlayer) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_kuromi_kuromi_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecentPlayer.ProtoReflect.Descriptor instead.
-func (*RecentPlayer) Descriptor() ([]byte, []int) {
-	return file_snakeapi_kuromi_kuromi_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *RecentPlayer) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-func (x *RecentPlayer) GetNickname() string {
-	if x != nil {
-		return x.Nickname
-	}
-	return ""
-}
-
-func (x *RecentPlayer) GetAvatar() string {
-	if x != nil {
-		return x.Avatar
-	}
-	return ""
-}
-
-func (x *RecentPlayer) GetGender() int32 {
-	if x != nil {
-		return x.Gender
-	}
-	return 0
-}
-
-func (x *RecentPlayer) GetBoxId() int32 {
-	if x != nil {
-		return x.BoxId
-	}
-	return 0
-}
-
-func (x *RecentPlayer) GetStar() int32 {
-	if x != nil {
-		return x.Star
-	}
-	return 0
-}
-
-func (x *RecentPlayer) GetUltimate() int32 {
-	if x != nil {
-		return x.Ultimate
-	}
-	return 0
-}
-
-func (x *RecentPlayer) GetIsPartner() int32 {
-	if x != nil {
-		return x.IsPartner
-	}
-	return 0
-}
-
-func (x *RecentPlayer) GetDesc() string {
-	if x != nil {
-		return x.Desc
-	}
-	return ""
-}
-
-func (x *RecentPlayer) GetVerified() int32 {
-	if x != nil {
-		return x.Verified
-	}
-	return 0
-}
-
-func (x *RecentPlayer) GetIsFollowed() bool {
-	if x != nil {
-		return x.IsFollowed
-	}
-	return false
-}
-
 var File_snakeapi_kuromi_kuromi_proto protoreflect.FileDescriptor
 
 var file_snakeapi_kuromi_kuromi_proto_rawDesc = []byte{
@@ -590,33 +368,6 @@ var file_snakeapi_kuromi_kuromi_proto_rawDesc = []byte{
 	0x6c, 0x61, 0x77, 0x5f, 0x63, 0x6f, 0x69, 0x6e, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b,
 	0x61, 0x64, 0x64, 0x43, 0x6c, 0x61, 0x77, 0x43, 0x6f, 0x69, 0x6e, 0x12, 0x1f, 0x0a, 0x0b, 0x69,
 	0x73, 0x5f, 0x66, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x08,
-	0x52, 0x0a, 0x69, 0x73, 0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x22, 0x41, 0x0a, 0x1c,
-	0x47, 0x65, 0x74, 0x4b, 0x75, 0x72, 0x6f, 0x6d, 0x69, 0x52, 0x65, 0x63, 0x65, 0x6e, 0x74, 0x50,
-	0x6c, 0x61, 0x79, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x12, 0x21, 0x0a, 0x0c,
-	0x6c, 0x69, 0x73, 0x74, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x11, 0x52, 0x0b, 0x6c, 0x69, 0x73, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22,
-	0x45, 0x0a, 0x19, 0x47, 0x65, 0x74, 0x4b, 0x75, 0x72, 0x6f, 0x6d, 0x69, 0x52, 0x65, 0x63, 0x65,
-	0x6e, 0x74, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x12, 0x28, 0x0a, 0x04,
-	0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x6b, 0x75, 0x72,
-	0x6f, 0x6d, 0x69, 0x2e, 0x52, 0x65, 0x63, 0x65, 0x6e, 0x74, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72,
-	0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0xa3, 0x02, 0x0a, 0x0c, 0x52, 0x65, 0x63, 0x65, 0x6e,
-	0x74, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x6e, 0x69, 0x63,
-	0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x69, 0x63,
-	0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x12, 0x16, 0x0a,
-	0x06, 0x67, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x67,
-	0x65, 0x6e, 0x64, 0x65, 0x72, 0x12, 0x15, 0x0a, 0x06, 0x62, 0x6f, 0x78, 0x5f, 0x69, 0x64, 0x18,
-	0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x62, 0x6f, 0x78, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04,
-	0x73, 0x74, 0x61, 0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x73, 0x74, 0x61, 0x72,
-	0x12, 0x1a, 0x0a, 0x08, 0x75, 0x6c, 0x74, 0x69, 0x6d, 0x61, 0x74, 0x65, 0x18, 0x07, 0x20, 0x01,
-	0x28, 0x05, 0x52, 0x08, 0x75, 0x6c, 0x74, 0x69, 0x6d, 0x61, 0x74, 0x65, 0x12, 0x1d, 0x0a, 0x0a,
-	0x69, 0x73, 0x5f, 0x70, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72, 0x18, 0x08, 0x20, 0x01, 0x28, 0x05,
-	0x52, 0x09, 0x69, 0x73, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x64,
-	0x65, 0x73, 0x63, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x12,
-	0x1a, 0x0a, 0x08, 0x76, 0x65, 0x72, 0x69, 0x66, 0x69, 0x65, 0x64, 0x18, 0x0a, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x08, 0x76, 0x65, 0x72, 0x69, 0x66, 0x69, 0x65, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x69,
-	0x73, 0x5f, 0x66, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x08,
 	0x52, 0x0a, 0x69, 0x73, 0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x42, 0x31, 0x5a, 0x2f,
 	0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e,
 	0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
@@ -636,25 +387,21 @@ func file_snakeapi_kuromi_kuromi_proto_rawDescGZIP() []byte {
 	return file_snakeapi_kuromi_kuromi_proto_rawDescData
 }
 
-var file_snakeapi_kuromi_kuromi_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_snakeapi_kuromi_kuromi_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_snakeapi_kuromi_kuromi_proto_goTypes = []interface{}{
-	(*GetKuromiResultReq)(nil),           // 0: kuromi.GetKuromiResultReq
-	(*GetKuromiResultResp)(nil),          // 1: kuromi.GetKuromiResultResp
-	(*KuromiTeamScore)(nil),              // 2: kuromi.KuromiTeamScore
-	(*KuromiUserScore)(nil),              // 3: kuromi.KuromiUserScore
-	(*GetKuromiRecentPlayerListReq)(nil), // 4: kuromi.GetKuromiRecentPlayerListReq
-	(*GetKuromiRecentPlayerResp)(nil),    // 5: kuromi.GetKuromiRecentPlayerResp
-	(*RecentPlayer)(nil),                 // 6: kuromi.RecentPlayer
+	(*GetKuromiResultReq)(nil),  // 0: kuromi.GetKuromiResultReq
+	(*GetKuromiResultResp)(nil), // 1: kuromi.GetKuromiResultResp
+	(*KuromiTeamScore)(nil),     // 2: kuromi.KuromiTeamScore
+	(*KuromiUserScore)(nil),     // 3: kuromi.KuromiUserScore
 }
 var file_snakeapi_kuromi_kuromi_proto_depIdxs = []int32{
 	2, // 0: kuromi.GetKuromiResultResp.team_scores:type_name -> kuromi.KuromiTeamScore
 	3, // 1: kuromi.KuromiTeamScore.user_scores:type_name -> kuromi.KuromiUserScore
-	6, // 2: kuromi.GetKuromiRecentPlayerResp.list:type_name -> kuromi.RecentPlayer
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_snakeapi_kuromi_kuromi_proto_init() }
@@ -711,42 +458,6 @@ func file_snakeapi_kuromi_kuromi_proto_init() {
 				return nil
 			}
 		}
-		file_snakeapi_kuromi_kuromi_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetKuromiRecentPlayerListReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakeapi_kuromi_kuromi_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetKuromiRecentPlayerResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakeapi_kuromi_kuromi_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecentPlayer); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -754,7 +465,7 @@ func file_snakeapi_kuromi_kuromi_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakeapi_kuromi_kuromi_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
