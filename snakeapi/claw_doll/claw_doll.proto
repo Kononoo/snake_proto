@@ -2,8 +2,7 @@ syntax = "proto3";
 
 package class_doll;
 
-option go_package = "git.17zjh.com/snake/snake_proto/snake_api/claw_doll";
-option objc_class_prefix = "SNKPBCLAWDOLL";
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/claw_doll";
 
 import "snakeapi/base.proto";
 
@@ -25,11 +24,12 @@ message GetInfoResp {
   int32 claw_progress = 3;                        // 抓取进度(0~100)
   int64 last_gift_box_time = 4;                   // 上一次领取礼物盒的时间
   repeated ClawBeltRewardItem belt_rewards = 5;   // 传送带上的奖励情况
-  int64 ad_watch_cnt = 6;                        // 广告已看次数
+  int64 ad_watch_cnt = 6;                         // 广告已看次数
   BeginnerState begin = 7;                        // 新手引导完成状态
-  repeated ClawBigRewardItem big_reward_list = 8;// 奖励大赏列表
-  int32 pvp_count = 9;                           // 双人模式游戏局数
-  repeated snakeapi.Pack pack_list = 10;                   // 苹果礼包列表
+  repeated ClawBigRewardItem big_reward_list = 8; // 奖励大赏列表
+  int32 total_pvp_count = 9;                      // 双人模式总游戏局数
+  int32 today_pvp_count = 10;                     // 今日双人游戏局数
+  repeated snakeapi.Pack pack_list = 11;          // 苹果礼包列表
 }
 
 // 新手标记位

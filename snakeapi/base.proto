@@ -2,8 +2,7 @@ syntax = "proto3";
 
 package snakeapi;
 
-option go_package = "git.17zjh.com/snake/snake_proto/snake_api";
-option objc_class_prefix = "SNKPBAPI";
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi";
 
 enum snakeApiOpType {
   cdUndef = 0;
@@ -16,6 +15,9 @@ enum snakeApiOpType {
   GetAdRewards = 7;
   GetTaskInfo = 8;
   GetTaskRewards = 9;
+  GetKuromiResult = 10;
+  UploadLocation = 11;
+  GetNearby = 12;
 }
 
 message RewardItem {
@@ -68,4 +70,13 @@ message Pack {
   uint32 buy_count = 5;
   uint32 buy_limit = 6;
   repeated RewardItem reward_item_list = 7;   // 奖励列表
+}
+
+// 玩家段位信息
+message GradeInfo {
+  sint32 ultimate = 1;    // 是否王者，1：是
+  int32 star = 2;  // 星星数
+  int32 max_star = 3; // 历史最多星星数
+  int64 time = 4; // 赛季结算时间
+  sint32 unlock = 5; // 团战解锁状态，0 未解锁，1 z玩过，2 可解锁
 }
