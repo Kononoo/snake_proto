@@ -27,6 +27,7 @@ message rpcReqParam {
   int32 rid = 2;
   bytes body = 3;
   userAttr user = 4;
+  string route = 5;
 }
 
 // 内部rpc返回值，对应pb/rs_commonMsg
