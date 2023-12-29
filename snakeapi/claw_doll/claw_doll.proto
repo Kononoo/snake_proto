@@ -5,27 +5,18 @@ package class_doll;
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/claw_doll";
 
 import "snakeapi/base.proto";
-import "google/protobuf/descriptor.proto";
-
-extend google.protobuf.EnumValueOptions {
-  optional string route = 123456789;
-}
 
 enum ClawDollRoute {
   cdUndef = 0;
-  share_claw_doll_config =  1 [
-    (route) = "/share/claw_doll/config"
-  ];
-  share_claw_doll_get_info =  2 [
-    (route) = "/share/claw_doll/get_info"
-  ];
-  DoClaw = 3;
-  OpenGiftBox = 4;
-  ClasHistory = 5;
-  BuyClawCoin = 6;
-  GetAdRewards = 7;
-  GetTaskInfo = 8;
-  GetTaskRewards = 9;
+  share_claw_doll_config =  1 ;
+  share_claw_doll_get_info =  2;
+  share_claw_doll_do_claw = 3;
+  share_claw_doll_open_gift_box = 4;
+  share_claw_doll_clas_history = 5;
+  share_claw_doll_buy_claw_coin = 6;
+  share_claw_doll_get_ad_rewards = 7;
+  share_claw_doll_get_task_info = 8;
+  share_claw_doll_get_task_rewards = 9;
 }
 
 
