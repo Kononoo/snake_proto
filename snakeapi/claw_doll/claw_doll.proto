@@ -6,18 +6,17 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/claw_doll";
 
 import "snakeapi/base.proto";
 
-enum ClawDollRoute {
-  cdUndef = 0;
-  share_claw_doll_config =  1 ;
-  share_claw_doll_get_info =  2;
-  share_claw_doll_do_claw = 3;
-  share_claw_doll_open_gift_box = 4;
-  share_claw_doll_clas_history = 5;
-  share_claw_doll_buy_claw_coin = 6;
-  share_claw_doll_get_ad_rewards = 7;
-  share_claw_doll_get_task_info = 8;
-  share_claw_doll_get_task_rewards = 9;
-}
+/*
+/share/claw_doll/config
+/share/claw_doll/get_info
+/share/claw_doll/do_claw
+/share/claw_doll/open_gift_box
+/share/claw_doll/claw_history
+/share/claw_doll/buy_claw_coin
+/share/claw_doll/get_ad_rewards
+/share/claw_doll/get_task_info
+/share/claw_doll/get_task_rewards
+*/
 
 
 message ConfigReq {
