@@ -5,7 +5,7 @@ package class_doll;
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/claw_doll";
 
 import "snakeapi/base.proto";
-import "google/protobuf/descriptor.proto";
+import "google/protobuf/descriptor.proto"
 
 extend google.protobuf.EnumValueOptions {
   optional string route = 123456789;
