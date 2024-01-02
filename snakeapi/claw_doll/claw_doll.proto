@@ -7,130 +7,125 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/claw_doll";
 import "snakeapi/base.proto";
 
 message ConfigReq {
-   int64 config_version = 1;
+  int64 config_version = 1;
 }
 
 message ConfigResp {
-   string config = 1;
-   int64 config_version = 2;
+  string config = 1;
+  int64 config_version = 2;
 }
 
 message GetInfoReq {
 }
 
 message GetInfoResp {
-   int64 diamond_count = 1;                        // 苹果数量
-   int64 claw_coin_count = 2;                      // 娃娃币数量
-   int32 claw_progress = 3;                        // 抓取进度(0~100)
-   int64 last_gift_box_time = 4;                   // 上一次领取礼物盒的时间
-   repeated ClawBeltRewardItem belt_rewards = 5;   // 传送带上的奖励情况
-   int64 ad_watch_cnt = 6;                        // 广告已看次数
-   BeginnerState begin = 7;                        // 新手引导完成状态
-   repeated ClawBigRewardList big_reward_list = 8;// 奖励大赏列表
-   int32 total_pvp_count = 9;                           // 双人模式总游戏局数
-   int32 today_pvp_count = 10;                    // 今日双人游戏局数
-   repeated snakeapi.Pack pack_list = 11;                   // 苹果礼包列表
+  int64 diamond_count = 1;                        // 苹果数量
+  int64 claw_coin_count = 2;                      // 娃娃币数量
+  int32 claw_progress = 3;                        // 抓取进度(0~100)
+  int64 last_gift_box_time = 4;                   // 上一次领取礼物盒的时间
+  repeated ClawBeltRewardItem belt_rewards = 5;   // 传送带上的奖励情况
+  int64 ad_watch_cnt = 6;                         // 广告已看次数
+  BeginnerState begin = 7;                        // 新手引导完成状态
+  repeated ClawBigRewardItem big_reward_list = 8; // 奖励大赏列表
+  int32 total_pvp_count = 9;                      // 双人模式总游戏局数
+  int32 today_pvp_count = 10;                     // 今日双人游戏局数
+  repeated snakeapi.Pack pack_list = 11;          // 苹果礼包列表
 }
 
 // 新手标记位
 enum BeginnerState {
-   Beginner = 0; // 纯新手
-   Clawed = 1;   // 已经抓取过
-   Opened = 2;  // 已经打开了礼盒
+  Beginner = 0; // 纯新手
+  Clawed = 1;   // 已经抓取过
+  Opened = 2;  // 已经打开了礼盒
 }
 
 message ClawBeltRewardItem {
-   int32        reward_id = 1;        // 奖励序号，每个奖励有一个唯一序号
-   RewardState  reward_state = 2;    //  奖励的状态
-   int64        end_time = 3;        //  下次补货时间、预售开启时间
+  int32        reward_id = 1;        // 奖励序号，每个奖励有一个唯一序号
+  RewardState  reward_state = 2;    //  奖励的状态
+  int64        end_time = 3;        //  下次补货时间、预售开启时间
 }
 
 // 奖励状态
 enum RewardState {
-   Undef      = 0;
-   Available  = 1;  // 可抓取
-   Restock    = 2;  // 补货中
-   NotOnline  = 3;  // 等待上线
+  Undef = 0;
+  Available = 1;  // 可抓取
+  Restock = 2;  // 补货中
+  NotOnline = 3;  // 等待上线
+  Got = 4; // 已获得
 }
 
-message ClawBigRewardList {
-   int32 level = 1;
-   int32 got = 2;
-   int32 all = 3;
-   repeated Reward_list reward_list = 4;
-}
-
-message Reward_list {
-   int32 reward_id = 1;
-   bool got = 2;
-   int64 in_pool_time = 3;
+message ClawBigRewardItem {
+  int32 level = 1;
+  int32 got = 2;
+  int32 all = 3;
+  repeated ClawBeltRewardItem reward_list = 4;
 }
 
 message DoClawReq {
-   int32 reward_id = 1;  // 夹中的奖励id，未夹中传0
+  int32 reward_id = 1;  // 夹中的奖励id，未夹中传0
 }
 
 message DoClawResp {
-   int32 claw_progress = 1;        // 抓取进度(0~100)
-   int32 claw_coin_count = 2;      // 玩家剩余娃娃币
-   ClawBeltRewardItem belt_reward = 3; // 夹中的位置的奖励新信息
+  int32 claw_progress = 1;        // 抓取进度(0~100)
+  int32 claw_coin_count = 2;      // 玩家剩余娃娃币
+  ClawBeltRewardItem belt_reward = 3; // 夹中的位置的奖励新信息
 }
 
 message OpenGiftBoxReq {
 }
 
 message OpenGiftBoxResp {
-   snakeapi.RewardItem reward_item = 1;             // 奖励
-   int64 last_gift_box_time = 2;                   // 上一次领取礼物盒的时间
+  snakeapi.RewardItem reward_item = 1;             // 奖励
+  int64 last_gift_box_time = 2;                   // 上一次领取礼物盒的时间
 }
 
 message HistoryReq {
 }
 
 message HistoryResp {
-   repeated History history = 1;
+  repeated History history = 1;
 }
 
 message History {
-   int64 timestamp = 1;
-   int32 reward_id = 2;
-   int32 toast_id  = 3;
+  int64 timestamp = 1;
+  int32 reward_id = 2;
+  int32 toast_id = 3;
 }
 
 
 message BuyClawCoinReq {
-   int32 PackId = 2;    // 苹果礼包id
+  int32 PackId = 2;    // 苹果礼包id
 }
 
 message BuyClawCoinResp {
-   int64 diamond_count = 1;        // 苹果数量
-   int64 claw_coin_count = 2;      // 玩家剩余娃娃币
+  int64 diamond_count = 1;        // 苹果数量
+  int64 claw_coin_count = 2;      // 玩家剩余娃娃币
 }
 
 message GetAdRewardsReq {
 }
 
 message GetAdRewardsResp {
-   repeated snakeapi.RewardItem rewards = 1;  // 奖励列表
-   int64 claw_coin_count = 2;        // 娃娃币数量
-   int64 remain_ad_cnt = 3;         // 剩余广告观看次数
+  repeated snakeapi.RewardItem rewards = 1;  // 奖励列表
+  int64 claw_coin_count = 2;        // 娃娃币数量
+  int64 remain_ad_cnt = 3;         // 剩余广告观看次数
 }
 
 message GetTaskInfoReq {
 }
 
 message GetTaskInfoResp {
-   repeated snakeapi.EventTask task_infos = 1;              // 任务信息
-   int64 claw_coin_count = 2;        // 娃娃币数量
+  repeated snakeapi.EventTask task_infos = 1;              // 任务信息
+  int64 claw_coin_count = 2;        // 娃娃币数量
 }
 
 
 message GetTaskRewardsReq {
-   int32 event_id = 1;   // 任务活动id
-   int32 task_id =  2;    // 任务id
+  int32 event_id = 1;   // 任务活动id
+  int32 task_id = 2;    // 任务id
 }
 
 message GetTaskRewardsResp {
-   repeated snakeapi.RewardItem rewards = 1;  // 奖励列表
-   int64 claw_coin_count = 2;        // 娃娃币数量
+  repeated snakeapi.RewardItem rewards = 1;  // 奖励列表
+  int64 claw_coin_count = 2;        // 娃娃币数量
 }
