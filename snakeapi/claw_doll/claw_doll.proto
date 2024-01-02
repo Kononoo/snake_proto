@@ -97,6 +97,7 @@ message HistoryReq {
 
 message HistoryResp {
   repeated History history = 1;
+  int32 redundancy = 2; // 冗余字段
 }
 
 message History {
