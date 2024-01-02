@@ -175,8 +175,9 @@ message BindReq {
   int32 game_mode = 5;
   int32 mode_version = 6;
   int32 time_limit = 7;
-  int32 player_count = 8;
+  int32 player_count = 8;   // 匹配时的人数（排除ai）
   int32 platform = 9;
+  int32 max_player_count = 10; // 最多人数
 }
 
 message BindRsp {
