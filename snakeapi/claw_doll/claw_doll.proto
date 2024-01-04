@@ -6,19 +6,6 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/claw_doll";
 
 import "snakeapi/base.proto";
 
-/*
-/claw_doll/config
-/claw_doll/get_info
-/claw_doll/do_claw
-/claw_doll/open_gift_box
-/claw_doll/claw_history
-/claw_doll/buy_claw_coin
-/claw_doll/get_ad_rewards
-/claw_doll/get_task_info
-/claw_doll/get_task_rewards
-*/
-
-
 message ConfigReq {
   int64 config_version = 1;
 }
