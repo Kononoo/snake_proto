@@ -28,8 +28,8 @@ snakeapi:
 	protoc  --proto_path=. --proto_path=/  --go_out=. --go_opt=paths=source_relative \
 	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./snakeapi/*/*.proto
 
-DIR := $(shell pwd)
-PROTO_FILES := $(shell find $(DIR) -name '*.proto')
+
+PROTO_FILES := $(shell find ./ -name '*.proto')
 
 protoset:
-	protoc --descriptor_set_out=snake.protoset --include_imports echo $(PROTO_FILES)
+	protoc --descriptor_set_out=snake.protoset --include_imports $(PROTO_FILES)
