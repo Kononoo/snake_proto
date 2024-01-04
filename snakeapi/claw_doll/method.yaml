@@ -1,0 +1,12 @@
+apis:
+  - route: "/claw_doll/config"
+    input: "ConfigReq"
+    output: "ConfigResp"
+  - route: "/claw_doll/get_info"
+  - route: "/claw_doll/do_claw"
+  - route: "/claw_doll/open_gift_box"
+  - route: "/claw_doll/claw_history"
+  - route: "/claw_doll/buy_claw_coin"
+  - route: "/claw_doll/get_ad_rewards"
+  - route: "/claw_doll/get_task_info"
+  - route: "/claw_doll/get_task_rewards"
