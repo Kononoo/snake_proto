@@ -35,4 +35,5 @@ message KuromiUserScore {
   int64 add_claw_coin = 10; // 本局获得的娃娃币数量
   bool is_followed = 11;  // 是否已关注当前玩家
   bool is_ai = 12; // 是否是 ai
+  int32 length = 13; // 长度
 }
