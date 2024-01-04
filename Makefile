@@ -1,7 +1,7 @@
 
-.PHONY: snakehead rpc voiceroom music unitygame snakeapi
+.PHONY: snakehead rpc voiceroom music unitygame snakeapi protoset
 
-all: snakehead rpc voiceroom music unitygame snakeapi
+all: snakehead rpc voiceroom music unitygame snakeapi protoset
 
 snakehead:
 	protoc --go_out=. --go_opt=paths=source_relative ./snakehead/*.proto
@@ -27,3 +27,9 @@ snakeapi:
 	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative ./snakeapi/*.proto
 	protoc  --proto_path=. --proto_path=/  --go_out=. --go_opt=paths=source_relative \
 	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./snakeapi/*/*.proto
+
+DIR := $(shell pwd)
+PROTO_FILES := $(shell find $(DIR) -name '*.proto')
+
+protoset:
+	protoc --descriptor_set_out=snake.protoset --include_imports echo $(PROTO_FILES)
