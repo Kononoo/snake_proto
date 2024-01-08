@@ -1,5 +1,9 @@
+project:
+  "抓娃娃"
+service_extend: "snakeapi"
 apis:
   - route: "/claw_doll/config"
+    desc: "抓娃娃配置接口"
     input: "ConfigReq"
     output: "ConfigResp"
   - route: "/claw_doll/get_info"
