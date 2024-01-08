@@ -1,23 +1,10 @@
 syntax = "proto3";
 
-package class_doll;
+package claw_doll;
 
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/claw_doll";
 
 import "snakeapi/base.proto";
-
-/*
-/claw_doll/config
-/claw_doll/get_info
-/claw_doll/do_claw
-/claw_doll/open_gift_box
-/claw_doll/claw_history
-/claw_doll/buy_claw_coin
-/claw_doll/get_ad_rewards
-/claw_doll/get_task_info
-/claw_doll/get_task_rewards
-*/
-
 
 message ConfigReq {
   int64 config_version = 1;
@@ -43,6 +30,7 @@ message GetInfoResp {
   int32 total_pvp_count = 9;                      // 双人模式总游戏局数
   int32 today_pvp_count = 10;                     // 今日双人游戏局数
   repeated snakeapi.Pack pack_list = 11;          // 苹果礼包列表
+  int32 reward_got_num = 12;                      // 玩家的抓取的奖励数量
 }
 
 // 新手标记位
