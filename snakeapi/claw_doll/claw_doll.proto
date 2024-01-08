@@ -70,6 +70,7 @@ message DoClawResp {
   int32 claw_progress = 1;        // 抓取进度(0~100)
   int32 claw_coin_count = 2;      // 玩家剩余娃娃币
   ClawBeltRewardItem belt_reward = 3; // 夹中的位置的奖励新信息
+  int32 reward_got_num = 4;                      // 玩家的抓取的奖励数量
 }
 
 message OpenGiftBoxReq {
