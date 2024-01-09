@@ -266,6 +266,7 @@ message ReportKuromiScoreReq {
   int32 action_no = 2;  // 帧号
   sint32 pid = 3;
   int32 rid = 4; // 房间号
+  string end_reason = 5; // 达到碎片时间 0，单局时间截止 1
 }
 
 message KuromiTeamScore {
