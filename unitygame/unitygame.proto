@@ -297,4 +297,5 @@ message KuromiPlayerScore {
   int32 group_id = 19;  // 队伍 id
   int32 num = 20; // 房间位置
   int32 skin_id = 21; // 本局游戏穿戴的皮肤 id
+  string match_id = 22; // 匹配 id
 }
