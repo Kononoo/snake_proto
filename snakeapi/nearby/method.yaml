@@ -1,0 +1,12 @@
+project:
+  "nearby"
+service_extend: "snakeapi"
+apis:
+  - route: "/upload_location"
+    desc: "upload_location"
+    input: "UploadLocationReq"
+    output: "UploadLocationResp"
+  - route: "/get_nearby"
+    desc: "get_nearby"
+    input: "GetNearbyReq"
+    output: "GetNearbyResp"
