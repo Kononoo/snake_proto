@@ -1,0 +1,8 @@
+project:
+  "kuromi"
+service_extend: "snakeapi"
+apis:
+  - route: "/get_kuromi_result"
+    desc: "get_kuromi_result"
+    input: "GetKuromiResultReq"
+    output: "GetKuromiResultResp"
