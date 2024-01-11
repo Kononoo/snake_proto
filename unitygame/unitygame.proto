@@ -291,7 +291,7 @@ message KuromiPlayerScore {
   int32 hit_wall_times = 11;  // 撞墙次数
   int32 collect_wreck_score = 12;  // 收集残骸分数
   int32 kill_bonus_score = 13;  // show 加成击杀收益分数
-  int32 die_time = 15; // 游戏结束前最后一次死亡时间(毫秒)
+  int32 die_time = 15; // 死了多久(毫秒)，复活的时候清零
   int32 fragment_score = 17;   // 碎片分数
   int32 treasure_count = 18;   // 宝藏个数
   int32 group_id = 19;  // 队伍 id
