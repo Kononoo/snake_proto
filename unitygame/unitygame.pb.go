@@ -2422,7 +2422,7 @@ type KuromiPlayerScore struct {
 	HitWallTimes         int32    `protobuf:"varint,11,opt,name=hit_wall_times,json=hitWallTimes,proto3" json:"hit_wall_times,omitempty"`                           // 撞墙次数
 	CollectWreckScore    int32    `protobuf:"varint,12,opt,name=collect_wreck_score,json=collectWreckScore,proto3" json:"collect_wreck_score,omitempty"`            // 收集残骸分数
 	KillBonusScore       int32    `protobuf:"varint,13,opt,name=kill_bonus_score,json=killBonusScore,proto3" json:"kill_bonus_score,omitempty"`                     // show 加成击杀收益分数
-	DieTime              int32    `protobuf:"varint,15,opt,name=die_time,json=dieTime,proto3" json:"die_time,omitempty"`                                            // 游戏结束前最后一次死亡时间(毫秒)
+	DieTime              int32    `protobuf:"varint,15,opt,name=die_time,json=dieTime,proto3" json:"die_time,omitempty"`                                            // 死了多久(毫秒)，复活的时候清零
 	FragmentScore        int32    `protobuf:"varint,17,opt,name=fragment_score,json=fragmentScore,proto3" json:"fragment_score,omitempty"`                          // 碎片分数
 	TreasureCount        int32    `protobuf:"varint,18,opt,name=treasure_count,json=treasureCount,proto3" json:"treasure_count,omitempty"`                          // 宝藏个数
 	GroupId              int32    `protobuf:"varint,19,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`                                            // 队伍 id
