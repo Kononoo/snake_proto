@@ -2,8 +2,6 @@ syntax = "proto3";
 package SnakeMain.Config;
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/config";
 
-import "google/protobuf/any.proto";
-
 // Store start
 message ProductConfig {
     //如果property里某字段非空，则替换本地列表，否则读本地数据
@@ -165,7 +163,6 @@ message StoreConfig {
 
 message StoreItem {
     int32 type = 1;
-    repeated google.protobuf.Any items = 2;
 }
 
 
