@@ -163,6 +163,7 @@ message StoreConfig {
 
 message StoreItem {
     int32 type = 1;
+    string cdn_url = 2;
 }
 
 
@@ -346,6 +347,11 @@ message SkinChipModel {
 //skin chip end
 
 //skin start
+
+message SkinList {
+  repeated SkSkinModel skin_list = 1;
+}
+
 message SkSkinModel {
     int32 item_id = 1; // 商品id
     int32 active = 2;
