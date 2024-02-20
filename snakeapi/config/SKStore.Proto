@@ -1,0 +1,1039 @@
+syntax = "proto3";
+package SnakeMain.Config;
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/config";
+
+import "google/protobuf/any.proto";
+
+// Store start
+message ProductConfig {
+    //如果property里某字段非空，则替换本地列表，否则读本地数据
+    Property property = 1;
+    string store_resource_url = 2;
+    /**
+    *         //4.3版本新增
+    *         chip_compose_flag: 0; //0:关，1:开
+    */
+    int32 chip_compose_flag = 3;
+
+    CurrencyStore currency_store = 4;
+
+    repeated MiddleItem middle_item_list = 5; // 中间道具配置
+
+    StoreRecommend store_recommend = 6;
+
+    DrawCardGuideConfig draw_card_guide_config = 7;
+
+    repeated SkinSet skin_set = 8;    
+}
+
+message SkinSet {
+    int32 id = 1; // 皮肤套系id，服务器使用，客户端不用管
+    string name = 2; // 皮肤名字
+    repeated int32 skin_ids = 3; //相关皮肤id    
+}
+
+message DrawCardGuideConfig {
+    repeated int32 id = 1;
+    repeated string text_list = 2;
+    repeated RewardInfo reward = 3;
+    int64 start_time = 4;
+    int64 end_time = 5;
+    int32 guide_act_id = 6;   
+}
+
+message MiddleItem {
+    int32 middle_item_id = 1;
+    int32 skin_id = 2;
+    int32 count = 3;
+    string imgurl = 4;
+    string intro = 5;
+    string name = 6;
+    string get_method_desc = 7;
+    int32 worth_level = 8;    
+}
+
+message CurrencyStore {
+    repeated CurrencyStoreItem snake_coin = 1;
+    repeated CurrencyStoreItem coupon = 2;
+}
+
+message CurrencyStoreItem {
+    int32 item_id = 1;
+    int32 cost = 2;
+    int32 num = 3;    
+}
+
+message Property {
+    repeated AvatarBoxTag avatar_box_tag = 1;
+    repeated Currency currency_list = 2;
+    repeated int32 default_skin_list = 3;
+    repeated int32 default_team_suit = 4;
+    int64 checksum = 5;
+    repeated ThumbnailBorder thumbnail_border = 6;
+    repeated WorthLevelIcon worth_level_icon = 7;
+    repeated WorthLevelBorderPc worth_level_border_pc = 8;
+}
+
+message WorthLevelBorderPc {
+    int32 worth_level = 1;
+    string url = 2;
+}
+
+message WorthLevelIcon {
+    int32 worth_level = 1;
+    string icon = 2;    
+}
+
+message StoreRecommend {
+    repeated RecommandItem list = 1;
+    string empty_url = 2;   
+}
+
+message RecommandItem {
+    int32 id = 1;
+    string title = 2;
+    string title_color = 3;
+    int64 start_time = 4; //预告开始时间
+    int64 act_start_time = 5; //预告结束时间或活动开始时间
+    int64 end_time = 6; //活动结束时间
+    int32 type = 7;
+    string bg_url = 8;
+    string desc = 9;
+    string sub_bg_url = 10;
+    string icon_selected_color = 11;
+    string icon_color = 12;
+    string star_text_color = 13;
+    int32 default_sub_index = 14;
+    repeated SubItem sub_list = 15;
+    repeated PackItem pack_list = 16;
+}
+
+message PackItem {
+    string title = 1;
+    string imgurl = 2;
+    int32 item_id = 3;
+    int32 item_type = 4;
+}
+
+message SubItem {
+    string imgurl = 1;
+    repeated SubLeftItem left_list = 2;    
+}
+
+message SubLeftItem { 
+    enum MethodType {
+        GET_METHOD_UNDEFINED = 0;
+        GET_METHOD_PAY = 1;
+        GET_METHOD_ACTIVITY = 2;
+        GET_METHOD_WAITING = 3;
+    }
+    int32 anim_type = 1;
+    string anim_url = 2;
+    int32 get_method = 3;
+    string get_url = 4;
+    int32 item_id = 5;
+    int32 item_type = 6;
+    string item_name = 7;    
+}
+
+message AvatarBoxTag {
+    int32 tag_id = 1;
+    string tag_name = 2;
+}
+
+message Currency {
+    int32 reward_type = 1;
+    int32 currency_type = 2;
+    string name = 3;
+    string imgurl = 4;
+    string desc = 5;
+    string get_method_desc = 6;
+    string thumbnail = 7;
+}
+
+
+
+message ThumbnailBorder {
+    int32 worth_level = 1;
+    string url =  2;
+}
+
+
+message StoreConfig {
+   repeated StoreItem item_list = 1;
+}
+
+message StoreItem {
+    int32 type = 1;
+    repeated google.protobuf.Any items = 2;
+}
+
+
+
+// pack start
+
+message PackModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    PackInfo info = 5;
+}
+
+message PackInfo {
+    // 礼包类型，1：苹果礼包，2：苹果翻倍礼包，其他是其他礼包
+    int32 type = 1;
+    int32 pack_type = 2;//1为礼包，奖励使用reward；2为福袋，奖励使用sure_reward和may_reward
+    repeated RewardInfo sure_reward = 3;
+    repeated RewardInfo may_reward = 4;
+    repeated RewardInfo reward = 5;
+    string title = 6;
+    string description = 7;
+    string total_price = 8;
+    string pay_success_desc = 9;
+    string pay_success_imgurl = 10;
+
+    repeated PackMultiPriceInfo multi_buy_price = 11;
+    //每日红点开始时间
+    int64 notify_start = 12;
+    //每日红点结束时间
+    int64 notify_end = 13;
+
+    string gif_imgurl = 14;
+
+    // for passcheck 兑换 start
+    int32 baodi_times = 15;
+    int32 rank_limit = 16;
+    int32 need_vip = 17;
+    int32 nabob_addition = 18;
+    string lucky_desc = 19;    
+}
+
+message PackMultiPriceInfo {
+    int32 count = 1;
+    int32 price = 2;   
+}
+//pack end
+
+//game face start
+message GameFaceModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    ProductBaseInfo info = 5;
+}
+
+
+//game face end
+
+//avatar frame start
+message AvatarFrameModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    AvatarFrameInfo info = 5;
+}
+
+message AvatarFrameInfo {
+    int32 tag_id = 1;
+    string gray_imgurl = 2;
+    int32 anim_type = 3;
+    string resource_url = 4;
+    string lite_animate = 5;
+    string store_imgurl = 6;
+    int32 recent_obtain = 7;
+}
+//avatar frame end
+
+// ks chip start
+message KillStyleChipModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    ChipInfo info = 5;
+}
+//ks chip end
+
+//ks start
+message KillStyleModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    ProductBaseInfo info = 5;
+}
+//ks end
+
+//game broadcast start
+message OGameBroadcastModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    OGameBroadcastInfo info = 5;
+}
+
+message OGameBroadcastInfo {
+    int32 anim_type = 1;
+    string anim_url = 2;
+    string broadcast_text_color = 3; // 播报文字颜色    
+}
+//game broadcast end
+
+//game bubble start
+message OGameBubbleModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    OGameBubbleInfo info = 5;
+}
+
+message OGameBubbleInfo {
+    int32 anim_type = 1;
+    string anim_url = 2;
+    string nickname_color = 3; // 昵称颜色
+    string text_color = 4; // 文字颜色    
+}
+//game bubble end
+
+//ring start
+message RingModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    RingInfo info = 5;
+}
+
+message RingInfo {
+    int32 room_limit = 1;
+    int32 bag_id = 2;
+    int32 display = 3;
+    int32 anim_type = 4;
+    string resource_url = 5;
+    int32 care = 6;
+    string lite_animate = 7;
+    int32 ring_type = 8;//戒指type;0:普通戒指，1:高级限定戒指
+    string title_img = 9;//标题图片
+    string new_title_img = 10;
+    string show_effects = 11;//出场特效
+    int32 effects_type = 12;//出场特效动画类型
+    string detail_bg = 13;//详情页背景
+    int32 template_id = 14;//专属请帖模版id
+    int32 hide_img = 15;//是否隐藏图片，0否1是
+    string barrage_effects = 16;//播报动效
+    int32 barrage_effects_type = 17;//播报动效类型
+    string barrage_effects_imgurl = 18;//播报动效图片
+    string barrage_font_color = 19;//播报昵称颜色
+    string barrage_text = 20;//播报文案
+    string ring_coordinate = 21;//戒指位置坐标和尺寸大小，x;y;width;height
+    string button_coordinate = 22;//戒指位置坐标和尺寸大小，x;y;width;height
+    string button_store_url = 23;//按钮在商店场景下的图片
+    string button_bag_url = 24;//按钮在商店场景下的图片
+    int32 recent_obtain = 25; //最近获得开关 0 关闭; 1打开    
+}
+//ring end
+
+//skin chip start
+message SkinChipModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    ChipInfo info = 5;
+}
+//skin chip end
+
+//skin start
+message SkSkinModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    SkinInfo info = 5;
+}
+
+message SkinInfo {
+    repeated MeterialItem material_list = 1;
+    repeated PriceInfo material_coins = 2;
+    int32 show_worth = 3;
+    int64 use_limit_time = 4;//-1为永久;否则使用期限(int32 秒)
+    int64 add_time = 5; // 获取时间，服务器在背包接口下发，用于背包皮肤和击杀效果排序
+    string dynamic_thumbnail = 6;
+    int32 base_level_id = 7;
+    int32 level = 8;
+    int32 anim_type = 9; 
+    string headimgurl = 10;//头像界面使用
+    /**
+     * 1: "绿队"; 2: "红队"; 3: "黄队"
+     */
+    repeated int32 use_team = 11;
+    int32 hide_shadow = 12; // 是否隐藏首页阴影，0展示 1隐藏
+    string left_up_icon = 13; //皮肤限定角标
+    int32 close_up = 14;//0 不支持特写，1 支持特写
+    float close_up_scale = 15; //特写缩放系数
+    int32 bottom_anim_type = 16;// 底图动效类型
+    string bottom_anim_url = 17;// 底图动效链接
+    int32 entrance_anim_type = 18;// 入场动效类型
+    string entrance_anim_url = 19;// 入场动效链接
+    int32 recent_obtain = 20;//最近获得开关， 0 关闭  1打开
+    repeated Feature feature_list = 21;//皮肤特性列表      
+}
+
+message Feature {
+    string icon_url = 1;
+    string desc = 2;    
+}
+//skin end
+
+//team suit start
+message TeamSuitModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    TeamSuitInfo info = 5;
+}
+
+message TeamSuitInfo {
+    repeated MeterialItem material_list = 1;
+    repeated PriceInfo material_coins = 2;
+    int32 show_worth = 3;
+    int64 use_limit_time = 4;//-1为永久;否则使用期限(int32 秒)
+    int64 add_time = 5; // 获取时间，服务器在背包接口下发，用于背包皮肤和击杀效果排序
+    string dynamic_thumbnail = 6;
+    int32 base_level_id = 7;
+    int32 level = 8;
+    int32 anim_type = 9; 
+    string headimgurl = 10;//头像界面使用
+    /**
+     * 1: "绿队"; 2: "红队"; 3: "黄队"
+     */
+    repeated int32 use_team = 11;
+    int32 hide_shadow = 12; // 是否隐藏首页阴影，0展示 1隐藏
+    string left_up_icon = 13; //皮肤限定角标
+    int32 close_up = 14;//0 不支持特写，1 支持特写
+    float close_up_scale = 15; //特写缩放系数
+    int32 bottom_anim_type = 16;// 底图动效类型
+    string bottom_anim_url = 17;// 底图动效链接
+    int32 entrance_anim_type = 18;// 入场动效类型
+    string entrance_anim_url = 19;// 入场动效链接
+    int32 recent_obtain = 20;//最近获得开关， 0 关闭  1打开
+    repeated Feature feature_list = 21;//皮肤特性列表   
+    repeated GameInfo game_info_list = 22;
+    string act_jumpurl = 23; // 活动跳转链接
+    int64 act_start_time = 24; // 活动开始时间
+    int64 act_end_time = 25; // 活动结束时间
+}
+
+message GameInfo {
+    enum ColorType {
+        COLOR_UNDEFINED = 0;
+        COLOR_GREEN = 1;
+        COLOR_RED = 2;
+        COLOR_YELLOW = 3;    
+    }
+    string game_icon_url = 1; // 游戏内缩略图
+    string game_imgurl = 2; // 全场最炫展示图片
+    int32 color_id = 3; //队服默认展示色系，商店内展示用，1:绿 2:红，3:黄   
+}
+//team suit end
+
+// title start
+message TitleModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    TitleInfo info = 5;
+}
+
+message TitleInfo {
+    int32 use_time = 1;
+    int32 anim_type = 2;
+    string animate = 3;
+    string home_animate = 4;
+    int32 home_anim_type = 5;
+    int32 home_lottie_scale_type = 6;//缩放方式
+    string static_imgurl = 7;
+}
+//title end
+
+// broadcastEffect start
+message BroadcastEffectModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    BroadcastEffectInfo info = 5;
+}
+
+message BroadcastEffectInfo {
+    int32 anim_type = 1;
+    string anim_url = 2;
+    string font_color = 3;
+    string name_color = 4;
+}
+// broadcastEffect end
+
+// gift start
+message GiftModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    GiftInfo info = 5;
+}
+
+message GiftInfo {
+    string unit = 1;
+    string corner_url = 2;
+    repeated GiftNumberConfig num_config = 3;
+    repeated int32 num_list = 4;
+    repeated int32 world_num_list = 5; // (空数组则不出现在世界频道送礼)
+    int32 display = 6; // 1显示，0不显示
+    int32 voice_room_hide = 7; // 语音房是否展示 1隐藏
+    int32 voice_room_anim = 8; // 语音房是否展示动画 1展示
+    string act_thumbnail = 9;
+    string act_banner_imgurl = 10;
+    string banner_link = 11;
+    int64 act_start_time = 12;
+    int64 act_end_time = 13;
+    int32 wish_msg_switch = 14; //是否使用赠言，0或1
+    string gift_name_url = 15; //弹幕礼物图片icon url
+    int32 barrage_anim_type = 16; // 弹幕动画类型，同通用动画类型一致
+    string barrage_anim_url = 17; //弹幕动画链接
+    string barrage_font_color = 18; // 弹幕字体颜色，格式同气泡一致（#十六进制），例如：#EE6858
+    string barrage_anim_imgurl = 19; // 弹幕礼物低性能静态图
+    int64 use_limit_time = 20;
+    int32 time_limit_gift_id = 21;  // 永久礼物对应的限时礼物id
+    bool is_privilege_gift = 22; // 是否魅力勋章特权礼物
+    PhotoWallConfig photo_wall_config = 23; // 照片花墙入口配置
+    int32 recent_obtain = 24; // 最近获得开关 0 关闭; 1打开
+    int32 full_screen_anim = 25; // 全屏特性开关 0 关闭; 1打开
+    int32 has_mail_reward = 26; // 附赠称号开关 0 关闭；1打开
+    repeated int32 illustration_ids = 27; // 关联图鉴ids
+    bool has_associated = 28; // 是否关联图鉴
+    string illustration_url = 29;
+}
+
+message GiftNumberConfig {
+    int32 num = 1;
+    repeated string text_list = 2; // ['a', 'b'],  占位符{nickname} ,{imgurl}
+    int32 charm = 3;
+    int32 bless = 4;
+    GiftAnimConfig anim = 5;
+}
+
+message GiftAnimConfig { 
+    int32 anim_type2 = 1; // 1--固定轨迹; 2--lottie json
+    string img_url = 2; // 固定轨迹图片地址
+    string lottie_json_url = 3;
+    string bgm_url = 4;
+    float lottie_anim_speed = 5;
+    int32 lottie_scale_type = 6;
+}
+
+message PhotoWallConfig {
+    int32 open = 1; // 入口开关，0：关闭，1：开启
+    int64 start_time = 2;
+    int64 end_time = 3;
+    string effect_img = 4; // 入口样式
+    int32 anim_type = 5;
+    string anim_url = 6;
+}
+// gift end
+
+// card bag start
+message CardBagModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    CardBagInfo info = 5;
+}
+
+message CardBagInfo {
+    int32 type = 1;
+    int32 discount_times = 2;
+    int32 ad_times = 3; // 有广告渠道是广告次数，无广告渠道是免费此时
+    int32 lucky_times = 4;
+    int64 version = 5;
+    string animation = 6;
+    string animation_frame = 7;
+//    repeated repeated MultiBuyPriceBean multi_buy_price = 8; proto 不支持这种 List<List<?>>嵌套结构，后续重新处理解析
+    repeated RewardInfo rare_reward_list = 9;
+    repeated RewardInfo general_reward_list = 10;
+    int32 skin_baodi = 11; //皮肤保底，0：默认值，1：支持保底 4.3.12新增
+    RewardInfo baodi_reward = 12; //通用奖励,无奖励时字段不存在每5次抽奖的奖励
+}
+
+message MultiBuyPriceBean {
+    int32 count = 1;
+    int32 currency_type = 2;
+    int32 price = 3;
+}
+// card bag end
+
+// prop start
+message PropModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    PropInfo info = 5;
+}
+
+message PropInfo {
+    int32 use_limit = 1; //可以使用次数限制
+    int32 use_limitation = 2; // 使用时段种类 0：不限制，1:永久限购，2每日限制，3：每周限制
+    int64 use_limit_time = 3; //-1为永久,否则使用期限(int 秒)
+    int32 prop_type = 4;
+    // for 特殊道具属性
+    int32 diamond = 5; //红包里面要用来展示  含多少苹果
+    int32 share_limit = 6;   //房间容纳的人数 红包使用
+    int32 effect = 7; //对应show经验卡的增加值，返利券的比例，抵扣券的减少值；
+    repeated int32 use_range = 8; //  抵扣券可用类型
+    int32 use_threshold = 9; // 抵扣券使用门槛
+    string link = 10;
+    string popup_url = 11;
+}
+// prop end
+
+// vip start
+message VipCardModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    VipInfo info = 5;
+}
+
+message VipInfo {
+    string resource_url = 1;
+    string bg_imgurl = 2;
+    int32 use_time = 3;
+    int32 type = 4;
+    string animation_frame = 5;
+    string purchase_tips = 6;
+    string purchase_success_tips = 7;
+}
+// vip end
+
+// chat bubble start
+message ChatBubbleModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    ChatBubbleInfo info = 5;
+}
+
+message ChatBubbleInfo {
+    int32 anim_type = 1;
+    string left_imgurl = 2;
+    string right_imgurl = 3;
+    string left_color = 4;
+    string right_color = 5;
+    string left_focus_color = 6;
+    string right_focus_color = 7;
+    string voice_room_color = 8;// 语音房颜色，没有的用原配置
+}
+// chat bubble end
+
+// game prop start
+message GamePropModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    GamePropInfo info = 5;
+}
+
+message GamePropInfo {
+    int32 prop_type = 1;
+    int32 game_mode = 2;
+    string long_desc = 3;
+    GamePropAttr attribute = 4;
+}
+
+message GamePropAttr {
+    int32 game_use_limit = 1;//试用限制 1. <=0 无限制  2. >0当局使用限制次数
+    float gains = 2;//身体上的直接收益
+    float effective_duration = 3;//道具效果的持续时间
+    float cooling_duration = 4;//冷却时间
+    string gains_desc = 5;//收益提示
+    string delay_tip = 6;//技能延迟释放的提示
+    float delay_duration = 7;//技能延迟释放时间
+}
+// game prop send
+
+// room bg start
+message RoomBackgroundModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    RoomBackgroundInfo info = 5;
+}
+
+message RoomBackgroundInfo {
+    int32 level = 1;  // 休闲区资源等级
+    string dynamic_preview_url = 2; // 预览资源
+    int32 dynamic_anim_type = 3; // 预览动画类型
+}
+// room bg end
+
+// card user info bg start
+message CardUserInfoBgModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    CardUserInfoBgInfo info = 5;
+}
+
+message CardUserInfoBgInfo {
+    int32 level = 1;  // 休闲区资源等级
+    string nick_name_color = 2;
+    string sign_color = 3;
+    string sign_backgroud_color = 4;
+    string dynamic_preview_url = 5;
+    int32 dynamic_anim_type = 6;
+}
+// card user info bg end
+
+// card user info bg start
+message RoomEnterEffectModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    RoomEnterEffectInfo info = 5;
+}
+
+message RoomEnterEffectInfo {
+    int32 level = 1;  // 休闲区资源等级
+    string big_enter_effect_url = 2;
+    int32 big_enter_anim_type = 3;
+    string enter_tip = 4;
+    string enter_effect_url = 5;
+    int32 enter_anim_type = 6;
+}
+// card user info bg end
+
+// home decorate start
+message HomepageDecorateModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    HomepageDecorateInfo info = 5;
+}
+
+message HomepageDecorateInfo {
+    string anim_url = 1;
+    int32 anim_type = 2;
+    int32 scale_type = 3;
+    int32 lottie_scale_type = 4;
+}
+// home decorate end
+
+// home open start
+message HomepageOpenModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    HomepageOpenInfo info = 5;
+}
+
+message HomepageOpenInfo {
+    string anim_url = 1;
+    int32 anim_type = 2;
+    int32 scale_type = 3;
+}
+// home open end
+
+// chest start
+message ChestModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    ChestInfo info = 5;
+}
+
+message ChestInfo {
+    int32 chest_type = 1; // 宝箱类型
+    int32 effect_day = 2; // 有效天数
+    repeated ChestRewardInfo material_rewards = 3; // 实物奖励
+    repeated ChestRewardInfo must_rewards = 4; // 必得奖励
+    repeated ChestRewardInfo rand_rewards = 5; // 随机奖励
+    repeated ChestRewardInfo select_rewards = 6; // 自选奖励
+}
+
+message ChestRewardInfo {
+    int32 type = 1;
+    int32 skin_id = 2;//物品id
+    string name = 3;
+    string imgurl = 4;
+    int32 num = 5;
+    string big_num = 6; // 大数展示，为空展示num字段
+    string user_info = 7;//限时外观和头像框使用
+    int32 is_valuable = 8;//是否有高价值弹框，默认没有
+    int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
+    int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
+    repeated RewardInfo convert = 11;//奖励折算，没有折算则为空
+    int32 probability = 12;
+    string use_info = 13;
+    
+    int32 index = 14; // 奖励序号，自选奖励、随机奖励和实物奖励有
+    int64 start_time = 15; // 实物奖励才有
+    int64 end_time = 16; // 实物奖励才有
+    string desc = 17; // 实物奖励才有
+    string thumbnail = 18; // 实物奖励才有
+
+    int32 global_android_limit = 19; // 全服限定数量，随机奖励和实物奖励有
+    int32 personal_limit = 20; // 个人限定数量，随机奖励和实物奖励有
+    int32 global_remain = 21; // 全服剩余数量
+    int32 personal_remain = 22; // 个人剩余数量
+    int32 reward_type = 23; // 奖励类型：必得、随机、自选、实物
+}
+// chest end
+
+// couple bg start
+message CoupleBgModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    CoupleBgInfo info = 5;
+}
+
+message CoupleBgInfo {
+    string anim_url = 1; // 动画资源
+    int32 anim_type = 2; // 动画类型
+    string open_anim_url = 3; // 开屏动画资源
+    int32 open_anim_type = 4; // 开屏动画类型
+    string wedding_content_color = 5; // 婚礼文案色值
+    string wedding_date_color = 6;// 婚礼日期色值
+    string wedding_time_color = 7;// 婚礼时光色值
+    string wedding_oath_color = 8;// 婚礼誓言色值
+    string heart_img_url = 9;
+}
+// couple bg end
+
+// social bg start
+message SocialBgModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    SocialBgInfo info = 5;
+}
+
+message SocialBgInfo {
+    int32 short_anim_type = 1; // 动画类型
+    string short_anim_url = 2;
+    string short_img_url = 3; 
+    int32 long_anim_type = 4;
+    string long_anim_url = 5;
+    string long_img_url = 6;
+}
+// social bg end
+
+// home pendant start
+message HomepagePendantModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    HomepagePendantInfo info = 5;
+}
+
+message HomepagePendantInfo {
+    string anim_url = 1;
+    int32 anim_type = 2;
+    int32 scale_type = 3;
+}
+// home pendant end
+
+message ProductBaseInfo {
+    repeated MeterialItem material_list = 1;
+    repeated PriceInfo material_coins = 2;
+    int32 show_worth = 3;
+    int64 use_limit_time = 4;//-1为永久;否则使用期限(int32 秒)
+    int64 add_time = 5; // 获取时间，服务器在背包接口下发，用于背包皮肤和击杀效果排序
+    string dynamic_thumbnail = 6;
+    int32 base_level_id = 7;
+    int32 level = 8;
+    int32 anim_type = 9;    
+}
+
+message ChipInfo {
+    int32 chip_type = 1; //通用奖励type; 区分皮肤还是击杀效果
+    int32 is_personal = 2; //0: 非专属碎片，1:是专属碎片
+    string level_url = 3;
+    repeated PriceInfo sell_price = 4; //出售价格
+    repeated ComposeItem compose_list = 5; //可合成完整外观列表
+    //5.5.0版本增加
+    int64 act_start_time = 6; // 售卖成活动道具开始时间戳（秒）
+    int64 act_end_time = 7; // 售卖成活动道具结束时间戳（秒）
+    int32 middle_item_id = 8;
+    int32 middle_item_num = 9;    
+}
+
+message MeterialItem {
+    int32 type = 1;
+    int32 item_id = 2;
+    int32 num = 3;    
+}
+
+message ComposeItem {
+    int32 type = 1;
+    int32 item_id = 2;    
+}
+
+message StoreInfo {
+    string badge_url = 1;
+    string imgurl = 2;
+    string name = 3;
+    string desc = 4;
+    //标签文案
+    string corner_desc = 5;
+    int32 get_method = 6;
+    string get_method_desc = 7;
+    //按钮文字
+    string btn_text = 8;
+    string btn_jumpurl = 9;
+    int32 buy_limit = 10;
+    int32 buy_limitation = 11;
+    //展示开始时间
+    int64 show_start = 12;
+    //展示结束时间
+    int64 show_end = 13;
+    //折扣开始时间
+    int64 discount_start = 14;
+    //折扣结束时间
+    int64 discount_end = 15;
+    string thumbnail = 16;
+    int64 add_time = 17;
+    repeated PriceInfo price_info = 18;
+    int32 worth_level = 19;
+    string support_version = 20;    
+}
+
+message PriceInfo {
+    int32 type = 1;
+    int32 num = 2; //RMB 类型时候  这个字段 代表 goodsid
+    int32 discount = 3;
+    int32 discountPrice = 4;    
+}
+
+message RewardInfo {
+    int32 type = 1;
+    int32 skin_id = 2;//物品id
+    string name = 3;
+    string imgurl = 4;
+    int32 num = 5;
+    string big_num = 6; // 大数展示，为空展示num字段
+    string user_info = 7;//限时外观和头像框使用
+    int32 is_valuable = 8;//是否有高价值弹框，默认没有
+    int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
+    int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
+    repeated RewardInfo convert = 11;//奖励折算，没有折算则为空
+    int32 probability = 12;
+    string use_info = 13;
+}
+
+enum RewardType {
+    REWARD_TYPE_UNDEFINED = 0;
+    REWARD_COIN = 1;
+    REWARD_APPLE = 2;
+    REWARD_SKIN = 3;
+    REWARD_SKIN_CHIP = 4;
+    REWARD_EFFECT = 5;
+    REWARD_EFFECT_CHIP = 6;
+    REWARD_PROP = 7;
+    REWARD_CRYSTAL = 8; //水晶
+    REWARD_GIFT = 9; //礼物
+    REWARD_HAPPY_COIN = 10; //欢乐币
+    REWARD_TYPE_EVENT_PROP = 11; // 活动道具
+    REWARD_TYPE_AVATAR_BOX = 12; // 头像框
+    REWARD_TYPE_GIFT_PACKS = 15; // 礼包
+    REWARD_TYPE_HONOR = 16; // 荣耀水晶
+    REWARD_TYPE_RING = 17; // 戒指
+    REWARD_TYPE_PUZZLE = 18; //拼图奖励
+    REWARD_TYPE_REAL_REWARD = 19; //实物奖励
+    REWARD_TYPE_LUCKY_BAG = 20; //福袋
+    REWARD_TYPE_GOLD_BEAN = 21; //金豆
+    REWARD_TYPE_BET_COIN = 22; //竞猜币
+    REWARD_TYPE_COLORFUL_BEAN = 23; //彩豆
+    REWARD_TYPE_CARD_BAG = 24; //卡包
+    REWARD_TYPE_VIP_CARD = 26; //会员卡
+    REWARD_TYPE_CHAT_BUBBLE = 27; //气泡
+    REWARD_TYPE_BUFF = 28; //游戏buff
+    REWARD_MEDAL_COIN = 29; //勋章比
+    REWARD_TITLE = 30; //称号
+    REWARD_PASS_BOX = 32; //通行证箱子
+
+    REWARD_GAME_FACE = 35; //游戏表情
+
+    REWARD_ROOM_BACKGROUND = 36; // 语音房房间背景
+    REWARD_ROOM_CARD_BACKGROUND = 37; // 语音房资料卡片背景
+    REWARD_ROOM_ENTER_EFFECT = 38; // 语音房入场特效
+    REWARD_BROADCAST_EFFECT = 39; // 广播播报效果
+    REWARD_HOMEPAGE_DECORATE = 40; // 个人主页装扮
+    REWARD_CHEST = 41; // 宝箱
+    REWARD_HOMEPAGE_OPEN = 42; // 个人主页开屏
+    REWARD_COUPLE_BACKGROUND = 43; // CP背景
+    REWARD_TEAM_SUIT = 44; // 团战队服
+    REWARD_OGAME_BROADCAST = 45; // 团战播报
+    REWARD_OGAME_BUBBLE = 46; // 团战气泡
+    REWARD_SOCIAL_BG = 47; // 社交底板
+    REWARD_HOMEPAGE_PENDANT = 48; // 主页挂件
+
+    REWARD_MENTOR_POINT_ID = 158; // 名师点id
+    REWARD_MENTOR_BOND_ID = 159; // 羁绊值id
+}
+
+enum GetMethodType {
+    BUY = 0; //购买
+    SIGN_IN = 1; //签到
+    CHIP = 2; //碎片
+    ACTIVITY = 3; //活动
+    LEVEL = 5; //段位
+    CHEST = 6; //宝箱    
+}
+
+enum ServerTeamColor {
+  SERVER_TEAM_GREEN = 0;
+  SERVER_TEAM_RED = 1;
+  SERVER_TEAM_YELLOW = 2;
+}
+
+enum TeamIndex {
+  TEAM_INDEX_INVALID = 0;
+  TEAM_INDEX_GREEN = 1;
+  TEAM_INDEX_RED = 2;
+  TEAM_INDEX_YELLOW = 3;
+}
+
+enum PropType {
+    PROP_TYPE_UNDEFINED = 0;
+    NORMAL = 1;// 普通道具
+    REDPACK = 2;// 红包
+    SHOW_INCREASE_CARD = 4;// show经验卡
+    REBATE_CARD = 5;// 充值返利券
+    DISCOUNT_CARD = 6;// 苹果抵扣券
+    EXPIRE_PERIOD_CARD = 7;// 按有效期显示生效中的道具
+    POP_DIALOG = 9;// 需要弹窗的道具
+    SUPER_AD = 10;// 超级广告券
+}
+
+// store end
