@@ -21,7 +21,7 @@ message ProductConfig {
 
     DrawCardGuideConfig draw_card_guide_config = 7;
 
-    repeated SkinSet skin_set = 8;    
+    repeated SkinSet skin_set = 8;
 }
 
 message SkinSet {
@@ -36,7 +36,7 @@ message DrawCardGuideConfig {
     repeated RewardInfo reward = 3;
     int64 start_time = 4;
     int64 end_time = 5;
-    int32 guide_act_id = 6;   
+    int32 guide_act_id = 6;
 }
 
 message MiddleItem {
@@ -47,7 +47,7 @@ message MiddleItem {
     string intro = 5;
     string name = 6;
     string get_method_desc = 7;
-    int32 worth_level = 8;    
+    int32 worth_level = 8;
 }
 
 message CurrencyStore {
@@ -58,7 +58,7 @@ message CurrencyStore {
 message CurrencyStoreItem {
     int32 item_id = 1;
     int32 cost = 2;
-    int32 num = 3;    
+    int32 num = 3;
 }
 
 message Property {
@@ -79,12 +79,12 @@ message WorthLevelBorderPc {
 
 message WorthLevelIcon {
     int32 worth_level = 1;
-    string icon = 2;    
+    string icon = 2;
 }
 
 message StoreRecommend {
     repeated RecommandItem list = 1;
-    string empty_url = 2;   
+    string empty_url = 2;
 }
 
 message RecommandItem {
@@ -115,10 +115,10 @@ message PackItem {
 
 message SubItem {
     string imgurl = 1;
-    repeated SubLeftItem left_list = 2;    
+    repeated SubLeftItem left_list = 2;
 }
 
-message SubLeftItem { 
+message SubLeftItem {
     enum MethodType {
         GET_METHOD_UNDEFINED = 0;
         GET_METHOD_PAY = 1;
@@ -131,7 +131,7 @@ message SubLeftItem {
     string get_url = 4;
     int32 item_id = 5;
     int32 item_type = 6;
-    string item_name = 7;    
+    string item_name = 7;
 }
 
 message AvatarBoxTag {
@@ -158,7 +158,7 @@ message ThumbnailBorder {
 
 
 message StoreConfig {
-   repeated StoreItem item_list = 1;
+    repeated StoreItem item_list = 1;
 }
 
 message StoreItem {
@@ -204,12 +204,12 @@ message PackInfo {
     int32 rank_limit = 16;
     int32 need_vip = 17;
     int32 nabob_addition = 18;
-    string lucky_desc = 19;    
+    string lucky_desc = 19;
 }
 
 message PackMultiPriceInfo {
     int32 count = 1;
-    int32 price = 2;   
+    int32 price = 2;
 }
 //pack end
 
@@ -369,7 +369,7 @@ message SkinInfo {
     string dynamic_thumbnail = 6;
     int32 base_level_id = 7;
     int32 level = 8;
-    int32 anim_type = 9; 
+    int32 anim_type = 9;
     string headimgurl = 10;//头像界面使用
     /**
      * 1: "绿队"; 2: "红队"; 3: "黄队"
@@ -384,12 +384,14 @@ message SkinInfo {
     int32 entrance_anim_type = 18;// 入场动效类型
     string entrance_anim_url = 19;// 入场动效链接
     int32 recent_obtain = 20;//最近获得开关， 0 关闭  1打开
-    repeated Feature feature_list = 21;//皮肤特性列表      
+    repeated Feature feature_list = 21;//皮肤特性列表  
+    bool has_associated    = 22;// 是否关联图鉴bool 
+    repeated int32 illustration_ids = 23;// 关联图鉴id  []int，（只有1级皮肤会配置，用skin_index去找当前实际拥有的等级）
 }
 
 message Feature {
     string icon_url = 1;
-    string desc = 2;    
+    string desc = 2;
 }
 //skin end
 
@@ -411,7 +413,7 @@ message TeamSuitInfo {
     string dynamic_thumbnail = 6;
     int32 base_level_id = 7;
     int32 level = 8;
-    int32 anim_type = 9; 
+    int32 anim_type = 9;
     string headimgurl = 10;//头像界面使用
     /**
      * 1: "绿队"; 2: "红队"; 3: "黄队"
@@ -438,7 +440,7 @@ message GameInfo {
         COLOR_UNDEFINED = 0;
         COLOR_GREEN = 1;
         COLOR_RED = 2;
-        COLOR_YELLOW = 3;    
+        COLOR_YELLOW = 3;
     }
     string game_icon_url = 1; // 游戏内缩略图
     string game_imgurl = 2; // 全场最炫展示图片
@@ -532,7 +534,7 @@ message GiftNumberConfig {
     GiftAnimConfig anim = 5;
 }
 
-message GiftAnimConfig { 
+message GiftAnimConfig {
     int32 anim_type2 = 1; // 1--固定轨迹; 2--lottie json
     string img_url = 2; // 固定轨迹图片地址
     string lottie_json_url = 3;
@@ -568,7 +570,7 @@ message CardBagInfo {
     int64 version = 5;
     string animation = 6;
     string animation_frame = 7;
-//    repeated repeated MultiBuyPriceBean multi_buy_price = 8; proto 不支持这种 List<List<?>>嵌套结构，后续重新处理解析
+    //    repeated repeated MultiBuyPriceBean multi_buy_price = 8; proto 不支持这种 List<List<?>>嵌套结构，后续重新处理解析
     repeated RewardInfo rare_reward_list = 9;
     repeated RewardInfo general_reward_list = 10;
     int32 skin_baodi = 11; //皮肤保底，0：默认值，1：支持保底 4.3.12新增
@@ -794,7 +796,7 @@ message ChestRewardInfo {
     repeated RewardInfo convert = 11;//奖励折算，没有折算则为空
     int32 probability = 12;
     string use_info = 13;
-    
+
     int32 index = 14; // 奖励序号，自选奖励、随机奖励和实物奖励有
     int64 start_time = 15; // 实物奖励才有
     int64 end_time = 16; // 实物奖励才有
@@ -843,7 +845,7 @@ message SocialBgModel {
 message SocialBgInfo {
     int32 short_anim_type = 1; // 动画类型
     string short_anim_url = 2;
-    string short_img_url = 3; 
+    string short_img_url = 3;
     int32 long_anim_type = 4;
     string long_anim_url = 5;
     string long_img_url = 6;
@@ -875,7 +877,10 @@ message ProductBaseInfo {
     string dynamic_thumbnail = 6;
     int32 base_level_id = 7;
     int32 level = 8;
-    int32 anim_type = 9;    
+    int32 anim_type = 9;
+    bool has_associated    = 10;// 是否关联图鉴bool 
+    repeated int32 illustration_ids = 11;// 关联图鉴id  []int，（只有1级皮肤会配置，用skin_index去找当前实际拥有的等级）
+
 }
 
 message ChipInfo {
@@ -888,18 +893,18 @@ message ChipInfo {
     int64 act_start_time = 6; // 售卖成活动道具开始时间戳（秒）
     int64 act_end_time = 7; // 售卖成活动道具结束时间戳（秒）
     int32 middle_item_id = 8;
-    int32 middle_item_num = 9;    
+    int32 middle_item_num = 9;
 }
 
 message MeterialItem {
     int32 type = 1;
     int32 item_id = 2;
-    int32 num = 3;    
+    int32 num = 3;
 }
 
 message ComposeItem {
     int32 type = 1;
-    int32 item_id = 2;    
+    int32 item_id = 2;
 }
 
 message StoreInfo {
@@ -928,14 +933,14 @@ message StoreInfo {
     int64 add_time = 17;
     repeated PriceInfo price_info = 18;
     int32 worth_level = 19;
-    string support_version = 20;    
+    string support_version = 20;
 }
 
 message PriceInfo {
     int32 type = 1;
     int32 num = 2; //RMB 类型时候  这个字段 代表 goodsid
     int32 discount = 3;
-    int32 discountPrice = 4;    
+    int32 discountPrice = 4;
 }
 
 message RewardInfo {
