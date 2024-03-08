@@ -11,4 +11,6 @@ enum cmd {
   SnakeApi = 3;
   Activity = 4; // 活动服
   System = 5; // 系统功能服
+  Master = 6; // 中心服（仅服务使用）
+  Gate = 7; // 网关服（仅服务器使用)
 }
