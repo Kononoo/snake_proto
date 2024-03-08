@@ -9,4 +9,6 @@ enum cmd {
   VoiceRoom = 1;
   Music = 2;
   SnakeApi = 3;
+  Activity = 4; // 活动服
+  System = 5; // 系统功能服
 }
