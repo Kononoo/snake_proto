@@ -29,7 +29,7 @@ const (
 	Cmd_SnakeApi  Cmd = 3
 	Cmd_Activity  Cmd = 4 // 活动服
 	Cmd_System    Cmd = 5 // 系统功能服
-	Cmd_Master    Cmd = 6 // 中心服（仅服务使用）
+	Cmd_Master    Cmd = 6 // 中心服（仅服务器使用）
 	Cmd_Gate      Cmd = 7 // 网关服（仅服务器使用)
 )
 
