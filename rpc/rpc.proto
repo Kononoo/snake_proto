@@ -35,6 +35,7 @@ message rpcRspData {
   int32 code = 1; // 一般200成功，500失败
   string msg = 2; // 失败的msg
   bytes body = 3;
+  string traceId = 4;
 }
 
 message userStateReq {
