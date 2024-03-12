@@ -793,7 +793,7 @@ message ChestRewardInfo {
     int32 is_valuable = 8;//是否有高价值弹框，默认没有
     int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
     int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
-    repeated RewardInfo convert = 11;//奖励折算，没有折算则为空
+    repeated RewardInfo convert_detail = 11;//奖励折算，没有折算则为空
     int32 probability = 12;
     string use_info = 13;
 
@@ -957,6 +957,7 @@ message RewardInfo {
     repeated RewardInfo convert = 11;//奖励折算，没有折算则为空
     int32 probability = 12;
     string use_info = 13;
+    repeated RewardInfo convert_detail = 14;
 }
 
 enum RewardType {
