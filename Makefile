@@ -1,7 +1,7 @@
 
-.PHONY: snakehead rpc voiceroom music unitygame snakeapi
+.PHONY: snakehead rpc voiceroom music unitygame snakeapi system
 
-all: snakehead rpc voiceroom music unitygame snakeapi
+all: snakehead rpc voiceroom music unitygame snakeapi system
 
 snakehead:
 	protoc --go_out=. --go_opt=paths=source_relative ./snakehead/*.proto
