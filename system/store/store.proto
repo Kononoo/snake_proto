@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package store;
+option go_package = "git.17zjh.com/snake/snake_proto/system/store";
+
+// 获取商店推荐列表
+message RecommendListReq{
+}
+message RecommendListRsp {
+  repeated RecommandItem list = 1;
+  string empty_url = 2;
+}
+message RecommandItem {
+  int32 id = 1;
+  string title = 2;
+  string title_color = 3;
+  int64 start_time = 4; //预告开始时间
+  int64 act_start_time = 5; //预告结束时间或活动开始时间
+  int64 end_time = 6; //活动结束时间
+  int32 type = 7;
+  string bg_url = 8;
+  string desc = 9;
+  string sub_bg_url = 10;
+  string icon_selected_color = 11;
+  string icon_color = 12;
+  string star_text_color = 13;
+  int32 default_sub_index = 14;
+  repeated SubItem sub_list = 15;
+  repeated PackItem pack_list = 16;
+}
+
+message PackItem {
+  string title = 1;
+  string imgurl = 2;
+  int32 item_id = 3;
+  int32 item_type = 4;
+}
+
+message SubItem {
+  string imgurl = 1;
+  repeated SubLeftItem left_list = 2;
+}
+
+message SubLeftItem {
+  int32 anim_type = 1;
+  string anim_url = 2;
+  int32 get_method = 3;
+  string get_url = 4;
+  int32 item_id = 5;
+  int32 item_type = 6;
+  string item_name = 7;
+}

@@ -1,7 +1,7 @@
 
-.PHONY: snakehead rpc voiceroom music unitygame snakeapi wxsnake
+.PHONY: snakehead rpc voiceroom music unitygame snakeapi system wxsnake
 
-all: snakehead rpc voiceroom music unitygame snakeapi wxsnake
+all: snakehead rpc voiceroom music unitygame snakeapi system wxsnake
 
 snakehead:
 	protoc --go_out=. --go_opt=paths=source_relative ./snakehead/*.proto
@@ -27,6 +27,10 @@ snakeapi:
 	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative ./snakeapi/*.proto
 	protoc  --proto_path=. --proto_path=/  --go_out=. --go_opt=paths=source_relative \
 	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./snakeapi/*/*.proto ./snakeapi/*/*.Proto
+
+system:
+	protoc  --proto_path=. --proto_path=/  --go_out=. --go_opt=paths=source_relative \
+	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./system/*/*.proto
 
 wxsnake:
 	protoc --go_out=. --go_opt=paths=source_relative\
