@@ -27,3 +27,9 @@ snakeapi:
 	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative ./snakeapi/*.proto
 	protoc  --proto_path=. --proto_path=/  --go_out=. --go_opt=paths=source_relative \
 	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./snakeapi/*/*.proto ./snakeapi/*/*.Proto
+
+system:
+	protoc  --proto_path=.  --go_out=. --go_opt=paths=source_relative \
+	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative ./system/*.proto
+	protoc  --proto_path=. --proto_path=/  --go_out=. --go_opt=paths=source_relative \
+	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./system/*/*.proto ./system/*/*.Proto
