@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package store;
-option go_package = "git.17zjh.com/snake/snake_proto/system/store";
+package shop;
+option go_package = "git.17zjh.com/snake/snake_proto/system/shop";
 
 // 获取商店推荐列表
 message RecommendListReq{
