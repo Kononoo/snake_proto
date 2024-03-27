@@ -524,6 +524,7 @@ message GiftInfo {
     repeated int32 illustration_ids = 27; // 关联图鉴ids
     bool has_associated = 28; // 是否关联图鉴
     string illustration_url = 29;
+    int32 forever_gift_id = 30; // 限时礼物对应永久礼物id
 }
 
 message GiftNumberConfig {
