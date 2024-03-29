@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package fallguys;
+option go_package = "git.17zjh.com/snake/snake_proto/fallguys";
+
+enum RoomState {
+  Idle = 0; // 空闲
+  WaitEnter = 1; // 待进入
+  InGame = 2; // 游戏中
+  WaitExit = 3; // 待退出
+  Offline = 4; // 离线
+}
+
+// unity server每秒定时同步房间状态
+message SyncStateReq {
+  string addr = 1; // ip:端口
+  int32 pid = 2; // 进程id
+  string version = 3; // 版本号
+  RoomState state = 4; // 状态
+}
+
+message SyncStateRsp {
+}
+
+message Winner {
+  string uid = 1; // 玩家uid
+  int32 rank = 2; // 名次
+}
+
+// 游戏结束时untiy server通知游戏结果
+message EndGameReq {
+  int32 rid = 1;
+  repeated Winner winners = 2;
+}
+message EndGameRsp {
+}
+
+service MatchServer {
+  rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
+  rpc EndGame (EndGameReq) returns (EndGameRsp) {}
+}
