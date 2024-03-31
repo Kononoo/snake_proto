@@ -15,7 +15,7 @@ enum RoomState {
 message SyncStateReq {
   string addr = 1; // ip:端口
   int32 pid = 2; // 进程id
-  string version = 3; // 版本号
+  int32 modeVersion = 3; // 模式版本号
   RoomState state = 4; // 状态
 }
 
