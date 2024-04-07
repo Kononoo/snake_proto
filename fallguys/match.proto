@@ -29,8 +29,9 @@ message Winner {
 
 // 游戏结束时untiy server通知游戏结果
 message EndGameReq {
-  int32 rid = 1;
-  repeated Winner winners = 2;
+  string addr = 1; // ip:端口
+  int32 rid = 2;
+  repeated Winner winners = 3;
 }
 message EndGameRsp {
 }
