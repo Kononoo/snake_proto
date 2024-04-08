@@ -3,11 +3,11 @@ package snakecommon;
 option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 
 message StoreRecommend {
-repeated RecommandItem list = 1;
+repeated RecommendItem list = 1;
 string empty_url = 2;
 }
 
-message RecommandItem {
+message RecommendItem {
 int32 id = 1;
 string title = 2;
 string title_color = 3;
