@@ -1,7 +1,11 @@
 
-.PHONY: snakehead rpc voiceroom music unitygame snakeapi system wxsnake fallguys
+.PHONY: snakecommon snakehead rpc voiceroom music unitygame snakeapi system wxsnake fallguys
 
-all: snakehead rpc voiceroom music unitygame snakeapi system wxsnake fallguys
+all: snakecommon snakehead rpc voiceroom music unitygame snakeapi system wxsnake fallguys
+
+snakecommon:
+	protoc --go_out=. --go_opt=paths=source_relative ./snakecommon/*.proto
+     		--go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative ./snakecommon/*.proto
 
 snakehead:
 	protoc --go_out=. --go_opt=paths=source_relative ./snakehead/*.proto
