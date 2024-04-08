@@ -77,7 +77,7 @@ type StoreRecommend struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	List     []*RecommandItem `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
+	List     []*RecommendItem `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
 	EmptyUrl string           `protobuf:"bytes,2,opt,name=empty_url,json=emptyUrl,proto3" json:"empty_url,omitempty"`
 }
 
@@ -113,7 +113,7 @@ func (*StoreRecommend) Descriptor() ([]byte, []int) {
 	return file_snakecommon_config_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *StoreRecommend) GetList() []*RecommandItem {
+func (x *StoreRecommend) GetList() []*RecommendItem {
 	if x != nil {
 		return x.List
 	}
@@ -127,7 +127,7 @@ func (x *StoreRecommend) GetEmptyUrl() string {
 	return ""
 }
 
-type RecommandItem struct {
+type RecommendItem struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -150,8 +150,8 @@ type RecommandItem struct {
 	PackList          []*PackItem `protobuf:"bytes,16,rep,name=pack_list,json=packList,proto3" json:"pack_list,omitempty"`
 }
 
-func (x *RecommandItem) Reset() {
-	*x = RecommandItem{}
+func (x *RecommendItem) Reset() {
+	*x = RecommendItem{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_snakecommon_config_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -159,13 +159,13 @@ func (x *RecommandItem) Reset() {
 	}
 }
 
-func (x *RecommandItem) String() string {
+func (x *RecommendItem) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RecommandItem) ProtoMessage() {}
+func (*RecommendItem) ProtoMessage() {}
 
-func (x *RecommandItem) ProtoReflect() protoreflect.Message {
+func (x *RecommendItem) ProtoReflect() protoreflect.Message {
 	mi := &file_snakecommon_config_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -177,117 +177,117 @@ func (x *RecommandItem) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RecommandItem.ProtoReflect.Descriptor instead.
-func (*RecommandItem) Descriptor() ([]byte, []int) {
+// Deprecated: Use RecommendItem.ProtoReflect.Descriptor instead.
+func (*RecommendItem) Descriptor() ([]byte, []int) {
 	return file_snakecommon_config_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RecommandItem) GetId() int32 {
+func (x *RecommendItem) GetId() int32 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
 }
 
-func (x *RecommandItem) GetTitle() string {
+func (x *RecommendItem) GetTitle() string {
 	if x != nil {
 		return x.Title
 	}
 	return ""
 }
 
-func (x *RecommandItem) GetTitleColor() string {
+func (x *RecommendItem) GetTitleColor() string {
 	if x != nil {
 		return x.TitleColor
 	}
 	return ""
 }
 
-func (x *RecommandItem) GetStartTime() int64 {
+func (x *RecommendItem) GetStartTime() int64 {
 	if x != nil {
 		return x.StartTime
 	}
 	return 0
 }
 
-func (x *RecommandItem) GetActStartTime() int64 {
+func (x *RecommendItem) GetActStartTime() int64 {
 	if x != nil {
 		return x.ActStartTime
 	}
 	return 0
 }
 
-func (x *RecommandItem) GetEndTime() int64 {
+func (x *RecommendItem) GetEndTime() int64 {
 	if x != nil {
 		return x.EndTime
 	}
 	return 0
 }
 
-func (x *RecommandItem) GetType() int32 {
+func (x *RecommendItem) GetType() int32 {
 	if x != nil {
 		return x.Type
 	}
 	return 0
 }
 
-func (x *RecommandItem) GetBgUrl() string {
+func (x *RecommendItem) GetBgUrl() string {
 	if x != nil {
 		return x.BgUrl
 	}
 	return ""
 }
 
-func (x *RecommandItem) GetDesc() string {
+func (x *RecommendItem) GetDesc() string {
 	if x != nil {
 		return x.Desc
 	}
 	return ""
 }
 
-func (x *RecommandItem) GetSubBgUrl() string {
+func (x *RecommendItem) GetSubBgUrl() string {
 	if x != nil {
 		return x.SubBgUrl
 	}
 	return ""
 }
 
-func (x *RecommandItem) GetIconSelectedColor() string {
+func (x *RecommendItem) GetIconSelectedColor() string {
 	if x != nil {
 		return x.IconSelectedColor
 	}
 	return ""
 }
 
-func (x *RecommandItem) GetIconColor() string {
+func (x *RecommendItem) GetIconColor() string {
 	if x != nil {
 		return x.IconColor
 	}
 	return ""
 }
 
-func (x *RecommandItem) GetStarTextColor() string {
+func (x *RecommendItem) GetStarTextColor() string {
 	if x != nil {
 		return x.StarTextColor
 	}
 	return ""
 }
 
-func (x *RecommandItem) GetDefaultSubIndex() int32 {
+func (x *RecommendItem) GetDefaultSubIndex() int32 {
 	if x != nil {
 		return x.DefaultSubIndex
 	}
 	return 0
 }
 
-func (x *RecommandItem) GetSubList() []*SubItem {
+func (x *RecommendItem) GetSubList() []*SubItem {
 	if x != nil {
 		return x.SubList
 	}
 	return nil
 }
 
-func (x *RecommandItem) GetPackList() []*PackItem {
+func (x *RecommendItem) GetPackList() []*PackItem {
 	if x != nil {
 		return x.PackList
 	}
@@ -523,11 +523,11 @@ var file_snakecommon_config_proto_rawDesc = []byte{
 	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x22, 0x5d, 0x0a, 0x0e, 0x53, 0x74, 0x6f, 0x72, 0x65,
 	0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x12, 0x2e, 0x0a, 0x04, 0x6c, 0x69, 0x73,
 	0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x61, 0x6e, 0x64, 0x49,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x49,
 	0x74, 0x65, 0x6d, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x65, 0x6d, 0x70,
 	0x74, 0x79, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x65, 0x6d,
 	0x70, 0x74, 0x79, 0x55, 0x72, 0x6c, 0x22, 0x9b, 0x04, 0x0a, 0x0d, 0x52, 0x65, 0x63, 0x6f, 0x6d,
-	0x6d, 0x61, 0x6e, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
+	0x6d, 0x65, 0x6e, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c,
 	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x1f,
 	0x0a, 0x0b, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x5f, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x18, 0x03, 0x20,
@@ -616,15 +616,15 @@ var file_snakecommon_config_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_snakecommon_config_proto_goTypes = []interface{}{
 	(SubLeftItem_MethodType)(0), // 0: snakecommon.SubLeftItem.MethodType
 	(*StoreRecommend)(nil),      // 1: snakecommon.StoreRecommend
-	(*RecommandItem)(nil),       // 2: snakecommon.RecommandItem
+	(*RecommendItem)(nil),       // 2: snakecommon.RecommendItem
 	(*PackItem)(nil),            // 3: snakecommon.PackItem
 	(*SubItem)(nil),             // 4: snakecommon.SubItem
 	(*SubLeftItem)(nil),         // 5: snakecommon.SubLeftItem
 }
 var file_snakecommon_config_proto_depIdxs = []int32{
-	2, // 0: snakecommon.StoreRecommend.list:type_name -> snakecommon.RecommandItem
-	4, // 1: snakecommon.RecommandItem.sub_list:type_name -> snakecommon.SubItem
-	3, // 2: snakecommon.RecommandItem.pack_list:type_name -> snakecommon.PackItem
+	2, // 0: snakecommon.StoreRecommend.list:type_name -> snakecommon.RecommendItem
+	4, // 1: snakecommon.RecommendItem.sub_list:type_name -> snakecommon.SubItem
+	3, // 2: snakecommon.RecommendItem.pack_list:type_name -> snakecommon.PackItem
 	5, // 3: snakecommon.SubItem.left_list:type_name -> snakecommon.SubLeftItem
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
@@ -652,7 +652,7 @@ func file_snakecommon_config_proto_init() {
 			}
 		}
 		file_snakecommon_config_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecommandItem); i {
+			switch v := v.(*RecommendItem); i {
 			case 0:
 				return &v.state
 			case 1:
