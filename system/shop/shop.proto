@@ -4,8 +4,7 @@ package shop;
 option go_package = "git.17zjh.com/snake/snake_proto/system/shop";
 import "snakecommon/config.proto";
 
-// 获取商店推荐列表
-message RecommendListReq{
+message RecommendListReq { // 获取商店推荐列表
 }
 message RecommendListRsp {
   snakecommon.StoreRecommend recommend_list = 1;
