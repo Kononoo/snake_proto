@@ -21,7 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// 获取商店推荐列表
 type RecommendListReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
