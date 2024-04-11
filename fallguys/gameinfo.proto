@@ -8,15 +8,6 @@ enum GameMode {
   Entertain = 2; // 娱乐模式，
 }
 
-// TCPServer 向UnityServer同步拉起的单局模式
-message SyncGameModeReq {
-    GameMode gamemode = 1;
-}
-
-message SyncGameModeRsp {
-    bool gameReady = 1; //表征unityserver 当前单局是否初始化成功
-}
-
 //玩家类型
 enum PlayerType {
   InvalidPlayer = 0; //占位
@@ -29,16 +20,16 @@ message PlayerInfo{
     PlayerType playerType = 2; //玩家类型
 }
 
-message SyncPlayerInfoReq {
-   int32 playerCnt = 1;  //单局玩家的总数量
-   repeated PlayerInfo players = 2;
+// TCPServer 向UnityServer同步拉起的单局模式
+message SyncGameInfoReq {
+    GameMode gamemode = 1;  //游戏模式
+    int32 playerCnt = 2;    //玩家数量
 }
 
-message SyncPlayerInfoRes{
-
+message SyncGameInfoRsp {
+    bool gameReady = 1; //表征unityserver 当前单局是否初始化成功
 }
 
 service UnityServer {
-  rpc SyncGameMode (SyncGameModeReq) returns (SyncGameModeRsp) {}
-  rpc SyncPlayerInfo (SyncPlayerInfoReq) returns (SyncPlayerInfoRes) {}
+  rpc SyncGameInfo (SyncGameInfoReq) returns (SyncGameInfoRsp) {}
 }
