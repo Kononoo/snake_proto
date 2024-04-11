@@ -869,6 +869,19 @@ message HomepagePendantInfo {
 }
 // home pendant end
 
+// endless bg start
+message EndlessBgModel {
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    StoreInfo store = 4;
+    EndlessBgInfoModel info = 5;
+}
+
+message EndlessBgInfoModel {
+}
+// endless bg end
+
 message ProductBaseInfo {
     repeated MeterialItem material_list = 1;
     repeated PriceInfo material_coins = 2;
@@ -1006,6 +1019,7 @@ enum RewardType {
     REWARD_OGAME_BUBBLE = 46; // 团战气泡
     REWARD_SOCIAL_BG = 47; // 社交底板
     REWARD_HOMEPAGE_PENDANT = 48; // 主页挂件
+    REWARD_ENDLESS_BACKGROUND = 49; // 无尽背景
 
     REWARD_MENTOR_POINT_ID = 158; // 名师点id
     REWARD_MENTOR_BOND_ID = 159; // 羁绊值id
