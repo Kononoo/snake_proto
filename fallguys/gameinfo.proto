@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package fallguys;
+
+//玩家类型
+enum PlayerType {
+  InvalidPlayer = 0; //占位
+  Real = 1; //真人
+  Ai = 2; // ai
+}
+
+message PlayerInfo{
+    string uid = 1;  //玩家uid
+    PlayerType playerType = 2; //玩家类型
+}
+
+// TCPServer 向UnityServer同步拉起的单局模式
+message SyncGameInfoReq {
+    sint32 gamMode = 1;  //游戏模式,903 糖豆人大逃杀，904 大逃杀娱乐
+    int32 playerCnt = 2;    //玩家数量
+    repeated PlayerInfo players = 3;  //玩家信息
+}
+
+message SyncGameInfoRsp {
+    bool gameReady = 1; //表征unityserver 当前单局是否初始化成功
+}
+
+service UnityServer {
+  rpc SyncGameInfo (SyncGameInfoReq) returns (SyncGameInfoRsp) {}
+}

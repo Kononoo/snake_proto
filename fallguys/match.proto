@@ -17,6 +17,7 @@ message SyncStateReq {
   int32 pid = 2; // 进程id
   int32 modeVersion = 3; // 模式版本号
   RoomState state = 4; // 状态
+  int32 grpcServerPort = 5; //UnityServer 启动grpcserver时使用的端口
 }
 
 message SyncStateRsp {
