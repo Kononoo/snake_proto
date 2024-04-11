@@ -2,12 +2,6 @@ syntax = "proto3";
 
 package fallguys;
 
-enum GameMode {
-  InvalidMode = 0; //占位
-  Survival = 1; // 大逃杀
-  Entertain = 2; // 娱乐模式，
-}
-
 //玩家类型
 enum PlayerType {
   InvalidPlayer = 0; //占位
@@ -22,8 +16,9 @@ message PlayerInfo{
 
 // TCPServer 向UnityServer同步拉起的单局模式
 message SyncGameInfoReq {
-    GameMode gamemode = 1;  //游戏模式
+    sint32 gamMode = 1;  //游戏模式,903 糖豆人大逃杀，904 大逃杀娱乐
     int32 playerCnt = 2;    //玩家数量
+    repeated PlayerInfo players = 3;  //玩家信息
 }
 
 message SyncGameInfoRsp {
