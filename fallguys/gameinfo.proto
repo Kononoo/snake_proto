@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package fallguys;
+
+enum GameMode {
+  InvalidMode = 0; //占位
+  Survival = 1; // 大逃杀
+  Entertain = 2; // 娱乐模式，
+}
+
+// TCPServer 向UnityServer同步拉起的单局模式
+message SyncGameModeReq {
+    GameMode gamemode = 1;
+}
+
+message SyncGameModeRsp {
+    bool gameReady = 1; //表征unityserver 当前单局是否初始化成功
+}
+
+//玩家类型
+enum PlayerType {
+  InvalidPlayer = 0; //占位
+  Real = 1; //真人
+  Ai = 2; // ai
+}
+
+message PlayerInfo{
+    string uid = 1;  //玩家uid
+    PlayerType playerType = 2; //玩家类型
+}
+
+message SyncPlayerInfoReq {
+   int32 playerCnt = 1;  //单局玩家的总数量
+   repeated PlayerInfo players = 2;
+}
+
+message SyncPlayerInfoRes{
+
+}
+
+service UnityServer {
+  rpc SyncGameMode (SyncGameModeReq) returns (SyncGameModeRsp) {}
+  rpc SyncPlayerInfo (SyncPlayerInfoReq) returns (SyncPlayerInfoRes) {}
+}
