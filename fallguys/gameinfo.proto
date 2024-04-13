@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package fallguys;
+option go_package = "git.17zjh.com/snake/snake_proto/fallguys";
 
 //玩家类型
 enum PlayerType {
