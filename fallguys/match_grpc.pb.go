@@ -20,6 +20,8 @@ const _ = grpc.SupportPackageIsVersion7
 type MatchServerClient interface {
 	SyncState(ctx context.Context, in *SyncStateReq, opts ...grpc.CallOption) (*SyncStateRsp, error)
 	EndGame(ctx context.Context, in *EndGameReq, opts ...grpc.CallOption) (*EndGameRsp, error)
+	GameReady(ctx context.Context, in *GameReadyReq, opts ...grpc.CallOption) (*GameReadyRsp, error)
+	Subscribe(ctx context.Context, in *SubscribeReq, opts ...grpc.CallOption) (MatchServer_SubscribeClient, error)
 }
 
 type matchServerClient struct {
@@ -48,12 +50,55 @@ func (c *matchServerClient) EndGame(ctx context.Context, in *EndGameReq, opts ..
 	return out, nil
 }
 
+func (c *matchServerClient) GameReady(ctx context.Context, in *GameReadyReq, opts ...grpc.CallOption) (*GameReadyRsp, error) {
+	out := new(GameReadyRsp)
+	err := c.cc.Invoke(ctx, "/fallguys.MatchServer/GameReady", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *matchServerClient) Subscribe(ctx context.Context, in *SubscribeReq, opts ...grpc.CallOption) (MatchServer_SubscribeClient, error) {
+	stream, err := c.cc.NewStream(ctx, &MatchServer_ServiceDesc.Streams[0], "/fallguys.MatchServer/Subscribe", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &matchServerSubscribeClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type MatchServer_SubscribeClient interface {
+	Recv() (*SubscribeRsp, error)
+	grpc.ClientStream
+}
+
+type matchServerSubscribeClient struct {
+	grpc.ClientStream
+}
+
+func (x *matchServerSubscribeClient) Recv() (*SubscribeRsp, error) {
+	m := new(SubscribeRsp)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // MatchServerServer is the server API for MatchServer service.
 // All implementations should embed UnimplementedMatchServerServer
 // for forward compatibility
 type MatchServerServer interface {
 	SyncState(context.Context, *SyncStateReq) (*SyncStateRsp, error)
 	EndGame(context.Context, *EndGameReq) (*EndGameRsp, error)
+	GameReady(context.Context, *GameReadyReq) (*GameReadyRsp, error)
+	Subscribe(*SubscribeReq, MatchServer_SubscribeServer) error
 }
 
 // UnimplementedMatchServerServer should be embedded to have forward compatible implementations.
@@ -65,6 +110,12 @@ func (UnimplementedMatchServerServer) SyncState(context.Context, *SyncStateReq) 
 }
 func (UnimplementedMatchServerServer) EndGame(context.Context, *EndGameReq) (*EndGameRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EndGame not implemented")
+}
+func (UnimplementedMatchServerServer) GameReady(context.Context, *GameReadyReq) (*GameReadyRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GameReady not implemented")
+}
+func (UnimplementedMatchServerServer) Subscribe(*SubscribeReq, MatchServer_SubscribeServer) error {
+	return status.Errorf(codes.Unimplemented, "method Subscribe not implemented")
 }
 
 // UnsafeMatchServerServer may be embedded to opt out of forward compatibility for this service.
@@ -114,6 +165,45 @@ func _MatchServer_EndGame_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MatchServer_GameReady_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GameReadyReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MatchServerServer).GameReady(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/fallguys.MatchServer/GameReady",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MatchServerServer).GameReady(ctx, req.(*GameReadyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MatchServer_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeReq)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(MatchServerServer).Subscribe(m, &matchServerSubscribeServer{stream})
+}
+
+type MatchServer_SubscribeServer interface {
+	Send(*SubscribeRsp) error
+	grpc.ServerStream
+}
+
+type matchServerSubscribeServer struct {
+	grpc.ServerStream
+}
+
+func (x *matchServerSubscribeServer) Send(m *SubscribeRsp) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // MatchServer_ServiceDesc is the grpc.ServiceDesc for MatchServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -129,7 +219,17 @@ var MatchServer_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "EndGame",
 			Handler:    _MatchServer_EndGame_Handler,
 		},
+		{
+			MethodName: "GameReady",
+			Handler:    _MatchServer_GameReady_Handler,
+		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "Subscribe",
+			Handler:       _MatchServer_Subscribe_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "fallguys/match.proto",
 }
