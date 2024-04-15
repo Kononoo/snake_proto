@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package fallguys;
 option go_package = "git.17zjh.com/snake/snake_proto/fallguys";
+import "fallguys/push.proto";
 
 enum RoomState {
   Idle = 0; // 空闲
@@ -37,7 +38,24 @@ message EndGameReq {
 message EndGameRsp {
 }
 
+message SubscribeReq { // 客户端订阅push消息
+  string addr = 1; // ip:端口
+}
+
+message SubscribeRsp { // 服务器推送push消息
+  PushType pushType = 1; // push 类型
+  bytes data = 2; // push内容
+}
+
+message GameReadyReq { // unity server初始化成功后通知tcp server
+  bool ready = 1; // 是否初始化成功
+}
+message GameReadyRsp{
+}
+
 service MatchServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
   rpc EndGame (EndGameReq) returns (EndGameRsp) {}
+  rpc GameReady (GameReadyReq) returns (GameReadyRsp) {}
+  rpc Subscribe (SubscribeReq) returns (stream SubscribeRsp) {}
 }
