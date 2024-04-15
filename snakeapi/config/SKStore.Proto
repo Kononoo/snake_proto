@@ -828,6 +828,13 @@ message EndlessBgModel {
 }
 
 message EndlessBgInfoModel {
+      string bag_url = 1;
+  string imgurl = 2;
+  int32 is_unity_anim = 3;
+  int32 is_unity_resource = 4;
+  string setting_img_url = 5;
+  string thumbnail = 6;
+  string unity_anim_url = 7;
 }
 // endless bg end
 
