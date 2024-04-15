@@ -44,10 +44,12 @@ message SubscribeReq { // 客户端订阅push消息
 message SubscribeRsp { // 服务器推送push消息
   PushType pushType = 1; // push 类型
   bytes data = 2; // push内容
+  string msgId = 3; // 唯一标识
 }
 
 message GameReadyReq { // unity server初始化成功后通知tcp server
   bool ready = 1; // 是否初始化成功
+  string msgId = 2; // push消息中的唯一标识
 }
 message GameReadyRsp{
 }
