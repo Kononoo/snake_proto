@@ -115,7 +115,34 @@ message StoreItem {
     string cdn_url = 2;
 }
 
+//avatarBox start
 
+message AvatarBoxList{
+    repeated AvatarBoxModel box_list = 1;
+    repeated AvatarBoxTag tag_list = 2;
+}
+
+message AvatarBoxModel{
+    int32 item_id = 1; // 商品id
+    int32 active = 2;
+    int64 update_time = 3;
+    AvatarBoxInfo info = 4;
+    StoreInfo store = 5;
+}
+
+message AvatarBoxInfo{
+    string animate = 1;
+    string gray_animate = 2;
+    string lite_animate = 3;
+    string  gray_imgurl = 4;
+    string  store_imgurl = 5;
+    int32 tag_id = 6;
+    int32 anim_type = 7;
+    string resource_url = 8;
+    int32 recent_obtain = 9;
+}
+
+//avatarBox end
 
 // pack start
 
@@ -345,6 +372,10 @@ message Feature {
 //skin end
 
 //team suit start
+message TeamSuitList {
+    repeated TeamSuitModel team_suit_list = 1;
+}
+
 message TeamSuitModel {
     int32 item_id = 1; // 商品id
     int32 active = 2;
@@ -395,6 +426,7 @@ message GameInfo {
     string game_imgurl = 2; // 全场最炫展示图片
     int32 color_id = 3; //队服默认展示色系，商店内展示用，1:绿 2:红，3:黄   
 }
+
 //team suit end
 
 // title start
@@ -828,7 +860,7 @@ message EndlessBgModel {
 }
 
 message EndlessBgInfoModel {
-      string bag_url = 1;
+    string bag_url = 1;
   string imgurl = 2;
   int32 is_unity_anim = 3;
   int32 is_unity_resource = 4;
