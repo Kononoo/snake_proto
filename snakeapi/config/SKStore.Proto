@@ -127,6 +127,7 @@ message AvatarBoxModel{
     int32 active = 2;
     int64 update_time = 3;
     AvatarBoxInfo info = 4;
+    StoreInfo store = 5;
 }
 
 message AvatarBoxInfo{
