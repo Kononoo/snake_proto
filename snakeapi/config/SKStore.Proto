@@ -194,32 +194,36 @@ message RMBPackInfo {
     int32 pack_id = 1;
     string title = 2;
     repeated PriceInfo price_info = 3;
-    LimitationInfo limitation_info = 4;
-    int32 show_start = 5;
-    int32 show_end = 6;
-    int32 discount_start = 7;
-    int32 discount_end = 8;
-    int32 pack_type = 9;
-    repeated RewardInfo reward = 10;
-    repeated string reward_preview = 11;
-    int32 goods_id = 12;
-    string icon_imgurl = 13;
-    string bg_imgurl = 14;
-    string gif_imgurl = 15;
-    string tips_imgurl = 16;
-    int32 need_popup = 17;
-    int32 popup_limit = 18;
-    int32 popup_limitation = 19;
-    int32 add_rank = 20;
-    int32 del_ad_min = 21;
-    string imgurl = 22;
-    string thumbnail = 23;
+    int32 show_start = 4;
+    int32 show_end = 5;
+    int32 discount_start = 6;
+    int32 discount_end = 7;
+    int32 pack_type = 8;
+    repeated RewardInfo reward = 9;
+    repeated string reward_preview = 10;
+    int32 goods_id = 11;
+    string icon_imgurl = 12;
+    string bg_imgurl = 13;
+    string gif_imgurl = 14;
+    string tips_imgurl = 15;
+    int32 need_popup = 16;
+    int32 popup_limit = 17;
+    int32 popup_limitation = 18;
+    int32 add_rank = 19;
+    int32 del_ad_min = 20;
+    string imgurl = 21;
+    string thumbnail = 22;
+
+    // limitation
+    int32 buy_limit = 23;
+    int32 buy_limitation = 24;
+    int64 buy_limitation_offset = 25;
 }
 
 message LimitationInfo{
     int32   buy_limit = 1;             // 限购次数(配置)
     int32   buy_limitation = 2;        // 限购类型(配置)
-    int64 buy_limitation_offset = 3; // 时间偏移量，周限购为偏移天数(配置)
+    int64   buy_limitation_offset = 3; // 时间偏移量，周限购为偏移天数(配置)
 }
 //RMB Info end
 
