@@ -517,36 +517,39 @@ message GiftModel {
 }
 
 message GiftInfo {
-  string unit = 1;
-  string corner_url = 2;
-  repeated GiftNumberConfig num_config = 3;
-  repeated int32 num_list = 4;
-  repeated int32 world_num_list = 5; // (空数组则不出现在世界频道送礼)
-  int32 display = 6; // 1显示，0不显示
-  int32 voice_room_hide = 7; // 语音房是否展示 1隐藏
-  int32 voice_room_anim = 8; // 语音房是否展示动画 1展示
-  string act_thumbnail = 9;
-  string act_banner_imgurl = 10;
-  string banner_link = 11;
-  int64 act_start_time = 12;
-  int64 act_end_time = 13;
-  int32 wish_msg_switch = 14; //是否使用赠言，0或1
-  string gift_name_url = 15; //弹幕礼物图片icon url
-  int32 barrage_anim_type = 16; // 弹幕动画类型，同通用动画类型一致
-  string barrage_anim_url = 17; //弹幕动画链接
-  string barrage_font_color = 18; // 弹幕字体颜色，格式同气泡一致（#十六进制），例如：#EE6858
-  string barrage_anim_imgurl = 19; // 弹幕礼物低性能静态图
-  int64 use_limit_time = 20;
-  int32 time_limit_gift_id = 21;  // 永久礼物对应的限时礼物id
-  bool is_privilege_gift = 22; // 是否魅力勋章特权礼物
-  PhotoWallConfig photo_wall_config = 23; // 照片花墙入口配置
-  int32 recent_obtain = 24; // 最近获得开关 0 关闭; 1打开
-  int32 full_screen_anim = 25; // 全屏特性开关 0 关闭; 1打开
-  int32 has_mail_reward = 26; // 附赠称号开关 0 关闭；1打开
-  repeated int32 illustration_ids = 27; // 关联图鉴ids
-  bool has_associated = 28; // 是否关联图鉴
-  string illustration_url = 29;
-  int32 forever_gift_id = 30; // 限时礼物对应永久礼物id
+    string unit = 1;
+    string corner_url = 2;
+    repeated GiftNumberConfig num_config = 3;
+    repeated int32 num_list = 4;
+    repeated int32 world_num_list = 5; // (空数组则不出现在世界频道送礼)
+    int32 display = 6; // 1显示，0不显示
+    int32 voice_room_hide = 7; // 语音房是否展示 1隐藏
+    int32 voice_room_anim = 8; // 语音房是否展示动画 1展示
+    string act_thumbnail = 9;
+    string act_banner_imgurl = 10;
+    string banner_link = 11;
+    int64 act_start_time = 12;
+    int64 act_end_time = 13;
+    int32 wish_msg_switch = 14; //是否使用赠言，0或1
+    string gift_name_url = 15; //弹幕礼物图片icon url
+    int32 barrage_anim_type = 16; // 弹幕动画类型，同通用动画类型一致
+    string barrage_anim_url = 17; //弹幕动画链接
+    string barrage_font_color = 18; // 弹幕字体颜色，格式同气泡一致（#十六进制），例如：#EE6858
+    string barrage_anim_imgurl = 19; // 弹幕礼物低性能静态图
+    int64 use_limit_time = 20;
+    int32 time_limit_gift_id = 21;  // 永久礼物对应的限时礼物id
+    bool is_privilege_gift = 22; // 是否魅力勋章特权礼物
+    PhotoWallConfig photo_wall_config = 23; // 照片花墙入口配置
+    int32 recent_obtain = 24; // 最近获得开关 0 关闭; 1打开
+    int32 full_screen_anim = 25; // 全屏特性开关 0 关闭; 1打开
+    int32 has_mail_reward = 26; // 附赠称号开关 0 关闭；1打开
+    repeated int32 illustration_ids = 27; // 关联图鉴ids
+    bool has_associated = 28; // 是否关联图鉴
+    string illustration_url = 29;
+    int32 forever_gift_id = 30; // 限时礼物对应永久礼物id
+    string gift_tab_desc = 31;
+    int64 act_show_start = 32;
+    int64 act_show_end = 33;
 }
 
 message GiftNumberConfig {
