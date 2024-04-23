@@ -597,10 +597,10 @@ message CardBagInfo {
   string animation = 6;
   string animation_frame = 7;
   //    repeated repeated MultiBuyPriceBean multi_buy_price = 8; proto 不支持这种 List<List<?>>嵌套结构，后续重新处理解析
-  repeated RewardInfo rare_reward_list = 9;
-  repeated RewardInfo general_reward_list = 10;
+  repeated RewardConfig rare_reward_list = 9;
+  repeated RewardConfig general_reward_list = 10;
   int32 skin_baodi = 11; //皮肤保底，0：默认值，1：支持保底 4.3.12新增
-  RewardInfo baodi_reward = 12; //通用奖励,无奖励时字段不存在每5次抽奖的奖励
+  RewardConfig baodi_reward = 12; //通用奖励,无奖励时字段不存在每5次抽奖的奖励
 }
 
 message MultiBuyPriceBean {
@@ -1016,7 +1016,7 @@ message RewardConfig {
   int32 reset_baodi = 25; // 获得后是否重置保底  0 不重置 1 重置
 }
 
-message RewardInfo { // 客户端奖励配置结构
+message RewardInfo { // 客户端奖励配置结构，服务器不建议使用
   int32 type = 1;
   int32 skin_id = 2;//物品id
   string name = 3;
