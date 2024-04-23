@@ -190,6 +190,7 @@ message PackMultiPriceInfo {
 //pack end
 
 //rmb pack start
+
 message RMBPackInfo {
     int32 pack_id = 1;
     string title = 2;
@@ -199,7 +200,7 @@ message RMBPackInfo {
     int32 discount_start = 6;
     int32 discount_end = 7;
     int32 pack_type = 8;
-    repeated RewardInfo reward = 9;
+    repeated RewardConfig reward = 9;
     repeated string reward_preview = 10;
     int32 goods_id = 11;
     string icon_imgurl = 12;
@@ -993,12 +994,27 @@ message RewardInfo {
     int32 is_valuable = 8;//是否有高价值弹框，默认没有
     int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
     int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
-    Convert  convert = 11;//奖励折算，没有折算则为空
+    repeated  RewardInfo convert = 11;//奖励折算，没有折算则为空
+    int32 probability = 12;
+    string use_info = 13;
+    repeated RewardInfo convert_detail = 14;
+}
+message RewardConfig{
+    int32 type = 1;
+    int32 skin_id = 2;//物品id
+    string name = 3;
+    string imgurl = 4;
+    int32 num = 5;
+    string big_num = 6; // 大数展示，为空展示num字段
+    string user_info = 7;//限时外观和头像框使用
+    int32 is_valuable = 8;//是否有高价值弹框，默认没有
+    int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
+    int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
+    Convert convert = 11;//奖励折算，没有折算则为空
     int32 probability = 12;
     string use_info = 13;
     repeated Convert convert_detail = 14;
 }
-
 message Convert {
     int32 type = 1;
     int64 num = 2;
