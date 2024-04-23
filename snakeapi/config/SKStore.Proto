@@ -525,6 +525,9 @@ message GiftInfo {
     bool has_associated = 28; // 是否关联图鉴
     string illustration_url = 29;
     int32 forever_gift_id = 30; // 限时礼物对应永久礼物id
+    string gift_tab_desc = 31;
+    int64 act_show_start = 32;
+    int64 act_show_end = 33;
 }
 
 message GiftNumberConfig {
