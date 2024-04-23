@@ -1029,7 +1029,7 @@ message RewardConfig {
   int32 reset_baodi = 25; // 获得后是否重置保底  0 不重置 1 重置
 }
 
-message RewardInfo {// 客户端奖励配置结构，服务器不建议使用
+message RewardInfo { // 客户端奖励配置结构，服务器不建议使用
   int32 type = 1;
   int32 skin_id = 2;//物品id
   string name = 3;
