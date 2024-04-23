@@ -999,6 +999,7 @@ message RewardInfo {
     string use_info = 13;
     repeated RewardInfo convert_detail = 14;
 }
+
 message RewardConfig{
     int32 type = 1;
     int32 skin_id = 2;//物品id
