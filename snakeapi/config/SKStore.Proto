@@ -2,6 +2,7 @@ syntax = "proto3";
 package SnakeMain.Config;
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/config";
 import "snakecommon/config.proto";
+import "snakeapi/base.proto";
 
 // Store start
 message ProductConfig {
@@ -402,6 +403,7 @@ message SkinInfo {
     repeated Feature feature_list = 21;//皮肤特性列表  
     bool has_associated    = 22;// 是否关联图鉴bool 
     repeated int32 illustration_ids = 23;// 关联图鉴id  []int，（只有1级皮肤会配置，用skin_index去找当前实际拥有的等级）
+    string unity_anim_key = 24; // unity资源路径
 }
 
 message Feature {
@@ -994,26 +996,10 @@ message RewardInfo {
     int32 is_valuable = 8;//是否有高价值弹框，默认没有
     int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
     int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
-    repeated  RewardInfo convert = 11;//奖励折算，没有折算则为空
+    snakeapi.Convert  convert = 11;//奖励折算，没有折算则为空，老版本使用，已废弃
     int32 probability = 12;
     string use_info = 13;
-    repeated RewardInfo convert_detail = 14;
-}
-message RewardConfig{
-    int32 type = 1;
-    int32 skin_id = 2;//物品id
-    string name = 3;
-    string imgurl = 4;
-    int32 num = 5;
-    string big_num = 6; // 大数展示，为空展示num字段
-    string user_info = 7;//限时外观和头像框使用
-    int32 is_valuable = 8;//是否有高价值弹框，默认没有
-    int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
-    int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
-    Convert convert = 11;//奖励折算，没有折算则为空
-    int32 probability = 12;
-    string use_info = 13;
-    repeated Convert convert_detail = 14;
+    repeated snakeapi.Convert convert_detail = 14; // 新版本目前正在使用
 }
 message Convert {
     int32 type = 1;
