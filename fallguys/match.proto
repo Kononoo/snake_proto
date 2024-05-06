@@ -73,6 +73,8 @@ message RewardItem {
   int32 type = 1; // 奖励类型
   int32 itemId = 2; // 道具id
   int32 num = 3; // 数量
+  string name = 4; // 名称
+  string imgurl = 5; // 图片
 }
 
 service MatchServer {
