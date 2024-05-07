@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package user;
+option go_package = "git.17zjh.com/snake/snake_proto/system/user";
+
+message SetUserOnlineStateReq {
+  string uid = 1;
+  sint32 state = 2;
+}
+
+message SetUserSelfStateReq {
+  string uid = 1;
+  sint32 self_state = 2;
+}
+
+message GetUserOnlineStatesReq {
+  repeated string uid_list = 1;
+}
+
+message GetUserOnlineStatesRsp {
+  repeated UserOnlineState states = 1;
+}
+
+message UserOnlineState {
+  sint32 state = 1;
+  sint32 self_state = 2;
+  sint32 user_state = 3;
+}
