@@ -2,7 +2,7 @@ project:
   "双人玩法"
 service_extend: "snakeapi"
 apis:
-  - route: "/couple_api/config"
+  - route: "/couple_game/config"
     desc: "双人玩法配置接口"
     input: "ConfigReq"
     output: "ConfigResp"
