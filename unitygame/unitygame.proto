@@ -227,8 +227,6 @@ message PlayerScore {
   sint32 use_shield_times = 20;  // 使用护盾次数
   sint32 die_time = 22; // 游戏结束前最后一次死亡时间(毫秒)
   sint32 use_speed_shoes_times = 23; // 使用加速鞋次数
-  sint32 box_amount = 26; // [双人玩法]开启的爱心数
-  sint32 frag_amount = 27; // [双人玩法]获得的“小心心”数量
 }
 
 // 击杀boss分数
