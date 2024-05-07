@@ -4,6 +4,8 @@ package kuromi;
 
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/kuromi";
 
+import "snakeapi/base.proto";
+
 
 // 获取游戏结果
 message GetKuromiResultReq {
@@ -16,6 +18,7 @@ message GetKuromiResultResp {
   int64 pvp_count = 3;        // 当前玩家游戏局数（结算了才算）
   repeated KuromiTeamScore team_scores = 4; // 阵营分数
   int64 today_pvp_count = 5; // 今日游戏局数
+  repeated snakeapi.RewardItem reward_list = 6; // 奖励列表
 }
 
 message KuromiTeamScore {

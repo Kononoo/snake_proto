@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package couple_game;
+
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/couple_game";
+
+import "snakeapi/base.proto";
+
+message ConfigReq {
+}
+
+message ConfigResp {
+  repeated string group_name_pool = 1;  // 队伍名称随机池
+  repeated PropItem prop_config = 2; // 道具介绍配置
+  repeated string tips_pool = 3; // 匹配界面 tips 随机池
+}
+
+message PropItem {
+  string name = 1; // 道具名称
+  string icon = 2; // 道具 icon
+  string description = 3; // 道具描述
+}
