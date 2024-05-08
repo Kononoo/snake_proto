@@ -6,3 +6,7 @@ apis:
     desc: "双人玩法配置接口"
     input: "ConfigReq"
     output: "ConfigResp"
+  - route: "/couple_game/get_info"
+    desc: "双人玩法信息接口"
+    input: "GetInfoReq"
+    output: "GetInfoResp"

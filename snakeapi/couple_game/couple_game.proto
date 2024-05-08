@@ -10,13 +10,23 @@ message ConfigReq {
 }
 
 message ConfigResp {
-  repeated string group_name_pool = 1;  // 队伍名称随机池
-  repeated PropItem prop_config = 2; // 道具介绍配置
-  repeated string tips_pool = 3; // 匹配界面 tips 随机池
+  int64 start_time = 1;
+  int64 end_time = 2;
+  repeated string group_name_pool = 3;  // 队伍名称随机池
+  repeated PropItem prop_config = 4; // 道具介绍配置
+  repeated string tips_pool = 5; // 匹配界面 tips 随机池
 }
 
 message PropItem {
   string name = 1; // 道具名称
   string icon = 2; // 道具 icon
   string description = 3; // 道具描述
+}
+
+message GetInfoReq {
+}
+
+message GetInfoResp {
+  int32 total_pvp_count = 1;    // 双人模式总游戏局数
+  int32 today_pvp_count = 2;    // 今日双人游戏局数
 }
