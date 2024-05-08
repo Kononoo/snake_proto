@@ -18,7 +18,6 @@ message GetKuromiResultResp {
   int64 pvp_count = 3;        // 当前玩家游戏局数（结算了才算）
   repeated KuromiTeamScore team_scores = 4; // 阵营分数
   int64 today_pvp_count = 5; // 今日游戏局数
-  repeated snakeapi.RewardItem reward_list = 6; // 奖励列表
 }
 
 message KuromiTeamScore {
@@ -40,4 +39,5 @@ message KuromiUserScore {
   bool is_followed = 11;  // 是否已关注当前玩家
   bool is_ai = 12; // 是否是 ai
   int32 length = 13; // 长度
+  repeated snakeapi.RewardItem reward_list = 14; // 奖励列表(服务器返回)
 }
