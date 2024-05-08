@@ -7,6 +7,7 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/couple_game";
 import "snakeapi/base.proto";
 
 message ConfigReq {
+
 }
 
 message ConfigResp {
