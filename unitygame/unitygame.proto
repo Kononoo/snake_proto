@@ -85,6 +85,7 @@ message gameAction {
   int32 cmd = 2; //0为移动，1复活，2中途加入，3用游戏道具，4玩家退出，5语音；如果没有某个玩家说明没发帧，按之前方向移动
   int32 param = 3; //根据cmd代表不同属性：0为movement，3道具id
   userAttribute attr = 4; //根据cmd代表不同属性：2中途加入人的属性
+  int32 mode_param = 5; //作用跟 param 一样，主要用于特定玩法的数据帧同步
 }
 
 //游戏内的用户属性。(头像昵称等从http请求)
@@ -120,6 +121,7 @@ message CommandReq {
   int32 param = 3; //属性根据命令不同填不同的值
   userAttribute attr = 4;
   int32 preRtt = 5; // 上个请求时延
+  int32 mode_param = 6; // 作用跟 param 一样，主要用于特定玩法的数据帧同步
 }
 
 message CommandRsp {
