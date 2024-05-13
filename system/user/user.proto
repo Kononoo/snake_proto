@@ -13,6 +13,16 @@ message SetUserSelfStateReq {
   sint32 self_state = 2;
 }
 
+message SetUserHideModeReq {
+  string uid = 1;
+  sint32 mode = 2;
+}
+
+message SetUserVoiceRoomIDReq {
+  string uid = 1;
+  sint32 voice_room_id = 2;
+}
+
 message GetUserOnlineStatesReq {
   repeated string uid_list = 1;
 }
@@ -22,7 +32,14 @@ message GetUserOnlineStatesRsp {
 }
 
 message UserOnlineState {
-  sint32 state = 1;
-  sint32 self_state = 2;
-  sint32 user_state = 3;
+  sint32 online_state = 1;
+  sint32 user_state = 2; // 两个 state 逻辑有所不同，后续可考虑合并
+}
+
+message GetUserRawStatesReq {
+  repeated string uid_list = 1;
+}
+
+message GetUserRawStatesRsp {
+  repeated sint32 raw_states = 1;
 }
