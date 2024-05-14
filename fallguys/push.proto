@@ -25,3 +25,9 @@ message PuSyncGameInfo {
     repeated PlayerInfo players = 3;  //玩家信息
     int32 rid = 4; // 房间id
 }
+
+// 通知压测开始
+message PuStartStressTest {
+  sint32 gameMode = 1;  //游戏模式,903 糖豆人大逃杀，904 大逃杀娱乐
+  int32 rid = 2; // 房间id
+}
