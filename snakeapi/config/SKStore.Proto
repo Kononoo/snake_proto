@@ -284,6 +284,10 @@ message KillStyleChipModel {
 }
 //ks chip end
 
+message KillStyleList {
+  repeated KillStyleModel kill_style_list = 1;
+}
+
 //ks start
 message KillStyleModel {
   int32 item_id = 1; // 商品id
@@ -364,6 +368,10 @@ message RingInfo {
   int32 recent_obtain = 25; //最近获得开关 0 关闭; 1打开
 }
 //ring end
+
+message SkinChipList{
+  repeated SkinChipModel skin_chip_list = 1;
+}
 
 //skin chip start
 message SkinChipModel {
