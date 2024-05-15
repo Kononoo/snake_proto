@@ -387,7 +387,7 @@ message SkinChipModel {
 //skin start
 
 message StoreModelList {
-  repeated google.protobuf.Any anys = 1;
+  google.protobuf.Any anys = 1;
 }
 
 message SkinList {
