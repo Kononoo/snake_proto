@@ -55,9 +55,32 @@ message GameReadyReq { // unity server初始化成功后通知tcp server
 message GameReadyRsp{
 }
 
+// 游戏每关结束时untiy server通知本轮游戏结果
+message EndRoundReq {
+  string addr = 1; // ip:端口
+  int32 rid = 2; // 房间id
+  repeated Winner winners = 3; // 本轮淘汰的玩家的名次
+  bool isLastRound = 4; // 是否是最后一关
+}
+message EndRoundRsp {
+  repeated EndRoundPlayer players =1;
+}
+message EndRoundPlayer {
+  string uid = 1;
+  repeated RewardItem reward_list = 2;
+}
+message RewardItem {
+  int32 type = 1; // 奖励类型
+  int32 itemId = 2; // 道具id
+  int32 num = 3; // 数量
+  string name = 4; // 名称
+  string imgurl = 5; // 图片
+}
+
 service MatchServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
   rpc EndGame (EndGameReq) returns (EndGameRsp) {}
   rpc GameReady (GameReadyReq) returns (GameReadyRsp) {}
   rpc Subscribe (SubscribeReq) returns (stream SubscribeRsp) {}
+  rpc EndRound (EndRoundReq) returns (EndRoundRsp) {}
 }

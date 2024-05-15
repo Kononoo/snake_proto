@@ -430,6 +430,7 @@ message SkinInfo {
   bool has_associated = 22;// 是否关联图鉴bool
   repeated int32 illustration_ids = 23;// 关联图鉴id  []int，（只有1级皮肤会配置，用skin_index去找当前实际拥有的等级）
   string unity_anim_key = 24; // unity资源路径
+  string unity_anim_version = 25; // unity资源支持版本
 }
 
 message Feature {
