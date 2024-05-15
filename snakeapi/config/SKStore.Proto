@@ -3,7 +3,6 @@ package SnakeMain.Config;
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/config";
 import "snakecommon/config.proto";
 import "snakeapi/base.proto";
-import "google/protobuf/any.proto";
 
 // Store start
 message ProductConfig {
