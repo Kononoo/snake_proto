@@ -385,10 +385,6 @@ message SkinChipModel {
 
 //skin start
 
-message StoreModelList {
-  repeated google.protobuf.Any anys = 1;
-}
-
 message SkinList {
   repeated SkSkinModel skin_list = 1;
 }
