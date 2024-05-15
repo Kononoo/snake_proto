@@ -3,6 +3,7 @@ package SnakeMain.Config;
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/config";
 import "snakecommon/config.proto";
 import "snakeapi/base.proto";
+import "google/protobuf/any.proto";
 
 // Store start
 message ProductConfig {
@@ -284,6 +285,10 @@ message KillStyleChipModel {
 }
 //ks chip end
 
+message KillStyleList {
+  repeated KillStyleModel kill_style_list = 1;
+}
+
 //ks start
 message KillStyleModel {
   int32 item_id = 1; // 商品id
@@ -365,6 +370,10 @@ message RingInfo {
 }
 //ring end
 
+message SkinChipList{
+  repeated SkinChipModel skin_chip_list = 1;
+}
+
 //skin chip start
 message SkinChipModel {
   int32 item_id = 1; // 商品id
@@ -376,6 +385,10 @@ message SkinChipModel {
 //skin chip end
 
 //skin start
+
+message StoreModelList {
+  repeated google.protobuf.Any anys = 1;
+}
 
 message SkinList {
   repeated SkSkinModel skin_list = 1;
