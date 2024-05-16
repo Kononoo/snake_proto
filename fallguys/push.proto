@@ -5,6 +5,7 @@ option go_package = "git.17zjh.com/snake/snake_proto/fallguys";
 
 enum PushType { // push消息类型
   SyncGameInfo = 0; //初始化房间
+  StartStressTest = 1; // 开始压测
 }
 
 //玩家类型
