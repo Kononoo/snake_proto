@@ -17,6 +17,7 @@ message ConfigResp {
   repeated PropItem prop_config = 5; // 道具介绍配置
   repeated string tips_pool = 6; // 匹配界面 tips 随机池
   string play_rule_desc = 7; // 玩法说明
+  repeated int32 couple_skin_ids = 8; // 情侣皮肤 id 列表
 }
 
 message PropItem {
