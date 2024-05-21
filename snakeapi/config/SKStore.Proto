@@ -33,6 +33,62 @@ message SkinSet {
   repeated int32 skin_ids = 3; //相关皮肤id
 }
 
+message MemberCardList {
+  repeated MemberCardModel member_card_list = 1;
+}
+message MemberCardModel {
+  int32 active = 1;
+  int32 item_id = 2;
+  StoreInfo store = 3;
+  int64 update_time = 4;
+}
+
+message DrawCardList {
+  repeated DrawCardModel draw_card_list = 1;
+}
+message DrawCardModel {
+  int32 active = 1;
+  int32 item_id = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  DrawCardInfo info = 5;
+}
+
+message DrawCardInfo {
+  int32 type = 1;
+  int32 discount_times = 2;
+  int32 ad_times = 3;
+  int32 lucky_times = 4;
+  int32 buy_limit = 5;
+  int32 water_value = 6;
+  repeated MultiBuyPrice multi_buy_price = 7;
+  repeated RewardConfig rare_reward_list = 8;
+  repeated RewardConfig general_reward_list = 9;
+  string animation = 10;
+  string animation_frame = 11;
+  int32 version = 12;
+  int32 skin_baodi = 13;
+  RewardConfig baodi_reward = 14;
+  float probability_scale = 15;
+  ChipConfig chip_config = 16;
+}
+message BuyPrice {
+  int32 count = 1;
+  int32 currency_type = 2;
+  int32 price = 3;
+}
+message MultiBuyPrice {
+  repeated BuyPrice multiBuyPrice = 1;
+}
+message ChipConfig {
+  map<string,IntList> chip_map = 1;
+  repeated string skin_list = 2;
+}
+message IntList {
+  repeated int32 values = 1;
+}
+
+
 message DrawCardGuideConfigList {
   repeated DrawCardGuideConfig draw_card_guide_config = 1;
 }
