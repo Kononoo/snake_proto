@@ -33,6 +33,10 @@ message SkinSet {
   repeated int32 skin_ids = 3; //相关皮肤id
 }
 
+message DrawCardGuideConfigList {
+  repeated DrawCardGuideConfig draw_card_guide_config = 1;
+}
+
 message DrawCardGuideConfig {
   repeated int32 id = 1;
   repeated string text_list = 2;
@@ -160,6 +164,9 @@ message AvatarBoxInfo{
 //avatarBox end
 
 // pack start
+message PackList {
+  repeated PackModel pack_list = 1;
+}
 
 message PackModel {
   int32 item_id = 1; // 商品id
@@ -206,6 +213,10 @@ message PackMultiPriceInfo {
 
 //rmb pack start
 
+message RMBPackInfoList {
+  repeated RMBPackInfo RMBPackInfoList = 1;
+}
+
 message RMBPackInfo {
   int32 pack_id = 1;
   string title = 2;
@@ -243,6 +254,9 @@ message LimitationInfo{
 }
 //RMB Info end
 
+message GameFaceList {
+  repeated GameFaceModel game_face_list = 1;
+}
 //game face start
 message GameFaceModel {
   int32 item_id = 1; // 商品id
@@ -275,6 +289,10 @@ message AvatarFrameInfo {
 }
 //avatar frame end
 
+
+message KillStyleChipList {
+  repeated KillStyleChipModel kill_style_chip_list = 1;
+}
 // ks chip start
 message KillStyleChipModel {
   int32 item_id = 1; // 商品id
@@ -299,6 +317,9 @@ message KillStyleModel {
 }
 //ks end
 
+message OGameBroadcastList {
+  repeated OGameBroadcastModel o_game_broadcast_list = 1;
+}
 //game broadcast start
 message OGameBroadcastModel {
   int32 item_id = 1; // 商品id
@@ -315,6 +336,9 @@ message OGameBroadcastInfo {
 }
 //game broadcast end
 
+message OGameBubbleList {
+  repeated OGameBubbleModel o_game_bubble_list = 1;
+}
 //game bubble start
 message OGameBubbleModel {
   int32 item_id = 1; // 商品id
@@ -332,6 +356,9 @@ message OGameBubbleInfo {
 }
 //game bubble end
 
+message RingList {
+  repeated RingModel ring_list = 1;
+}
 //ring start
 message RingModel {
   int32 item_id = 1; // 商品id
@@ -499,6 +526,10 @@ message GameInfo {
 
 //team suit end
 
+message TitleList {
+  repeated TitleModel title_list = 1;
+}
+
 // title start
 message TitleModel {
   int32 item_id = 1; // 商品id
@@ -519,6 +550,9 @@ message TitleInfo {
 }
 //title end
 
+message BroadcastEffectList {
+  repeated BroadcastEffectModel broad_cast_effect_list = 1;
+}
 // broadcastEffect start
 message BroadcastEffectModel {
   int32 item_id = 1; // 商品id
@@ -535,6 +569,11 @@ message BroadcastEffectInfo {
   string name_color = 4;
 }
 // broadcastEffect end
+
+
+message GiftList {
+  repeated GiftModel gift_list = 1;
+}
 
 // gift start
 message GiftModel {
@@ -639,6 +678,10 @@ message MultiBuyPriceBean {
 }
 // card bag end
 
+message PropList {
+  repeated PropModel prop_list = 1;
+}
+
 // prop start
 message PropModel {
   int32 item_id = 1; // 商品id
@@ -684,6 +727,10 @@ message VipInfo {
 }
 // vip end
 
+
+message ChatBubbleList {
+  repeated ChatBubbleModel chat_bubble_list = 1;
+}
 // chat bubble start
 message ChatBubbleModel {
   int32 item_id = 1; // 商品id
@@ -704,6 +751,11 @@ message ChatBubbleInfo {
   string voice_room_color = 8;// 语音房颜色，没有的用原配置
 }
 // chat bubble end
+
+
+message GamePropList {
+  repeated GamePropModel game_prop_list = 1;
+}
 
 // game prop start
 message GamePropModel {
@@ -732,6 +784,10 @@ message GamePropAttr {
 }
 // game prop send
 
+
+message RoomBackgroundList {
+  repeated RoomBackgroundModel room_back_ground_list = 1;
+}
 // room bg start
 message RoomBackgroundModel {
   int32 item_id = 1; // 商品id
@@ -748,6 +804,9 @@ message RoomBackgroundInfo {
 }
 // room bg end
 
+message CardUserInfoBgList {
+  repeated CardUserInfoBgModel card_user_info_bg_list = 1;
+}
 // card user info bg start
 message CardUserInfoBgModel {
   int32 item_id = 1; // 商品id
@@ -767,6 +826,9 @@ message CardUserInfoBgInfo {
 }
 // card user info bg end
 
+message RoomEnterEffectList {
+  repeated RoomEnterEffectModel room_enter_effect_list = 1;
+}
 // card user info bg start
 message RoomEnterEffectModel {
   int32 item_id = 1; // 商品id
@@ -786,6 +848,9 @@ message RoomEnterEffectInfo {
 }
 // card user info bg end
 
+message HomepageDecorateList {
+  repeated HomepageDecorateModel homepage_decorate_list = 1;
+}
 // home decorate start
 message HomepageDecorateModel {
   int32 item_id = 1; // 商品id
@@ -803,6 +868,9 @@ message HomepageDecorateInfo {
 }
 // home decorate end
 
+message HomepageOpenList {
+  repeated HomepageOpenModel homepage_open_list = 1;
+}
 // home open start
 message HomepageOpenModel {
   int32 item_id = 1; // 商品id
@@ -819,6 +887,9 @@ message HomepageOpenInfo {
 }
 // home open end
 
+message ChestList {
+  repeated ChestModel chest_list = 1;
+}
 // chest start
 message ChestModel {
   int32 item_id = 1; // 商品id
@@ -868,6 +939,9 @@ message ChestRewardInfo {
 }
 // chest end
 
+message CoupleBgList {
+  repeated CoupleBgModel couple_bg_list = 1;
+}
 // couple bg start
 message CoupleBgModel {
   int32 item_id = 1; // 商品id
@@ -890,6 +964,9 @@ message CoupleBgInfo {
 }
 // couple bg end
 
+message SocialBgList {
+  repeated SocialBgModel social_bg_list = 1;
+}
 // social bg start
 message SocialBgModel {
   int32 item_id = 1; // 商品id
@@ -909,6 +986,9 @@ message SocialBgInfo {
 }
 // social bg end
 
+message HomepagePendantList {
+  repeated HomepagePendantModel homepage_pendant_list = 1;
+}
 // home pendant start
 message HomepagePendantModel {
   int32 item_id = 1; // 商品id
@@ -934,6 +1014,9 @@ message EndlessBgModel {
   EndlessBgInfoModel info = 5;
 }
 
+message EndlessBgInfoList {
+  repeated EndlessBgInfoModel endless_bg_info_list = 1;
+}
 message EndlessBgInfoModel {
   string bag_url = 1;
   string imgurl = 2;
