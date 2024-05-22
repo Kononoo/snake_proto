@@ -61,7 +61,7 @@ message DrawCardInfo {
   int32 lucky_times = 4;
   int32 buy_limit = 5;
   int32 water_value = 6;
-  repeated MultiBuyPrice multi_buy_price = 7;
+  // repeated MultiBuyPrice multi_buy_price = 7;
   repeated RewardConfig rare_reward_list = 8;
   repeated RewardConfig general_reward_list = 9;
   string animation = 10;
@@ -70,7 +70,7 @@ message DrawCardInfo {
   int32 skin_baodi = 13;
   RewardConfig baodi_reward = 14;
   float probability_scale = 15;
-  ChipConfig chip_config = 16;
+  // ChipConfig chip_config = 16;
 }
 message BuyPrice {
   int32 count = 1;
