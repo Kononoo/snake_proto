@@ -1122,7 +1122,7 @@ type MultiBuyPrice struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MultiBuyPrice []*BuyPrice `protobuf:"bytes,1,rep,name=multiBuyPrice,proto3" json:"multiBuyPrice,omitempty"`
+	MultiBuyPrice []*BuyPrice `protobuf:"bytes,1,rep,name=multiBuyPrice,proto3" json:"multi_buy_price,omitempty"`
 }
 
 func (x *MultiBuyPrice) Reset() {
