@@ -61,7 +61,7 @@ message DrawCardInfo {
   int32 lucky_times = 4;
   int32 buy_limit = 5;
   int32 water_value = 6;
-  // repeated MultiBuyPrice multi_buy_price = 7;
+  repeated MultiBuyPrice multi_buy_price = 7;
   repeated RewardConfig rare_reward_list = 8;
   repeated RewardConfig general_reward_list = 9;
   string animation = 10;
