@@ -70,7 +70,7 @@ message DrawCardInfo {
   int32 skin_baodi = 13;
   RewardConfig baodi_reward = 14;
   float probability_scale = 15;
-  // ChipConfig chip_config = 16;
+  ChipConfig chip_config = 16;
 }
 message BuyPrice {
   int32 count = 1;
