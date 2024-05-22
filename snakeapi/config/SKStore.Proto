@@ -78,7 +78,7 @@ message BuyPrice {
   int32 price = 3;
 }
 message MultiBuyPrice {
-  repeated BuyPrice multiBuyPrice = 1;
+  repeated BuyPrice buyPrice = 1;
 }
 message ChipConfig {
   map<string,IntList> chip_map = 1;
