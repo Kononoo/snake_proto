@@ -623,11 +623,11 @@ message TitleInfo {
 }
 //title end
 
-message BroadcastEffectList {
-  repeated BroadcastEffectModel broad_cast_effect_list = 1;
+message BroadCastEffectList {
+  repeated BroadCastEffectModel broad_cast_effect_list = 1;
 }
 // broadcastEffect start
-message BroadcastEffectModel {
+message BroadCastEffectModel {
   int32 item_id = 1; // 商品id
   int32 active = 2;
   int64 update_time = 3;
@@ -932,6 +932,12 @@ message RoomEnterEffectInfo {
   string enter_tip = 4;
   string enter_effect_url = 5;
   int32 enter_anim_type = 6;
+  string dynamic_preview_url = 7; // 预览资源
+  int32 dynamic_anim_type = 8; // 预览动画类型
+  string pack_thumbnail_url = 9;
+  string nick_name_color = 10;
+  string sign_color = 11;
+  string sign_back_ground_color = 12;
 }
 // card user info bg end
 
