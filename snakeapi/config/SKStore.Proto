@@ -958,6 +958,7 @@ message HomepageDecorateInfo {
   int32 anim_type = 2;
   int32 scale_type = 3;
   int32 lottie_scale_type = 4;
+  string font_color = 5;
 }
 // home decorate end
 
@@ -1000,6 +1001,18 @@ message ChestInfo {
   repeated ChestRewardInfo rand_rewards = 5; // 随机奖励
   repeated ChestRewardInfo select_rewards = 6; // 自选奖励
   string probability_text = 7; //概率公式
+  string material_open_args = 8;
+  int32 end_time = 9;
+  int32 rand_type = 10;
+  repeated ChestRandWeightInfo rand_weight_list = 11;
+}
+message ChestRandWeightInfo {
+  int64 start_count = 1;
+  repeated ChestRandWeightSingleItem weight_list = 2;
+}
+message ChestRandWeightSingleItem {
+  int32 index = 1;
+  int32 weight = 2;
 }
 
 message ChestRewardInfo {
@@ -1054,6 +1067,7 @@ message CoupleBgInfo {
   string wedding_time_color = 7;// 婚礼时光色值
   string wedding_oath_color = 8;// 婚礼誓言色值
   string heart_img_url = 9;
+  string front_color = 10;
 }
 // couple bg end
 
@@ -1098,6 +1112,9 @@ message HomepagePendantInfo {
 }
 // home pendant end
 
+message EndlessBgList {
+  repeated EndlessBgModel endless_bg_list = 1;
+}
 // endless bg start
 message EndlessBgModel {
   int32 item_id = 1; // 商品id
@@ -1107,9 +1124,6 @@ message EndlessBgModel {
   EndlessBgInfoModel info = 5;
 }
 
-message EndlessBgInfoList {
-  repeated EndlessBgInfoModel endless_bg_info_list = 1;
-}
 message EndlessBgInfoModel {
   string bag_url = 1;
   string imgurl = 2;
