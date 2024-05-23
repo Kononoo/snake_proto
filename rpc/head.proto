@@ -13,4 +13,6 @@ enum cmd {
   System = 5; // 系统功能服
   Master = 6; // 中心服（仅服务器使用）
   Gate = 7; // 网关服（仅服务器使用)
+  UnitySvcCtl = 8; // unity server控制服务（仅服务器使用)
+  Match = 9; // 匹配服
 }
