@@ -320,6 +320,12 @@ message GameFaceModel {
   int64 update_time = 3;
   StoreInfo store = 4;
   ProductBaseInfo info = 5;
+  GameMsg game = 6;
+}
+
+message GameMsg {
+  int64 img_urls = 1;
+  int64 turn_time = 2;
 }
 
 
@@ -603,6 +609,7 @@ message TitleInfo {
   int32 home_anim_type = 5;
   int32 home_lottie_scale_type = 6;//缩放方式
   string static_imgurl = 7;
+  string mail_text = 8;
 }
 //title end
 
@@ -857,6 +864,14 @@ message RoomBackgroundInfo {
   int32 level = 1;  // 休闲区资源等级
   string dynamic_preview_url = 2; // 预览资源
   int32 dynamic_anim_type = 3; // 预览动画类型
+  string pack_thumbnail_url = 4;
+  string nick_name_color = 5;
+  string sign_color = 6;
+  string sign_back_ground_color = 7;
+  string enter_tip = 8;
+  string enter_anim_type = 9;
+  string big_enter_effect_url = 10;
+  string big_enter_anim_type = 11;
 }
 // room bg end
 
@@ -878,7 +893,13 @@ message CardUserInfoBgInfo {
   string sign_color = 3;
   string sign_backgroud_color = 4;
   string dynamic_preview_url = 5;
-  int32 dynamic_anim_type = 6;
+  int32  dynamic_anim_type = 6;
+  string pack_thumbnail_url = 7;
+  string sign_back_ground_color = 8;
+  string enter_tip = 9;
+  string enter_anim_type = 10;
+  string big_enter_effect_url = 11;
+  string big_enter_anim_type = 12;
 }
 // card user info bg end
 
