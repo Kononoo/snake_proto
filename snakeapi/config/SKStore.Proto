@@ -633,10 +633,10 @@ message TitleInfo {
 //title end
 
 message BroadCastEffectList {
-  repeated BroadCastEffectModel broad_cast_effect_list = 1;
+  repeated BroadcastEffectModel broad_cast_effect_list = 1;
 }
 // broadcastEffect start
-message BroadCastEffectModel {
+message BroadcastEffectModel {
   int32 item_id = 1; // 商品id
   int32 active = 2;
   int64 update_time = 3;
