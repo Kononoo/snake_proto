@@ -5487,6 +5487,9 @@ type TeamSuitInfo struct {
 	ActJumpurl       string      `protobuf:"bytes,23,opt,name=act_jumpurl,json=actJumpurl,proto3" json:"act_jumpurl,omitempty"`          // 活动跳转链接
 	ActStartTime     int64       `protobuf:"varint,24,opt,name=act_start_time,json=actStartTime,proto3" json:"act_start_time,omitempty"` // 活动开始时间
 	ActEndTime       int64       `protobuf:"varint,25,opt,name=act_end_time,json=actEndTime,proto3" json:"act_end_time,omitempty"`       // 活动结束时间
+	HasAssociated    bool        `protobuf:"varint,26,opt,name=has_associated,json=hasAssociated,proto3" json:"has_associated,omitempty"`
+	WorthLevel       int32       `protobuf:"varint,27,opt,name=worth_level,json=worthLevel,proto3" json:"worth_level,omitempty"`
+	Worth            int32       `protobuf:"varint,28,opt,name=worth,proto3" json:"worth,omitempty"`
 }
 
 func (x *TeamSuitInfo) Reset() {
@@ -5696,6 +5699,27 @@ func (x *TeamSuitInfo) GetActEndTime() int64 {
 	return 0
 }
 
+func (x *TeamSuitInfo) GetHasAssociated() bool {
+	if x != nil {
+		return x.HasAssociated
+	}
+	return false
+}
+
+func (x *TeamSuitInfo) GetWorthLevel() int32 {
+	if x != nil {
+		return x.WorthLevel
+	}
+	return 0
+}
+
+func (x *TeamSuitInfo) GetWorth() int32 {
+	if x != nil {
+		return x.Worth
+	}
+	return 0
+}
+
 type GameInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -5704,6 +5728,8 @@ type GameInfo struct {
 	GameIconUrl string `protobuf:"bytes,1,opt,name=game_icon_url,json=gameIconUrl,proto3" json:"game_icon_url,omitempty"` // 游戏内缩略图
 	GameImgurl  string `protobuf:"bytes,2,opt,name=game_imgurl,json=gameImgurl,proto3" json:"game_imgurl,omitempty"`      // 全场最炫展示图片
 	ColorId     int32  `protobuf:"varint,3,opt,name=color_id,json=colorId,proto3" json:"color_id,omitempty"`              //队服默认展示色系，商店内展示用，1:绿 2:红，3:黄
+	GameInfoId  int32  `protobuf:"varint,4,opt,name=game_info_id,json=gameInfoId,proto3" json:"game_info_id,omitempty"`
+	Game        *Game  `protobuf:"bytes,5,opt,name=game,proto3" json:"game,omitempty"`
 }
 
 func (x *GameInfo) Reset() {
@@ -5759,6 +5785,130 @@ func (x *GameInfo) GetColorId() int32 {
 	return 0
 }
 
+func (x *GameInfo) GetGameInfoId() int32 {
+	if x != nil {
+		return x.GameInfoId
+	}
+	return 0
+}
+
+func (x *GameInfo) GetGame() *Game {
+	if x != nil {
+		return x.Game
+	}
+	return nil
+}
+
+type Game struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ResourceNames []*GameResourceItem `protobuf:"bytes,1,rep,name=resource_names,json=resourceNames,proto3" json:"resource_names,omitempty"`
+	ResourceUrl   string              `protobuf:"bytes,2,opt,name=resource_url,json=resourceUrl,proto3" json:"resource_url,omitempty"`
+}
+
+func (x *Game) Reset() {
+	*x = Game{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[65]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Game) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Game) ProtoMessage() {}
+
+func (x *Game) ProtoReflect() protoreflect.Message {
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[65]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Game.ProtoReflect.Descriptor instead.
+func (*Game) Descriptor() ([]byte, []int) {
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{65}
+}
+
+func (x *Game) GetResourceNames() []*GameResourceItem {
+	if x != nil {
+		return x.ResourceNames
+	}
+	return nil
+}
+
+func (x *Game) GetResourceUrl() string {
+	if x != nil {
+		return x.ResourceUrl
+	}
+	return ""
+}
+
+type GameResourceItem struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Names []string `protobuf:"bytes,1,rep,name=names,proto3" json:"names,omitempty"`
+	Type  int32    `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"`
+}
+
+func (x *GameResourceItem) Reset() {
+	*x = GameResourceItem{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[66]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GameResourceItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GameResourceItem) ProtoMessage() {}
+
+func (x *GameResourceItem) ProtoReflect() protoreflect.Message {
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[66]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GameResourceItem.ProtoReflect.Descriptor instead.
+func (*GameResourceItem) Descriptor() ([]byte, []int) {
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{66}
+}
+
+func (x *GameResourceItem) GetNames() []string {
+	if x != nil {
+		return x.Names
+	}
+	return nil
+}
+
+func (x *GameResourceItem) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
 type TitleList struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -5770,7 +5920,7 @@ type TitleList struct {
 func (x *TitleList) Reset() {
 	*x = TitleList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[65]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[67]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5783,7 +5933,7 @@ func (x *TitleList) String() string {
 func (*TitleList) ProtoMessage() {}
 
 func (x *TitleList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[65]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[67]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5796,7 +5946,7 @@ func (x *TitleList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TitleList.ProtoReflect.Descriptor instead.
 func (*TitleList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{65}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{67}
 }
 
 func (x *TitleList) GetTitleList() []*TitleModel {
@@ -5822,7 +5972,7 @@ type TitleModel struct {
 func (x *TitleModel) Reset() {
 	*x = TitleModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[66]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[68]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5835,7 +5985,7 @@ func (x *TitleModel) String() string {
 func (*TitleModel) ProtoMessage() {}
 
 func (x *TitleModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[66]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[68]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5848,7 +5998,7 @@ func (x *TitleModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TitleModel.ProtoReflect.Descriptor instead.
 func (*TitleModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{66}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{68}
 }
 
 func (x *TitleModel) GetItemId() int32 {
@@ -5904,7 +6054,7 @@ type TitleInfo struct {
 func (x *TitleInfo) Reset() {
 	*x = TitleInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[67]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[69]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5917,7 +6067,7 @@ func (x *TitleInfo) String() string {
 func (*TitleInfo) ProtoMessage() {}
 
 func (x *TitleInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[67]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[69]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5930,7 +6080,7 @@ func (x *TitleInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TitleInfo.ProtoReflect.Descriptor instead.
 func (*TitleInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{67}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{69}
 }
 
 func (x *TitleInfo) GetUseTime() int32 {
@@ -6000,7 +6150,7 @@ type BroadCastEffectList struct {
 func (x *BroadCastEffectList) Reset() {
 	*x = BroadCastEffectList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[68]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[70]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6013,7 +6163,7 @@ func (x *BroadCastEffectList) String() string {
 func (*BroadCastEffectList) ProtoMessage() {}
 
 func (x *BroadCastEffectList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[68]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[70]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6026,7 +6176,7 @@ func (x *BroadCastEffectList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BroadCastEffectList.ProtoReflect.Descriptor instead.
 func (*BroadCastEffectList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{68}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{70}
 }
 
 func (x *BroadCastEffectList) GetBroadCastEffectList() []*BroadCastEffectModel {
@@ -6052,7 +6202,7 @@ type BroadCastEffectModel struct {
 func (x *BroadCastEffectModel) Reset() {
 	*x = BroadCastEffectModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[69]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[71]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6065,7 +6215,7 @@ func (x *BroadCastEffectModel) String() string {
 func (*BroadCastEffectModel) ProtoMessage() {}
 
 func (x *BroadCastEffectModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[69]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[71]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6078,7 +6228,7 @@ func (x *BroadCastEffectModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BroadCastEffectModel.ProtoReflect.Descriptor instead.
 func (*BroadCastEffectModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{69}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{71}
 }
 
 func (x *BroadCastEffectModel) GetItemId() int32 {
@@ -6130,7 +6280,7 @@ type BroadcastEffectInfo struct {
 func (x *BroadcastEffectInfo) Reset() {
 	*x = BroadcastEffectInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[70]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[72]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6143,7 +6293,7 @@ func (x *BroadcastEffectInfo) String() string {
 func (*BroadcastEffectInfo) ProtoMessage() {}
 
 func (x *BroadcastEffectInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[70]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[72]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6156,7 +6306,7 @@ func (x *BroadcastEffectInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BroadcastEffectInfo.ProtoReflect.Descriptor instead.
 func (*BroadcastEffectInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{70}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{72}
 }
 
 func (x *BroadcastEffectInfo) GetAnimType() int32 {
@@ -6198,7 +6348,7 @@ type GiftList struct {
 func (x *GiftList) Reset() {
 	*x = GiftList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[71]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[73]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6211,7 +6361,7 @@ func (x *GiftList) String() string {
 func (*GiftList) ProtoMessage() {}
 
 func (x *GiftList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[71]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[73]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6224,7 +6374,7 @@ func (x *GiftList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftList.ProtoReflect.Descriptor instead.
 func (*GiftList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{71}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{73}
 }
 
 func (x *GiftList) GetGiftList() []*GiftModel {
@@ -6250,7 +6400,7 @@ type GiftModel struct {
 func (x *GiftModel) Reset() {
 	*x = GiftModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[72]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[74]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6263,7 +6413,7 @@ func (x *GiftModel) String() string {
 func (*GiftModel) ProtoMessage() {}
 
 func (x *GiftModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[72]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[74]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6276,7 +6426,7 @@ func (x *GiftModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftModel.ProtoReflect.Descriptor instead.
 func (*GiftModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{72}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{74}
 }
 
 func (x *GiftModel) GetItemId() int32 {
@@ -6357,7 +6507,7 @@ type GiftInfo struct {
 func (x *GiftInfo) Reset() {
 	*x = GiftInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[73]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[75]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6370,7 +6520,7 @@ func (x *GiftInfo) String() string {
 func (*GiftInfo) ProtoMessage() {}
 
 func (x *GiftInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[73]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[75]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6383,7 +6533,7 @@ func (x *GiftInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftInfo.ProtoReflect.Descriptor instead.
 func (*GiftInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{73}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{75}
 }
 
 func (x *GiftInfo) GetUnit() string {
@@ -6632,7 +6782,7 @@ type GiftNumberConfig struct {
 func (x *GiftNumberConfig) Reset() {
 	*x = GiftNumberConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[74]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[76]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6645,7 +6795,7 @@ func (x *GiftNumberConfig) String() string {
 func (*GiftNumberConfig) ProtoMessage() {}
 
 func (x *GiftNumberConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[74]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[76]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6658,7 +6808,7 @@ func (x *GiftNumberConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftNumberConfig.ProtoReflect.Descriptor instead.
 func (*GiftNumberConfig) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{74}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{76}
 }
 
 func (x *GiftNumberConfig) GetNum() int32 {
@@ -6712,7 +6862,7 @@ type GiftAnimConfig struct {
 func (x *GiftAnimConfig) Reset() {
 	*x = GiftAnimConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[75]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[77]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6725,7 +6875,7 @@ func (x *GiftAnimConfig) String() string {
 func (*GiftAnimConfig) ProtoMessage() {}
 
 func (x *GiftAnimConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[75]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[77]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6738,7 +6888,7 @@ func (x *GiftAnimConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftAnimConfig.ProtoReflect.Descriptor instead.
 func (*GiftAnimConfig) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{75}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{77}
 }
 
 func (x *GiftAnimConfig) GetAnimType2() int32 {
@@ -6799,7 +6949,7 @@ type PhotoWallConfig struct {
 func (x *PhotoWallConfig) Reset() {
 	*x = PhotoWallConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[76]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[78]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6812,7 +6962,7 @@ func (x *PhotoWallConfig) String() string {
 func (*PhotoWallConfig) ProtoMessage() {}
 
 func (x *PhotoWallConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[76]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[78]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6825,7 +6975,7 @@ func (x *PhotoWallConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PhotoWallConfig.ProtoReflect.Descriptor instead.
 func (*PhotoWallConfig) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{76}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{78}
 }
 
 func (x *PhotoWallConfig) GetOpen() int32 {
@@ -6886,7 +7036,7 @@ type CardBagModel struct {
 func (x *CardBagModel) Reset() {
 	*x = CardBagModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[77]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[79]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6899,7 +7049,7 @@ func (x *CardBagModel) String() string {
 func (*CardBagModel) ProtoMessage() {}
 
 func (x *CardBagModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[77]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[79]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6912,7 +7062,7 @@ func (x *CardBagModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardBagModel.ProtoReflect.Descriptor instead.
 func (*CardBagModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{77}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{79}
 }
 
 func (x *CardBagModel) GetItemId() int32 {
@@ -6972,7 +7122,7 @@ type CardBagInfo struct {
 func (x *CardBagInfo) Reset() {
 	*x = CardBagInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[78]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[80]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6985,7 +7135,7 @@ func (x *CardBagInfo) String() string {
 func (*CardBagInfo) ProtoMessage() {}
 
 func (x *CardBagInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[78]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[80]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6998,7 +7148,7 @@ func (x *CardBagInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardBagInfo.ProtoReflect.Descriptor instead.
 func (*CardBagInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{78}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{80}
 }
 
 func (x *CardBagInfo) GetType() int32 {
@@ -7091,7 +7241,7 @@ type MultiBuyPriceBean struct {
 func (x *MultiBuyPriceBean) Reset() {
 	*x = MultiBuyPriceBean{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[79]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[81]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7104,7 +7254,7 @@ func (x *MultiBuyPriceBean) String() string {
 func (*MultiBuyPriceBean) ProtoMessage() {}
 
 func (x *MultiBuyPriceBean) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[79]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[81]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7117,7 +7267,7 @@ func (x *MultiBuyPriceBean) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MultiBuyPriceBean.ProtoReflect.Descriptor instead.
 func (*MultiBuyPriceBean) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{79}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{81}
 }
 
 func (x *MultiBuyPriceBean) GetCount() int32 {
@@ -7152,7 +7302,7 @@ type PropList struct {
 func (x *PropList) Reset() {
 	*x = PropList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[80]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[82]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7165,7 +7315,7 @@ func (x *PropList) String() string {
 func (*PropList) ProtoMessage() {}
 
 func (x *PropList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[80]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[82]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7178,7 +7328,7 @@ func (x *PropList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropList.ProtoReflect.Descriptor instead.
 func (*PropList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{80}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{82}
 }
 
 func (x *PropList) GetPropList() []*PropModel {
@@ -7204,7 +7354,7 @@ type PropModel struct {
 func (x *PropModel) Reset() {
 	*x = PropModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[81]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[83]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7217,7 +7367,7 @@ func (x *PropModel) String() string {
 func (*PropModel) ProtoMessage() {}
 
 func (x *PropModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[81]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[83]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7230,7 +7380,7 @@ func (x *PropModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropModel.ProtoReflect.Descriptor instead.
 func (*PropModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{81}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{83}
 }
 
 func (x *PropModel) GetItemId() int32 {
@@ -7290,7 +7440,7 @@ type PropInfo struct {
 func (x *PropInfo) Reset() {
 	*x = PropInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[82]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[84]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7303,7 +7453,7 @@ func (x *PropInfo) String() string {
 func (*PropInfo) ProtoMessage() {}
 
 func (x *PropInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[82]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[84]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7316,7 +7466,7 @@ func (x *PropInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropInfo.ProtoReflect.Descriptor instead.
 func (*PropInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{82}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{84}
 }
 
 func (x *PropInfo) GetUseLimit() int32 {
@@ -7412,7 +7562,7 @@ type VipCardModel struct {
 func (x *VipCardModel) Reset() {
 	*x = VipCardModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[83]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[85]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7425,7 +7575,7 @@ func (x *VipCardModel) String() string {
 func (*VipCardModel) ProtoMessage() {}
 
 func (x *VipCardModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[83]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[85]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7438,7 +7588,7 @@ func (x *VipCardModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VipCardModel.ProtoReflect.Descriptor instead.
 func (*VipCardModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{83}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{85}
 }
 
 func (x *VipCardModel) GetItemId() int32 {
@@ -7493,7 +7643,7 @@ type VipInfo struct {
 func (x *VipInfo) Reset() {
 	*x = VipInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[84]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[86]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7506,7 +7656,7 @@ func (x *VipInfo) String() string {
 func (*VipInfo) ProtoMessage() {}
 
 func (x *VipInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[84]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[86]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7519,7 +7669,7 @@ func (x *VipInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VipInfo.ProtoReflect.Descriptor instead.
 func (*VipInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{84}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{86}
 }
 
 func (x *VipInfo) GetResourceUrl() string {
@@ -7582,7 +7732,7 @@ type ChatBubbleList struct {
 func (x *ChatBubbleList) Reset() {
 	*x = ChatBubbleList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[85]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[87]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7595,7 +7745,7 @@ func (x *ChatBubbleList) String() string {
 func (*ChatBubbleList) ProtoMessage() {}
 
 func (x *ChatBubbleList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[85]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[87]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7608,7 +7758,7 @@ func (x *ChatBubbleList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChatBubbleList.ProtoReflect.Descriptor instead.
 func (*ChatBubbleList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{85}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{87}
 }
 
 func (x *ChatBubbleList) GetChatBubbleList() []*ChatBubbleModel {
@@ -7634,7 +7784,7 @@ type ChatBubbleModel struct {
 func (x *ChatBubbleModel) Reset() {
 	*x = ChatBubbleModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[86]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[88]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7647,7 +7797,7 @@ func (x *ChatBubbleModel) String() string {
 func (*ChatBubbleModel) ProtoMessage() {}
 
 func (x *ChatBubbleModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[86]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[88]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7660,7 +7810,7 @@ func (x *ChatBubbleModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChatBubbleModel.ProtoReflect.Descriptor instead.
 func (*ChatBubbleModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{86}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{88}
 }
 
 func (x *ChatBubbleModel) GetItemId() int32 {
@@ -7716,7 +7866,7 @@ type ChatBubbleInfo struct {
 func (x *ChatBubbleInfo) Reset() {
 	*x = ChatBubbleInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[87]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[89]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7729,7 +7879,7 @@ func (x *ChatBubbleInfo) String() string {
 func (*ChatBubbleInfo) ProtoMessage() {}
 
 func (x *ChatBubbleInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[87]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[89]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7742,7 +7892,7 @@ func (x *ChatBubbleInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChatBubbleInfo.ProtoReflect.Descriptor instead.
 func (*ChatBubbleInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{87}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{89}
 }
 
 func (x *ChatBubbleInfo) GetAnimType() int32 {
@@ -7812,7 +7962,7 @@ type GamePropList struct {
 func (x *GamePropList) Reset() {
 	*x = GamePropList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[88]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[90]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7825,7 +7975,7 @@ func (x *GamePropList) String() string {
 func (*GamePropList) ProtoMessage() {}
 
 func (x *GamePropList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[88]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[90]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7838,7 +7988,7 @@ func (x *GamePropList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GamePropList.ProtoReflect.Descriptor instead.
 func (*GamePropList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{88}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{90}
 }
 
 func (x *GamePropList) GetGamePropList() []*GamePropModel {
@@ -7864,7 +8014,7 @@ type GamePropModel struct {
 func (x *GamePropModel) Reset() {
 	*x = GamePropModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[89]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[91]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7877,7 +8027,7 @@ func (x *GamePropModel) String() string {
 func (*GamePropModel) ProtoMessage() {}
 
 func (x *GamePropModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[89]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[91]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7890,7 +8040,7 @@ func (x *GamePropModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GamePropModel.ProtoReflect.Descriptor instead.
 func (*GamePropModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{89}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{91}
 }
 
 func (x *GamePropModel) GetItemId() int32 {
@@ -7942,7 +8092,7 @@ type GamePropInfo struct {
 func (x *GamePropInfo) Reset() {
 	*x = GamePropInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[90]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[92]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7955,7 +8105,7 @@ func (x *GamePropInfo) String() string {
 func (*GamePropInfo) ProtoMessage() {}
 
 func (x *GamePropInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[90]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[92]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7968,7 +8118,7 @@ func (x *GamePropInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GamePropInfo.ProtoReflect.Descriptor instead.
 func (*GamePropInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{90}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{92}
 }
 
 func (x *GamePropInfo) GetPropType() int32 {
@@ -8016,7 +8166,7 @@ type GamePropAttr struct {
 func (x *GamePropAttr) Reset() {
 	*x = GamePropAttr{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[91]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[93]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8029,7 +8179,7 @@ func (x *GamePropAttr) String() string {
 func (*GamePropAttr) ProtoMessage() {}
 
 func (x *GamePropAttr) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[91]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[93]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8042,7 +8192,7 @@ func (x *GamePropAttr) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GamePropAttr.ProtoReflect.Descriptor instead.
 func (*GamePropAttr) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{91}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{93}
 }
 
 func (x *GamePropAttr) GetGameUseLimit() int32 {
@@ -8105,7 +8255,7 @@ type RoomBackgroundList struct {
 func (x *RoomBackgroundList) Reset() {
 	*x = RoomBackgroundList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[92]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[94]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8118,7 +8268,7 @@ func (x *RoomBackgroundList) String() string {
 func (*RoomBackgroundList) ProtoMessage() {}
 
 func (x *RoomBackgroundList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[92]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[94]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8131,7 +8281,7 @@ func (x *RoomBackgroundList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoomBackgroundList.ProtoReflect.Descriptor instead.
 func (*RoomBackgroundList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{92}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{94}
 }
 
 func (x *RoomBackgroundList) GetRoomBackGroundList() []*RoomBackgroundModel {
@@ -8157,7 +8307,7 @@ type RoomBackgroundModel struct {
 func (x *RoomBackgroundModel) Reset() {
 	*x = RoomBackgroundModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[93]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[95]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8170,7 +8320,7 @@ func (x *RoomBackgroundModel) String() string {
 func (*RoomBackgroundModel) ProtoMessage() {}
 
 func (x *RoomBackgroundModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[93]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[95]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8183,7 +8333,7 @@ func (x *RoomBackgroundModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoomBackgroundModel.ProtoReflect.Descriptor instead.
 func (*RoomBackgroundModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{93}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{95}
 }
 
 func (x *RoomBackgroundModel) GetItemId() int32 {
@@ -8242,7 +8392,7 @@ type RoomBackgroundInfo struct {
 func (x *RoomBackgroundInfo) Reset() {
 	*x = RoomBackgroundInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[94]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[96]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8255,7 +8405,7 @@ func (x *RoomBackgroundInfo) String() string {
 func (*RoomBackgroundInfo) ProtoMessage() {}
 
 func (x *RoomBackgroundInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[94]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[96]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8268,7 +8418,7 @@ func (x *RoomBackgroundInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoomBackgroundInfo.ProtoReflect.Descriptor instead.
 func (*RoomBackgroundInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{94}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{96}
 }
 
 func (x *RoomBackgroundInfo) GetLevel() int32 {
@@ -8359,7 +8509,7 @@ type CardUserInfoBgList struct {
 func (x *CardUserInfoBgList) Reset() {
 	*x = CardUserInfoBgList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[95]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[97]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8372,7 +8522,7 @@ func (x *CardUserInfoBgList) String() string {
 func (*CardUserInfoBgList) ProtoMessage() {}
 
 func (x *CardUserInfoBgList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[95]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[97]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8385,7 +8535,7 @@ func (x *CardUserInfoBgList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardUserInfoBgList.ProtoReflect.Descriptor instead.
 func (*CardUserInfoBgList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{95}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{97}
 }
 
 func (x *CardUserInfoBgList) GetCardUserInfoBgList() []*CardUserInfoBgModel {
@@ -8411,7 +8561,7 @@ type CardUserInfoBgModel struct {
 func (x *CardUserInfoBgModel) Reset() {
 	*x = CardUserInfoBgModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[96]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[98]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8424,7 +8574,7 @@ func (x *CardUserInfoBgModel) String() string {
 func (*CardUserInfoBgModel) ProtoMessage() {}
 
 func (x *CardUserInfoBgModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[96]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[98]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8437,7 +8587,7 @@ func (x *CardUserInfoBgModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardUserInfoBgModel.ProtoReflect.Descriptor instead.
 func (*CardUserInfoBgModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{96}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{98}
 }
 
 func (x *CardUserInfoBgModel) GetItemId() int32 {
@@ -8497,7 +8647,7 @@ type CardUserInfoBgInfo struct {
 func (x *CardUserInfoBgInfo) Reset() {
 	*x = CardUserInfoBgInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[97]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[99]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8510,7 +8660,7 @@ func (x *CardUserInfoBgInfo) String() string {
 func (*CardUserInfoBgInfo) ProtoMessage() {}
 
 func (x *CardUserInfoBgInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[97]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[99]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8523,7 +8673,7 @@ func (x *CardUserInfoBgInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CardUserInfoBgInfo.ProtoReflect.Descriptor instead.
 func (*CardUserInfoBgInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{97}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{99}
 }
 
 func (x *CardUserInfoBgInfo) GetLevel() int32 {
@@ -8621,7 +8771,7 @@ type RoomEnterEffectList struct {
 func (x *RoomEnterEffectList) Reset() {
 	*x = RoomEnterEffectList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[98]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[100]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8634,7 +8784,7 @@ func (x *RoomEnterEffectList) String() string {
 func (*RoomEnterEffectList) ProtoMessage() {}
 
 func (x *RoomEnterEffectList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[98]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[100]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8647,7 +8797,7 @@ func (x *RoomEnterEffectList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoomEnterEffectList.ProtoReflect.Descriptor instead.
 func (*RoomEnterEffectList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{98}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{100}
 }
 
 func (x *RoomEnterEffectList) GetRoomEnterEffectList() []*RoomEnterEffectModel {
@@ -8673,7 +8823,7 @@ type RoomEnterEffectModel struct {
 func (x *RoomEnterEffectModel) Reset() {
 	*x = RoomEnterEffectModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[99]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[101]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8686,7 +8836,7 @@ func (x *RoomEnterEffectModel) String() string {
 func (*RoomEnterEffectModel) ProtoMessage() {}
 
 func (x *RoomEnterEffectModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[99]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[101]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8699,7 +8849,7 @@ func (x *RoomEnterEffectModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoomEnterEffectModel.ProtoReflect.Descriptor instead.
 func (*RoomEnterEffectModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{99}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{101}
 }
 
 func (x *RoomEnterEffectModel) GetItemId() int32 {
@@ -8759,7 +8909,7 @@ type RoomEnterEffectInfo struct {
 func (x *RoomEnterEffectInfo) Reset() {
 	*x = RoomEnterEffectInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[100]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[102]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8772,7 +8922,7 @@ func (x *RoomEnterEffectInfo) String() string {
 func (*RoomEnterEffectInfo) ProtoMessage() {}
 
 func (x *RoomEnterEffectInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[100]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[102]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8785,7 +8935,7 @@ func (x *RoomEnterEffectInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RoomEnterEffectInfo.ProtoReflect.Descriptor instead.
 func (*RoomEnterEffectInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{100}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{102}
 }
 
 func (x *RoomEnterEffectInfo) GetLevel() int32 {
@@ -8883,7 +9033,7 @@ type HomepageDecorateList struct {
 func (x *HomepageDecorateList) Reset() {
 	*x = HomepageDecorateList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[101]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[103]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8896,7 +9046,7 @@ func (x *HomepageDecorateList) String() string {
 func (*HomepageDecorateList) ProtoMessage() {}
 
 func (x *HomepageDecorateList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[101]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[103]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8909,7 +9059,7 @@ func (x *HomepageDecorateList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomepageDecorateList.ProtoReflect.Descriptor instead.
 func (*HomepageDecorateList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{101}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{103}
 }
 
 func (x *HomepageDecorateList) GetHomepageDecorateList() []*HomepageDecorateModel {
@@ -8935,7 +9085,7 @@ type HomepageDecorateModel struct {
 func (x *HomepageDecorateModel) Reset() {
 	*x = HomepageDecorateModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[102]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[104]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8948,7 +9098,7 @@ func (x *HomepageDecorateModel) String() string {
 func (*HomepageDecorateModel) ProtoMessage() {}
 
 func (x *HomepageDecorateModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[102]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[104]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8961,7 +9111,7 @@ func (x *HomepageDecorateModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomepageDecorateModel.ProtoReflect.Descriptor instead.
 func (*HomepageDecorateModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{102}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{104}
 }
 
 func (x *HomepageDecorateModel) GetItemId() int32 {
@@ -9014,7 +9164,7 @@ type HomepageDecorateInfo struct {
 func (x *HomepageDecorateInfo) Reset() {
 	*x = HomepageDecorateInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[103]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[105]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9027,7 +9177,7 @@ func (x *HomepageDecorateInfo) String() string {
 func (*HomepageDecorateInfo) ProtoMessage() {}
 
 func (x *HomepageDecorateInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[103]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[105]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9040,7 +9190,7 @@ func (x *HomepageDecorateInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomepageDecorateInfo.ProtoReflect.Descriptor instead.
 func (*HomepageDecorateInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{103}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{105}
 }
 
 func (x *HomepageDecorateInfo) GetAnimUrl() string {
@@ -9089,7 +9239,7 @@ type HomepageOpenList struct {
 func (x *HomepageOpenList) Reset() {
 	*x = HomepageOpenList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[104]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[106]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9102,7 +9252,7 @@ func (x *HomepageOpenList) String() string {
 func (*HomepageOpenList) ProtoMessage() {}
 
 func (x *HomepageOpenList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[104]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[106]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9115,7 +9265,7 @@ func (x *HomepageOpenList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomepageOpenList.ProtoReflect.Descriptor instead.
 func (*HomepageOpenList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{104}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{106}
 }
 
 func (x *HomepageOpenList) GetHomepageOpenList() []*HomepageOpenModel {
@@ -9141,7 +9291,7 @@ type HomepageOpenModel struct {
 func (x *HomepageOpenModel) Reset() {
 	*x = HomepageOpenModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[105]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[107]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9154,7 +9304,7 @@ func (x *HomepageOpenModel) String() string {
 func (*HomepageOpenModel) ProtoMessage() {}
 
 func (x *HomepageOpenModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[105]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[107]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9167,7 +9317,7 @@ func (x *HomepageOpenModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomepageOpenModel.ProtoReflect.Descriptor instead.
 func (*HomepageOpenModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{105}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{107}
 }
 
 func (x *HomepageOpenModel) GetItemId() int32 {
@@ -9218,7 +9368,7 @@ type HomepageOpenInfo struct {
 func (x *HomepageOpenInfo) Reset() {
 	*x = HomepageOpenInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[106]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[108]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9231,7 +9381,7 @@ func (x *HomepageOpenInfo) String() string {
 func (*HomepageOpenInfo) ProtoMessage() {}
 
 func (x *HomepageOpenInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[106]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[108]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9244,7 +9394,7 @@ func (x *HomepageOpenInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomepageOpenInfo.ProtoReflect.Descriptor instead.
 func (*HomepageOpenInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{106}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{108}
 }
 
 func (x *HomepageOpenInfo) GetAnimUrl() string {
@@ -9279,7 +9429,7 @@ type ChestList struct {
 func (x *ChestList) Reset() {
 	*x = ChestList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[107]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[109]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9292,7 +9442,7 @@ func (x *ChestList) String() string {
 func (*ChestList) ProtoMessage() {}
 
 func (x *ChestList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[107]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[109]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9305,7 +9455,7 @@ func (x *ChestList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChestList.ProtoReflect.Descriptor instead.
 func (*ChestList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{107}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{109}
 }
 
 func (x *ChestList) GetChestList() []*ChestModel {
@@ -9331,7 +9481,7 @@ type ChestModel struct {
 func (x *ChestModel) Reset() {
 	*x = ChestModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[108]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[110]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9344,7 +9494,7 @@ func (x *ChestModel) String() string {
 func (*ChestModel) ProtoMessage() {}
 
 func (x *ChestModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[108]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[110]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9357,7 +9507,7 @@ func (x *ChestModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChestModel.ProtoReflect.Descriptor instead.
 func (*ChestModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{108}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{110}
 }
 
 func (x *ChestModel) GetItemId() int32 {
@@ -9416,7 +9566,7 @@ type ChestInfo struct {
 func (x *ChestInfo) Reset() {
 	*x = ChestInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[109]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[111]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9429,7 +9579,7 @@ func (x *ChestInfo) String() string {
 func (*ChestInfo) ProtoMessage() {}
 
 func (x *ChestInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[109]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[111]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9442,7 +9592,7 @@ func (x *ChestInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChestInfo.ProtoReflect.Descriptor instead.
 func (*ChestInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{109}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{111}
 }
 
 func (x *ChestInfo) GetChestType() int32 {
@@ -9534,7 +9684,7 @@ type ChestRandWeightInfo struct {
 func (x *ChestRandWeightInfo) Reset() {
 	*x = ChestRandWeightInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[110]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[112]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9547,7 +9697,7 @@ func (x *ChestRandWeightInfo) String() string {
 func (*ChestRandWeightInfo) ProtoMessage() {}
 
 func (x *ChestRandWeightInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[110]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[112]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9560,7 +9710,7 @@ func (x *ChestRandWeightInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChestRandWeightInfo.ProtoReflect.Descriptor instead.
 func (*ChestRandWeightInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{110}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{112}
 }
 
 func (x *ChestRandWeightInfo) GetStartCount() int64 {
@@ -9589,7 +9739,7 @@ type ChestRandWeightSingleItem struct {
 func (x *ChestRandWeightSingleItem) Reset() {
 	*x = ChestRandWeightSingleItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[111]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[113]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9602,7 +9752,7 @@ func (x *ChestRandWeightSingleItem) String() string {
 func (*ChestRandWeightSingleItem) ProtoMessage() {}
 
 func (x *ChestRandWeightSingleItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[111]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[113]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9615,7 +9765,7 @@ func (x *ChestRandWeightSingleItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChestRandWeightSingleItem.ProtoReflect.Descriptor instead.
 func (*ChestRandWeightSingleItem) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{111}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{113}
 }
 
 func (x *ChestRandWeightSingleItem) GetIndex() int32 {
@@ -9666,7 +9816,7 @@ type ChestRewardInfo struct {
 func (x *ChestRewardInfo) Reset() {
 	*x = ChestRewardInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[112]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[114]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9679,7 +9829,7 @@ func (x *ChestRewardInfo) String() string {
 func (*ChestRewardInfo) ProtoMessage() {}
 
 func (x *ChestRewardInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[112]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[114]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9692,7 +9842,7 @@ func (x *ChestRewardInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChestRewardInfo.ProtoReflect.Descriptor instead.
 func (*ChestRewardInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{112}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{114}
 }
 
 func (x *ChestRewardInfo) GetType() int32 {
@@ -9874,7 +10024,7 @@ type CoupleBgList struct {
 func (x *CoupleBgList) Reset() {
 	*x = CoupleBgList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[113]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[115]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9887,7 +10037,7 @@ func (x *CoupleBgList) String() string {
 func (*CoupleBgList) ProtoMessage() {}
 
 func (x *CoupleBgList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[113]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[115]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9900,7 +10050,7 @@ func (x *CoupleBgList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CoupleBgList.ProtoReflect.Descriptor instead.
 func (*CoupleBgList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{113}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{115}
 }
 
 func (x *CoupleBgList) GetCoupleBgList() []*CoupleBgModel {
@@ -9926,7 +10076,7 @@ type CoupleBgModel struct {
 func (x *CoupleBgModel) Reset() {
 	*x = CoupleBgModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[114]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[116]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9939,7 +10089,7 @@ func (x *CoupleBgModel) String() string {
 func (*CoupleBgModel) ProtoMessage() {}
 
 func (x *CoupleBgModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[114]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[116]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9952,7 +10102,7 @@ func (x *CoupleBgModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CoupleBgModel.ProtoReflect.Descriptor instead.
 func (*CoupleBgModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{114}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{116}
 }
 
 func (x *CoupleBgModel) GetItemId() int32 {
@@ -10010,7 +10160,7 @@ type CoupleBgInfo struct {
 func (x *CoupleBgInfo) Reset() {
 	*x = CoupleBgInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[115]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[117]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10023,7 +10173,7 @@ func (x *CoupleBgInfo) String() string {
 func (*CoupleBgInfo) ProtoMessage() {}
 
 func (x *CoupleBgInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[115]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[117]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10036,7 +10186,7 @@ func (x *CoupleBgInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CoupleBgInfo.ProtoReflect.Descriptor instead.
 func (*CoupleBgInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{115}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{117}
 }
 
 func (x *CoupleBgInfo) GetAnimUrl() string {
@@ -10120,7 +10270,7 @@ type SocialBgList struct {
 func (x *SocialBgList) Reset() {
 	*x = SocialBgList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[116]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[118]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10133,7 +10283,7 @@ func (x *SocialBgList) String() string {
 func (*SocialBgList) ProtoMessage() {}
 
 func (x *SocialBgList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[116]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[118]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10146,7 +10296,7 @@ func (x *SocialBgList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialBgList.ProtoReflect.Descriptor instead.
 func (*SocialBgList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{116}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{118}
 }
 
 func (x *SocialBgList) GetSocialBgList() []*SocialBgModel {
@@ -10172,7 +10322,7 @@ type SocialBgModel struct {
 func (x *SocialBgModel) Reset() {
 	*x = SocialBgModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[117]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[119]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10185,7 +10335,7 @@ func (x *SocialBgModel) String() string {
 func (*SocialBgModel) ProtoMessage() {}
 
 func (x *SocialBgModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[117]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[119]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10198,7 +10348,7 @@ func (x *SocialBgModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialBgModel.ProtoReflect.Descriptor instead.
 func (*SocialBgModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{117}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{119}
 }
 
 func (x *SocialBgModel) GetItemId() int32 {
@@ -10252,7 +10402,7 @@ type SocialBgInfo struct {
 func (x *SocialBgInfo) Reset() {
 	*x = SocialBgInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[118]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[120]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10265,7 +10415,7 @@ func (x *SocialBgInfo) String() string {
 func (*SocialBgInfo) ProtoMessage() {}
 
 func (x *SocialBgInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[118]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[120]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10278,7 +10428,7 @@ func (x *SocialBgInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialBgInfo.ProtoReflect.Descriptor instead.
 func (*SocialBgInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{118}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{120}
 }
 
 func (x *SocialBgInfo) GetShortAnimType() int32 {
@@ -10334,7 +10484,7 @@ type HomepagePendantList struct {
 func (x *HomepagePendantList) Reset() {
 	*x = HomepagePendantList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[119]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[121]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10347,7 +10497,7 @@ func (x *HomepagePendantList) String() string {
 func (*HomepagePendantList) ProtoMessage() {}
 
 func (x *HomepagePendantList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[119]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[121]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10360,7 +10510,7 @@ func (x *HomepagePendantList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomepagePendantList.ProtoReflect.Descriptor instead.
 func (*HomepagePendantList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{119}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{121}
 }
 
 func (x *HomepagePendantList) GetHomepagePendantList() []*HomepagePendantModel {
@@ -10386,7 +10536,7 @@ type HomepagePendantModel struct {
 func (x *HomepagePendantModel) Reset() {
 	*x = HomepagePendantModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[120]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[122]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10399,7 +10549,7 @@ func (x *HomepagePendantModel) String() string {
 func (*HomepagePendantModel) ProtoMessage() {}
 
 func (x *HomepagePendantModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[120]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[122]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10412,7 +10562,7 @@ func (x *HomepagePendantModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomepagePendantModel.ProtoReflect.Descriptor instead.
 func (*HomepagePendantModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{120}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{122}
 }
 
 func (x *HomepagePendantModel) GetItemId() int32 {
@@ -10463,7 +10613,7 @@ type HomepagePendantInfo struct {
 func (x *HomepagePendantInfo) Reset() {
 	*x = HomepagePendantInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[121]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[123]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10476,7 +10626,7 @@ func (x *HomepagePendantInfo) String() string {
 func (*HomepagePendantInfo) ProtoMessage() {}
 
 func (x *HomepagePendantInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[121]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[123]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10489,7 +10639,7 @@ func (x *HomepagePendantInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomepagePendantInfo.ProtoReflect.Descriptor instead.
 func (*HomepagePendantInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{121}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{123}
 }
 
 func (x *HomepagePendantInfo) GetAnimUrl() string {
@@ -10524,7 +10674,7 @@ type EndlessBgList struct {
 func (x *EndlessBgList) Reset() {
 	*x = EndlessBgList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[122]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[124]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10537,7 +10687,7 @@ func (x *EndlessBgList) String() string {
 func (*EndlessBgList) ProtoMessage() {}
 
 func (x *EndlessBgList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[122]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[124]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10550,7 +10700,7 @@ func (x *EndlessBgList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessBgList.ProtoReflect.Descriptor instead.
 func (*EndlessBgList) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{122}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{124}
 }
 
 func (x *EndlessBgList) GetEndlessBgList() []*EndlessBgModel {
@@ -10576,7 +10726,7 @@ type EndlessBgModel struct {
 func (x *EndlessBgModel) Reset() {
 	*x = EndlessBgModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[123]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[125]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10589,7 +10739,7 @@ func (x *EndlessBgModel) String() string {
 func (*EndlessBgModel) ProtoMessage() {}
 
 func (x *EndlessBgModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[123]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[125]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10602,7 +10752,7 @@ func (x *EndlessBgModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessBgModel.ProtoReflect.Descriptor instead.
 func (*EndlessBgModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{123}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{125}
 }
 
 func (x *EndlessBgModel) GetItemId() int32 {
@@ -10657,7 +10807,7 @@ type EndlessBgInfoModel struct {
 func (x *EndlessBgInfoModel) Reset() {
 	*x = EndlessBgInfoModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[124]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[126]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10670,7 +10820,7 @@ func (x *EndlessBgInfoModel) String() string {
 func (*EndlessBgInfoModel) ProtoMessage() {}
 
 func (x *EndlessBgInfoModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[124]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[126]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10683,7 +10833,7 @@ func (x *EndlessBgInfoModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessBgInfoModel.ProtoReflect.Descriptor instead.
 func (*EndlessBgInfoModel) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{124}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{126}
 }
 
 func (x *EndlessBgInfoModel) GetBagUrl() string {
@@ -10756,7 +10906,7 @@ type ProductBaseInfo struct {
 func (x *ProductBaseInfo) Reset() {
 	*x = ProductBaseInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[125]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[127]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10769,7 +10919,7 @@ func (x *ProductBaseInfo) String() string {
 func (*ProductBaseInfo) ProtoMessage() {}
 
 func (x *ProductBaseInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[125]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[127]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10782,7 +10932,7 @@ func (x *ProductBaseInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProductBaseInfo.ProtoReflect.Descriptor instead.
 func (*ProductBaseInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{125}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{127}
 }
 
 func (x *ProductBaseInfo) GetMaterialList() []*MeterialItem {
@@ -10882,7 +11032,7 @@ type ChipInfo struct {
 func (x *ChipInfo) Reset() {
 	*x = ChipInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[126]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[128]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10895,7 +11045,7 @@ func (x *ChipInfo) String() string {
 func (*ChipInfo) ProtoMessage() {}
 
 func (x *ChipInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[126]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[128]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10908,7 +11058,7 @@ func (x *ChipInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChipInfo.ProtoReflect.Descriptor instead.
 func (*ChipInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{126}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{128}
 }
 
 func (x *ChipInfo) GetChipType() int32 {
@@ -10987,7 +11137,7 @@ type MeterialItem struct {
 func (x *MeterialItem) Reset() {
 	*x = MeterialItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[127]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[129]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11000,7 +11150,7 @@ func (x *MeterialItem) String() string {
 func (*MeterialItem) ProtoMessage() {}
 
 func (x *MeterialItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[127]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[129]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11013,7 +11163,7 @@ func (x *MeterialItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MeterialItem.ProtoReflect.Descriptor instead.
 func (*MeterialItem) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{127}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{129}
 }
 
 func (x *MeterialItem) GetType() int32 {
@@ -11049,7 +11199,7 @@ type ComposeItem struct {
 func (x *ComposeItem) Reset() {
 	*x = ComposeItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[128]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[130]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11062,7 +11212,7 @@ func (x *ComposeItem) String() string {
 func (*ComposeItem) ProtoMessage() {}
 
 func (x *ComposeItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[128]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[130]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11075,7 +11225,7 @@ func (x *ComposeItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ComposeItem.ProtoReflect.Descriptor instead.
 func (*ComposeItem) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{128}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{130}
 }
 
 func (x *ComposeItem) GetType() int32 {
@@ -11128,7 +11278,7 @@ type StoreInfo struct {
 func (x *StoreInfo) Reset() {
 	*x = StoreInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[129]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[131]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11141,7 +11291,7 @@ func (x *StoreInfo) String() string {
 func (*StoreInfo) ProtoMessage() {}
 
 func (x *StoreInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[129]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[131]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11154,7 +11304,7 @@ func (x *StoreInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreInfo.ProtoReflect.Descriptor instead.
 func (*StoreInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{129}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{131}
 }
 
 func (x *StoreInfo) GetBadgeUrl() string {
@@ -11311,7 +11461,7 @@ type PriceInfo struct {
 func (x *PriceInfo) Reset() {
 	*x = PriceInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[130]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[132]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11324,7 +11474,7 @@ func (x *PriceInfo) String() string {
 func (*PriceInfo) ProtoMessage() {}
 
 func (x *PriceInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[130]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[132]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11337,7 +11487,7 @@ func (x *PriceInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PriceInfo.ProtoReflect.Descriptor instead.
 func (*PriceInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{130}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{132}
 }
 
 func (x *PriceInfo) GetType() int32 {
@@ -11403,7 +11553,7 @@ type RewardConfig struct {
 func (x *RewardConfig) Reset() {
 	*x = RewardConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[131]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[133]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11416,7 +11566,7 @@ func (x *RewardConfig) String() string {
 func (*RewardConfig) ProtoMessage() {}
 
 func (x *RewardConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[131]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[133]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11429,7 +11579,7 @@ func (x *RewardConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RewardConfig.ProtoReflect.Descriptor instead.
 func (*RewardConfig) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{131}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{133}
 }
 
 func (x *RewardConfig) GetType() int32 {
@@ -11631,7 +11781,7 @@ type RewardInfo struct {
 func (x *RewardInfo) Reset() {
 	*x = RewardInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[132]
+		mi := &file_snakeapi_config_SKStore_Proto_msgTypes[134]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11644,7 +11794,7 @@ func (x *RewardInfo) String() string {
 func (*RewardInfo) ProtoMessage() {}
 
 func (x *RewardInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[132]
+	mi := &file_snakeapi_config_SKStore_Proto_msgTypes[134]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11657,7 +11807,7 @@ func (x *RewardInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RewardInfo.ProtoReflect.Descriptor instead.
 func (*RewardInfo) Descriptor() ([]byte, []int) {
-	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{132}
+	return file_snakeapi_config_SKStore_Proto_rawDescGZIP(), []int{134}
 }
 
 func (x *RewardInfo) GetType() int32 {
@@ -12623,8 +12773,8 @@ var file_snakeapi_config_SKStore_Proto_rawDesc = []byte{
 	0x6e, 0x66, 0x6f, 0x52, 0x05, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x12, 0x32, 0x0a, 0x04, 0x69, 0x6e,
 	0x66, 0x6f, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65,
 	0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x54, 0x65, 0x61, 0x6d,
-	0x53, 0x75, 0x69, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x22, 0xf4,
-	0x07, 0x0a, 0x0c, 0x54, 0x65, 0x61, 0x6d, 0x53, 0x75, 0x69, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12,
+	0x53, 0x75, 0x69, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x22, 0xd2,
+	0x08, 0x0a, 0x0c, 0x54, 0x65, 0x61, 0x6d, 0x53, 0x75, 0x69, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12,
 	0x43, 0x0a, 0x0d, 0x6d, 0x61, 0x74, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x5f, 0x6c, 0x69, 0x73, 0x74,
 	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61,
 	0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x4d, 0x65, 0x74, 0x65, 0x72, 0x69,
@@ -12687,19 +12837,41 @@ var file_snakeapi_config_SKStore_Proto_rawDesc = []byte{
 	0x18, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0c, 0x61, 0x63, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0x54,
 	0x69, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0c, 0x61, 0x63, 0x74, 0x5f, 0x65, 0x6e, 0x64, 0x5f, 0x74,
 	0x69, 0x6d, 0x65, 0x18, 0x19, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x61, 0x63, 0x74, 0x45, 0x6e,
-	0x64, 0x54, 0x69, 0x6d, 0x65, 0x22, 0xbe, 0x01, 0x0a, 0x08, 0x47, 0x61, 0x6d, 0x65, 0x49, 0x6e,
-	0x66, 0x6f, 0x12, 0x22, 0x0a, 0x0d, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x69, 0x63, 0x6f, 0x6e, 0x5f,
-	0x75, 0x72, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x67, 0x61, 0x6d, 0x65, 0x49,
-	0x63, 0x6f, 0x6e, 0x55, 0x72, 0x6c, 0x12, 0x1f, 0x0a, 0x0b, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x69,
-	0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x67, 0x61, 0x6d,
-	0x65, 0x49, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12, 0x19, 0x0a, 0x08, 0x63, 0x6f, 0x6c, 0x6f, 0x72,
-	0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x63, 0x6f, 0x6c, 0x6f, 0x72,
-	0x49, 0x64, 0x22, 0x52, 0x0a, 0x09, 0x43, 0x6f, 0x6c, 0x6f, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12,
-	0x13, 0x0a, 0x0f, 0x43, 0x4f, 0x4c, 0x4f, 0x52, 0x5f, 0x55, 0x4e, 0x44, 0x45, 0x46, 0x49, 0x4e,
-	0x45, 0x44, 0x10, 0x00, 0x12, 0x0f, 0x0a, 0x0b, 0x43, 0x4f, 0x4c, 0x4f, 0x52, 0x5f, 0x47, 0x52,
-	0x45, 0x45, 0x4e, 0x10, 0x01, 0x12, 0x0d, 0x0a, 0x09, 0x43, 0x4f, 0x4c, 0x4f, 0x52, 0x5f, 0x52,
-	0x45, 0x44, 0x10, 0x02, 0x12, 0x10, 0x0a, 0x0c, 0x43, 0x4f, 0x4c, 0x4f, 0x52, 0x5f, 0x59, 0x45,
-	0x4c, 0x4c, 0x4f, 0x57, 0x10, 0x03, 0x22, 0x48, 0x0a, 0x09, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x4c,
+	0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x25, 0x0a, 0x0e, 0x68, 0x61, 0x73, 0x5f, 0x61, 0x73, 0x73,
+	0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x64, 0x18, 0x1a, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0d, 0x68,
+	0x61, 0x73, 0x41, 0x73, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x74, 0x65, 0x64, 0x12, 0x1f, 0x0a, 0x0b,
+	0x77, 0x6f, 0x72, 0x74, 0x68, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x1b, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x0a, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x14, 0x0a,
+	0x05, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x18, 0x1c, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x77, 0x6f,
+	0x72, 0x74, 0x68, 0x22, 0x8c, 0x02, 0x0a, 0x08, 0x47, 0x61, 0x6d, 0x65, 0x49, 0x6e, 0x66, 0x6f,
+	0x12, 0x22, 0x0a, 0x0d, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x69, 0x63, 0x6f, 0x6e, 0x5f, 0x75, 0x72,
+	0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x67, 0x61, 0x6d, 0x65, 0x49, 0x63, 0x6f,
+	0x6e, 0x55, 0x72, 0x6c, 0x12, 0x1f, 0x0a, 0x0b, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x69, 0x6d, 0x67,
+	0x75, 0x72, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x67, 0x61, 0x6d, 0x65, 0x49,
+	0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12, 0x19, 0x0a, 0x08, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x5f, 0x69,
+	0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x49, 0x64,
+	0x12, 0x20, 0x0a, 0x0c, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x5f, 0x69, 0x64,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x67, 0x61, 0x6d, 0x65, 0x49, 0x6e, 0x66, 0x6f,
+	0x49, 0x64, 0x12, 0x2a, 0x0a, 0x04, 0x67, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x16, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x2e, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x04, 0x67, 0x61, 0x6d, 0x65, 0x22, 0x52,
+	0x0a, 0x09, 0x43, 0x6f, 0x6c, 0x6f, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x13, 0x0a, 0x0f, 0x43,
+	0x4f, 0x4c, 0x4f, 0x52, 0x5f, 0x55, 0x4e, 0x44, 0x45, 0x46, 0x49, 0x4e, 0x45, 0x44, 0x10, 0x00,
+	0x12, 0x0f, 0x0a, 0x0b, 0x43, 0x4f, 0x4c, 0x4f, 0x52, 0x5f, 0x47, 0x52, 0x45, 0x45, 0x4e, 0x10,
+	0x01, 0x12, 0x0d, 0x0a, 0x09, 0x43, 0x4f, 0x4c, 0x4f, 0x52, 0x5f, 0x52, 0x45, 0x44, 0x10, 0x02,
+	0x12, 0x10, 0x0a, 0x0c, 0x43, 0x4f, 0x4c, 0x4f, 0x52, 0x5f, 0x59, 0x45, 0x4c, 0x4c, 0x4f, 0x57,
+	0x10, 0x03, 0x22, 0x74, 0x0a, 0x04, 0x47, 0x61, 0x6d, 0x65, 0x12, 0x49, 0x0a, 0x0e, 0x72, 0x65,
+	0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x22, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72,
+	0x63, 0x65, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x0d, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65,
+	0x4e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x21, 0x0a, 0x0c, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63,
+	0x65, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x72, 0x65, 0x73,
+	0x6f, 0x75, 0x72, 0x63, 0x65, 0x55, 0x72, 0x6c, 0x22, 0x3c, 0x0a, 0x10, 0x47, 0x61, 0x6d, 0x65,
+	0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x14, 0x0a, 0x05,
+	0x6e, 0x61, 0x6d, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x6e, 0x61, 0x6d,
+	0x65, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0x48, 0x0a, 0x09, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x4c,
 	0x69, 0x73, 0x74, 0x12, 0x3b, 0x0a, 0x0a, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x5f, 0x6c, 0x69, 0x73,
 	0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d,
 	0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x54, 0x69, 0x74, 0x6c, 0x65,
@@ -13876,7 +14048,7 @@ func file_snakeapi_config_SKStore_Proto_rawDescGZIP() []byte {
 }
 
 var file_snakeapi_config_SKStore_Proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_snakeapi_config_SKStore_Proto_msgTypes = make([]protoimpl.MessageInfo, 134)
+var file_snakeapi_config_SKStore_Proto_msgTypes = make([]protoimpl.MessageInfo, 136)
 var file_snakeapi_config_SKStore_Proto_goTypes = []interface{}{
 	(RewardType)(0),                    // 0: SnakeMain.Config.RewardType
 	(GetMethodType)(0),                 // 1: SnakeMain.Config.GetMethodType
@@ -13949,101 +14121,103 @@ var file_snakeapi_config_SKStore_Proto_goTypes = []interface{}{
 	(*TeamSuitModel)(nil),              // 68: SnakeMain.Config.TeamSuitModel
 	(*TeamSuitInfo)(nil),               // 69: SnakeMain.Config.TeamSuitInfo
 	(*GameInfo)(nil),                   // 70: SnakeMain.Config.GameInfo
-	(*TitleList)(nil),                  // 71: SnakeMain.Config.TitleList
-	(*TitleModel)(nil),                 // 72: SnakeMain.Config.TitleModel
-	(*TitleInfo)(nil),                  // 73: SnakeMain.Config.TitleInfo
-	(*BroadCastEffectList)(nil),        // 74: SnakeMain.Config.BroadCastEffectList
-	(*BroadCastEffectModel)(nil),       // 75: SnakeMain.Config.BroadCastEffectModel
-	(*BroadcastEffectInfo)(nil),        // 76: SnakeMain.Config.BroadcastEffectInfo
-	(*GiftList)(nil),                   // 77: SnakeMain.Config.GiftList
-	(*GiftModel)(nil),                  // 78: SnakeMain.Config.GiftModel
-	(*GiftInfo)(nil),                   // 79: SnakeMain.Config.GiftInfo
-	(*GiftNumberConfig)(nil),           // 80: SnakeMain.Config.GiftNumberConfig
-	(*GiftAnimConfig)(nil),             // 81: SnakeMain.Config.GiftAnimConfig
-	(*PhotoWallConfig)(nil),            // 82: SnakeMain.Config.PhotoWallConfig
-	(*CardBagModel)(nil),               // 83: SnakeMain.Config.CardBagModel
-	(*CardBagInfo)(nil),                // 84: SnakeMain.Config.CardBagInfo
-	(*MultiBuyPriceBean)(nil),          // 85: SnakeMain.Config.MultiBuyPriceBean
-	(*PropList)(nil),                   // 86: SnakeMain.Config.PropList
-	(*PropModel)(nil),                  // 87: SnakeMain.Config.PropModel
-	(*PropInfo)(nil),                   // 88: SnakeMain.Config.PropInfo
-	(*VipCardModel)(nil),               // 89: SnakeMain.Config.VipCardModel
-	(*VipInfo)(nil),                    // 90: SnakeMain.Config.VipInfo
-	(*ChatBubbleList)(nil),             // 91: SnakeMain.Config.ChatBubbleList
-	(*ChatBubbleModel)(nil),            // 92: SnakeMain.Config.ChatBubbleModel
-	(*ChatBubbleInfo)(nil),             // 93: SnakeMain.Config.ChatBubbleInfo
-	(*GamePropList)(nil),               // 94: SnakeMain.Config.GamePropList
-	(*GamePropModel)(nil),              // 95: SnakeMain.Config.GamePropModel
-	(*GamePropInfo)(nil),               // 96: SnakeMain.Config.GamePropInfo
-	(*GamePropAttr)(nil),               // 97: SnakeMain.Config.GamePropAttr
-	(*RoomBackgroundList)(nil),         // 98: SnakeMain.Config.RoomBackgroundList
-	(*RoomBackgroundModel)(nil),        // 99: SnakeMain.Config.RoomBackgroundModel
-	(*RoomBackgroundInfo)(nil),         // 100: SnakeMain.Config.RoomBackgroundInfo
-	(*CardUserInfoBgList)(nil),         // 101: SnakeMain.Config.CardUserInfoBgList
-	(*CardUserInfoBgModel)(nil),        // 102: SnakeMain.Config.CardUserInfoBgModel
-	(*CardUserInfoBgInfo)(nil),         // 103: SnakeMain.Config.CardUserInfoBgInfo
-	(*RoomEnterEffectList)(nil),        // 104: SnakeMain.Config.RoomEnterEffectList
-	(*RoomEnterEffectModel)(nil),       // 105: SnakeMain.Config.RoomEnterEffectModel
-	(*RoomEnterEffectInfo)(nil),        // 106: SnakeMain.Config.RoomEnterEffectInfo
-	(*HomepageDecorateList)(nil),       // 107: SnakeMain.Config.HomepageDecorateList
-	(*HomepageDecorateModel)(nil),      // 108: SnakeMain.Config.HomepageDecorateModel
-	(*HomepageDecorateInfo)(nil),       // 109: SnakeMain.Config.HomepageDecorateInfo
-	(*HomepageOpenList)(nil),           // 110: SnakeMain.Config.HomepageOpenList
-	(*HomepageOpenModel)(nil),          // 111: SnakeMain.Config.HomepageOpenModel
-	(*HomepageOpenInfo)(nil),           // 112: SnakeMain.Config.HomepageOpenInfo
-	(*ChestList)(nil),                  // 113: SnakeMain.Config.ChestList
-	(*ChestModel)(nil),                 // 114: SnakeMain.Config.ChestModel
-	(*ChestInfo)(nil),                  // 115: SnakeMain.Config.ChestInfo
-	(*ChestRandWeightInfo)(nil),        // 116: SnakeMain.Config.ChestRandWeightInfo
-	(*ChestRandWeightSingleItem)(nil),  // 117: SnakeMain.Config.ChestRandWeightSingleItem
-	(*ChestRewardInfo)(nil),            // 118: SnakeMain.Config.ChestRewardInfo
-	(*CoupleBgList)(nil),               // 119: SnakeMain.Config.CoupleBgList
-	(*CoupleBgModel)(nil),              // 120: SnakeMain.Config.CoupleBgModel
-	(*CoupleBgInfo)(nil),               // 121: SnakeMain.Config.CoupleBgInfo
-	(*SocialBgList)(nil),               // 122: SnakeMain.Config.SocialBgList
-	(*SocialBgModel)(nil),              // 123: SnakeMain.Config.SocialBgModel
-	(*SocialBgInfo)(nil),               // 124: SnakeMain.Config.SocialBgInfo
-	(*HomepagePendantList)(nil),        // 125: SnakeMain.Config.HomepagePendantList
-	(*HomepagePendantModel)(nil),       // 126: SnakeMain.Config.HomepagePendantModel
-	(*HomepagePendantInfo)(nil),        // 127: SnakeMain.Config.HomepagePendantInfo
-	(*EndlessBgList)(nil),              // 128: SnakeMain.Config.EndlessBgList
-	(*EndlessBgModel)(nil),             // 129: SnakeMain.Config.EndlessBgModel
-	(*EndlessBgInfoModel)(nil),         // 130: SnakeMain.Config.EndlessBgInfoModel
-	(*ProductBaseInfo)(nil),            // 131: SnakeMain.Config.ProductBaseInfo
-	(*ChipInfo)(nil),                   // 132: SnakeMain.Config.ChipInfo
-	(*MeterialItem)(nil),               // 133: SnakeMain.Config.MeterialItem
-	(*ComposeItem)(nil),                // 134: SnakeMain.Config.ComposeItem
-	(*StoreInfo)(nil),                  // 135: SnakeMain.Config.StoreInfo
-	(*PriceInfo)(nil),                  // 136: SnakeMain.Config.PriceInfo
-	(*RewardConfig)(nil),               // 137: SnakeMain.Config.RewardConfig
-	(*RewardInfo)(nil),                 // 138: SnakeMain.Config.RewardInfo
-	nil,                                // 139: SnakeMain.Config.ChipConfig.ChipMapEntry
-	(*snakecommon.StoreRecommend)(nil), // 140: snakecommon.StoreRecommend
-	(*anypb.Any)(nil),                  // 141: google.protobuf.Any
-	(*snakeapi.Convert)(nil),           // 142: snakeapi.Convert
+	(*Game)(nil),                       // 71: SnakeMain.Config.Game
+	(*GameResourceItem)(nil),           // 72: SnakeMain.Config.GameResourceItem
+	(*TitleList)(nil),                  // 73: SnakeMain.Config.TitleList
+	(*TitleModel)(nil),                 // 74: SnakeMain.Config.TitleModel
+	(*TitleInfo)(nil),                  // 75: SnakeMain.Config.TitleInfo
+	(*BroadCastEffectList)(nil),        // 76: SnakeMain.Config.BroadCastEffectList
+	(*BroadCastEffectModel)(nil),       // 77: SnakeMain.Config.BroadCastEffectModel
+	(*BroadcastEffectInfo)(nil),        // 78: SnakeMain.Config.BroadcastEffectInfo
+	(*GiftList)(nil),                   // 79: SnakeMain.Config.GiftList
+	(*GiftModel)(nil),                  // 80: SnakeMain.Config.GiftModel
+	(*GiftInfo)(nil),                   // 81: SnakeMain.Config.GiftInfo
+	(*GiftNumberConfig)(nil),           // 82: SnakeMain.Config.GiftNumberConfig
+	(*GiftAnimConfig)(nil),             // 83: SnakeMain.Config.GiftAnimConfig
+	(*PhotoWallConfig)(nil),            // 84: SnakeMain.Config.PhotoWallConfig
+	(*CardBagModel)(nil),               // 85: SnakeMain.Config.CardBagModel
+	(*CardBagInfo)(nil),                // 86: SnakeMain.Config.CardBagInfo
+	(*MultiBuyPriceBean)(nil),          // 87: SnakeMain.Config.MultiBuyPriceBean
+	(*PropList)(nil),                   // 88: SnakeMain.Config.PropList
+	(*PropModel)(nil),                  // 89: SnakeMain.Config.PropModel
+	(*PropInfo)(nil),                   // 90: SnakeMain.Config.PropInfo
+	(*VipCardModel)(nil),               // 91: SnakeMain.Config.VipCardModel
+	(*VipInfo)(nil),                    // 92: SnakeMain.Config.VipInfo
+	(*ChatBubbleList)(nil),             // 93: SnakeMain.Config.ChatBubbleList
+	(*ChatBubbleModel)(nil),            // 94: SnakeMain.Config.ChatBubbleModel
+	(*ChatBubbleInfo)(nil),             // 95: SnakeMain.Config.ChatBubbleInfo
+	(*GamePropList)(nil),               // 96: SnakeMain.Config.GamePropList
+	(*GamePropModel)(nil),              // 97: SnakeMain.Config.GamePropModel
+	(*GamePropInfo)(nil),               // 98: SnakeMain.Config.GamePropInfo
+	(*GamePropAttr)(nil),               // 99: SnakeMain.Config.GamePropAttr
+	(*RoomBackgroundList)(nil),         // 100: SnakeMain.Config.RoomBackgroundList
+	(*RoomBackgroundModel)(nil),        // 101: SnakeMain.Config.RoomBackgroundModel
+	(*RoomBackgroundInfo)(nil),         // 102: SnakeMain.Config.RoomBackgroundInfo
+	(*CardUserInfoBgList)(nil),         // 103: SnakeMain.Config.CardUserInfoBgList
+	(*CardUserInfoBgModel)(nil),        // 104: SnakeMain.Config.CardUserInfoBgModel
+	(*CardUserInfoBgInfo)(nil),         // 105: SnakeMain.Config.CardUserInfoBgInfo
+	(*RoomEnterEffectList)(nil),        // 106: SnakeMain.Config.RoomEnterEffectList
+	(*RoomEnterEffectModel)(nil),       // 107: SnakeMain.Config.RoomEnterEffectModel
+	(*RoomEnterEffectInfo)(nil),        // 108: SnakeMain.Config.RoomEnterEffectInfo
+	(*HomepageDecorateList)(nil),       // 109: SnakeMain.Config.HomepageDecorateList
+	(*HomepageDecorateModel)(nil),      // 110: SnakeMain.Config.HomepageDecorateModel
+	(*HomepageDecorateInfo)(nil),       // 111: SnakeMain.Config.HomepageDecorateInfo
+	(*HomepageOpenList)(nil),           // 112: SnakeMain.Config.HomepageOpenList
+	(*HomepageOpenModel)(nil),          // 113: SnakeMain.Config.HomepageOpenModel
+	(*HomepageOpenInfo)(nil),           // 114: SnakeMain.Config.HomepageOpenInfo
+	(*ChestList)(nil),                  // 115: SnakeMain.Config.ChestList
+	(*ChestModel)(nil),                 // 116: SnakeMain.Config.ChestModel
+	(*ChestInfo)(nil),                  // 117: SnakeMain.Config.ChestInfo
+	(*ChestRandWeightInfo)(nil),        // 118: SnakeMain.Config.ChestRandWeightInfo
+	(*ChestRandWeightSingleItem)(nil),  // 119: SnakeMain.Config.ChestRandWeightSingleItem
+	(*ChestRewardInfo)(nil),            // 120: SnakeMain.Config.ChestRewardInfo
+	(*CoupleBgList)(nil),               // 121: SnakeMain.Config.CoupleBgList
+	(*CoupleBgModel)(nil),              // 122: SnakeMain.Config.CoupleBgModel
+	(*CoupleBgInfo)(nil),               // 123: SnakeMain.Config.CoupleBgInfo
+	(*SocialBgList)(nil),               // 124: SnakeMain.Config.SocialBgList
+	(*SocialBgModel)(nil),              // 125: SnakeMain.Config.SocialBgModel
+	(*SocialBgInfo)(nil),               // 126: SnakeMain.Config.SocialBgInfo
+	(*HomepagePendantList)(nil),        // 127: SnakeMain.Config.HomepagePendantList
+	(*HomepagePendantModel)(nil),       // 128: SnakeMain.Config.HomepagePendantModel
+	(*HomepagePendantInfo)(nil),        // 129: SnakeMain.Config.HomepagePendantInfo
+	(*EndlessBgList)(nil),              // 130: SnakeMain.Config.EndlessBgList
+	(*EndlessBgModel)(nil),             // 131: SnakeMain.Config.EndlessBgModel
+	(*EndlessBgInfoModel)(nil),         // 132: SnakeMain.Config.EndlessBgInfoModel
+	(*ProductBaseInfo)(nil),            // 133: SnakeMain.Config.ProductBaseInfo
+	(*ChipInfo)(nil),                   // 134: SnakeMain.Config.ChipInfo
+	(*MeterialItem)(nil),               // 135: SnakeMain.Config.MeterialItem
+	(*ComposeItem)(nil),                // 136: SnakeMain.Config.ComposeItem
+	(*StoreInfo)(nil),                  // 137: SnakeMain.Config.StoreInfo
+	(*PriceInfo)(nil),                  // 138: SnakeMain.Config.PriceInfo
+	(*RewardConfig)(nil),               // 139: SnakeMain.Config.RewardConfig
+	(*RewardInfo)(nil),                 // 140: SnakeMain.Config.RewardInfo
+	nil,                                // 141: SnakeMain.Config.ChipConfig.ChipMapEntry
+	(*snakecommon.StoreRecommend)(nil), // 142: snakecommon.StoreRecommend
+	(*anypb.Any)(nil),                  // 143: google.protobuf.Any
+	(*snakeapi.Convert)(nil),           // 144: snakeapi.Convert
 }
 var file_snakeapi_config_SKStore_Proto_depIdxs = []int32{
 	23,  // 0: SnakeMain.Config.ProductConfig.property:type_name -> SnakeMain.Config.Property
 	21,  // 1: SnakeMain.Config.ProductConfig.currency_store:type_name -> SnakeMain.Config.CurrencyStore
 	20,  // 2: SnakeMain.Config.ProductConfig.middle_item_list:type_name -> SnakeMain.Config.MiddleItem
-	140, // 3: SnakeMain.Config.ProductConfig.store_recommend:type_name -> snakecommon.StoreRecommend
+	142, // 3: SnakeMain.Config.ProductConfig.store_recommend:type_name -> snakecommon.StoreRecommend
 	19,  // 4: SnakeMain.Config.ProductConfig.draw_card_guide_config:type_name -> SnakeMain.Config.DrawCardGuideConfig
 	7,   // 5: SnakeMain.Config.ProductConfig.skin_set:type_name -> SnakeMain.Config.SkinSet
 	9,   // 6: SnakeMain.Config.MemberCardList.member_card_list:type_name -> SnakeMain.Config.MemberCardModel
-	135, // 7: SnakeMain.Config.MemberCardModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 7: SnakeMain.Config.MemberCardModel.store:type_name -> SnakeMain.Config.StoreInfo
 	10,  // 8: SnakeMain.Config.MemberCardModel.info:type_name -> SnakeMain.Config.MemberCardInfo
 	12,  // 9: SnakeMain.Config.DrawCardList.draw_card_list:type_name -> SnakeMain.Config.DrawCardModel
-	135, // 10: SnakeMain.Config.DrawCardModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 10: SnakeMain.Config.DrawCardModel.store:type_name -> SnakeMain.Config.StoreInfo
 	13,  // 11: SnakeMain.Config.DrawCardModel.info:type_name -> SnakeMain.Config.DrawCardInfo
 	15,  // 12: SnakeMain.Config.DrawCardInfo.multi_buy_price:type_name -> SnakeMain.Config.MultiBuyPrice
-	137, // 13: SnakeMain.Config.DrawCardInfo.rare_reward_list:type_name -> SnakeMain.Config.RewardConfig
-	137, // 14: SnakeMain.Config.DrawCardInfo.general_reward_list:type_name -> SnakeMain.Config.RewardConfig
-	137, // 15: SnakeMain.Config.DrawCardInfo.baodi_reward:type_name -> SnakeMain.Config.RewardConfig
+	139, // 13: SnakeMain.Config.DrawCardInfo.rare_reward_list:type_name -> SnakeMain.Config.RewardConfig
+	139, // 14: SnakeMain.Config.DrawCardInfo.general_reward_list:type_name -> SnakeMain.Config.RewardConfig
+	139, // 15: SnakeMain.Config.DrawCardInfo.baodi_reward:type_name -> SnakeMain.Config.RewardConfig
 	16,  // 16: SnakeMain.Config.DrawCardInfo.chip_config:type_name -> SnakeMain.Config.ChipConfig
 	14,  // 17: SnakeMain.Config.MultiBuyPrice.buyPrice:type_name -> SnakeMain.Config.BuyPrice
-	139, // 18: SnakeMain.Config.ChipConfig.chip_map:type_name -> SnakeMain.Config.ChipConfig.ChipMapEntry
+	141, // 18: SnakeMain.Config.ChipConfig.chip_map:type_name -> SnakeMain.Config.ChipConfig.ChipMapEntry
 	19,  // 19: SnakeMain.Config.DrawCardGuideConfigList.draw_card_guide_config:type_name -> SnakeMain.Config.DrawCardGuideConfig
-	138, // 20: SnakeMain.Config.DrawCardGuideConfig.reward:type_name -> SnakeMain.Config.RewardInfo
+	140, // 20: SnakeMain.Config.DrawCardGuideConfig.reward:type_name -> SnakeMain.Config.RewardInfo
 	22,  // 21: SnakeMain.Config.CurrencyStore.snake_coin:type_name -> SnakeMain.Config.CurrencyStoreItem
 	22,  // 22: SnakeMain.Config.CurrencyStore.coupon:type_name -> SnakeMain.Config.CurrencyStoreItem
 	26,  // 23: SnakeMain.Config.Property.avatar_box_tag:type_name -> SnakeMain.Config.AvatarBoxTag
@@ -14064,136 +14238,138 @@ var file_snakeapi_config_SKStore_Proto_depIdxs = []int32{
 	33,  // 38: SnakeMain.Config.AvatarBoxList.box_list:type_name -> SnakeMain.Config.AvatarBoxModel
 	26,  // 39: SnakeMain.Config.AvatarBoxList.tag_list:type_name -> SnakeMain.Config.AvatarBoxTag
 	34,  // 40: SnakeMain.Config.AvatarBoxModel.info:type_name -> SnakeMain.Config.AvatarBoxInfo
-	135, // 41: SnakeMain.Config.AvatarBoxModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 41: SnakeMain.Config.AvatarBoxModel.store:type_name -> SnakeMain.Config.StoreInfo
 	36,  // 42: SnakeMain.Config.PackList.pack_list:type_name -> SnakeMain.Config.PackModel
-	135, // 43: SnakeMain.Config.PackModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 43: SnakeMain.Config.PackModel.store:type_name -> SnakeMain.Config.StoreInfo
 	37,  // 44: SnakeMain.Config.PackModel.info:type_name -> SnakeMain.Config.PackInfo
-	137, // 45: SnakeMain.Config.PackInfo.sure_reward:type_name -> SnakeMain.Config.RewardConfig
-	137, // 46: SnakeMain.Config.PackInfo.may_reward:type_name -> SnakeMain.Config.RewardConfig
-	137, // 47: SnakeMain.Config.PackInfo.reward:type_name -> SnakeMain.Config.RewardConfig
+	139, // 45: SnakeMain.Config.PackInfo.sure_reward:type_name -> SnakeMain.Config.RewardConfig
+	139, // 46: SnakeMain.Config.PackInfo.may_reward:type_name -> SnakeMain.Config.RewardConfig
+	139, // 47: SnakeMain.Config.PackInfo.reward:type_name -> SnakeMain.Config.RewardConfig
 	38,  // 48: SnakeMain.Config.PackInfo.multi_buy_price:type_name -> SnakeMain.Config.PackMultiPriceInfo
 	40,  // 49: SnakeMain.Config.RMBPackInfoList.RMBPackInfoList:type_name -> SnakeMain.Config.RMBPackInfo
-	136, // 50: SnakeMain.Config.RMBPackInfo.price_info:type_name -> SnakeMain.Config.PriceInfo
-	137, // 51: SnakeMain.Config.RMBPackInfo.reward:type_name -> SnakeMain.Config.RewardConfig
+	138, // 50: SnakeMain.Config.RMBPackInfo.price_info:type_name -> SnakeMain.Config.PriceInfo
+	139, // 51: SnakeMain.Config.RMBPackInfo.reward:type_name -> SnakeMain.Config.RewardConfig
 	43,  // 52: SnakeMain.Config.GameFaceList.game_face_list:type_name -> SnakeMain.Config.GameFaceModel
-	135, // 53: SnakeMain.Config.GameFaceModel.store:type_name -> SnakeMain.Config.StoreInfo
-	131, // 54: SnakeMain.Config.GameFaceModel.info:type_name -> SnakeMain.Config.ProductBaseInfo
+	137, // 53: SnakeMain.Config.GameFaceModel.store:type_name -> SnakeMain.Config.StoreInfo
+	133, // 54: SnakeMain.Config.GameFaceModel.info:type_name -> SnakeMain.Config.ProductBaseInfo
 	44,  // 55: SnakeMain.Config.GameFaceModel.game:type_name -> SnakeMain.Config.GameMsg
-	135, // 56: SnakeMain.Config.AvatarFrameModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 56: SnakeMain.Config.AvatarFrameModel.store:type_name -> SnakeMain.Config.StoreInfo
 	46,  // 57: SnakeMain.Config.AvatarFrameModel.info:type_name -> SnakeMain.Config.AvatarFrameInfo
 	48,  // 58: SnakeMain.Config.KillStyleChipList.kill_style_chip_list:type_name -> SnakeMain.Config.KillStyleChipModel
-	135, // 59: SnakeMain.Config.KillStyleChipModel.store:type_name -> SnakeMain.Config.StoreInfo
-	132, // 60: SnakeMain.Config.KillStyleChipModel.info:type_name -> SnakeMain.Config.ChipInfo
+	137, // 59: SnakeMain.Config.KillStyleChipModel.store:type_name -> SnakeMain.Config.StoreInfo
+	134, // 60: SnakeMain.Config.KillStyleChipModel.info:type_name -> SnakeMain.Config.ChipInfo
 	50,  // 61: SnakeMain.Config.KillStyleList.kill_style_list:type_name -> SnakeMain.Config.KillStyleModel
-	135, // 62: SnakeMain.Config.KillStyleModel.store:type_name -> SnakeMain.Config.StoreInfo
-	131, // 63: SnakeMain.Config.KillStyleModel.info:type_name -> SnakeMain.Config.ProductBaseInfo
+	137, // 62: SnakeMain.Config.KillStyleModel.store:type_name -> SnakeMain.Config.StoreInfo
+	133, // 63: SnakeMain.Config.KillStyleModel.info:type_name -> SnakeMain.Config.ProductBaseInfo
 	52,  // 64: SnakeMain.Config.OGameBroadcastList.o_game_broadcast_list:type_name -> SnakeMain.Config.OGameBroadcastModel
-	135, // 65: SnakeMain.Config.OGameBroadcastModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 65: SnakeMain.Config.OGameBroadcastModel.store:type_name -> SnakeMain.Config.StoreInfo
 	53,  // 66: SnakeMain.Config.OGameBroadcastModel.info:type_name -> SnakeMain.Config.OGameBroadcastInfo
 	55,  // 67: SnakeMain.Config.OGameBubbleList.o_game_bubble_list:type_name -> SnakeMain.Config.OGameBubbleModel
-	135, // 68: SnakeMain.Config.OGameBubbleModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 68: SnakeMain.Config.OGameBubbleModel.store:type_name -> SnakeMain.Config.StoreInfo
 	56,  // 69: SnakeMain.Config.OGameBubbleModel.info:type_name -> SnakeMain.Config.OGameBubbleInfo
 	58,  // 70: SnakeMain.Config.RingList.ring_list:type_name -> SnakeMain.Config.RingModel
-	135, // 71: SnakeMain.Config.RingModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 71: SnakeMain.Config.RingModel.store:type_name -> SnakeMain.Config.StoreInfo
 	59,  // 72: SnakeMain.Config.RingModel.info:type_name -> SnakeMain.Config.RingInfo
 	61,  // 73: SnakeMain.Config.SkinChipList.skin_chip_list:type_name -> SnakeMain.Config.SkinChipModel
-	135, // 74: SnakeMain.Config.SkinChipModel.store:type_name -> SnakeMain.Config.StoreInfo
-	132, // 75: SnakeMain.Config.SkinChipModel.info:type_name -> SnakeMain.Config.ChipInfo
-	141, // 76: SnakeMain.Config.StoreModelList.anys:type_name -> google.protobuf.Any
+	137, // 74: SnakeMain.Config.SkinChipModel.store:type_name -> SnakeMain.Config.StoreInfo
+	134, // 75: SnakeMain.Config.SkinChipModel.info:type_name -> SnakeMain.Config.ChipInfo
+	143, // 76: SnakeMain.Config.StoreModelList.anys:type_name -> google.protobuf.Any
 	64,  // 77: SnakeMain.Config.SkinList.skin_list:type_name -> SnakeMain.Config.SkSkinModel
-	135, // 78: SnakeMain.Config.SkSkinModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 78: SnakeMain.Config.SkSkinModel.store:type_name -> SnakeMain.Config.StoreInfo
 	65,  // 79: SnakeMain.Config.SkSkinModel.info:type_name -> SnakeMain.Config.SkinInfo
-	133, // 80: SnakeMain.Config.SkinInfo.material_list:type_name -> SnakeMain.Config.MeterialItem
-	136, // 81: SnakeMain.Config.SkinInfo.material_coins:type_name -> SnakeMain.Config.PriceInfo
+	135, // 80: SnakeMain.Config.SkinInfo.material_list:type_name -> SnakeMain.Config.MeterialItem
+	138, // 81: SnakeMain.Config.SkinInfo.material_coins:type_name -> SnakeMain.Config.PriceInfo
 	66,  // 82: SnakeMain.Config.SkinInfo.feature_list:type_name -> SnakeMain.Config.Feature
 	68,  // 83: SnakeMain.Config.TeamSuitList.team_suit_list:type_name -> SnakeMain.Config.TeamSuitModel
-	135, // 84: SnakeMain.Config.TeamSuitModel.store:type_name -> SnakeMain.Config.StoreInfo
+	137, // 84: SnakeMain.Config.TeamSuitModel.store:type_name -> SnakeMain.Config.StoreInfo
 	69,  // 85: SnakeMain.Config.TeamSuitModel.info:type_name -> SnakeMain.Config.TeamSuitInfo
-	133, // 86: SnakeMain.Config.TeamSuitInfo.material_list:type_name -> SnakeMain.Config.MeterialItem
-	136, // 87: SnakeMain.Config.TeamSuitInfo.material_coins:type_name -> SnakeMain.Config.PriceInfo
+	135, // 86: SnakeMain.Config.TeamSuitInfo.material_list:type_name -> SnakeMain.Config.MeterialItem
+	138, // 87: SnakeMain.Config.TeamSuitInfo.material_coins:type_name -> SnakeMain.Config.PriceInfo
 	66,  // 88: SnakeMain.Config.TeamSuitInfo.feature_list:type_name -> SnakeMain.Config.Feature
 	70,  // 89: SnakeMain.Config.TeamSuitInfo.game_info_list:type_name -> SnakeMain.Config.GameInfo
-	72,  // 90: SnakeMain.Config.TitleList.title_list:type_name -> SnakeMain.Config.TitleModel
-	135, // 91: SnakeMain.Config.TitleModel.store:type_name -> SnakeMain.Config.StoreInfo
-	73,  // 92: SnakeMain.Config.TitleModel.info:type_name -> SnakeMain.Config.TitleInfo
-	75,  // 93: SnakeMain.Config.BroadCastEffectList.broad_cast_effect_list:type_name -> SnakeMain.Config.BroadCastEffectModel
-	135, // 94: SnakeMain.Config.BroadCastEffectModel.store:type_name -> SnakeMain.Config.StoreInfo
-	76,  // 95: SnakeMain.Config.BroadCastEffectModel.info:type_name -> SnakeMain.Config.BroadcastEffectInfo
-	78,  // 96: SnakeMain.Config.GiftList.gift_list:type_name -> SnakeMain.Config.GiftModel
-	135, // 97: SnakeMain.Config.GiftModel.store:type_name -> SnakeMain.Config.StoreInfo
-	79,  // 98: SnakeMain.Config.GiftModel.info:type_name -> SnakeMain.Config.GiftInfo
-	80,  // 99: SnakeMain.Config.GiftInfo.num_config:type_name -> SnakeMain.Config.GiftNumberConfig
-	82,  // 100: SnakeMain.Config.GiftInfo.photo_wall_config:type_name -> SnakeMain.Config.PhotoWallConfig
-	81,  // 101: SnakeMain.Config.GiftNumberConfig.anim:type_name -> SnakeMain.Config.GiftAnimConfig
-	135, // 102: SnakeMain.Config.CardBagModel.store:type_name -> SnakeMain.Config.StoreInfo
-	84,  // 103: SnakeMain.Config.CardBagModel.info:type_name -> SnakeMain.Config.CardBagInfo
-	137, // 104: SnakeMain.Config.CardBagInfo.rare_reward_list:type_name -> SnakeMain.Config.RewardConfig
-	137, // 105: SnakeMain.Config.CardBagInfo.general_reward_list:type_name -> SnakeMain.Config.RewardConfig
-	137, // 106: SnakeMain.Config.CardBagInfo.baodi_reward:type_name -> SnakeMain.Config.RewardConfig
-	87,  // 107: SnakeMain.Config.PropList.prop_list:type_name -> SnakeMain.Config.PropModel
-	135, // 108: SnakeMain.Config.PropModel.store:type_name -> SnakeMain.Config.StoreInfo
-	88,  // 109: SnakeMain.Config.PropModel.info:type_name -> SnakeMain.Config.PropInfo
-	135, // 110: SnakeMain.Config.VipCardModel.store:type_name -> SnakeMain.Config.StoreInfo
-	90,  // 111: SnakeMain.Config.VipCardModel.info:type_name -> SnakeMain.Config.VipInfo
-	92,  // 112: SnakeMain.Config.ChatBubbleList.chat_bubble_list:type_name -> SnakeMain.Config.ChatBubbleModel
-	135, // 113: SnakeMain.Config.ChatBubbleModel.store:type_name -> SnakeMain.Config.StoreInfo
-	93,  // 114: SnakeMain.Config.ChatBubbleModel.info:type_name -> SnakeMain.Config.ChatBubbleInfo
-	95,  // 115: SnakeMain.Config.GamePropList.game_prop_list:type_name -> SnakeMain.Config.GamePropModel
-	135, // 116: SnakeMain.Config.GamePropModel.store:type_name -> SnakeMain.Config.StoreInfo
-	96,  // 117: SnakeMain.Config.GamePropModel.info:type_name -> SnakeMain.Config.GamePropInfo
-	97,  // 118: SnakeMain.Config.GamePropInfo.attribute:type_name -> SnakeMain.Config.GamePropAttr
-	99,  // 119: SnakeMain.Config.RoomBackgroundList.room_back_ground_list:type_name -> SnakeMain.Config.RoomBackgroundModel
-	135, // 120: SnakeMain.Config.RoomBackgroundModel.store:type_name -> SnakeMain.Config.StoreInfo
-	100, // 121: SnakeMain.Config.RoomBackgroundModel.info:type_name -> SnakeMain.Config.RoomBackgroundInfo
-	102, // 122: SnakeMain.Config.CardUserInfoBgList.card_user_info_bg_list:type_name -> SnakeMain.Config.CardUserInfoBgModel
-	135, // 123: SnakeMain.Config.CardUserInfoBgModel.store:type_name -> SnakeMain.Config.StoreInfo
-	103, // 124: SnakeMain.Config.CardUserInfoBgModel.info:type_name -> SnakeMain.Config.CardUserInfoBgInfo
-	105, // 125: SnakeMain.Config.RoomEnterEffectList.room_enter_effect_list:type_name -> SnakeMain.Config.RoomEnterEffectModel
-	135, // 126: SnakeMain.Config.RoomEnterEffectModel.store:type_name -> SnakeMain.Config.StoreInfo
-	106, // 127: SnakeMain.Config.RoomEnterEffectModel.info:type_name -> SnakeMain.Config.RoomEnterEffectInfo
-	108, // 128: SnakeMain.Config.HomepageDecorateList.homepage_decorate_list:type_name -> SnakeMain.Config.HomepageDecorateModel
-	135, // 129: SnakeMain.Config.HomepageDecorateModel.store:type_name -> SnakeMain.Config.StoreInfo
-	109, // 130: SnakeMain.Config.HomepageDecorateModel.info:type_name -> SnakeMain.Config.HomepageDecorateInfo
-	111, // 131: SnakeMain.Config.HomepageOpenList.homepage_open_list:type_name -> SnakeMain.Config.HomepageOpenModel
-	135, // 132: SnakeMain.Config.HomepageOpenModel.store:type_name -> SnakeMain.Config.StoreInfo
-	112, // 133: SnakeMain.Config.HomepageOpenModel.info:type_name -> SnakeMain.Config.HomepageOpenInfo
-	114, // 134: SnakeMain.Config.ChestList.chest_list:type_name -> SnakeMain.Config.ChestModel
-	135, // 135: SnakeMain.Config.ChestModel.store:type_name -> SnakeMain.Config.StoreInfo
-	115, // 136: SnakeMain.Config.ChestModel.info:type_name -> SnakeMain.Config.ChestInfo
-	118, // 137: SnakeMain.Config.ChestInfo.material_rewards:type_name -> SnakeMain.Config.ChestRewardInfo
-	118, // 138: SnakeMain.Config.ChestInfo.must_rewards:type_name -> SnakeMain.Config.ChestRewardInfo
-	118, // 139: SnakeMain.Config.ChestInfo.rand_rewards:type_name -> SnakeMain.Config.ChestRewardInfo
-	118, // 140: SnakeMain.Config.ChestInfo.select_rewards:type_name -> SnakeMain.Config.ChestRewardInfo
-	116, // 141: SnakeMain.Config.ChestInfo.rand_weight_list:type_name -> SnakeMain.Config.ChestRandWeightInfo
-	117, // 142: SnakeMain.Config.ChestRandWeightInfo.weight_list:type_name -> SnakeMain.Config.ChestRandWeightSingleItem
-	138, // 143: SnakeMain.Config.ChestRewardInfo.convert_detail:type_name -> SnakeMain.Config.RewardInfo
-	120, // 144: SnakeMain.Config.CoupleBgList.couple_bg_list:type_name -> SnakeMain.Config.CoupleBgModel
-	135, // 145: SnakeMain.Config.CoupleBgModel.store:type_name -> SnakeMain.Config.StoreInfo
-	121, // 146: SnakeMain.Config.CoupleBgModel.info:type_name -> SnakeMain.Config.CoupleBgInfo
-	123, // 147: SnakeMain.Config.SocialBgList.social_bg_list:type_name -> SnakeMain.Config.SocialBgModel
-	135, // 148: SnakeMain.Config.SocialBgModel.store:type_name -> SnakeMain.Config.StoreInfo
-	124, // 149: SnakeMain.Config.SocialBgModel.info:type_name -> SnakeMain.Config.SocialBgInfo
-	126, // 150: SnakeMain.Config.HomepagePendantList.homepage_pendant_list:type_name -> SnakeMain.Config.HomepagePendantModel
-	135, // 151: SnakeMain.Config.HomepagePendantModel.store:type_name -> SnakeMain.Config.StoreInfo
-	127, // 152: SnakeMain.Config.HomepagePendantModel.info:type_name -> SnakeMain.Config.HomepagePendantInfo
-	129, // 153: SnakeMain.Config.EndlessBgList.endless_bg_list:type_name -> SnakeMain.Config.EndlessBgModel
-	135, // 154: SnakeMain.Config.EndlessBgModel.store:type_name -> SnakeMain.Config.StoreInfo
-	130, // 155: SnakeMain.Config.EndlessBgModel.info:type_name -> SnakeMain.Config.EndlessBgInfoModel
-	133, // 156: SnakeMain.Config.ProductBaseInfo.material_list:type_name -> SnakeMain.Config.MeterialItem
-	136, // 157: SnakeMain.Config.ProductBaseInfo.material_coins:type_name -> SnakeMain.Config.PriceInfo
-	136, // 158: SnakeMain.Config.ChipInfo.sell_price:type_name -> SnakeMain.Config.PriceInfo
-	134, // 159: SnakeMain.Config.ChipInfo.compose_list:type_name -> SnakeMain.Config.ComposeItem
-	136, // 160: SnakeMain.Config.StoreInfo.price_info:type_name -> SnakeMain.Config.PriceInfo
-	142, // 161: SnakeMain.Config.RewardConfig.convert:type_name -> snakeapi.Convert
-	142, // 162: SnakeMain.Config.RewardConfig.convert_detail:type_name -> snakeapi.Convert
-	138, // 163: SnakeMain.Config.RewardInfo.convert:type_name -> SnakeMain.Config.RewardInfo
-	138, // 164: SnakeMain.Config.RewardInfo.convert_detail:type_name -> SnakeMain.Config.RewardInfo
-	17,  // 165: SnakeMain.Config.ChipConfig.ChipMapEntry.value:type_name -> SnakeMain.Config.IntList
-	166, // [166:166] is the sub-list for method output_type
-	166, // [166:166] is the sub-list for method input_type
-	166, // [166:166] is the sub-list for extension type_name
-	166, // [166:166] is the sub-list for extension extendee
-	0,   // [0:166] is the sub-list for field type_name
+	71,  // 90: SnakeMain.Config.GameInfo.game:type_name -> SnakeMain.Config.Game
+	72,  // 91: SnakeMain.Config.Game.resource_names:type_name -> SnakeMain.Config.GameResourceItem
+	74,  // 92: SnakeMain.Config.TitleList.title_list:type_name -> SnakeMain.Config.TitleModel
+	137, // 93: SnakeMain.Config.TitleModel.store:type_name -> SnakeMain.Config.StoreInfo
+	75,  // 94: SnakeMain.Config.TitleModel.info:type_name -> SnakeMain.Config.TitleInfo
+	77,  // 95: SnakeMain.Config.BroadCastEffectList.broad_cast_effect_list:type_name -> SnakeMain.Config.BroadCastEffectModel
+	137, // 96: SnakeMain.Config.BroadCastEffectModel.store:type_name -> SnakeMain.Config.StoreInfo
+	78,  // 97: SnakeMain.Config.BroadCastEffectModel.info:type_name -> SnakeMain.Config.BroadcastEffectInfo
+	80,  // 98: SnakeMain.Config.GiftList.gift_list:type_name -> SnakeMain.Config.GiftModel
+	137, // 99: SnakeMain.Config.GiftModel.store:type_name -> SnakeMain.Config.StoreInfo
+	81,  // 100: SnakeMain.Config.GiftModel.info:type_name -> SnakeMain.Config.GiftInfo
+	82,  // 101: SnakeMain.Config.GiftInfo.num_config:type_name -> SnakeMain.Config.GiftNumberConfig
+	84,  // 102: SnakeMain.Config.GiftInfo.photo_wall_config:type_name -> SnakeMain.Config.PhotoWallConfig
+	83,  // 103: SnakeMain.Config.GiftNumberConfig.anim:type_name -> SnakeMain.Config.GiftAnimConfig
+	137, // 104: SnakeMain.Config.CardBagModel.store:type_name -> SnakeMain.Config.StoreInfo
+	86,  // 105: SnakeMain.Config.CardBagModel.info:type_name -> SnakeMain.Config.CardBagInfo
+	139, // 106: SnakeMain.Config.CardBagInfo.rare_reward_list:type_name -> SnakeMain.Config.RewardConfig
+	139, // 107: SnakeMain.Config.CardBagInfo.general_reward_list:type_name -> SnakeMain.Config.RewardConfig
+	139, // 108: SnakeMain.Config.CardBagInfo.baodi_reward:type_name -> SnakeMain.Config.RewardConfig
+	89,  // 109: SnakeMain.Config.PropList.prop_list:type_name -> SnakeMain.Config.PropModel
+	137, // 110: SnakeMain.Config.PropModel.store:type_name -> SnakeMain.Config.StoreInfo
+	90,  // 111: SnakeMain.Config.PropModel.info:type_name -> SnakeMain.Config.PropInfo
+	137, // 112: SnakeMain.Config.VipCardModel.store:type_name -> SnakeMain.Config.StoreInfo
+	92,  // 113: SnakeMain.Config.VipCardModel.info:type_name -> SnakeMain.Config.VipInfo
+	94,  // 114: SnakeMain.Config.ChatBubbleList.chat_bubble_list:type_name -> SnakeMain.Config.ChatBubbleModel
+	137, // 115: SnakeMain.Config.ChatBubbleModel.store:type_name -> SnakeMain.Config.StoreInfo
+	95,  // 116: SnakeMain.Config.ChatBubbleModel.info:type_name -> SnakeMain.Config.ChatBubbleInfo
+	97,  // 117: SnakeMain.Config.GamePropList.game_prop_list:type_name -> SnakeMain.Config.GamePropModel
+	137, // 118: SnakeMain.Config.GamePropModel.store:type_name -> SnakeMain.Config.StoreInfo
+	98,  // 119: SnakeMain.Config.GamePropModel.info:type_name -> SnakeMain.Config.GamePropInfo
+	99,  // 120: SnakeMain.Config.GamePropInfo.attribute:type_name -> SnakeMain.Config.GamePropAttr
+	101, // 121: SnakeMain.Config.RoomBackgroundList.room_back_ground_list:type_name -> SnakeMain.Config.RoomBackgroundModel
+	137, // 122: SnakeMain.Config.RoomBackgroundModel.store:type_name -> SnakeMain.Config.StoreInfo
+	102, // 123: SnakeMain.Config.RoomBackgroundModel.info:type_name -> SnakeMain.Config.RoomBackgroundInfo
+	104, // 124: SnakeMain.Config.CardUserInfoBgList.card_user_info_bg_list:type_name -> SnakeMain.Config.CardUserInfoBgModel
+	137, // 125: SnakeMain.Config.CardUserInfoBgModel.store:type_name -> SnakeMain.Config.StoreInfo
+	105, // 126: SnakeMain.Config.CardUserInfoBgModel.info:type_name -> SnakeMain.Config.CardUserInfoBgInfo
+	107, // 127: SnakeMain.Config.RoomEnterEffectList.room_enter_effect_list:type_name -> SnakeMain.Config.RoomEnterEffectModel
+	137, // 128: SnakeMain.Config.RoomEnterEffectModel.store:type_name -> SnakeMain.Config.StoreInfo
+	108, // 129: SnakeMain.Config.RoomEnterEffectModel.info:type_name -> SnakeMain.Config.RoomEnterEffectInfo
+	110, // 130: SnakeMain.Config.HomepageDecorateList.homepage_decorate_list:type_name -> SnakeMain.Config.HomepageDecorateModel
+	137, // 131: SnakeMain.Config.HomepageDecorateModel.store:type_name -> SnakeMain.Config.StoreInfo
+	111, // 132: SnakeMain.Config.HomepageDecorateModel.info:type_name -> SnakeMain.Config.HomepageDecorateInfo
+	113, // 133: SnakeMain.Config.HomepageOpenList.homepage_open_list:type_name -> SnakeMain.Config.HomepageOpenModel
+	137, // 134: SnakeMain.Config.HomepageOpenModel.store:type_name -> SnakeMain.Config.StoreInfo
+	114, // 135: SnakeMain.Config.HomepageOpenModel.info:type_name -> SnakeMain.Config.HomepageOpenInfo
+	116, // 136: SnakeMain.Config.ChestList.chest_list:type_name -> SnakeMain.Config.ChestModel
+	137, // 137: SnakeMain.Config.ChestModel.store:type_name -> SnakeMain.Config.StoreInfo
+	117, // 138: SnakeMain.Config.ChestModel.info:type_name -> SnakeMain.Config.ChestInfo
+	120, // 139: SnakeMain.Config.ChestInfo.material_rewards:type_name -> SnakeMain.Config.ChestRewardInfo
+	120, // 140: SnakeMain.Config.ChestInfo.must_rewards:type_name -> SnakeMain.Config.ChestRewardInfo
+	120, // 141: SnakeMain.Config.ChestInfo.rand_rewards:type_name -> SnakeMain.Config.ChestRewardInfo
+	120, // 142: SnakeMain.Config.ChestInfo.select_rewards:type_name -> SnakeMain.Config.ChestRewardInfo
+	118, // 143: SnakeMain.Config.ChestInfo.rand_weight_list:type_name -> SnakeMain.Config.ChestRandWeightInfo
+	119, // 144: SnakeMain.Config.ChestRandWeightInfo.weight_list:type_name -> SnakeMain.Config.ChestRandWeightSingleItem
+	140, // 145: SnakeMain.Config.ChestRewardInfo.convert_detail:type_name -> SnakeMain.Config.RewardInfo
+	122, // 146: SnakeMain.Config.CoupleBgList.couple_bg_list:type_name -> SnakeMain.Config.CoupleBgModel
+	137, // 147: SnakeMain.Config.CoupleBgModel.store:type_name -> SnakeMain.Config.StoreInfo
+	123, // 148: SnakeMain.Config.CoupleBgModel.info:type_name -> SnakeMain.Config.CoupleBgInfo
+	125, // 149: SnakeMain.Config.SocialBgList.social_bg_list:type_name -> SnakeMain.Config.SocialBgModel
+	137, // 150: SnakeMain.Config.SocialBgModel.store:type_name -> SnakeMain.Config.StoreInfo
+	126, // 151: SnakeMain.Config.SocialBgModel.info:type_name -> SnakeMain.Config.SocialBgInfo
+	128, // 152: SnakeMain.Config.HomepagePendantList.homepage_pendant_list:type_name -> SnakeMain.Config.HomepagePendantModel
+	137, // 153: SnakeMain.Config.HomepagePendantModel.store:type_name -> SnakeMain.Config.StoreInfo
+	129, // 154: SnakeMain.Config.HomepagePendantModel.info:type_name -> SnakeMain.Config.HomepagePendantInfo
+	131, // 155: SnakeMain.Config.EndlessBgList.endless_bg_list:type_name -> SnakeMain.Config.EndlessBgModel
+	137, // 156: SnakeMain.Config.EndlessBgModel.store:type_name -> SnakeMain.Config.StoreInfo
+	132, // 157: SnakeMain.Config.EndlessBgModel.info:type_name -> SnakeMain.Config.EndlessBgInfoModel
+	135, // 158: SnakeMain.Config.ProductBaseInfo.material_list:type_name -> SnakeMain.Config.MeterialItem
+	138, // 159: SnakeMain.Config.ProductBaseInfo.material_coins:type_name -> SnakeMain.Config.PriceInfo
+	138, // 160: SnakeMain.Config.ChipInfo.sell_price:type_name -> SnakeMain.Config.PriceInfo
+	136, // 161: SnakeMain.Config.ChipInfo.compose_list:type_name -> SnakeMain.Config.ComposeItem
+	138, // 162: SnakeMain.Config.StoreInfo.price_info:type_name -> SnakeMain.Config.PriceInfo
+	144, // 163: SnakeMain.Config.RewardConfig.convert:type_name -> snakeapi.Convert
+	144, // 164: SnakeMain.Config.RewardConfig.convert_detail:type_name -> snakeapi.Convert
+	140, // 165: SnakeMain.Config.RewardInfo.convert:type_name -> SnakeMain.Config.RewardInfo
+	140, // 166: SnakeMain.Config.RewardInfo.convert_detail:type_name -> SnakeMain.Config.RewardInfo
+	17,  // 167: SnakeMain.Config.ChipConfig.ChipMapEntry.value:type_name -> SnakeMain.Config.IntList
+	168, // [168:168] is the sub-list for method output_type
+	168, // [168:168] is the sub-list for method input_type
+	168, // [168:168] is the sub-list for extension type_name
+	168, // [168:168] is the sub-list for extension extendee
+	0,   // [0:168] is the sub-list for field type_name
 }
 
 func init() { file_snakeapi_config_SKStore_Proto_init() }
@@ -14983,7 +15159,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[65].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TitleList); i {
+			switch v := v.(*Game); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -14995,7 +15171,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[66].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TitleModel); i {
+			switch v := v.(*GameResourceItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15007,7 +15183,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[67].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TitleInfo); i {
+			switch v := v.(*TitleList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15019,7 +15195,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[68].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BroadCastEffectList); i {
+			switch v := v.(*TitleModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15031,7 +15207,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[69].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BroadCastEffectModel); i {
+			switch v := v.(*TitleInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15043,7 +15219,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[70].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BroadcastEffectInfo); i {
+			switch v := v.(*BroadCastEffectList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15055,7 +15231,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[71].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GiftList); i {
+			switch v := v.(*BroadCastEffectModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15067,7 +15243,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[72].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GiftModel); i {
+			switch v := v.(*BroadcastEffectInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15079,7 +15255,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[73].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GiftInfo); i {
+			switch v := v.(*GiftList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15091,7 +15267,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[74].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GiftNumberConfig); i {
+			switch v := v.(*GiftModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15103,7 +15279,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[75].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GiftAnimConfig); i {
+			switch v := v.(*GiftInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15115,7 +15291,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[76].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PhotoWallConfig); i {
+			switch v := v.(*GiftNumberConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15127,7 +15303,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[77].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CardBagModel); i {
+			switch v := v.(*GiftAnimConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15139,7 +15315,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[78].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CardBagInfo); i {
+			switch v := v.(*PhotoWallConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15151,7 +15327,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[79].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MultiBuyPriceBean); i {
+			switch v := v.(*CardBagModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15163,7 +15339,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[80].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PropList); i {
+			switch v := v.(*CardBagInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15175,7 +15351,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[81].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PropModel); i {
+			switch v := v.(*MultiBuyPriceBean); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15187,7 +15363,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[82].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PropInfo); i {
+			switch v := v.(*PropList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15199,7 +15375,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[83].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*VipCardModel); i {
+			switch v := v.(*PropModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15211,7 +15387,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[84].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*VipInfo); i {
+			switch v := v.(*PropInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15223,7 +15399,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[85].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChatBubbleList); i {
+			switch v := v.(*VipCardModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15235,7 +15411,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[86].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChatBubbleModel); i {
+			switch v := v.(*VipInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15247,7 +15423,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[87].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChatBubbleInfo); i {
+			switch v := v.(*ChatBubbleList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15259,7 +15435,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[88].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GamePropList); i {
+			switch v := v.(*ChatBubbleModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15271,7 +15447,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[89].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GamePropModel); i {
+			switch v := v.(*ChatBubbleInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15283,7 +15459,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[90].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GamePropInfo); i {
+			switch v := v.(*GamePropList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15295,7 +15471,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[91].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GamePropAttr); i {
+			switch v := v.(*GamePropModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15307,7 +15483,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[92].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RoomBackgroundList); i {
+			switch v := v.(*GamePropInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15319,7 +15495,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[93].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RoomBackgroundModel); i {
+			switch v := v.(*GamePropAttr); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15331,7 +15507,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[94].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RoomBackgroundInfo); i {
+			switch v := v.(*RoomBackgroundList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15343,7 +15519,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[95].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CardUserInfoBgList); i {
+			switch v := v.(*RoomBackgroundModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15355,7 +15531,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[96].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CardUserInfoBgModel); i {
+			switch v := v.(*RoomBackgroundInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15367,7 +15543,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[97].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CardUserInfoBgInfo); i {
+			switch v := v.(*CardUserInfoBgList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15379,7 +15555,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[98].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RoomEnterEffectList); i {
+			switch v := v.(*CardUserInfoBgModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15391,7 +15567,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[99].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RoomEnterEffectModel); i {
+			switch v := v.(*CardUserInfoBgInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15403,7 +15579,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[100].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RoomEnterEffectInfo); i {
+			switch v := v.(*RoomEnterEffectList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15415,7 +15591,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[101].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomepageDecorateList); i {
+			switch v := v.(*RoomEnterEffectModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15427,7 +15603,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[102].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomepageDecorateModel); i {
+			switch v := v.(*RoomEnterEffectInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15439,7 +15615,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[103].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomepageDecorateInfo); i {
+			switch v := v.(*HomepageDecorateList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15451,7 +15627,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[104].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomepageOpenList); i {
+			switch v := v.(*HomepageDecorateModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15463,7 +15639,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[105].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomepageOpenModel); i {
+			switch v := v.(*HomepageDecorateInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15475,7 +15651,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[106].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomepageOpenInfo); i {
+			switch v := v.(*HomepageOpenList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15487,7 +15663,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[107].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChestList); i {
+			switch v := v.(*HomepageOpenModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15499,7 +15675,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[108].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChestModel); i {
+			switch v := v.(*HomepageOpenInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15511,7 +15687,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[109].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChestInfo); i {
+			switch v := v.(*ChestList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15523,7 +15699,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[110].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChestRandWeightInfo); i {
+			switch v := v.(*ChestModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15535,7 +15711,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[111].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChestRandWeightSingleItem); i {
+			switch v := v.(*ChestInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15547,7 +15723,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[112].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChestRewardInfo); i {
+			switch v := v.(*ChestRandWeightInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15559,7 +15735,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[113].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CoupleBgList); i {
+			switch v := v.(*ChestRandWeightSingleItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15571,7 +15747,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[114].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CoupleBgModel); i {
+			switch v := v.(*ChestRewardInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15583,7 +15759,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[115].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CoupleBgInfo); i {
+			switch v := v.(*CoupleBgList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15595,7 +15771,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[116].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SocialBgList); i {
+			switch v := v.(*CoupleBgModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15607,7 +15783,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[117].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SocialBgModel); i {
+			switch v := v.(*CoupleBgInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15619,7 +15795,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[118].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SocialBgInfo); i {
+			switch v := v.(*SocialBgList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15631,7 +15807,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[119].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomepagePendantList); i {
+			switch v := v.(*SocialBgModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15643,7 +15819,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[120].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomepagePendantModel); i {
+			switch v := v.(*SocialBgInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15655,7 +15831,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[121].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomepagePendantInfo); i {
+			switch v := v.(*HomepagePendantList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15667,7 +15843,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[122].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessBgList); i {
+			switch v := v.(*HomepagePendantModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15679,7 +15855,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[123].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessBgModel); i {
+			switch v := v.(*HomepagePendantInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15691,7 +15867,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[124].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessBgInfoModel); i {
+			switch v := v.(*EndlessBgList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15703,7 +15879,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[125].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProductBaseInfo); i {
+			switch v := v.(*EndlessBgModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15715,7 +15891,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[126].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChipInfo); i {
+			switch v := v.(*EndlessBgInfoModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15727,7 +15903,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[127].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MeterialItem); i {
+			switch v := v.(*ProductBaseInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15739,7 +15915,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[128].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ComposeItem); i {
+			switch v := v.(*ChipInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15751,7 +15927,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[129].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StoreInfo); i {
+			switch v := v.(*MeterialItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15763,7 +15939,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[130].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PriceInfo); i {
+			switch v := v.(*ComposeItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15775,7 +15951,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[131].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RewardConfig); i {
+			switch v := v.(*StoreInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15787,6 +15963,30 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			}
 		}
 		file_snakeapi_config_SKStore_Proto_msgTypes[132].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PriceInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakeapi_config_SKStore_Proto_msgTypes[133].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RewardConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakeapi_config_SKStore_Proto_msgTypes[134].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RewardInfo); i {
 			case 0:
 				return &v.state
@@ -15805,7 +16005,7 @@ func file_snakeapi_config_SKStore_Proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakeapi_config_SKStore_Proto_rawDesc,
 			NumEnums:      6,
-			NumMessages:   134,
+			NumMessages:   136,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
