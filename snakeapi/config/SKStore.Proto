@@ -1002,7 +1002,7 @@ message ChestInfo {
   repeated ChestRewardInfo select_rewards = 6; // 自选奖励
   string probability_text = 7; //概率公式
   string material_open_args = 8;
-  int32 end_time = 9;
+  int64 end_time = 9;
   int32 rand_type = 10;
   repeated ChestRandWeightInfo rand_weight_list = 11;
 }
