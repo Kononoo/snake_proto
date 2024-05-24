@@ -329,13 +329,8 @@ message GameFaceModel {
   int64 update_time = 3;
   StoreInfo store = 4;
   ProductBaseInfo info = 5;
-  GameMsg game = 6;
 }
 
-message GameMsg {
-  repeated string img_urls = 1;
-  repeated int64  turn_time = 2;
-}
 
 
 //game face end
