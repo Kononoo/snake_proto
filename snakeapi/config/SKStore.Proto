@@ -587,15 +587,6 @@ message GameInfo {
   string game_imgurl = 2; // 全场最炫展示图片
   int32 color_id = 3; //队服默认展示色系，商店内展示用，1:绿 2:红，3:黄
   int32 game_info_id = 4;
-  Game game = 5;
-}
-message Game {
-  repeated GameResourceItem resource_names = 1;
-  string resource_url = 2;
-}
-message GameResourceItem {
-  repeated string names = 1;
-  int32 type = 2;
 }
 
 
