@@ -3,6 +3,7 @@ syntax = "proto3";
 package fallguys;
 option go_package = "git.17zjh.com/snake/snake_proto/fallguys";
 import "fallguys/push.proto";
+import "google/protobuf/struct.proto";
 
 enum RoomState {
   Idle = 0; // 空闲
@@ -77,10 +78,24 @@ message RewardItem {
   string imgurl = 5; // 图片
 }
 
+message UploadMetricReq {
+  string action = 1;
+  string uid = 2;
+  int32 rid = 3;
+  int32 platform = 4;
+  string market = 5;
+  string version = 6;
+  google.protobuf.Struct kvs = 7;
+}
+
+message UploadMetricRsq {
+}
+
 service MatchServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
   rpc EndGame (EndGameReq) returns (EndGameRsp) {}
   rpc GameReady (GameReadyReq) returns (GameReadyRsp) {}
   rpc Subscribe (SubscribeReq) returns (stream SubscribeRsp) {}
   rpc EndRound (EndRoundReq) returns (EndRoundRsp) {}
+  rpc UploadMetric(stream UploadMetricReq) returns (UploadMetricRsq) {}
 }
