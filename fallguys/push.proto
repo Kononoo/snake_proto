@@ -17,6 +17,9 @@ enum PlayerType {
 message PlayerInfo{
     string uid = 1;  //玩家uid
     PlayerType playerType = 2; //玩家类型
+    int32 platform = 3; // 平台
+    string market = 4; // 应用市场
+    string version = 5; // 客户端版本
 }
 
 // TCPServer 向UnityServer同步房间信息
