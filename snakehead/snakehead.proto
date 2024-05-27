@@ -20,6 +20,7 @@ enum GameMode {
   UnityPlatform = 900; // unity
   UnityQualifying = 901; // unity 团战
   UnityKuromi = 902; // 库洛米双人玩法
+  UnityGoat = 906; // 喜灰玩法
 }
 
 enum RspCode {
