@@ -202,8 +202,7 @@ message StoreItem {
 //avatarBox start
 
 message AvatarBoxList{
-  repeated AvatarBoxModel box_list = 1;
-  repeated AvatarBoxTag tag_list = 2;
+  repeated AvatarFrameModel box_list = 1;
 }
 
 message AvatarBoxModel{
