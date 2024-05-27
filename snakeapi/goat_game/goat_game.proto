@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package couple_game;
+
+option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/goat_game";
+
+import "snakeapi/base.proto";
+
+
+// 获取玩法主页信息
+message GetInfoReq {
+}
+
+message GetInfoResp {
+  string intro = 1; // 玩法介绍
+  repeated string tips_pool = 2; // tips 随机库
+  repeated string skin_ids = 3; // 喜灰玩法皮肤列表
+  repeated EventTaskInfo event_list = 4; // 彩蛋任务
+}
+
+message EventTaskInfo{
+  int32 event_id = 1; // 任务活动 id
+  repeated snakeapi.EventTask task_list = 2; // 任务列表
+}
+
+// 领取任务奖励
+message GetTaskRewardReq {
+  int32 event_id = 1;
+  int32 task_id = 2;
+}
+
+message GetTaskRewardResp {
+  repeated snakeapi.RewardItem reward_list = 1;
+}
+
+// 获取游戏结果
+message GetGoatResultReq {
+  int64 rid = 1;
+}
+
+message GetGoatResultResp {
+  int32 win_team_id = 1;      // 胜利的阵营 id
+  repeated GoatTeamScore team_scores = 2; // 阵营分数
+}
+
+message GoatTeamScore {
+  int32 team_id = 1;    // 阵营ID
+  repeated GoatUserScore user_scores = 2; // 阵营成员分数
+}
+
+message GoatUserScore {
+  string uid = 1;
+  int32 score = 2;   // 分数
+  int32 collect_bucket_count = 3;   // 获得空桶个数
+  int32 kill_count = 4;  // 击杀个数
+  int32 skin_id = 5;  // 穿戴皮肤 id
+  string avatar = 6; // 头像
+  string nickname = 7; // 昵称
+  int64 show_value = 8; // 玩家 show 值
+  bool is_followed = 9;  // 是否已关注当前玩家
+  bool is_ai = 10; // 是否是 ai
+  int32 length = 11; // 长度
+  repeated snakeapi.RewardItem reward_list = 12; // 奖励列表(服务器返回)
+}
