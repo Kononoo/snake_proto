@@ -13,12 +13,14 @@ message GetInfoReq {
 
 message GetInfoResp {
   string intro = 1; // 玩法介绍
-  repeated string tips_pool = 2; // tips 随机库
-  repeated string group_name_pool = 3; // 队名随机池
-  repeated string skin_ids = 4; // 喜灰玩法皮肤列表
-  repeated EventTaskInfo event_list = 5; // 彩蛋任务
-  int32 total_pvp_count = 6;    // 双人模式总游戏局数
-  int32 today_pvp_count = 7;    // 今日双人游戏局数
+  int64 start_time = 2; // 开始时间
+  int64 end_time = 3; // 结束时间
+  repeated string tips_pool = 4; // tips 随机库
+  repeated string group_name_pool = 5; // 队名随机池
+  repeated int32 skin_ids = 6; // 喜灰玩法皮肤列表
+  repeated EventTaskInfo event_list = 7; // 彩蛋任务
+  int32 total_pvp_count = 8;    // 双人模式总游戏局数
+  int32 today_pvp_count = 9;    // 今日双人游戏局数
 }
 
 message EventTaskInfo{
