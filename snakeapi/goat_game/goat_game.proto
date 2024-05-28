@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package couple_game;
+package goat_game;
 
 option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/goat_game";
 
