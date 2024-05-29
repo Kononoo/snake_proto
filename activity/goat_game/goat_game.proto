@@ -46,6 +46,8 @@ message GetGoatResultReq {
 message GetGoatResultResp {
   int32 win_team_id = 1;      // 胜利的阵营 id
   repeated GoatTeamScore team_scores = 2; // 阵营分数
+  int64 pvp_count = 3;        // 当前玩家游戏局数（结算了才算）
+  int64 today_pvp_count = 4; // 今日游戏局数
 }
 
 message GoatTeamScore {
