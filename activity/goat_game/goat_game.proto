@@ -11,7 +11,7 @@ import "snakecommon/task.proto";
 message GetInfoReq {
 }
 
-message GetInfoResp {
+message GetInfoRsp {
   string intro = 1; // 玩法介绍
   int64 start_time = 2; // 开始时间
   int64 end_time = 3; // 结束时间
@@ -34,7 +34,7 @@ message GetTaskRewardReq {
   int32 task_id = 2;
 }
 
-message GetTaskRewardResp {
+message GetTaskRewardRsp {
   repeated snakecommon.RewardItem reward_list = 1;
 }
 
@@ -43,7 +43,7 @@ message GetGoatResultReq {
   int64 rid = 1;
 }
 
-message GetGoatResultResp {
+message GetGoatResultRsp {
   int32 win_team_id = 1;      // 胜利的阵营 id
   repeated GoatTeamScore team_scores = 2; // 阵营分数
   int64 pvp_count = 3;        // 当前玩家游戏局数（结算了才算）
