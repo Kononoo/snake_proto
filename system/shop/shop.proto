@@ -23,7 +23,7 @@ message GetDailyRewardReq { // 月卡领取每日奖励
 }
 
 message GetDailyRewardRsp {
-  repeated snakecommon.RewardItem reward = 1;
+  repeated snakecommon.CRewardItem reward = 1;
 }
 
 message BuyPackReq { // 月卡购买礼包
@@ -32,7 +32,7 @@ message BuyPackReq { // 月卡购买礼包
 }
 
 message BuyPackRsp {
-  repeated snakecommon.RewardItem reward = 1;
+  repeated snakecommon.CRewardItem reward = 1;
   repeated snakecommon.PackInfo pack_info = 2;
 }
 
@@ -51,5 +51,5 @@ message GetChargeVIPRewardReq { // 领区 vip 奖励
 }
 
 message GetChargeVIPRewardRsp {
-  repeated snakecommon.RewardItem reward_list = 1; // vip 积分
+  repeated snakecommon.CRewardItem reward_list = 1; // vip 积分
 }
