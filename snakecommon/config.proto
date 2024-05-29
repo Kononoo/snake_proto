@@ -54,26 +54,23 @@ int32 item_type = 6;
 string item_name = 7;
 }
 
-message RewardItem {
-  int32 type = 1;
-  int32 skin_id = 2;
-  int64 num = 3;
-  string big_num = 4; // 大数用字符串
-  string name = 5;
-  string imgurl = 6;
-  string use_info = 7;
-  int32 time_unit = 8;
-  int32 is_valuable = 9; // 是否高价值: 0否1是，客户端会显示特殊边框
-  repeated Convert convert = 10;
-  int32 index = 11;
-  double f_num = 12;
-  int32 worth_level = 13; // 稀有度
-  int32 mark_id = 14; // 奖励来源标签，客户端展示角标
-  repeated Convert convert_detail = 15; // 返回折算配置给客户端展示用
+message CRewardItem {
+  int32 type = 1;                     // 奖励类型
+  int32 skin_id = 2;                  // 奖励 id
+  int64 num = 3;                      // 奖励数量
+  optional string big_num = 4;        // 奖励数量，大数
+  string name = 5;                    // 奖励名称
+  string imgurl = 6;                  // 奖励图片
+  optional string use_info = 7;       // 有效期，单位秒
+  optional int32 index = 8;           // 奖励序号
+  int32 worth_level = 9;              // 稀有度
+  optional int32 mark_id = 10;         // 来源标签id
+  repeated CConvert convert = 11;      // 奖励折算
 }
 
-message Convert {
-  int32 type = 1;
-  int64 num = 2;
-  int32 skin_id = 3;
+// 奖励折算结构
+message CConvert {
+  int32 type = 1;     // 类型
+  int64 num = 2;      // 数量
+  int32 skin_id = 3;  // id
 }

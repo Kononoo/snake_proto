@@ -35,7 +35,7 @@ message GetTaskRewardReq {
 }
 
 message GetTaskRewardRsp {
-  repeated snakecommon.RewardItem reward_list = 1;
+  repeated snakecommon.CRewardItem reward_list = 1;
 }
 
 // 获取游戏结果
@@ -67,5 +67,5 @@ message GoatUserScore {
   bool is_followed = 9;  // 是否已关注当前玩家
   bool is_ai = 10; // 是否是 ai
   int32 length = 11; // 长度
-  repeated snakecommon.RewardItem reward_list = 12; // 奖励列表(服务器返回)
+  repeated snakecommon.CRewardItem reward_list = 12; // 奖励列表(服务器返回)
 }

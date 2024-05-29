@@ -14,7 +14,7 @@ message EventTask {
   string btn_type = 6;                        // 跳转类型
   TaskState state = 7;                        // 任务状态
   int64 progress_num = 8;                     // 玩家进度
-  repeated RewardItem reward_item_list = 9;   // 奖励列表
+  repeated CRewardItem reward_item_list = 9;   // 奖励列表
   int32 filter_type = 10;                     // 指定任务需要的资源类型（可选）
   int32 filter_id = 11;                       // 指定任务需要的资源 id（可选）
   string filter_args = 12;                    // 其他参数（自行解析并定义规则判断，可选）
