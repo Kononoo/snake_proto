@@ -106,23 +106,561 @@ func (x *RecommendListRsp) GetRecommendList() *snakecommon.StoreRecommend {
 	return nil
 }
 
+type MonthCardInfoReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *MonthCardInfoReq) Reset() {
+	*x = MonthCardInfoReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MonthCardInfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MonthCardInfoReq) ProtoMessage() {}
+
+func (x *MonthCardInfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MonthCardInfoReq.ProtoReflect.Descriptor instead.
+func (*MonthCardInfoReq) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{2}
+}
+
+type MonthCardInfoRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	MonthCard *snakecommon.MonthCard `protobuf:"bytes,1,opt,name=month_card,json=monthCard,proto3" json:"month_card,omitempty"`
+}
+
+func (x *MonthCardInfoRsp) Reset() {
+	*x = MonthCardInfoRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MonthCardInfoRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MonthCardInfoRsp) ProtoMessage() {}
+
+func (x *MonthCardInfoRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MonthCardInfoRsp.ProtoReflect.Descriptor instead.
+func (*MonthCardInfoRsp) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *MonthCardInfoRsp) GetMonthCard() *snakecommon.MonthCard {
+	if x != nil {
+		return x.MonthCard
+	}
+	return nil
+}
+
+type GetDailyRewardReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Type int32 `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"` // 1: LittleMonth; 2: SuperMonth; 3: Both
+}
+
+func (x *GetDailyRewardReq) Reset() {
+	*x = GetDailyRewardReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetDailyRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDailyRewardReq) ProtoMessage() {}
+
+func (x *GetDailyRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDailyRewardReq.ProtoReflect.Descriptor instead.
+func (*GetDailyRewardReq) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetDailyRewardReq) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+type GetDailyRewardRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Reward []*snakecommon.RewardItem `protobuf:"bytes,1,rep,name=reward,proto3" json:"reward,omitempty"`
+}
+
+func (x *GetDailyRewardRsp) Reset() {
+	*x = GetDailyRewardRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetDailyRewardRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDailyRewardRsp) ProtoMessage() {}
+
+func (x *GetDailyRewardRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDailyRewardRsp.ProtoReflect.Descriptor instead.
+func (*GetDailyRewardRsp) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetDailyRewardRsp) GetReward() []*snakecommon.RewardItem {
+	if x != nil {
+		return x.Reward
+	}
+	return nil
+}
+
+type BuyPackReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Type   int32 `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	PackId int32 `protobuf:"varint,2,opt,name=pack_id,json=packId,proto3" json:"pack_id,omitempty"`
+}
+
+func (x *BuyPackReq) Reset() {
+	*x = BuyPackReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BuyPackReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuyPackReq) ProtoMessage() {}
+
+func (x *BuyPackReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuyPackReq.ProtoReflect.Descriptor instead.
+func (*BuyPackReq) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *BuyPackReq) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *BuyPackReq) GetPackId() int32 {
+	if x != nil {
+		return x.PackId
+	}
+	return 0
+}
+
+type BuyPackRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Reward   []*snakecommon.RewardItem `protobuf:"bytes,1,rep,name=reward,proto3" json:"reward,omitempty"`
+	PackInfo []*snakecommon.PackInfo   `protobuf:"bytes,2,rep,name=pack_info,json=packInfo,proto3" json:"pack_info,omitempty"`
+}
+
+func (x *BuyPackRsp) Reset() {
+	*x = BuyPackRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BuyPackRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuyPackRsp) ProtoMessage() {}
+
+func (x *BuyPackRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuyPackRsp.ProtoReflect.Descriptor instead.
+func (*BuyPackRsp) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *BuyPackRsp) GetReward() []*snakecommon.RewardItem {
+	if x != nil {
+		return x.Reward
+	}
+	return nil
+}
+
+func (x *BuyPackRsp) GetPackInfo() []*snakecommon.PackInfo {
+	if x != nil {
+		return x.PackInfo
+	}
+	return nil
+}
+
+type GetChargeVIPInfoReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetChargeVIPInfoReq) Reset() {
+	*x = GetChargeVIPInfoReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetChargeVIPInfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetChargeVIPInfoReq) ProtoMessage() {}
+
+func (x *GetChargeVIPInfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetChargeVIPInfoReq.ProtoReflect.Descriptor instead.
+func (*GetChargeVIPInfoReq) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{8}
+}
+
+type GetChargeVIPInfoRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ChargeExp        int32   `protobuf:"varint,1,opt,name=charge_exp,json=chargeExp,proto3" json:"charge_exp,omitempty"`
+	LevelRewardState []int32 `protobuf:"varint,2,rep,packed,name=level_reward_state,json=levelRewardState,proto3" json:"level_reward_state,omitempty"`
+	WeekRewardState  int32   `protobuf:"varint,3,opt,name=week_reward_state,json=weekRewardState,proto3" json:"week_reward_state,omitempty"`
+}
+
+func (x *GetChargeVIPInfoRsp) Reset() {
+	*x = GetChargeVIPInfoRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetChargeVIPInfoRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetChargeVIPInfoRsp) ProtoMessage() {}
+
+func (x *GetChargeVIPInfoRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetChargeVIPInfoRsp.ProtoReflect.Descriptor instead.
+func (*GetChargeVIPInfoRsp) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetChargeVIPInfoRsp) GetChargeExp() int32 {
+	if x != nil {
+		return x.ChargeExp
+	}
+	return 0
+}
+
+func (x *GetChargeVIPInfoRsp) GetLevelRewardState() []int32 {
+	if x != nil {
+		return x.LevelRewardState
+	}
+	return nil
+}
+
+func (x *GetChargeVIPInfoRsp) GetWeekRewardState() int32 {
+	if x != nil {
+		return x.WeekRewardState
+	}
+	return 0
+}
+
+type GetChargeVIPRewardReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Type  int32 `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`   // 1: 等级奖励，2: 周奖励
+	Level int32 `protobuf:"varint,2,opt,name=level,proto3" json:"level,omitempty"` // // 要领取的奖励等级
+}
+
+func (x *GetChargeVIPRewardReq) Reset() {
+	*x = GetChargeVIPRewardReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetChargeVIPRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetChargeVIPRewardReq) ProtoMessage() {}
+
+func (x *GetChargeVIPRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetChargeVIPRewardReq.ProtoReflect.Descriptor instead.
+func (*GetChargeVIPRewardReq) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GetChargeVIPRewardReq) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *GetChargeVIPRewardReq) GetLevel() int32 {
+	if x != nil {
+		return x.Level
+	}
+	return 0
+}
+
+type GetChargeVIPRewardRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	RewardList []*snakecommon.RewardItem `protobuf:"bytes,1,rep,name=reward_list,json=rewardList,proto3" json:"reward_list,omitempty"` // vip 积分
+}
+
+func (x *GetChargeVIPRewardRsp) Reset() {
+	*x = GetChargeVIPRewardRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_shop_shop_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetChargeVIPRewardRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetChargeVIPRewardRsp) ProtoMessage() {}
+
+func (x *GetChargeVIPRewardRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_shop_shop_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetChargeVIPRewardRsp.ProtoReflect.Descriptor instead.
+func (*GetChargeVIPRewardRsp) Descriptor() ([]byte, []int) {
+	return file_system_shop_shop_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetChargeVIPRewardRsp) GetRewardList() []*snakecommon.RewardItem {
+	if x != nil {
+		return x.RewardList
+	}
+	return nil
+}
+
 var File_system_shop_shop_proto protoreflect.FileDescriptor
 
 var file_system_shop_shop_proto_rawDesc = []byte{
 	0x0a, 0x16, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x73, 0x68, 0x6f, 0x70, 0x2f, 0x73, 0x68,
 	0x6f, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04, 0x73, 0x68, 0x6f, 0x70, 0x1a, 0x18,
 	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2f, 0x63, 0x6f, 0x6e, 0x66,
-	0x69, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x12, 0x0a, 0x10, 0x52, 0x65, 0x63, 0x6f,
-	0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x22, 0x56, 0x0a, 0x10,
-	0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x73, 0x70,
-	0x12, 0x42, 0x0a, 0x0e, 0x72, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x5f, 0x6c, 0x69,
-	0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x52, 0x65, 0x63, 0x6f,
-	0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x52, 0x0d, 0x72, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64,
-	0x4c, 0x69, 0x73, 0x74, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a,
-	0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
-	0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x73,
-	0x68, 0x6f, 0x70, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x69, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2f, 0x6d, 0x6f, 0x6e, 0x74, 0x68, 0x5f, 0x63, 0x61, 0x72, 0x64,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x12, 0x0a, 0x10, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
+	0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x22, 0x56, 0x0a, 0x10, 0x52, 0x65,
+	0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x73, 0x70, 0x12, 0x42,
+	0x0a, 0x0e, 0x72, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
+	0x65, 0x6e, 0x64, 0x52, 0x0d, 0x72, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x64, 0x4c, 0x69,
+	0x73, 0x74, 0x22, 0x12, 0x0a, 0x10, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x43, 0x61, 0x72, 0x64, 0x49,
+	0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x22, 0x49, 0x0a, 0x10, 0x4d, 0x6f, 0x6e, 0x74, 0x68, 0x43,
+	0x61, 0x72, 0x64, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x73, 0x70, 0x12, 0x35, 0x0a, 0x0a, 0x6d, 0x6f,
+	0x6e, 0x74, 0x68, 0x5f, 0x63, 0x61, 0x72, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16,
+	0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4d, 0x6f, 0x6e,
+	0x74, 0x68, 0x43, 0x61, 0x72, 0x64, 0x52, 0x09, 0x6d, 0x6f, 0x6e, 0x74, 0x68, 0x43, 0x61, 0x72,
+	0x64, 0x22, 0x27, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x77,
+	0x61, 0x72, 0x64, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0x44, 0x0a, 0x11, 0x47, 0x65,
+	0x74, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x73, 0x70, 0x12,
+	0x2f, 0x0a, 0x06, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x17, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x52, 0x65,
+	0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x06, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64,
+	0x22, 0x39, 0x0a, 0x0a, 0x42, 0x75, 0x79, 0x50, 0x61, 0x63, 0x6b, 0x52, 0x65, 0x71, 0x12, 0x12,
+	0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x74, 0x79,
+	0x70, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x61, 0x63, 0x6b, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x06, 0x70, 0x61, 0x63, 0x6b, 0x49, 0x64, 0x22, 0x71, 0x0a, 0x0a, 0x42,
+	0x75, 0x79, 0x50, 0x61, 0x63, 0x6b, 0x52, 0x73, 0x70, 0x12, 0x2f, 0x0a, 0x06, 0x72, 0x65, 0x77,
+	0x61, 0x72, 0x64, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74,
+	0x65, 0x6d, 0x52, 0x06, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x32, 0x0a, 0x09, 0x70, 0x61,
+	0x63, 0x6b, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x15, 0x2e,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x50, 0x61, 0x63, 0x6b,
+	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x08, 0x70, 0x61, 0x63, 0x6b, 0x49, 0x6e, 0x66, 0x6f, 0x22, 0x15,
+	0x0a, 0x13, 0x47, 0x65, 0x74, 0x43, 0x68, 0x61, 0x72, 0x67, 0x65, 0x56, 0x49, 0x50, 0x49, 0x6e,
+	0x66, 0x6f, 0x52, 0x65, 0x71, 0x22, 0x8e, 0x01, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x43, 0x68, 0x61,
+	0x72, 0x67, 0x65, 0x56, 0x49, 0x50, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x73, 0x70, 0x12, 0x1d, 0x0a,
+	0x0a, 0x63, 0x68, 0x61, 0x72, 0x67, 0x65, 0x5f, 0x65, 0x78, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x09, 0x63, 0x68, 0x61, 0x72, 0x67, 0x65, 0x45, 0x78, 0x70, 0x12, 0x2c, 0x0a, 0x12,
+	0x6c, 0x65, 0x76, 0x65, 0x6c, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x73, 0x74, 0x61,
+	0x74, 0x65, 0x18, 0x02, 0x20, 0x03, 0x28, 0x05, 0x52, 0x10, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x52,
+	0x65, 0x77, 0x61, 0x72, 0x64, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x2a, 0x0a, 0x11, 0x77, 0x65,
+	0x65, 0x6b, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0f, 0x77, 0x65, 0x65, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72,
+	0x64, 0x53, 0x74, 0x61, 0x74, 0x65, 0x22, 0x41, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x43, 0x68, 0x61,
+	0x72, 0x67, 0x65, 0x56, 0x49, 0x50, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x71, 0x12,
+	0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x74,
+	0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x05, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x22, 0x51, 0x0a, 0x15, 0x47, 0x65, 0x74,
+	0x43, 0x68, 0x61, 0x72, 0x67, 0x65, 0x56, 0x49, 0x50, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52,
+	0x73, 0x70, 0x12, 0x38, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73,
+	0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d,
+	0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x42, 0x2d, 0x5a, 0x2b,
+	0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
+	0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x73, 0x68, 0x6f, 0x70, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -137,19 +675,37 @@ func file_system_shop_shop_proto_rawDescGZIP() []byte {
 	return file_system_shop_shop_proto_rawDescData
 }
 
-var file_system_shop_shop_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_system_shop_shop_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_system_shop_shop_proto_goTypes = []interface{}{
 	(*RecommendListReq)(nil),           // 0: shop.RecommendListReq
 	(*RecommendListRsp)(nil),           // 1: shop.RecommendListRsp
-	(*snakecommon.StoreRecommend)(nil), // 2: snakecommon.StoreRecommend
+	(*MonthCardInfoReq)(nil),           // 2: shop.MonthCardInfoReq
+	(*MonthCardInfoRsp)(nil),           // 3: shop.MonthCardInfoRsp
+	(*GetDailyRewardReq)(nil),          // 4: shop.GetDailyRewardReq
+	(*GetDailyRewardRsp)(nil),          // 5: shop.GetDailyRewardRsp
+	(*BuyPackReq)(nil),                 // 6: shop.BuyPackReq
+	(*BuyPackRsp)(nil),                 // 7: shop.BuyPackRsp
+	(*GetChargeVIPInfoReq)(nil),        // 8: shop.GetChargeVIPInfoReq
+	(*GetChargeVIPInfoRsp)(nil),        // 9: shop.GetChargeVIPInfoRsp
+	(*GetChargeVIPRewardReq)(nil),      // 10: shop.GetChargeVIPRewardReq
+	(*GetChargeVIPRewardRsp)(nil),      // 11: shop.GetChargeVIPRewardRsp
+	(*snakecommon.StoreRecommend)(nil), // 12: snakecommon.StoreRecommend
+	(*snakecommon.MonthCard)(nil),      // 13: snakecommon.MonthCard
+	(*snakecommon.RewardItem)(nil),     // 14: snakecommon.RewardItem
+	(*snakecommon.PackInfo)(nil),       // 15: snakecommon.PackInfo
 }
 var file_system_shop_shop_proto_depIdxs = []int32{
-	2, // 0: shop.RecommendListRsp.recommend_list:type_name -> snakecommon.StoreRecommend
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	12, // 0: shop.RecommendListRsp.recommend_list:type_name -> snakecommon.StoreRecommend
+	13, // 1: shop.MonthCardInfoRsp.month_card:type_name -> snakecommon.MonthCard
+	14, // 2: shop.GetDailyRewardRsp.reward:type_name -> snakecommon.RewardItem
+	14, // 3: shop.BuyPackRsp.reward:type_name -> snakecommon.RewardItem
+	15, // 4: shop.BuyPackRsp.pack_info:type_name -> snakecommon.PackInfo
+	14, // 5: shop.GetChargeVIPRewardRsp.reward_list:type_name -> snakecommon.RewardItem
+	6,  // [6:6] is the sub-list for method output_type
+	6,  // [6:6] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_system_shop_shop_proto_init() }
@@ -182,6 +738,126 @@ func file_system_shop_shop_proto_init() {
 				return nil
 			}
 		}
+		file_system_shop_shop_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MonthCardInfoReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_shop_shop_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MonthCardInfoRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_shop_shop_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetDailyRewardReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_shop_shop_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetDailyRewardRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_shop_shop_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BuyPackReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_shop_shop_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BuyPackRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_shop_shop_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetChargeVIPInfoReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_shop_shop_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetChargeVIPInfoRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_shop_shop_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetChargeVIPRewardReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_shop_shop_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetChargeVIPRewardRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -189,7 +865,7 @@ func file_system_shop_shop_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_system_shop_shop_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
