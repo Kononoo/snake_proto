@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package goat_game;
 
-option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/goat_game";
+option go_package = "git.17zjh.com/snake/snake_proto/activity/goat_game";
 
-import "snakeapi/base.proto";
-
+import "snakecommon/config.proto";
+import "snakecommon/task.proto";
 
 // 获取玩法主页信息
 message GetInfoReq {
@@ -25,7 +25,7 @@ message GetInfoResp {
 
 message EventTaskInfo{
   int32 event_id = 1; // 任务活动 id
-  repeated snakeapi.EventTask task_list = 2; // 任务列表
+  repeated snakecommon.EventTask task_list = 2; // 任务列表
 }
 
 // 领取任务奖励
@@ -35,7 +35,7 @@ message GetTaskRewardReq {
 }
 
 message GetTaskRewardResp {
-  repeated snakeapi.RewardItem reward_list = 1;
+  repeated snakecommon.RewardItem reward_list = 1;
 }
 
 // 获取游戏结果
@@ -65,5 +65,5 @@ message GoatUserScore {
   bool is_followed = 9;  // 是否已关注当前玩家
   bool is_ai = 10; // 是否是 ai
   int32 length = 11; // 长度
-  repeated snakeapi.RewardItem reward_list = 12; // 奖励列表(服务器返回)
+  repeated snakecommon.RewardItem reward_list = 12; // 奖励列表(服务器返回)
 }
