@@ -1,0 +1,29 @@
+syntax = "proto3";
+package snakecommon;
+option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
+
+import "snakecommon/config.proto";
+
+// 任务信息
+message EventTask {
+  int32 task_id = 1;                          // 任务id
+  int32 event_id = 2;                         // 任务所属任务活动id
+  int64 need_num = 3;                         // 所需数量
+  string desc = 4;                            // 任务描述，将 {} 替换成 need_num
+  string btn_link = 5;                        // 跳转链接
+  string btn_type = 6;                        // 跳转类型
+  TaskState state = 7;                        // 任务状态
+  int64 progress_num = 8;                     // 玩家进度
+  repeated RewardItem reward_item_list = 9;   // 奖励列表
+  int32 filter_type = 10;                     // 指定任务需要的资源类型（可选）
+  int32 filter_id = 11;                       // 指定任务需要的资源 id（可选）
+  string filter_args = 12;                    // 其他参数（自行解析并定义规则判断，可选）
+}
+
+// 任务状态
+enum TaskState {
+  UnDef     = 0;     // 未定义
+  Init      = 1;     // 初始化
+  CanReward = 2;     // 可领奖
+  Finish    = 3;     // 已领奖
+}
