@@ -74,3 +74,1658 @@ message CConvert {
   int64 num = 2;      // 数量
   int32 skin_id = 3;  // id
 }
+
+
+// ===============================================================================
+// copy structure from snakeapi/config/SKStore.ptoto begin
+// WARNING : keep same with snakeapi/config/SKStore.ptoto
+// ===============================================================================
+message CRewardConfig { // 客户端奖励配置结构，服务器不建议使用
+  int32 type = 1;
+  int32 skin_id = 2;//物品id
+  string name = 3;
+  string imgurl = 4;
+  int32 num = 5;
+  string big_num = 6; // 大数展示，为空展示num字段
+  string user_info = 7;//限时外观和头像框使用
+  int32 is_valuable = 8;//是否有高价值弹框，默认没有
+  int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
+  int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
+  repeated CRewardConfig convert = 11;//奖励折算，没有折算则为空
+  int32 probability = 12;
+  string use_info = 13;
+  repeated CRewardConfig convert_detail = 14; // 新版本目前正在使用，展示奖励配置用
+}
+
+message CStoreConfig {
+  repeated CStoreItem item_list = 1;
+  string extra_config_url = 2;
+}
+
+message CStoreItem {
+  int32 type = 1;
+  string cdn_url = 2;
+}
+
+message CPriceInfo {
+  int32 type = 1;
+  int32 num = 2; //RMB 类型时候  这个字段 代表 goodsid
+  int32 discount = 3;
+  int32 discountPrice = 4;
+}
+
+message CPackModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  CStoreInfo store = 4;
+  CPackInfo info = 5;
+}
+
+message CPackInfo {
+  // 礼包类型，1：苹果礼包，2：苹果翻倍礼包，其他是其他礼包
+  int32 type = 1;
+  int32 pack_type = 2;//1为礼包，奖励使用reward；2为福袋，奖励使用sure_reward和may_reward
+  repeated RewardConfig sure_reward = 3;
+  repeated RewardConfig may_reward = 4;
+  repeated RewardConfig reward = 5;
+  string title = 6;
+  string description = 7;
+  string total_price = 8;
+  string pay_success_desc = 9;
+  string pay_success_imgurl = 10;
+
+  repeated CPackMultiPriceInfo multi_buy_price = 11;
+  //每日红点开始时间
+  int64 notify_start = 12;
+  //每日红点结束时间
+  int64 notify_end = 13;
+
+  string gif_imgurl = 14;
+
+  // for passcheck 兑换 start
+  int32 baodi_times = 15;
+  int32 rank_limit = 16;
+  int32 need_vip = 17;
+  int32 nabob_addition = 18;
+  string lucky_desc = 19;
+}
+
+message CPackMultiPriceInfo {
+  int32 count = 1;
+  int32 price = 2;
+}
+
+message RewardConfig {
+  int32 type = 1;
+  int32 skin_id = 2;//物品id
+  string name = 3;
+  string imgurl = 4;
+  int32 num = 5;
+  string big_num = 6; // 大数展示，为空展示num字段
+  string user_info = 7;//限时外观和头像框使用
+  int32 is_valuable = 8;//是否有高价值弹框，默认没有
+  int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
+  int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
+  CConvert convert = 11;//奖励折算，没有折算则为空，老版本使用，已废弃
+  int32 probability = 12;
+  string use_info = 13;
+  repeated CConvert convert_detail = 14; // 新版本目前正在使用
+  int32 max_num = 15;
+  string badge = 16;
+  repeated int32 stage_probability = 17;
+  int32 time_unit = 18;
+  int32 free_probability = 19;
+  int32 is_baodi = 20;
+  int32 is_broadcast = 21;
+  int32 user_limit = 22;
+  int32 total_limit = 23;
+  int32 baodi_times = 24; // 普通奖励配置中保底次数
+  int32 reset_baodi = 25; // 获得后是否重置保底  0 不重置 1 重置
+}
+
+message CStoreInfo {
+  string badge_url = 1;
+  string imgurl = 2;
+  string name = 3;
+  string desc = 4;
+  //标签文案
+  string corner_desc = 5;
+  int32 get_method = 6;
+  string get_method_desc = 7;
+  //按钮文字
+  string btn_text = 8;
+  string btn_jumpurl = 9;
+  int32 buy_limit = 10;
+  int32 buy_limitation = 11;
+  //展示开始时间
+  int64 show_start = 12;
+  //展示结束时间
+  int64 show_end = 13;
+  //折扣开始时间
+  int64 discount_start = 14;
+  //折扣结束时间
+  int64 discount_end = 15;
+  string thumbnail = 16;
+  int64 add_time = 17;
+  repeated CPriceInfo price_info = 18;
+  int32 worth_level = 19;
+  string support_version = 20;
+}
+// ===============================================================================
+// copy structure from snakeapi/config/SKStore.ptoto end
+// ===============================================================================
+
+message UnityQualifyingOpenConfig{
+  repeated int32 weekdays = 1;
+  string day_start_time = 2;
+  string day_end_time = 3;
+}
+
+message RecoderConfig{
+  repeated HaighLight highlight_list = 1;
+  int32 open = 2;
+}
+
+message HaighLight{
+  int32 type = 1;
+  int32 obj = 2;
+  int32 time = 3;
+  int32 delay_time = 4;
+}
+
+message OfflineGameConfig{
+  repeated ReviveInfo endless_revive_config = 1;
+}
+
+message ReviveInfo{
+  int32 ad_revive = 1;
+  int32 card_revive = 2;
+  int32 diamond_revive = 3;
+}
+
+message EndLessBuffPropInfo{
+  int32 buff_type = 1;
+  int32 free_times = 2;
+  repeated RandomPriceInfo price_list = 3;
+  repeated RandomPropInfo prop_list = 4;
+}
+
+message RandomPriceInfo{
+  int32 type = 1;
+  int32 num = 2;
+  int32 discount = 3;
+}
+
+message RandomPropInfo{
+  int32 type = 1;
+  int32 skin_id = 2;
+  int32 num = 3;
+  string name = 4;
+  string imgurl = 5;
+}
+
+message PingConfig {
+  int32 ping_strategy = 1;
+  int32 new_ping_count = 2;
+  float ping_loss_rate = 3;
+  int32 ping_interval_time = 4;
+  int32 ping_interval_count = 5;
+  map<string,string> ping_ip_list = 6;
+}
+
+message ChargeVipConfig {
+  repeated VipLevel level_list = 1;
+  string intro_url = 2;
+}
+
+message VipLevel {
+  int32 level = 1;
+  int32 charge_exp = 2; // 需要的积分，是人民币的10倍
+
+  repeated VipPrivilege privilege = 4; // 特权展示
+
+  repeated CRewardConfig reward_list = 5; // 特权奖励
+
+  string anim_url = 6; // 大icon动效
+
+  int32 anim_type = 7;
+
+  string icon_url = 8; // 小icon动效
+
+  int32 icon_anim_type = 9;
+
+  repeated CRewardConfig week_reward = 10; // 每周好礼奖励
+}
+
+message VipPrivilege {
+  string imgurl = 1;
+
+  string desc = 2;
+
+  int32 type = 3; // 特权类型，1:照片数量加上限
+
+  int32 photo_num = 4;
+}
+
+
+
+message NetFrameGameConfig {
+  int32 qualifying_guide = 1; //1:强引导，2：弱引导
+  QualifyingConfig qualifying_config = 2;
+  int32 exit_button_plan = 3;
+  string team_suit_text_config = 4; // 团战队服说明文案
+}
+
+message QualifyingConfig {
+  repeated string intro_urls_v2 = 1;
+  string unlock_tip = 2; // 解锁提示"无尽模式达到***分解锁"
+  string game_rule = 3;// 结算页点赞说明
+  int32 force_guide = 4; //1有引导 // 对于未玩过团战的玩家,无尽模式以高于一定分数的成绩结束后是否出现强制团战引导
+  string banner_url = 5;
+  string banner_link = 6;
+  string icon_url = 7;
+  string icon_link = 8;
+  int32 pretty_page = 9;
+  int32 network_survey = 10;
+}
+
+message SocialConfig {
+  int32 broadcast_interval_time = 1;//广播刷新时间
+  int32 world_speak_min_star = 2;//世界发言最低星数
+  int32 world_speak_min_star_v2 = 3;//查看世界发言最低星数
+  int32 world_speak_interval_time = 4;
+  int32 group_speak_min_star = 5;
+  string marriage_vow_head = 6;
+  string marriage_vow_content = 7;
+  string marriage_vow_foot = 8;
+  int32 marry_point = 9;
+  repeated CharmLevel charm_level = 10;
+  CharmSocialConfig charm_top_config = 11;
+}
+
+message ShareConfig {
+  string share_url = 1;
+  string share_title = 2;
+  string share_text = 3;
+  string my_qr_url = 4;
+  ChannelConfig channel_config = 5;
+  GameInvite game_invite = 6;
+  repeated VideoShareIcon video_share_icon = 7;
+  repeated ClipBoardCheck clipboard_check = 8;
+  ShareTag share_tag = 9;
+}
+
+message ShareTag {
+  string kuaishou = 1;
+  string douyin = 2;
+  string weibo = 3;
+}
+
+message ClipBoardCheck {
+  int64 start_time = 1;
+  int64 finish_time = 2;
+  string act = 3;
+  string reg = 4;
+}
+
+message VideoShareIcon {
+  string key = 1;
+  int64 start_time = 2;
+  int64 finish_time = 3;
+  string imgurl = 4;
+  string link = 5;
+}
+
+message ChannelConfig {
+  int32 wechat_friend = 1;
+  int32 wechat_circle = 2;
+  int32 qq_circle = 3;
+  int32 qq_friend = 4;
+  int32 weibo = 5;
+}
+
+message GameInvite {
+  string title = 1;
+  string url = 2;
+  string text = 3;
+  string xiaomi_img = 4;
+}
+
+message CharmExpConfig {
+  repeated CharmExpRank charm_exp_ranks = 1; // 魅力勋章等级配置
+  repeated CharmPrivilegeConfig privilege_config = 2; // 特权配置
+  string rule_url = 3; // 规则说明url
+  string privilege_desc = 4; // 特权说明
+  string charm_detail = 5; // 魅力勋章详情页
+}
+
+message CharmExpRank {
+  int32 level = 1;
+  string name = 2;
+  string icon = 3;
+  int32 need_exp = 4;
+  repeated int32 privilege_ids = 5;
+  string text_bg_url = 6; // 首页魅力勋章背景图
+}
+
+message CharmPrivilegeConfig {
+  int32 id = 1;
+  string name = 2;
+  string imgurl = 3;
+  int32 min_level = 4;
+}
+
+
+message TextConfig {
+  string charm_star = 1;
+  string happycoin_title = 2;
+  string coin_deal_notify = 3;
+  repeated string share_text_list = 4;
+  string qualifying_beta_rule = 5;
+  string gift_rule = 6;
+  string endless_tips = 7;
+
+  GiftLikeTextConfig gift_like_text_list = 8;
+  repeated ShortCutConfig quick_phrase_text_list = 9;
+  repeated string ai_anchor_nickname_list = 10;
+  repeated ReportBehavior report_behavior_list = 11;
+}
+
+message GiftLikeTextConfig {
+  repeated string partner = 1;
+  repeated string enemy = 2;
+}
+
+message ShortCutConfig {
+  enum SceneType {
+    invalidStatus = 0;
+    SceneFriend = 1;
+    SceneWorld = 2;
+    SceneMatch = 3;
+    SceneClan = 5;
+    SceneCoupleMatch = 7;
+    SceneRaceRoom = 8;
+  }
+
+  int32 type = 1;
+  string name = 2;
+  repeated string list = 3;
+}
+
+
+message ReportBehavior {
+  int32 id = 1;
+  string desc = 2;
+}
+
+
+message ActivityConfig {
+  PassCheckV2 pass_check_v2 = 1;
+  MeetupConfig new_meetup_v3 = 2;
+  HatchEgg hatch_egg = 3;
+  NewbieConfig newbie_checkin = 4;
+  EndlessRewardConfig endless_game_reward = 5;
+  RouletteConfig turntable = 6;
+  SkinUgcConfig skin_ugc = 7;
+  string pass_check_pack_act_id = 8;
+  SkinUgcConfigV2 skin_ugc_v2 = 9;
+  EndlessFloatingV2 endless_floating_v2 = 10;
+  SuperShowConfig super_show = 11;
+  SeasonActivity season_activity = 12;
+}
+message EndlessFloatingV2 {
+  string act_id = 1;
+  int32 start_time = 2;
+  int32 end_time = 3;
+  repeated IllustrateFloatingRefreshConfig floating_refresh_config_v2 = 4;
+  repeated FloatingInfo floating_config = 5;
+  repeated TreasureHouseThemeInfo treasure_house = 6;
+  repeated BossTheme boss = 7;
+  ExtraBuff extra_buff = 8;
+  repeated FloatingAiSkin ai_skin = 9;
+  repeated FloatingAiSkinRateInfo ai_skin_rate = 10;
+  repeated FloatingAiKillEffect ai_killeffect = 11;
+  repeated FloatingAiKillEffectRateInfo ai_killeffect_rate = 12;
+  repeated FloatingMainMapTheme main_map_theme = 13;
+  repeated IllustrateConfig illustrate_config = 14;
+  int64 icon_start_time = 15;
+  int64 icon_end_time = 16;
+  string homepage_url = 17;
+}
+
+message IllustrateConfig {
+  int32 id = 1;
+  int32 type = 2;
+}
+
+message IllustrateFloatingRefreshConfig{
+  int32 pool_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+  FloatingRefreshConfig floating_refresh_config = 4;
+}
+
+message FloatingRefreshConfig {
+  repeated int32 refresh_interval = 1;
+  repeated int32 floating_kind = 2;
+  repeated int32 floating_num = 3;
+  int32 floating_range = 4;
+  int32 floating_min_distance = 5;
+  int32 wall_rate = 6;
+  repeated int32 wall_distance = 7;
+  int32 wall_floating_num = 8;
+}
+
+message FloatingInfo {
+  int32 id = 1;
+  string name = 2;
+  string desc = 3;
+  int32 length_limit = 4;
+  int32 time_limit = 5;
+  int32 not_collect_all_rate = 6;
+  int32 collect_all_rate = 7;
+  int32 first_add_score = 8;
+  int32 add_score = 9;
+  string imgurl = 10;
+  string area = 11;
+  int32 need_num = 12;
+  int32 diamond_limit = 13;
+  int32 relive_limit = 14;
+  int32 is_rare = 15;
+  float img_scale = 16;
+  repeated int32 maps = 17;
+  string period = 18;
+  int32 middle_item_id = 19;
+  string unlock_desc = 20;
+  int32 total_limit = 21;
+  int32 wall_not_collect_all_rate = 22;
+  int32 wall_collect_all_rate = 23;
+  int32 type = 24;
+}
+
+message TreasureHouseThemeInfo {
+  int32 ThemeId = 1;
+  string MapAssetPath = 2;
+  string CenterSpawnPrefabPath = 3;
+  int32 CandyElementId = 4;
+  int32 MushroomElementId = 5;
+  int32 SpawnScale = 6;
+  int32 MushRoomId = 7;
+  string broadcast_url = 8;
+  string progress_content = 9;
+  int32 StartTime = 10;
+  int32 EndTime = 11;
+}
+
+message BossTheme {
+  int32 theme_id = 1;
+  repeated int32 boss_firecracker = 2;
+  string blood = 3;
+  string desc = 4;
+  int32 entity_id = 5;
+  int32 add_score = 6;
+  repeated int32 add_floating = 7;
+  repeated int32 add_floating_rate = 8;
+  int32 prop_id = 9;
+  int32 prop_time = 10;
+  int64 start_time = 11;
+  int64 end_time = 12;
+  int32 type = 13;
+}
+
+message ExtraBuff {
+  int32 cold_second = 1;
+  int32 interval = 2;
+  int32 daily_limit = 3;
+  message ExtraBuffInfo {
+    int32 id = 1;
+    int32 value = 2;
+    string name = 3;
+    int32 rate = 4;
+    string tips = 5;
+  }
+  repeated ExtraBuffInfo buff_list = 4;
+}
+
+message FloatingAiSkin {
+  int32 skin_id = 1;
+  int32 random_weight = 2;
+  int64 start_time = 3;
+  int64 end_time = 4;
+  int32 illustrate_id = 5;
+}
+
+message FloatingAiSkinRateInfo {
+  int32 illustrate_id = 1;
+  int32 special_skin_rate = 2;
+}
+
+message FloatingAiKillEffect {
+  int32 kill_effect_id = 1;
+  int32 random_weight = 2;
+  int64 start_time = 3;
+  int64 end_time = 4;
+  int32 illustrate_id = 5;
+}
+
+message FloatingAiKillEffectRateInfo {
+  int32 illustrate_id = 1;
+  int32 special_kill_effect_rate = 2;
+}
+
+message FloatingMainMapTheme{
+  int32 illustrate_id = 1;
+  string map_asset_path = 2;
+}
+
+message SeasonCaiDan {
+  int32 id = 1;
+  string name = 2;
+  string desc = 3;
+  string imgurl = 4;
+}
+
+message SeasonActivity {
+  int32 season_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+  repeated SeasonCaiDan caidan_list = 4;
+  string season_homepage_url = 5;
+  string passport_url = 6;
+  string treasure_hunting_url = 7;
+  string chase_sea_url = 8;
+  string true_love_url = 9;
+}
+message NewbieConfig {
+  int32 endless_show_count = 1; // 新手无尽玩几局强制弹出引导
+  repeated NewbieSingleDayReward day_list = 2;
+}
+
+message NewbieSingleDayReward {
+  string imgurl = 1;
+  string anim_url = 2;
+  repeated CRewardConfig reward_list = 3;
+}
+
+message HatchEgg {
+  int64 start_time = 1;
+  int64 finish_time = 2;
+  int64 disappear_time = 3;
+  int32 disappear = 4;
+  string intro = 5;
+  string reward_review_url = 6;
+  repeated CRewardConfig reward_review_list = 7;
+  int32 ad_reduce_second = 8;
+  repeated EggLevelInfo egg_list = 9;
+  string title_desc = 10;
+  string title_url = 11;
+  string bg_url = 12;
+}
+
+message EggLevelInfo {
+  repeated CRewardConfig reward_list = 1; // 奖励配置
+  int32 level = 2; // 等级 1 普通；2 中级；3高级
+  int32 need_collect = 3; // 每个蛋需要收集数量
+  int64 hatch_time = 4; // 孵化时间
+  int32 diamond_value = 5; // 彩蛋价值
+}
+
+message MeetupConfig {
+  // Define fields for MeetupConfig
+  string homepage_icon = 1;
+  string homepage_icon_link = 2;
+  int64 homepage_icon_start = 3;
+  int64 homepage_icon_end = 4;
+  repeated MeetupConfigItem list = 5;
+}
+
+message MeetupConfigItem {
+  // Define fields for MeetupConfigItem
+  int32 act_id = 1;
+  int64 finish_time = 2;
+  string intro = 3;
+  repeated SingleDayReward days_list = 4;
+}
+
+message SingleDayReward {
+  repeated SingleRewardItem length_list = 1;
+}
+
+message SingleRewardItem {
+  int32 id = 1;
+  int32 unlock_days = 2;
+  int32 unlock_length = 3;
+  int32 price = 4;
+  int32 diamond = 5;
+  string desc = 6;
+  int32 popup_count = 7;//弹窗次数
+  int32 important = 8;//是否重点奖励，0否，1是
+  int32 watch_ad = 9;
+  repeated CRewardConfig reward_list = 10;
+  int32 rmb_price = 11;// rmb购买价格
+  int32 pack_id = 12;// rmb购买礼包id
+  int32 goods_id = 13;// 礼包档位id
+}
+
+message EndlessRewardConfig {
+  string title_img = 1;
+  string intro = 2;
+  int32 act_id = 3;
+  string period = 4;
+  repeated EndlessReward list = 5;
+}
+
+message EndlessReward {
+  int32 id = 1;
+  string desc = 2;
+  int32 important = 3;  //是否重点奖励，0否，1是
+  int32 popup_count = 4;  //弹窗次数
+  int32 diamond_price = 5; // 增加苹果购买配置，0表示不可用苹果购买，>0表示苹果价格
+  int32 unlock_length = 6;
+  int64 unlock_time = 7; // 默认0，没有时间限制
+  string unlock_tip = 8; // 某日活动开启后才可领取
+  int32 diamond = 9; // 苹果购买价格
+  int32 watch_ad = 10;  //需要看广告次数
+  int32 rmb_price = 11; // rmb购买价格
+  int32 pack_id = 12; // rmb购买礼包id
+  int32 goods_id = 13; // 礼包档位id
+  CRewardConfig reward = 14;
+}
+
+message PassCheckV2 {
+  int32 item_id = 1;
+  PassCommonConfig common = 2;
+  PassRewardConfig reward_config = 3;
+  PassTaskConfig task_config = 4;
+  PassStoreConfig store_config = 5;
+  int32 max_break_level = 6; // 最大突破礼等级
+  repeated BattleRankReward total_reward = 7;//榜单奖励
+}
+
+message PassCommonConfig {
+  string title = 1;
+  int64 start_time = 2;
+  int64 finish_time = 3;
+  string show_finish = 4;
+  int32 season = 5;
+  string rule_desc = 6; //玩法说明
+  string exp_desc = 7; //积分(经验)说明
+  string task_desc = 8; //任务说明
+  string top_desc = 9; //排行榜说明
+  string top_reward_imgurl = 10; //排行榜奖励说明图
+  string upgrade_imgurl = 11; //进阶说明图
+  string guide_imgurl = 12;
+  repeated int32 has_exp_mode = 13; //能获得且要展示经验的游戏模式
+  int32 per_rank_exp = 14; //每个等级需要的经验
+  // 首页
+  string bg_url = 15; // 背景url
+  int32 bg_anim_type = 16; // 主页背景动效类型
+  string main_reward_url = 17; // 主奖励展示动效svga
+  int32 main_reward_anim_type = 18; // 主奖励动效类型
+  string main_reward_bottom = 19; // 主奖励底图
+  string main_reward_condition = 20; // 主奖励获取条件文案
+
+  // 通行证进阶
+  string advance_bg_url = 21; // 进阶通行证背景url
+  int32 advance_bg_anim_type = 22; // 进阶通行证背景动效类型
+  string advance_honor_url = 23; // 荣耀通行证卡片
+  string advance_luxury_url = 24; // 豪华通行证卡片
+}
+
+message PassRewardConfig {
+  string infinity_rank_imgurl = 1;
+  int32 normal_rank = 2;// 奖励list里超过此数的关卡循环展示
+
+  repeated PassReward reward_list = 3;
+
+  PassRewardPreview reward_preview = 4;
+
+  repeated CRewardConfig reward_sort = 5;
+}
+
+message PassRewardPreview {
+  repeated CRewardConfig free_reward = 1;
+  repeated CRewardConfig high_reward = 2;
+  // 奖励橱窗
+  repeated WindowReward window_reward = 3;
+  repeated  CRewardConfig honor_reward = 4;
+  repeated  CRewardConfig luxury_reward = 5;
+}
+
+message WindowReward {
+  int32 type = 1;
+  int32 skin_id = 2;//物品id
+  string name = 3;
+  string imgurl = 4;
+  int32 num = 5;
+  string big_num = 6; // 大数展示，为空展示num字段
+  string user_info = 7;//限时外观和头像框使用
+  int32 is_valuable = 8;//是否有高价值弹框，默认没有
+  int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
+  int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
+  repeated CRewardConfig convert = 11;//奖励折算，没有折算则为空
+  int32 probability = 12;
+  string use_info = 13;
+  string desc = 14;
+}
+
+message PassReward {
+  int32 rank = 1;
+  repeated CRewardConfig free_reward = 2;
+  repeated CRewardConfig high_reward = 3;
+}
+
+message PassTaskConfig {
+  SeasonTask season_task = 1;
+  GradeTask grade_task = 2;
+  repeated WeeklyTask weekly_task = 3;
+  repeated DailyTask daily_task = 4;
+  int64 week_exp_limit = 5;
+  int64 day_exp_limit = 6;
+}
+
+message DailyTask {
+  string title = 1;
+  string desc = 2;
+  int32 btn_type = 3;
+  string btn_link = 4;
+  string btn_link_dev = 5;
+}
+
+message WeeklyTask {
+  int64 start_time = 1;
+  int64 finish_time = 2;
+  repeated PassTaskModel task_list = 3;
+}
+
+message SeasonTask {
+  repeated PassTaskModel task_list = 1;
+}
+
+message GradeTask {
+  repeated PassTaskModel task_list = 1;
+}
+
+message PassTaskModel {
+  int32 task_id = 1;
+  string desc = 2;
+  string btn_link = 3;
+  int32 param = 4;
+  int32 reward_exp = 5;
+  int32 need_task_card_num = 6; // 完成周任务需要的任务卡数量
+  string title = 7; // 日常任务才有
+}
+
+
+
+message PassStoreConfig {
+  CPriceInfo rank_price = 1;
+  repeated ExchangeStore exchange_store = 2;
+  string high_store_imgurl = 3;
+  string high_store_anim = 4;
+  repeated CPackModel high_store = 5;
+}
+
+message ExchangeStore {
+  int32 type = 1;
+  int32 skin_id = 2;
+  int32 id = 3; // 请求兑换接口时传入的id
+  int32 num = 4;
+  string name = 5;
+  string imgurl = 6;
+  string use_info = 7;
+  int64 time_unit = 8;
+  string desc = 9;
+  int32 buy_limit = 10; // 次数限制
+  ExchangePrice price = 11;
+  int32 rank_limit = 12; // 通行证等级
+  int32 need_vip = 13; // 通行证版本 0免费 1 荣耀 2 豪华
+  float nabob_addition = 14; // 限购加成百分比，豪华版才有
+}
+
+message ExchangePrice {
+  int32 type = 1; // 类型中间道具11，写死
+  int32 num = 2; // 兑换需要的通行币数量
+  int32 discount = 3; // 如果配置了就用这个作为价格，否则就用 num
+}
+
+
+
+message BattleRankReward {
+  int32 rank  = 1;
+  string rank_desc = 2;
+  string mail = 3;
+  repeated CRewardConfig reward = 4;
+}
+
+message RankConfig {
+  int64 end_time = 1;
+  string season_name = 2;
+  string season_introduce_url = 3;
+  int32 prime_king_range = 4; //最强王者数目
+  repeated string prime_top_urls = 5;
+  repeated Level level = 6;
+  repeated RankReward rank_reward = 7;
+}
+
+message RankReward {
+  // "star_range": [0, 3],
+  repeated int32 star_range = 1;
+  // "reward_list": [通用奖励数组]
+  repeated CRewardConfig reward_list = 2;
+}
+
+message Level {
+  int32 star_start_num = 1;
+  repeated int32 rule = 2;
+  int32 star_end_num = 3;
+  string url = 4;
+  string name = 5;
+  int32 mvp = 6;
+  string sprite_name = 7;
+}
+
+message ClanConfig {
+  string clan_reward_tips = 1;
+  int32 unlock_star = 2;
+  string permission_imgurl = 3;
+  repeated LevelConfig level_config = 4;
+  // 这是新的，预览的时候用
+  repeated ClanRewardConfig reward_explain_config = 5; // 服务器返回从大到小的排序，内部用的是从小到大的排序
+  // 这是老的，结算的时候用
+  repeated ClanRewardConfig reward_config = 6;// 服务器返回从大到小的排序，内部用的是从小到大的排序
+  repeated RaceTimeConfig race_time_config = 7;
+  // 这是新的，预览的时候用
+  repeated int32 reward_explain_partition = 8;//[0]为高，[1]为中，[2]为低
+  // 这是老的，结算的时候用
+  repeated int32 reward_partition = 9;//[0]为高，[1]为中，[2]为低
+  string qrcode_format = 10;
+  int32 create_clan_cost_diamond = 11;
+  RuleDesc rule_desc = 12; //战队赛增加活跃点规则
+  string season_cup_url = 13;
+  string reward_web = 14;
+  string desc_url_v2 = 15;
+}
+
+message RuleDesc {
+  string team_add_cup_rule = 1;//战队赛增加活跃点规则
+  string add_cup_rule = 2;//团战增加活跃点规则
+  int32 formal_member_cup = 3;//候补队员转正提示
+  string level_explain_url = 4;//战队等级介绍 url
+  repeated ActivePointAddition active_point_addition = 5; //排位赛战队成员组队加成
+  int32 race_cup_rate = 6;//战队赛倍数
+}
+
+message ActivePointAddition {
+  int32 member = 1;
+  string desc = 2;
+}
+
+message RaceTimeConfig {
+  int32 week_day = 1;  // 星期日为7
+  string start_time = 2;  // 格式24:00:00
+  string end_time = 3; // 格式24:00:00
+}
+
+message ClanRewardConfig {
+  int32 index = 1;   // 只代表id，不代表等级的高低
+  string badge_imgurl = 2;
+  string grade = 3;
+  string border_imgurl = 4;
+  int32 rank = 5;
+  int32 diamond = 6;
+  repeated CRewardConfig reward = 7;
+  int32 cup_start = 8;
+  int32 reward_id = 9;
+  // 下一个不同 grade 的 rank 位置
+  int32 nextRank = 10;
+  int32 degree = 11;  // 依据服务器返回来的等级列表位置，小的一定等级低，最低等级为0；0,1,2,3...n-1 中间没有空位
+}
+
+message LevelConfig {
+  int32 level = 1;
+  string icon_url = 2;
+  string name = 3;
+  int32 member_num = 4;
+  int32 expand_diamond = 5;
+  int32 cup_start = 6;
+}
+
+message UserConfig {
+  int32 gender_cost = 1; //性别修改需要的苹果数量
+  string certify_url = 2; // 实名认证 url 地址
+  int32 cache_clean_switch = 3; //1开2关
+  int32 snake_coin_limit = 4; // 彩豆周上限
+  string single_text_config = 5; // 单机右上角文案说明
+  string qualifying_text_config = 6; // 团战右上角文案说明
+  string clan_text_config = 7; // 战队赛结算右上角文案说明
+  repeated DeviceConfig abnormal_store = 8;
+  string zhi_token_url2 = 9; // 吱口令
+  int32 send_red_pack_need_care = 10; // 红包守护值
+  string upload_avatar_tips = 11; // 上传头像奖励
+  int32 start_endless_flag = 12; // 是否首页直接进无尽，0否1是
+  repeated int32 home_login_days = 13;//新用户第多少天登录 首次回首页后弹登录
+  int32 nickname_home_count = 14;//新用户第三天登录 多少次回首页后弹改名
+  ShowConfig show_config =15;
+  AntiAddiction anti_addiction = 16;
+  int32 online_interval_seconds = 17;
+  GameEndSkin game_end_skin = 18;
+  repeated string workday_list = 19;
+  repeated string holiday_list = 20;
+  RenamePopupRule rename_popup_rule = 21;
+  BindConfig bind_config = 22;
+  SettingConfig setting_conf = 23;
+  FeedbackConfig feedback = 24;
+  FlagsConfig flags = 25;
+  repeated CRewardConfig certify_reward = 26;
+  RegisterSurvey register_survey = 27;
+  RecruitPopup recruit_popup = 28;
+  MinorLimit minor_limit = 29;
+  string login_limit_msg = 30;
+  string age_tips_text = 31;
+  string certify_reward_image = 32;
+  NewUserConfig new_user_config = 33;
+  int32 open_cp_button = 34; // 是否开启cp背景更换按钮，1为开
+}
+
+
+/**
+* "new_user_config": {
+ *     "player_eat_food_rate_change_scope": 200,
+*     "player_eat_food_count_for_increase_node": 10,
+ * 		"eat_food_rate_change_scope": 200,
+*     "eat_food_count_for_increase_node": 10,
+ *     "guide_candy_total_count": 100, //新手引导糖果总个数
+ *   	"guide_candy_score": 100, //新手引导糖果分数
+ *     "free_revive_game_count": 5, //新手无尽前几局每局第一次免费复活
+ *   }
+ */
+message NewUserConfig {
+  int32 free_revive_game_count = 1;
+  int32 guide_skip_flag = 2; // 0关1开 新手引导流程修改实验开关
+  string new_user_img = 3;
+  string old_user_img = 4;
+}
+
+message MinorLimit {
+  int32 max_age = 1;//小于这个18值的是未成年
+  int32 hide_game_voice = 2; //1隐藏
+  int32 hide_friend_rank = 3; //1隐藏
+  OrderCurator order_curator = 4;
+}
+
+message OrderCurator {
+  string link = 1;
+  int32 need = 2; //1要弹
+}
+
+message RecruitPopup {
+  int32 switch = 1;//1开0关
+  int64 play_count = 2;//局数条件
+  int64 score = 3;//分数条件
+  string qa_url = 4;//问卷链接，需替换 {uid}
+  int32 id = 5;// 期数
+  string banner_url = 6;
+  int32 screen_share = 7;
+}
+
+message RegisterSurvey {
+  int32 switch = 1; //1开0关
+  int64 score = 2; //分数条件
+  int32 new_user_day = 3; //注册多少天内算新手
+  string qa_url = 4; //问卷链接，需替换 {uid}
+}
+
+message FlagsConfig {
+  int32 old_single_game_settle = 1;
+  int32 channel_social_huawei_state = 2;
+  int32 channel_social_oppo_state = 3;
+  int32 channel_social_vivo_state = 4;
+  int32 downloader_state = 5;
+  int32 downloader_pause_state_v2 = 6;
+  int32 open_goto_unity_endless = 7;
+  int32 tcp_push_stash = 8; //是否开启暂存
+  int32 open_wedding_list_anim = 9; // 是否开启教堂婚礼列表动画
+  int32 first_blood_sound_effect = 10; //1是新音效，0默认音效
+}
+
+message FeedbackConfig {
+  int32 switch = 1;
+  string version = 2;
+  int32 register_days = 3;
+  int32 play_count = 4;
+  int32 score = 5;
+  int32 limit = 6;
+}
+
+message SettingConfig {
+  DocVersion doc_version = 1;
+  NetworkCheck network_check = 2;
+}
+message NetworkCheck {
+  string target = 1;
+  string resource = 2;
+  int32 open = 3; //1开0隐藏
+}
+// 用户协议、隐私政策、未成年声明
+message DocVersion {
+  string agreement = 1;
+  string privacy = 2;
+  string announce = 3;
+  string info_sharing_list = 4;
+  string personal_info = 5;
+}
+
+message BindConfig {
+  string bg_url = 1;
+  int32 can_close = 2;
+}
+
+message RenamePopupRule {
+  NewbieClub newbie_club = 1;
+  QualifyingMatch qualifying_match = 2;
+}
+
+message QualifyingMatch {
+  int32 limit = 1;
+}
+
+message NewbieClub {
+  int64 interval = 1;
+  int32 limit = 2;
+}
+
+message GameEndSkin {
+  string notice_url = 1; //气泡图
+  string link = 2; //跳转库
+}
+
+message DeviceConfig {
+  string model = 1;//手机型号(MODEL)
+  string product = 2;//当前手机品牌(PRODUCT)
+  string brand = 3;//手机厂商(BOARD)
+  string manufacturer = 4;//设备制造商(MANUFACTURER)
+}
+
+message ShowConfig {
+  repeated ShowLevelConfig level_config = 1;
+  repeated SkillName skill_name = 2;
+  string intro_v2 = 3;
+  string addition_intro = 4;
+}
+
+message ShowLevelConfig {
+  string game_skill = 1;
+  repeated CRewardConfig reward = 2;
+  string thumbnail = 3;
+  string thum_anim_url = 4;
+  string icon_url = 5;
+  string anim_url = 6;
+  int32 total_show = 7;
+  int32 level = 8;
+}
+
+message SkillName {
+  int32 skill_type = 1;
+  string name = 2;
+}
+
+message SkillBuff {
+  int32 skill_type = 1;
+  string value = 2;
+  string value_text = 3;
+}
+
+
+
+message AntiAddiction {
+  Notify notify = 1;
+  MinorNotify minor_notify = 2;
+  string safe_game_notify = 3;
+  PayNotify pay_notify =  4;
+  SocialDesc social_desc = 5;
+  IdentityAge identity_age = 6;
+  CertifyNotify certify_notify = 7;
+  string certify_url = 8;
+}
+
+message Notify {
+  repeated CensorGameConfig uncertified = 1;
+  repeated CensorGameConfig minor = 2;
+}
+/**
+ * "login_text": "为空则没有宵禁","begin": "22:00","end": "08:00",
+ *         "workday_active": 3600,"holiday_active": 10800,"active_text": "超时提醒",
+ *         "active_notice": "剩余活跃时间提醒{remain}占位","notice_interval": 1800
+ */
+message MinorNotify {
+  string login_text = 1;
+  string begin = 2;
+  string end = 3;
+  int32 workday_active = 4;
+  int32 holiday_active = 5;
+  string active_text = 6;
+  string active_notice = 7;
+  int32 notice_interval = 8;
+  int32 addicted_flag = 9; //防沉迷开关 0关闭，1打开
+}
+
+message PayNotify {
+  string minor = 1;
+  int32 certify_flag = 2; //0不弹窗，1弹窗可充值，2弹窗不可充值
+}
+
+message SocialDesc {
+  string broadcast = 1;
+  string world = 2;
+  string friend = 3;
+  string clan = 4;
+}
+
+message IdentityAge {
+  int32 minor = 1;
+}
+
+message CertifyNotify {
+  int32 active_limit = 1;
+  int32 interval = 2;
+  int32 limit = 3;
+  int32 flag = 4; // 0不弹，1弹窗可关，2弹窗不可关
+}
+/**
+ * game_time : 10800
+ * msg : 【健康系统】您今日的累计游戏时间已经超过3小时，为了您的健康，请您下线休息，做适当身体活动，注意劳逸结合。
+ */
+message CensorGameConfig {
+  int32 game_time = 1;
+  string msg = 2;
+  int32 interval_time = 3;
+}
+
+message HomeUiConfigV3 {
+  IconConfig endless_icon_v2 = 1;
+  IconConfig qualifying_icon_v2 = 2;
+  IconConfig left_corner = 3;
+  IconConfig right_corner = 4;
+  repeated MoreGame more_game = 5;
+  NewbieCondition newbie_condition = 6;
+  IconConfig endless_huge_icon = 7;
+  int64 game_slide_interval_sec = 8;
+  repeated SlideIconConfig game_slide_list = 9;
+}
+
+message SlideIconConfig {
+  string url = 1;
+  string lock_url = 2;
+  string link = 3;
+  Bubble bubble = 4;
+  string support_version = 5;
+  string text_imgurl = 6;
+  string anim_url = 7;
+  int32 anim_type = 8;
+  string open_day_start = 9;
+  string open_day_end = 10;
+  int64 start_time = 11;
+  int64 end_time = 12;
+}
+
+message IconConfig {
+  string url = 1;
+  string lock_url = 2;
+  string link = 3;
+  Bubble bubble = 4;
+  string support_version = 5;
+  string text_imgurl = 6;
+  string anim_url = 7;
+  int32 anim_type = 8;
+}
+
+message MoreGame {
+  string url = 1;
+  string lock_url = 2;
+  int32 review_hide = 3; // 在审核模式下是否隐藏，1是，0否
+  int32 newbie_hide = 4; // 对新手是否隐藏，1是，0否
+  int32 size_type = 5; // 大图0
+  string link = 6;
+  Bubble bubble = 7;
+  string support_version = 8;
+
+  string open_day_start = 9;
+  string open_day_end = 10;
+  int64 start_time = 11;
+  int64 end_time = 12;
+}
+
+message Bubble {
+  string url = 1;
+  int32 stay_second = 2;
+  int64 show_start = 3;
+  int64 show_end = 4;
+}
+
+message NewbieCondition {
+  int32 register_day = 1;
+  int64 single_len = 2;
+}
+
+message CharmSocialConfig {
+  int32 user_show_day = 1;
+  int32 list_count = 2;
+  string increase_desc = 3;
+}
+
+message CharmLevel {
+  int32 charm_start = 1;
+  string icon_url = 2;
+  string icon_url_v2 = 3;
+  int32 num = 4;
+}
+
+message RewardMark {
+  int32 id = 1;      // 角标id
+  string icon = 2;   // 角标图片
+}
+
+message RouletteConfig {
+  int32 popup_interval = 1;
+  repeated RewardTableBean reward_table = 2;
+  RouletteSubConfig config = 3;
+}
+
+message RewardTableBean {
+  string imgurl = 1;
+  int32 count = 2;
+  int32 mode = 3;
+}
+
+message RouletteSubConfig {
+  string lottery_link = 1;
+  string lottery_link_ios = 2;
+  string endless_icon_url = 3;
+  string gold_coin_icon_url = 4;
+  int64 endless_endtime = 5; // 单机轮盘结束时间，以s计算
+}
+
+message ShowAdConfig {
+  repeated AdRewardModel snake_coin_ad_config = 1;//看广告的银币
+  repeated AdRewardModel coupon_ad_config = 2;//看广告得奖券
+  string single_add_buff_ui = 3;
+  AdPopupsConfig android_ad_popups_config = 4;
+  AdPopupsConfig ad_popups_config = 5;
+  repeated EndlessAdRecommend endless_checkout_recommend = 6;
+  repeated EndlessAdRecommend melee_checkout_recommend = 7;
+}
+
+message AdRewardModel {
+  int32 cold_time = 1;
+  int32 index = 2;
+  int32 num = 3;
+  int32 type = 4; //货币类型
+}
+
+message AdPopupsConfig {
+  int32 trio_game_count = 1;//新用户首次允许弹出弹窗的局数（新手保护）
+  repeated string popus_order = 2;//重来时皮肤与buff都满足触发条件，优先顺序可配（默认皮肤优先）
+  PopupPositionConfig popup_position_config = 3;
+
+  repeated string end_popup_order = 4;
+  repeated string new_end_popup_order1 = 5;
+  repeated string new_end_popup_order2 = 6;
+  int32 end_popup_count = 7;
+}
+
+message PopupPositionConfig {
+  PopupConfig skin_trial = 1;
+  PopupConfig endless_buff = 2;
+  PopupConfig lottery = 3;
+}
+
+message PopupConfig {
+  int32 times = 1;//首次弹出的局数
+  int32 interval_times = 2;//弹出间隔局数
+  int32 show_limit = 3;//每日展示上限
+}
+
+message EndlessAdRecommend {
+  int32 item_id = 1;//id
+  int32 anim_type = 2;//通用动画类型,1:图片,5:视频
+  string anim_url = 3;//动画链接
+  string link = 4;//通用跳转链接
+  int32 probability = 5;//权重
+}
+
+message SkinUgcConfig {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string icon_imgurl = 3;
+  string btn_link = 4;
+}
+
+message OrderConfig {
+  repeated int32 alive_pack_popup = 1;
+  repeated int32 alive_popup_order = 2;
+  repeated IAPPackGoods diamond_goods_list = 3;
+  repeated int32 excite_popup_order = 4;
+  int32 iapppay_switch = 5;
+  repeated IAPPackGoods pack_goods_list = 6;
+  repeated IAPPackGoods red_pack_goods_list = 7;
+  string service_contact = 8;
+  int32 need_bind = 9;
+  OrderRandomDouble random_double = 10;
+}
+
+message IAPPackGoods {
+  string goods_name = 1;
+  string imgurl = 3;
+  int32 diamond = 7;
+  string tips = 8;
+  int32 goods_id = 9;
+  int32 goods_price = 10;
+}
+
+message OrderRandomDouble {
+  string title_imgurl = 1;
+}
+
+message Title {
+  int32 id = 1;
+  string name = 2;
+  string img = 3;// 背景
+  int32 start_time = 4;// 开始和结束时间不为0的为活动主题
+  int32 end_time = 5;
+}
+
+message ShowIllustrationConfig {
+  string desc_url = 1;// 说明文案
+  repeated Title title_list = 2;
+  repeated int32 hide_ids = 3;// 需隐藏的资源id配置
+  repeated ShowSeason  season_list = 4;
+}
+message ShowSeason {
+  int32 id = 1;
+  string name = 2;
+  string img = 3;
+  int64 start_time = 4;
+  int64 end_time = 5;
+  string bg_imgurl = 6;
+  repeated CRewardConfig rewards = 7;
+  repeated SeasonResource resources = 8;
+}
+
+message SeasonResource {
+  int32 type = 1;
+  int32 skin_id = 2;
+  string imgurl = 3;
+  string gray_imgurl = 4;
+  int32 x = 5;
+  int32 y = 6;
+}
+message ShowBadgeConfig {
+  string intro = 1;
+  repeated BadgeTitle title_list = 2;
+  string show_illustration_desc_url= 4;
+  string activity_id = 5;
+}
+
+message BadgeTitle {
+  int32 id = 1;
+  repeated CRewardConfig rewards = 2;
+  int32 need_collect = 3;
+  int32 start_show_level = 4;
+  int32 end_show_level = 5;
+  string desc = 6;
+}
+
+message SkinUgcConfigV2 {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string icon_imgurl = 3;
+  string btn_link = 4;
+  repeated UgcTopic skin_topic_list = 5;
+  repeated UgcTopic ks_topic_list = 6;
+  repeated UgcTopic bg_topic_list = 7;
+  repeated UgcTopic suit_topic_list = 8;
+  int64 vip_cost = 9;
+  string title_url = 10;
+}
+
+
+
+
+message UgcTopic {
+  int32 id = 1;
+  string name = 2;
+  string bg=3;
+  string bg_small=4;
+  bool is_topic_create=5;
+}
+
+message UgcWorks {
+  int32 id = 1;
+  string name = 2;
+  int32 like = 3; // 点赞数
+  int32 support = 4; // 应援数
+  string uid = 5; // 作者uid
+  string nickname = 6; // 作者名字
+  int32 type = 7; // 1:皮肤，2:击杀效果，3:背景，4.套装
+  int32 skin_type = 8; // 作品为皮肤时有效，1节点型，2丝带行，3拉伸型
+  int32 topic_id = 9;
+  int32 upload_ts = 10;
+  int32 state = 11; // 状态：0:审核中，1:已过审
+  UgcWorksLink normal = 12; //作品为皮肤时有效，静态皮肤
+  UgcWorksLink speed = 13; //作品为皮肤时有效，加速皮肤
+  string game_info = 14; // 作品图集信息
+  int32 skin_id = 15; // 套装的皮肤id
+  int32 ks_id = 16; // 套装的击杀id
+  int32 bg_id = 17; // 套装的背景id
+  UgcWorks skin_info = 18; // 套装的皮肤信息
+  UgcWorks ks_info = 19; // 套装的皮肤信息
+  UgcWorks bg_info = 20; // 套装的皮肤信息
+}
+
+message UgcWorksLink {
+  string head_imgurl = 1;
+  repeated string body_imgurl = 2;
+  string tail_imgurl = 3;
+}
+
+// MonthCard Start
+message MonthCardConfig{
+  string card_desc = 1;//底部叠加获得奖励及特权点击打开后弹窗的文案
+  string source = 2;
+  CMonthCard little_month_card = 3;//超值月卡
+  CMonthCard super_month_card = 4;//至尊月卡
+}
+
+message CMonthCard{
+  string url = 1;//背景图
+  repeated CRewardConfig daily_reward = 2;
+  string title = 3;//特权标题
+  string desc = 4;//特权描述
+  int32 duration = 5;
+  int32 free_pack = 6;//免费礼包id
+  int32 pack_id = 7;//月卡id，也是礼包id
+  repeated MonthCardPackItem pack_list = 8;//礼包列表
+}
+
+message MonthCardPackItem{
+  int32 original_price = 1;//原价
+  int32 pack_id = 2;//礼包id
+}
+// MonthCard End
+
+// TopListConfig Start
+message TopListConfig {
+  repeated string province_list = 1;
+  string user_top_list_reset_tips = 2;
+  string clan_top_list_reset_tips = 3;
+}
+// TopListConfig End
+
+// 小秘书相关配置 Start
+message SnakeSecretary {
+  SecretaryModel common = 1; // 常见问题
+  SecretaryModel account = 2; // 账户问题
+  SecretaryModel order = 3; // 充值问题
+}
+
+message SecretaryModel {
+  string title = 1;
+  repeated QAInfo qa_list = 2;
+}
+
+message QAInfo {
+  string q = 1;
+  string a = 2;
+}
+// 小秘书相关配置 End
+
+// 广告相关配置 Start
+message AdConfig {
+  int32 times = 1; //插页弹出局数间隔
+  int32 first_times = 2;//插页首弹局数
+  int32 times_limit = 3;//插页每日弹出上限
+  int32 min_interval = 4;//最小时间间隔
+  int32 delay_load = 5;
+  int32 first_time_interval = 6;
+  int32 time_interval = 7;
+  repeated AdGrade ad_percent = 8;
+  repeated AdGrade interstitial_ad_percent = 9;
+  repeated AdGrade excessive_ad = 10;
+  repeated IAPPackGoods goods_list = 11;
+  repeated AdSwitch switch_setting = 12;
+  repeated AdAppidConfig ad_appid_config = 13;
+  int32 excessive_ad_count = 14; //原生自定义广告展示局数
+  int32 ad_diamond_state = 15;
+  int32 ad_relive_state = 16;
+  int32 review_state = 17; //审核开关，0：不在审核，1：审核中，此参数优先级高于switch_setting
+  int32 is_ad_before = 18; //1是广告先播，2是结束页先播
+  int32 ad_chest_reduce_time = 19; //宝箱看广告减cd
+}
+
+message AdGrade {
+  string id = 1;
+  int32 grade = 2;
+}
+
+message AdSwitch {
+  int32 type = 1;
+  int32 value = 2;
+}
+
+message AdAppidConfig {
+  int32 type = 1;
+  string ad_key = 2;
+  string app_id = 3;
+  string ad_id = 4;
+}
+// 广告相关配置 End
+
+// 魅力之旅 Start
+message CharmTourConfig {
+  string intro = 1;
+  repeated LevelDetail charm_title_list = 2;
+  repeated LevelConfig charm_level_list = 3;
+  string wish_gift_desc_url = 4;
+  int64 all_tag_show_time = 5;
+
+  message LevelDetail {
+    int32 id = 1;
+    string name_url = 2; // 标题艺术字图片
+    string title = 3; // 标题文字
+    string icon_url = 4;
+    string anim_url = 5;
+    int32 anim_type = 6;
+    repeated CRewardConfig rewards = 7;
+    int32 need_collect = 8; // 达到该等级需要解锁的礼物个数
+    int32 start_charm_level = 9;
+    int32 end_charm_level = 10;
+  }
+
+  message LevelConfig {
+    int32 level = 1;
+    int64 charm = 2;
+  }
+}
+// 魅力之旅 End
+
+// 礼物墙 Start
+message GiftWallConfig{
+  string gift_wall_desc = 1;
+  repeated NamePlate nameplate_list = 2;
+
+  message NamePlate{
+    int32 id = 1;
+    string imgurl = 2;
+    int32 nameplate_type = 3; // 1-集星周铭牌；2-累计集星铭牌；3-点亮铭牌
+    int32 need_star = 4;
+    string name = 5;
+  }
+}
+// 礼物墙 End
+
+message SuperShowConfig {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  int32 skin_id = 3; // 超级秀皮肤id
+}
+
+// 师徒 Start
+message MentorConfig {
+  repeated MentorPrivilegeInfo master_privilege_config = 1;
+  repeated MentorshipBondConfig bond_title_config = 2;
+  MentorFinishReward finish_reward = 3;
+  repeated MasterPrenticeStrategy master_prentice_strategy = 4;
+  int32 master_star_limit = 5;
+  int32 break_hour_limit = 6;
+  int32 mentorship_open = 7;
+}
+
+message MentorPrivilegeInfo {
+  string title = 1;
+  string title_img = 2;
+  int32 level = 3;
+  int32 level_exp = 4;
+  int32 addition = 5;
+  repeated PrivilegeDetailInfo privilege_config = 6;
+  repeated CRewardConfig privilege_reward = 7;
+}
+
+message PrivilegeDetailInfo {
+  string img_url = 1;
+  string desc = 2;
+}
+
+message MentorshipBondConfig {
+  int64 fade_time = 1;  // 褪色时间(s)
+  int32 bond_level = 2;  // 羁绊等级
+  int32 bond_level_exp = 3;  // 羁绊等级对应经验值
+}
+
+message MentorFinishReward {
+  repeated CRewardConfig master_reward = 1;
+  repeated CRewardConfig prentice_reward = 2;
+}
+
+message MasterPrenticeStrategy {
+  string title = 1;
+  string img = 2;
+}
+// 师徒 End
+
+// 礼物图鉴 Start
+message GiftIllustrationConfig{
+  string desc_url = 1;
+  string guide_url = 2;
+  repeated GiftTitleItemConfig title_list = 3;
+}
+
+message GiftTitleItemConfig{
+  int32 id = 1;
+  string name = 2;
+  string img = 3;
+}
+// 礼物图鉴 End
+
+// config_v4 resp proto end
