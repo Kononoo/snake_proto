@@ -638,6 +638,360 @@ func (x *GoatUserScore) GetRewardList() []*snakecommon.CRewardItem {
 	return nil
 }
 
+// 获取无尽宝箱彩蛋及用户信息
+type GetEndlessChestInfoReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetEndlessChestInfoReq) Reset() {
+	*x = GetEndlessChestInfoReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_activity_goat_game_goat_game_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetEndlessChestInfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetEndlessChestInfoReq) ProtoMessage() {}
+
+func (x *GetEndlessChestInfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_goat_game_goat_game_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetEndlessChestInfoReq.ProtoReflect.Descriptor instead.
+func (*GetEndlessChestInfoReq) Descriptor() ([]byte, []int) {
+	return file_activity_goat_game_goat_game_proto_rawDescGZIP(), []int{9}
+}
+
+type GetEndlessChestInfoRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StartTime       int64               `protobuf:"varint,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime         int64               `protobuf:"varint,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	ShowPercent     int32               `protobuf:"varint,3,opt,name=show_percent,json=showPercent,proto3" json:"show_percent,omitempty"`               // 出现概率(0-100)
+	ShowDayLimit    int32               `protobuf:"varint,4,opt,name=show_day_limit,json=showDayLimit,proto3" json:"show_day_limit,omitempty"`          // 每日次数限制
+	Reward          *EndlessChestReward `protobuf:"bytes,5,opt,name=reward,proto3" json:"reward,omitempty"`                                             // 奖励配置
+	TotayShownCount int64               `protobuf:"varint,6,opt,name=totay_shown_count,json=totayShownCount,proto3" json:"totay_shown_count,omitempty"` // 今日已出现次数
+}
+
+func (x *GetEndlessChestInfoRsp) Reset() {
+	*x = GetEndlessChestInfoRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_activity_goat_game_goat_game_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetEndlessChestInfoRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetEndlessChestInfoRsp) ProtoMessage() {}
+
+func (x *GetEndlessChestInfoRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_goat_game_goat_game_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetEndlessChestInfoRsp.ProtoReflect.Descriptor instead.
+func (*GetEndlessChestInfoRsp) Descriptor() ([]byte, []int) {
+	return file_activity_goat_game_goat_game_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GetEndlessChestInfoRsp) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *GetEndlessChestInfoRsp) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *GetEndlessChestInfoRsp) GetShowPercent() int32 {
+	if x != nil {
+		return x.ShowPercent
+	}
+	return 0
+}
+
+func (x *GetEndlessChestInfoRsp) GetShowDayLimit() int32 {
+	if x != nil {
+		return x.ShowDayLimit
+	}
+	return 0
+}
+
+func (x *GetEndlessChestInfoRsp) GetReward() *EndlessChestReward {
+	if x != nil {
+		return x.Reward
+	}
+	return nil
+}
+
+func (x *GetEndlessChestInfoRsp) GetTotayShownCount() int64 {
+	if x != nil {
+		return x.TotayShownCount
+	}
+	return 0
+}
+
+type EndlessChestReward struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Length         *EndlessChestLengthReward   `protobuf:"bytes,1,opt,name=length,proto3" json:"length,omitempty"`
+	SkipChipReward *EndlessChestSkipChipReward `protobuf:"bytes,2,opt,name=skip_chip_reward,json=skipChipReward,proto3" json:"skip_chip_reward,omitempty"`
+}
+
+func (x *EndlessChestReward) Reset() {
+	*x = EndlessChestReward{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_activity_goat_game_goat_game_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EndlessChestReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EndlessChestReward) ProtoMessage() {}
+
+func (x *EndlessChestReward) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_goat_game_goat_game_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EndlessChestReward.ProtoReflect.Descriptor instead.
+func (*EndlessChestReward) Descriptor() ([]byte, []int) {
+	return file_activity_goat_game_goat_game_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *EndlessChestReward) GetLength() *EndlessChestLengthReward {
+	if x != nil {
+		return x.Length
+	}
+	return nil
+}
+
+func (x *EndlessChestReward) GetSkipChipReward() *EndlessChestSkipChipReward {
+	if x != nil {
+		return x.SkipChipReward
+	}
+	return nil
+}
+
+type EndlessChestLengthReward struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Fixed            int64 `protobuf:"varint,1,opt,name=fixed,proto3" json:"fixed,omitempty"`                                                 // 固定长度
+	CurLengthPercent int32 `protobuf:"varint,2,opt,name=cur_length_percent,json=curLengthPercent,proto3" json:"cur_length_percent,omitempty"` // 当前长度百分比
+}
+
+func (x *EndlessChestLengthReward) Reset() {
+	*x = EndlessChestLengthReward{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_activity_goat_game_goat_game_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EndlessChestLengthReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EndlessChestLengthReward) ProtoMessage() {}
+
+func (x *EndlessChestLengthReward) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_goat_game_goat_game_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EndlessChestLengthReward.ProtoReflect.Descriptor instead.
+func (*EndlessChestLengthReward) Descriptor() ([]byte, []int) {
+	return file_activity_goat_game_goat_game_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *EndlessChestLengthReward) GetFixed() int64 {
+	if x != nil {
+		return x.Fixed
+	}
+	return 0
+}
+
+func (x *EndlessChestLengthReward) GetCurLengthPercent() int32 {
+	if x != nil {
+		return x.CurLengthPercent
+	}
+	return 0
+}
+
+type EndlessChestSkipChipReward struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	KindRange []int32                           `protobuf:"varint,1,rep,packed,name=kind_range,json=kindRange,proto3" json:"kind_range,omitempty"` // 种类个数随机范围
+	Items     []*EndlessChestSkipChipRewardItem `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty"`                                  // 皮肤碎片配置
+}
+
+func (x *EndlessChestSkipChipReward) Reset() {
+	*x = EndlessChestSkipChipReward{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_activity_goat_game_goat_game_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EndlessChestSkipChipReward) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EndlessChestSkipChipReward) ProtoMessage() {}
+
+func (x *EndlessChestSkipChipReward) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_goat_game_goat_game_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EndlessChestSkipChipReward.ProtoReflect.Descriptor instead.
+func (*EndlessChestSkipChipReward) Descriptor() ([]byte, []int) {
+	return file_activity_goat_game_goat_game_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *EndlessChestSkipChipReward) GetKindRange() []int32 {
+	if x != nil {
+		return x.KindRange
+	}
+	return nil
+}
+
+func (x *EndlessChestSkipChipReward) GetItems() []*EndlessChestSkipChipRewardItem {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+type EndlessChestSkipChipRewardItem struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ItemId   int32   `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`              // 皮肤碎片 id
+	Weight   int32   `protobuf:"varint,2,opt,name=weight,proto3" json:"weight,omitempty"`                            // 权重
+	NumRange []int32 `protobuf:"varint,3,rep,packed,name=num_range,json=numRange,proto3" json:"num_range,omitempty"` // 数量随机范围
+}
+
+func (x *EndlessChestSkipChipRewardItem) Reset() {
+	*x = EndlessChestSkipChipRewardItem{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_activity_goat_game_goat_game_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EndlessChestSkipChipRewardItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EndlessChestSkipChipRewardItem) ProtoMessage() {}
+
+func (x *EndlessChestSkipChipRewardItem) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_goat_game_goat_game_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EndlessChestSkipChipRewardItem.ProtoReflect.Descriptor instead.
+func (*EndlessChestSkipChipRewardItem) Descriptor() ([]byte, []int) {
+	return file_activity_goat_game_goat_game_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *EndlessChestSkipChipRewardItem) GetItemId() int32 {
+	if x != nil {
+		return x.ItemId
+	}
+	return 0
+}
+
+func (x *EndlessChestSkipChipRewardItem) GetWeight() int32 {
+	if x != nil {
+		return x.Weight
+	}
+	return 0
+}
+
+func (x *EndlessChestSkipChipRewardItem) GetNumRange() []int32 {
+	if x != nil {
+		return x.NumRange
+	}
+	return nil
+}
+
 var File_activity_goat_game_goat_game_proto protoreflect.FileDescriptor
 
 var file_activity_goat_game_goat_game_proto_rawDesc = []byte{
@@ -727,11 +1081,60 @@ var file_activity_goat_game_goat_game_proto_rawDesc = []byte{
 	0x6e, 0x67, 0x74, 0x68, 0x12, 0x39, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c,
 	0x69, 0x73, 0x74, 0x18, 0x0c, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x73, 0x6e, 0x61, 0x6b,
 	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49,
-	0x74, 0x65, 0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x42,
-	0x34, 0x5a, 0x32, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d,
-	0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x2f, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x2f, 0x67, 0x6f, 0x61, 0x74,
-	0x5f, 0x67, 0x61, 0x6d, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x65, 0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x22,
+	0x18, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x68, 0x65,
+	0x73, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x71, 0x22, 0xfe, 0x01, 0x0a, 0x16, 0x47, 0x65,
+	0x74, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x68, 0x65, 0x73, 0x74, 0x49, 0x6e, 0x66,
+	0x6f, 0x52, 0x73, 0x70, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69,
+	0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54,
+	0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x21,
+	0x0a, 0x0c, 0x73, 0x68, 0x6f, 0x77, 0x5f, 0x70, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x73, 0x68, 0x6f, 0x77, 0x50, 0x65, 0x72, 0x63, 0x65, 0x6e,
+	0x74, 0x12, 0x24, 0x0a, 0x0e, 0x73, 0x68, 0x6f, 0x77, 0x5f, 0x64, 0x61, 0x79, 0x5f, 0x6c, 0x69,
+	0x6d, 0x69, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x73, 0x68, 0x6f, 0x77, 0x44,
+	0x61, 0x79, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x35, 0x0a, 0x06, 0x72, 0x65, 0x77, 0x61, 0x72,
+	0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x67, 0x6f, 0x61, 0x74, 0x5f, 0x67,
+	0x61, 0x6d, 0x65, 0x2e, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x68, 0x65, 0x73, 0x74,
+	0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x06, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x2a,
+	0x0a, 0x11, 0x74, 0x6f, 0x74, 0x61, 0x79, 0x5f, 0x73, 0x68, 0x6f, 0x77, 0x6e, 0x5f, 0x63, 0x6f,
+	0x75, 0x6e, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0f, 0x74, 0x6f, 0x74, 0x61, 0x79,
+	0x53, 0x68, 0x6f, 0x77, 0x6e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0xa2, 0x01, 0x0a, 0x12, 0x45,
+	0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x68, 0x65, 0x73, 0x74, 0x52, 0x65, 0x77, 0x61, 0x72,
+	0x64, 0x12, 0x3b, 0x0a, 0x06, 0x6c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x23, 0x2e, 0x67, 0x6f, 0x61, 0x74, 0x5f, 0x67, 0x61, 0x6d, 0x65, 0x2e, 0x45, 0x6e,
+	0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x68, 0x65, 0x73, 0x74, 0x4c, 0x65, 0x6e, 0x67, 0x74, 0x68,
+	0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x06, 0x6c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x12, 0x4f,
+	0x0a, 0x10, 0x73, 0x6b, 0x69, 0x70, 0x5f, 0x63, 0x68, 0x69, 0x70, 0x5f, 0x72, 0x65, 0x77, 0x61,
+	0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x67, 0x6f, 0x61, 0x74, 0x5f,
+	0x67, 0x61, 0x6d, 0x65, 0x2e, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x68, 0x65, 0x73,
+	0x74, 0x53, 0x6b, 0x69, 0x70, 0x43, 0x68, 0x69, 0x70, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52,
+	0x0e, 0x73, 0x6b, 0x69, 0x70, 0x43, 0x68, 0x69, 0x70, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x22,
+	0x5e, 0x0a, 0x18, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x68, 0x65, 0x73, 0x74, 0x4c,
+	0x65, 0x6e, 0x67, 0x74, 0x68, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x66,
+	0x69, 0x78, 0x65, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x66, 0x69, 0x78, 0x65,
+	0x64, 0x12, 0x2c, 0x0a, 0x12, 0x63, 0x75, 0x72, 0x5f, 0x6c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x5f,
+	0x70, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x10, 0x63,
+	0x75, 0x72, 0x4c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x50, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x22,
+	0x7c, 0x0a, 0x1a, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x68, 0x65, 0x73, 0x74, 0x53,
+	0x6b, 0x69, 0x70, 0x43, 0x68, 0x69, 0x70, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x1d, 0x0a,
+	0x0a, 0x6b, 0x69, 0x6e, 0x64, 0x5f, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x05, 0x52, 0x09, 0x6b, 0x69, 0x6e, 0x64, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x3f, 0x0a, 0x05,
+	0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x67, 0x6f,
+	0x61, 0x74, 0x5f, 0x67, 0x61, 0x6d, 0x65, 0x2e, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43,
+	0x68, 0x65, 0x73, 0x74, 0x53, 0x6b, 0x69, 0x70, 0x43, 0x68, 0x69, 0x70, 0x52, 0x65, 0x77, 0x61,
+	0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x22, 0x6e, 0x0a,
+	0x1e, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x68, 0x65, 0x73, 0x74, 0x53, 0x6b, 0x69,
+	0x70, 0x43, 0x68, 0x69, 0x70, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x12,
+	0x17, 0x0a, 0x07, 0x69, 0x74, 0x65, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x06, 0x69, 0x74, 0x65, 0x6d, 0x49, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x77, 0x65, 0x69, 0x67,
+	0x68, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x77, 0x65, 0x69, 0x67, 0x68, 0x74,
+	0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x75, 0x6d, 0x5f, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x18, 0x03, 0x20,
+	0x03, 0x28, 0x05, 0x52, 0x08, 0x6e, 0x75, 0x6d, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x42, 0x34, 0x5a,
+	0x32, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73,
+	0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2f, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x2f, 0x67, 0x6f, 0x61, 0x74, 0x5f, 0x67,
+	0x61, 0x6d, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -746,32 +1149,42 @@ func file_activity_goat_game_goat_game_proto_rawDescGZIP() []byte {
 	return file_activity_goat_game_goat_game_proto_rawDescData
 }
 
-var file_activity_goat_game_goat_game_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_activity_goat_game_goat_game_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_activity_goat_game_goat_game_proto_goTypes = []interface{}{
-	(*GetInfoReq)(nil),              // 0: goat_game.GetInfoReq
-	(*GetInfoRsp)(nil),              // 1: goat_game.GetInfoRsp
-	(*EventTaskInfo)(nil),           // 2: goat_game.EventTaskInfo
-	(*GetTaskRewardReq)(nil),        // 3: goat_game.GetTaskRewardReq
-	(*GetTaskRewardRsp)(nil),        // 4: goat_game.GetTaskRewardRsp
-	(*GetGoatResultReq)(nil),        // 5: goat_game.GetGoatResultReq
-	(*GetGoatResultRsp)(nil),        // 6: goat_game.GetGoatResultRsp
-	(*GoatTeamScore)(nil),           // 7: goat_game.GoatTeamScore
-	(*GoatUserScore)(nil),           // 8: goat_game.GoatUserScore
-	(*snakecommon.EventTask)(nil),   // 9: snakecommon.EventTask
-	(*snakecommon.CRewardItem)(nil), // 10: snakecommon.CRewardItem
+	(*GetInfoReq)(nil),                     // 0: goat_game.GetInfoReq
+	(*GetInfoRsp)(nil),                     // 1: goat_game.GetInfoRsp
+	(*EventTaskInfo)(nil),                  // 2: goat_game.EventTaskInfo
+	(*GetTaskRewardReq)(nil),               // 3: goat_game.GetTaskRewardReq
+	(*GetTaskRewardRsp)(nil),               // 4: goat_game.GetTaskRewardRsp
+	(*GetGoatResultReq)(nil),               // 5: goat_game.GetGoatResultReq
+	(*GetGoatResultRsp)(nil),               // 6: goat_game.GetGoatResultRsp
+	(*GoatTeamScore)(nil),                  // 7: goat_game.GoatTeamScore
+	(*GoatUserScore)(nil),                  // 8: goat_game.GoatUserScore
+	(*GetEndlessChestInfoReq)(nil),         // 9: goat_game.GetEndlessChestInfoReq
+	(*GetEndlessChestInfoRsp)(nil),         // 10: goat_game.GetEndlessChestInfoRsp
+	(*EndlessChestReward)(nil),             // 11: goat_game.EndlessChestReward
+	(*EndlessChestLengthReward)(nil),       // 12: goat_game.EndlessChestLengthReward
+	(*EndlessChestSkipChipReward)(nil),     // 13: goat_game.EndlessChestSkipChipReward
+	(*EndlessChestSkipChipRewardItem)(nil), // 14: goat_game.EndlessChestSkipChipRewardItem
+	(*snakecommon.EventTask)(nil),          // 15: snakecommon.EventTask
+	(*snakecommon.CRewardItem)(nil),        // 16: snakecommon.CRewardItem
 }
 var file_activity_goat_game_goat_game_proto_depIdxs = []int32{
 	2,  // 0: goat_game.GetInfoRsp.event_list:type_name -> goat_game.EventTaskInfo
-	9,  // 1: goat_game.EventTaskInfo.task_list:type_name -> snakecommon.EventTask
-	10, // 2: goat_game.GetTaskRewardRsp.reward_list:type_name -> snakecommon.CRewardItem
+	15, // 1: goat_game.EventTaskInfo.task_list:type_name -> snakecommon.EventTask
+	16, // 2: goat_game.GetTaskRewardRsp.reward_list:type_name -> snakecommon.CRewardItem
 	7,  // 3: goat_game.GetGoatResultRsp.team_scores:type_name -> goat_game.GoatTeamScore
 	8,  // 4: goat_game.GoatTeamScore.user_scores:type_name -> goat_game.GoatUserScore
-	10, // 5: goat_game.GoatUserScore.reward_list:type_name -> snakecommon.CRewardItem
-	6,  // [6:6] is the sub-list for method output_type
-	6,  // [6:6] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	16, // 5: goat_game.GoatUserScore.reward_list:type_name -> snakecommon.CRewardItem
+	11, // 6: goat_game.GetEndlessChestInfoRsp.reward:type_name -> goat_game.EndlessChestReward
+	12, // 7: goat_game.EndlessChestReward.length:type_name -> goat_game.EndlessChestLengthReward
+	13, // 8: goat_game.EndlessChestReward.skip_chip_reward:type_name -> goat_game.EndlessChestSkipChipReward
+	14, // 9: goat_game.EndlessChestSkipChipReward.items:type_name -> goat_game.EndlessChestSkipChipRewardItem
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_activity_goat_game_goat_game_proto_init() }
@@ -888,6 +1301,78 @@ func file_activity_goat_game_goat_game_proto_init() {
 				return nil
 			}
 		}
+		file_activity_goat_game_goat_game_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetEndlessChestInfoReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_activity_goat_game_goat_game_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetEndlessChestInfoRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_activity_goat_game_goat_game_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EndlessChestReward); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_activity_goat_game_goat_game_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EndlessChestLengthReward); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_activity_goat_game_goat_game_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EndlessChestSkipChipReward); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_activity_goat_game_goat_game_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EndlessChestSkipChipRewardItem); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -895,7 +1380,7 @@ func file_activity_goat_game_goat_game_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_activity_goat_game_goat_game_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
