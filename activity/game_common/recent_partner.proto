@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package game_common;
+
+option go_package = "git.17zjh.com/snake/snake_proto/activity/game_common";
+
+message GetRecentPartnerReq {
+   int32 game_mode = 1;  // 游戏模式
+   string act_id = 2; // 玩法活动 id，一般会通过主页接口或配置接口下发
+}
+
+message GetRecentPartnerRsp {
+  repeated PartnerInfo user_list = 1;
+}
+
+message PartnerInfo {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+  int32 box_id = 4;
+  int32 verified = 5;
+}

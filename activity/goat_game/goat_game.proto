@@ -21,6 +21,7 @@ message GetInfoRsp {
   repeated EventTaskInfo event_list = 7; // 彩蛋任务
   int32 total_pvp_count = 8;    // 双人模式总游戏局数
   int32 today_pvp_count = 9;    // 今日双人游戏局数
+  string ActId = 10; // 活动 id
 }
 
 message EventTaskInfo{
