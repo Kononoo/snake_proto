@@ -20,6 +20,7 @@ message PlayerInfo{
     int32 platform = 3; // 平台
     string market = 4; // 应用市场
     string version = 5; // 客户端版本
+    int32 skin_id = 6; // 皮肤 ID
 }
 
 // TCPServer 向UnityServer同步房间信息
