@@ -4,6 +4,7 @@ package shop;
 option go_package = "git.17zjh.com/snake/snake_proto/system/shop";
 import "snakecommon/config.proto";
 import "snakecommon/month_card.proto";
+import "snakeapi/config/SKStore.Proto";
 
 message RecommendListReq { // 获取商店推荐列表
 }
@@ -33,7 +34,7 @@ message BuyPackReq { // 月卡购买礼包
 
 message BuyPackRsp {
   repeated snakecommon.CRewardItem reward = 1;
-  repeated snakecommon.PackInfo pack_info = 2;
+  repeated SnakeMain.Config.PackInfo pack_info = 2;
 }
 
 message GetChargeVIPInfoReq { // 获取 vip 信息
