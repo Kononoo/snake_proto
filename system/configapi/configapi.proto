@@ -4,11 +4,21 @@ option go_package = "git.17zjh.com/snake/snake_proto/system/configapi";
 import "snakecommon/config.proto";
 import "snakeapi/config/SKStore.Proto";
 
-message ConfigReq { // 获取 configv4
+// 获取 configv5 配置
+message ConfigV5Req {
+  string uid = 1;
+  string sid = 2;
+  string device_id = 3;
+  int32 platform = 4;
+  string market = 5;
+  string version = 6;
+  int32 skin_version = 7;
+  int32 store_version = 8;
+  int32 version_code = 9;
+  string config_md5 = 10;
 }
 
-// config_v4 resp proto begin
-message ConfigRsp {
+message ConfigV5Rsp {
   snakecommon.UserConfig user_config = 1;
   snakecommon.ClanConfig clan_config = 2;
   snakecommon.RankConfig rank_config = 3;
