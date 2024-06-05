@@ -521,6 +521,7 @@ message SkinInfo {
   string unity_anim_version = 25; // unity资源支持版本
   string unity_party_anim_key = 26; // unity2d派对动效
   string unity_party_anim_version = 27; // unity2d派对动效
+  int32 enter_unity = 28;
 }
 
 message Feature {
