@@ -19,6 +19,7 @@ enum SnakeOpType {
   Loading = 9016;
   ReportKuromiScore = 9017;
   ReportGoatScore = 9018;
+  ReportCommonScore = 9019;
 
   PuGameStart = 9101;
   PuFrame = 9102;
@@ -346,4 +347,12 @@ message EventTaskInfo {
   int32 event_id = 1;  // 任务活动 id
   int32 task_id = 2; // 任务 id
   int32 add_progress = 3; // 增加的进度
+}
+
+message ReportCommonScoreReq {
+  int32 game_mode = 1;
+  bytes result = 2;
+}
+
+message ReportCommonScoreRsp {
 }
