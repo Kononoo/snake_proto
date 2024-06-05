@@ -2,6 +2,7 @@ syntax = "proto3";
 package configapi;
 option go_package = "git.17zjh.com/snake/snake_proto/system/configapi";
 import "snakecommon/config.proto";
+import "snakeapi/config/SKStore.Proto";
 
 message ConfigReq { // 获取 configv4
 }
@@ -26,7 +27,7 @@ message ConfigRsp {
   snakecommon.ShowBadgeConfig show_badge = 16;
   snakecommon.ShowIllustrationConfig show_illustration= 17;
   int32 in_review_state = 18;
-  snakecommon.CStoreConfig proto_store_config = 19;
+  SnakeMain.Config.StoreConfig proto_store_config = 19;
   snakecommon.OfflineGameConfig offline_game_config = 20;
   repeated snakecommon.EndLessBuffPropInfo endless_buff_prop_config = 21;
   snakecommon.RecoderConfig huawei_highlight = 22;
