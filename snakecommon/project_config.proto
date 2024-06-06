@@ -3,6 +3,7 @@ package snakecommon;
 option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 
 import "snakeapi/config/SKStore.Proto";
+import "snakecommon/config.Proto";
 
 // === user_config begin ======================================
 message UserConfig {
@@ -31,7 +32,7 @@ message UserConfig {
   SettingConfig setting_conf = 23;
   FeedbackConfig feedback = 24;
   FlagsConfig flags = 25;
-  repeated SnakeMain.Config.RewardConfig certify_reward = 26;
+  repeated CRewardItem certify_reward = 26;
   RegisterSurvey register_survey = 27;
   RecruitPopup recruit_popup = 28;
   MinorLimit minor_limit = 29;
@@ -40,25 +41,18 @@ message UserConfig {
   string certify_reward_image = 32;
   NewUserConfig new_user_config = 33;
   int32 open_cp_button = 34; // 是否开启cp背景更换按钮，1为开
-}
-
-
-/**
-* "new_user_config": {
- *     "player_eat_food_rate_change_scope": 200,
-*     "player_eat_food_count_for_increase_node": 10,
- * 		"eat_food_rate_change_scope": 200,
-*     "eat_food_count_for_increase_node": 10,
- *     "guide_candy_total_count": 100, //新手引导糖果总个数
- *   	"guide_candy_score": 100, //新手引导糖果分数
- *     "free_revive_game_count": 5, //新手无尽前几局每局第一次免费复活
- *   }
- */
-message NewUserConfig {
-  int32 free_revive_game_count = 1;
-  int32 guide_skip_flag = 2; // 0关1开 新手引导流程修改实验开关
-  string new_user_img = 3;
-  string old_user_img = 4;
+  int32 alipay_certify = 35;
+  int32 channel_login_flag = 36;
+  CommentConfig comment_config = 37; // 评论配置
+  int32 login_page_flag = 38;
+  string contact_text = 39;
+  int32 login_home_count = 40;
+  map<string, int32> unity_flags = 41;
+  int32 use_topon = 42;
+  IdfaConfig idfa_config = 43; // ios idfa 弹窗配置
+  int32 visitor_flag = 44;
+  int32 third_failed_visitor_flag = 45;
+  repeated string third_failed_visitor_market = 46;
 }
 
 message MinorLimit {
@@ -73,34 +67,35 @@ message OrderCurator {
   int32 need = 2; //1要弹
 }
 
-message RecruitPopup {
-  int32 switch = 1;//1开0关
-  int64 play_count = 2;//局数条件
-  int64 score = 3;//分数条件
-  string qa_url = 4;//问卷链接，需替换 {uid}
-  int32 id = 5;// 期数
-  string banner_url = 6;
-  int32 screen_share = 7;
-}
-
-message RegisterSurvey {
-  int32 switch = 1; //1开0关
-  int64 score = 2; //分数条件
-  int32 new_user_day = 3; //注册多少天内算新手
-  string qa_url = 4; //问卷链接，需替换 {uid}
-}
-
 message FlagsConfig {
-  int32 old_single_game_settle = 1;
-  int32 channel_social_huawei_state = 2;
-  int32 channel_social_oppo_state = 3;
-  int32 channel_social_vivo_state = 4;
-  int32 downloader_state = 5;
-  int32 downloader_pause_state_v2 = 6;
-  int32 open_goto_unity_endless = 7;
-  int32 tcp_push_stash = 8; //是否开启暂存
-  int32 open_wedding_list_anim = 9; // 是否开启教堂婚礼列表动画
-  int32 first_blood_sound_effect = 10; //1是新音效，0默认音效
+  int32 visitor_flag = 1;
+  int32 delete_array_oes = 2;
+  int32 first_blood_sound_effect = 3; //1是新音效，0默认音效
+  int32 open_wedding_list_anim = 4; // 是否开启教堂婚礼列表动画
+  int32 tcp_push_stash = 5; //是否开启暂存
+  int32 open_goto_unity_endless = 6;
+  int32 old_single_game_settle = 7;
+  int32 sg_end_ui_flag = 8;
+  int32 sigmob_delay = 9;
+  int32 close_off_screen_rendering = 10;
+  int32 memory_dot_delay = 11;
+  int32 gl_check_app_state = 12;
+  int32 ios_optimize_home_skin_flag = 13;
+  int32 channel_social_huawei_state = 14;
+  int32 channel_social_oppo_state = 15;
+  int32 channel_social_vivo_state = 16;
+  int32 new_image_chooser = 17;
+  int32 close_native_operator_flag = 18;
+  int32 downloader_state = 19;
+  int32 downloader_pause_state_v2 = 20;
+  int32 close_video_metal_render = 21;
+  int32 jsbridge_stop_handle_special_charater = 22;
+  int32 oppo_login_flag = 23;
+  int32 oppo_login_retry_count = 24;
+  int32 enable_webveiw_copy_file_to_temp = 25;
+  int32 open_game_profiler = 26;
+  int32 disable_invisible_memory_reclamation = 27;
+  int32 yyb_tobid_ad_switch = 28;
 }
 
 message FeedbackConfig {
@@ -113,14 +108,16 @@ message FeedbackConfig {
 }
 
 message SettingConfig {
-  DocVersion doc_version = 1;
-  NetworkCheck network_check = 2;
-}
+  int32 game_multi_trans = 1;
+  bool enable_volc = 2;
+  bool enable_koom = 3;
+  bool native_crash_report = 4;
 
-message NetworkCheck {
-  string target = 1;
-  string resource = 2;
-  int32 open = 3; //1开0隐藏
+  DocVersion doc_version = 5;
+  NetworkCheck network_check = 6;
+  Prometheus prometheus = 7;
+  OkhttpDispatcher okhttp_dispatcher = 8;
+  MemSwitch mem_switch = 9;
 }
 
 // 用户协议、隐私政策、未成年声明
@@ -130,6 +127,32 @@ message DocVersion {
   string announce = 3;
   string info_sharing_list = 4;
   string personal_info = 5;
+}
+
+message NetworkCheck {
+  string resource = 1;
+  string target = 2;
+  int32 open = 3; //1开0隐藏
+}
+
+message Prometheus {
+  int32 batch = 1;
+  int32 bitmap_mem_threshold = 2;
+  bool enabled = 3;
+}
+
+message OkhttpDispatcher {
+  int32 queue_capacity = 1;
+  int32 keep_live_time = 2;
+}
+
+message MemSwitch {
+  bool rgb565_enabled = 1;
+  bool rgb565_transform = 2;
+  bool image_bg_opt = 3;
+  bool anim_report_enabled = 4;
+  bool fix_start_page_mem_leak = 5;
+  float anim_sample_rate = 6;
 }
 
 message BindConfig {
@@ -192,21 +215,34 @@ message SkillBuff {
   string value_text = 3;
 }
 
-message AntiAddiction {
+message AntiAddiction { // 防沉迷配置
   Notify notify = 1;
-  MinorNotify minor_notify = 2;
+  MinorNotify minor_notify = 2; // 14岁以上未成年防沉迷配置
   string safe_game_notify = 3;
   PayNotify pay_notify =  4;
   SocialDesc social_desc = 5;
   IdentityAge identity_age = 6;
   CertifyNotify certify_notify = 7;
   string certify_url = 8;
+  MinorNotify infant_notify = 9; // 12岁以下防沉迷配置，已废弃
+  int32 need_certify = 10; // 实名开关，已废弃
 }
 
 message Notify {
-  repeated CensorGameConfig uncertified = 1;
-  repeated CensorGameConfig minor = 2;
+  repeated CertifyGameConfig uncertified = 1;
+  repeated CertifyGameConfig minor = 2;
 }
+
+/**
+ * game_time : 10800
+ * msg : 【健康系统】您今日的累计游戏时间已经超过3小时，为了您的健康，请您下线休息，做适当身体活动，注意劳逸结合。
+ */
+message CertifyGameConfig {
+  int32 game_time = 1;
+  string msg = 2;
+  int32 interval_time = 3;
+}
+
 /**
  * "login_text": "为空则没有宵禁","begin": "22:00","end": "08:00",
  *         "workday_active": 3600,"holiday_active": 10800,"active_text": "超时提醒",
@@ -222,6 +258,8 @@ message MinorNotify {
   string active_notice = 7;
   int32 notice_interval = 8;
   int32 addicted_flag = 9; //防沉迷开关 0关闭，1打开
+  string title = 10;
+  int32 active_time = 11;
 }
 
 message PayNotify {
@@ -238,6 +276,7 @@ message SocialDesc {
 
 message IdentityAge {
   int32 minor = 1;
+  int32 infant = 2;
 }
 
 message CertifyNotify {
@@ -245,15 +284,73 @@ message CertifyNotify {
   int32 interval = 2;
   int32 limit = 3;
   int32 flag = 4; // 0不弹，1弹窗可关，2弹窗不可关
-}
-/**
- * game_time : 10800
- * msg : 【健康系统】您今日的累计游戏时间已经超过3小时，为了您的健康，请您下线休息，做适当身体活动，注意劳逸结合。
- */
-message CensorGameConfig {
-  int32 game_time = 1;
-  string msg = 2;
-  int32 interval_time = 3;
+  repeated string ignore_market = 5;
+  repeated string force_market = 6;
 }
 
+message IdfaConfig {
+  repeated CRewardItem reward = 1;
+  string ios_version = 2;
+  bool force = 3;
+  int32 login_count = 4;
+  int32 first_pop = 5;
+  int32 interval = 6;
+}
+
+message CommentConfig {
+  int32 score = 1;
+  int32 switch_state = 2;
+}
+
+message RegisterSurvey {
+  int32 switch = 1; //1开0关
+  int64 score = 2; //分数条件
+  int32 new_user_day = 3; //注册多少天内算新手
+  string qa_url = 4; //问卷链接，需替换 {uid}
+  string mail_title = 5;
+  string mail_content = 6;
+  repeated CRewardItem reward = 7;
+  string secretary_msg = 8;
+  repeated int32 survey_ids = 9;
+}
+
+message RecruitPopup {
+  int32 switch = 1;//1开0关
+  int64 play_count = 2;//局数条件
+  int64 score = 3;//分数条件
+  string qa_url = 4;//问卷链接，需替换 {uid}
+  int32 id = 5;// 期数
+  string banner_url = 6;
+  int32 screen_share = 7;
+  string secretary_msg = 8;
+}
+
+/**
+* "new_user_config": {
+ *     "player_eat_food_rate_change_scope": 200,
+*     "player_eat_food_count_for_increase_node": 10,
+ * 		"eat_food_rate_change_scope": 200,
+*     "eat_food_count_for_increase_node": 10,
+ *     "guide_candy_total_count": 100, //新手引导糖果总个数
+ *   	"guide_candy_score": 100, //新手引导糖果分数
+ *     "free_revive_game_count": 5, //新手无尽前几局每局第一次免费复活
+ *   }
+ */
+message NewUserConfig {
+  int32 player_eat_food_rate_change_scope = 1;
+  int32 player_eat_food_count_for_increase_node = 2;
+  int32 eat_food_rate_change_scope = 3;
+  int32 eat_food_count_for_increase_node = 4;
+  int32 guide_candy_total_count = 5;
+  int32 guide_candy_score = 6;
+  int32 free_revive_game_count = 7;
+  int32 newbie_login_days = 8;
+  int32 newbie_qualifying_count = 9;
+  int32 newbie_endless_count = 10;
+  int32 guide_type = 11;
+  string new_user_img = 12;
+  string old_user_img = 13;
+  repeated CRewardItem guide_reward = 14;
+  int32 guide_skip_flag = 15; // 0关1开 新手引导流程修改实验开关
+}
 // === user_config end ========================================
