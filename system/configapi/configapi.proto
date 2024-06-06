@@ -51,5 +51,7 @@ message ConfigV5Rsp {
   snakecommon.GiftWallConfig gift_wall = 28;
   snakecommon.MentorConfig mentorship_config = 29;
   snakecommon.GiftIllustrationConfig gift_illustration = 30;
+  map<string, snakecommon.ConfigVersionInfo> config_version_map = 31;
+  string config_versions = 32;
 }
 

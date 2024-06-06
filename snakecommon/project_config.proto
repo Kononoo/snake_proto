@@ -5,6 +5,10 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 import "snakeapi/config/SKStore.Proto";
 import "snakecommon/config.Proto";
 
+message ConfigVersionInfo {
+  map<string, string> flags = 1;
+}
+
 // === user_config begin ======================================
 message UserConfig {
   int32 gender_cost = 1; //性别修改需要的苹果数量
@@ -96,6 +100,7 @@ message FlagsConfig {
   int32 open_game_profiler = 26;
   int32 disable_invisible_memory_reclamation = 27;
   int32 yyb_tobid_ad_switch = 28;
+  int32 not_show_idfa = 29;
 }
 
 message FeedbackConfig {
