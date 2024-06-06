@@ -3,7 +3,7 @@ package snakecommon;
 option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 
 import "snakeapi/config/SKStore.Proto";
-import "snakecommon/config.Proto";
+import "snakecommon/config.proto";
 
 message ConfigVersionInfo {
   map<string, string> flags = 1;
