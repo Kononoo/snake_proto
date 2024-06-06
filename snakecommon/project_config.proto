@@ -2,12 +2,52 @@ syntax = "proto3";
 package snakecommon;
 option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 
-import "snakeapi/config/SKStore.Proto";
 import "snakecommon/config.proto";
 
 message ConfigVersionInfo {
   map<string, string> flags = 1;
 }
+
+// === show_config begin ======================================
+message ShowConfig {
+  repeated ShowLevelConfig level_config = 1;
+  repeated ShowSkillName skill_name = 2;
+  string intro_v2 = 3;
+  string addition_intro = 4;
+  string intro = 5;
+  repeated ShowIconStyle icon_style = 6;
+}
+
+message ShowIconStyle {
+  int32 num = 1;
+  string img_url = 2;
+}
+
+message ShowLevelConfig {
+  string game_skill = 1;
+  repeated CRewardItem reward = 2;
+  string thumbnail = 3;
+  string thum_anim_url = 4;
+  string icon_url = 5;
+  string anim_url = 6;
+  int32 total_show = 7;
+  int32 level = 8;
+  repeated ShowSkillBuff game_skill_list = 9; // 不返回客户端
+  string show = 10;
+}
+
+message ShowSkillName {
+  int32 skill_type = 1;
+  string name = 2;
+}
+
+message ShowSkillBuff {
+  int32 skill_type = 1;
+  string value = 2;
+  string value_text = 3;
+}
+// === show_config end ======================================
+
 
 // === user_config begin ======================================
 message UserConfig {
@@ -189,35 +229,6 @@ message DeviceConfig {
   string product = 2;//当前手机品牌(PRODUCT)
   string brand = 3;//手机厂商(BOARD)
   string manufacturer = 4;//设备制造商(MANUFACTURER)
-}
-
-message ShowConfig {
-  repeated ShowLevelConfig level_config = 1;
-  repeated SkillName skill_name = 2;
-  string intro_v2 = 3;
-  string addition_intro = 4;
-}
-
-message ShowLevelConfig {
-  string game_skill = 1;
-  repeated SnakeMain.Config.RewardConfig reward = 2;
-  string thumbnail = 3;
-  string thum_anim_url = 4;
-  string icon_url = 5;
-  string anim_url = 6;
-  int32 total_show = 7;
-  int32 level = 8;
-}
-
-message SkillName {
-  int32 skill_type = 1;
-  string name = 2;
-}
-
-message SkillBuff {
-  int32 skill_type = 1;
-  string value = 2;
-  string value_text = 3;
 }
 
 message AntiAddiction { // 防沉迷配置
