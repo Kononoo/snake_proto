@@ -155,36 +155,38 @@ type ConfigV5Rsp struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	UserConfig                *snakecommon.UserConfig                `protobuf:"bytes,1,opt,name=user_config,json=userConfig,proto3" json:"user_config,omitempty"`
-	ClanConfig                *snakecommon.ClanConfig                `protobuf:"bytes,2,opt,name=clan_config,json=clanConfig,proto3" json:"clan_config,omitempty"`
-	RankConfig                *snakecommon.RankConfig                `protobuf:"bytes,3,opt,name=rank_config,json=rankConfig,proto3" json:"rank_config,omitempty"`
-	ActivityConfig            *snakecommon.ActivityConfig            `protobuf:"bytes,4,opt,name=activity_config,json=activityConfig,proto3" json:"activity_config,omitempty"`
-	TextConfig                *snakecommon.TextConfig                `protobuf:"bytes,5,opt,name=text_config,json=textConfig,proto3" json:"text_config,omitempty"`
-	CharmExpConfig            *snakecommon.CharmExpConfig            `protobuf:"bytes,6,opt,name=charm_exp_config,json=charmExpConfig,proto3" json:"charm_exp_config,omitempty"`
-	ShareConfig               *snakecommon.ShareConfig               `protobuf:"bytes,7,opt,name=share_config,json=shareConfig,proto3" json:"share_config,omitempty"`
-	SocialConfig              *snakecommon.SocialConfig              `protobuf:"bytes,8,opt,name=social_config,json=socialConfig,proto3" json:"social_config,omitempty"`
-	OlGameConfig              *snakecommon.NetFrameGameConfig        `protobuf:"bytes,9,opt,name=ol_game_config,json=olGameConfig,proto3" json:"ol_game_config,omitempty"`
-	ChargeVipConfig           *snakecommon.ChargeVipConfig           `protobuf:"bytes,10,opt,name=charge_vip_config,json=chargeVipConfig,proto3" json:"charge_vip_config,omitempty"`
-	UiConfigV3                *snakecommon.HomeUiConfigV3            `protobuf:"bytes,11,opt,name=ui_config_v3,json=uiConfigV3,proto3" json:"ui_config_v3,omitempty"`
-	PingConfig                *snakecommon.PingConfig                `protobuf:"bytes,12,opt,name=ping_config,json=pingConfig,proto3" json:"ping_config,omitempty"`
-	RewardMark                []*snakecommon.RewardMark              `protobuf:"bytes,13,rep,name=reward_mark,json=rewardMark,proto3" json:"reward_mark,omitempty"`
-	ShowAdConfig              *snakecommon.ShowAdConfig              `protobuf:"bytes,14,opt,name=show_ad_config,json=showAdConfig,proto3" json:"show_ad_config,omitempty"`
-	OrderConfig               *snakecommon.OrderConfig               `protobuf:"bytes,15,opt,name=order_config,json=orderConfig,proto3" json:"order_config,omitempty"`
-	ShowBadge                 *snakecommon.ShowBadgeConfig           `protobuf:"bytes,16,opt,name=show_badge,json=showBadge,proto3" json:"show_badge,omitempty"`
-	ShowIllustration          *snakecommon.ShowIllustrationConfig    `protobuf:"bytes,17,opt,name=show_illustration,json=showIllustration,proto3" json:"show_illustration,omitempty"`
-	InReviewState             int32                                  `protobuf:"varint,18,opt,name=in_review_state,json=inReviewState,proto3" json:"in_review_state,omitempty"`
-	ProtoStoreConfig          *config.StoreConfig                    `protobuf:"bytes,19,opt,name=proto_store_config,json=protoStoreConfig,proto3" json:"proto_store_config,omitempty"`
-	OfflineGameConfig         *snakecommon.OfflineGameConfig         `protobuf:"bytes,20,opt,name=offline_game_config,json=offlineGameConfig,proto3" json:"offline_game_config,omitempty"`
-	EndlessBuffPropConfig     []*snakecommon.EndLessBuffPropInfo     `protobuf:"bytes,21,rep,name=endless_buff_prop_config,json=endlessBuffPropConfig,proto3" json:"endless_buff_prop_config,omitempty"`
-	HuaweiHighlight           *snakecommon.RecoderConfig             `protobuf:"bytes,22,opt,name=huawei_highlight,json=huaweiHighlight,proto3" json:"huawei_highlight,omitempty"`
-	UnityQualifyingOpenConfig *snakecommon.UnityQualifyingOpenConfig `protobuf:"bytes,23,opt,name=unity_qualifying_open_config,json=unityQualifyingOpenConfig,proto3" json:"unity_qualifying_open_config,omitempty"`
-	MonthCard                 *snakecommon.MonthCardConfig           `protobuf:"bytes,24,opt,name=month_card,json=monthCard,proto3" json:"month_card,omitempty"`
-	SubConfig                 string                                 `protobuf:"bytes,25,opt,name=sub_config,json=subConfig,proto3" json:"sub_config,omitempty"`
-	TopListConfig             *snakecommon.TopListConfig             `protobuf:"bytes,26,opt,name=top_list_config,json=topListConfig,proto3" json:"top_list_config,omitempty"`
-	CharmTours                *snakecommon.CharmTourConfig           `protobuf:"bytes,27,opt,name=charm_tours,json=charmTours,proto3" json:"charm_tours,omitempty"`
-	GiftWall                  *snakecommon.GiftWallConfig            `protobuf:"bytes,28,opt,name=gift_wall,json=giftWall,proto3" json:"gift_wall,omitempty"`
-	MentorshipConfig          *snakecommon.MentorConfig              `protobuf:"bytes,29,opt,name=mentorship_config,json=mentorshipConfig,proto3" json:"mentorship_config,omitempty"`
-	GiftIllustration          *snakecommon.GiftIllustrationConfig    `protobuf:"bytes,30,opt,name=gift_illustration,json=giftIllustration,proto3" json:"gift_illustration,omitempty"`
+	UserConfig                *snakecommon.UserConfig                   `protobuf:"bytes,1,opt,name=user_config,json=userConfig,proto3" json:"user_config,omitempty"`
+	ClanConfig                *snakecommon.ClanConfig                   `protobuf:"bytes,2,opt,name=clan_config,json=clanConfig,proto3" json:"clan_config,omitempty"`
+	RankConfig                *snakecommon.RankConfig                   `protobuf:"bytes,3,opt,name=rank_config,json=rankConfig,proto3" json:"rank_config,omitempty"`
+	ActivityConfig            *snakecommon.ActivityConfig               `protobuf:"bytes,4,opt,name=activity_config,json=activityConfig,proto3" json:"activity_config,omitempty"`
+	TextConfig                *snakecommon.TextConfig                   `protobuf:"bytes,5,opt,name=text_config,json=textConfig,proto3" json:"text_config,omitempty"`
+	CharmExpConfig            *snakecommon.CharmExpConfig               `protobuf:"bytes,6,opt,name=charm_exp_config,json=charmExpConfig,proto3" json:"charm_exp_config,omitempty"`
+	ShareConfig               *snakecommon.ShareConfig                  `protobuf:"bytes,7,opt,name=share_config,json=shareConfig,proto3" json:"share_config,omitempty"`
+	SocialConfig              *snakecommon.SocialConfig                 `protobuf:"bytes,8,opt,name=social_config,json=socialConfig,proto3" json:"social_config,omitempty"`
+	OlGameConfig              *snakecommon.NetFrameGameConfig           `protobuf:"bytes,9,opt,name=ol_game_config,json=olGameConfig,proto3" json:"ol_game_config,omitempty"`
+	ChargeVipConfig           *snakecommon.ChargeVipConfig              `protobuf:"bytes,10,opt,name=charge_vip_config,json=chargeVipConfig,proto3" json:"charge_vip_config,omitempty"`
+	UiConfigV3                *snakecommon.HomeUiConfigV3               `protobuf:"bytes,11,opt,name=ui_config_v3,json=uiConfigV3,proto3" json:"ui_config_v3,omitempty"`
+	PingConfig                *snakecommon.PingConfig                   `protobuf:"bytes,12,opt,name=ping_config,json=pingConfig,proto3" json:"ping_config,omitempty"`
+	RewardMark                []*snakecommon.RewardMark                 `protobuf:"bytes,13,rep,name=reward_mark,json=rewardMark,proto3" json:"reward_mark,omitempty"`
+	ShowAdConfig              *snakecommon.ShowAdConfig                 `protobuf:"bytes,14,opt,name=show_ad_config,json=showAdConfig,proto3" json:"show_ad_config,omitempty"`
+	OrderConfig               *snakecommon.OrderConfig                  `protobuf:"bytes,15,opt,name=order_config,json=orderConfig,proto3" json:"order_config,omitempty"`
+	ShowBadge                 *snakecommon.ShowBadgeConfig              `protobuf:"bytes,16,opt,name=show_badge,json=showBadge,proto3" json:"show_badge,omitempty"`
+	ShowIllustration          *snakecommon.ShowIllustrationConfig       `protobuf:"bytes,17,opt,name=show_illustration,json=showIllustration,proto3" json:"show_illustration,omitempty"`
+	InReviewState             int32                                     `protobuf:"varint,18,opt,name=in_review_state,json=inReviewState,proto3" json:"in_review_state,omitempty"`
+	ProtoStoreConfig          *config.StoreConfig                       `protobuf:"bytes,19,opt,name=proto_store_config,json=protoStoreConfig,proto3" json:"proto_store_config,omitempty"`
+	OfflineGameConfig         *snakecommon.OfflineGameConfig            `protobuf:"bytes,20,opt,name=offline_game_config,json=offlineGameConfig,proto3" json:"offline_game_config,omitempty"`
+	EndlessBuffPropConfig     []*snakecommon.EndLessBuffPropInfo        `protobuf:"bytes,21,rep,name=endless_buff_prop_config,json=endlessBuffPropConfig,proto3" json:"endless_buff_prop_config,omitempty"`
+	HuaweiHighlight           *snakecommon.RecoderConfig                `protobuf:"bytes,22,opt,name=huawei_highlight,json=huaweiHighlight,proto3" json:"huawei_highlight,omitempty"`
+	UnityQualifyingOpenConfig *snakecommon.UnityQualifyingOpenConfig    `protobuf:"bytes,23,opt,name=unity_qualifying_open_config,json=unityQualifyingOpenConfig,proto3" json:"unity_qualifying_open_config,omitempty"`
+	MonthCard                 *snakecommon.MonthCardConfig              `protobuf:"bytes,24,opt,name=month_card,json=monthCard,proto3" json:"month_card,omitempty"`
+	SubConfig                 string                                    `protobuf:"bytes,25,opt,name=sub_config,json=subConfig,proto3" json:"sub_config,omitempty"`
+	TopListConfig             *snakecommon.TopListConfig                `protobuf:"bytes,26,opt,name=top_list_config,json=topListConfig,proto3" json:"top_list_config,omitempty"`
+	CharmTours                *snakecommon.CharmTourConfig              `protobuf:"bytes,27,opt,name=charm_tours,json=charmTours,proto3" json:"charm_tours,omitempty"`
+	GiftWall                  *snakecommon.GiftWallConfig               `protobuf:"bytes,28,opt,name=gift_wall,json=giftWall,proto3" json:"gift_wall,omitempty"`
+	MentorshipConfig          *snakecommon.MentorConfig                 `protobuf:"bytes,29,opt,name=mentorship_config,json=mentorshipConfig,proto3" json:"mentorship_config,omitempty"`
+	GiftIllustration          *snakecommon.GiftIllustrationConfig       `protobuf:"bytes,30,opt,name=gift_illustration,json=giftIllustration,proto3" json:"gift_illustration,omitempty"`
+	ConfigVersionMap          map[string]*snakecommon.ConfigVersionInfo `protobuf:"bytes,31,rep,name=config_version_map,json=configVersionMap,proto3" json:"config_version_map,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	ConfigVersions            string                                    `protobuf:"bytes,32,opt,name=config_versions,json=configVersions,proto3" json:"config_versions,omitempty"`
 }
 
 func (x *ConfigV5Rsp) Reset() {
@@ -429,6 +431,20 @@ func (x *ConfigV5Rsp) GetGiftIllustration() *snakecommon.GiftIllustrationConfig 
 	return nil
 }
 
+func (x *ConfigV5Rsp) GetConfigVersionMap() map[string]*snakecommon.ConfigVersionInfo {
+	if x != nil {
+		return x.ConfigVersionMap
+	}
+	return nil
+}
+
+func (x *ConfigV5Rsp) GetConfigVersions() string {
+	if x != nil {
+		return x.ConfigVersions
+	}
+	return ""
+}
+
 var File_system_configapi_configapi_proto protoreflect.FileDescriptor
 
 var file_system_configapi_configapi_proto_rawDesc = []byte{
@@ -461,7 +477,7 @@ var file_system_configapi_configapi_proto_rawDesc = []byte{
 	0x73, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x63, 0x6f, 0x6e,
 	0x66, 0x69, 0x67, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x1f, 0x0a, 0x0b, 0x63,
 	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x5f, 0x6b, 0x65, 0x79, 0x73, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x0a, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x4b, 0x65, 0x79, 0x73, 0x22, 0xd3, 0x0f, 0x0a,
+	0x52, 0x0a, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x4b, 0x65, 0x79, 0x73, 0x22, 0xbd, 0x11, 0x0a,
 	0x0b, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x56, 0x35, 0x52, 0x73, 0x70, 0x12, 0x38, 0x0a, 0x0b,
 	0x75, 0x73, 0x65, 0x72, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x0b, 0x32, 0x17, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
@@ -587,10 +603,25 @@ var file_system_configapi_configapi_proto_rawDesc = []byte{
 	0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x47, 0x69, 0x66, 0x74, 0x49, 0x6c,
 	0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
 	0x52, 0x10, 0x67, 0x69, 0x66, 0x74, 0x49, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x42, 0x32, 0x5a, 0x30, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e,
-	0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x63, 0x6f, 0x6e,
-	0x66, 0x69, 0x67, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6e, 0x12, 0x5a, 0x0a, 0x12, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x5f, 0x76, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x6d, 0x61, 0x70, 0x18, 0x1f, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2c,
+	0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x61, 0x70, 0x69, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x56, 0x35, 0x52, 0x73, 0x70, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x56, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x70, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x10, 0x63, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x70, 0x12, 0x27,
+	0x0a, 0x0f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
+	0x73, 0x18, 0x20, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x56,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x73, 0x1a, 0x63, 0x0a, 0x15, 0x43, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x70, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b,
+	0x65, 0x79, 0x12, 0x34, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x1e, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66,
+	0x6f, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x42, 0x32, 0x5a, 0x30,
+	0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
+	0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x61, 0x70, 0x69,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -605,73 +636,77 @@ func file_system_configapi_configapi_proto_rawDescGZIP() []byte {
 	return file_system_configapi_configapi_proto_rawDescData
 }
 
-var file_system_configapi_configapi_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_system_configapi_configapi_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_system_configapi_configapi_proto_goTypes = []interface{}{
 	(*ConfigV5Req)(nil),                           // 0: configapi.ConfigV5Req
 	(*ConfigV5Rsp)(nil),                           // 1: configapi.ConfigV5Rsp
-	(*snakecommon.UserConfig)(nil),                // 2: snakecommon.UserConfig
-	(*snakecommon.ClanConfig)(nil),                // 3: snakecommon.ClanConfig
-	(*snakecommon.RankConfig)(nil),                // 4: snakecommon.RankConfig
-	(*snakecommon.ActivityConfig)(nil),            // 5: snakecommon.ActivityConfig
-	(*snakecommon.TextConfig)(nil),                // 6: snakecommon.TextConfig
-	(*snakecommon.CharmExpConfig)(nil),            // 7: snakecommon.CharmExpConfig
-	(*snakecommon.ShareConfig)(nil),               // 8: snakecommon.ShareConfig
-	(*snakecommon.SocialConfig)(nil),              // 9: snakecommon.SocialConfig
-	(*snakecommon.NetFrameGameConfig)(nil),        // 10: snakecommon.NetFrameGameConfig
-	(*snakecommon.ChargeVipConfig)(nil),           // 11: snakecommon.ChargeVipConfig
-	(*snakecommon.HomeUiConfigV3)(nil),            // 12: snakecommon.HomeUiConfigV3
-	(*snakecommon.PingConfig)(nil),                // 13: snakecommon.PingConfig
-	(*snakecommon.RewardMark)(nil),                // 14: snakecommon.RewardMark
-	(*snakecommon.ShowAdConfig)(nil),              // 15: snakecommon.ShowAdConfig
-	(*snakecommon.OrderConfig)(nil),               // 16: snakecommon.OrderConfig
-	(*snakecommon.ShowBadgeConfig)(nil),           // 17: snakecommon.ShowBadgeConfig
-	(*snakecommon.ShowIllustrationConfig)(nil),    // 18: snakecommon.ShowIllustrationConfig
-	(*config.StoreConfig)(nil),                    // 19: SnakeMain.Config.StoreConfig
-	(*snakecommon.OfflineGameConfig)(nil),         // 20: snakecommon.OfflineGameConfig
-	(*snakecommon.EndLessBuffPropInfo)(nil),       // 21: snakecommon.EndLessBuffPropInfo
-	(*snakecommon.RecoderConfig)(nil),             // 22: snakecommon.RecoderConfig
-	(*snakecommon.UnityQualifyingOpenConfig)(nil), // 23: snakecommon.UnityQualifyingOpenConfig
-	(*snakecommon.MonthCardConfig)(nil),           // 24: snakecommon.MonthCardConfig
-	(*snakecommon.TopListConfig)(nil),             // 25: snakecommon.TopListConfig
-	(*snakecommon.CharmTourConfig)(nil),           // 26: snakecommon.CharmTourConfig
-	(*snakecommon.GiftWallConfig)(nil),            // 27: snakecommon.GiftWallConfig
-	(*snakecommon.MentorConfig)(nil),              // 28: snakecommon.MentorConfig
-	(*snakecommon.GiftIllustrationConfig)(nil),    // 29: snakecommon.GiftIllustrationConfig
+	nil,                                           // 2: configapi.ConfigV5Rsp.ConfigVersionMapEntry
+	(*snakecommon.UserConfig)(nil),                // 3: snakecommon.UserConfig
+	(*snakecommon.ClanConfig)(nil),                // 4: snakecommon.ClanConfig
+	(*snakecommon.RankConfig)(nil),                // 5: snakecommon.RankConfig
+	(*snakecommon.ActivityConfig)(nil),            // 6: snakecommon.ActivityConfig
+	(*snakecommon.TextConfig)(nil),                // 7: snakecommon.TextConfig
+	(*snakecommon.CharmExpConfig)(nil),            // 8: snakecommon.CharmExpConfig
+	(*snakecommon.ShareConfig)(nil),               // 9: snakecommon.ShareConfig
+	(*snakecommon.SocialConfig)(nil),              // 10: snakecommon.SocialConfig
+	(*snakecommon.NetFrameGameConfig)(nil),        // 11: snakecommon.NetFrameGameConfig
+	(*snakecommon.ChargeVipConfig)(nil),           // 12: snakecommon.ChargeVipConfig
+	(*snakecommon.HomeUiConfigV3)(nil),            // 13: snakecommon.HomeUiConfigV3
+	(*snakecommon.PingConfig)(nil),                // 14: snakecommon.PingConfig
+	(*snakecommon.RewardMark)(nil),                // 15: snakecommon.RewardMark
+	(*snakecommon.ShowAdConfig)(nil),              // 16: snakecommon.ShowAdConfig
+	(*snakecommon.OrderConfig)(nil),               // 17: snakecommon.OrderConfig
+	(*snakecommon.ShowBadgeConfig)(nil),           // 18: snakecommon.ShowBadgeConfig
+	(*snakecommon.ShowIllustrationConfig)(nil),    // 19: snakecommon.ShowIllustrationConfig
+	(*config.StoreConfig)(nil),                    // 20: SnakeMain.Config.StoreConfig
+	(*snakecommon.OfflineGameConfig)(nil),         // 21: snakecommon.OfflineGameConfig
+	(*snakecommon.EndLessBuffPropInfo)(nil),       // 22: snakecommon.EndLessBuffPropInfo
+	(*snakecommon.RecoderConfig)(nil),             // 23: snakecommon.RecoderConfig
+	(*snakecommon.UnityQualifyingOpenConfig)(nil), // 24: snakecommon.UnityQualifyingOpenConfig
+	(*snakecommon.MonthCardConfig)(nil),           // 25: snakecommon.MonthCardConfig
+	(*snakecommon.TopListConfig)(nil),             // 26: snakecommon.TopListConfig
+	(*snakecommon.CharmTourConfig)(nil),           // 27: snakecommon.CharmTourConfig
+	(*snakecommon.GiftWallConfig)(nil),            // 28: snakecommon.GiftWallConfig
+	(*snakecommon.MentorConfig)(nil),              // 29: snakecommon.MentorConfig
+	(*snakecommon.GiftIllustrationConfig)(nil),    // 30: snakecommon.GiftIllustrationConfig
+	(*snakecommon.ConfigVersionInfo)(nil),         // 31: snakecommon.ConfigVersionInfo
 }
 var file_system_configapi_configapi_proto_depIdxs = []int32{
-	2,  // 0: configapi.ConfigV5Rsp.user_config:type_name -> snakecommon.UserConfig
-	3,  // 1: configapi.ConfigV5Rsp.clan_config:type_name -> snakecommon.ClanConfig
-	4,  // 2: configapi.ConfigV5Rsp.rank_config:type_name -> snakecommon.RankConfig
-	5,  // 3: configapi.ConfigV5Rsp.activity_config:type_name -> snakecommon.ActivityConfig
-	6,  // 4: configapi.ConfigV5Rsp.text_config:type_name -> snakecommon.TextConfig
-	7,  // 5: configapi.ConfigV5Rsp.charm_exp_config:type_name -> snakecommon.CharmExpConfig
-	8,  // 6: configapi.ConfigV5Rsp.share_config:type_name -> snakecommon.ShareConfig
-	9,  // 7: configapi.ConfigV5Rsp.social_config:type_name -> snakecommon.SocialConfig
-	10, // 8: configapi.ConfigV5Rsp.ol_game_config:type_name -> snakecommon.NetFrameGameConfig
-	11, // 9: configapi.ConfigV5Rsp.charge_vip_config:type_name -> snakecommon.ChargeVipConfig
-	12, // 10: configapi.ConfigV5Rsp.ui_config_v3:type_name -> snakecommon.HomeUiConfigV3
-	13, // 11: configapi.ConfigV5Rsp.ping_config:type_name -> snakecommon.PingConfig
-	14, // 12: configapi.ConfigV5Rsp.reward_mark:type_name -> snakecommon.RewardMark
-	15, // 13: configapi.ConfigV5Rsp.show_ad_config:type_name -> snakecommon.ShowAdConfig
-	16, // 14: configapi.ConfigV5Rsp.order_config:type_name -> snakecommon.OrderConfig
-	17, // 15: configapi.ConfigV5Rsp.show_badge:type_name -> snakecommon.ShowBadgeConfig
-	18, // 16: configapi.ConfigV5Rsp.show_illustration:type_name -> snakecommon.ShowIllustrationConfig
-	19, // 17: configapi.ConfigV5Rsp.proto_store_config:type_name -> SnakeMain.Config.StoreConfig
-	20, // 18: configapi.ConfigV5Rsp.offline_game_config:type_name -> snakecommon.OfflineGameConfig
-	21, // 19: configapi.ConfigV5Rsp.endless_buff_prop_config:type_name -> snakecommon.EndLessBuffPropInfo
-	22, // 20: configapi.ConfigV5Rsp.huawei_highlight:type_name -> snakecommon.RecoderConfig
-	23, // 21: configapi.ConfigV5Rsp.unity_qualifying_open_config:type_name -> snakecommon.UnityQualifyingOpenConfig
-	24, // 22: configapi.ConfigV5Rsp.month_card:type_name -> snakecommon.MonthCardConfig
-	25, // 23: configapi.ConfigV5Rsp.top_list_config:type_name -> snakecommon.TopListConfig
-	26, // 24: configapi.ConfigV5Rsp.charm_tours:type_name -> snakecommon.CharmTourConfig
-	27, // 25: configapi.ConfigV5Rsp.gift_wall:type_name -> snakecommon.GiftWallConfig
-	28, // 26: configapi.ConfigV5Rsp.mentorship_config:type_name -> snakecommon.MentorConfig
-	29, // 27: configapi.ConfigV5Rsp.gift_illustration:type_name -> snakecommon.GiftIllustrationConfig
-	28, // [28:28] is the sub-list for method output_type
-	28, // [28:28] is the sub-list for method input_type
-	28, // [28:28] is the sub-list for extension type_name
-	28, // [28:28] is the sub-list for extension extendee
-	0,  // [0:28] is the sub-list for field type_name
+	3,  // 0: configapi.ConfigV5Rsp.user_config:type_name -> snakecommon.UserConfig
+	4,  // 1: configapi.ConfigV5Rsp.clan_config:type_name -> snakecommon.ClanConfig
+	5,  // 2: configapi.ConfigV5Rsp.rank_config:type_name -> snakecommon.RankConfig
+	6,  // 3: configapi.ConfigV5Rsp.activity_config:type_name -> snakecommon.ActivityConfig
+	7,  // 4: configapi.ConfigV5Rsp.text_config:type_name -> snakecommon.TextConfig
+	8,  // 5: configapi.ConfigV5Rsp.charm_exp_config:type_name -> snakecommon.CharmExpConfig
+	9,  // 6: configapi.ConfigV5Rsp.share_config:type_name -> snakecommon.ShareConfig
+	10, // 7: configapi.ConfigV5Rsp.social_config:type_name -> snakecommon.SocialConfig
+	11, // 8: configapi.ConfigV5Rsp.ol_game_config:type_name -> snakecommon.NetFrameGameConfig
+	12, // 9: configapi.ConfigV5Rsp.charge_vip_config:type_name -> snakecommon.ChargeVipConfig
+	13, // 10: configapi.ConfigV5Rsp.ui_config_v3:type_name -> snakecommon.HomeUiConfigV3
+	14, // 11: configapi.ConfigV5Rsp.ping_config:type_name -> snakecommon.PingConfig
+	15, // 12: configapi.ConfigV5Rsp.reward_mark:type_name -> snakecommon.RewardMark
+	16, // 13: configapi.ConfigV5Rsp.show_ad_config:type_name -> snakecommon.ShowAdConfig
+	17, // 14: configapi.ConfigV5Rsp.order_config:type_name -> snakecommon.OrderConfig
+	18, // 15: configapi.ConfigV5Rsp.show_badge:type_name -> snakecommon.ShowBadgeConfig
+	19, // 16: configapi.ConfigV5Rsp.show_illustration:type_name -> snakecommon.ShowIllustrationConfig
+	20, // 17: configapi.ConfigV5Rsp.proto_store_config:type_name -> SnakeMain.Config.StoreConfig
+	21, // 18: configapi.ConfigV5Rsp.offline_game_config:type_name -> snakecommon.OfflineGameConfig
+	22, // 19: configapi.ConfigV5Rsp.endless_buff_prop_config:type_name -> snakecommon.EndLessBuffPropInfo
+	23, // 20: configapi.ConfigV5Rsp.huawei_highlight:type_name -> snakecommon.RecoderConfig
+	24, // 21: configapi.ConfigV5Rsp.unity_qualifying_open_config:type_name -> snakecommon.UnityQualifyingOpenConfig
+	25, // 22: configapi.ConfigV5Rsp.month_card:type_name -> snakecommon.MonthCardConfig
+	26, // 23: configapi.ConfigV5Rsp.top_list_config:type_name -> snakecommon.TopListConfig
+	27, // 24: configapi.ConfigV5Rsp.charm_tours:type_name -> snakecommon.CharmTourConfig
+	28, // 25: configapi.ConfigV5Rsp.gift_wall:type_name -> snakecommon.GiftWallConfig
+	29, // 26: configapi.ConfigV5Rsp.mentorship_config:type_name -> snakecommon.MentorConfig
+	30, // 27: configapi.ConfigV5Rsp.gift_illustration:type_name -> snakecommon.GiftIllustrationConfig
+	2,  // 28: configapi.ConfigV5Rsp.config_version_map:type_name -> configapi.ConfigV5Rsp.ConfigVersionMapEntry
+	31, // 29: configapi.ConfigV5Rsp.ConfigVersionMapEntry.value:type_name -> snakecommon.ConfigVersionInfo
+	30, // [30:30] is the sub-list for method output_type
+	30, // [30:30] is the sub-list for method input_type
+	30, // [30:30] is the sub-list for extension type_name
+	30, // [30:30] is the sub-list for extension extendee
+	0,  // [0:30] is the sub-list for field type_name
 }
 
 func init() { file_system_configapi_configapi_proto_init() }
@@ -711,7 +746,7 @@ func file_system_configapi_configapi_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_system_configapi_configapi_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
