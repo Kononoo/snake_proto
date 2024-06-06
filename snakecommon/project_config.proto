@@ -1,0 +1,259 @@
+syntax = "proto3";
+package snakecommon;
+option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
+
+import "snakeapi/config/SKStore.Proto";
+
+// === user_config begin ======================================
+message UserConfig {
+  int32 gender_cost = 1; //性别修改需要的苹果数量
+  string certify_url = 2; // 实名认证 url 地址
+  int32 cache_clean_switch = 3; //1开2关
+  int32 snake_coin_limit = 4; // 彩豆周上限
+  string single_text_config = 5; // 单机右上角文案说明
+  string qualifying_text_config = 6; // 团战右上角文案说明
+  string clan_text_config = 7; // 战队赛结算右上角文案说明
+  repeated DeviceConfig abnormal_store = 8;
+  string zhi_token_url2 = 9; // 吱口令
+  int32 send_red_pack_need_care = 10; // 红包守护值
+  string upload_avatar_tips = 11; // 上传头像奖励
+  int32 start_endless_flag = 12; // 是否首页直接进无尽，0否1是
+  repeated int32 home_login_days = 13;//新用户第多少天登录 首次回首页后弹登录
+  int32 nickname_home_count = 14;//新用户第三天登录 多少次回首页后弹改名
+  ShowConfig show_config =15;
+  AntiAddiction anti_addiction = 16;
+  int32 online_interval_seconds = 17;
+  GameEndSkin game_end_skin = 18;
+  repeated string workday_list = 19;
+  repeated string holiday_list = 20;
+  RenamePopupRule rename_popup_rule = 21;
+  BindConfig bind_config = 22;
+  SettingConfig setting_conf = 23;
+  FeedbackConfig feedback = 24;
+  FlagsConfig flags = 25;
+  repeated SnakeMain.Config.RewardConfig certify_reward = 26;
+  RegisterSurvey register_survey = 27;
+  RecruitPopup recruit_popup = 28;
+  MinorLimit minor_limit = 29;
+  string login_limit_msg = 30;
+  string age_tips_text = 31;
+  string certify_reward_image = 32;
+  NewUserConfig new_user_config = 33;
+  int32 open_cp_button = 34; // 是否开启cp背景更换按钮，1为开
+}
+
+
+/**
+* "new_user_config": {
+ *     "player_eat_food_rate_change_scope": 200,
+*     "player_eat_food_count_for_increase_node": 10,
+ * 		"eat_food_rate_change_scope": 200,
+*     "eat_food_count_for_increase_node": 10,
+ *     "guide_candy_total_count": 100, //新手引导糖果总个数
+ *   	"guide_candy_score": 100, //新手引导糖果分数
+ *     "free_revive_game_count": 5, //新手无尽前几局每局第一次免费复活
+ *   }
+ */
+message NewUserConfig {
+  int32 free_revive_game_count = 1;
+  int32 guide_skip_flag = 2; // 0关1开 新手引导流程修改实验开关
+  string new_user_img = 3;
+  string old_user_img = 4;
+}
+
+message MinorLimit {
+  int32 max_age = 1;//小于这个18值的是未成年
+  int32 hide_game_voice = 2; //1隐藏
+  int32 hide_friend_rank = 3; //1隐藏
+  OrderCurator order_curator = 4;
+}
+
+message OrderCurator {
+  string link = 1;
+  int32 need = 2; //1要弹
+}
+
+message RecruitPopup {
+  int32 switch = 1;//1开0关
+  int64 play_count = 2;//局数条件
+  int64 score = 3;//分数条件
+  string qa_url = 4;//问卷链接，需替换 {uid}
+  int32 id = 5;// 期数
+  string banner_url = 6;
+  int32 screen_share = 7;
+}
+
+message RegisterSurvey {
+  int32 switch = 1; //1开0关
+  int64 score = 2; //分数条件
+  int32 new_user_day = 3; //注册多少天内算新手
+  string qa_url = 4; //问卷链接，需替换 {uid}
+}
+
+message FlagsConfig {
+  int32 old_single_game_settle = 1;
+  int32 channel_social_huawei_state = 2;
+  int32 channel_social_oppo_state = 3;
+  int32 channel_social_vivo_state = 4;
+  int32 downloader_state = 5;
+  int32 downloader_pause_state_v2 = 6;
+  int32 open_goto_unity_endless = 7;
+  int32 tcp_push_stash = 8; //是否开启暂存
+  int32 open_wedding_list_anim = 9; // 是否开启教堂婚礼列表动画
+  int32 first_blood_sound_effect = 10; //1是新音效，0默认音效
+}
+
+message FeedbackConfig {
+  int32 switch = 1;
+  string version = 2;
+  int32 register_days = 3;
+  int32 play_count = 4;
+  int32 score = 5;
+  int32 limit = 6;
+}
+
+message SettingConfig {
+  DocVersion doc_version = 1;
+  NetworkCheck network_check = 2;
+}
+
+message NetworkCheck {
+  string target = 1;
+  string resource = 2;
+  int32 open = 3; //1开0隐藏
+}
+
+// 用户协议、隐私政策、未成年声明
+message DocVersion {
+  string agreement = 1;
+  string privacy = 2;
+  string announce = 3;
+  string info_sharing_list = 4;
+  string personal_info = 5;
+}
+
+message BindConfig {
+  string bg_url = 1;
+  int32 can_close = 2;
+}
+
+message RenamePopupRule {
+  NewbieClub newbie_club = 1;
+  QualifyingMatch qualifying_match = 2;
+}
+
+message QualifyingMatch {
+  int32 limit = 1;
+}
+
+message NewbieClub {
+  int64 interval = 1;
+  int32 limit = 2;
+}
+
+message GameEndSkin {
+  string notice_url = 1; //气泡图
+  string link = 2; //跳转库
+}
+
+message DeviceConfig {
+  string model = 1;//手机型号(MODEL)
+  string product = 2;//当前手机品牌(PRODUCT)
+  string brand = 3;//手机厂商(BOARD)
+  string manufacturer = 4;//设备制造商(MANUFACTURER)
+}
+
+message ShowConfig {
+  repeated ShowLevelConfig level_config = 1;
+  repeated SkillName skill_name = 2;
+  string intro_v2 = 3;
+  string addition_intro = 4;
+}
+
+message ShowLevelConfig {
+  string game_skill = 1;
+  repeated SnakeMain.Config.RewardConfig reward = 2;
+  string thumbnail = 3;
+  string thum_anim_url = 4;
+  string icon_url = 5;
+  string anim_url = 6;
+  int32 total_show = 7;
+  int32 level = 8;
+}
+
+message SkillName {
+  int32 skill_type = 1;
+  string name = 2;
+}
+
+message SkillBuff {
+  int32 skill_type = 1;
+  string value = 2;
+  string value_text = 3;
+}
+
+message AntiAddiction {
+  Notify notify = 1;
+  MinorNotify minor_notify = 2;
+  string safe_game_notify = 3;
+  PayNotify pay_notify =  4;
+  SocialDesc social_desc = 5;
+  IdentityAge identity_age = 6;
+  CertifyNotify certify_notify = 7;
+  string certify_url = 8;
+}
+
+message Notify {
+  repeated CensorGameConfig uncertified = 1;
+  repeated CensorGameConfig minor = 2;
+}
+/**
+ * "login_text": "为空则没有宵禁","begin": "22:00","end": "08:00",
+ *         "workday_active": 3600,"holiday_active": 10800,"active_text": "超时提醒",
+ *         "active_notice": "剩余活跃时间提醒{remain}占位","notice_interval": 1800
+ */
+message MinorNotify {
+  string login_text = 1;
+  string begin = 2;
+  string end = 3;
+  int32 workday_active = 4;
+  int32 holiday_active = 5;
+  string active_text = 6;
+  string active_notice = 7;
+  int32 notice_interval = 8;
+  int32 addicted_flag = 9; //防沉迷开关 0关闭，1打开
+}
+
+message PayNotify {
+  string minor = 1;
+  int32 certify_flag = 2; //0不弹窗，1弹窗可充值，2弹窗不可充值
+}
+
+message SocialDesc {
+  string broadcast = 1;
+  string world = 2;
+  string friend = 3;
+  string clan = 4;
+}
+
+message IdentityAge {
+  int32 minor = 1;
+}
+
+message CertifyNotify {
+  int32 active_limit = 1;
+  int32 interval = 2;
+  int32 limit = 3;
+  int32 flag = 4; // 0不弹，1弹窗可关，2弹窗不可关
+}
+/**
+ * game_time : 10800
+ * msg : 【健康系统】您今日的累计游戏时间已经超过3小时，为了您的健康，请您下线休息，做适当身体活动，注意劳逸结合。
+ */
+message CensorGameConfig {
+  int32 game_time = 1;
+  string msg = 2;
+  int32 interval_time = 3;
+}
+
+// === user_config end ========================================
