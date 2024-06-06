@@ -1,5 +1,7 @@
 syntax="proto3";
 
+package shop;
+option go_package = "git.17zjh.com/snake/snake_proto/system/shop";
 import "snakecommon/config.proto";
 
 message GetChargeVIPInfoReq { // 获取 vip 信息
