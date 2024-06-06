@@ -1,0 +1,21 @@
+syntax="proto3";
+
+import "snakecommon/config.proto";
+
+message GetChargeVIPInfoReq { // 获取 vip 信息
+}
+
+message GetChargeVIPInfoRsp {
+  int32 charge_exp = 1;
+  repeated int32 level_reward_state = 2;
+  int32 week_reward_state = 3;
+}
+
+message GetChargeVIPRewardReq { // 领区 vip 奖励
+  int32 type = 1; // 1: 等级奖励，2: 周奖励
+  int32 level = 2; // // 要领取的奖励等级
+}
+
+message GetChargeVIPRewardRsp {
+  repeated snakecommon.CRewardItem reward_list = 1; // vip 积分
+}
