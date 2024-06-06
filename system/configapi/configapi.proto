@@ -2,6 +2,7 @@ syntax = "proto3";
 package configapi;
 option go_package = "git.17zjh.com/snake/snake_proto/system/configapi";
 import "snakecommon/config.proto";
+import "snakecommon/project_config.proto";
 import "snakeapi/config/SKStore.Proto";
 
 // 获取 configv5 配置
@@ -15,7 +16,8 @@ message ConfigV5Req {
   int32 skin_version = 7;
   int32 store_version = 8;
   int32 version_code = 9;
-  string config_md5 = 10;
+  string config_versions = 10;
+  string config_keys = 11;
 }
 
 message ConfigV5Rsp {
