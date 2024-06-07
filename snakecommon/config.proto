@@ -43,27 +43,6 @@ message HaighLight{
   int32 delay_time = 4;
 }
 
-message EndLessBuffPropInfo{
-  int32 buff_type = 1;
-  int32 free_times = 2;
-  repeated RandomPriceInfo price_list = 3;
-  repeated RandomPropInfo prop_list = 4;
-}
-
-message RandomPriceInfo{
-  int32 type = 1;
-  int32 num = 2;
-  int32 discount = 3;
-}
-
-message RandomPropInfo{
-  int32 type = 1;
-  int32 skin_id = 2;
-  int32 num = 3;
-  string name = 4;
-  string imgurl = 5;
-}
-
 message PingConfig {
   int32 ping_strategy = 1;
   int32 new_ping_count = 2;
