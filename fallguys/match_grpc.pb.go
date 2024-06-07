@@ -24,6 +24,7 @@ type MatchServerClient interface {
 	Subscribe(ctx context.Context, in *SubscribeReq, opts ...grpc.CallOption) (MatchServer_SubscribeClient, error)
 	EndRound(ctx context.Context, in *EndRoundReq, opts ...grpc.CallOption) (*EndRoundRsp, error)
 	UploadMetric(ctx context.Context, opts ...grpc.CallOption) (MatchServer_UploadMetricClient, error)
+	GetAIList(ctx context.Context, in *GetAIListReq, opts ...grpc.CallOption) (*GetAIListRsp, error)
 }
 
 type matchServerClient struct {
@@ -136,6 +137,15 @@ func (x *matchServerUploadMetricClient) CloseAndRecv() (*UploadMetricRsq, error)
 	return m, nil
 }
 
+func (c *matchServerClient) GetAIList(ctx context.Context, in *GetAIListReq, opts ...grpc.CallOption) (*GetAIListRsp, error) {
+	out := new(GetAIListRsp)
+	err := c.cc.Invoke(ctx, "/fallguys.MatchServer/GetAIList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MatchServerServer is the server API for MatchServer service.
 // All implementations should embed UnimplementedMatchServerServer
 // for forward compatibility
@@ -146,6 +156,7 @@ type MatchServerServer interface {
 	Subscribe(*SubscribeReq, MatchServer_SubscribeServer) error
 	EndRound(context.Context, *EndRoundReq) (*EndRoundRsp, error)
 	UploadMetric(MatchServer_UploadMetricServer) error
+	GetAIList(context.Context, *GetAIListReq) (*GetAIListRsp, error)
 }
 
 // UnimplementedMatchServerServer should be embedded to have forward compatible implementations.
@@ -169,6 +180,9 @@ func (UnimplementedMatchServerServer) EndRound(context.Context, *EndRoundReq) (*
 }
 func (UnimplementedMatchServerServer) UploadMetric(MatchServer_UploadMetricServer) error {
 	return status.Errorf(codes.Unimplemented, "method UploadMetric not implemented")
+}
+func (UnimplementedMatchServerServer) GetAIList(context.Context, *GetAIListReq) (*GetAIListRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAIList not implemented")
 }
 
 // UnsafeMatchServerServer may be embedded to opt out of forward compatibility for this service.
@@ -301,6 +315,24 @@ func (x *matchServerUploadMetricServer) Recv() (*UploadMetricReq, error) {
 	return m, nil
 }
 
+func _MatchServer_GetAIList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAIListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MatchServerServer).GetAIList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/fallguys.MatchServer/GetAIList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MatchServerServer).GetAIList(ctx, req.(*GetAIListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // MatchServer_ServiceDesc is the grpc.ServiceDesc for MatchServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -323,6 +355,10 @@ var MatchServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "EndRound",
 			Handler:    _MatchServer_EndRound_Handler,
+		},
+		{
+			MethodName: "GetAIList",
+			Handler:    _MatchServer_GetAIList_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
