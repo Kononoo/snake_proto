@@ -545,7 +545,7 @@ message SingleGameAiConfigItem {
   double ai_snake_view_angle = 5;
 }
 
-message doubleerConfig {
+message FloaterConfig {
   repeated int32 born_len = 1;
   int32 born_count = 2;
   int32 born_count_v2 = 3;
@@ -620,7 +620,7 @@ message OfflineGameConfig {
   int32 new_kill_broadcast = 15;
   int32 new_map = 16;
   int32 recover = 17;
-  doubleerConfig doubleer_config = 18; // 貌似已经废弃，移到到ai_config_v3配置里了
+  FloaterConfig floater_config = 18; // 貌似已经废弃，移到到ai_config_v3配置里了
   EndlessLimitConfig endless_limit_config = 19;
   ActivityMapConfig activity_map_config = 20;
   EndlessBubbleConfig endless_bubble = 21;
