@@ -370,3 +370,77 @@ message NewUserConfig {
   int32 guide_skip_flag = 15; // 0关1开 新手引导流程修改实验开关
 }
 // === user_config end ========================================
+
+// === offline_game_config start ========================================
+message ReviveItem {
+  int32 ad_revive = 1;
+  int32 card_revive = 2;
+  int32 diamond_revive = 3;
+}
+
+message SingleGameAiConfigItem {
+  int64 start_length = 1;
+  double border_dis_factor = 2;
+  double snake_dis_factor = 3;
+  double wreck_dis_factor = 4;
+  double ai_snake_view_angle = 5;
+}
+
+message FloaterConfig {
+  repeated int32 born_len = 1;
+  int32 born_count = 2;
+  int32 born_count_v2 = 3;
+  int32 born_radius = 4;
+  int32 floater_score = 5;
+  int32 interval_time = 6;
+}
+
+message ActivityMapConfig {
+  int32 start_time = 1;
+  int32 end_time = 2;
+  int32 new_map_theme_id = 3;
+}
+
+message EndlessLimitConfig {
+  int32 ios_length_endless_limit_1 = 1;
+  int32 ios_length_endless_limit_2 = 2;
+  double ios_length_endless_time_limit_1 = 3;
+  double ios_length_endless_time_limit_2 = 4;
+  int32 android_length_endless_limit_1 = 5;
+  int32 android_length_endless_limit_2 = 6;
+  double android_length_endless_time_limit_1 = 7;
+  double android_length_endless_time_limit_2 = 8;
+  int32 ios_kill_endless_limit_1 = 9;
+  int32 ios_kill_endless_limit_2 = 10;
+  double ios_kill_endless_time_limit_1 = 11;
+  double ios_kill_endless_time_limit_2 = 12;
+  int32 android_kill_endless_limit_1 = 13;
+  int32 android_kill_endless_limit_2 = 14;
+  double android_kill_endless_time_limit_1 = 15;
+  double android_kill_endless_time_limit_2 = 16;
+}
+
+message OfflineGameConfig {
+  int32 big_snake_rate = 1;
+  int32 medium_snake_rate = 2;
+  int32 relive_length_limit = 3;
+  int32 relive_need_diamond = 4;
+  int32 snake_direction = 5;
+  int32 twice_relive_diamond = 6;
+  int32 twice_relive_length = 7;
+  repeated ReviveItem endless_revive_config = 8;
+  repeated ReviveItem endless_revive_config_ab1 = 9;
+  repeated ReviveItem endless_revive_config_ab2 = 10;
+  repeated ReviveItem excite_revive_config = 11;
+  repeated ReviveItem limit_revive_config = 12;
+  int32 voice_broadcast = 13;
+  int32 use_ai_v3 = 14;
+  int32 new_kill_broadcast = 15;
+  int32 new_map = 16;
+  int32 recover = 17;
+  FloaterConfig floater_config = 18;
+  EndlessLimitConfig endless_limit_config = 19;
+  ActivityMapConfig activity_map_config = 20;
+}
+
+// === offline_game_config end ========================================

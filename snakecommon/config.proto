@@ -43,16 +43,6 @@ message HaighLight{
   int32 delay_time = 4;
 }
 
-message OfflineGameConfig{
-  repeated ReviveInfo endless_revive_config = 1;
-}
-
-message ReviveInfo{
-  int32 ad_revive = 1;
-  int32 card_revive = 2;
-  int32 diamond_revive = 3;
-}
-
 message EndLessBuffPropInfo{
   int32 buff_type = 1;
   int32 free_times = 2;
