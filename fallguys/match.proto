@@ -62,6 +62,7 @@ message EndRoundReq {
   int32 rid = 2; // 房间id
   repeated Winner winners = 3; // 本轮淘汰的玩家的名次
   bool isLastRound = 4; // 是否是最后一关
+  int32 round_num = 5; // 当前关卡数，用来计算奖励系数
 }
 message EndRoundRsp {
   repeated EndRoundPlayer players =1;
@@ -91,6 +92,23 @@ message UploadMetricReq {
 message UploadMetricRsq {
 }
 
+message GetAIListReq {
+  repeated int32 level_ids = 1; // 关卡id列表
+  int32 num = 2; // 需要的ai数量
+}
+
+message AIItem {
+  string born_pos = 1; // 起始点坐标
+  string ai_url = 2; // ai数据链接
+  int32 ai_level = 3; // ai等级，1:低级，2:中级，3:高级
+}
+message AIList {
+  repeated AIItem list = 1; // ai列表
+}
+message GetAIListRsp {
+  map<int32, AIList> ai_map = 1;// 每个关卡对应的ai列表
+}
+
 service MatchServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
   rpc EndGame (EndGameReq) returns (EndGameRsp) {}
@@ -98,4 +116,5 @@ service MatchServer {
   rpc Subscribe (SubscribeReq) returns (stream SubscribeRsp) {}
   rpc EndRound (EndRoundReq) returns (EndRoundRsp) {}
   rpc UploadMetric(stream UploadMetricReq) returns (UploadMetricRsq) {}
+  rpc GetAIList (GetAIListReq) returns (GetAIListRsp) {}
 }
