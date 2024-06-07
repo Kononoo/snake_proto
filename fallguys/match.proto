@@ -62,6 +62,7 @@ message EndRoundReq {
   int32 rid = 2; // 房间id
   repeated Winner winners = 3; // 本轮淘汰的玩家的名次
   bool isLastRound = 4; // 是否是最后一关
+  int32 round_num = 5; // 当前关卡数，用来计算奖励系数
 }
 message EndRoundRsp {
   repeated EndRoundPlayer players =1;
