@@ -105,7 +105,7 @@ message AIList {
   repeated AIItem list = 1; // ai列表
 }
 message GetAIListRsp {
-  map<int32, AIList> ai_list = 1;// 每个关卡对应的ai列表
+  map<int32, AIList> ai_map = 1;// 每个关卡对应的ai列表
 }
 
 service MatchServer {
