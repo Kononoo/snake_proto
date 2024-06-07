@@ -550,7 +550,7 @@ message FloaterConfig {
   int32 born_count = 2;
   int32 born_count_v2 = 3;
   int32 born_radius = 4;
-  int32 doubleer_score = 5;
+  int32 floater_score = 5;
   int32 interval_time = 6;
   repeated int32 born_len2 = 7;
 }
