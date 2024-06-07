@@ -25,6 +25,14 @@ message CConvert {
   int32 skin_id = 3;  // id
 }
 
+// 通用价格结构
+message CPriceInfo {
+  int32 type = 1;
+  int32 num = 2; //RMB 类型时候  这个字段 代表 goodsid
+  int32 discount = 3;
+  int32 discountPrice = 4;
+}
+
 message UnityQualifyingOpenConfig{
   repeated int32 weekdays = 1;
   string day_start_time = 2;
@@ -72,28 +80,6 @@ message VipPrivilege {
   int32 type = 3; // 特权类型，1:照片数量加上限
 
   int32 photo_num = 4;
-}
-
-
-
-message NetFrameGameConfig {
-  int32 qualifying_guide = 1; //1:强引导，2：弱引导
-  QualifyingConfig qualifying_config = 2;
-  int32 exit_button_plan = 3;
-  string team_suit_text_config = 4; // 团战队服说明文案
-}
-
-message QualifyingConfig {
-  repeated string intro_urls_v2 = 1;
-  string unlock_tip = 2; // 解锁提示"无尽模式达到***分解锁"
-  string game_rule = 3;// 结算页点赞说明
-  int32 force_guide = 4; //1有引导 // 对于未玩过团战的玩家,无尽模式以高于一定分数的成绩结束后是否出现强制团战引导
-  string banner_url = 5;
-  string banner_link = 6;
-  string icon_url = 7;
-  string icon_link = 8;
-  int32 pretty_page = 9;
-  int32 network_survey = 10;
 }
 
 message SocialConfig {
