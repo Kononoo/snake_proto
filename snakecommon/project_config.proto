@@ -3,6 +3,8 @@ package snakecommon;
 option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 
 import "snakecommon/config.proto";
+import "snakeapi/config/SKStore.Proto";
+
 
 message ConfigVersionInfo {
   map<string, string> flags = 1;
@@ -16,14 +18,8 @@ message EndLessBuffPropConfigV2 {
 message EndLessBuffPropInfo{
   int32 buff_type = 1;
   int32 free_times = 2;
-  repeated RandomPriceInfo price_list = 3;
+  repeated CPriceInfo price_list = 3;
   repeated RandomPropInfo prop_list = 4;
-}
-
-message RandomPriceInfo{
-  int32 type = 1;
-  int32 num = 2;
-  int32 discount = 3;
 }
 
 message RandomPropInfo{
@@ -51,6 +47,122 @@ message HighLightInfo {
   int32 level = 5;
 }
 // === huawei_highlight end ======================================
+
+// === ol_game_config start ======================================
+message OlGameConfig {
+  int32 team_boss_skin_id = 1;
+  GameStatusTrack game_status_track = 2;
+  string team_suit_text_config = 3; // 团战队服说明文案
+  GrassConfig grass_config = 4; // 草场配置，应该已废弃
+  int32 show_friend_game_will_end_time_gap = 5;
+  repeated int32 hc_match_cancel_time = 6;
+  repeated int32 no_team_skin_id_list = 7;
+  int32 ol_up_action_double = 8;
+  int32 team_mode_win_length = 9;
+  int32 ol_game_offline_tip_time = 10;
+  repeated int32 no_team_second_head_point_skins = 11;
+  double ol_game_stable_turn_count = 12;
+  repeated string team_neck_urls = 13;
+  string fly_food_url = 14;
+  int32 ol_game_predict_data_count = 15;
+  TeamSuit team_suit = 16;
+  TeamKillConfig team_kill_config = 17;
+  TeamMeleeConfig team_melee_config = 18;
+  QualifyingConfig qualifying_config = 19;
+  RaceNormalConfig race_normal_config = 20;
+  TeamKillProp team_kill_prop = 21;
+  int32 exit_button_plan = 22;
+  int32 qualifying_guide = 23; //1:强引导，2：弱引导
+}
+
+message GameStatusTrack {
+  int32 frame_min_delay = 1;
+  int32 ping_interval = 2;
+}
+message GrassConfig {
+  repeated GrassInfo grass = 1;
+  int32 grid_count = 2;
+}
+message GrassInfo {
+  repeated int32 position = 1;
+  string url = 2;
+}
+message TeamSuit {
+  repeated string head = 1;
+  repeated string body = 2;
+  repeated int32 repeat_rate = 3;
+  string imgurl = 4;
+  string name = 5;
+  repeated TeamSuitNewSuitInfo new_suit = 6;
+}
+message TeamSuitNewSuitInfo {
+  repeated int32 skin_ids = 1;
+  int32 id = 2;
+  string imgurl = 3;
+  string name = 4;
+}
+message TeamKillConfig {
+  int32 first_blood_sound_effect = 1;
+  string clan_point_rule = 2;
+  repeated string intro_urls = 3;
+  repeated string intro_urls_ipad = 4;
+  string top_reward_desc = 5;
+  string top_intro = 6;
+  string top_first_intro = 7;
+  int32 use_season_score = 8;
+}
+message TeamMeleeConfig {
+  string team_melee_rule = 1;
+  string game_rule = 2;
+  string clan_point_rule = 3;
+  repeated string intro_urls = 4;
+  int32 show_feedback = 5;
+  string feedback_url = 6;
+  int32 show_grade_info = 7;
+}
+message QualifyingConfig {
+  repeated string intro_urls = 1;
+  repeated string intro_urls_v2 = 2;
+  repeated string intro_urls_ipad = 3;
+  repeated string intro_urls_ipad_v2 = 4;
+  string unlock_tip = 5; // 解锁提示"无尽模式达到***分解锁"
+  string game_rule = 6; // 结算页点赞说明
+  int32 force_guide = 7; //1有引导 // 对于未玩过团战的玩家,无尽模式以高于一定分数的成绩结束后是否出现强制团战引导
+  int32 pretty_page = 8;
+  string banner_url = 9;
+  string banner_link = 10;
+  int32 use_kcp_v2 = 11;
+  int32 use_netty_v2 = 12;
+  int32 use_netty = 13;
+  int32 network_survey = 14;
+  int32 use_render_offset = 15;
+  int32 network_survey_v2 = 16;
+}
+message RaceNormalConfig {
+  string banner_url = 1;
+  string banner_link = 2;
+  repeated string intro_urls = 3;
+}
+message TeamKillProp {
+  repeated CPriceInfo price_list = 1;
+  repeated SnakeMain.Config.RewardConfig prop_list = 2;
+  int32 game_free = 3;
+  int32 show_icon = 4;
+}
+// === ol_game_config end ======================================
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // === show_config begin ======================================
 message ShowConfig {
@@ -135,12 +247,16 @@ message UserConfig {
   int32 login_page_flag = 38;
   string contact_text = 39;
   int32 login_home_count = 40;
-  map<string, int32> unity_flags = 41;
+  UnityFlags unity_flags = 41;
   int32 use_topon = 42;
   IdfaConfig idfa_config = 43; // ios idfa 弹窗配置
   int32 visitor_flag = 44;
   int32 third_failed_visitor_flag = 45;
   repeated string third_failed_visitor_market = 46;
+}
+
+message UnityFlags {
+
 }
 
 message MinorLimit {
@@ -241,7 +357,7 @@ message MemSwitch {
   bool image_bg_opt = 3;
   bool anim_report_enabled = 4;
   bool fix_start_page_mem_leak = 5;
-  float anim_sample_rate = 6;
+  double anim_sample_rate = 6;
 }
 
 message BindConfig {
