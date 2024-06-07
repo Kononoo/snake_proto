@@ -403,20 +403,20 @@ message ActivityMapConfig {
 }
 
 message EndlessLimitConfig {
-  int32 ios_length_endless_limit_1 = 1;
-  int32 ios_length_endless_limit_2 = 2;
+  int64 ios_length_endless_limit_1 = 1;
+  int64 ios_length_endless_limit_2 = 2;
   double ios_length_endless_time_limit_1 = 3;
   double ios_length_endless_time_limit_2 = 4;
-  int32 android_length_endless_limit_1 = 5;
-  int32 android_length_endless_limit_2 = 6;
+  int64 android_length_endless_limit_1 = 5;
+  int64 android_length_endless_limit_2 = 6;
   double android_length_endless_time_limit_1 = 7;
   double android_length_endless_time_limit_2 = 8;
-  int32 ios_kill_endless_limit_1 = 9;
-  int32 ios_kill_endless_limit_2 = 10;
+  int64 ios_kill_endless_limit_1 = 9;
+  int64 ios_kill_endless_limit_2 = 10;
   double ios_kill_endless_time_limit_1 = 11;
   double ios_kill_endless_time_limit_2 = 12;
-  int32 android_kill_endless_limit_1 = 13;
-  int32 android_kill_endless_limit_2 = 14;
+  int64 android_kill_endless_limit_1 = 13;
+  int64 android_kill_endless_limit_2 = 14;
   double android_kill_endless_time_limit_1 = 15;
   double android_kill_endless_time_limit_2 = 16;
 }
