@@ -21,37 +21,48 @@ message ConfigV5Req {
 }
 
 message ConfigV5Rsp {
-  snakecommon.UserConfig user_config = 1;
-  snakecommon.ClanConfig clan_config = 2;
-  snakecommon.RankConfig rank_config = 3;
-  snakecommon.ActivityConfig activity_config = 4;
-  snakecommon.TextConfig text_config = 5;
-  snakecommon.CharmExpConfig charm_exp_config = 6;
-  snakecommon.ShareConfig share_config = 7;
-  snakecommon.SocialConfig social_config = 8;
-  snakecommon.NetFrameGameConfig ol_game_config = 9;
-  snakecommon.ChargeVipConfig charge_vip_config = 10;
-  snakecommon.HomeUiConfigV3 ui_config_v3 = 11;
-  snakecommon.PingConfig ping_config = 12;
-  repeated snakecommon.RewardMark reward_mark= 13;
-  snakecommon.ShowAdConfig show_ad_config = 14;
-  snakecommon.OrderConfig order_config = 15;
-  snakecommon.ShowBadgeConfig show_badge = 16;
-  snakecommon.ShowIllustrationConfig show_illustration= 17;
-  int32 in_review_state = 18;
-  SnakeMain.Config.StoreConfig proto_store_config = 19;
-  snakecommon.OfflineGameConfig offline_game_config = 20;
-  repeated snakecommon.EndLessBuffPropInfo endless_buff_prop_config = 21;
-  snakecommon.RecoderConfig huawei_highlight = 22;
-  snakecommon.UnityQualifyingOpenConfig unity_qualifying_open_config = 23;
-  snakecommon.MonthCardConfig month_card = 24;
-  string sub_config = 25;
-  snakecommon.TopListConfig top_list_config = 26;
-  snakecommon.CharmTourConfig charm_tours = 27;
-  snakecommon.GiftWallConfig gift_wall = 28;
-  snakecommon.MentorConfig mentorship_config = 29;
-  snakecommon.GiftIllustrationConfig gift_illustration = 30;
+  repeated ConfigV5Item list = 1;
   map<string, snakecommon.ConfigVersionInfo> config_version_map = 31;
   string config_versions = 32;
 }
+
+message ConfigV5Item {
+  string key = 1;
+  bytes value = 2;
+}
+
+//message ConfigV5Rsp {
+//  snakecommon.UserConfig user_config = 1;
+//  snakecommon.ClanConfig clan_config = 2;
+//  snakecommon.RankConfig rank_config = 3;
+//  snakecommon.ActivityConfig activity_config = 4;
+//  snakecommon.TextConfig text_config = 5;
+//  snakecommon.CharmExpConfig charm_exp_config = 6;
+//  snakecommon.ShareConfig share_config = 7;
+//  snakecommon.SocialConfig social_config = 8;
+//  snakecommon.NetFrameGameConfig ol_game_config = 9;
+//  snakecommon.ChargeVipConfig charge_vip_config = 10;
+//  snakecommon.HomeUiConfigV3 ui_config_v3 = 11;
+//  snakecommon.PingConfig ping_config = 12;
+//  repeated snakecommon.RewardMark reward_mark= 13;
+//  snakecommon.ShowAdConfig show_ad_config = 14;
+//  snakecommon.OrderConfig order_config = 15;
+//  snakecommon.ShowBadgeConfig show_badge = 16;
+//  snakecommon.ShowIllustrationConfig show_illustration= 17;
+//  int32 in_review_state = 18;
+//  SnakeMain.Config.StoreConfig proto_store_config = 19;
+//  snakecommon.OfflineGameConfig offline_game_config = 20;
+//  repeated snakecommon.EndLessBuffPropInfo endless_buff_prop_config = 21;
+//  snakecommon.RecoderConfig huawei_highlight = 22;
+//  snakecommon.UnityQualifyingOpenConfig unity_qualifying_open_config = 23;
+//  snakecommon.MonthCardConfig month_card = 24;
+//  string sub_config = 25;
+//  snakecommon.TopListConfig top_list_config = 26;
+//  snakecommon.CharmTourConfig charm_tours = 27;
+//  snakecommon.GiftWallConfig gift_wall = 28;
+//  snakecommon.MentorConfig mentorship_config = 29;
+//  snakecommon.GiftIllustrationConfig gift_illustration = 30;
+//  map<string, snakecommon.ConfigVersionInfo> config_version_map = 31;
+//  string config_versions = 32;
+//}
 

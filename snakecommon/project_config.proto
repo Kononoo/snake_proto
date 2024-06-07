@@ -8,6 +8,34 @@ message ConfigVersionInfo {
   map<string, string> flags = 1;
 }
 
+// === endless_buff_prop begin ======================================
+message EndLessBuffPropConfigV2 {
+  repeated EndLessBuffPropInfo list = 1;
+}
+
+message EndLessBuffPropInfo{
+  int32 buff_type = 1;
+  int32 free_times = 2;
+  repeated RandomPriceInfo price_list = 3;
+  repeated RandomPropInfo prop_list = 4;
+}
+
+message RandomPriceInfo{
+  int32 type = 1;
+  int32 num = 2;
+  int32 discount = 3;
+}
+
+message RandomPropInfo{
+  int32 type = 1;
+  int32 skin_id = 2;
+  int32 num = 3;
+  string name = 4;
+  string imgurl = 5;
+}
+// === endless_buff_prop end ======================================
+
+
 // === show_config begin ======================================
 message ShowConfig {
   repeated ShowLevelConfig level_config = 1;
@@ -461,7 +489,7 @@ message OfflineGameConfig {
   int32 new_kill_broadcast = 15;
   int32 new_map = 16;
   int32 recover = 17;
-  FloaterConfig floater_config = 18;
+  FloaterConfig floater_config = 18; // 貌似已经废弃，移到到ai_config_v3配置里了
   EndlessLimitConfig endless_limit_config = 19;
   ActivityMapConfig activity_map_config = 20;
   EndlessBubbleConfig endless_bubble = 21;
