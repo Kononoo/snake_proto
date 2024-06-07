@@ -65,7 +65,7 @@ message UserConfig {
   int32 start_endless_flag = 12; // 是否首页直接进无尽，0否1是
   repeated int32 home_login_days = 13;//新用户第多少天登录 首次回首页后弹登录
   int32 nickname_home_count = 14;//新用户第三天登录 多少次回首页后弹改名
-  ShowConfig show_config =15;
+  ShowConfig show_config = 15;
   AntiAddiction anti_addiction = 16;
   int32 online_interval_seconds = 17;
   GameEndSkin game_end_skin = 18;
@@ -231,11 +231,11 @@ message DeviceConfig {
   string manufacturer = 4;//设备制造商(MANUFACTURER)
 }
 
-message AntiAddiction { // 防沉迷配置
+message AntiAddiction {// 防沉迷配置
   Notify notify = 1;
   MinorNotify minor_notify = 2; // 14岁以上未成年防沉迷配置
   string safe_game_notify = 3;
-  PayNotify pay_notify =  4;
+  PayNotify pay_notify = 4;
   SocialDesc social_desc = 5;
   IdentityAge identity_age = 6;
   CertifyNotify certify_notify = 7;
@@ -372,7 +372,7 @@ message NewUserConfig {
 // === user_config end ========================================
 
 // === offline_game_config start ========================================
-message ReviveItem {
+message ReviveConfigItem {
   int32 ad_revive = 1;
   int32 card_revive = 2;
   int32 diamond_revive = 3;
@@ -393,6 +393,7 @@ message FloaterConfig {
   int32 born_radius = 4;
   int32 floater_score = 5;
   int32 interval_time = 6;
+  repeated int32 born_len2 = 7;
 }
 
 message ActivityMapConfig {
@@ -420,6 +421,28 @@ message EndlessLimitConfig {
   double android_kill_endless_time_limit_2 = 16;
 }
 
+message EndlessBubbleConfig {
+  int32 start_time = 1;
+  int32 finish_time = 2;
+  string link = 3;
+}
+
+message EndlessTrackConfig {
+  int32 start_len = 1;
+  int32 interval_len = 2;
+  int32 interval_second = 3;
+}
+
+message WildStormListItem {
+  int32 duration = 1;
+  double speed_rate = 2;
+}
+
+message WildStormConfig {
+  double max_speed_rate = 1;
+  repeated WildStormListItem wild_storm_list = 2;
+}
+
 message OfflineGameConfig {
   int32 big_snake_rate = 1;
   int32 medium_snake_rate = 2;
@@ -428,11 +451,11 @@ message OfflineGameConfig {
   int32 snake_direction = 5;
   int32 twice_relive_diamond = 6;
   int32 twice_relive_length = 7;
-  repeated ReviveItem endless_revive_config = 8;
-  repeated ReviveItem endless_revive_config_ab1 = 9;
-  repeated ReviveItem endless_revive_config_ab2 = 10;
-  repeated ReviveItem excite_revive_config = 11;
-  repeated ReviveItem limit_revive_config = 12;
+  repeated ReviveConfigItem endless_revive_config = 8;
+  repeated ReviveConfigItem endless_revive_config_ab1 = 9;
+  repeated ReviveConfigItem endless_revive_config_ab2 = 10;
+  repeated ReviveConfigItem excite_revive_config = 11;
+  repeated ReviveConfigItem limit_revive_config = 12;
   int32 voice_broadcast = 13;
   int32 use_ai_v3 = 14;
   int32 new_kill_broadcast = 15;
@@ -441,6 +464,9 @@ message OfflineGameConfig {
   FloaterConfig floater_config = 18;
   EndlessLimitConfig endless_limit_config = 19;
   ActivityMapConfig activity_map_config = 20;
+  EndlessBubbleConfig endless_bubble = 21;
+  EndlessTrackConfig endless_track = 22;
+  WildStormConfig wild_storm = 23;
 }
 
 // === offline_game_config end ========================================
