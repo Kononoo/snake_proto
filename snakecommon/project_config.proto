@@ -71,8 +71,9 @@ message OlGameConfig {
   QualifyingConfig qualifying_config = 19;
   RaceNormalConfig race_normal_config = 20;
   TeamKillProp team_kill_prop = 21;
-  int32 exit_button_plan = 22;
+  int32 exit_button_plan = 22; // 4.3.28新增,中途退出按钮状态方案
   int32 qualifying_guide = 23; //1:强引导，2：弱引导
+  int32 ol_game_predict_data_count_new = 24;
 }
 
 message GameStatusTrack {
