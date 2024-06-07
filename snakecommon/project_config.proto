@@ -35,6 +35,22 @@ message RandomPropInfo{
 }
 // === endless_buff_prop end ======================================
 
+// === huawei_highlight begin ======================================
+message HuaweiHighlight {
+  repeated HighLightInfo highlight_list = 1;
+  int32 open = 2;
+  string template_id_three = 3;
+  string template_id_four = 4;
+}
+
+message HighLightInfo {
+  int32 type = 1;
+  int32 obj = 2;
+  int32 time = 3;
+  int32 delay_time = 4;
+  int32 level = 5;
+}
+// === huawei_highlight end ======================================
 
 // === show_config begin ======================================
 message ShowConfig {
