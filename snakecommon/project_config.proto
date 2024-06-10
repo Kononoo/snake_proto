@@ -171,8 +171,8 @@ message ClanConfig {
   int32 create_clan_cost_diamond = 13;
   string season_cup_url = 14;
   string reward_web = 15;
-  NewClanRewardConfig reward_config = 16; // 这是老的，结算的时候用，服务器返回从大到小的顺序，客户端从小到大展示
-  NewClanRewardConfig reward_explain_config = 17; // 这是新的，预览的时候用，服务器返回从大到小的顺序，客户端从小到大展示
+  repeated NewClanRewardItem reward_config = 16; // 这是老的，结算的时候用，服务器返回从大到小的顺序，客户端从小到大展示
+  repeated NewClanRewardItem reward_explain_config = 17; // 这是新的，预览的时候用，服务器返回从大到小的顺序，客户端从小到大展示
   string desc_url_v2 = 18;
 }
 
@@ -213,7 +213,7 @@ message ClanLevelInfo {
   int32 elite_num = 6;
 }
 
-message NewClanRewardConfig {
+message NewClanRewardItem {
   int32 index = 1;   // 只代表id，不代表等级的高低
   string badge_imgurl = 2;
   string grade = 3;
