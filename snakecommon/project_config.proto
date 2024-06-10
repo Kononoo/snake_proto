@@ -243,7 +243,7 @@ message RankConfig {
   int32 skin_id = 10;
   int32 prime_king_range = 11; //最强王者数目
   repeated string prime_top_urls = 12;
-  repeated Level level = 13;
+  repeated RankLevel level = 13;
   repeated RankReward rank_reward = 14;
 }
 
@@ -254,7 +254,7 @@ message RankReward {
   repeated CRewardItem reward_list = 2;
 }
 
-message Level {
+message RankLevel {
   int32 star_start_num = 1;
   repeated int32 rule = 2;
   int32 star_end_num = 3;
