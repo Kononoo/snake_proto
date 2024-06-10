@@ -154,6 +154,284 @@ message TeamKillProp {
 
 
 
+// === clan_config begin =======================================
+message ClanConfig {
+  RuleDesc rule_desc = 1; // 战队赛增加活跃点规则
+  repeated RaceTimeConfig race_time_config = 2;
+  map<int32, ClanRaceReward> clan_race_reward = 3;
+  repeated ClanLevelInfo level_config = 4;
+  string clan_reward_tips = 5;
+  string qrcode_format = 6;
+  int32 unlock_star = 7;
+  repeated int32 reward_partition = 8; // 这是老的，结算的时候用，[0]为高，[1]为中，[2]为低
+  repeated int32 reward_explain_partition = 9; // 这是新的，预览的时候用，[0]为高，[1]为中，[2]为低
+  string permission_imgurl = 10;
+  string add_cup_rule = 11;
+  string team_add_cup_rule = 12;
+  int32 create_clan_cost_diamond = 13;
+  string season_cup_url = 14;
+  string reward_web = 15;
+  NewClanRewardConfig reward_config = 16; // 这是老的，结算的时候用，服务器返回从大到小的顺序，客户端从小到大展示
+  NewClanRewardConfig reward_explain_config = 17; // 这是新的，预览的时候用，服务器返回从大到小的顺序，客户端从小到大展示
+  string desc_url_v2 = 18;
+}
+
+message RuleDesc {
+  string team_add_cup_rule = 1;//战队赛增加活跃点规则
+  string add_cup_rule = 2;//团战增加活跃点规则
+  int32 formal_member_cup = 3;//候补队员转正提示
+  string level_explain_url = 4;//战队等级介绍 url
+  repeated ActivePointAddition active_point_addition = 5; //排位赛战队成员组队加成
+  int32 race_cup_rate = 6;//战队赛倍数
+}
+
+message ActivePointAddition {
+  int32 member = 1;
+  string desc = 2;
+}
+
+message RaceTimeConfig {
+  int32 week_day = 1;  // 星期日为7
+  string start_time = 2;  // 格式24:00:00
+  string end_time = 3; // 格式24:00:00
+}
+
+message ClanRaceReward {
+  int32 type = 1;
+  int32 value = 2;
+  string desc = 3;
+  string progress = 4;
+  int32 state = 5;
+}
+
+message ClanLevelInfo {
+  int32 member_num = 1;
+  int32 cup_start = 2;
+  int32 level = 3;
+  string name = 4;
+  string icon_url = 5;
+  int32 elite_num = 6;
+}
+
+message NewClanRewardConfig {
+  int32 index = 1;   // 只代表id，不代表等级的高低
+  string badge_imgurl = 2;
+  string grade = 3;
+  string border_imgurl = 4;
+  int32 rank = 5;
+  int32 diamond = 6;
+  repeated CRewardItem reward = 7;
+  int32 cup_start = 8;
+  int32 reward_id = 9;
+  // 下一个不同 grade 的 rank 位置
+  int32 nextRank = 10;
+  int32 degree = 11;  // 依据服务器返回来的等级列表位置，小的一定等级低，最低等级为0；0,1,2,3...n-1 中间没有空位
+}
+// === clan_config end ======================================
+
+// === rank_config begin ======================================
+message RankConfig {
+  int32 start_time = 1;
+  int32 end_time = 2;
+  string season_name = 3;
+  string season_introduce_url = 4;
+  string title = 5;
+  string imgurl = 6;
+  int32 height = 7;
+  int32 width = 8;
+  int32 season_id = 9;
+  int32 skin_id = 10;
+  int32 prime_king_range = 11; //最强王者数目
+  repeated string prime_top_urls = 12;
+  repeated Level level = 13;
+  repeated RankReward rank_reward = 14;
+}
+
+message RankReward {
+  // "star_range": [0, 3],
+  repeated int32 star_range = 1;
+  // "reward_list": [通用奖励数组]
+  repeated CRewardItem reward_list = 2;
+}
+
+message Level {
+  int32 star_start_num = 1;
+  repeated int32 rule = 2;
+  int32 star_end_num = 3;
+  string url = 4;
+  string name = 5;
+  int32 mvp = 6;
+}
+
+message SeasonInfo {
+  int32 start_time = 1;
+  int32 end_time = 2;
+  string season_name = 3;
+  string season_introduce_url = 4;
+  string title = 5;
+  string imgurl = 6;
+  int32 height = 7;
+  int32 width = 8;
+  int32 season_id = 9;
+  int32 skin_id = 10;
+}
+// === rank_config end ======================================
+
+
+// === share_config begin ======================================
+message ShareConfig {
+  string share_url = 1;
+  string share_title = 2;
+  string share_text = 3;
+  string my_qr_url = 4;
+  ChannelConfig channel_config = 5;
+  GameInvite game_invite = 6;
+  repeated VideoShareIcon video_share_icon = 7;
+  repeated ClipBoardCheck clipboard_check = 8;
+  ShareTag share_tag = 9;
+}
+
+message ShareTag {
+  string kuaishou = 1;
+  string douyin = 2;
+  string weibo = 3;
+}
+
+message ClipBoardCheck {
+  int64 start_time = 1;
+  int64 finish_time = 2;
+  string act = 3;
+  string reg = 4;
+}
+
+message VideoShareIcon {
+  string key = 1;
+  int64 start_time = 2;
+  int64 finish_time = 3;
+  string imgurl = 4;
+  string link = 5;
+}
+
+message ChannelConfig {
+  int32 wechat_friend = 1;
+  int32 wechat_circle = 2;
+  int32 qq_circle = 3;
+  int32 qq_friend = 4;
+  int32 weibo = 5;
+}
+
+message GameInvite {
+  string title = 1;
+  string url = 2;
+  string text = 3;
+  string xiaomi_img = 4;
+}
+// === share_config end ======================================
+
+// === social_config begin ======================================
+message SocialConfig {
+  int32 broadcast_interval_time = 1; // 广播刷新时间
+  repeated CharmLevelItem charm_level = 2;
+  CharmTopConfig charm_top_config = 3;
+  int32 marry_point = 4;
+  string marriage_vow_head = 5;
+  string marriage_vow_content = 6;
+  string marriage_vow_foot = 7;
+  string marry_reward_mail_title = 8;
+  string marry_reward_mail_content = 9;
+  repeated CRewardItem marry_rewards = 10;
+  int32 world_speak_interval_time = 11;
+  int32 world_speak_min_star = 12; // 世界发言最低星数
+  int32 world_speak_min_star_v2 = 13; // 查看世界发言最低星数
+  int32 group_speak_min_star = 14;
+}
+
+message CharmTopConfig {
+  string increase_desc = 1;
+  int32 list_count = 2;
+  int32 user_show_day = 3;
+}
+
+message CharmLevelItem {
+  int32 charm_start = 1;
+  string icon_url = 2;
+  string icon_url_v2 = 3;
+  int32 num = 4;
+}
+// === social_config end ======================================
+
+// === charm_exp_config begin ======================================
+message CharmExpConfig {
+  repeated CharmExpRank charm_exp_ranks = 1; // 魅力勋章等级配置
+  repeated CharmPrivilegeItem privilege_config = 2; // 特权配置
+  string rule_url = 3; // 规则说明url
+  string privilege_desc = 4; // 特权说明
+  string charm_detail = 5; // 魅力勋章详情页
+}
+
+message CharmExpRank {
+  int32 level = 1;
+  string name = 2;
+  string icon = 3;
+  int32 need_exp = 4;
+  repeated int32 privilege_ids = 5;
+  string text_bg_url = 6; // 首页魅力勋章背景图
+}
+
+message CharmPrivilegeItem {
+  int32 id = 1;
+  string name = 2;
+  string imgurl = 3;
+  int32 min_level = 4;
+}
+// === charm_exp_config end ======================================
+
+// === text_config begin ======================================
+message TextConfig {
+  string charm_star = 1;
+  string happycoin_title = 2;
+  string coin_deal_notify = 3;
+  repeated string share_text_list = 4;
+  string qualifying_beta_rule = 5;
+  string gift_rule = 6;
+  string endless_tips = 7;
+
+  map<string, GiftLikeTextList> gift_like_text_list_v2 = 8;
+  repeated ShortCutConfig quick_phrase_text_list = 9;
+  repeated string ai_anchor_nickname_list = 10;
+  repeated ReportBehavior report_behavior_list = 11;
+}
+
+message GiftLikeTextList {
+  repeated string value = 1;
+}
+
+message ShortCutConfig {
+  enum SceneType {
+    invalidStatus = 0;
+    SceneFriend = 1;
+    SceneWorld = 2;
+    SceneMatch = 3;
+    SceneClan = 5;
+    SceneCoupleMatch = 7;
+    SceneRaceRoom = 8;
+  }
+
+  int32 type = 1;
+  string name = 2;
+  repeated string list = 3;
+}
+
+
+message ReportBehavior {
+  int32 id = 1;
+  string desc = 2;
+}
+// === text_config end ======================================
+
+
+
+
 
 
 
