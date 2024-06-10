@@ -376,6 +376,7 @@ message CharmExpRank {
   int32 need_exp = 4;
   repeated int32 privilege_ids = 5;
   string text_bg_url = 6; // 首页魅力勋章背景图
+  int32 keep_exp = 7; // 勋章保留经验值，用于计算勋章升级
 }
 
 message CharmPrivilegeItem {
@@ -383,6 +384,7 @@ message CharmPrivilegeItem {
   string name = 2;
   string imgurl = 3;
   int32 min_level = 4;
+  string desc = 5;
 }
 // === charm_exp_config end ======================================
 
