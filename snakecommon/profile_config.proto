@@ -1,0 +1,33 @@
+syntax = "proto3";
+package snakecommon;
+option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
+
+import "snakecommon/config.proto";
+
+
+// ======== charge_vip_config start ====================================================
+message ChargeVipConfig {
+  repeated VipLevel level_list = 1;
+  string intro_url = 2;
+  string start_time_str = 3;
+}
+
+message VipLevel {
+  int32 level = 1;
+  int32 charge_exp = 2; // 需要的积分，是人民币的10倍
+  repeated VipPrivilege privilege = 3; // 特权展示
+  repeated CRewardItem reward_list = 4; // 特权奖励
+  string anim_url = 5; // 大icon动效
+  int32 anim_type = 6;
+  string icon_url = 7; // 小icon动效
+  int32 icon_anim_type = 8;
+  repeated CRewardItem week_reward = 9; // 每周好礼奖励
+}
+
+message VipPrivilege {
+  string imgurl = 1;
+  string desc = 2;
+  int32 type = 3; // 特权类型，1:照片数量加上限
+  int32 photo_num = 4;
+}
+// ======== charge_vip_config end ====================================================

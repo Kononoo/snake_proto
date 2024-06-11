@@ -431,8 +431,209 @@ message ReportBehavior {
 }
 // === text_config end ======================================
 
+// === ui_config_v3 start =======================================
+message UiConfigV3 {
+  GameIcon endless_icon_v2 = 1;
+  GameIcon qualifying_icon_v2 = 2;
+  GameIcon left_corner = 3;
+  GameIcon right_corner = 4;
+  repeated GameIcon more_game = 5;
+  NewbieCondition newbie_condition = 6;
+  GameIcon endless_huge_icon = 7;
+  int64 game_slide_interval_sec = 8;
+  repeated GameIcon game_slide_list = 9;
+  GameIcon endless_icon = 10;
+  GameIcon qualifying_icon = 11;
+  HomeBackground home_background = 12;
+  GameIcon ar_icon = 13;
+  GameIcon plant_icon = 14;
+  string more_game_bgurl = 15;
+}
+
+message GameIcon {
+  string url = 1;
+  string lock_url = 2;
+  string link = 3;
+  Bubble bubble = 4;
+  string support_version = 5;
+  string text_imgurl = 6; // 文字底图
+  string anim_url = 7; // icon 动效，引导动效
+  int32 anim_type = 8; // 动效类型
+  string vap_url = 9;
+  int32 review_hide = 10; // 审核模式是否隐藏
+  int32 newbie_hide = 11; // 对新手是否隐藏，1是，0否
+  int32 model_hide = 12; // 0 全关 1 客户端判断机型
+  int32 size_type = 13; // 大图0
+  int32 game_mode = 14;
+  string open_day_start = 15;
+  string open_day_end = 16;
+  int64 start_time = 17;
+  int64 end_time = 18;
+}
+
+message Bubble {
+  string url = 1; // 动画/图片链接
+  int32 stay_second = 2; // 动画展示秒数
+  int64 show_start = 3;
+  int64 show_end = 4;
+}
+
+message NewbieCondition {
+  int32 register_day = 1;
+  int64 single_len = 2;
+}
+
+message HomeBackground {
+  int32 anim_type = 1;
+  string anim_src = 2;
+  string static_imgurl = 3;
+  string bottom_shadow_imgurl = 4;
+  string skin_light_bg_imgurl = 5;
+  string skin_floor_bg_imgurl = 6;
+  string top_shadow_imgurl = 7;
+  string left_shadow_imgurl = 8;
+}
+// === ui_config_v3 end =======================================
 
 
+// === ping_config start =======================================
+message PingConfig {
+  int32 ping_strategy = 1;
+  int32 new_ping_count = 2;
+  double ping_loss_rate = 3;
+  int32 ping_interval_time = 4;
+  int32 ping_interval_count = 5;
+  map<string, string> ping_ip_list = 6;
+  int32 ping_count = 7;
+  bool ping_interval_switch = 8;
+}
+// === ping_config end =======================================
+
+// === reward_config start =======================================
+message RewardConfig {
+  repeated RewardMark reward_marks = 1;
+}
+
+message RewardMark {
+  int32 id = 1;      // 角标id
+  string icon = 2;   // 角标图片
+}
+// === reward_config end =======================================
+
+// === show_ad_config start =======================================
+message ShowAdConfig {
+  repeated AdRewardModel snake_coin_ad_config = 1;
+  repeated AdRewardModel coupon_ad_config = 2;
+  repeated AdRewardModel happycoin_ad_config = 3;
+  repeated AdGoodsItem goods_list = 4;
+  int32 iron_source_switch = 5;
+  int32 ad_diamond_state = 6;
+  int32 ad_relive_state = 7;
+  int32 times = 8;
+  int32 first_times = 9;
+  int32 ad_chest_reduce_time = 10;
+  int32 ad_snake_coin_state = 11;
+  int32 double_snake_coin_state = 12;
+  string single_add_buff_ui = 13;
+  EndlessBuff endless_buff = 14;
+  AdPopupsConfig ad_popups_config = 15;
+  AdPopupsConfig android_ad_popups_config = 16;
+  AdPopupsConfig ab_ad_popups_config = 17;
+  repeated EndlessAdRecommend endless_checkout_recommend = 18;
+  repeated EndlessAdRecommend noad_endless_checkout_recommend = 19;
+  repeated EndlessAdRecommend melee_checkout_recommend = 20;
+}
+
+message EndlessBuff {
+  int32 times = 1;
+  int32 interval_times = 2;
+  int32 protect_times = 3;
+}
+
+message PopupPosition {
+  int32 times = 1;//首次弹出的局数
+  int32 interval_times = 2;//弹出间隔局数
+  int32 show_limit = 3;//每日展示上限
+  int32 threshold = 4;
+  int32 incr_times = 5;
+}
+
+message AdPopupsConfig {
+  int32 popups_total_limit = 1;
+  repeated string popus_order = 2; //重来时皮肤与buff都满足触发条件，优先顺序可配（默认皮肤优先）
+  int32 end_popup_count = 3;
+  repeated string end_popup_order = 4;
+  repeated string new_end_popup_order1 = 5;
+  repeated string new_end_popup_order2 = 6;
+  int32 newbie_protect_day = 7;
+  int32 trio_game_count = 8; //新用户首次允许弹出弹窗的局数（新手保护）
+  map<string, PopupPosition> popup_position_config = 9;
+}
+
+message EndlessAdRecommend {
+  int32 item_id = 1;//id
+  int32 anim_type = 2;//通用动画类型,1:图片,5:视频
+  string anim_url = 3;//动画链接
+  string link = 4;//通用跳转链接
+  int32 probability = 5;//权重
+}
+
+message AdRewardModel {
+  int32 cold_time = 1;
+  int32 index = 2;
+  int32 num = 3;
+  int32 type = 4; //货币类型
+  int32 happycoin = 5;
+}
+
+message AdGoodsItem {
+  int32 diamond = 1;
+  string apple_product_id = 2;
+  int32 goods_id = 3;
+  int32 goods_price = 4;
+  string goods_name = 5;
+}
+// === show_ad_config end =======================================
+
+// === order_config start =======================================
+message OrderConfig {
+  repeated int32 alive_popup_order = 1;
+  int32 iapppay_switch = 2;
+  string service_contact = 3;
+  repeated RMBPackGoodsInfo pack_goods_list = 4;
+  repeated int32 alive_pack_popup = 5;
+  repeated RMBPackGoodsInfo diamond_goods_list = 6;
+  FirstChargePopup first_charge_popup = 7;
+  repeated RMBPackGoodsInfo red_pack_goods_list = 8;
+  repeated int32 excite_popup_order = 9;
+  int32 need_bind = 10;
+  RandomDoubleClientInfo random_double_client_info = 11; // 需要返回给客户端的数据
+}
+
+message RMBPackGoodsInfo {
+  int32 coolpad_product_id = 1;
+  int32 goods_price = 2;
+  int32 diamond = 3;
+  string goods_name = 4;
+  string baidu_product_id = 5;
+  int32 goods_id = 6;
+  int32 lenovo_product_id = 7;
+  string xiaomi_product_id = 8;
+  string apple_product_id = 9;
+  int32 subscribe = 10;
+  string imgurl = 11;
+  string tips = 12;
+}
+
+message FirstChargePopup {
+  int32 range = 1;
+  int32 count = 2;
+}
+
+message RandomDoubleClientInfo {
+  string title_imgurl = 5;
+}
+// === order_config end =======================================
 
 
 
@@ -484,7 +685,6 @@ message ShowSkillBuff {
   string value_text = 3;
 }
 // === show_config end ======================================
-
 
 // === user_config begin ======================================
 message UserConfig {
