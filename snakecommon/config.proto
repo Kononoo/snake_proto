@@ -39,48 +39,9 @@ message UnityQualifyingOpenConfig{
   string day_end_time = 3;
 }
 
-message PingConfig {
-  int32 ping_strategy = 1;
-  int32 new_ping_count = 2;
-  float ping_loss_rate = 3;
-  int32 ping_interval_time = 4;
-  int32 ping_interval_count = 5;
-  map<string,string> ping_ip_list = 6;
-}
 
-message ChargeVipConfig {
-  repeated VipLevel level_list = 1;
-  string intro_url = 2;
-}
 
-message VipLevel {
-  int32 level = 1;
-  int32 charge_exp = 2; // 需要的积分，是人民币的10倍
 
-  repeated VipPrivilege privilege = 4; // 特权展示
-
-  repeated SnakeMain.Config.RewardConfig reward_list = 5; // 特权奖励
-
-  string anim_url = 6; // 大icon动效
-
-  int32 anim_type = 7;
-
-  string icon_url = 8; // 小icon动效
-
-  int32 icon_anim_type = 9;
-
-  repeated SnakeMain.Config.RewardConfig week_reward = 10; // 每周好礼奖励
-}
-
-message VipPrivilege {
-  string imgurl = 1;
-
-  string desc = 2;
-
-  int32 type = 3; // 特权类型，1:照片数量加上限
-
-  int32 photo_num = 4;
-}
 
 
 
@@ -521,7 +482,7 @@ message ExchangePrice {
 
 
 message BattleRankReward {
-  int32 rank  = 1;
+  int32 rank = 1;
   string rank_desc = 2;
   string mail = 3;
   repeated SnakeMain.Config.RewardConfig reward = 4;
@@ -531,77 +492,6 @@ message BattleRankReward {
 
 
 
-
-message HomeUiConfigV3 {
-  IconConfig endless_icon_v2 = 1;
-  IconConfig qualifying_icon_v2 = 2;
-  IconConfig left_corner = 3;
-  IconConfig right_corner = 4;
-  repeated MoreGame more_game = 5;
-  NewbieCondition newbie_condition = 6;
-  IconConfig endless_huge_icon = 7;
-  int64 game_slide_interval_sec = 8;
-  repeated SlideIconConfig game_slide_list = 9;
-}
-
-message SlideIconConfig {
-  string url = 1;
-  string lock_url = 2;
-  string link = 3;
-  Bubble bubble = 4;
-  string support_version = 5;
-  string text_imgurl = 6;
-  string anim_url = 7;
-  int32 anim_type = 8;
-  string open_day_start = 9;
-  string open_day_end = 10;
-  int64 start_time = 11;
-  int64 end_time = 12;
-}
-
-message IconConfig {
-  string url = 1;
-  string lock_url = 2;
-  string link = 3;
-  Bubble bubble = 4;
-  string support_version = 5;
-  string text_imgurl = 6;
-  string anim_url = 7;
-  int32 anim_type = 8;
-}
-
-message MoreGame {
-  string url = 1;
-  string lock_url = 2;
-  int32 review_hide = 3; // 在审核模式下是否隐藏，1是，0否
-  int32 newbie_hide = 4; // 对新手是否隐藏，1是，0否
-  int32 size_type = 5; // 大图0
-  string link = 6;
-  Bubble bubble = 7;
-  string support_version = 8;
-
-  string open_day_start = 9;
-  string open_day_end = 10;
-  int64 start_time = 11;
-  int64 end_time = 12;
-}
-
-message Bubble {
-  string url = 1;
-  int32 stay_second = 2;
-  int64 show_start = 3;
-  int64 show_end = 4;
-}
-
-message NewbieCondition {
-  int32 register_day = 1;
-  int64 single_len = 2;
-}
-
-message RewardMark {
-  int32 id = 1;      // 角标id
-  string icon = 2;   // 角标图片
-}
 
 message RouletteConfig {
   int32 popup_interval = 1;
@@ -623,53 +513,7 @@ message RouletteSubConfig {
   int64 endless_endtime = 5; // 单机轮盘结束时间，以s计算
 }
 
-message ShowAdConfig {
-  repeated AdRewardModel snake_coin_ad_config = 1;//看广告的银币
-  repeated AdRewardModel coupon_ad_config = 2;//看广告得奖券
-  string single_add_buff_ui = 3;
-  AdPopupsConfig android_ad_popups_config = 4;
-  AdPopupsConfig ad_popups_config = 5;
-  repeated EndlessAdRecommend endless_checkout_recommend = 6;
-  repeated EndlessAdRecommend melee_checkout_recommend = 7;
-}
 
-message AdRewardModel {
-  int32 cold_time = 1;
-  int32 index = 2;
-  int32 num = 3;
-  int32 type = 4; //货币类型
-}
-
-message AdPopupsConfig {
-  int32 trio_game_count = 1;//新用户首次允许弹出弹窗的局数（新手保护）
-  repeated string popus_order = 2;//重来时皮肤与buff都满足触发条件，优先顺序可配（默认皮肤优先）
-  PopupPositionConfig popup_position_config = 3;
-
-  repeated string end_popup_order = 4;
-  repeated string new_end_popup_order1 = 5;
-  repeated string new_end_popup_order2 = 6;
-  int32 end_popup_count = 7;
-}
-
-message PopupPositionConfig {
-  PopupConfig skin_trial = 1;
-  PopupConfig endless_buff = 2;
-  PopupConfig lottery = 3;
-}
-
-message PopupConfig {
-  int32 times = 1;//首次弹出的局数
-  int32 interval_times = 2;//弹出间隔局数
-  int32 show_limit = 3;//每日展示上限
-}
-
-message EndlessAdRecommend {
-  int32 item_id = 1;//id
-  int32 anim_type = 2;//通用动画类型,1:图片,5:视频
-  string anim_url = 3;//动画链接
-  string link = 4;//通用跳转链接
-  int32 probability = 5;//权重
-}
 
 message SkinUgcConfig {
   int64 start_time = 1;
@@ -678,31 +522,7 @@ message SkinUgcConfig {
   string btn_link = 4;
 }
 
-message OrderConfig {
-  repeated int32 alive_pack_popup = 1;
-  repeated int32 alive_popup_order = 2;
-  repeated IAPPackGoods diamond_goods_list = 3;
-  repeated int32 excite_popup_order = 4;
-  int32 iapppay_switch = 5;
-  repeated IAPPackGoods pack_goods_list = 6;
-  repeated IAPPackGoods red_pack_goods_list = 7;
-  string service_contact = 8;
-  int32 need_bind = 9;
-  OrderRandomDouble random_double = 10;
-}
 
-message IAPPackGoods {
-  string goods_name = 1;
-  string imgurl = 3;
-  int32 diamond = 7;
-  string tips = 8;
-  int32 goods_id = 9;
-  int32 goods_price = 10;
-}
-
-message OrderRandomDouble {
-  string title_imgurl = 1;
-}
 
 message Title {
   int32 id = 1;
@@ -740,7 +560,7 @@ message SeasonResource {
 message ShowBadgeConfig {
   string intro = 1;
   repeated BadgeTitle title_list = 2;
-  string show_illustration_desc_url= 4;
+  string show_illustration_desc_url = 4;
   string activity_id = 5;
 }
 
@@ -772,9 +592,9 @@ message SkinUgcConfigV2 {
 message UgcTopic {
   int32 id = 1;
   string name = 2;
-  string bg=3;
-  string bg_small=4;
-  bool is_topic_create=5;
+  string bg = 3;
+  string bg_small = 4;
+  bool is_topic_create = 5;
 }
 
 message UgcWorks {
