@@ -52,6 +52,8 @@ message GameReadyReq { // unity server初始化成功后通知tcp server
   bool ready = 1; // 是否初始化成功
   string msgId = 2; // push消息中的唯一标识
   string addr = 3; // ip:端口
+  string ds_id = 4; // unity server id 标识
+  int32 rid = 5; // 房间 id
 }
 message GameReadyRsp{
 }
