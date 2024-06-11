@@ -542,6 +542,23 @@ message ShowAdConfig {
   repeated EndlessAdRecommend endless_checkout_recommend = 18;
   repeated EndlessAdRecommend noad_endless_checkout_recommend = 19;
   repeated EndlessAdRecommend melee_checkout_recommend = 20;
+  map<string, int32> ad_percent = 21;
+  CrossPromotions cross_promotions = 22;
+}
+
+message CrossPromotions {
+  repeated int32 strategy = 1;
+  repeated CrossPromotionsSource source = 2;
+}
+
+message CrossPromotionsSource {
+  string app_id = 1;
+  string desc = 2;
+  string download = 3;
+  string id = 4;
+  string rate = 5;
+  string show = 6;
+  string url = 7;
 }
 
 message EndlessBuff {
