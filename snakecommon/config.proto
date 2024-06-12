@@ -636,30 +636,7 @@ message UgcWorksLink {
   string tail_imgurl = 3;
 }
 
-// MonthCard Start
-message MonthCardConfig{
-  string card_desc = 1;//底部叠加获得奖励及特权点击打开后弹窗的文案
-  string source = 2;
-  CMonthCard little_month_card = 3;//超值月卡
-  CMonthCard super_month_card = 4;//至尊月卡
-}
 
-message CMonthCard{
-  string url = 1;//背景图
-  repeated SnakeMain.Config.RewardConfig daily_reward = 2;
-  string title = 3;//特权标题
-  string desc = 4;//特权描述
-  int32 duration = 5;
-  int32 free_pack = 6;//免费礼包id
-  int32 pack_id = 7;//月卡id，也是礼包id
-  repeated MonthCardPackItem pack_list = 8;//礼包列表
-}
-
-message MonthCardPackItem{
-  int32 original_price = 1;//原价
-  int32 pack_id = 2;//礼包id
-}
-// MonthCard End
 
 // TopListConfig Start
 message TopListConfig {

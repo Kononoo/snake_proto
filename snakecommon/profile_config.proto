@@ -31,3 +31,34 @@ message VipPrivilege {
   int32 photo_num = 4;
 }
 // ======== charge_vip_config end ====================================================
+
+// ======== month_card start ====================================================
+message MonthCardConfig {
+  string card_desc = 1; // 底部叠加获得奖励及特权点击打开后弹窗的文案
+  int32 start_time = 2;
+  int32 end_time = 3;
+  MonthCardInfo little_month_card = 4; // 超值月卡
+  MonthCardInfo super_month_card = 5; // 至尊月卡
+  string source = 6;
+  string mail_title = 7;
+  string mail_content = 8;
+  int32 duration = 9;
+  int32 max_time = 10;
+}
+
+message MonthCardInfo{
+  string url = 1;//背景图
+  repeated CRewardItem daily_reward = 2;
+  string title = 3;//特权标题
+  string desc = 4;//特权描述
+  int32 total_reward = 5;
+  int32 free_pack = 6;//免费礼包id
+  int32 pack_id = 7;//月卡id，也是礼包id
+  repeated MonthCardPackItem pack_list = 8;//礼包列表
+}
+
+message MonthCardPackItem{
+  int32 original_price = 1;//原价
+  int32 pack_id = 2;//礼包id
+}
+// ======== month_card end ====================================================
