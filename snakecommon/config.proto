@@ -572,21 +572,7 @@ message SeasonResource {
 
 
 
-message ShowBadgeConfig {
-  string intro = 1;
-  repeated BadgeTitle title_list = 2;
-  string show_illustration_desc_url = 4;
-  string activity_id = 5;
-}
 
-message BadgeTitle {
-  int32 id = 1;
-  repeated SnakeMain.Config.RewardConfig rewards = 2;
-  int32 need_collect = 3;
-  int32 start_show_level = 4;
-  int32 end_show_level = 5;
-  string desc = 6;
-}
 
 message SkinUgcConfigV2 {
   int64 start_time = 1;
