@@ -289,6 +289,7 @@ message ShareConfig {
   repeated VideoShareIcon video_share_icon = 7;
   repeated ClipBoardCheck clipboard_check = 8;
   ShareTag share_tag = 9;
+  int32 new_wx_universal_link = 10;
 }
 
 message ShareTag {
