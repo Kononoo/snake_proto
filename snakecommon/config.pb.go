@@ -5094,164 +5094,6 @@ func (x *SeasonResource) GetY() uint32 {
 	return 0
 }
 
-type ShowBadgeConfig struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Intro                   string        `protobuf:"bytes,1,opt,name=intro,proto3" json:"intro,omitempty"`
-	TitleList               []*BadgeTitle `protobuf:"bytes,2,rep,name=title_list,json=titleList,proto3" json:"title_list,omitempty"`
-	ShowIllustrationDescUrl string        `protobuf:"bytes,4,opt,name=show_illustration_desc_url,json=showIllustrationDescUrl,proto3" json:"show_illustration_desc_url,omitempty"`
-	ActivityId              string        `protobuf:"bytes,5,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`
-}
-
-func (x *ShowBadgeConfig) Reset() {
-	*x = ShowBadgeConfig{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[55]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ShowBadgeConfig) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ShowBadgeConfig) ProtoMessage() {}
-
-func (x *ShowBadgeConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[55]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ShowBadgeConfig.ProtoReflect.Descriptor instead.
-func (*ShowBadgeConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{55}
-}
-
-func (x *ShowBadgeConfig) GetIntro() string {
-	if x != nil {
-		return x.Intro
-	}
-	return ""
-}
-
-func (x *ShowBadgeConfig) GetTitleList() []*BadgeTitle {
-	if x != nil {
-		return x.TitleList
-	}
-	return nil
-}
-
-func (x *ShowBadgeConfig) GetShowIllustrationDescUrl() string {
-	if x != nil {
-		return x.ShowIllustrationDescUrl
-	}
-	return ""
-}
-
-func (x *ShowBadgeConfig) GetActivityId() string {
-	if x != nil {
-		return x.ActivityId
-	}
-	return ""
-}
-
-type BadgeTitle struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id             int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Rewards        []*config.RewardConfig `protobuf:"bytes,2,rep,name=rewards,proto3" json:"rewards,omitempty"`
-	NeedCollect    int32                  `protobuf:"varint,3,opt,name=need_collect,json=needCollect,proto3" json:"need_collect,omitempty"`
-	StartShowLevel int32                  `protobuf:"varint,4,opt,name=start_show_level,json=startShowLevel,proto3" json:"start_show_level,omitempty"`
-	EndShowLevel   int32                  `protobuf:"varint,5,opt,name=end_show_level,json=endShowLevel,proto3" json:"end_show_level,omitempty"`
-	Desc           string                 `protobuf:"bytes,6,opt,name=desc,proto3" json:"desc,omitempty"`
-}
-
-func (x *BadgeTitle) Reset() {
-	*x = BadgeTitle{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[56]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *BadgeTitle) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*BadgeTitle) ProtoMessage() {}
-
-func (x *BadgeTitle) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[56]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use BadgeTitle.ProtoReflect.Descriptor instead.
-func (*BadgeTitle) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{56}
-}
-
-func (x *BadgeTitle) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *BadgeTitle) GetRewards() []*config.RewardConfig {
-	if x != nil {
-		return x.Rewards
-	}
-	return nil
-}
-
-func (x *BadgeTitle) GetNeedCollect() int32 {
-	if x != nil {
-		return x.NeedCollect
-	}
-	return 0
-}
-
-func (x *BadgeTitle) GetStartShowLevel() int32 {
-	if x != nil {
-		return x.StartShowLevel
-	}
-	return 0
-}
-
-func (x *BadgeTitle) GetEndShowLevel() int32 {
-	if x != nil {
-		return x.EndShowLevel
-	}
-	return 0
-}
-
-func (x *BadgeTitle) GetDesc() string {
-	if x != nil {
-		return x.Desc
-	}
-	return ""
-}
-
 type SkinUgcConfigV2 struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -5272,7 +5114,7 @@ type SkinUgcConfigV2 struct {
 func (x *SkinUgcConfigV2) Reset() {
 	*x = SkinUgcConfigV2{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[57]
+		mi := &file_snakecommon_config_proto_msgTypes[55]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5285,7 +5127,7 @@ func (x *SkinUgcConfigV2) String() string {
 func (*SkinUgcConfigV2) ProtoMessage() {}
 
 func (x *SkinUgcConfigV2) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[57]
+	mi := &file_snakecommon_config_proto_msgTypes[55]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5298,7 +5140,7 @@ func (x *SkinUgcConfigV2) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SkinUgcConfigV2.ProtoReflect.Descriptor instead.
 func (*SkinUgcConfigV2) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{57}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *SkinUgcConfigV2) GetStartTime() int64 {
@@ -5386,7 +5228,7 @@ type UgcTopic struct {
 func (x *UgcTopic) Reset() {
 	*x = UgcTopic{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[58]
+		mi := &file_snakecommon_config_proto_msgTypes[56]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5399,7 +5241,7 @@ func (x *UgcTopic) String() string {
 func (*UgcTopic) ProtoMessage() {}
 
 func (x *UgcTopic) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[58]
+	mi := &file_snakecommon_config_proto_msgTypes[56]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5412,7 +5254,7 @@ func (x *UgcTopic) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UgcTopic.ProtoReflect.Descriptor instead.
 func (*UgcTopic) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{58}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *UgcTopic) GetId() int32 {
@@ -5480,7 +5322,7 @@ type UgcWorks struct {
 func (x *UgcWorks) Reset() {
 	*x = UgcWorks{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[59]
+		mi := &file_snakecommon_config_proto_msgTypes[57]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5493,7 +5335,7 @@ func (x *UgcWorks) String() string {
 func (*UgcWorks) ProtoMessage() {}
 
 func (x *UgcWorks) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[59]
+	mi := &file_snakecommon_config_proto_msgTypes[57]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5506,7 +5348,7 @@ func (x *UgcWorks) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UgcWorks.ProtoReflect.Descriptor instead.
 func (*UgcWorks) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{59}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *UgcWorks) GetId() int32 {
@@ -5662,7 +5504,7 @@ type UgcWorksLink struct {
 func (x *UgcWorksLink) Reset() {
 	*x = UgcWorksLink{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[60]
+		mi := &file_snakecommon_config_proto_msgTypes[58]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5675,7 +5517,7 @@ func (x *UgcWorksLink) String() string {
 func (*UgcWorksLink) ProtoMessage() {}
 
 func (x *UgcWorksLink) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[60]
+	mi := &file_snakecommon_config_proto_msgTypes[58]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5688,7 +5530,7 @@ func (x *UgcWorksLink) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UgcWorksLink.ProtoReflect.Descriptor instead.
 func (*UgcWorksLink) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{60}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *UgcWorksLink) GetHeadImgurl() string {
@@ -5726,7 +5568,7 @@ type TopListConfig struct {
 func (x *TopListConfig) Reset() {
 	*x = TopListConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[61]
+		mi := &file_snakecommon_config_proto_msgTypes[59]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5739,7 +5581,7 @@ func (x *TopListConfig) String() string {
 func (*TopListConfig) ProtoMessage() {}
 
 func (x *TopListConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[61]
+	mi := &file_snakecommon_config_proto_msgTypes[59]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5752,7 +5594,7 @@ func (x *TopListConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TopListConfig.ProtoReflect.Descriptor instead.
 func (*TopListConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{61}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *TopListConfig) GetProvinceList() []string {
@@ -5790,7 +5632,7 @@ type SnakeSecretary struct {
 func (x *SnakeSecretary) Reset() {
 	*x = SnakeSecretary{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[62]
+		mi := &file_snakecommon_config_proto_msgTypes[60]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5803,7 +5645,7 @@ func (x *SnakeSecretary) String() string {
 func (*SnakeSecretary) ProtoMessage() {}
 
 func (x *SnakeSecretary) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[62]
+	mi := &file_snakecommon_config_proto_msgTypes[60]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5816,7 +5658,7 @@ func (x *SnakeSecretary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SnakeSecretary.ProtoReflect.Descriptor instead.
 func (*SnakeSecretary) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{62}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *SnakeSecretary) GetCommon() *SecretaryModel {
@@ -5852,7 +5694,7 @@ type SecretaryModel struct {
 func (x *SecretaryModel) Reset() {
 	*x = SecretaryModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[63]
+		mi := &file_snakecommon_config_proto_msgTypes[61]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5865,7 +5707,7 @@ func (x *SecretaryModel) String() string {
 func (*SecretaryModel) ProtoMessage() {}
 
 func (x *SecretaryModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[63]
+	mi := &file_snakecommon_config_proto_msgTypes[61]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5878,7 +5720,7 @@ func (x *SecretaryModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SecretaryModel.ProtoReflect.Descriptor instead.
 func (*SecretaryModel) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{63}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *SecretaryModel) GetTitle() string {
@@ -5907,7 +5749,7 @@ type QAInfo struct {
 func (x *QAInfo) Reset() {
 	*x = QAInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[64]
+		mi := &file_snakecommon_config_proto_msgTypes[62]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5920,7 +5762,7 @@ func (x *QAInfo) String() string {
 func (*QAInfo) ProtoMessage() {}
 
 func (x *QAInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[64]
+	mi := &file_snakecommon_config_proto_msgTypes[62]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5933,7 +5775,7 @@ func (x *QAInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QAInfo.ProtoReflect.Descriptor instead.
 func (*QAInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{64}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *QAInfo) GetQ() string {
@@ -5980,7 +5822,7 @@ type AdConfig struct {
 func (x *AdConfig) Reset() {
 	*x = AdConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[65]
+		mi := &file_snakecommon_config_proto_msgTypes[63]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5993,7 +5835,7 @@ func (x *AdConfig) String() string {
 func (*AdConfig) ProtoMessage() {}
 
 func (x *AdConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[65]
+	mi := &file_snakecommon_config_proto_msgTypes[63]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6006,7 +5848,7 @@ func (x *AdConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdConfig.ProtoReflect.Descriptor instead.
 func (*AdConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{65}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *AdConfig) GetTimes() int32 {
@@ -6154,7 +5996,7 @@ type AdGrade struct {
 func (x *AdGrade) Reset() {
 	*x = AdGrade{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[66]
+		mi := &file_snakecommon_config_proto_msgTypes[64]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6167,7 +6009,7 @@ func (x *AdGrade) String() string {
 func (*AdGrade) ProtoMessage() {}
 
 func (x *AdGrade) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[66]
+	mi := &file_snakecommon_config_proto_msgTypes[64]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6180,7 +6022,7 @@ func (x *AdGrade) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdGrade.ProtoReflect.Descriptor instead.
 func (*AdGrade) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{66}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *AdGrade) GetId() string {
@@ -6209,7 +6051,7 @@ type AdSwitch struct {
 func (x *AdSwitch) Reset() {
 	*x = AdSwitch{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[67]
+		mi := &file_snakecommon_config_proto_msgTypes[65]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6222,7 +6064,7 @@ func (x *AdSwitch) String() string {
 func (*AdSwitch) ProtoMessage() {}
 
 func (x *AdSwitch) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[67]
+	mi := &file_snakecommon_config_proto_msgTypes[65]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6235,7 +6077,7 @@ func (x *AdSwitch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdSwitch.ProtoReflect.Descriptor instead.
 func (*AdSwitch) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{67}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *AdSwitch) GetType() int32 {
@@ -6266,7 +6108,7 @@ type AdAppidConfig struct {
 func (x *AdAppidConfig) Reset() {
 	*x = AdAppidConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[68]
+		mi := &file_snakecommon_config_proto_msgTypes[66]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6279,7 +6121,7 @@ func (x *AdAppidConfig) String() string {
 func (*AdAppidConfig) ProtoMessage() {}
 
 func (x *AdAppidConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[68]
+	mi := &file_snakecommon_config_proto_msgTypes[66]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6292,7 +6134,7 @@ func (x *AdAppidConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdAppidConfig.ProtoReflect.Descriptor instead.
 func (*AdAppidConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{68}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *AdAppidConfig) GetType() int32 {
@@ -6339,7 +6181,7 @@ type CharmTourConfig struct {
 func (x *CharmTourConfig) Reset() {
 	*x = CharmTourConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[69]
+		mi := &file_snakecommon_config_proto_msgTypes[67]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6352,7 +6194,7 @@ func (x *CharmTourConfig) String() string {
 func (*CharmTourConfig) ProtoMessage() {}
 
 func (x *CharmTourConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[69]
+	mi := &file_snakecommon_config_proto_msgTypes[67]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6365,7 +6207,7 @@ func (x *CharmTourConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CharmTourConfig.ProtoReflect.Descriptor instead.
 func (*CharmTourConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{69}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *CharmTourConfig) GetIntro() string {
@@ -6416,7 +6258,7 @@ type GiftWallConfig struct {
 func (x *GiftWallConfig) Reset() {
 	*x = GiftWallConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[70]
+		mi := &file_snakecommon_config_proto_msgTypes[68]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6429,7 +6271,7 @@ func (x *GiftWallConfig) String() string {
 func (*GiftWallConfig) ProtoMessage() {}
 
 func (x *GiftWallConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[70]
+	mi := &file_snakecommon_config_proto_msgTypes[68]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6442,7 +6284,7 @@ func (x *GiftWallConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftWallConfig.ProtoReflect.Descriptor instead.
 func (*GiftWallConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{70}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *GiftWallConfig) GetGiftWallDesc() string {
@@ -6472,7 +6314,7 @@ type SuperShowConfig struct {
 func (x *SuperShowConfig) Reset() {
 	*x = SuperShowConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[71]
+		mi := &file_snakecommon_config_proto_msgTypes[69]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6485,7 +6327,7 @@ func (x *SuperShowConfig) String() string {
 func (*SuperShowConfig) ProtoMessage() {}
 
 func (x *SuperShowConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[71]
+	mi := &file_snakecommon_config_proto_msgTypes[69]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6498,7 +6340,7 @@ func (x *SuperShowConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SuperShowConfig.ProtoReflect.Descriptor instead.
 func (*SuperShowConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{71}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *SuperShowConfig) GetStartTime() int64 {
@@ -6540,7 +6382,7 @@ type MentorConfig struct {
 func (x *MentorConfig) Reset() {
 	*x = MentorConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[72]
+		mi := &file_snakecommon_config_proto_msgTypes[70]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6553,7 +6395,7 @@ func (x *MentorConfig) String() string {
 func (*MentorConfig) ProtoMessage() {}
 
 func (x *MentorConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[72]
+	mi := &file_snakecommon_config_proto_msgTypes[70]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6566,7 +6408,7 @@ func (x *MentorConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MentorConfig.ProtoReflect.Descriptor instead.
 func (*MentorConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{72}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *MentorConfig) GetMasterPrivilegeConfig() []*MentorPrivilegeInfo {
@@ -6635,7 +6477,7 @@ type MentorPrivilegeInfo struct {
 func (x *MentorPrivilegeInfo) Reset() {
 	*x = MentorPrivilegeInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[73]
+		mi := &file_snakecommon_config_proto_msgTypes[71]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6648,7 +6490,7 @@ func (x *MentorPrivilegeInfo) String() string {
 func (*MentorPrivilegeInfo) ProtoMessage() {}
 
 func (x *MentorPrivilegeInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[73]
+	mi := &file_snakecommon_config_proto_msgTypes[71]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6661,7 +6503,7 @@ func (x *MentorPrivilegeInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MentorPrivilegeInfo.ProtoReflect.Descriptor instead.
 func (*MentorPrivilegeInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{73}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *MentorPrivilegeInfo) GetTitle() string {
@@ -6725,7 +6567,7 @@ type PrivilegeDetailInfo struct {
 func (x *PrivilegeDetailInfo) Reset() {
 	*x = PrivilegeDetailInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[74]
+		mi := &file_snakecommon_config_proto_msgTypes[72]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6738,7 +6580,7 @@ func (x *PrivilegeDetailInfo) String() string {
 func (*PrivilegeDetailInfo) ProtoMessage() {}
 
 func (x *PrivilegeDetailInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[74]
+	mi := &file_snakecommon_config_proto_msgTypes[72]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6751,7 +6593,7 @@ func (x *PrivilegeDetailInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PrivilegeDetailInfo.ProtoReflect.Descriptor instead.
 func (*PrivilegeDetailInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{74}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *PrivilegeDetailInfo) GetImgUrl() string {
@@ -6781,7 +6623,7 @@ type MentorshipBondConfig struct {
 func (x *MentorshipBondConfig) Reset() {
 	*x = MentorshipBondConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[75]
+		mi := &file_snakecommon_config_proto_msgTypes[73]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6794,7 +6636,7 @@ func (x *MentorshipBondConfig) String() string {
 func (*MentorshipBondConfig) ProtoMessage() {}
 
 func (x *MentorshipBondConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[75]
+	mi := &file_snakecommon_config_proto_msgTypes[73]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6807,7 +6649,7 @@ func (x *MentorshipBondConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MentorshipBondConfig.ProtoReflect.Descriptor instead.
 func (*MentorshipBondConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{75}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *MentorshipBondConfig) GetFadeTime() int64 {
@@ -6843,7 +6685,7 @@ type MentorFinishReward struct {
 func (x *MentorFinishReward) Reset() {
 	*x = MentorFinishReward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[76]
+		mi := &file_snakecommon_config_proto_msgTypes[74]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6856,7 +6698,7 @@ func (x *MentorFinishReward) String() string {
 func (*MentorFinishReward) ProtoMessage() {}
 
 func (x *MentorFinishReward) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[76]
+	mi := &file_snakecommon_config_proto_msgTypes[74]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6869,7 +6711,7 @@ func (x *MentorFinishReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MentorFinishReward.ProtoReflect.Descriptor instead.
 func (*MentorFinishReward) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{76}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *MentorFinishReward) GetMasterReward() []*config.RewardConfig {
@@ -6898,7 +6740,7 @@ type MasterPrenticeStrategy struct {
 func (x *MasterPrenticeStrategy) Reset() {
 	*x = MasterPrenticeStrategy{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[77]
+		mi := &file_snakecommon_config_proto_msgTypes[75]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6911,7 +6753,7 @@ func (x *MasterPrenticeStrategy) String() string {
 func (*MasterPrenticeStrategy) ProtoMessage() {}
 
 func (x *MasterPrenticeStrategy) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[77]
+	mi := &file_snakecommon_config_proto_msgTypes[75]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6924,7 +6766,7 @@ func (x *MasterPrenticeStrategy) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MasterPrenticeStrategy.ProtoReflect.Descriptor instead.
 func (*MasterPrenticeStrategy) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{77}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *MasterPrenticeStrategy) GetTitle() string {
@@ -6955,7 +6797,7 @@ type GiftIllustrationConfig struct {
 func (x *GiftIllustrationConfig) Reset() {
 	*x = GiftIllustrationConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[78]
+		mi := &file_snakecommon_config_proto_msgTypes[76]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6968,7 +6810,7 @@ func (x *GiftIllustrationConfig) String() string {
 func (*GiftIllustrationConfig) ProtoMessage() {}
 
 func (x *GiftIllustrationConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[78]
+	mi := &file_snakecommon_config_proto_msgTypes[76]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6981,7 +6823,7 @@ func (x *GiftIllustrationConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftIllustrationConfig.ProtoReflect.Descriptor instead.
 func (*GiftIllustrationConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{78}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *GiftIllustrationConfig) GetDescUrl() string {
@@ -7018,7 +6860,7 @@ type GiftTitleItemConfig struct {
 func (x *GiftTitleItemConfig) Reset() {
 	*x = GiftTitleItemConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[79]
+		mi := &file_snakecommon_config_proto_msgTypes[77]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7031,7 +6873,7 @@ func (x *GiftTitleItemConfig) String() string {
 func (*GiftTitleItemConfig) ProtoMessage() {}
 
 func (x *GiftTitleItemConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[79]
+	mi := &file_snakecommon_config_proto_msgTypes[77]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7044,7 +6886,7 @@ func (x *GiftTitleItemConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftTitleItemConfig.ProtoReflect.Descriptor instead.
 func (*GiftTitleItemConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{79}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{77}
 }
 
 func (x *GiftTitleItemConfig) GetId() int32 {
@@ -7083,7 +6925,7 @@ type ExtraBuff_ExtraBuffInfo struct {
 func (x *ExtraBuff_ExtraBuffInfo) Reset() {
 	*x = ExtraBuff_ExtraBuffInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[80]
+		mi := &file_snakecommon_config_proto_msgTypes[78]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7096,7 +6938,7 @@ func (x *ExtraBuff_ExtraBuffInfo) String() string {
 func (*ExtraBuff_ExtraBuffInfo) ProtoMessage() {}
 
 func (x *ExtraBuff_ExtraBuffInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[80]
+	mi := &file_snakecommon_config_proto_msgTypes[78]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7167,7 +7009,7 @@ type CharmTourConfig_LevelDetail struct {
 func (x *CharmTourConfig_LevelDetail) Reset() {
 	*x = CharmTourConfig_LevelDetail{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[81]
+		mi := &file_snakecommon_config_proto_msgTypes[79]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7180,7 +7022,7 @@ func (x *CharmTourConfig_LevelDetail) String() string {
 func (*CharmTourConfig_LevelDetail) ProtoMessage() {}
 
 func (x *CharmTourConfig_LevelDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[81]
+	mi := &file_snakecommon_config_proto_msgTypes[79]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7193,7 +7035,7 @@ func (x *CharmTourConfig_LevelDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CharmTourConfig_LevelDetail.ProtoReflect.Descriptor instead.
 func (*CharmTourConfig_LevelDetail) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{69, 0}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{67, 0}
 }
 
 func (x *CharmTourConfig_LevelDetail) GetId() int32 {
@@ -7278,7 +7120,7 @@ type CharmTourConfig_LevelConfig struct {
 func (x *CharmTourConfig_LevelConfig) Reset() {
 	*x = CharmTourConfig_LevelConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[82]
+		mi := &file_snakecommon_config_proto_msgTypes[80]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7291,7 +7133,7 @@ func (x *CharmTourConfig_LevelConfig) String() string {
 func (*CharmTourConfig_LevelConfig) ProtoMessage() {}
 
 func (x *CharmTourConfig_LevelConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[82]
+	mi := &file_snakecommon_config_proto_msgTypes[80]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7304,7 +7146,7 @@ func (x *CharmTourConfig_LevelConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CharmTourConfig_LevelConfig.ProtoReflect.Descriptor instead.
 func (*CharmTourConfig_LevelConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{69, 1}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{67, 1}
 }
 
 func (x *CharmTourConfig_LevelConfig) GetLevel() int32 {
@@ -7336,7 +7178,7 @@ type GiftWallConfig_NamePlate struct {
 func (x *GiftWallConfig_NamePlate) Reset() {
 	*x = GiftWallConfig_NamePlate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_config_proto_msgTypes[83]
+		mi := &file_snakecommon_config_proto_msgTypes[81]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7349,7 +7191,7 @@ func (x *GiftWallConfig_NamePlate) String() string {
 func (*GiftWallConfig_NamePlate) ProtoMessage() {}
 
 func (x *GiftWallConfig_NamePlate) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_config_proto_msgTypes[83]
+	mi := &file_snakecommon_config_proto_msgTypes[81]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7362,7 +7204,7 @@ func (x *GiftWallConfig_NamePlate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftWallConfig_NamePlate.ProtoReflect.Descriptor instead.
 func (*GiftWallConfig_NamePlate) Descriptor() ([]byte, []int) {
-	return file_snakecommon_config_proto_rawDescGZIP(), []int{70, 0}
+	return file_snakecommon_config_proto_rawDescGZIP(), []int{68, 0}
 }
 
 func (x *GiftWallConfig_NamePlate) GetId() int32 {
@@ -8330,33 +8172,7 @@ var file_snakecommon_config_proto_rawDesc = []byte{
 	0x6c, 0x12, 0x1f, 0x0a, 0x0b, 0x67, 0x72, 0x61, 0x79, 0x5f, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c,
 	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x67, 0x72, 0x61, 0x79, 0x49, 0x6d, 0x67, 0x75,
 	0x72, 0x6c, 0x12, 0x0c, 0x0a, 0x01, 0x78, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x01, 0x78,
-	0x12, 0x0c, 0x0a, 0x01, 0x79, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x01, 0x79, 0x22, 0xbd,
-	0x01, 0x0a, 0x0f, 0x53, 0x68, 0x6f, 0x77, 0x42, 0x61, 0x64, 0x67, 0x65, 0x43, 0x6f, 0x6e, 0x66,
-	0x69, 0x67, 0x12, 0x14, 0x0a, 0x05, 0x69, 0x6e, 0x74, 0x72, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x05, 0x69, 0x6e, 0x74, 0x72, 0x6f, 0x12, 0x36, 0x0a, 0x0a, 0x74, 0x69, 0x74, 0x6c,
-	0x65, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73,
-	0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x42, 0x61, 0x64, 0x67, 0x65,
-	0x54, 0x69, 0x74, 0x6c, 0x65, 0x52, 0x09, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74,
-	0x12, 0x3b, 0x0a, 0x1a, 0x73, 0x68, 0x6f, 0x77, 0x5f, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x64, 0x65, 0x73, 0x63, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x17, 0x73, 0x68, 0x6f, 0x77, 0x49, 0x6c, 0x6c, 0x75, 0x73, 0x74,
-	0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x65, 0x73, 0x63, 0x55, 0x72, 0x6c, 0x12, 0x1f, 0x0a,
-	0x0b, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x5f, 0x69, 0x64, 0x18, 0x05, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x0a, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x49, 0x64, 0x22, 0xdd,
-	0x01, 0x0a, 0x0a, 0x42, 0x61, 0x64, 0x67, 0x65, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x0e, 0x0a,
-	0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x38, 0x0a,
-	0x07, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e,
-	0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x2e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x07,
-	0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x12, 0x21, 0x0a, 0x0c, 0x6e, 0x65, 0x65, 0x64, 0x5f,
-	0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x6e,
-	0x65, 0x65, 0x64, 0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x12, 0x28, 0x0a, 0x10, 0x73, 0x74,
-	0x61, 0x72, 0x74, 0x5f, 0x73, 0x68, 0x6f, 0x77, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x0e, 0x73, 0x74, 0x61, 0x72, 0x74, 0x53, 0x68, 0x6f, 0x77, 0x4c,
-	0x65, 0x76, 0x65, 0x6c, 0x12, 0x24, 0x0a, 0x0e, 0x65, 0x6e, 0x64, 0x5f, 0x73, 0x68, 0x6f, 0x77,
-	0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x65, 0x6e,
-	0x64, 0x53, 0x68, 0x6f, 0x77, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65,
-	0x73, 0x63, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x22, 0xb3,
+	0x12, 0x0c, 0x0a, 0x01, 0x79, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x01, 0x79, 0x22, 0xb3,
 	0x03, 0x0a, 0x0f, 0x53, 0x6b, 0x69, 0x6e, 0x55, 0x67, 0x63, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
 	0x56, 0x32, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d,
@@ -8710,7 +8526,7 @@ func file_snakecommon_config_proto_rawDescGZIP() []byte {
 	return file_snakecommon_config_proto_rawDescData
 }
 
-var file_snakecommon_config_proto_msgTypes = make([]protoimpl.MessageInfo, 84)
+var file_snakecommon_config_proto_msgTypes = make([]protoimpl.MessageInfo, 82)
 var file_snakecommon_config_proto_goTypes = []interface{}{
 	(*CRewardItem)(nil),                     // 0: snakecommon.CRewardItem
 	(*CConvert)(nil),                        // 1: snakecommon.CConvert
@@ -8767,38 +8583,36 @@ var file_snakecommon_config_proto_goTypes = []interface{}{
 	(*ShowIllustrationTitle)(nil),           // 52: snakecommon.ShowIllustrationTitle
 	(*ShowIllustrationSeason)(nil),          // 53: snakecommon.ShowIllustrationSeason
 	(*SeasonResource)(nil),                  // 54: snakecommon.SeasonResource
-	(*ShowBadgeConfig)(nil),                 // 55: snakecommon.ShowBadgeConfig
-	(*BadgeTitle)(nil),                      // 56: snakecommon.BadgeTitle
-	(*SkinUgcConfigV2)(nil),                 // 57: snakecommon.SkinUgcConfigV2
-	(*UgcTopic)(nil),                        // 58: snakecommon.UgcTopic
-	(*UgcWorks)(nil),                        // 59: snakecommon.UgcWorks
-	(*UgcWorksLink)(nil),                    // 60: snakecommon.UgcWorksLink
-	(*TopListConfig)(nil),                   // 61: snakecommon.TopListConfig
-	(*SnakeSecretary)(nil),                  // 62: snakecommon.SnakeSecretary
-	(*SecretaryModel)(nil),                  // 63: snakecommon.SecretaryModel
-	(*QAInfo)(nil),                          // 64: snakecommon.QAInfo
-	(*AdConfig)(nil),                        // 65: snakecommon.AdConfig
-	(*AdGrade)(nil),                         // 66: snakecommon.AdGrade
-	(*AdSwitch)(nil),                        // 67: snakecommon.AdSwitch
-	(*AdAppidConfig)(nil),                   // 68: snakecommon.AdAppidConfig
-	(*CharmTourConfig)(nil),                 // 69: snakecommon.CharmTourConfig
-	(*GiftWallConfig)(nil),                  // 70: snakecommon.GiftWallConfig
-	(*SuperShowConfig)(nil),                 // 71: snakecommon.SuperShowConfig
-	(*MentorConfig)(nil),                    // 72: snakecommon.MentorConfig
-	(*MentorPrivilegeInfo)(nil),             // 73: snakecommon.MentorPrivilegeInfo
-	(*PrivilegeDetailInfo)(nil),             // 74: snakecommon.PrivilegeDetailInfo
-	(*MentorshipBondConfig)(nil),            // 75: snakecommon.MentorshipBondConfig
-	(*MentorFinishReward)(nil),              // 76: snakecommon.MentorFinishReward
-	(*MasterPrenticeStrategy)(nil),          // 77: snakecommon.MasterPrenticeStrategy
-	(*GiftIllustrationConfig)(nil),          // 78: snakecommon.GiftIllustrationConfig
-	(*GiftTitleItemConfig)(nil),             // 79: snakecommon.GiftTitleItemConfig
-	(*ExtraBuff_ExtraBuffInfo)(nil),         // 80: snakecommon.ExtraBuff.ExtraBuffInfo
-	(*CharmTourConfig_LevelDetail)(nil),     // 81: snakecommon.CharmTourConfig.LevelDetail
-	(*CharmTourConfig_LevelConfig)(nil),     // 82: snakecommon.CharmTourConfig.LevelConfig
-	(*GiftWallConfig_NamePlate)(nil),        // 83: snakecommon.GiftWallConfig.NamePlate
-	(*config.RewardConfig)(nil),             // 84: SnakeMain.Config.RewardConfig
-	(*config.PriceInfo)(nil),                // 85: SnakeMain.Config.PriceInfo
-	(*config.PackModel)(nil),                // 86: SnakeMain.Config.PackModel
+	(*SkinUgcConfigV2)(nil),                 // 55: snakecommon.SkinUgcConfigV2
+	(*UgcTopic)(nil),                        // 56: snakecommon.UgcTopic
+	(*UgcWorks)(nil),                        // 57: snakecommon.UgcWorks
+	(*UgcWorksLink)(nil),                    // 58: snakecommon.UgcWorksLink
+	(*TopListConfig)(nil),                   // 59: snakecommon.TopListConfig
+	(*SnakeSecretary)(nil),                  // 60: snakecommon.SnakeSecretary
+	(*SecretaryModel)(nil),                  // 61: snakecommon.SecretaryModel
+	(*QAInfo)(nil),                          // 62: snakecommon.QAInfo
+	(*AdConfig)(nil),                        // 63: snakecommon.AdConfig
+	(*AdGrade)(nil),                         // 64: snakecommon.AdGrade
+	(*AdSwitch)(nil),                        // 65: snakecommon.AdSwitch
+	(*AdAppidConfig)(nil),                   // 66: snakecommon.AdAppidConfig
+	(*CharmTourConfig)(nil),                 // 67: snakecommon.CharmTourConfig
+	(*GiftWallConfig)(nil),                  // 68: snakecommon.GiftWallConfig
+	(*SuperShowConfig)(nil),                 // 69: snakecommon.SuperShowConfig
+	(*MentorConfig)(nil),                    // 70: snakecommon.MentorConfig
+	(*MentorPrivilegeInfo)(nil),             // 71: snakecommon.MentorPrivilegeInfo
+	(*PrivilegeDetailInfo)(nil),             // 72: snakecommon.PrivilegeDetailInfo
+	(*MentorshipBondConfig)(nil),            // 73: snakecommon.MentorshipBondConfig
+	(*MentorFinishReward)(nil),              // 74: snakecommon.MentorFinishReward
+	(*MasterPrenticeStrategy)(nil),          // 75: snakecommon.MasterPrenticeStrategy
+	(*GiftIllustrationConfig)(nil),          // 76: snakecommon.GiftIllustrationConfig
+	(*GiftTitleItemConfig)(nil),             // 77: snakecommon.GiftTitleItemConfig
+	(*ExtraBuff_ExtraBuffInfo)(nil),         // 78: snakecommon.ExtraBuff.ExtraBuffInfo
+	(*CharmTourConfig_LevelDetail)(nil),     // 79: snakecommon.CharmTourConfig.LevelDetail
+	(*CharmTourConfig_LevelConfig)(nil),     // 80: snakecommon.CharmTourConfig.LevelConfig
+	(*GiftWallConfig_NamePlate)(nil),        // 81: snakecommon.GiftWallConfig.NamePlate
+	(*config.RewardConfig)(nil),             // 82: SnakeMain.Config.RewardConfig
+	(*config.PriceInfo)(nil),                // 83: SnakeMain.Config.PriceInfo
+	(*config.PackModel)(nil),                // 84: SnakeMain.Config.PackModel
 }
 var file_snakecommon_config_proto_depIdxs = []int32{
 	1,   // 0: snakecommon.CRewardItem.convert:type_name -> snakecommon.CConvert
@@ -8809,9 +8623,9 @@ var file_snakecommon_config_proto_depIdxs = []int32{
 	29,  // 5: snakecommon.ActivityConfig.endless_game_reward:type_name -> snakecommon.EndlessRewardConfig
 	47,  // 6: snakecommon.ActivityConfig.turntable:type_name -> snakecommon.RouletteConfig
 	50,  // 7: snakecommon.ActivityConfig.skin_ugc:type_name -> snakecommon.SkinUgcConfig
-	57,  // 8: snakecommon.ActivityConfig.skin_ugc_v2:type_name -> snakecommon.SkinUgcConfigV2
+	55,  // 8: snakecommon.ActivityConfig.skin_ugc_v2:type_name -> snakecommon.SkinUgcConfigV2
 	6,   // 9: snakecommon.ActivityConfig.endless_floating_v2:type_name -> snakecommon.EndlessFloatingV2
-	71,  // 10: snakecommon.ActivityConfig.super_show:type_name -> snakecommon.SuperShowConfig
+	69,  // 10: snakecommon.ActivityConfig.super_show:type_name -> snakecommon.SuperShowConfig
 	20,  // 11: snakecommon.ActivityConfig.season_activity:type_name -> snakecommon.SeasonActivity
 	8,   // 12: snakecommon.EndlessFloatingV2.floating_refresh_config_v2:type_name -> snakecommon.IllustrateFloatingRefreshConfig
 	10,  // 13: snakecommon.EndlessFloatingV2.floating_config:type_name -> snakecommon.FloatingInfo
@@ -8825,19 +8639,19 @@ var file_snakecommon_config_proto_depIdxs = []int32{
 	18,  // 21: snakecommon.EndlessFloatingV2.main_map_theme:type_name -> snakecommon.FloatingMainMapTheme
 	7,   // 22: snakecommon.EndlessFloatingV2.illustrate_config:type_name -> snakecommon.IllustrateConfig
 	9,   // 23: snakecommon.IllustrateFloatingRefreshConfig.floating_refresh_config:type_name -> snakecommon.FloatingRefreshConfig
-	80,  // 24: snakecommon.ExtraBuff.buff_list:type_name -> snakecommon.ExtraBuff.ExtraBuffInfo
+	78,  // 24: snakecommon.ExtraBuff.buff_list:type_name -> snakecommon.ExtraBuff.ExtraBuffInfo
 	19,  // 25: snakecommon.SeasonActivity.caidan_list:type_name -> snakecommon.SeasonCaiDan
 	22,  // 26: snakecommon.NewbieConfig.day_list:type_name -> snakecommon.NewbieSingleDayReward
-	84,  // 27: snakecommon.NewbieSingleDayReward.reward_list:type_name -> SnakeMain.Config.RewardConfig
-	84,  // 28: snakecommon.HatchEgg.reward_review_list:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 27: snakecommon.NewbieSingleDayReward.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 28: snakecommon.HatchEgg.reward_review_list:type_name -> SnakeMain.Config.RewardConfig
 	24,  // 29: snakecommon.HatchEgg.egg_list:type_name -> snakecommon.EggLevelInfo
-	84,  // 30: snakecommon.EggLevelInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 30: snakecommon.EggLevelInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
 	26,  // 31: snakecommon.MeetupConfig.list:type_name -> snakecommon.MeetupConfigItem
 	27,  // 32: snakecommon.MeetupConfigItem.days_list:type_name -> snakecommon.SingleDayReward
 	28,  // 33: snakecommon.SingleDayReward.length_list:type_name -> snakecommon.SingleRewardItem
-	84,  // 34: snakecommon.SingleRewardItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 34: snakecommon.SingleRewardItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
 	30,  // 35: snakecommon.EndlessRewardConfig.list:type_name -> snakecommon.EndlessReward
-	84,  // 36: snakecommon.EndlessReward.reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 36: snakecommon.EndlessReward.reward:type_name -> SnakeMain.Config.RewardConfig
 	32,  // 37: snakecommon.PassCheckV2.common:type_name -> snakecommon.PassCommonConfig
 	33,  // 38: snakecommon.PassCheckV2.reward_config:type_name -> snakecommon.PassRewardConfig
 	37,  // 39: snakecommon.PassCheckV2.task_config:type_name -> snakecommon.PassTaskConfig
@@ -8845,15 +8659,15 @@ var file_snakecommon_config_proto_depIdxs = []int32{
 	46,  // 41: snakecommon.PassCheckV2.total_reward:type_name -> snakecommon.BattleRankReward
 	36,  // 42: snakecommon.PassRewardConfig.reward_list:type_name -> snakecommon.PassReward
 	34,  // 43: snakecommon.PassRewardConfig.reward_preview:type_name -> snakecommon.PassRewardPreview
-	84,  // 44: snakecommon.PassRewardConfig.reward_sort:type_name -> SnakeMain.Config.RewardConfig
-	84,  // 45: snakecommon.PassRewardPreview.free_reward:type_name -> SnakeMain.Config.RewardConfig
-	84,  // 46: snakecommon.PassRewardPreview.high_reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 44: snakecommon.PassRewardConfig.reward_sort:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 45: snakecommon.PassRewardPreview.free_reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 46: snakecommon.PassRewardPreview.high_reward:type_name -> SnakeMain.Config.RewardConfig
 	35,  // 47: snakecommon.PassRewardPreview.window_reward:type_name -> snakecommon.WindowReward
-	84,  // 48: snakecommon.PassRewardPreview.honor_reward:type_name -> SnakeMain.Config.RewardConfig
-	84,  // 49: snakecommon.PassRewardPreview.luxury_reward:type_name -> SnakeMain.Config.RewardConfig
-	84,  // 50: snakecommon.WindowReward.convert:type_name -> SnakeMain.Config.RewardConfig
-	84,  // 51: snakecommon.PassReward.free_reward:type_name -> SnakeMain.Config.RewardConfig
-	84,  // 52: snakecommon.PassReward.high_reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 48: snakecommon.PassRewardPreview.honor_reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 49: snakecommon.PassRewardPreview.luxury_reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 50: snakecommon.WindowReward.convert:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 51: snakecommon.PassReward.free_reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 52: snakecommon.PassReward.high_reward:type_name -> SnakeMain.Config.RewardConfig
 	40,  // 53: snakecommon.PassTaskConfig.season_task:type_name -> snakecommon.SeasonTask
 	41,  // 54: snakecommon.PassTaskConfig.grade_task:type_name -> snakecommon.GradeTask
 	39,  // 55: snakecommon.PassTaskConfig.weekly_task:type_name -> snakecommon.WeeklyTask
@@ -8861,56 +8675,54 @@ var file_snakecommon_config_proto_depIdxs = []int32{
 	42,  // 57: snakecommon.WeeklyTask.task_list:type_name -> snakecommon.PassTaskModel
 	42,  // 58: snakecommon.SeasonTask.task_list:type_name -> snakecommon.PassTaskModel
 	42,  // 59: snakecommon.GradeTask.task_list:type_name -> snakecommon.PassTaskModel
-	85,  // 60: snakecommon.PassStoreConfig.rank_price:type_name -> SnakeMain.Config.PriceInfo
+	83,  // 60: snakecommon.PassStoreConfig.rank_price:type_name -> SnakeMain.Config.PriceInfo
 	44,  // 61: snakecommon.PassStoreConfig.exchange_store:type_name -> snakecommon.ExchangeStore
-	86,  // 62: snakecommon.PassStoreConfig.high_store:type_name -> SnakeMain.Config.PackModel
+	84,  // 62: snakecommon.PassStoreConfig.high_store:type_name -> SnakeMain.Config.PackModel
 	45,  // 63: snakecommon.ExchangeStore.price:type_name -> snakecommon.ExchangePrice
-	84,  // 64: snakecommon.BattleRankReward.reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 64: snakecommon.BattleRankReward.reward:type_name -> SnakeMain.Config.RewardConfig
 	48,  // 65: snakecommon.RouletteConfig.reward_table:type_name -> snakecommon.RewardTableBean
 	49,  // 66: snakecommon.RouletteConfig.config:type_name -> snakecommon.RouletteSubConfig
 	52,  // 67: snakecommon.ShowIllustrationConfig.title_list:type_name -> snakecommon.ShowIllustrationTitle
 	53,  // 68: snakecommon.ShowIllustrationConfig.season_list:type_name -> snakecommon.ShowIllustrationSeason
 	0,   // 69: snakecommon.ShowIllustrationSeason.rewards:type_name -> snakecommon.CRewardItem
 	54,  // 70: snakecommon.ShowIllustrationSeason.resources:type_name -> snakecommon.SeasonResource
-	56,  // 71: snakecommon.ShowBadgeConfig.title_list:type_name -> snakecommon.BadgeTitle
-	84,  // 72: snakecommon.BadgeTitle.rewards:type_name -> SnakeMain.Config.RewardConfig
-	58,  // 73: snakecommon.SkinUgcConfigV2.skin_topic_list:type_name -> snakecommon.UgcTopic
-	58,  // 74: snakecommon.SkinUgcConfigV2.ks_topic_list:type_name -> snakecommon.UgcTopic
-	58,  // 75: snakecommon.SkinUgcConfigV2.bg_topic_list:type_name -> snakecommon.UgcTopic
-	58,  // 76: snakecommon.SkinUgcConfigV2.suit_topic_list:type_name -> snakecommon.UgcTopic
-	60,  // 77: snakecommon.UgcWorks.normal:type_name -> snakecommon.UgcWorksLink
-	60,  // 78: snakecommon.UgcWorks.speed:type_name -> snakecommon.UgcWorksLink
-	59,  // 79: snakecommon.UgcWorks.skin_info:type_name -> snakecommon.UgcWorks
-	59,  // 80: snakecommon.UgcWorks.ks_info:type_name -> snakecommon.UgcWorks
-	59,  // 81: snakecommon.UgcWorks.bg_info:type_name -> snakecommon.UgcWorks
-	63,  // 82: snakecommon.SnakeSecretary.common:type_name -> snakecommon.SecretaryModel
-	63,  // 83: snakecommon.SnakeSecretary.account:type_name -> snakecommon.SecretaryModel
-	63,  // 84: snakecommon.SnakeSecretary.order:type_name -> snakecommon.SecretaryModel
-	64,  // 85: snakecommon.SecretaryModel.qa_list:type_name -> snakecommon.QAInfo
-	66,  // 86: snakecommon.AdConfig.ad_percent:type_name -> snakecommon.AdGrade
-	66,  // 87: snakecommon.AdConfig.interstitial_ad_percent:type_name -> snakecommon.AdGrade
-	66,  // 88: snakecommon.AdConfig.excessive_ad:type_name -> snakecommon.AdGrade
-	3,   // 89: snakecommon.AdConfig.goods_list:type_name -> snakecommon.RMBPackGoodsInfo
-	67,  // 90: snakecommon.AdConfig.switch_setting:type_name -> snakecommon.AdSwitch
-	68,  // 91: snakecommon.AdConfig.ad_appid_config:type_name -> snakecommon.AdAppidConfig
-	81,  // 92: snakecommon.CharmTourConfig.charm_title_list:type_name -> snakecommon.CharmTourConfig.LevelDetail
-	82,  // 93: snakecommon.CharmTourConfig.charm_level_list:type_name -> snakecommon.CharmTourConfig.LevelConfig
-	83,  // 94: snakecommon.GiftWallConfig.nameplate_list:type_name -> snakecommon.GiftWallConfig.NamePlate
-	73,  // 95: snakecommon.MentorConfig.master_privilege_config:type_name -> snakecommon.MentorPrivilegeInfo
-	75,  // 96: snakecommon.MentorConfig.bond_title_config:type_name -> snakecommon.MentorshipBondConfig
-	76,  // 97: snakecommon.MentorConfig.finish_reward:type_name -> snakecommon.MentorFinishReward
-	77,  // 98: snakecommon.MentorConfig.master_prentice_strategy:type_name -> snakecommon.MasterPrenticeStrategy
-	74,  // 99: snakecommon.MentorPrivilegeInfo.privilege_config:type_name -> snakecommon.PrivilegeDetailInfo
-	84,  // 100: snakecommon.MentorPrivilegeInfo.privilege_reward:type_name -> SnakeMain.Config.RewardConfig
-	84,  // 101: snakecommon.MentorFinishReward.master_reward:type_name -> SnakeMain.Config.RewardConfig
-	84,  // 102: snakecommon.MentorFinishReward.prentice_reward:type_name -> SnakeMain.Config.RewardConfig
-	79,  // 103: snakecommon.GiftIllustrationConfig.title_list:type_name -> snakecommon.GiftTitleItemConfig
-	84,  // 104: snakecommon.CharmTourConfig.LevelDetail.rewards:type_name -> SnakeMain.Config.RewardConfig
-	105, // [105:105] is the sub-list for method output_type
-	105, // [105:105] is the sub-list for method input_type
-	105, // [105:105] is the sub-list for extension type_name
-	105, // [105:105] is the sub-list for extension extendee
-	0,   // [0:105] is the sub-list for field type_name
+	56,  // 71: snakecommon.SkinUgcConfigV2.skin_topic_list:type_name -> snakecommon.UgcTopic
+	56,  // 72: snakecommon.SkinUgcConfigV2.ks_topic_list:type_name -> snakecommon.UgcTopic
+	56,  // 73: snakecommon.SkinUgcConfigV2.bg_topic_list:type_name -> snakecommon.UgcTopic
+	56,  // 74: snakecommon.SkinUgcConfigV2.suit_topic_list:type_name -> snakecommon.UgcTopic
+	58,  // 75: snakecommon.UgcWorks.normal:type_name -> snakecommon.UgcWorksLink
+	58,  // 76: snakecommon.UgcWorks.speed:type_name -> snakecommon.UgcWorksLink
+	57,  // 77: snakecommon.UgcWorks.skin_info:type_name -> snakecommon.UgcWorks
+	57,  // 78: snakecommon.UgcWorks.ks_info:type_name -> snakecommon.UgcWorks
+	57,  // 79: snakecommon.UgcWorks.bg_info:type_name -> snakecommon.UgcWorks
+	61,  // 80: snakecommon.SnakeSecretary.common:type_name -> snakecommon.SecretaryModel
+	61,  // 81: snakecommon.SnakeSecretary.account:type_name -> snakecommon.SecretaryModel
+	61,  // 82: snakecommon.SnakeSecretary.order:type_name -> snakecommon.SecretaryModel
+	62,  // 83: snakecommon.SecretaryModel.qa_list:type_name -> snakecommon.QAInfo
+	64,  // 84: snakecommon.AdConfig.ad_percent:type_name -> snakecommon.AdGrade
+	64,  // 85: snakecommon.AdConfig.interstitial_ad_percent:type_name -> snakecommon.AdGrade
+	64,  // 86: snakecommon.AdConfig.excessive_ad:type_name -> snakecommon.AdGrade
+	3,   // 87: snakecommon.AdConfig.goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	65,  // 88: snakecommon.AdConfig.switch_setting:type_name -> snakecommon.AdSwitch
+	66,  // 89: snakecommon.AdConfig.ad_appid_config:type_name -> snakecommon.AdAppidConfig
+	79,  // 90: snakecommon.CharmTourConfig.charm_title_list:type_name -> snakecommon.CharmTourConfig.LevelDetail
+	80,  // 91: snakecommon.CharmTourConfig.charm_level_list:type_name -> snakecommon.CharmTourConfig.LevelConfig
+	81,  // 92: snakecommon.GiftWallConfig.nameplate_list:type_name -> snakecommon.GiftWallConfig.NamePlate
+	71,  // 93: snakecommon.MentorConfig.master_privilege_config:type_name -> snakecommon.MentorPrivilegeInfo
+	73,  // 94: snakecommon.MentorConfig.bond_title_config:type_name -> snakecommon.MentorshipBondConfig
+	74,  // 95: snakecommon.MentorConfig.finish_reward:type_name -> snakecommon.MentorFinishReward
+	75,  // 96: snakecommon.MentorConfig.master_prentice_strategy:type_name -> snakecommon.MasterPrenticeStrategy
+	72,  // 97: snakecommon.MentorPrivilegeInfo.privilege_config:type_name -> snakecommon.PrivilegeDetailInfo
+	82,  // 98: snakecommon.MentorPrivilegeInfo.privilege_reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 99: snakecommon.MentorFinishReward.master_reward:type_name -> SnakeMain.Config.RewardConfig
+	82,  // 100: snakecommon.MentorFinishReward.prentice_reward:type_name -> SnakeMain.Config.RewardConfig
+	77,  // 101: snakecommon.GiftIllustrationConfig.title_list:type_name -> snakecommon.GiftTitleItemConfig
+	82,  // 102: snakecommon.CharmTourConfig.LevelDetail.rewards:type_name -> SnakeMain.Config.RewardConfig
+	103, // [103:103] is the sub-list for method output_type
+	103, // [103:103] is the sub-list for method input_type
+	103, // [103:103] is the sub-list for extension type_name
+	103, // [103:103] is the sub-list for extension extendee
+	0,   // [0:103] is the sub-list for field type_name
 }
 
 func init() { file_snakecommon_config_proto_init() }
@@ -9580,30 +9392,6 @@ func file_snakecommon_config_proto_init() {
 			}
 		}
 		file_snakecommon_config_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShowBadgeConfig); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_config_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BadgeTitle); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_config_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SkinUgcConfigV2); i {
 			case 0:
 				return &v.state
@@ -9615,7 +9403,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UgcTopic); i {
 			case 0:
 				return &v.state
@@ -9627,7 +9415,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UgcWorks); i {
 			case 0:
 				return &v.state
@@ -9639,7 +9427,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UgcWorksLink); i {
 			case 0:
 				return &v.state
@@ -9651,7 +9439,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[61].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TopListConfig); i {
 			case 0:
 				return &v.state
@@ -9663,7 +9451,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[62].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SnakeSecretary); i {
 			case 0:
 				return &v.state
@@ -9675,7 +9463,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[63].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[61].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SecretaryModel); i {
 			case 0:
 				return &v.state
@@ -9687,7 +9475,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[64].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[62].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*QAInfo); i {
 			case 0:
 				return &v.state
@@ -9699,7 +9487,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[65].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[63].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AdConfig); i {
 			case 0:
 				return &v.state
@@ -9711,7 +9499,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[66].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[64].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AdGrade); i {
 			case 0:
 				return &v.state
@@ -9723,7 +9511,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[67].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[65].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AdSwitch); i {
 			case 0:
 				return &v.state
@@ -9735,7 +9523,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[68].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[66].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AdAppidConfig); i {
 			case 0:
 				return &v.state
@@ -9747,7 +9535,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[69].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[67].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CharmTourConfig); i {
 			case 0:
 				return &v.state
@@ -9759,7 +9547,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[70].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[68].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GiftWallConfig); i {
 			case 0:
 				return &v.state
@@ -9771,7 +9559,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[71].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[69].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SuperShowConfig); i {
 			case 0:
 				return &v.state
@@ -9783,7 +9571,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[72].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[70].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MentorConfig); i {
 			case 0:
 				return &v.state
@@ -9795,7 +9583,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[73].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[71].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MentorPrivilegeInfo); i {
 			case 0:
 				return &v.state
@@ -9807,7 +9595,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[74].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[72].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PrivilegeDetailInfo); i {
 			case 0:
 				return &v.state
@@ -9819,7 +9607,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[75].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[73].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MentorshipBondConfig); i {
 			case 0:
 				return &v.state
@@ -9831,7 +9619,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[76].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[74].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MentorFinishReward); i {
 			case 0:
 				return &v.state
@@ -9843,7 +9631,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[77].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[75].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MasterPrenticeStrategy); i {
 			case 0:
 				return &v.state
@@ -9855,7 +9643,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[78].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[76].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GiftIllustrationConfig); i {
 			case 0:
 				return &v.state
@@ -9867,7 +9655,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[79].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[77].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GiftTitleItemConfig); i {
 			case 0:
 				return &v.state
@@ -9879,7 +9667,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[80].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[78].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ExtraBuff_ExtraBuffInfo); i {
 			case 0:
 				return &v.state
@@ -9891,7 +9679,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[81].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[79].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CharmTourConfig_LevelDetail); i {
 			case 0:
 				return &v.state
@@ -9903,7 +9691,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[82].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[80].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CharmTourConfig_LevelConfig); i {
 			case 0:
 				return &v.state
@@ -9915,7 +9703,7 @@ func file_snakecommon_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_config_proto_msgTypes[83].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_config_proto_msgTypes[81].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GiftWallConfig_NamePlate); i {
 			case 0:
 				return &v.state
@@ -9935,7 +9723,7 @@ func file_snakecommon_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_config_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   84,
+			NumMessages:   82,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

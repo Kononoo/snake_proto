@@ -544,6 +544,173 @@ func (x *MonthCardPackItem) GetPackId() int32 {
 	return 0
 }
 
+// ======== show_badge start ====================================================
+type ShowBadgeConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Intro                   string        `protobuf:"bytes,1,opt,name=intro,proto3" json:"intro,omitempty"`
+	TitleList               []*BadgeTitle `protobuf:"bytes,2,rep,name=title_list,json=titleList,proto3" json:"title_list,omitempty"`
+	ShowIllustrationDescUrl string        `protobuf:"bytes,3,opt,name=show_illustration_desc_url,json=showIllustrationDescUrl,proto3" json:"show_illustration_desc_url,omitempty"`
+	ActivityId              string        `protobuf:"bytes,4,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`
+}
+
+func (x *ShowBadgeConfig) Reset() {
+	*x = ShowBadgeConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ShowBadgeConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ShowBadgeConfig) ProtoMessage() {}
+
+func (x *ShowBadgeConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ShowBadgeConfig.ProtoReflect.Descriptor instead.
+func (*ShowBadgeConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ShowBadgeConfig) GetIntro() string {
+	if x != nil {
+		return x.Intro
+	}
+	return ""
+}
+
+func (x *ShowBadgeConfig) GetTitleList() []*BadgeTitle {
+	if x != nil {
+		return x.TitleList
+	}
+	return nil
+}
+
+func (x *ShowBadgeConfig) GetShowIllustrationDescUrl() string {
+	if x != nil {
+		return x.ShowIllustrationDescUrl
+	}
+	return ""
+}
+
+func (x *ShowBadgeConfig) GetActivityId() string {
+	if x != nil {
+		return x.ActivityId
+	}
+	return ""
+}
+
+type BadgeTitle struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id             int32          `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Rewards        []*CRewardItem `protobuf:"bytes,2,rep,name=rewards,proto3" json:"rewards,omitempty"`
+	NeedCollect    int32          `protobuf:"varint,3,opt,name=need_collect,json=needCollect,proto3" json:"need_collect,omitempty"`
+	StartShowLevel int32          `protobuf:"varint,4,opt,name=start_show_level,json=startShowLevel,proto3" json:"start_show_level,omitempty"`
+	EndShowLevel   int32          `protobuf:"varint,5,opt,name=end_show_level,json=endShowLevel,proto3" json:"end_show_level,omitempty"`
+	Desc           string         `protobuf:"bytes,6,opt,name=desc,proto3" json:"desc,omitempty"`
+	Name           string         `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *BadgeTitle) Reset() {
+	*x = BadgeTitle{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BadgeTitle) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BadgeTitle) ProtoMessage() {}
+
+func (x *BadgeTitle) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BadgeTitle.ProtoReflect.Descriptor instead.
+func (*BadgeTitle) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *BadgeTitle) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *BadgeTitle) GetRewards() []*CRewardItem {
+	if x != nil {
+		return x.Rewards
+	}
+	return nil
+}
+
+func (x *BadgeTitle) GetNeedCollect() int32 {
+	if x != nil {
+		return x.NeedCollect
+	}
+	return 0
+}
+
+func (x *BadgeTitle) GetStartShowLevel() int32 {
+	if x != nil {
+		return x.StartShowLevel
+	}
+	return 0
+}
+
+func (x *BadgeTitle) GetEndShowLevel() int32 {
+	if x != nil {
+		return x.EndShowLevel
+	}
+	return 0
+}
+
+func (x *BadgeTitle) GetDesc() string {
+	if x != nil {
+		return x.Desc
+	}
+	return ""
+}
+
+func (x *BadgeTitle) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 var File_snakecommon_profile_config_proto protoreflect.FileDescriptor
 
 var file_snakecommon_profile_config_proto_rawDesc = []byte{
@@ -637,11 +804,38 @@ var file_snakecommon_profile_config_proto_rawDesc = []byte{
 	0x0e, 0x6f, 0x72, 0x69, 0x67, 0x69, 0x6e, 0x61, 0x6c, 0x5f, 0x70, 0x72, 0x69, 0x63, 0x65, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0d, 0x6f, 0x72, 0x69, 0x67, 0x69, 0x6e, 0x61, 0x6c, 0x50,
 	0x72, 0x69, 0x63, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x61, 0x63, 0x6b, 0x5f, 0x69, 0x64, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x70, 0x61, 0x63, 0x6b, 0x49, 0x64, 0x42, 0x2d, 0x5a,
-	0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73,
-	0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x70, 0x61, 0x63, 0x6b, 0x49, 0x64, 0x22, 0xbd, 0x01,
+	0x0a, 0x0f, 0x53, 0x68, 0x6f, 0x77, 0x42, 0x61, 0x64, 0x67, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x12, 0x14, 0x0a, 0x05, 0x69, 0x6e, 0x74, 0x72, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x05, 0x69, 0x6e, 0x74, 0x72, 0x6f, 0x12, 0x36, 0x0a, 0x0a, 0x74, 0x69, 0x74, 0x6c, 0x65,
+	0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x42, 0x61, 0x64, 0x67, 0x65, 0x54,
+	0x69, 0x74, 0x6c, 0x65, 0x52, 0x09, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12,
+	0x3b, 0x0a, 0x1a, 0x73, 0x68, 0x6f, 0x77, 0x5f, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x64, 0x65, 0x73, 0x63, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x17, 0x73, 0x68, 0x6f, 0x77, 0x49, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x65, 0x73, 0x63, 0x55, 0x72, 0x6c, 0x12, 0x1f, 0x0a, 0x0b,
+	0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x5f, 0x69, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0a, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x49, 0x64, 0x22, 0xeb, 0x01,
+	0x0a, 0x0a, 0x42, 0x61, 0x64, 0x67, 0x65, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x0e, 0x0a, 0x02,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x32, 0x0a, 0x07,
+	0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x52, 0x65, 0x77,
+	0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x07, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73,
+	0x12, 0x21, 0x0a, 0x0c, 0x6e, 0x65, 0x65, 0x64, 0x5f, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x6e, 0x65, 0x65, 0x64, 0x43, 0x6f, 0x6c, 0x6c,
+	0x65, 0x63, 0x74, 0x12, 0x28, 0x0a, 0x10, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x73, 0x68, 0x6f,
+	0x77, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0e, 0x73,
+	0x74, 0x61, 0x72, 0x74, 0x53, 0x68, 0x6f, 0x77, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x24, 0x0a,
+	0x0e, 0x65, 0x6e, 0x64, 0x5f, 0x73, 0x68, 0x6f, 0x77, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18,
+	0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x65, 0x6e, 0x64, 0x53, 0x68, 0x6f, 0x77, 0x4c, 0x65,
+	0x76, 0x65, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63, 0x18, 0x06, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x42, 0x2d, 0x5a, 0x2b, 0x67,
+	0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61,
+	0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73,
+	0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -656,7 +850,7 @@ func file_snakecommon_profile_config_proto_rawDescGZIP() []byte {
 	return file_snakecommon_profile_config_proto_rawDescData
 }
 
-var file_snakecommon_profile_config_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_snakecommon_profile_config_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_snakecommon_profile_config_proto_goTypes = []interface{}{
 	(*ChargeVipConfig)(nil),   // 0: snakecommon.ChargeVipConfig
 	(*VipLevel)(nil),          // 1: snakecommon.VipLevel
@@ -664,22 +858,26 @@ var file_snakecommon_profile_config_proto_goTypes = []interface{}{
 	(*MonthCardConfig)(nil),   // 3: snakecommon.MonthCardConfig
 	(*MonthCardInfo)(nil),     // 4: snakecommon.MonthCardInfo
 	(*MonthCardPackItem)(nil), // 5: snakecommon.MonthCardPackItem
-	(*CRewardItem)(nil),       // 6: snakecommon.CRewardItem
+	(*ShowBadgeConfig)(nil),   // 6: snakecommon.ShowBadgeConfig
+	(*BadgeTitle)(nil),        // 7: snakecommon.BadgeTitle
+	(*CRewardItem)(nil),       // 8: snakecommon.CRewardItem
 }
 var file_snakecommon_profile_config_proto_depIdxs = []int32{
-	1, // 0: snakecommon.ChargeVipConfig.level_list:type_name -> snakecommon.VipLevel
-	2, // 1: snakecommon.VipLevel.privilege:type_name -> snakecommon.VipPrivilege
-	6, // 2: snakecommon.VipLevel.reward_list:type_name -> snakecommon.CRewardItem
-	6, // 3: snakecommon.VipLevel.week_reward:type_name -> snakecommon.CRewardItem
-	4, // 4: snakecommon.MonthCardConfig.little_month_card:type_name -> snakecommon.MonthCardInfo
-	4, // 5: snakecommon.MonthCardConfig.super_month_card:type_name -> snakecommon.MonthCardInfo
-	6, // 6: snakecommon.MonthCardInfo.daily_reward:type_name -> snakecommon.CRewardItem
-	5, // 7: snakecommon.MonthCardInfo.pack_list:type_name -> snakecommon.MonthCardPackItem
-	8, // [8:8] is the sub-list for method output_type
-	8, // [8:8] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	1,  // 0: snakecommon.ChargeVipConfig.level_list:type_name -> snakecommon.VipLevel
+	2,  // 1: snakecommon.VipLevel.privilege:type_name -> snakecommon.VipPrivilege
+	8,  // 2: snakecommon.VipLevel.reward_list:type_name -> snakecommon.CRewardItem
+	8,  // 3: snakecommon.VipLevel.week_reward:type_name -> snakecommon.CRewardItem
+	4,  // 4: snakecommon.MonthCardConfig.little_month_card:type_name -> snakecommon.MonthCardInfo
+	4,  // 5: snakecommon.MonthCardConfig.super_month_card:type_name -> snakecommon.MonthCardInfo
+	8,  // 6: snakecommon.MonthCardInfo.daily_reward:type_name -> snakecommon.CRewardItem
+	5,  // 7: snakecommon.MonthCardInfo.pack_list:type_name -> snakecommon.MonthCardPackItem
+	7,  // 8: snakecommon.ShowBadgeConfig.title_list:type_name -> snakecommon.BadgeTitle
+	8,  // 9: snakecommon.BadgeTitle.rewards:type_name -> snakecommon.CRewardItem
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_snakecommon_profile_config_proto_init() }
@@ -761,6 +959,30 @@ func file_snakecommon_profile_config_proto_init() {
 				return nil
 			}
 		}
+		file_snakecommon_profile_config_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ShowBadgeConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BadgeTitle); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -768,7 +990,7 @@ func file_snakecommon_profile_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_profile_config_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
