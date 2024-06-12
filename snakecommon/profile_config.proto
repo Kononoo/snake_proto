@@ -62,3 +62,22 @@ message MonthCardPackItem{
   int32 pack_id = 2;//礼包id
 }
 // ======== month_card end ====================================================
+
+// ======== show_badge start ====================================================
+message ShowBadgeConfig {
+  string intro = 1;
+  repeated BadgeTitle title_list = 2;
+  string show_illustration_desc_url = 3;
+  string activity_id = 4;
+}
+
+message BadgeTitle {
+  int32 id = 1;
+  repeated CRewardItem rewards = 2;
+  int32 need_collect = 3;
+  int32 start_show_level = 4;
+  int32 end_show_level = 5;
+  string desc = 6;
+  string name = 7;
+}
+// ======== show_badge end ====================================================
