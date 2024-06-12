@@ -534,7 +534,14 @@ message SkinUgcConfig {
 
 
 
-message Title {
+// show_illustration start
+message ShowIllustrationConfig {
+  string desc_url = 1;// 说明文案
+  repeated ShowIllustrationTitle title_list = 2;
+  repeated ShowIllustrationSeason  season_list = 4;
+}
+
+message ShowIllustrationTitle {
   int32 id = 1;
   string name = 2;
   string img = 3;// 背景
@@ -542,20 +549,14 @@ message Title {
   int32 end_time = 5;
 }
 
-message ShowIllustrationConfig {
-  string desc_url = 1;// 说明文案
-  repeated Title title_list = 2;
-  repeated int32 hide_ids = 3;// 需隐藏的资源id配置
-  repeated ShowSeason  season_list = 4;
-}
-message ShowSeason {
+message ShowIllustrationSeason {
   int32 id = 1;
   string name = 2;
   string img = 3;
   int64 start_time = 4;
   int64 end_time = 5;
   string bg_imgurl = 6;
-  repeated SnakeMain.Config.RewardConfig rewards = 7;
+  repeated CRewardItem rewards = 7;
   repeated SeasonResource resources = 8;
 }
 
@@ -564,9 +565,13 @@ message SeasonResource {
   int32 skin_id = 2;
   string imgurl = 3;
   string gray_imgurl = 4;
-  int32 x = 5;
-  int32 y = 6;
+  uint32 x = 5;
+  uint32 y = 6;
 }
+// show_illustration end
+
+
+
 message ShowBadgeConfig {
   string intro = 1;
   repeated BadgeTitle title_list = 2;
