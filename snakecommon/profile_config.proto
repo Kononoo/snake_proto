@@ -85,8 +85,8 @@ message BadgeTitle {
 // ======== charm_tours start ====================================================
 message CharmTourConfig {
   string intro = 1;
-  repeated CharmTitleItem charm_title_list = 2;
-  repeated CharmLevelItem charm_level_list = 3;
+  repeated CharmTourTitleItem charm_title_list = 2;
+  repeated CharmTourLevelItem charm_level_list = 3;
   string wish_gift_desc_url = 4;
   int64 all_tag_show_time = 5;
   string start_time = 6;
@@ -97,7 +97,7 @@ message CharmTourConfig {
   int64  gift_wall_online_date = 11;
 }
 
-message CharmTitleItem {
+message CharmTourTitleItem {
   int32 id = 1;
   string name_url = 2; // 标题艺术字图片
   string title = 3; // 标题文字
@@ -110,7 +110,7 @@ message CharmTitleItem {
   int32 end_charm_level = 10;
 }
 
-message CharmLevelItem {
+message CharmTourLevelItem {
   int32 level = 1;
   int64 charm = 2;
 }
