@@ -621,13 +621,7 @@ message UgcWorksLink {
 
 
 
-// TopListConfig Start
-message TopListConfig {
-  repeated string province_list = 1;
-  string user_top_list_reset_tips = 2;
-  string clan_top_list_reset_tips = 3;
-}
-// TopListConfig End
+
 
 // 小秘书相关配置 Start
 message SnakeSecretary {
