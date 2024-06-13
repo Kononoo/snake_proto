@@ -526,44 +526,6 @@ message SkinUgcConfig {
 
 
 
-// show_illustration start
-message ShowIllustrationConfig {
-  string desc_url = 1;// 说明文案
-  repeated ShowIllustrationTitle title_list = 2;
-  repeated ShowIllustrationSeason  season_list = 4;
-}
-
-message ShowIllustrationTitle {
-  int32 id = 1;
-  string name = 2;
-  string img = 3;// 背景
-  int32 start_time = 4;// 开始和结束时间不为0的为活动主题
-  int32 end_time = 5;
-}
-
-message ShowIllustrationSeason {
-  int32 id = 1;
-  string name = 2;
-  string img = 3;
-  int64 start_time = 4;
-  int64 end_time = 5;
-  string bg_imgurl = 6;
-  repeated CRewardItem rewards = 7;
-  repeated SeasonResource resources = 8;
-}
-
-message SeasonResource {
-  int32 type = 1;
-  int32 skin_id = 2;
-  string imgurl = 3;
-  string gray_imgurl = 4;
-  uint32 x = 5;
-  uint32 y = 6;
-}
-// show_illustration end
-
-
-
 
 
 message SkinUgcConfigV2 {
@@ -690,48 +652,48 @@ message SuperShowConfig {
   int32 skin_id = 3; // 超级秀皮肤id
 }
 
-// 师徒 Start
-message MentorConfig {
-  repeated MentorPrivilegeInfo master_privilege_config = 1;
-  repeated MentorshipBondConfig bond_title_config = 2;
-  MentorFinishReward finish_reward = 3;
-  repeated MasterPrenticeStrategy master_prentice_strategy = 4;
-  int32 master_star_limit = 5;
-  int32 break_hour_limit = 6;
-  int32 mentorship_open = 7;
+
+
+
+
+
+
+
+// show_illustration start
+message ShowIllustrationConfig {
+  string desc_url = 1;// 说明文案
+  repeated ShowIllustrationTitle title_list = 2;
+  repeated ShowIllustrationSeason  season_list = 4;
 }
 
-message MentorPrivilegeInfo {
-  string title = 1;
-  string title_img = 2;
-  int32 level = 3;
-  int32 level_exp = 4;
-  int32 addition = 5;
-  repeated PrivilegeDetailInfo privilege_config = 6;
-  repeated SnakeMain.Config.RewardConfig privilege_reward = 7;
+message ShowIllustrationTitle {
+  int32 id = 1;
+  string name = 2;
+  string img = 3;// 背景
+  int32 start_time = 4;// 开始和结束时间不为0的为活动主题
+  int32 end_time = 5;
 }
 
-message PrivilegeDetailInfo {
-  string img_url = 1;
-  string desc = 2;
+message ShowIllustrationSeason {
+  int32 id = 1;
+  string name = 2;
+  string img = 3;
+  int64 start_time = 4;
+  int64 end_time = 5;
+  string bg_imgurl = 6;
+  repeated CRewardItem rewards = 7;
+  repeated SeasonResource resources = 8;
 }
 
-message MentorshipBondConfig {
-  int64 fade_time = 1;  // 褪色时间(s)
-  int32 bond_level = 2;  // 羁绊等级
-  int32 bond_level_exp = 3;  // 羁绊等级对应经验值
+message SeasonResource {
+  int32 type = 1;
+  int32 skin_id = 2;
+  string imgurl = 3;
+  string gray_imgurl = 4;
+  uint32 x = 5;
+  uint32 y = 6;
 }
-
-message MentorFinishReward {
-  repeated SnakeMain.Config.RewardConfig master_reward = 1;
-  repeated SnakeMain.Config.RewardConfig prentice_reward = 2;
-}
-
-message MasterPrenticeStrategy {
-  string title = 1;
-  string img = 2;
-}
-// 师徒 End
+// show_illustration end
 
 // 礼物图鉴 Start
 message GiftIllustrationConfig{
@@ -747,4 +709,3 @@ message GiftTitleItemConfig{
 }
 // 礼物图鉴 End
 
-// config_v4 resp proto end

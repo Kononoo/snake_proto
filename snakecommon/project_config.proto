@@ -1129,3 +1129,47 @@ message OfflineGameConfig {
 }
 
 // === offline_game_config end ========================================
+
+// === mentorship_config start ========================================
+message MentorshipConfig {
+  repeated MentorPrivilegeInfo master_privilege_config = 1;
+  repeated MentorshipBondTitleItem bond_title_config = 2;
+  MentorFinishReward finish_reward = 3;
+  repeated MasterPrenticeStrategyItem master_prentice_strategy = 4;
+  int32 master_star_limit = 5;
+  int32 break_hour_limit = 6;
+  int32 mentorship_open = 7;
+}
+
+message MentorPrivilegeInfo {
+  string title = 1;
+  int32 level = 2;
+  int32 level_exp = 3;
+  string title_img = 4;
+  int32 anim_type = 5;
+  int32 addition = 6; // 名师加成百分比1～100
+  repeated PrivilegeDetailInfo privilege = 7; // 当前名师等级特权配图
+  repeated CRewardItem reward_list = 8; // 名师特权奖励
+}
+
+message PrivilegeDetailInfo {
+  string img_url = 1;
+  string desc = 2;
+}
+
+message MentorshipBondTitleItem {
+  int64 fade_time = 1;  // 褪色时间(s)
+  int32 bond_level = 2;  // 羁绊等级
+  int32 bond_level_exp = 3;  // 羁绊等级对应经验值
+}
+
+message MentorFinishReward {
+  repeated CRewardItem master_reward = 1;
+  repeated CRewardItem prentice_reward = 2;
+}
+
+message MasterPrenticeStrategyItem {
+  string title = 1;
+  string img = 2;
+}
+// === mentorship_config end ========================================
