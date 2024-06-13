@@ -81,3 +81,61 @@ message BadgeTitle {
   string name = 7;
 }
 // ======== show_badge end ====================================================
+
+// ======== charm_tours start ====================================================
+message CharmTourConfig {
+  string intro = 1;
+  repeated CharmTitleItem charm_title_list = 2;
+  repeated CharmLevelItem charm_level_list = 3;
+  string wish_gift_desc_url = 4;
+  int64 all_tag_show_time = 5;
+  string start_time = 6;
+  repeated string white_list = 7;
+  string illustration_desc = 8;
+  string guide_url = 9;
+  repeated NameplateItem nameplate_list = 10;
+  int64  gift_wall_online_date = 11;
+}
+
+message CharmTitleItem {
+  int32 id = 1;
+  string name_url = 2; // 标题艺术字图片
+  string title = 3; // 标题文字
+  string icon_url = 4;
+  string anim_url = 5;
+  int32 anim_type = 6;
+  repeated CRewardItem rewards = 7;
+  int32 need_collect = 8; // 达到该等级需要解锁的礼物个数
+  int32 start_charm_level = 9;
+  int32 end_charm_level = 10;
+}
+
+message CharmLevelItem {
+  int32 level = 1;
+  int64 charm = 2;
+}
+
+message NameplateItem {
+  int32 id = 1;
+  int32 nameplate_type = 2;
+  string name = 3;
+  int32 need_star = 4;
+  int32 need_gift = 5;
+  string imgurl = 6;
+}
+// ======== charm_tours end ====================================================
+
+// ======== gift_wall start ====================================================
+message GiftWallConfig{
+  string gift_wall_desc = 1;
+  repeated NamePlate nameplate_list = 2;
+
+  message NamePlate{
+    int32 id = 1;
+    string imgurl = 2;
+    int32 nameplate_type = 3; // 1-集星周铭牌；2-累计集星铭牌；3-点亮铭牌
+    int32 need_star = 4;
+    string name = 5;
+  }
+}
+// ======== gift_wall end ====================================================
