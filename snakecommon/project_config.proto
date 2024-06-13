@@ -418,6 +418,7 @@ message ShortCutConfig {
     SceneClan = 5;
     SceneCoupleMatch = 7;
     SceneRaceRoom = 8;
+    SceneGoatGame = 9;
   }
 
   int32 type = 1;
