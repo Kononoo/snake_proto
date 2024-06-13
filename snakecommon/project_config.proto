@@ -649,7 +649,14 @@ message UnityQualifyingOpenConfig{
 // === unity_qualifying_open_config end =======================================
 
 
-
+// === top_list_config start =======================================
+message TopListConfig {
+  repeated string province_list = 1;
+  string user_top_list_reset_tips = 2;
+  string clan_top_list_reset_tips = 3;
+  string qualifying_top_list_reset_tips = 4;
+}
+// === top_list_config end =======================================
 
 
 
