@@ -449,6 +449,7 @@ message UiConfigV3 {
   GameIcon ar_icon = 13;
   GameIcon plant_icon = 14;
   string more_game_bgurl = 15;
+  GameIcon fallguys_icon = 16;
 }
 
 message GameIcon {
