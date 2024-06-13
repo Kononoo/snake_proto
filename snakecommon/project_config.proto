@@ -638,8 +638,14 @@ message RandomDoubleClientInfo {
 }
 // === order_config end =======================================
 
-
-
+// === unity_qualifying_open_config start =======================================
+message UnityQualifyingOpenConfig{
+  repeated int32 weekdays = 1;
+  string day_start_time = 2;
+  string day_end_time = 3;
+  repeated string markets = 4;
+}
+// === unity_qualifying_open_config end =======================================
 
 
 

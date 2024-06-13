@@ -50,14 +50,6 @@ message RMBPackGoodsInfo {
 
 
 
-message UnityQualifyingOpenConfig{
-  repeated int32 weekdays = 1;
-  string day_start_time = 2;
-  string day_end_time = 3;
-}
-
-
-
 
 message ActivityConfig {
   PassCheckV2 pass_check_v2 = 1;
