@@ -1193,6 +1193,7 @@ message ProductBaseInfo {
   int32 anim_type = 9;
   bool has_associated = 10;// 是否关联图鉴bool
   repeated int32 illustration_ids = 11;// 关联图鉴id  []int，（只有1级皮肤会配置，用skin_index去找当前实际拥有的等级）
+  string audio_url = 12;
 }
 
 message ChipInfo {
