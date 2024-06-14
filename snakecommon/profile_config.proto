@@ -145,7 +145,7 @@ message GiftWallConfig{
 //message ActivityConfig {
 //  PassCheckV2 pass_check_v2 = 1;
 //  string pass_check_pack_act_id = 2;
-//  MeetupConfig new_meetup_v3 = 3;
+//  NewMeetupV3Config new_meetup_v3 = 3;
 //  HatchEgg hatch_egg = 4;
 //  EndlessGameRewardConfig endless_game_reward = 5; // 无尽送好礼
 //  TurntableConfig turntable = 6; // 许愿池
@@ -178,7 +178,7 @@ message EggLevelInfo {
 //======== hatch_egg end
 
 //======== new_meetup_v3 start
-message MeetupConfig {
+message NewMeetupV3Config {
   // Define fields for MeetupConfig
   string homepage_icon = 1;
   string homepage_icon_link = 2;
