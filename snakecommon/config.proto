@@ -362,17 +362,29 @@ message PassCommonConfig {
   int32 advance_bg_anim_type = 22; // 进阶通行证背景动效类型
   string advance_honor_url = 23; // 荣耀通行证卡片
   string advance_luxury_url = 24; // 豪华通行证卡片
+
+  //
+  string rule_desc_tmpl = 25;
+  string desc = 26;
+  int32 task_card_id = 27; // 任务卡id
 }
 
 message PassRewardConfig {
   string infinity_rank_imgurl = 1;
   int32 normal_rank = 2;// 奖励list里超过此数的关卡循环展示
 
-  repeated PassReward reward_list = 3;
+  repeated PassCheckRankItem reward_list = 3;
 
   PassRewardPreview reward_preview = 4;
 
   repeated SnakeMain.Config.RewardConfig reward_sort = 5;
+}
+
+message PassCheckRankItem {
+  int32 rank = 1;
+  repeated CRewardItem free_reward = 2;
+  repeated CRewardItem high_reward = 3;
+  int64 total_exp = 4;
 }
 
 message PassRewardPreview {
@@ -401,11 +413,6 @@ message WindowReward {
   string desc = 14;
 }
 
-message PassReward {
-  int32 rank = 1;
-  repeated SnakeMain.Config.RewardConfig free_reward = 2;
-  repeated SnakeMain.Config.RewardConfig high_reward = 3;
-}
 
 message PassTaskConfig {
   SeasonTask season_task = 1;
