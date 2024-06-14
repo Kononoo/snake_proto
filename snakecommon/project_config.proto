@@ -547,8 +547,9 @@ message ShowAdConfig {
   repeated EndlessAdRecommend melee_checkout_recommend = 20;
   map<string, int32> ad_percent = 21;
   CrossPromotions cross_promotions = 22;
-  string buy_month_card_link = 23; // 购买月卡弹窗链接
-  string buy_ad_card_link = 24; // 购买广告券弹窗链接
+  bool open_buy_link = 23; // 是否开启购买链接
+  string buy_month_card_link = 24; // 购买月卡弹窗链接
+  string buy_ad_card_link = 25; // 购买广告券弹窗链接
 }
 
 message CrossPromotions {
