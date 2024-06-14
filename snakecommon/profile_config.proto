@@ -142,16 +142,17 @@ message GiftWallConfig{
 // ======== gift_wall end ====================================================
 
 
-message ActivityConfig {
-  PassCheckV2 pass_check_v2 = 1;
-  string pass_check_pack_act_id = 2;
-  MeetupConfig new_meetup_v3 = 3;
-  HatchEgg hatch_egg = 4;
-  EndlessGameRewardConfig endless_game_reward = 5; // 无尽送好礼
-  TurntableConfig turntable = 6;
-  SkinUgcConfigV2 skin_ugc_v2 = 7;
-}
+//message ActivityConfig {
+//  PassCheckV2 pass_check_v2 = 1;
+//  string pass_check_pack_act_id = 2;
+//  MeetupConfig new_meetup_v3 = 3;
+//  HatchEgg hatch_egg = 4;
+//  EndlessGameRewardConfig endless_game_reward = 5; // 无尽送好礼
+//  TurntableConfig turntable = 6; // 许愿池
+//  SkinUgcV2Config skin_ugc_v2 = 7;
+//}
 
+//======== hatch_egg start
 message HatchEgg {
   int64 start_time = 1;
   int64 finish_time = 2;
@@ -174,6 +175,7 @@ message EggLevelInfo {
   int64 hatch_time = 4; // 孵化时间
   int32 diamond_value = 5; // 彩蛋价值
 }
+//======== hatch_egg end
 
 //======== new_meetup_v3 start
 message MeetupConfig {
@@ -274,6 +276,7 @@ message PassCheckV2 {
   PassCheckDailyWelfare daily_welfare = 9;
   PassCheckBreakReward break_reward = 10;
   int64 out_loop_level = 11;
+  int64 pass_check_pack_act_id = 12;
 }
 
 message PassCheckDailyWelfare {
@@ -482,8 +485,8 @@ message TurntableSubConfig {
 }
 // turntable_config end
 
-// ugc_config_v2 start
-message SkinUgcConfigV2 {
+// ugc_v2_config start
+message SkinUgcV2Config {
   int64 start_time = 1;
   int64 end_time = 2;
   string icon_imgurl = 3;
@@ -503,7 +506,7 @@ message UgcTopic {
   string bg_small = 4;
   bool is_topic_create = 5;
 }
-// ugc_config_v2 end
+// ugc_v2_config end
 
 // show_illustration start
 message ShowIllustrationConfig {
