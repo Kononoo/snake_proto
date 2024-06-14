@@ -276,7 +276,7 @@ message PassCheckV2 {
   PassCheckDailyWelfare daily_welfare = 9;
   PassCheckBreakReward break_reward = 10;
   int64 out_loop_level = 11;
-  int64 pass_check_pack_act_id = 12;
+  string pass_check_pack_act_id = 12;
 }
 
 message PassCheckDailyWelfare {
