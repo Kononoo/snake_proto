@@ -22,8 +22,9 @@ message ConfigV5Req {
 
 message ConfigV5Rsp {
   repeated ConfigV5Item list = 1;
-  map<string, snakecommon.ConfigVersionInfo> config_version_map = 31;
-  string config_versions = 32;
+  map<string, snakecommon.ConfigVersionInfo> config_version_map = 2;
+  string config_versions = 3;
+  repeated string required_keys = 4; // 必须有的配置名列表
 }
 
 message ConfigV5Item {
