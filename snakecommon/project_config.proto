@@ -750,6 +750,7 @@ message UserConfig {
   int32 visitor_flag = 44;
   int32 third_failed_visitor_flag = 45;
   repeated string third_failed_visitor_market = 46;
+  int32 relive_pack_auto_pop_count = 47;
 }
 
 message UnityFlags {

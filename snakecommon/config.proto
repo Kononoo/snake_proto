@@ -14,6 +14,7 @@ message CRewardItem {
   int32 worth_level = 9;              // 稀有度
   optional int32 mark_id = 10;         // 来源标签id
   repeated CConvert convert = 11;      // 奖励折算
+  int32 is_valuable = 12;              // 是否高价值：0否1是，客户端会显示特殊边框
 }
 
 // 奖励折算结构
