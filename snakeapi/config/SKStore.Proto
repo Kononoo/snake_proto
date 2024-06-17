@@ -1256,7 +1256,7 @@ message PriceInfo {
   int32 discountPrice = 4;
 }
 
-message RewardConfig {
+message RewardConfig { // 服务器配置奖励的通用结构
   int32 type = 1;
   int32 skin_id = 2;//物品id
   string name = 3;
