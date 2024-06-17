@@ -23,13 +23,19 @@ message ConfigV5Req {
 message ConfigV5Rsp {
   repeated ConfigV5Item list = 1;
   map<string, snakecommon.ConfigVersionInfo> config_version_map = 2;
-  string config_versions = 3;
   repeated string required_keys = 4; // 必须有的配置名列表
+  repeated string abtest_group_list = 5;  // 客户端序列化为字符串，用abtest_group字段上报作为神策打点通用参数
+  AbGroupDetail group_detail = 6; // ab配置分组详情
 }
 
 message ConfigV5Item {
   string key = 1;
   bytes value = 2;
+}
+
+message AbGroupDetail {
+  map<string, string> ab_group_list = 1; // 客户端序列化为字符串，用ab_groups字段上报作为api请求的参数，对interface_list中的接口使用
+  repeated string interface_list = 2;
 }
 
 //message ConfigV5Rsp {
