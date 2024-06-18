@@ -10726,6 +10726,62 @@ func (x *MasterPrenticeStrategyItem) GetImg() string {
 	return ""
 }
 
+// === hot_config start ========================================
+type HotConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	InReviewState int32  `protobuf:"varint,1,opt,name=in_review_state,json=inReviewState,proto3" json:"in_review_state,omitempty"`
+	SubConfig     string `protobuf:"bytes,2,opt,name=sub_config,json=subConfig,proto3" json:"sub_config,omitempty"` // 小秘书配置
+}
+
+func (x *HotConfig) Reset() {
+	*x = HotConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[119]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HotConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HotConfig) ProtoMessage() {}
+
+func (x *HotConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[119]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HotConfig.ProtoReflect.Descriptor instead.
+func (*HotConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{119}
+}
+
+func (x *HotConfig) GetInReviewState() int32 {
+	if x != nil {
+		return x.InReviewState
+	}
+	return 0
+}
+
+func (x *HotConfig) GetSubConfig() string {
+	if x != nil {
+		return x.SubConfig
+	}
+	return ""
+}
+
 var File_snakecommon_project_config_proto protoreflect.FileDescriptor
 
 var file_snakecommon_project_config_proto_rawDesc = []byte{
@@ -12840,10 +12896,15 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x74, 0x72, 0x61, 0x74, 0x65, 0x67, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x14, 0x0a, 0x05, 0x74,
 	0x69, 0x74, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c,
 	0x65, 0x12, 0x10, 0x0a, 0x03, 0x69, 0x6d, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x69, 0x6d, 0x67, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68,
-	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x69, 0x6d, 0x67, 0x22, 0x52, 0x0a, 0x09, 0x48, 0x6f, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x12, 0x26, 0x0a, 0x0f, 0x69, 0x6e, 0x5f, 0x72, 0x65, 0x76, 0x69, 0x65, 0x77, 0x5f, 0x73, 0x74,
+	0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0d, 0x69, 0x6e, 0x52, 0x65, 0x76,
+	0x69, 0x65, 0x77, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x75, 0x62, 0x5f,
+	0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x73, 0x75,
+	0x62, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31,
+	0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73,
+	0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -12859,7 +12920,7 @@ func file_snakecommon_project_config_proto_rawDescGZIP() []byte {
 }
 
 var file_snakecommon_project_config_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_snakecommon_project_config_proto_msgTypes = make([]protoimpl.MessageInfo, 125)
+var file_snakecommon_project_config_proto_msgTypes = make([]protoimpl.MessageInfo, 126)
 var file_snakecommon_project_config_proto_goTypes = []interface{}{
 	(ShortCutConfig_SceneType)(0),      // 0: snakecommon.ShortCutConfig.SceneType
 	(*ConfigVersionInfo)(nil),          // 1: snakecommon.ConfigVersionInfo
@@ -12981,21 +13042,22 @@ var file_snakecommon_project_config_proto_goTypes = []interface{}{
 	(*MentorshipBondTitleItem)(nil),    // 117: snakecommon.MentorshipBondTitleItem
 	(*MentorFinishReward)(nil),         // 118: snakecommon.MentorFinishReward
 	(*MasterPrenticeStrategyItem)(nil), // 119: snakecommon.MasterPrenticeStrategyItem
-	nil,                                // 120: snakecommon.ConfigVersionInfo.FlagsEntry
-	nil,                                // 121: snakecommon.ClanConfig.ClanRaceRewardEntry
-	nil,                                // 122: snakecommon.TextConfig.GiftLikeTextListV2Entry
-	nil,                                // 123: snakecommon.PingConfig.PingIpListEntry
-	nil,                                // 124: snakecommon.ShowAdConfig.AdPercentEntry
-	nil,                                // 125: snakecommon.AdPopupsConfig.PopupPositionConfigEntry
-	(*CPriceInfo)(nil),                 // 126: snakecommon.CPriceInfo
-	(*config.RewardConfig)(nil),        // 127: SnakeMain.Config.RewardConfig
-	(*CRewardItem)(nil),                // 128: snakecommon.CRewardItem
-	(*RMBPackGoodsInfo)(nil),           // 129: snakecommon.RMBPackGoodsInfo
+	(*HotConfig)(nil),                  // 120: snakecommon.HotConfig
+	nil,                                // 121: snakecommon.ConfigVersionInfo.FlagsEntry
+	nil,                                // 122: snakecommon.ClanConfig.ClanRaceRewardEntry
+	nil,                                // 123: snakecommon.TextConfig.GiftLikeTextListV2Entry
+	nil,                                // 124: snakecommon.PingConfig.PingIpListEntry
+	nil,                                // 125: snakecommon.ShowAdConfig.AdPercentEntry
+	nil,                                // 126: snakecommon.AdPopupsConfig.PopupPositionConfigEntry
+	(*CPriceInfo)(nil),                 // 127: snakecommon.CPriceInfo
+	(*config.RewardConfig)(nil),        // 128: SnakeMain.Config.RewardConfig
+	(*CRewardItem)(nil),                // 129: snakecommon.CRewardItem
+	(*RMBPackGoodsInfo)(nil),           // 130: snakecommon.RMBPackGoodsInfo
 }
 var file_snakecommon_project_config_proto_depIdxs = []int32{
-	120, // 0: snakecommon.ConfigVersionInfo.flags:type_name -> snakecommon.ConfigVersionInfo.FlagsEntry
+	121, // 0: snakecommon.ConfigVersionInfo.flags:type_name -> snakecommon.ConfigVersionInfo.FlagsEntry
 	3,   // 1: snakecommon.EndLessBuffPropConfigV2.list:type_name -> snakecommon.EndLessBuffPropInfo
-	126, // 2: snakecommon.EndLessBuffPropInfo.price_list:type_name -> snakecommon.CPriceInfo
+	127, // 2: snakecommon.EndLessBuffPropInfo.price_list:type_name -> snakecommon.CPriceInfo
 	4,   // 3: snakecommon.EndLessBuffPropInfo.prop_list:type_name -> snakecommon.RandomPropInfo
 	6,   // 4: snakecommon.HuaweiHighlight.highlight_list:type_name -> snakecommon.HighLightInfo
 	9,   // 5: snakecommon.OlGameConfig.game_status_track:type_name -> snakecommon.GameStatusTrack
@@ -13009,19 +13071,19 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	8,   // 13: snakecommon.OlGameConfig.match_backgroud:type_name -> snakecommon.MatchBackgroudConfig
 	11,  // 14: snakecommon.GrassConfig.grass:type_name -> snakecommon.GrassInfo
 	13,  // 15: snakecommon.TeamSuit.new_suit:type_name -> snakecommon.TeamSuitNewSuitInfo
-	126, // 16: snakecommon.TeamKillProp.price_list:type_name -> snakecommon.CPriceInfo
-	127, // 17: snakecommon.TeamKillProp.prop_list:type_name -> SnakeMain.Config.RewardConfig
+	127, // 16: snakecommon.TeamKillProp.price_list:type_name -> snakecommon.CPriceInfo
+	128, // 17: snakecommon.TeamKillProp.prop_list:type_name -> SnakeMain.Config.RewardConfig
 	20,  // 18: snakecommon.ClanConfig.rule_desc:type_name -> snakecommon.RuleDesc
 	22,  // 19: snakecommon.ClanConfig.race_time_config:type_name -> snakecommon.RaceTimeConfig
-	121, // 20: snakecommon.ClanConfig.clan_race_reward:type_name -> snakecommon.ClanConfig.ClanRaceRewardEntry
+	122, // 20: snakecommon.ClanConfig.clan_race_reward:type_name -> snakecommon.ClanConfig.ClanRaceRewardEntry
 	24,  // 21: snakecommon.ClanConfig.level_config:type_name -> snakecommon.ClanLevelInfo
 	25,  // 22: snakecommon.ClanConfig.reward_config:type_name -> snakecommon.NewClanRewardItem
 	25,  // 23: snakecommon.ClanConfig.reward_explain_config:type_name -> snakecommon.NewClanRewardItem
 	21,  // 24: snakecommon.RuleDesc.active_point_addition:type_name -> snakecommon.ActivePointAddition
-	128, // 25: snakecommon.NewClanRewardItem.reward:type_name -> snakecommon.CRewardItem
+	129, // 25: snakecommon.NewClanRewardItem.reward:type_name -> snakecommon.CRewardItem
 	28,  // 26: snakecommon.RankConfig.level:type_name -> snakecommon.RankLevel
 	27,  // 27: snakecommon.RankConfig.rank_reward:type_name -> snakecommon.RankReward
-	128, // 28: snakecommon.RankReward.reward_list:type_name -> snakecommon.CRewardItem
+	129, // 28: snakecommon.RankReward.reward_list:type_name -> snakecommon.CRewardItem
 	34,  // 29: snakecommon.ShareConfig.channel_config:type_name -> snakecommon.ChannelConfig
 	35,  // 30: snakecommon.ShareConfig.game_invite:type_name -> snakecommon.GameInvite
 	33,  // 31: snakecommon.ShareConfig.video_share_icon:type_name -> snakecommon.VideoShareIcon
@@ -13029,10 +13091,10 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	31,  // 33: snakecommon.ShareConfig.share_tag:type_name -> snakecommon.ShareTag
 	38,  // 34: snakecommon.SocialConfig.charm_level:type_name -> snakecommon.CharmLevelItem
 	37,  // 35: snakecommon.SocialConfig.charm_top_config:type_name -> snakecommon.CharmTopConfig
-	128, // 36: snakecommon.SocialConfig.marry_rewards:type_name -> snakecommon.CRewardItem
+	129, // 36: snakecommon.SocialConfig.marry_rewards:type_name -> snakecommon.CRewardItem
 	40,  // 37: snakecommon.CharmExpConfig.charm_exp_ranks:type_name -> snakecommon.CharmExpRank
 	41,  // 38: snakecommon.CharmExpConfig.privilege_config:type_name -> snakecommon.CharmPrivilegeItem
-	122, // 39: snakecommon.TextConfig.gift_like_text_list_v2:type_name -> snakecommon.TextConfig.GiftLikeTextListV2Entry
+	123, // 39: snakecommon.TextConfig.gift_like_text_list_v2:type_name -> snakecommon.TextConfig.GiftLikeTextListV2Entry
 	44,  // 40: snakecommon.TextConfig.quick_phrase_text_list:type_name -> snakecommon.ShortCutConfig
 	45,  // 41: snakecommon.TextConfig.report_behavior_list:type_name -> snakecommon.ReportBehavior
 	47,  // 42: snakecommon.UiConfigV3.endless_icon_v2:type_name -> snakecommon.GameIcon
@@ -13050,7 +13112,7 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	47,  // 54: snakecommon.UiConfigV3.plant_icon:type_name -> snakecommon.GameIcon
 	47,  // 55: snakecommon.UiConfigV3.fallguys_icon:type_name -> snakecommon.GameIcon
 	48,  // 56: snakecommon.GameIcon.bubble:type_name -> snakecommon.Bubble
-	123, // 57: snakecommon.PingConfig.ping_ip_list:type_name -> snakecommon.PingConfig.PingIpListEntry
+	124, // 57: snakecommon.PingConfig.ping_ip_list:type_name -> snakecommon.PingConfig.PingIpListEntry
 	53,  // 58: snakecommon.RewardConfig.reward_marks:type_name -> snakecommon.RewardMark
 	61,  // 59: snakecommon.ShowAdConfig.snake_coin_ad_config:type_name -> snakecommon.AdRewardModel
 	61,  // 60: snakecommon.ShowAdConfig.coupon_ad_config:type_name -> snakecommon.AdRewardModel
@@ -13063,19 +13125,19 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	60,  // 67: snakecommon.ShowAdConfig.endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
 	60,  // 68: snakecommon.ShowAdConfig.noad_endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
 	60,  // 69: snakecommon.ShowAdConfig.melee_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
-	124, // 70: snakecommon.ShowAdConfig.ad_percent:type_name -> snakecommon.ShowAdConfig.AdPercentEntry
+	125, // 70: snakecommon.ShowAdConfig.ad_percent:type_name -> snakecommon.ShowAdConfig.AdPercentEntry
 	55,  // 71: snakecommon.ShowAdConfig.cross_promotions:type_name -> snakecommon.CrossPromotions
 	56,  // 72: snakecommon.CrossPromotions.source:type_name -> snakecommon.CrossPromotionsSource
-	125, // 73: snakecommon.AdPopupsConfig.popup_position_config:type_name -> snakecommon.AdPopupsConfig.PopupPositionConfigEntry
-	129, // 74: snakecommon.OrderConfig.pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
-	129, // 75: snakecommon.OrderConfig.diamond_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	126, // 73: snakecommon.AdPopupsConfig.popup_position_config:type_name -> snakecommon.AdPopupsConfig.PopupPositionConfigEntry
+	130, // 74: snakecommon.OrderConfig.pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	130, // 75: snakecommon.OrderConfig.diamond_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
 	64,  // 76: snakecommon.OrderConfig.first_charge_popup:type_name -> snakecommon.FirstChargePopup
-	129, // 77: snakecommon.OrderConfig.red_pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	130, // 77: snakecommon.OrderConfig.red_pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
 	65,  // 78: snakecommon.OrderConfig.random_double_client_info:type_name -> snakecommon.RandomDoubleClientInfo
 	70,  // 79: snakecommon.ShowConfig.level_config:type_name -> snakecommon.ShowLevelConfig
 	71,  // 80: snakecommon.ShowConfig.skill_name:type_name -> snakecommon.ShowSkillName
 	69,  // 81: snakecommon.ShowConfig.icon_style:type_name -> snakecommon.ShowIconStyle
-	128, // 82: snakecommon.ShowLevelConfig.reward:type_name -> snakecommon.CRewardItem
+	129, // 82: snakecommon.ShowLevelConfig.reward:type_name -> snakecommon.CRewardItem
 	72,  // 83: snakecommon.ShowLevelConfig.game_skill_list:type_name -> snakecommon.ShowSkillBuff
 	90,  // 84: snakecommon.UserConfig.abnormal_store:type_name -> snakecommon.DeviceConfig
 	68,  // 85: snakecommon.UserConfig.show_config:type_name -> snakecommon.ShowConfig
@@ -13086,7 +13148,7 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	79,  // 90: snakecommon.UserConfig.setting_conf:type_name -> snakecommon.SettingConfig
 	78,  // 91: snakecommon.UserConfig.feedback:type_name -> snakecommon.FeedbackConfig
 	77,  // 92: snakecommon.UserConfig.flags:type_name -> snakecommon.FlagsConfig
-	128, // 93: snakecommon.UserConfig.certify_reward:type_name -> snakecommon.CRewardItem
+	129, // 93: snakecommon.UserConfig.certify_reward:type_name -> snakecommon.CRewardItem
 	101, // 94: snakecommon.UserConfig.register_survey:type_name -> snakecommon.RegisterSurvey
 	102, // 95: snakecommon.UserConfig.recruit_popup:type_name -> snakecommon.RecruitPopup
 	75,  // 96: snakecommon.UserConfig.minor_limit:type_name -> snakecommon.MinorLimit
@@ -13111,9 +13173,9 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	94,  // 115: snakecommon.AntiAddiction.infant_notify:type_name -> snakecommon.MinorNotify
 	93,  // 116: snakecommon.Notify.uncertified:type_name -> snakecommon.CertifyGameConfig
 	93,  // 117: snakecommon.Notify.minor:type_name -> snakecommon.CertifyGameConfig
-	128, // 118: snakecommon.IdfaConfig.reward:type_name -> snakecommon.CRewardItem
-	128, // 119: snakecommon.RegisterSurvey.reward:type_name -> snakecommon.CRewardItem
-	128, // 120: snakecommon.NewUserConfig.guide_reward:type_name -> snakecommon.CRewardItem
+	129, // 118: snakecommon.IdfaConfig.reward:type_name -> snakecommon.CRewardItem
+	129, // 119: snakecommon.RegisterSurvey.reward:type_name -> snakecommon.CRewardItem
+	129, // 120: snakecommon.NewUserConfig.guide_reward:type_name -> snakecommon.CRewardItem
 	111, // 121: snakecommon.WildStormConfig.wild_storm_list:type_name -> snakecommon.WildStormListItem
 	104, // 122: snakecommon.OfflineGameConfig.endless_revive_config:type_name -> snakecommon.ReviveConfigItem
 	104, // 123: snakecommon.OfflineGameConfig.endless_revive_config_ab1:type_name -> snakecommon.ReviveConfigItem
@@ -13132,9 +13194,9 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	118, // 136: snakecommon.MentorshipConfig.finish_reward:type_name -> snakecommon.MentorFinishReward
 	119, // 137: snakecommon.MentorshipConfig.master_prentice_strategy:type_name -> snakecommon.MasterPrenticeStrategyItem
 	116, // 138: snakecommon.MentorPrivilegeInfo.privilege:type_name -> snakecommon.PrivilegeDetailInfo
-	128, // 139: snakecommon.MentorPrivilegeInfo.reward_list:type_name -> snakecommon.CRewardItem
-	128, // 140: snakecommon.MentorFinishReward.master_reward:type_name -> snakecommon.CRewardItem
-	128, // 141: snakecommon.MentorFinishReward.prentice_reward:type_name -> snakecommon.CRewardItem
+	129, // 139: snakecommon.MentorPrivilegeInfo.reward_list:type_name -> snakecommon.CRewardItem
+	129, // 140: snakecommon.MentorFinishReward.master_reward:type_name -> snakecommon.CRewardItem
+	129, // 141: snakecommon.MentorFinishReward.prentice_reward:type_name -> snakecommon.CRewardItem
 	23,  // 142: snakecommon.ClanConfig.ClanRaceRewardEntry.value:type_name -> snakecommon.ClanRaceReward
 	43,  // 143: snakecommon.TextConfig.GiftLikeTextListV2Entry.value:type_name -> snakecommon.GiftLikeTextList
 	58,  // 144: snakecommon.AdPopupsConfig.PopupPositionConfigEntry.value:type_name -> snakecommon.PopupPosition
@@ -14580,6 +14642,18 @@ func file_snakecommon_project_config_proto_init() {
 				return nil
 			}
 		}
+		file_snakecommon_project_config_proto_msgTypes[119].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*HotConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -14587,7 +14661,7 @@ func file_snakecommon_project_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_project_config_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   125,
+			NumMessages:   126,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
