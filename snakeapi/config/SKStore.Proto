@@ -172,6 +172,9 @@ message MiddleItem {
   string name = 6;
   string get_method_desc = 7;
   int32 worth_level = 8;
+  int32 type = 9;
+  int32 start_time = 10;
+  int32 end_time = 11;
 }
 
 message CurrencyStore {
@@ -194,6 +197,7 @@ message Property {
   repeated ThumbnailBorder thumbnail_border = 6;
   repeated WorthLevelIcon worth_level_icon = 7;
   repeated WorthLevelBorderPc worth_level_border_pc = 8;
+  repeated SkinSet skin_set = 9;
 }
 
 message WorthLevelBorderPc {
