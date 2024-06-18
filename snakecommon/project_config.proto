@@ -1206,14 +1206,14 @@ message HotConfig {
 
 // product_config start =========================================
 message ProductConfig {
-  Property property = 1;
+  ProductProperty property = 1;
   CurrencyStore currency_store = 2;
   repeated MiddleItem middle_item_list = 3; // 中间道具配置
   DrawCardGuideConfig draw_card_guide_config = 4;
   SnakeMain.Config.StoreConfig store_config = 5; // proto商店配置
 }
 
-message Property {
+message ProductProperty {
   repeated AvatarBoxTag avatar_box_tag = 1;
   repeated Currency currency_list = 2;
   repeated int32 default_skin_list = 3;
