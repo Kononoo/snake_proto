@@ -675,6 +675,14 @@ message ShowConfig {
   string addition_intro = 4;
   string intro = 5;
   repeated ShowIconStyle icon_style = 6;
+  repeated ShowPackItem pack_config = 7;
+  int32 pack_pop_cd_sec = 8;
+}
+
+message ShowPackItem {
+  int32 show_level = 1;
+  int32 effect_sec = 2;
+  SnakeMain.Config.PackModel pack_info = 3;
 }
 
 message ShowIconStyle {
