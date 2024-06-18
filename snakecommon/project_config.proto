@@ -271,6 +271,7 @@ message RankLevel {
   string url = 4;
   string name = 5;
   int32 mvp = 6;
+  string sprite_name = 7;
 }
 
 message SeasonInfo {
