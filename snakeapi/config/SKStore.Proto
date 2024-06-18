@@ -7,7 +7,7 @@ import "snakeapi/base.proto";
 message ProductConfig {
   //如果property里某字段非空，则替换本地列表，否则读本地数据
   Property property = 1;
-  string store_resource_url = 2;
+  string store_resource_url = 2; // 废弃
   /**
   *         //4.3版本新增
   *         chip_compose_flag: 0; //0:关，1:开
@@ -18,11 +18,12 @@ message ProductConfig {
 
   repeated MiddleItem middle_item_list = 5; // 中间道具配置
 
-  StoreRecommend store_recommend = 6;
+  StoreRecommend store_recommend = 6; // 这里废弃，改为接口返回
 
   DrawCardGuideConfig draw_card_guide_config = 7;
 
   repeated SkinSet skin_set = 8;
+  StoreConfig store_config = 9; // proto商店配置
 }
 
 message StoreRecommend {
@@ -189,7 +190,7 @@ message Property {
   repeated Currency currency_list = 2;
   repeated int32 default_skin_list = 3;
   repeated int32 default_team_suit = 4;
-  int64 checksum = 5;
+  int64 checksum = 5; // 废弃
   repeated ThumbnailBorder thumbnail_border = 6;
   repeated WorthLevelIcon worth_level_icon = 7;
   repeated WorthLevelBorderPc worth_level_border_pc = 8;
