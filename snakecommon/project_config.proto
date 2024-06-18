@@ -1190,3 +1190,91 @@ message HotConfig {
   string sub_config = 2; // 小秘书配置
 }
 // === hot_config end ========================================
+
+// product_config start =========================================
+message ProductConfig {
+  Property property = 1;
+  CurrencyStore currency_store = 2;
+  repeated MiddleItem middle_item_list = 3; // 中间道具配置
+  DrawCardGuideConfig draw_card_guide_config = 4;
+  SnakeMain.Config.StoreConfig store_config = 5; // proto商店配置
+}
+
+message Property {
+  repeated AvatarBoxTag avatar_box_tag = 1;
+  repeated Currency currency_list = 2;
+  repeated int32 default_skin_list = 3;
+  repeated int32 default_team_suit = 4;
+  repeated ThumbnailBorder thumbnail_border = 5;
+  repeated WorthLevelIcon worth_level_icon = 6;
+  repeated WorthLevelBorderPc worth_level_border_pc = 7;
+  repeated SkinSet skin_set = 8;
+}
+
+message WorthLevelBorderPc {
+  int32 worth_level = 1;
+  string url = 2;
+}
+
+message WorthLevelIcon {
+  int32 worth_level = 1;
+  string icon = 2;
+}
+
+message ThumbnailBorder {
+  int32 worth_level = 1;
+  string url = 2;
+}
+
+message AvatarBoxTag {
+  int32 tag_id = 1;
+  string tag_name = 2;
+}
+
+message Currency {
+  int32 reward_type = 1;
+  int32 currency_type = 2;
+  string name = 3;
+  string imgurl = 4;
+  string desc = 5;
+  string get_method_desc = 6;
+  string thumbnail = 7;
+}
+
+message DrawCardGuideConfig {
+  repeated int32 id = 1;
+  repeated string text_list = 2;
+  repeated CRewardItem reward = 3;
+  int64 start_time = 4;
+  int64 end_time = 5;
+  int32 guide_act_id = 6;
+}
+
+message MiddleItem {
+  int32 middle_item_id = 1;
+  int32 skin_id = 2;
+  int32 count = 3;
+  string imgurl = 4;
+  string intro = 5;
+  string name = 6;
+  string get_method_desc = 7;
+  int32 worth_level = 8;
+}
+
+message CurrencyStore {
+  repeated CurrencyStoreItem snake_coin = 1;
+  repeated CurrencyStoreItem coupon = 2;
+}
+
+message CurrencyStoreItem {
+  int32 item_id = 1;
+  int32 cost = 2;
+  int32 num = 3;
+}
+
+message SkinSet {
+  int32 id = 1; // 皮肤套系id，服务器使用，客户端不用管
+  string name = 2; // 皮肤名字
+  repeated int32 skin_ids = 3; //相关皮肤id
+}
+// product_config end =========================================

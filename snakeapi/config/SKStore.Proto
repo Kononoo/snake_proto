@@ -4,7 +4,7 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakeapi/config";
 import "snakeapi/base.proto";
 
 // Store start
-message ProductConfig {
+message ProductConfig { // 废弃
   //如果property里某字段非空，则替换本地列表，否则读本地数据
   Property property = 1;
   string store_resource_url = 2; // 废弃
