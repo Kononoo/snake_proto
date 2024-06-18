@@ -161,6 +161,8 @@ message DrawCardGuideConfig {
   int64 start_time = 4;
   int64 end_time = 5;
   int32 guide_act_id = 6;
+  int32 register_time = 7;
+  string probability_announce = 8;
 }
 
 message MiddleItem {
@@ -180,12 +182,20 @@ message MiddleItem {
 message CurrencyStore {
   repeated CurrencyStoreItem snake_coin = 1;
   repeated CurrencyStoreItem coupon = 2;
+  repeated EscapeStoreItem escape_store = 3;
 }
 
 message CurrencyStoreItem {
   int32 item_id = 1;
   int32 cost = 2;
   int32 num = 3;
+}
+
+message EscapeStoreItem {
+  int32 buff = 1;
+  int32 diamond = 2;
+  int32 id = 3;
+  int32 type = 4;
 }
 
 message Property {
