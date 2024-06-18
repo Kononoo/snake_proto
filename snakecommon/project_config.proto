@@ -74,6 +74,13 @@ message OlGameConfig {
   int32 exit_button_plan = 22; // 4.3.28新增,中途退出按钮状态方案
   int32 qualifying_guide = 23; //1:强引导，2：弱引导
   int32 ol_game_predict_data_count_new = 24;
+  MatchBackgroudConfig match_backgroud = 25;
+}
+
+message MatchBackgroudConfig {
+  int32 anim_type = 1;
+  string anim_src = 2;
+  string static_imgurl = 3;
 }
 
 message GameStatusTrack {
@@ -138,6 +145,9 @@ message QualifyingConfig {
   int32 network_survey = 14;
   int32 use_render_offset = 15;
   int32 network_survey_v2 = 16;
+  string icon_link = 17;
+  string icon_url = 18;
+  int32 use_kcp = 19;
 }
 message RaceNormalConfig {
   string banner_url = 1;
@@ -1186,3 +1196,10 @@ message MasterPrenticeStrategyItem {
   string img = 2;
 }
 // === mentorship_config end ========================================
+
+// === hot_config start ========================================
+message HotConfig {
+  int32 in_review_state = 1;
+  string sub_config = 2; // 小秘书配置
+}
+// === hot_config end ========================================
