@@ -10867,11 +10867,11 @@ type ProductConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Property            *ProductProperty     `protobuf:"bytes,1,opt,name=property,proto3" json:"property,omitempty"`
-	CurrencyStore       *CurrencyStore       `protobuf:"bytes,2,opt,name=currency_store,json=currencyStore,proto3" json:"currency_store,omitempty"`
-	MiddleItemList      []*MiddleItem        `protobuf:"bytes,3,rep,name=middle_item_list,json=middleItemList,proto3" json:"middle_item_list,omitempty"` // 中间道具配置
-	DrawCardGuideConfig *DrawCardGuideConfig `protobuf:"bytes,4,opt,name=draw_card_guide_config,json=drawCardGuideConfig,proto3" json:"draw_card_guide_config,omitempty"`
-	StoreConfig         *config.StoreConfig  `protobuf:"bytes,5,opt,name=store_config,json=storeConfig,proto3" json:"store_config,omitempty"` // proto商店配置
+	Property            *config.Property            `protobuf:"bytes,1,opt,name=property,proto3" json:"property,omitempty"`
+	CurrencyStore       *config.CurrencyStore       `protobuf:"bytes,2,opt,name=currency_store,json=currencyStore,proto3" json:"currency_store,omitempty"`
+	MiddleItemList      []*config.MiddleItem        `protobuf:"bytes,3,rep,name=middle_item_list,json=middleItemList,proto3" json:"middle_item_list,omitempty"` // 中间道具配置
+	DrawCardGuideConfig *config.DrawCardGuideConfig `protobuf:"bytes,4,opt,name=draw_card_guide_config,json=drawCardGuideConfig,proto3" json:"draw_card_guide_config,omitempty"`
+	StoreConfig         *config.StoreConfig         `protobuf:"bytes,5,opt,name=store_config,json=storeConfig,proto3" json:"store_config,omitempty"` // proto商店配置
 }
 
 func (x *ProductConfig) Reset() {
@@ -10906,28 +10906,28 @@ func (*ProductConfig) Descriptor() ([]byte, []int) {
 	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{121}
 }
 
-func (x *ProductConfig) GetProperty() *ProductProperty {
+func (x *ProductConfig) GetProperty() *config.Property {
 	if x != nil {
 		return x.Property
 	}
 	return nil
 }
 
-func (x *ProductConfig) GetCurrencyStore() *CurrencyStore {
+func (x *ProductConfig) GetCurrencyStore() *config.CurrencyStore {
 	if x != nil {
 		return x.CurrencyStore
 	}
 	return nil
 }
 
-func (x *ProductConfig) GetMiddleItemList() []*MiddleItem {
+func (x *ProductConfig) GetMiddleItemList() []*config.MiddleItem {
 	if x != nil {
 		return x.MiddleItemList
 	}
 	return nil
 }
 
-func (x *ProductConfig) GetDrawCardGuideConfig() *DrawCardGuideConfig {
+func (x *ProductConfig) GetDrawCardGuideConfig() *config.DrawCardGuideConfig {
 	if x != nil {
 		return x.DrawCardGuideConfig
 	}
@@ -10937,795 +10937,6 @@ func (x *ProductConfig) GetDrawCardGuideConfig() *DrawCardGuideConfig {
 func (x *ProductConfig) GetStoreConfig() *config.StoreConfig {
 	if x != nil {
 		return x.StoreConfig
-	}
-	return nil
-}
-
-type ProductProperty struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	AvatarBoxTag       []*AvatarBoxTag       `protobuf:"bytes,1,rep,name=avatar_box_tag,json=avatarBoxTag,proto3" json:"avatar_box_tag,omitempty"`
-	CurrencyList       []*Currency           `protobuf:"bytes,2,rep,name=currency_list,json=currencyList,proto3" json:"currency_list,omitempty"`
-	DefaultSkinList    []int32               `protobuf:"varint,3,rep,packed,name=default_skin_list,json=defaultSkinList,proto3" json:"default_skin_list,omitempty"`
-	DefaultTeamSuit    []int32               `protobuf:"varint,4,rep,packed,name=default_team_suit,json=defaultTeamSuit,proto3" json:"default_team_suit,omitempty"`
-	ThumbnailBorder    []*ThumbnailBorder    `protobuf:"bytes,5,rep,name=thumbnail_border,json=thumbnailBorder,proto3" json:"thumbnail_border,omitempty"`
-	WorthLevelIcon     []*WorthLevelIcon     `protobuf:"bytes,6,rep,name=worth_level_icon,json=worthLevelIcon,proto3" json:"worth_level_icon,omitempty"`
-	WorthLevelBorderPc []*WorthLevelBorderPc `protobuf:"bytes,7,rep,name=worth_level_border_pc,json=worthLevelBorderPc,proto3" json:"worth_level_border_pc,omitempty"`
-	SkinSet            []*SkinSet            `protobuf:"bytes,8,rep,name=skin_set,json=skinSet,proto3" json:"skin_set,omitempty"`
-}
-
-func (x *ProductProperty) Reset() {
-	*x = ProductProperty{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[122]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ProductProperty) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ProductProperty) ProtoMessage() {}
-
-func (x *ProductProperty) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[122]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ProductProperty.ProtoReflect.Descriptor instead.
-func (*ProductProperty) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{122}
-}
-
-func (x *ProductProperty) GetAvatarBoxTag() []*AvatarBoxTag {
-	if x != nil {
-		return x.AvatarBoxTag
-	}
-	return nil
-}
-
-func (x *ProductProperty) GetCurrencyList() []*Currency {
-	if x != nil {
-		return x.CurrencyList
-	}
-	return nil
-}
-
-func (x *ProductProperty) GetDefaultSkinList() []int32 {
-	if x != nil {
-		return x.DefaultSkinList
-	}
-	return nil
-}
-
-func (x *ProductProperty) GetDefaultTeamSuit() []int32 {
-	if x != nil {
-		return x.DefaultTeamSuit
-	}
-	return nil
-}
-
-func (x *ProductProperty) GetThumbnailBorder() []*ThumbnailBorder {
-	if x != nil {
-		return x.ThumbnailBorder
-	}
-	return nil
-}
-
-func (x *ProductProperty) GetWorthLevelIcon() []*WorthLevelIcon {
-	if x != nil {
-		return x.WorthLevelIcon
-	}
-	return nil
-}
-
-func (x *ProductProperty) GetWorthLevelBorderPc() []*WorthLevelBorderPc {
-	if x != nil {
-		return x.WorthLevelBorderPc
-	}
-	return nil
-}
-
-func (x *ProductProperty) GetSkinSet() []*SkinSet {
-	if x != nil {
-		return x.SkinSet
-	}
-	return nil
-}
-
-type WorthLevelBorderPc struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	WorthLevel int32  `protobuf:"varint,1,opt,name=worth_level,json=worthLevel,proto3" json:"worth_level,omitempty"`
-	Url        string `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
-}
-
-func (x *WorthLevelBorderPc) Reset() {
-	*x = WorthLevelBorderPc{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[123]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *WorthLevelBorderPc) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*WorthLevelBorderPc) ProtoMessage() {}
-
-func (x *WorthLevelBorderPc) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[123]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use WorthLevelBorderPc.ProtoReflect.Descriptor instead.
-func (*WorthLevelBorderPc) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{123}
-}
-
-func (x *WorthLevelBorderPc) GetWorthLevel() int32 {
-	if x != nil {
-		return x.WorthLevel
-	}
-	return 0
-}
-
-func (x *WorthLevelBorderPc) GetUrl() string {
-	if x != nil {
-		return x.Url
-	}
-	return ""
-}
-
-type WorthLevelIcon struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	WorthLevel int32  `protobuf:"varint,1,opt,name=worth_level,json=worthLevel,proto3" json:"worth_level,omitempty"`
-	Icon       string `protobuf:"bytes,2,opt,name=icon,proto3" json:"icon,omitempty"`
-}
-
-func (x *WorthLevelIcon) Reset() {
-	*x = WorthLevelIcon{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[124]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *WorthLevelIcon) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*WorthLevelIcon) ProtoMessage() {}
-
-func (x *WorthLevelIcon) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[124]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use WorthLevelIcon.ProtoReflect.Descriptor instead.
-func (*WorthLevelIcon) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{124}
-}
-
-func (x *WorthLevelIcon) GetWorthLevel() int32 {
-	if x != nil {
-		return x.WorthLevel
-	}
-	return 0
-}
-
-func (x *WorthLevelIcon) GetIcon() string {
-	if x != nil {
-		return x.Icon
-	}
-	return ""
-}
-
-type ThumbnailBorder struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	WorthLevel int32  `protobuf:"varint,1,opt,name=worth_level,json=worthLevel,proto3" json:"worth_level,omitempty"`
-	Url        string `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
-}
-
-func (x *ThumbnailBorder) Reset() {
-	*x = ThumbnailBorder{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[125]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ThumbnailBorder) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ThumbnailBorder) ProtoMessage() {}
-
-func (x *ThumbnailBorder) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[125]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ThumbnailBorder.ProtoReflect.Descriptor instead.
-func (*ThumbnailBorder) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{125}
-}
-
-func (x *ThumbnailBorder) GetWorthLevel() int32 {
-	if x != nil {
-		return x.WorthLevel
-	}
-	return 0
-}
-
-func (x *ThumbnailBorder) GetUrl() string {
-	if x != nil {
-		return x.Url
-	}
-	return ""
-}
-
-type AvatarBoxTag struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	TagId   int32  `protobuf:"varint,1,opt,name=tag_id,json=tagId,proto3" json:"tag_id,omitempty"`
-	TagName string `protobuf:"bytes,2,opt,name=tag_name,json=tagName,proto3" json:"tag_name,omitempty"`
-}
-
-func (x *AvatarBoxTag) Reset() {
-	*x = AvatarBoxTag{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[126]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *AvatarBoxTag) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*AvatarBoxTag) ProtoMessage() {}
-
-func (x *AvatarBoxTag) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[126]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use AvatarBoxTag.ProtoReflect.Descriptor instead.
-func (*AvatarBoxTag) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{126}
-}
-
-func (x *AvatarBoxTag) GetTagId() int32 {
-	if x != nil {
-		return x.TagId
-	}
-	return 0
-}
-
-func (x *AvatarBoxTag) GetTagName() string {
-	if x != nil {
-		return x.TagName
-	}
-	return ""
-}
-
-type Currency struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	RewardType    int32  `protobuf:"varint,1,opt,name=reward_type,json=rewardType,proto3" json:"reward_type,omitempty"`
-	CurrencyType  int32  `protobuf:"varint,2,opt,name=currency_type,json=currencyType,proto3" json:"currency_type,omitempty"`
-	Name          string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Imgurl        string `protobuf:"bytes,4,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
-	Desc          string `protobuf:"bytes,5,opt,name=desc,proto3" json:"desc,omitempty"`
-	GetMethodDesc string `protobuf:"bytes,6,opt,name=get_method_desc,json=getMethodDesc,proto3" json:"get_method_desc,omitempty"`
-	Thumbnail     string `protobuf:"bytes,7,opt,name=thumbnail,proto3" json:"thumbnail,omitempty"`
-}
-
-func (x *Currency) Reset() {
-	*x = Currency{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[127]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *Currency) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Currency) ProtoMessage() {}
-
-func (x *Currency) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[127]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Currency.ProtoReflect.Descriptor instead.
-func (*Currency) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{127}
-}
-
-func (x *Currency) GetRewardType() int32 {
-	if x != nil {
-		return x.RewardType
-	}
-	return 0
-}
-
-func (x *Currency) GetCurrencyType() int32 {
-	if x != nil {
-		return x.CurrencyType
-	}
-	return 0
-}
-
-func (x *Currency) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *Currency) GetImgurl() string {
-	if x != nil {
-		return x.Imgurl
-	}
-	return ""
-}
-
-func (x *Currency) GetDesc() string {
-	if x != nil {
-		return x.Desc
-	}
-	return ""
-}
-
-func (x *Currency) GetGetMethodDesc() string {
-	if x != nil {
-		return x.GetMethodDesc
-	}
-	return ""
-}
-
-func (x *Currency) GetThumbnail() string {
-	if x != nil {
-		return x.Thumbnail
-	}
-	return ""
-}
-
-type DrawCardGuideConfig struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id         []int32        `protobuf:"varint,1,rep,packed,name=id,proto3" json:"id,omitempty"`
-	TextList   []string       `protobuf:"bytes,2,rep,name=text_list,json=textList,proto3" json:"text_list,omitempty"`
-	Reward     []*CRewardItem `protobuf:"bytes,3,rep,name=reward,proto3" json:"reward,omitempty"`
-	StartTime  int64          `protobuf:"varint,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime    int64          `protobuf:"varint,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	GuideActId int32          `protobuf:"varint,6,opt,name=guide_act_id,json=guideActId,proto3" json:"guide_act_id,omitempty"`
-}
-
-func (x *DrawCardGuideConfig) Reset() {
-	*x = DrawCardGuideConfig{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[128]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DrawCardGuideConfig) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DrawCardGuideConfig) ProtoMessage() {}
-
-func (x *DrawCardGuideConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[128]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DrawCardGuideConfig.ProtoReflect.Descriptor instead.
-func (*DrawCardGuideConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{128}
-}
-
-func (x *DrawCardGuideConfig) GetId() []int32 {
-	if x != nil {
-		return x.Id
-	}
-	return nil
-}
-
-func (x *DrawCardGuideConfig) GetTextList() []string {
-	if x != nil {
-		return x.TextList
-	}
-	return nil
-}
-
-func (x *DrawCardGuideConfig) GetReward() []*CRewardItem {
-	if x != nil {
-		return x.Reward
-	}
-	return nil
-}
-
-func (x *DrawCardGuideConfig) GetStartTime() int64 {
-	if x != nil {
-		return x.StartTime
-	}
-	return 0
-}
-
-func (x *DrawCardGuideConfig) GetEndTime() int64 {
-	if x != nil {
-		return x.EndTime
-	}
-	return 0
-}
-
-func (x *DrawCardGuideConfig) GetGuideActId() int32 {
-	if x != nil {
-		return x.GuideActId
-	}
-	return 0
-}
-
-type MiddleItem struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	MiddleItemId  int32  `protobuf:"varint,1,opt,name=middle_item_id,json=middleItemId,proto3" json:"middle_item_id,omitempty"`
-	SkinId        int32  `protobuf:"varint,2,opt,name=skin_id,json=skinId,proto3" json:"skin_id,omitempty"`
-	Count         int32  `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`
-	Imgurl        string `protobuf:"bytes,4,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
-	Intro         string `protobuf:"bytes,5,opt,name=intro,proto3" json:"intro,omitempty"`
-	Name          string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
-	GetMethodDesc string `protobuf:"bytes,7,opt,name=get_method_desc,json=getMethodDesc,proto3" json:"get_method_desc,omitempty"`
-	WorthLevel    int32  `protobuf:"varint,8,opt,name=worth_level,json=worthLevel,proto3" json:"worth_level,omitempty"`
-}
-
-func (x *MiddleItem) Reset() {
-	*x = MiddleItem{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[129]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *MiddleItem) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MiddleItem) ProtoMessage() {}
-
-func (x *MiddleItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[129]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MiddleItem.ProtoReflect.Descriptor instead.
-func (*MiddleItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{129}
-}
-
-func (x *MiddleItem) GetMiddleItemId() int32 {
-	if x != nil {
-		return x.MiddleItemId
-	}
-	return 0
-}
-
-func (x *MiddleItem) GetSkinId() int32 {
-	if x != nil {
-		return x.SkinId
-	}
-	return 0
-}
-
-func (x *MiddleItem) GetCount() int32 {
-	if x != nil {
-		return x.Count
-	}
-	return 0
-}
-
-func (x *MiddleItem) GetImgurl() string {
-	if x != nil {
-		return x.Imgurl
-	}
-	return ""
-}
-
-func (x *MiddleItem) GetIntro() string {
-	if x != nil {
-		return x.Intro
-	}
-	return ""
-}
-
-func (x *MiddleItem) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *MiddleItem) GetGetMethodDesc() string {
-	if x != nil {
-		return x.GetMethodDesc
-	}
-	return ""
-}
-
-func (x *MiddleItem) GetWorthLevel() int32 {
-	if x != nil {
-		return x.WorthLevel
-	}
-	return 0
-}
-
-type CurrencyStore struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	SnakeCoin []*CurrencyStoreItem `protobuf:"bytes,1,rep,name=snake_coin,json=snakeCoin,proto3" json:"snake_coin,omitempty"`
-	Coupon    []*CurrencyStoreItem `protobuf:"bytes,2,rep,name=coupon,proto3" json:"coupon,omitempty"`
-}
-
-func (x *CurrencyStore) Reset() {
-	*x = CurrencyStore{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[130]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CurrencyStore) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CurrencyStore) ProtoMessage() {}
-
-func (x *CurrencyStore) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[130]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CurrencyStore.ProtoReflect.Descriptor instead.
-func (*CurrencyStore) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{130}
-}
-
-func (x *CurrencyStore) GetSnakeCoin() []*CurrencyStoreItem {
-	if x != nil {
-		return x.SnakeCoin
-	}
-	return nil
-}
-
-func (x *CurrencyStore) GetCoupon() []*CurrencyStoreItem {
-	if x != nil {
-		return x.Coupon
-	}
-	return nil
-}
-
-type CurrencyStoreItem struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	ItemId int32 `protobuf:"varint,1,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
-	Cost   int32 `protobuf:"varint,2,opt,name=cost,proto3" json:"cost,omitempty"`
-	Num    int32 `protobuf:"varint,3,opt,name=num,proto3" json:"num,omitempty"`
-}
-
-func (x *CurrencyStoreItem) Reset() {
-	*x = CurrencyStoreItem{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[131]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CurrencyStoreItem) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CurrencyStoreItem) ProtoMessage() {}
-
-func (x *CurrencyStoreItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[131]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CurrencyStoreItem.ProtoReflect.Descriptor instead.
-func (*CurrencyStoreItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{131}
-}
-
-func (x *CurrencyStoreItem) GetItemId() int32 {
-	if x != nil {
-		return x.ItemId
-	}
-	return 0
-}
-
-func (x *CurrencyStoreItem) GetCost() int32 {
-	if x != nil {
-		return x.Cost
-	}
-	return 0
-}
-
-func (x *CurrencyStoreItem) GetNum() int32 {
-	if x != nil {
-		return x.Num
-	}
-	return 0
-}
-
-type SkinSet struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id      int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                 // 皮肤套系id，服务器使用，客户端不用管
-	Name    string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                              // 皮肤名字
-	SkinIds []int32 `protobuf:"varint,3,rep,packed,name=skin_ids,json=skinIds,proto3" json:"skin_ids,omitempty"` //相关皮肤id
-}
-
-func (x *SkinSet) Reset() {
-	*x = SkinSet{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[132]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SkinSet) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SkinSet) ProtoMessage() {}
-
-func (x *SkinSet) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[132]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SkinSet.ProtoReflect.Descriptor instead.
-func (*SkinSet) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{132}
-}
-
-func (x *SkinSet) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SkinSet) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SkinSet) GetSkinIds() []int32 {
-	if x != nil {
-		return x.SkinIds
 	}
 	return nil
 }
@@ -13864,142 +13075,34 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0d, 0x69, 0x6e, 0x52, 0x65, 0x76, 0x69, 0x65, 0x77, 0x53,
 	0x74, 0x61, 0x74, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x75, 0x62, 0x5f, 0x63, 0x6f, 0x6e, 0x66,
 	0x69, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x73, 0x75, 0x62, 0x43, 0x6f, 0x6e,
-	0x66, 0x69, 0x67, 0x22, 0xe8, 0x02, 0x0a, 0x0d, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x43,
-	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x38, 0x0a, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74,
-	0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x50, 0x72, 0x6f,
-	0x70, 0x65, 0x72, 0x74, 0x79, 0x52, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x12,
-	0x41, 0x0a, 0x0e, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x5f, 0x73, 0x74, 0x6f, 0x72,
-	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x53, 0x74,
-	0x6f, 0x72, 0x65, 0x52, 0x0d, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x53, 0x74, 0x6f,
-	0x72, 0x65, 0x12, 0x41, 0x0a, 0x10, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x5f, 0x69, 0x74, 0x65,
-	0x6d, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73,
-	0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4d, 0x69, 0x64, 0x64, 0x6c,
-	0x65, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x0e, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x49, 0x74, 0x65,
-	0x6d, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x55, 0x0a, 0x16, 0x64, 0x72, 0x61, 0x77, 0x5f, 0x63, 0x61,
-	0x72, 0x64, 0x5f, 0x67, 0x75, 0x69, 0x64, 0x65, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18,
-	0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x72, 0x61, 0x77, 0x43, 0x61, 0x72, 0x64, 0x47, 0x75, 0x69, 0x64,
-	0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x13, 0x64, 0x72, 0x61, 0x77, 0x43, 0x61, 0x72,
-	0x64, 0x47, 0x75, 0x69, 0x64, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x40, 0x0a, 0x0c,
-	0x73, 0x74, 0x6f, 0x72, 0x65, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x05, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43,
-	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x52, 0x0b, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x22, 0xfb,
-	0x03, 0x0a, 0x0f, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72,
-	0x74, 0x79, 0x12, 0x3f, 0x0a, 0x0e, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x5f, 0x62, 0x6f, 0x78,
-	0x5f, 0x74, 0x61, 0x67, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x73, 0x6e, 0x61,
-	0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x42,
-	0x6f, 0x78, 0x54, 0x61, 0x67, 0x52, 0x0c, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x42, 0x6f, 0x78,
-	0x54, 0x61, 0x67, 0x12, 0x3a, 0x0a, 0x0d, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x5f,
-	0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x73, 0x6e, 0x61,
-	0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63,
-	0x79, 0x52, 0x0c, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x4c, 0x69, 0x73, 0x74, 0x12,
-	0x2a, 0x0a, 0x11, 0x64, 0x65, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x5f, 0x73, 0x6b, 0x69, 0x6e, 0x5f,
-	0x6c, 0x69, 0x73, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x05, 0x52, 0x0f, 0x64, 0x65, 0x66, 0x61,
-	0x75, 0x6c, 0x74, 0x53, 0x6b, 0x69, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x2a, 0x0a, 0x11, 0x64,
-	0x65, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x5f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x73, 0x75, 0x69, 0x74,
-	0x18, 0x04, 0x20, 0x03, 0x28, 0x05, 0x52, 0x0f, 0x64, 0x65, 0x66, 0x61, 0x75, 0x6c, 0x74, 0x54,
-	0x65, 0x61, 0x6d, 0x53, 0x75, 0x69, 0x74, 0x12, 0x47, 0x0a, 0x10, 0x74, 0x68, 0x75, 0x6d, 0x62,
-	0x6e, 0x61, 0x69, 0x6c, 0x5f, 0x62, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x18, 0x05, 0x20, 0x03, 0x28,
-	0x0b, 0x32, 0x1c, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
-	0x54, 0x68, 0x75, 0x6d, 0x62, 0x6e, 0x61, 0x69, 0x6c, 0x42, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x52,
-	0x0f, 0x74, 0x68, 0x75, 0x6d, 0x62, 0x6e, 0x61, 0x69, 0x6c, 0x42, 0x6f, 0x72, 0x64, 0x65, 0x72,
-	0x12, 0x45, 0x0a, 0x10, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x5f,
-	0x69, 0x63, 0x6f, 0x6e, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x73, 0x6e, 0x61,
-	0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x57, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65,
-	0x76, 0x65, 0x6c, 0x49, 0x63, 0x6f, 0x6e, 0x52, 0x0e, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65,
-	0x76, 0x65, 0x6c, 0x49, 0x63, 0x6f, 0x6e, 0x12, 0x52, 0x0a, 0x15, 0x77, 0x6f, 0x72, 0x74, 0x68,
-	0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x5f, 0x62, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x5f, 0x70, 0x63,
-	0x18, 0x07, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x57, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x42,
-	0x6f, 0x72, 0x64, 0x65, 0x72, 0x50, 0x63, 0x52, 0x12, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65,
-	0x76, 0x65, 0x6c, 0x42, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x50, 0x63, 0x12, 0x2f, 0x0a, 0x08, 0x73,
-	0x6b, 0x69, 0x6e, 0x5f, 0x73, 0x65, 0x74, 0x18, 0x08, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x14, 0x2e,
-	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x53, 0x6b, 0x69, 0x6e,
-	0x53, 0x65, 0x74, 0x52, 0x07, 0x73, 0x6b, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x22, 0x47, 0x0a, 0x12,
-	0x57, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x42, 0x6f, 0x72, 0x64, 0x65, 0x72,
-	0x50, 0x63, 0x12, 0x1f, 0x0a, 0x0b, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x5f, 0x6c, 0x65, 0x76, 0x65,
-	0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65,
-	0x76, 0x65, 0x6c, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x72, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x03, 0x75, 0x72, 0x6c, 0x22, 0x45, 0x0a, 0x0e, 0x57, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65,
-	0x76, 0x65, 0x6c, 0x49, 0x63, 0x6f, 0x6e, 0x12, 0x1f, 0x0a, 0x0b, 0x77, 0x6f, 0x72, 0x74, 0x68,
-	0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x77, 0x6f,
-	0x72, 0x74, 0x68, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x22, 0x44, 0x0a, 0x0f,
-	0x54, 0x68, 0x75, 0x6d, 0x62, 0x6e, 0x61, 0x69, 0x6c, 0x42, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x12,
-	0x1f, 0x0a, 0x0b, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65, 0x76, 0x65, 0x6c,
-	0x12, 0x10, 0x0a, 0x03, 0x75, 0x72, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75,
-	0x72, 0x6c, 0x22, 0x40, 0x0a, 0x0c, 0x41, 0x76, 0x61, 0x74, 0x61, 0x72, 0x42, 0x6f, 0x78, 0x54,
-	0x61, 0x67, 0x12, 0x15, 0x0a, 0x06, 0x74, 0x61, 0x67, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x05, 0x52, 0x05, 0x74, 0x61, 0x67, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x61, 0x67,
-	0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x61, 0x67,
-	0x4e, 0x61, 0x6d, 0x65, 0x22, 0xd6, 0x01, 0x0a, 0x08, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63,
-	0x79, 0x12, 0x1f, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x74, 0x79, 0x70, 0x65,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x54, 0x79,
-	0x70, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x5f, 0x74,
-	0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x63, 0x75, 0x72, 0x72, 0x65,
-	0x6e, 0x63, 0x79, 0x54, 0x79, 0x70, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x69,
-	0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67,
-	0x75, 0x72, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63, 0x18, 0x05, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x12, 0x26, 0x0a, 0x0f, 0x67, 0x65, 0x74, 0x5f, 0x6d,
-	0x65, 0x74, 0x68, 0x6f, 0x64, 0x5f, 0x64, 0x65, 0x73, 0x63, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x0d, 0x67, 0x65, 0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x44, 0x65, 0x73, 0x63, 0x12,
-	0x1c, 0x0a, 0x09, 0x74, 0x68, 0x75, 0x6d, 0x62, 0x6e, 0x61, 0x69, 0x6c, 0x18, 0x07, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x09, 0x74, 0x68, 0x75, 0x6d, 0x62, 0x6e, 0x61, 0x69, 0x6c, 0x22, 0xd0, 0x01,
-	0x0a, 0x13, 0x44, 0x72, 0x61, 0x77, 0x43, 0x61, 0x72, 0x64, 0x47, 0x75, 0x69, 0x64, 0x65, 0x43,
-	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x03, 0x28,
-	0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x74, 0x65, 0x78, 0x74, 0x5f, 0x6c, 0x69,
-	0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x74, 0x65, 0x78, 0x74, 0x4c, 0x69,
-	0x73, 0x74, 0x12, 0x30, 0x0a, 0x06, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x18, 0x03, 0x20, 0x03,
-	0x28, 0x0b, 0x32, 0x18, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
-	0x2e, 0x43, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x06, 0x72, 0x65,
-	0x77, 0x61, 0x72, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69,
-	0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54,
-	0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
-	0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x20,
-	0x0a, 0x0c, 0x67, 0x75, 0x69, 0x64, 0x65, 0x5f, 0x61, 0x63, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x06,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x67, 0x75, 0x69, 0x64, 0x65, 0x41, 0x63, 0x74, 0x49, 0x64,
-	0x22, 0xec, 0x01, 0x0a, 0x0a, 0x4d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x49, 0x74, 0x65, 0x6d, 0x12,
-	0x24, 0x0a, 0x0e, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x5f, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x49,
-	0x74, 0x65, 0x6d, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6b, 0x69, 0x6e, 0x5f, 0x69, 0x64,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73, 0x6b, 0x69, 0x6e, 0x49, 0x64, 0x12, 0x14,
-	0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x63,
-	0x6f, 0x75, 0x6e, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12, 0x14, 0x0a, 0x05,
-	0x69, 0x6e, 0x74, 0x72, 0x6f, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x69, 0x6e, 0x74,
-	0x72, 0x6f, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x26, 0x0a, 0x0f, 0x67, 0x65, 0x74, 0x5f, 0x6d, 0x65,
-	0x74, 0x68, 0x6f, 0x64, 0x5f, 0x64, 0x65, 0x73, 0x63, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0d, 0x67, 0x65, 0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x44, 0x65, 0x73, 0x63, 0x12, 0x1f,
-	0x0a, 0x0b, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x08, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x0a, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x22,
-	0x86, 0x01, 0x0a, 0x0d, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x53, 0x74, 0x6f, 0x72,
-	0x65, 0x12, 0x3d, 0x0a, 0x0a, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x63, 0x6f, 0x69, 0x6e, 0x18,
-	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x53, 0x74, 0x6f, 0x72,
-	0x65, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x09, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x43, 0x6f, 0x69, 0x6e,
-	0x12, 0x36, 0x0a, 0x06, 0x63, 0x6f, 0x75, 0x70, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b,
-	0x32, 0x1e, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43,
-	0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x49, 0x74, 0x65, 0x6d,
-	0x52, 0x06, 0x63, 0x6f, 0x75, 0x70, 0x6f, 0x6e, 0x22, 0x52, 0x0a, 0x11, 0x43, 0x75, 0x72, 0x72,
-	0x65, 0x6e, 0x63, 0x79, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x17, 0x0a,
-	0x07, 0x69, 0x74, 0x65, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06,
-	0x69, 0x74, 0x65, 0x6d, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x73, 0x74, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x63, 0x6f, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75,
-	0x6d, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x22, 0x48, 0x0a, 0x07,
-	0x53, 0x6b, 0x69, 0x6e, 0x53, 0x65, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x73,
-	0x6b, 0x69, 0x6e, 0x5f, 0x69, 0x64, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x05, 0x52, 0x07, 0x73,
-	0x6b, 0x69, 0x6e, 0x49, 0x64, 0x73, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37,
-	0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e,
-	0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x66, 0x69, 0x67, 0x22, 0xf5, 0x02, 0x0a, 0x0d, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x74, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x36, 0x0a, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74,
+	0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d,
+	0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x50, 0x72, 0x6f, 0x70, 0x65,
+	0x72, 0x74, 0x79, 0x52, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x12, 0x46, 0x0a,
+	0x0e, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x5f, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69,
+	0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63,
+	0x79, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x52, 0x0d, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79,
+	0x53, 0x74, 0x6f, 0x72, 0x65, 0x12, 0x46, 0x0a, 0x10, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x5f,
+	0x69, 0x74, 0x65, 0x6d, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x1c, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x2e, 0x4d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x0e, 0x6d,
+	0x69, 0x64, 0x64, 0x6c, 0x65, 0x49, 0x74, 0x65, 0x6d, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x5a, 0x0a,
+	0x16, 0x64, 0x72, 0x61, 0x77, 0x5f, 0x63, 0x61, 0x72, 0x64, 0x5f, 0x67, 0x75, 0x69, 0x64, 0x65,
+	0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x25, 0x2e,
+	0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x2e, 0x44, 0x72, 0x61, 0x77, 0x43, 0x61, 0x72, 0x64, 0x47, 0x75, 0x69, 0x64, 0x65, 0x43, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x52, 0x13, 0x64, 0x72, 0x61, 0x77, 0x43, 0x61, 0x72, 0x64, 0x47, 0x75,
+	0x69, 0x64, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x40, 0x0a, 0x0c, 0x73, 0x74, 0x6f,
+	0x72, 0x65, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x1d, 0x2e, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x2e, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x0b,
+	0x73, 0x74, 0x6f, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x42, 0x2d, 0x5a, 0x2b, 0x67,
+	0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61,
+	0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73,
+	0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -14015,7 +13118,7 @@ func file_snakecommon_project_config_proto_rawDescGZIP() []byte {
 }
 
 var file_snakecommon_project_config_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_snakecommon_project_config_proto_msgTypes = make([]protoimpl.MessageInfo, 139)
+var file_snakecommon_project_config_proto_msgTypes = make([]protoimpl.MessageInfo, 128)
 var file_snakecommon_project_config_proto_goTypes = []interface{}{
 	(ShortCutConfig_SceneType)(0),      // 0: snakecommon.ShortCutConfig.SceneType
 	(*ConfigVersionInfo)(nil),          // 1: snakecommon.ConfigVersionInfo
@@ -14140,34 +13243,27 @@ var file_snakecommon_project_config_proto_goTypes = []interface{}{
 	(*MasterPrenticeStrategyItem)(nil), // 120: snakecommon.MasterPrenticeStrategyItem
 	(*HotConfig)(nil),                  // 121: snakecommon.HotConfig
 	(*ProductConfig)(nil),              // 122: snakecommon.ProductConfig
-	(*ProductProperty)(nil),            // 123: snakecommon.ProductProperty
-	(*WorthLevelBorderPc)(nil),         // 124: snakecommon.WorthLevelBorderPc
-	(*WorthLevelIcon)(nil),             // 125: snakecommon.WorthLevelIcon
-	(*ThumbnailBorder)(nil),            // 126: snakecommon.ThumbnailBorder
-	(*AvatarBoxTag)(nil),               // 127: snakecommon.AvatarBoxTag
-	(*Currency)(nil),                   // 128: snakecommon.Currency
-	(*DrawCardGuideConfig)(nil),        // 129: snakecommon.DrawCardGuideConfig
-	(*MiddleItem)(nil),                 // 130: snakecommon.MiddleItem
-	(*CurrencyStore)(nil),              // 131: snakecommon.CurrencyStore
-	(*CurrencyStoreItem)(nil),          // 132: snakecommon.CurrencyStoreItem
-	(*SkinSet)(nil),                    // 133: snakecommon.SkinSet
-	nil,                                // 134: snakecommon.ConfigVersionInfo.FlagsEntry
-	nil,                                // 135: snakecommon.ClanConfig.ClanRaceRewardEntry
-	nil,                                // 136: snakecommon.TextConfig.GiftLikeTextListV2Entry
-	nil,                                // 137: snakecommon.PingConfig.PingIpListEntry
-	nil,                                // 138: snakecommon.ShowAdConfig.AdPercentEntry
-	nil,                                // 139: snakecommon.AdPopupsConfig.PopupPositionConfigEntry
-	(*CPriceInfo)(nil),                 // 140: snakecommon.CPriceInfo
-	(*config.RewardConfig)(nil),        // 141: SnakeMain.Config.RewardConfig
-	(*CRewardItem)(nil),                // 142: snakecommon.CRewardItem
-	(*RMBPackGoodsInfo)(nil),           // 143: snakecommon.RMBPackGoodsInfo
-	(*config.PackModel)(nil),           // 144: SnakeMain.Config.PackModel
-	(*config.StoreConfig)(nil),         // 145: SnakeMain.Config.StoreConfig
+	nil,                                // 123: snakecommon.ConfigVersionInfo.FlagsEntry
+	nil,                                // 124: snakecommon.ClanConfig.ClanRaceRewardEntry
+	nil,                                // 125: snakecommon.TextConfig.GiftLikeTextListV2Entry
+	nil,                                // 126: snakecommon.PingConfig.PingIpListEntry
+	nil,                                // 127: snakecommon.ShowAdConfig.AdPercentEntry
+	nil,                                // 128: snakecommon.AdPopupsConfig.PopupPositionConfigEntry
+	(*CPriceInfo)(nil),                 // 129: snakecommon.CPriceInfo
+	(*config.RewardConfig)(nil),        // 130: SnakeMain.Config.RewardConfig
+	(*CRewardItem)(nil),                // 131: snakecommon.CRewardItem
+	(*RMBPackGoodsInfo)(nil),           // 132: snakecommon.RMBPackGoodsInfo
+	(*config.PackModel)(nil),           // 133: SnakeMain.Config.PackModel
+	(*config.Property)(nil),            // 134: SnakeMain.Config.Property
+	(*config.CurrencyStore)(nil),       // 135: SnakeMain.Config.CurrencyStore
+	(*config.MiddleItem)(nil),          // 136: SnakeMain.Config.MiddleItem
+	(*config.DrawCardGuideConfig)(nil), // 137: SnakeMain.Config.DrawCardGuideConfig
+	(*config.StoreConfig)(nil),         // 138: SnakeMain.Config.StoreConfig
 }
 var file_snakecommon_project_config_proto_depIdxs = []int32{
-	134, // 0: snakecommon.ConfigVersionInfo.flags:type_name -> snakecommon.ConfigVersionInfo.FlagsEntry
+	123, // 0: snakecommon.ConfigVersionInfo.flags:type_name -> snakecommon.ConfigVersionInfo.FlagsEntry
 	3,   // 1: snakecommon.EndLessBuffPropConfigV2.list:type_name -> snakecommon.EndLessBuffPropInfo
-	140, // 2: snakecommon.EndLessBuffPropInfo.price_list:type_name -> snakecommon.CPriceInfo
+	129, // 2: snakecommon.EndLessBuffPropInfo.price_list:type_name -> snakecommon.CPriceInfo
 	4,   // 3: snakecommon.EndLessBuffPropInfo.prop_list:type_name -> snakecommon.RandomPropInfo
 	6,   // 4: snakecommon.HuaweiHighlight.highlight_list:type_name -> snakecommon.HighLightInfo
 	9,   // 5: snakecommon.OlGameConfig.game_status_track:type_name -> snakecommon.GameStatusTrack
@@ -14181,19 +13277,19 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	8,   // 13: snakecommon.OlGameConfig.match_backgroud:type_name -> snakecommon.MatchBackgroudConfig
 	11,  // 14: snakecommon.GrassConfig.grass:type_name -> snakecommon.GrassInfo
 	13,  // 15: snakecommon.TeamSuit.new_suit:type_name -> snakecommon.TeamSuitNewSuitInfo
-	140, // 16: snakecommon.TeamKillProp.price_list:type_name -> snakecommon.CPriceInfo
-	141, // 17: snakecommon.TeamKillProp.prop_list:type_name -> SnakeMain.Config.RewardConfig
+	129, // 16: snakecommon.TeamKillProp.price_list:type_name -> snakecommon.CPriceInfo
+	130, // 17: snakecommon.TeamKillProp.prop_list:type_name -> SnakeMain.Config.RewardConfig
 	20,  // 18: snakecommon.ClanConfig.rule_desc:type_name -> snakecommon.RuleDesc
 	22,  // 19: snakecommon.ClanConfig.race_time_config:type_name -> snakecommon.RaceTimeConfig
-	135, // 20: snakecommon.ClanConfig.clan_race_reward:type_name -> snakecommon.ClanConfig.ClanRaceRewardEntry
+	124, // 20: snakecommon.ClanConfig.clan_race_reward:type_name -> snakecommon.ClanConfig.ClanRaceRewardEntry
 	24,  // 21: snakecommon.ClanConfig.level_config:type_name -> snakecommon.ClanLevelInfo
 	25,  // 22: snakecommon.ClanConfig.reward_config:type_name -> snakecommon.NewClanRewardItem
 	25,  // 23: snakecommon.ClanConfig.reward_explain_config:type_name -> snakecommon.NewClanRewardItem
 	21,  // 24: snakecommon.RuleDesc.active_point_addition:type_name -> snakecommon.ActivePointAddition
-	142, // 25: snakecommon.NewClanRewardItem.reward:type_name -> snakecommon.CRewardItem
+	131, // 25: snakecommon.NewClanRewardItem.reward:type_name -> snakecommon.CRewardItem
 	28,  // 26: snakecommon.RankConfig.level:type_name -> snakecommon.RankLevel
 	27,  // 27: snakecommon.RankConfig.rank_reward:type_name -> snakecommon.RankReward
-	142, // 28: snakecommon.RankReward.reward_list:type_name -> snakecommon.CRewardItem
+	131, // 28: snakecommon.RankReward.reward_list:type_name -> snakecommon.CRewardItem
 	34,  // 29: snakecommon.ShareConfig.channel_config:type_name -> snakecommon.ChannelConfig
 	35,  // 30: snakecommon.ShareConfig.game_invite:type_name -> snakecommon.GameInvite
 	33,  // 31: snakecommon.ShareConfig.video_share_icon:type_name -> snakecommon.VideoShareIcon
@@ -14201,10 +13297,10 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	31,  // 33: snakecommon.ShareConfig.share_tag:type_name -> snakecommon.ShareTag
 	38,  // 34: snakecommon.SocialConfig.charm_level:type_name -> snakecommon.CharmLevelItem
 	37,  // 35: snakecommon.SocialConfig.charm_top_config:type_name -> snakecommon.CharmTopConfig
-	142, // 36: snakecommon.SocialConfig.marry_rewards:type_name -> snakecommon.CRewardItem
+	131, // 36: snakecommon.SocialConfig.marry_rewards:type_name -> snakecommon.CRewardItem
 	40,  // 37: snakecommon.CharmExpConfig.charm_exp_ranks:type_name -> snakecommon.CharmExpRank
 	41,  // 38: snakecommon.CharmExpConfig.privilege_config:type_name -> snakecommon.CharmPrivilegeItem
-	136, // 39: snakecommon.TextConfig.gift_like_text_list_v2:type_name -> snakecommon.TextConfig.GiftLikeTextListV2Entry
+	125, // 39: snakecommon.TextConfig.gift_like_text_list_v2:type_name -> snakecommon.TextConfig.GiftLikeTextListV2Entry
 	44,  // 40: snakecommon.TextConfig.quick_phrase_text_list:type_name -> snakecommon.ShortCutConfig
 	45,  // 41: snakecommon.TextConfig.report_behavior_list:type_name -> snakecommon.ReportBehavior
 	47,  // 42: snakecommon.UiConfigV3.endless_icon_v2:type_name -> snakecommon.GameIcon
@@ -14222,7 +13318,7 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	47,  // 54: snakecommon.UiConfigV3.plant_icon:type_name -> snakecommon.GameIcon
 	47,  // 55: snakecommon.UiConfigV3.fallguys_icon:type_name -> snakecommon.GameIcon
 	48,  // 56: snakecommon.GameIcon.bubble:type_name -> snakecommon.Bubble
-	137, // 57: snakecommon.PingConfig.ping_ip_list:type_name -> snakecommon.PingConfig.PingIpListEntry
+	126, // 57: snakecommon.PingConfig.ping_ip_list:type_name -> snakecommon.PingConfig.PingIpListEntry
 	53,  // 58: snakecommon.RewardConfig.reward_marks:type_name -> snakecommon.RewardMark
 	61,  // 59: snakecommon.ShowAdConfig.snake_coin_ad_config:type_name -> snakecommon.AdRewardModel
 	61,  // 60: snakecommon.ShowAdConfig.coupon_ad_config:type_name -> snakecommon.AdRewardModel
@@ -14235,21 +13331,21 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	60,  // 67: snakecommon.ShowAdConfig.endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
 	60,  // 68: snakecommon.ShowAdConfig.noad_endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
 	60,  // 69: snakecommon.ShowAdConfig.melee_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
-	138, // 70: snakecommon.ShowAdConfig.ad_percent:type_name -> snakecommon.ShowAdConfig.AdPercentEntry
+	127, // 70: snakecommon.ShowAdConfig.ad_percent:type_name -> snakecommon.ShowAdConfig.AdPercentEntry
 	55,  // 71: snakecommon.ShowAdConfig.cross_promotions:type_name -> snakecommon.CrossPromotions
 	56,  // 72: snakecommon.CrossPromotions.source:type_name -> snakecommon.CrossPromotionsSource
-	139, // 73: snakecommon.AdPopupsConfig.popup_position_config:type_name -> snakecommon.AdPopupsConfig.PopupPositionConfigEntry
-	143, // 74: snakecommon.OrderConfig.pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
-	143, // 75: snakecommon.OrderConfig.diamond_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	128, // 73: snakecommon.AdPopupsConfig.popup_position_config:type_name -> snakecommon.AdPopupsConfig.PopupPositionConfigEntry
+	132, // 74: snakecommon.OrderConfig.pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	132, // 75: snakecommon.OrderConfig.diamond_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
 	64,  // 76: snakecommon.OrderConfig.first_charge_popup:type_name -> snakecommon.FirstChargePopup
-	143, // 77: snakecommon.OrderConfig.red_pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	132, // 77: snakecommon.OrderConfig.red_pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
 	65,  // 78: snakecommon.OrderConfig.random_double_client_info:type_name -> snakecommon.RandomDoubleClientInfo
 	71,  // 79: snakecommon.ShowConfig.level_config:type_name -> snakecommon.ShowLevelConfig
 	72,  // 80: snakecommon.ShowConfig.skill_name:type_name -> snakecommon.ShowSkillName
 	70,  // 81: snakecommon.ShowConfig.icon_style:type_name -> snakecommon.ShowIconStyle
 	69,  // 82: snakecommon.ShowConfig.pack_config:type_name -> snakecommon.ShowPackItem
-	144, // 83: snakecommon.ShowPackItem.pack_info:type_name -> SnakeMain.Config.PackModel
-	142, // 84: snakecommon.ShowLevelConfig.reward:type_name -> snakecommon.CRewardItem
+	133, // 83: snakecommon.ShowPackItem.pack_info:type_name -> SnakeMain.Config.PackModel
+	131, // 84: snakecommon.ShowLevelConfig.reward:type_name -> snakecommon.CRewardItem
 	73,  // 85: snakecommon.ShowLevelConfig.game_skill_list:type_name -> snakecommon.ShowSkillBuff
 	91,  // 86: snakecommon.UserConfig.abnormal_store:type_name -> snakecommon.DeviceConfig
 	68,  // 87: snakecommon.UserConfig.show_config:type_name -> snakecommon.ShowConfig
@@ -14260,7 +13356,7 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	80,  // 92: snakecommon.UserConfig.setting_conf:type_name -> snakecommon.SettingConfig
 	79,  // 93: snakecommon.UserConfig.feedback:type_name -> snakecommon.FeedbackConfig
 	78,  // 94: snakecommon.UserConfig.flags:type_name -> snakecommon.FlagsConfig
-	142, // 95: snakecommon.UserConfig.certify_reward:type_name -> snakecommon.CRewardItem
+	131, // 95: snakecommon.UserConfig.certify_reward:type_name -> snakecommon.CRewardItem
 	102, // 96: snakecommon.UserConfig.register_survey:type_name -> snakecommon.RegisterSurvey
 	103, // 97: snakecommon.UserConfig.recruit_popup:type_name -> snakecommon.RecruitPopup
 	76,  // 98: snakecommon.UserConfig.minor_limit:type_name -> snakecommon.MinorLimit
@@ -14285,9 +13381,9 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	95,  // 117: snakecommon.AntiAddiction.infant_notify:type_name -> snakecommon.MinorNotify
 	94,  // 118: snakecommon.Notify.uncertified:type_name -> snakecommon.CertifyGameConfig
 	94,  // 119: snakecommon.Notify.minor:type_name -> snakecommon.CertifyGameConfig
-	142, // 120: snakecommon.IdfaConfig.reward:type_name -> snakecommon.CRewardItem
-	142, // 121: snakecommon.RegisterSurvey.reward:type_name -> snakecommon.CRewardItem
-	142, // 122: snakecommon.NewUserConfig.guide_reward:type_name -> snakecommon.CRewardItem
+	131, // 120: snakecommon.IdfaConfig.reward:type_name -> snakecommon.CRewardItem
+	131, // 121: snakecommon.RegisterSurvey.reward:type_name -> snakecommon.CRewardItem
+	131, // 122: snakecommon.NewUserConfig.guide_reward:type_name -> snakecommon.CRewardItem
 	112, // 123: snakecommon.WildStormConfig.wild_storm_list:type_name -> snakecommon.WildStormListItem
 	105, // 124: snakecommon.OfflineGameConfig.endless_revive_config:type_name -> snakecommon.ReviveConfigItem
 	105, // 125: snakecommon.OfflineGameConfig.endless_revive_config_ab1:type_name -> snakecommon.ReviveConfigItem
@@ -14306,31 +13402,22 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	119, // 138: snakecommon.MentorshipConfig.finish_reward:type_name -> snakecommon.MentorFinishReward
 	120, // 139: snakecommon.MentorshipConfig.master_prentice_strategy:type_name -> snakecommon.MasterPrenticeStrategyItem
 	117, // 140: snakecommon.MentorPrivilegeInfo.privilege:type_name -> snakecommon.PrivilegeDetailInfo
-	142, // 141: snakecommon.MentorPrivilegeInfo.reward_list:type_name -> snakecommon.CRewardItem
-	142, // 142: snakecommon.MentorFinishReward.master_reward:type_name -> snakecommon.CRewardItem
-	142, // 143: snakecommon.MentorFinishReward.prentice_reward:type_name -> snakecommon.CRewardItem
-	123, // 144: snakecommon.ProductConfig.property:type_name -> snakecommon.ProductProperty
-	131, // 145: snakecommon.ProductConfig.currency_store:type_name -> snakecommon.CurrencyStore
-	130, // 146: snakecommon.ProductConfig.middle_item_list:type_name -> snakecommon.MiddleItem
-	129, // 147: snakecommon.ProductConfig.draw_card_guide_config:type_name -> snakecommon.DrawCardGuideConfig
-	145, // 148: snakecommon.ProductConfig.store_config:type_name -> SnakeMain.Config.StoreConfig
-	127, // 149: snakecommon.ProductProperty.avatar_box_tag:type_name -> snakecommon.AvatarBoxTag
-	128, // 150: snakecommon.ProductProperty.currency_list:type_name -> snakecommon.Currency
-	126, // 151: snakecommon.ProductProperty.thumbnail_border:type_name -> snakecommon.ThumbnailBorder
-	125, // 152: snakecommon.ProductProperty.worth_level_icon:type_name -> snakecommon.WorthLevelIcon
-	124, // 153: snakecommon.ProductProperty.worth_level_border_pc:type_name -> snakecommon.WorthLevelBorderPc
-	133, // 154: snakecommon.ProductProperty.skin_set:type_name -> snakecommon.SkinSet
-	142, // 155: snakecommon.DrawCardGuideConfig.reward:type_name -> snakecommon.CRewardItem
-	132, // 156: snakecommon.CurrencyStore.snake_coin:type_name -> snakecommon.CurrencyStoreItem
-	132, // 157: snakecommon.CurrencyStore.coupon:type_name -> snakecommon.CurrencyStoreItem
-	23,  // 158: snakecommon.ClanConfig.ClanRaceRewardEntry.value:type_name -> snakecommon.ClanRaceReward
-	43,  // 159: snakecommon.TextConfig.GiftLikeTextListV2Entry.value:type_name -> snakecommon.GiftLikeTextList
-	58,  // 160: snakecommon.AdPopupsConfig.PopupPositionConfigEntry.value:type_name -> snakecommon.PopupPosition
-	161, // [161:161] is the sub-list for method output_type
-	161, // [161:161] is the sub-list for method input_type
-	161, // [161:161] is the sub-list for extension type_name
-	161, // [161:161] is the sub-list for extension extendee
-	0,   // [0:161] is the sub-list for field type_name
+	131, // 141: snakecommon.MentorPrivilegeInfo.reward_list:type_name -> snakecommon.CRewardItem
+	131, // 142: snakecommon.MentorFinishReward.master_reward:type_name -> snakecommon.CRewardItem
+	131, // 143: snakecommon.MentorFinishReward.prentice_reward:type_name -> snakecommon.CRewardItem
+	134, // 144: snakecommon.ProductConfig.property:type_name -> SnakeMain.Config.Property
+	135, // 145: snakecommon.ProductConfig.currency_store:type_name -> SnakeMain.Config.CurrencyStore
+	136, // 146: snakecommon.ProductConfig.middle_item_list:type_name -> SnakeMain.Config.MiddleItem
+	137, // 147: snakecommon.ProductConfig.draw_card_guide_config:type_name -> SnakeMain.Config.DrawCardGuideConfig
+	138, // 148: snakecommon.ProductConfig.store_config:type_name -> SnakeMain.Config.StoreConfig
+	23,  // 149: snakecommon.ClanConfig.ClanRaceRewardEntry.value:type_name -> snakecommon.ClanRaceReward
+	43,  // 150: snakecommon.TextConfig.GiftLikeTextListV2Entry.value:type_name -> snakecommon.GiftLikeTextList
+	58,  // 151: snakecommon.AdPopupsConfig.PopupPositionConfigEntry.value:type_name -> snakecommon.PopupPosition
+	152, // [152:152] is the sub-list for method output_type
+	152, // [152:152] is the sub-list for method input_type
+	152, // [152:152] is the sub-list for extension type_name
+	152, // [152:152] is the sub-list for extension extendee
+	0,   // [0:152] is the sub-list for field type_name
 }
 
 func init() { file_snakecommon_project_config_proto_init() }
@@ -15804,138 +14891,6 @@ func file_snakecommon_project_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_project_config_proto_msgTypes[122].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProductProperty); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[123].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WorthLevelBorderPc); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[124].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WorthLevelIcon); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[125].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ThumbnailBorder); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[126].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AvatarBoxTag); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[127].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Currency); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[128].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DrawCardGuideConfig); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[129].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MiddleItem); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[130].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CurrencyStore); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[131].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CurrencyStoreItem); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_snakecommon_project_config_proto_msgTypes[132].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SkinSet); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -15943,7 +14898,7 @@ func file_snakecommon_project_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_project_config_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   139,
+			NumMessages:   128,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
