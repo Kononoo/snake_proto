@@ -88,7 +88,7 @@ message GetEndlessChestInfoRsp {
 
 message EndlessChestReward {
     EndlessChestLengthReward length = 1;
-    EndlessChestSkipChipReward skip_chip_reward = 2;
+    EndlessChestSkipChipReward skin_chip_reward = 2;
 }
 
 message EndlessChestLengthReward {
