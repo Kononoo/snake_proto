@@ -230,7 +230,7 @@ message NewClanRewardItem {
   string border_imgurl = 4;
   int32 rank = 5;
   int32 diamond = 6;
-  repeated CRewardItem reward = 7;
+  repeated SnakeMain.Config.RewardConfig reward = 7;
   int32 cup_start = 8;
   int32 reward_id = 9;
   // 下一个不同 grade 的 rank 位置
@@ -261,7 +261,7 @@ message RankReward {
   // "star_range": [0, 3],
   repeated int32 star_range = 1;
   // "reward_list": [通用奖励数组]
-  repeated CRewardItem reward_list = 2;
+  repeated SnakeMain.Config.RewardConfig reward_list = 2;
 }
 
 message RankLevel {
@@ -351,7 +351,7 @@ message SocialConfig {
   string marriage_vow_foot = 7;
   string marry_reward_mail_title = 8;
   string marry_reward_mail_content = 9;
-  repeated CRewardItem marry_rewards = 10;
+  repeated SnakeMain.Config.RewardConfig marry_rewards = 10;
   int32 world_speak_interval_time = 11;
   int32 world_speak_min_star = 12; // 世界发言最低星数
   int32 world_speak_min_star_v2 = 13; // 查看世界发言最低星数
@@ -703,7 +703,7 @@ message ShowIconStyle {
 
 message ShowLevelConfig {
   string game_skill = 1;
-  repeated CRewardItem reward = 2;
+  repeated SnakeMain.Config.RewardConfig reward = 2;
   string thumbnail = 3;
   string thum_anim_url = 4;
   string icon_url = 5;
@@ -753,7 +753,7 @@ message UserConfig {
   SettingConfig setting_conf = 23;
   FeedbackConfig feedback = 24;
   FlagsConfig flags = 25;
-  repeated CRewardItem certify_reward = 26;
+  repeated SnakeMain.Config.RewardConfig certify_reward = 26;
   RegisterSurvey register_survey = 27;
   RecruitPopup recruit_popup = 28;
   MinorLimit minor_limit = 29;
@@ -987,7 +987,7 @@ message CertifyNotify {
 }
 
 message IdfaConfig {
-  repeated CRewardItem reward = 1;
+  repeated SnakeMain.Config.RewardConfig reward = 1;
   string ios_version = 2;
   bool force = 3;
   int32 login_count = 4;
@@ -1007,7 +1007,7 @@ message RegisterSurvey {
   string qa_url = 4; //问卷链接，需替换 {uid}
   string mail_title = 5;
   string mail_content = 6;
-  repeated CRewardItem reward = 7;
+  repeated SnakeMain.Config.RewardConfig reward = 7;
   string secretary_msg = 8;
   repeated int32 survey_ids = 9;
 }
@@ -1048,7 +1048,7 @@ message NewUserConfig {
   int32 guide_type = 11;
   string new_user_img = 12;
   string old_user_img = 13;
-  repeated CRewardItem guide_reward = 14;
+  repeated SnakeMain.Config.RewardConfig guide_reward = 14;
   int32 guide_skip_flag = 15; // 0关1开 新手引导流程修改实验开关
 }
 // === user_config end ========================================
@@ -1174,7 +1174,7 @@ message MentorPrivilegeInfo {
   int32 anim_type = 5;
   int32 addition = 6; // 名师加成百分比1～100
   repeated PrivilegeDetailInfo privilege = 7; // 当前名师等级特权配图
-  repeated CRewardItem reward_list = 8; // 名师特权奖励
+  repeated SnakeMain.Config.RewardConfig reward_list = 8; // 名师特权奖励
 }
 
 message PrivilegeDetailInfo {
@@ -1189,8 +1189,8 @@ message MentorshipBondTitleItem {
 }
 
 message MentorFinishReward {
-  repeated CRewardItem master_reward = 1;
-  repeated CRewardItem prentice_reward = 2;
+  repeated SnakeMain.Config.RewardConfig master_reward = 1;
+  repeated SnakeMain.Config.RewardConfig prentice_reward = 2;
 }
 
 message MasterPrenticeStrategyItem {
