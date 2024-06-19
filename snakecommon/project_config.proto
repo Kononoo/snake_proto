@@ -1137,6 +1137,7 @@ message OfflineGameConfig {
   EndlessTrackConfig endless_track = 22;
   WildStormConfig wild_storm = 23;
   EndLessBuffPropInfo  endless_buff_prop = 24;
+  int32 anthap_shake = 25; // 震动开关
 }
 
 // === offline_game_config end ========================================
