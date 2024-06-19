@@ -556,6 +556,7 @@ message ShowAdConfig {
   repeated EndlessAdRecommend melee_checkout_recommend = 20;
   map<string, int32> ad_percent = 21;
   CrossPromotions cross_promotions = 22;
+  bool open_buy_link = 23;
 }
 
 message CrossPromotions {
