@@ -14,22 +14,22 @@ message ChargeVipConfig {
 }
 
 message VipLevel {
-  int64 level = 1;
-  int64 charge_exp = 2; // 需要的积分，是人民币的10倍
+  int32 level = 1;
+  int32 charge_exp = 2; // 需要的积分，是人民币的10倍
   repeated VipPrivilege privilege = 3; // 特权展示
   repeated SnakeMain.Config.RewardConfig reward_list = 4; // 特权奖励
   string anim_url = 5; // 大icon动效
-  int64 anim_type = 6;
+  int32 anim_type = 6;
   string icon_url = 7; // 小icon动效
-  int64 icon_anim_type = 8;
+  int32 icon_anim_type = 8;
   repeated SnakeMain.Config.RewardConfig week_reward = 9; // 每周好礼奖励
 }
 
 message VipPrivilege {
   string imgurl = 1;
   string desc = 2;
-  int64 type = 3; // 特权类型，1:照片数量加上限
-  int64 photo_num = 4;
+  int32 type = 3; // 特权类型，1:照片数量加上限
+  int32 photo_num = 4;
 }
 // ======== charge_vip_config end ====================================================
 
@@ -43,7 +43,7 @@ message MonthCardConfig {
   string source = 6;
   string mail_title = 7;
   string mail_content = 8;
-  int64 duration = 9;
+  int32 duration = 9;
   int64 max_time = 10;
 }
 
@@ -52,15 +52,15 @@ message MonthCardInfo{
   repeated SnakeMain.Config.RewardConfig daily_reward = 2;
   string title = 3;//特权标题
   string desc = 4;//特权描述
-  int64 total_reward = 5;
-  int64 free_pack = 6;//免费礼包id
-  int64 pack_id = 7;//月卡id，也是礼包id
+  int32 total_reward = 5;
+  int32 free_pack = 6;//免费礼包id
+  int32 pack_id = 7;//月卡id，也是礼包id
   repeated MonthCardPackItem pack_list = 8;//礼包列表
 }
 
 message MonthCardPackItem{
-  int64 original_price = 1;//原价
-  int64 pack_id = 2;//礼包id
+  int32 original_price = 1;//原价
+  int32 pack_id = 2;//礼包id
 }
 // ======== month_card end ====================================================
 
@@ -73,11 +73,11 @@ message ShowBadgeConfig {
 }
 
 message BadgeTitle {
-  int64 id = 1;
+  int32 id = 1;
   repeated SnakeMain.Config.RewardConfig rewards = 2;
-  int64 need_collect = 3;
-  int64 start_show_level = 4;
-  int64 end_show_level = 5;
+  int32 need_collect = 3;
+  int32 start_show_level = 4;
+  int32 end_show_level = 5;
   string desc = 6;
   string name = 7;
 }
@@ -99,29 +99,29 @@ message CharmTourConfig {
 }
 
 message CharmTourTitleItem {
-  int64 id = 1;
+  int32 id = 1;
   string name_url = 2; // 标题艺术字图片
   string title = 3; // 标题文字
   string icon_url = 4;
   string anim_url = 5;
-  int64 anim_type = 6;
+  int32 anim_type = 6;
   repeated SnakeMain.Config.RewardConfig rewards = 7;
-  int64 need_collect = 8; // 达到该等级需要解锁的礼物个数
-  int64 start_charm_level = 9;
-  int64 end_charm_level = 10;
+  int32 need_collect = 8; // 达到该等级需要解锁的礼物个数
+  int32 start_charm_level = 9;
+  int32 end_charm_level = 10;
 }
 
 message CharmTourLevelItem {
-  int64 level = 1;
+  int32 level = 1;
   int64 charm = 2;
 }
 
 message NameplateItem {
-  int64 id = 1;
-  int64 nameplate_type = 2;
+  int32 id = 1;
+  int32 nameplate_type = 2;
   string name = 3;
-  int64 need_star = 4;
-  int64 need_gift = 5;
+  int32 need_star = 4;
+  int32 need_gift = 5;
   string imgurl = 6;
 }
 // ======== charm_tours end ====================================================
@@ -132,10 +132,10 @@ message GiftWallConfig{
   repeated NamePlate nameplate_list = 2;
 
   message NamePlate{
-    int64 id = 1;
+    int32 id = 1;
     string imgurl = 2;
-    int64 nameplate_type = 3; // 1-集星周铭牌；2-累计集星铭牌；3-点亮铭牌
-    int64 need_star = 4;
+    int32 nameplate_type = 3; // 1-集星周铭牌；2-累计集星铭牌；3-点亮铭牌
+    int32 need_star = 4;
     string name = 5;
   }
 }
@@ -157,11 +157,11 @@ message HatchEgg {
   int64 start_time = 1;
   int64 finish_time = 2;
   int64 disappear_time = 3;
-  int64 disappear = 4;
+  int32 disappear = 4;
   string intro = 5;
   string reward_review_url = 6;
   repeated SnakeMain.Config.RewardConfig reward_review_list = 7;
-  int64 ad_reduce_second = 8;
+  int32 ad_reduce_second = 8;
   repeated EggLevelInfo egg_list = 9;
   string title_desc = 10;
   string title_url = 11;
@@ -170,10 +170,10 @@ message HatchEgg {
 
 message EggLevelInfo {
   repeated SnakeMain.Config.RewardConfig reward_list = 1; // 奖励配置
-  int64 level = 2; // 等级 1 普通；2 中级；3高级
-  int64 need_collect = 3; // 每个蛋需要收集数量
+  int32 level = 2; // 等级 1 普通；2 中级；3高级
+  int32 need_collect = 3; // 每个蛋需要收集数量
   int64 hatch_time = 4; // 孵化时间
-  int64 diamond_value = 5; // 彩蛋价值
+  int32 diamond_value = 5; // 彩蛋价值
 }
 //======== hatch_egg end
 
@@ -195,7 +195,7 @@ message MeetupShowItem {
 
 message MeetupConfigItem {
   // Define fields for MeetupConfigItem
-  int64 act_id = 1;
+  int32 act_id = 1;
   int64 start_time = 2;
   int64 finish_time = 3;
   int64 offline_time = 4; // buff下线时间
@@ -211,25 +211,25 @@ message SingleDayReward {
 }
 
 message SingleRewardItem {
-  int64 id = 1;
-  int64 unlock_days = 2;
-  int64 unlock_length = 3;
-  int64 price = 4;
-  int64 diamond = 5;
+  int32 id = 1;
+  int32 unlock_days = 2;
+  int32 unlock_length = 3;
+  int32 price = 4;
+  int32 diamond = 5;
   string desc = 6;
-  int64 popup_count = 7;//弹窗次数
-  int64 important = 8;//是否重点奖励，0否，1是
-  int64 watch_ad = 9;
+  int32 popup_count = 7;//弹窗次数
+  int32 important = 8;//是否重点奖励，0否，1是
+  int32 watch_ad = 9;
   repeated SnakeMain.Config.RewardConfig reward_list = 10;
-  int64 rmb_price = 11;// rmb购买价格
-  int64 pack_id = 12;// rmb购买礼包id
-  int64 goods_id = 13;// 礼包档位id
+  int32 rmb_price = 11;// rmb购买价格
+  int32 pack_id = 12;// rmb购买礼包id
+  int32 goods_id = 13;// 礼包档位id
   SnakeMain.Config.RewardConfig extra_reward = 14;
 }
 
 message MeetupBuffItem {
-  int64 id = 1;
-  int64 need = 2;
+  int32 id = 1;
+  int32 need = 2;
   repeated SnakeMain.Config.RewardConfig reward_list = 3;
 }
 //======== new_meetup_v3 end
@@ -238,7 +238,7 @@ message MeetupBuffItem {
 message EndlessGameRewardConfig {
   string title_img = 1;
   string intro = 2;
-  int64 act_id = 3;
+  int32 act_id = 3;
   string period = 4;
   repeated EndlessGameRewardItem list = 5;
   int64 start_time = 6;
@@ -246,31 +246,31 @@ message EndlessGameRewardConfig {
 }
 
 message EndlessGameRewardItem {
-  int64 id = 1;
+  int32 id = 1;
   string desc = 2;
-  int64 important = 3;  //是否重点奖励，0否，1是
-  int64 popup_count = 4;  //弹窗次数
-  int64 diamond_price = 5; // 增加苹果购买配置，0表示不可用苹果购买，>0表示苹果价格
-  int64 unlock_length = 6;
+  int32 important = 3;  //是否重点奖励，0否，1是
+  int32 popup_count = 4;  //弹窗次数
+  int32 diamond_price = 5; // 增加苹果购买配置，0表示不可用苹果购买，>0表示苹果价格
+  int32 unlock_length = 6;
   int64 unlock_time = 7; // 默认0，没有时间限制
   string unlock_tip = 8; // 某日活动开启后才可领取
-  int64 diamond = 9; // 苹果购买价格
-  int64 watch_ad = 10;  //需要看广告次数
-  int64 rmb_price = 11; // rmb购买价格
-  int64 pack_id = 12; // rmb购买礼包id
-  int64 goods_id = 13; // 礼包档位id
+  int32 diamond = 9; // 苹果购买价格
+  int32 watch_ad = 10;  //需要看广告次数
+  int32 rmb_price = 11; // rmb购买价格
+  int32 pack_id = 12; // rmb购买礼包id
+  int32 goods_id = 13; // 礼包档位id
   SnakeMain.Config.RewardConfig reward = 14;
 }
 //======== endless_game_reward end
 
 // ======pass check start ======
 message PassCheckV2 {
-  int64 item_id = 1;
+  int32 item_id = 1;
   PassCommonConfig common = 2;
   PassRewardConfig reward_config = 3;
   PassTaskConfig task_config = 4;
   PassStoreConfig store_config = 5;
-  int64 max_break_level = 6; // 最大突破礼等级
+  int32 max_break_level = 6; // 最大突破礼等级
   repeated PassTotalRankReward total_reward = 7;//榜单奖励
   PassSeasonNotifyConfig season_notify = 8;
   PassCheckDailyWelfare daily_welfare = 9;
@@ -300,7 +300,7 @@ message PassCommonConfig {
   int64 start_time = 2;
   int64 finish_time = 3;
   string show_finish = 4;
-  int64 season = 5;
+  int32 season = 5;
   string rule_desc = 6; //玩法说明
   string exp_desc = 7; //积分(经验)说明
   string task_desc = 8; //任务说明
@@ -308,43 +308,43 @@ message PassCommonConfig {
   string top_reward_imgurl = 10; //排行榜奖励说明图
   string upgrade_imgurl = 11; //进阶说明图
   string guide_imgurl = 12;
-  repeated int64 has_exp_mode = 13; //能获得且要展示经验的游戏模式
-  int64 per_rank_exp = 14; //每个等级需要的经验
+  repeated int32 has_exp_mode = 13; //能获得且要展示经验的游戏模式
+  int32 per_rank_exp = 14; //每个等级需要的经验
   // 首页
   string bg_url = 15; // 背景url
-  int64 bg_anim_type = 16; // 主页背景动效类型
+  int32 bg_anim_type = 16; // 主页背景动效类型
   string main_reward_url = 17; // 主奖励展示动效svga
-  int64 main_reward_anim_type = 18; // 主奖励动效类型
+  int32 main_reward_anim_type = 18; // 主奖励动效类型
   string main_reward_bottom = 19; // 主奖励底图
   string main_reward_condition = 20; // 主奖励获取条件文案
 
   // 通行证进阶
   string advance_bg_url = 21; // 进阶通行证背景url
-  int64 advance_bg_anim_type = 22; // 进阶通行证背景动效类型
+  int32 advance_bg_anim_type = 22; // 进阶通行证背景动效类型
   string advance_honor_url = 23; // 荣耀通行证卡片
   string advance_luxury_url = 24; // 豪华通行证卡片
 
   //
   string rule_desc_tmpl = 25;
   string desc = 26;
-  int64 task_card_id = 27; // 任务卡id
+  int32 task_card_id = 27; // 任务卡id
 }
 
 message PassRewardConfig {
   string infinity_rank_imgurl = 1;
-  int64 normal_rank = 2;// 奖励list里超过此数的关卡循环展示
+  int32 normal_rank = 2;// 奖励list里超过此数的关卡循环展示
   repeated PassCheckRankItem reward_list = 3;
   PassCheckRewardPreview reward_preview = 4;
   repeated SnakeMain.Config.RewardConfig reward_sort = 5;
-  int64 icon_open = 6;
+  int32 icon_open = 6;
   repeated PassCheckIcon icon_list = 7;
 }
 
 message PassCheckIcon {
-  int64 id = 1;
+  int32 id = 1;
   string icon = 2;
-  int64 icon_start = 3;
-  int64 icon_end = 4;
+  int32 icon_start = 3;
+  int32 icon_end = 4;
   string tips = 5;
   string link_type = 6;
   string link = 7;
@@ -352,7 +352,7 @@ message PassCheckIcon {
 }
 
 message PassCheckRankItem {
-  int64 rank = 1;
+  int32 rank = 1;
   repeated SnakeMain.Config.RewardConfig free_reward = 2;
   repeated SnakeMain.Config.RewardConfig high_reward = 3;
   int64 total_exp = 4;
@@ -368,18 +368,18 @@ message PassCheckRewardPreview {
 }
 
 message PassCheckWindowReward {
-  int64 type = 1;                     // 奖励类型
-  int64 skin_id = 2;                  // 奖励 id
+  int32 type = 1;                     // 奖励类型
+  int32 skin_id = 2;                  // 奖励 id
   int64 num = 3;                      // 奖励数量
   optional string big_num = 4;        // 奖励数量，大数
   string name = 5;                    // 奖励名称
   string imgurl = 6;                  // 奖励图片
   optional string use_info = 7;       // 有效期，单位秒
-  optional int64 index = 8;           // 奖励序号
-  int64 worth_level = 9;              // 稀有度
-  optional int64 mark_id = 10;         // 来源标签id，0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
+  optional int32 index = 8;           // 奖励序号
+  int32 worth_level = 9;              // 稀有度
+  optional int32 mark_id = 10;         // 来源标签id，0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
   repeated CConvert convert = 11;      // 奖励折算
-  int64 is_valuable = 12;//是否有高价值弹框，默认没有
+  int32 is_valuable = 12;//是否有高价值弹框，默认没有
   string desc = 13;
 }
 
@@ -395,7 +395,7 @@ message PassTaskConfig {
 message DailyTask {
   string title = 1;
   string desc = 2;
-  int64 btn_type = 3;
+  int32 btn_type = 3;
   string btn_link = 4;
   string btn_link_dev = 5;
 }
@@ -415,14 +415,14 @@ message GradeTask {
 }
 
 message PassTaskModel {
-  int64 task_id = 1;
+  int32 task_id = 1;
   string desc = 2;
   string btn_link = 3;
-  int64 param = 4;
-  int64 reward_exp = 5;
-  int64 need_task_card_num = 6; // 完成周任务需要的任务卡数量
+  int32 param = 4;
+  int32 reward_exp = 5;
+  int32 need_task_card_num = 6; // 完成周任务需要的任务卡数量
   string title = 7; // 日常任务才有
-  int64 btn_type = 8;
+  int32 btn_type = 8;
   string btn_link_dev = 9;
 }
 
@@ -436,25 +436,25 @@ message PassStoreConfig {
 }
 
 message ExchangeStore {
-  int64 type = 1;
-  int64 skin_id = 2;
-  int64 id = 3; // 请求兑换接口时传入的id
-  int64 num = 4;
+  int32 type = 1;
+  int32 skin_id = 2;
+  int32 id = 3; // 请求兑换接口时传入的id
+  int32 num = 4;
   string name = 5;
   string imgurl = 6;
   string use_info = 7;
   int64 time_unit = 8;
   string desc = 9;
-  int64 buy_limit = 10; // 次数限制
+  int32 buy_limit = 10; // 次数限制
   CPriceInfo price = 11;
-  int64 rank_limit = 12; // 通行证等级
-  int64 need_vip = 13; // 通行证版本 0免费 1 荣耀 2 豪华
+  int32 rank_limit = 12; // 通行证等级
+  int32 need_vip = 13; // 通行证版本 0免费 1 荣耀 2 豪华
   double nabob_addition = 14; // 限购加成百分比，豪华版才有
-  int64 buy_limitation = 15; // 限购类型
+  int32 buy_limitation = 15; // 限购类型
 }
 
 message PassTotalRankReward {
-  int64 rank = 1;
+  int32 rank = 1;
   string rank_desc = 2;
   string mail = 3;
   repeated SnakeMain.Config.RewardConfig reward = 4;
@@ -464,7 +464,7 @@ message PassTotalRankReward {
 
 // turntable_config start
 message TurntableConfig {
-  int64 popup_interval = 1;
+  int32 popup_interval = 1;
   repeated TurntableRewardTable reward_table = 2;
   TurntableSubConfig config = 3;
   int64 ad_times = 4;
@@ -472,8 +472,8 @@ message TurntableConfig {
 
 message TurntableRewardTable {
   string imgurl = 1;
-  int64 count = 2;
-  int64 mode = 3;
+  int32 count = 2;
+  int32 mode = 3;
 }
 
 message TurntableSubConfig {
@@ -500,7 +500,7 @@ message SkinUgcV2Config {
 }
 
 message UgcTopic {
-  int64 id = 1;
+  int32 id = 1;
   string name = 2;
   string bg = 3;
   string bg_small = 4;
@@ -516,7 +516,7 @@ message ShowIllustrationConfig {
 }
 
 message ShowIllustrationTitle {
-  int64 id = 1;
+  int32 id = 1;
   string name = 2;
   string img = 3;// 背景
   int64 start_time = 4;// 开始和结束时间不为0的为活动主题
@@ -524,7 +524,7 @@ message ShowIllustrationTitle {
 }
 
 message ShowIllustrationSeason {
-  int64 id = 1;
+  int32 id = 1;
   string name = 2;
   string img = 3;
   int64 start_time = 4;
@@ -535,12 +535,12 @@ message ShowIllustrationSeason {
 }
 
 message SeasonResource {
-  int64 type = 1;
-  int64 skin_id = 2;
+  int32 type = 1;
+  int32 skin_id = 2;
   string imgurl = 3;
   string gray_imgurl = 4;
-  uint64 x = 5;
-  uint64 y = 6;
+  uint32 x = 5;
+  uint32 y = 6;
 }
 // show_illustration end
 
@@ -552,7 +552,7 @@ message GiftIllustrationConfig{
 }
 
 message GiftTitleItemConfig{
-  int64 id = 1;
+  int32 id = 1;
   string name = 2;
   string img = 3;
 }
@@ -581,142 +581,142 @@ message EndlessFloatingV2 {
 }
 
 message IllustrateConfig {
-  int64 id = 1;
-  int64 type = 2;
+  int32 id = 1;
+  int32 type = 2;
 }
 
 message IllustrateFloatingRefreshConfig{
-  int64 pool_id = 1;
+  int32 pool_id = 1;
   int64 start_time = 2;
   int64 end_time = 3;
   FloatingRefreshConfig floating_refresh_config = 4;
 }
 
 message FloatingRefreshConfig {
-  repeated int64 refresh_interval = 1;
-  repeated int64 floating_kind = 2;
-  repeated int64 floating_num = 3;
-  int64 floating_range = 4;
-  int64 floating_min_distance = 5;
-  int64 wall_rate = 6;
-  repeated int64 wall_distance = 7;
-  int64 wall_floating_num = 8;
+  repeated int32 refresh_interval = 1;
+  repeated int32 floating_kind = 2;
+  repeated int32 floating_num = 3;
+  int32 floating_range = 4;
+  int32 floating_min_distance = 5;
+  int32 wall_rate = 6;
+  repeated int32 wall_distance = 7;
+  int32 wall_floating_num = 8;
 }
 
 message FloatingInfo {
-  int64 id = 1;
+  int32 id = 1;
   string name = 2;
   string desc = 3;
-  int64 length_limit = 4;
-  int64 time_limit = 5;
-  int64 not_collect_all_rate = 6;
-  int64 collect_all_rate = 7;
-  int64 first_add_score = 8;
-  int64 add_score = 9;
+  int32 length_limit = 4;
+  int32 time_limit = 5;
+  int32 not_collect_all_rate = 6;
+  int32 collect_all_rate = 7;
+  int32 first_add_score = 8;
+  int32 add_score = 9;
   string imgurl = 10;
   string area = 11;
-  int64 need_num = 12;
-  int64 diamond_limit = 13;
-  int64 relive_limit = 14;
-  int64 is_rare = 15;
+  int32 need_num = 12;
+  int32 diamond_limit = 13;
+  int32 relive_limit = 14;
+  int32 is_rare = 15;
   double img_scale = 16;
-  repeated int64 maps = 17;
+  repeated int32 maps = 17;
   string period = 18;
-  int64 middle_item_id = 19;
+  int32 middle_item_id = 19;
   string unlock_desc = 20;
-  int64 total_limit = 21;
-  int64 wall_not_collect_all_rate = 22;
-  int64 wall_collect_all_rate = 23;
-  int64 type = 24;
+  int32 total_limit = 21;
+  int32 wall_not_collect_all_rate = 22;
+  int32 wall_collect_all_rate = 23;
+  int32 type = 24;
 }
 
 message TreasureHouseThemeInfo {
-  int64 ThemeId = 1;
+  int32 ThemeId = 1;
   string MapAssetPath = 2;
   string CenterSpawnPrefabPath = 3;
-  int64 CandyElementId = 4;
-  int64 MushroomElementId = 5;
-  int64 SpawnScale = 6;
-  int64 MushRoomId = 7;
+  int32 CandyElementId = 4;
+  int32 MushroomElementId = 5;
+  int32 SpawnScale = 6;
+  int32 MushRoomId = 7;
   string broadcast_url = 8;
   string progress_content = 9;
-  int64 StartTime = 10;
-  int64 EndTime = 11;
+  int32 StartTime = 10;
+  int32 EndTime = 11;
 }
 
 message BossTheme {
-  int64 theme_id = 1;
-  repeated int64 boss_firecracker = 2;
+  int32 theme_id = 1;
+  repeated int32 boss_firecracker = 2;
   string blood = 3;
   string desc = 4;
-  int64 entity_id = 5;
-  int64 add_score = 6;
-  repeated int64 add_floating = 7;
-  repeated int64 add_floating_rate = 8;
-  int64 prop_id = 9;
+  int32 entity_id = 5;
+  int32 add_score = 6;
+  repeated int32 add_floating = 7;
+  repeated int32 add_floating_rate = 8;
+  int32 prop_id = 9;
   int64 prop_time = 10;
   int64 start_time = 11;
   int64 end_time = 12;
-  int64 type = 13;
+  int32 type = 13;
 }
 
 message ExtraBuff {
-  int64 cold_second = 1;
-  int64 interval = 2;
-  int64 daily_limit = 3;
+  int32 cold_second = 1;
+  int32 interval = 2;
+  int32 daily_limit = 3;
   message ExtraBuffInfo {
-    int64 id = 1;
-    int64 value = 2;
+    int32 id = 1;
+    int32 value = 2;
     string name = 3;
-    int64 rate = 4;
+    int32 rate = 4;
     string tips = 5;
   }
   repeated ExtraBuffInfo buff_list = 4;
 }
 
 message FloatingAiSkinRateInfo {
-  int64 illustrate_id = 1;
-  int64 special_skin_rate = 2;
+  int32 illustrate_id = 1;
+  int32 special_skin_rate = 2;
 }
 
 message FloatingAiKillEffect {
-  int64 kill_effect_id = 1;
-  int64 random_weight = 2;
+  int32 kill_effect_id = 1;
+  int32 random_weight = 2;
   int64 start_time = 3;
   int64 end_time = 4;
-  int64 illustrate_id = 5;
+  int32 illustrate_id = 5;
 }
 
 message FloatingAiKillEffectRateInfo {
-  int64 illustrate_id = 1;
-  int64 special_kill_effect_rate = 2;
+  int32 illustrate_id = 1;
+  int32 special_kill_effect_rate = 2;
 }
 
 message FloatingMainMapTheme{
-  int64 illustrate_id = 1;
+  int32 illustrate_id = 1;
   string map_asset_path = 2;
 }
 
 message FloatingAiSkin {
-  int64 skin_id = 1;
-  int64 random_weight = 2;
+  int32 skin_id = 1;
+  int32 random_weight = 2;
   int64 start_time = 3;
   int64 end_time = 4;
-  int64 illustrate_id = 5;
+  int32 illustrate_id = 5;
 }
 
 //endless floating v2 end
 
 //season activity start
 message SeasonCaiDan {
-  int64 id = 1;
+  int32 id = 1;
   string name = 2;
   string desc = 3;
   string imgurl = 4;
 }
 
 message SeasonActivity {
-  int64 season_id = 1;
+  int32 season_id = 1;
   int64 start_time = 2;
   int64 end_time = 3;
   repeated SeasonCaiDan caidan_list = 4;
