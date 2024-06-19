@@ -429,6 +429,7 @@ message ShortCutConfig {
     SceneClan = 5;
     SceneCoupleMatch = 7;
     SceneRaceRoom = 8;
+    SceneGoatGame = 9;
   }
 
   int32 type = 1;
@@ -460,6 +461,7 @@ message UiConfigV3 {
   GameIcon ar_icon = 13;
   GameIcon plant_icon = 14;
   string more_game_bgurl = 15;
+  GameIcon fallguys_icon = 16;
 }
 
 message GameIcon {
@@ -556,7 +558,9 @@ message ShowAdConfig {
   repeated EndlessAdRecommend melee_checkout_recommend = 20;
   map<string, int32> ad_percent = 21;
   CrossPromotions cross_promotions = 22;
-  bool open_buy_link = 23;
+  bool open_buy_link = 23; // 是否开启购买链接
+  string buy_month_card_link = 24; // 购买月卡弹窗链接
+  string buy_ad_card_link = 25; // 购买广告券弹窗链接
 }
 
 message CrossPromotions {
@@ -682,6 +686,14 @@ message ShowConfig {
   string addition_intro = 4;
   string intro = 5;
   repeated ShowIconStyle icon_style = 6;
+  repeated ShowPackItem pack_config = 7;
+  int32 pack_pop_cd_sec = 8;
+}
+
+message ShowPackItem {
+  int32 show_level = 1;
+  int32 effect_sec = 2;
+  SnakeMain.Config.PackModel pack_info = 3;
 }
 
 message ShowIconStyle {
