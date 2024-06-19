@@ -17,12 +17,12 @@ message VipLevel {
   int32 level = 1;
   int32 charge_exp = 2; // 需要的积分，是人民币的10倍
   repeated VipPrivilege privilege = 3; // 特权展示
-  repeated CRewardItem reward_list = 4; // 特权奖励
+  repeated SnakeMain.Config.RewardConfig reward_list = 4; // 特权奖励
   string anim_url = 5; // 大icon动效
   int32 anim_type = 6;
   string icon_url = 7; // 小icon动效
   int32 icon_anim_type = 8;
-  repeated CRewardItem week_reward = 9; // 每周好礼奖励
+  repeated SnakeMain.Config.RewardConfig week_reward = 9; // 每周好礼奖励
 }
 
 message VipPrivilege {
@@ -49,7 +49,7 @@ message MonthCardConfig {
 
 message MonthCardInfo{
   string url = 1;//背景图
-  repeated CRewardItem daily_reward = 2;
+  repeated SnakeMain.Config.RewardConfig daily_reward = 2;
   string title = 3;//特权标题
   string desc = 4;//特权描述
   int32 total_reward = 5;
@@ -74,7 +74,7 @@ message ShowBadgeConfig {
 
 message BadgeTitle {
   int32 id = 1;
-  repeated CRewardItem rewards = 2;
+  repeated SnakeMain.Config.RewardConfig rewards = 2;
   int32 need_collect = 3;
   int32 start_show_level = 4;
   int32 end_show_level = 5;
@@ -105,7 +105,7 @@ message CharmTourTitleItem {
   string icon_url = 4;
   string anim_url = 5;
   int32 anim_type = 6;
-  repeated CRewardItem rewards = 7;
+  repeated SnakeMain.Config.RewardConfig rewards = 7;
   int32 need_collect = 8; // 达到该等级需要解锁的礼物个数
   int32 start_charm_level = 9;
   int32 end_charm_level = 10;
@@ -224,7 +224,7 @@ message SingleRewardItem {
   int32 rmb_price = 11;// rmb购买价格
   int32 pack_id = 12;// rmb购买礼包id
   int32 goods_id = 13;// 礼包档位id
-  CRewardItem extra_reward = 14;
+  SnakeMain.Config.RewardConfig extra_reward = 14;
 }
 
 message MeetupBuffItem {
@@ -280,12 +280,12 @@ message PassCheckV2 {
 }
 
 message PassCheckDailyWelfare {
-  CRewardItem reward = 1;
+  SnakeMain.Config.RewardConfig reward = 1;
   int64 weight = 2;
 }
 
 message PassCheckBreakReward {
-  CRewardItem reward = 1;
+  SnakeMain.Config.RewardConfig reward = 1;
   int64 level = 2;
 }
 
@@ -335,7 +335,7 @@ message PassRewardConfig {
   int32 normal_rank = 2;// 奖励list里超过此数的关卡循环展示
   repeated PassCheckRankItem reward_list = 3;
   PassCheckRewardPreview reward_preview = 4;
-  repeated CRewardItem reward_sort = 5;
+  repeated SnakeMain.Config.RewardConfig reward_sort = 5;
   int32 icon_open = 6;
   repeated PassCheckIcon icon_list = 7;
 }
@@ -353,18 +353,18 @@ message PassCheckIcon {
 
 message PassCheckRankItem {
   int32 rank = 1;
-  repeated CRewardItem free_reward = 2;
-  repeated CRewardItem high_reward = 3;
+  repeated SnakeMain.Config.RewardConfig free_reward = 2;
+  repeated SnakeMain.Config.RewardConfig high_reward = 3;
   int64 total_exp = 4;
 }
 
 message PassCheckRewardPreview {
-  repeated CRewardItem free_reward = 1;
-  repeated CRewardItem high_reward = 2;
+  repeated SnakeMain.Config.RewardConfig free_reward = 1;
+  repeated SnakeMain.Config.RewardConfig high_reward = 2;
   // 奖励橱窗
   repeated PassCheckWindowReward window_reward = 3;
-  repeated CRewardItem honor_reward = 4;
-  repeated CRewardItem luxury_reward = 5;
+  repeated SnakeMain.Config.RewardConfig honor_reward = 4;
+  repeated SnakeMain.Config.RewardConfig luxury_reward = 5;
 }
 
 message PassCheckWindowReward {
@@ -457,7 +457,7 @@ message PassTotalRankReward {
   int32 rank = 1;
   string rank_desc = 2;
   string mail = 3;
-  repeated CRewardItem reward = 4;
+  repeated SnakeMain.Config.RewardConfig reward = 4;
 }
 // ======pass check end ======
 
@@ -530,7 +530,7 @@ message ShowIllustrationSeason {
   int64 start_time = 4;
   int64 end_time = 5;
   string bg_imgurl = 6;
-  repeated CRewardItem rewards = 7;
+  repeated SnakeMain.Config.RewardConfig rewards = 7;
   repeated SeasonResource resources = 8;
 }
 

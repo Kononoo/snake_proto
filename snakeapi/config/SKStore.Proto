@@ -1299,7 +1299,7 @@ message RewardConfig { // 服务器配置奖励的通用结构
   int32 reset_baodi = 25; // 获得后是否重置保底  0 不重置 1 重置
 }
 
-message RewardInfo { // 客户端奖励配置结构，服务器不建议使用
+message RewardInfo { // 客户端奖励配置结构
   int32 type = 1;
   int32 skin_id = 2;//物品id
   string name = 3;
@@ -1310,10 +1310,10 @@ message RewardInfo { // 客户端奖励配置结构，服务器不建议使用
   int32 is_valuable = 8;//是否有高价值弹框，默认没有
   int32 worth_level = 9;//稀有度等级，从 1 开始。0 的话默认为 C 等级
   int32 mark_id = 10;//0: 忽略 1: 豪华版通行证加成 2: 回归加成 3: 师徒加成
-  repeated RewardInfo convert = 11;//奖励折算，没有折算则为空
+  repeated snakeapi.Convert convert = 11;//奖励折算，没有折算则为空
   int32 probability = 12;
   string use_info = 13;
-  repeated RewardInfo convert_detail = 14; // 新版本目前正在使用，展示奖励配置用
+  repeated snakeapi.Convert convert_detail = 14; // 新版本目前正在使用，展示奖励配置用
 }
 
 enum RewardType {
