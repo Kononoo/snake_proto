@@ -4819,6 +4819,1488 @@ func (x *GiftTitleItemConfig) GetImg() string {
 	return ""
 }
 
+type EndlessFloatingV2 struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ActId                   string                             `protobuf:"bytes,1,opt,name=act_id,json=actId,proto3" json:"act_id,omitempty"`
+	StartTime               int32                              `protobuf:"varint,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime                 int32                              `protobuf:"varint,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	FloatingRefreshConfigV2 []*IllustrateFloatingRefreshConfig `protobuf:"bytes,4,rep,name=floating_refresh_config_v2,json=floatingRefreshConfigV2,proto3" json:"floating_refresh_config_v2,omitempty"`
+	FloatingConfig          []*FloatingInfo                    `protobuf:"bytes,5,rep,name=floating_config,json=floatingConfig,proto3" json:"floating_config,omitempty"`
+	TreasureHouse           []*TreasureHouseThemeInfo          `protobuf:"bytes,6,rep,name=treasure_house,json=treasureHouse,proto3" json:"treasure_house,omitempty"`
+	Boss                    []*BossTheme                       `protobuf:"bytes,7,rep,name=boss,proto3" json:"boss,omitempty"`
+	ExtraBuff               *ExtraBuff                         `protobuf:"bytes,8,opt,name=extra_buff,json=extraBuff,proto3" json:"extra_buff,omitempty"`
+	AiSkin                  []*FloatingAiSkin                  `protobuf:"bytes,9,rep,name=ai_skin,json=aiSkin,proto3" json:"ai_skin,omitempty"`
+	AiSkinRate              []*FloatingAiSkinRateInfo          `protobuf:"bytes,10,rep,name=ai_skin_rate,json=aiSkinRate,proto3" json:"ai_skin_rate,omitempty"`
+	AiKilleffect            []*FloatingAiKillEffect            `protobuf:"bytes,11,rep,name=ai_killeffect,json=aiKilleffect,proto3" json:"ai_killeffect,omitempty"`
+	AiKilleffectRate        []*FloatingAiKillEffectRateInfo    `protobuf:"bytes,12,rep,name=ai_killeffect_rate,json=aiKilleffectRate,proto3" json:"ai_killeffect_rate,omitempty"`
+	MainMapTheme            []*FloatingMainMapTheme            `protobuf:"bytes,13,rep,name=main_map_theme,json=mainMapTheme,proto3" json:"main_map_theme,omitempty"`
+	IllustrateConfig        []*IllustrateConfig                `protobuf:"bytes,14,rep,name=illustrate_config,json=illustrateConfig,proto3" json:"illustrate_config,omitempty"`
+	IconStartTime           int64                              `protobuf:"varint,15,opt,name=icon_start_time,json=iconStartTime,proto3" json:"icon_start_time,omitempty"`
+	IconEndTime             int64                              `protobuf:"varint,16,opt,name=icon_end_time,json=iconEndTime,proto3" json:"icon_end_time,omitempty"`
+	HomepageUrl             string                             `protobuf:"bytes,17,opt,name=homepage_url,json=homepageUrl,proto3" json:"homepage_url,omitempty"`
+}
+
+func (x *EndlessFloatingV2) Reset() {
+	*x = EndlessFloatingV2{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[53]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EndlessFloatingV2) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EndlessFloatingV2) ProtoMessage() {}
+
+func (x *EndlessFloatingV2) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[53]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EndlessFloatingV2.ProtoReflect.Descriptor instead.
+func (*EndlessFloatingV2) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{53}
+}
+
+func (x *EndlessFloatingV2) GetActId() string {
+	if x != nil {
+		return x.ActId
+	}
+	return ""
+}
+
+func (x *EndlessFloatingV2) GetStartTime() int32 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *EndlessFloatingV2) GetEndTime() int32 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *EndlessFloatingV2) GetFloatingRefreshConfigV2() []*IllustrateFloatingRefreshConfig {
+	if x != nil {
+		return x.FloatingRefreshConfigV2
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetFloatingConfig() []*FloatingInfo {
+	if x != nil {
+		return x.FloatingConfig
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetTreasureHouse() []*TreasureHouseThemeInfo {
+	if x != nil {
+		return x.TreasureHouse
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetBoss() []*BossTheme {
+	if x != nil {
+		return x.Boss
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetExtraBuff() *ExtraBuff {
+	if x != nil {
+		return x.ExtraBuff
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetAiSkin() []*FloatingAiSkin {
+	if x != nil {
+		return x.AiSkin
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetAiSkinRate() []*FloatingAiSkinRateInfo {
+	if x != nil {
+		return x.AiSkinRate
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetAiKilleffect() []*FloatingAiKillEffect {
+	if x != nil {
+		return x.AiKilleffect
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetAiKilleffectRate() []*FloatingAiKillEffectRateInfo {
+	if x != nil {
+		return x.AiKilleffectRate
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetMainMapTheme() []*FloatingMainMapTheme {
+	if x != nil {
+		return x.MainMapTheme
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetIllustrateConfig() []*IllustrateConfig {
+	if x != nil {
+		return x.IllustrateConfig
+	}
+	return nil
+}
+
+func (x *EndlessFloatingV2) GetIconStartTime() int64 {
+	if x != nil {
+		return x.IconStartTime
+	}
+	return 0
+}
+
+func (x *EndlessFloatingV2) GetIconEndTime() int64 {
+	if x != nil {
+		return x.IconEndTime
+	}
+	return 0
+}
+
+func (x *EndlessFloatingV2) GetHomepageUrl() string {
+	if x != nil {
+		return x.HomepageUrl
+	}
+	return ""
+}
+
+type IllustrateConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id   int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Type int32 `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"`
+}
+
+func (x *IllustrateConfig) Reset() {
+	*x = IllustrateConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[54]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IllustrateConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IllustrateConfig) ProtoMessage() {}
+
+func (x *IllustrateConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[54]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IllustrateConfig.ProtoReflect.Descriptor instead.
+func (*IllustrateConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{54}
+}
+
+func (x *IllustrateConfig) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *IllustrateConfig) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+type IllustrateFloatingRefreshConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	PoolId                int32                  `protobuf:"varint,1,opt,name=pool_id,json=poolId,proto3" json:"pool_id,omitempty"`
+	StartTime             int64                  `protobuf:"varint,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime               int64                  `protobuf:"varint,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	FloatingRefreshConfig *FloatingRefreshConfig `protobuf:"bytes,4,opt,name=floating_refresh_config,json=floatingRefreshConfig,proto3" json:"floating_refresh_config,omitempty"`
+}
+
+func (x *IllustrateFloatingRefreshConfig) Reset() {
+	*x = IllustrateFloatingRefreshConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[55]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IllustrateFloatingRefreshConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IllustrateFloatingRefreshConfig) ProtoMessage() {}
+
+func (x *IllustrateFloatingRefreshConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[55]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IllustrateFloatingRefreshConfig.ProtoReflect.Descriptor instead.
+func (*IllustrateFloatingRefreshConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{55}
+}
+
+func (x *IllustrateFloatingRefreshConfig) GetPoolId() int32 {
+	if x != nil {
+		return x.PoolId
+	}
+	return 0
+}
+
+func (x *IllustrateFloatingRefreshConfig) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *IllustrateFloatingRefreshConfig) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *IllustrateFloatingRefreshConfig) GetFloatingRefreshConfig() *FloatingRefreshConfig {
+	if x != nil {
+		return x.FloatingRefreshConfig
+	}
+	return nil
+}
+
+type FloatingRefreshConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	RefreshInterval     []int32 `protobuf:"varint,1,rep,packed,name=refresh_interval,json=refreshInterval,proto3" json:"refresh_interval,omitempty"`
+	FloatingKind        []int32 `protobuf:"varint,2,rep,packed,name=floating_kind,json=floatingKind,proto3" json:"floating_kind,omitempty"`
+	FloatingNum         []int32 `protobuf:"varint,3,rep,packed,name=floating_num,json=floatingNum,proto3" json:"floating_num,omitempty"`
+	FloatingRange       int32   `protobuf:"varint,4,opt,name=floating_range,json=floatingRange,proto3" json:"floating_range,omitempty"`
+	FloatingMinDistance int32   `protobuf:"varint,5,opt,name=floating_min_distance,json=floatingMinDistance,proto3" json:"floating_min_distance,omitempty"`
+	WallRate            int32   `protobuf:"varint,6,opt,name=wall_rate,json=wallRate,proto3" json:"wall_rate,omitempty"`
+	WallDistance        []int32 `protobuf:"varint,7,rep,packed,name=wall_distance,json=wallDistance,proto3" json:"wall_distance,omitempty"`
+	WallFloatingNum     int32   `protobuf:"varint,8,opt,name=wall_floating_num,json=wallFloatingNum,proto3" json:"wall_floating_num,omitempty"`
+}
+
+func (x *FloatingRefreshConfig) Reset() {
+	*x = FloatingRefreshConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[56]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FloatingRefreshConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FloatingRefreshConfig) ProtoMessage() {}
+
+func (x *FloatingRefreshConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[56]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FloatingRefreshConfig.ProtoReflect.Descriptor instead.
+func (*FloatingRefreshConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{56}
+}
+
+func (x *FloatingRefreshConfig) GetRefreshInterval() []int32 {
+	if x != nil {
+		return x.RefreshInterval
+	}
+	return nil
+}
+
+func (x *FloatingRefreshConfig) GetFloatingKind() []int32 {
+	if x != nil {
+		return x.FloatingKind
+	}
+	return nil
+}
+
+func (x *FloatingRefreshConfig) GetFloatingNum() []int32 {
+	if x != nil {
+		return x.FloatingNum
+	}
+	return nil
+}
+
+func (x *FloatingRefreshConfig) GetFloatingRange() int32 {
+	if x != nil {
+		return x.FloatingRange
+	}
+	return 0
+}
+
+func (x *FloatingRefreshConfig) GetFloatingMinDistance() int32 {
+	if x != nil {
+		return x.FloatingMinDistance
+	}
+	return 0
+}
+
+func (x *FloatingRefreshConfig) GetWallRate() int32 {
+	if x != nil {
+		return x.WallRate
+	}
+	return 0
+}
+
+func (x *FloatingRefreshConfig) GetWallDistance() []int32 {
+	if x != nil {
+		return x.WallDistance
+	}
+	return nil
+}
+
+func (x *FloatingRefreshConfig) GetWallFloatingNum() int32 {
+	if x != nil {
+		return x.WallFloatingNum
+	}
+	return 0
+}
+
+type FloatingInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id                    int32   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name                  string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Desc                  string  `protobuf:"bytes,3,opt,name=desc,proto3" json:"desc,omitempty"`
+	LengthLimit           int32   `protobuf:"varint,4,opt,name=length_limit,json=lengthLimit,proto3" json:"length_limit,omitempty"`
+	TimeLimit             int32   `protobuf:"varint,5,opt,name=time_limit,json=timeLimit,proto3" json:"time_limit,omitempty"`
+	NotCollectAllRate     int32   `protobuf:"varint,6,opt,name=not_collect_all_rate,json=notCollectAllRate,proto3" json:"not_collect_all_rate,omitempty"`
+	CollectAllRate        int32   `protobuf:"varint,7,opt,name=collect_all_rate,json=collectAllRate,proto3" json:"collect_all_rate,omitempty"`
+	FirstAddScore         int32   `protobuf:"varint,8,opt,name=first_add_score,json=firstAddScore,proto3" json:"first_add_score,omitempty"`
+	AddScore              int32   `protobuf:"varint,9,opt,name=add_score,json=addScore,proto3" json:"add_score,omitempty"`
+	Imgurl                string  `protobuf:"bytes,10,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
+	Area                  string  `protobuf:"bytes,11,opt,name=area,proto3" json:"area,omitempty"`
+	NeedNum               int32   `protobuf:"varint,12,opt,name=need_num,json=needNum,proto3" json:"need_num,omitempty"`
+	DiamondLimit          int32   `protobuf:"varint,13,opt,name=diamond_limit,json=diamondLimit,proto3" json:"diamond_limit,omitempty"`
+	ReliveLimit           int32   `protobuf:"varint,14,opt,name=relive_limit,json=reliveLimit,proto3" json:"relive_limit,omitempty"`
+	IsRare                int32   `protobuf:"varint,15,opt,name=is_rare,json=isRare,proto3" json:"is_rare,omitempty"`
+	ImgScale              float32 `protobuf:"fixed32,16,opt,name=img_scale,json=imgScale,proto3" json:"img_scale,omitempty"`
+	Maps                  []int32 `protobuf:"varint,17,rep,packed,name=maps,proto3" json:"maps,omitempty"`
+	Period                string  `protobuf:"bytes,18,opt,name=period,proto3" json:"period,omitempty"`
+	MiddleItemId          int32   `protobuf:"varint,19,opt,name=middle_item_id,json=middleItemId,proto3" json:"middle_item_id,omitempty"`
+	UnlockDesc            string  `protobuf:"bytes,20,opt,name=unlock_desc,json=unlockDesc,proto3" json:"unlock_desc,omitempty"`
+	TotalLimit            int32   `protobuf:"varint,21,opt,name=total_limit,json=totalLimit,proto3" json:"total_limit,omitempty"`
+	WallNotCollectAllRate int32   `protobuf:"varint,22,opt,name=wall_not_collect_all_rate,json=wallNotCollectAllRate,proto3" json:"wall_not_collect_all_rate,omitempty"`
+	WallCollectAllRate    int32   `protobuf:"varint,23,opt,name=wall_collect_all_rate,json=wallCollectAllRate,proto3" json:"wall_collect_all_rate,omitempty"`
+	Type                  int32   `protobuf:"varint,24,opt,name=type,proto3" json:"type,omitempty"`
+}
+
+func (x *FloatingInfo) Reset() {
+	*x = FloatingInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[57]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FloatingInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FloatingInfo) ProtoMessage() {}
+
+func (x *FloatingInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[57]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FloatingInfo.ProtoReflect.Descriptor instead.
+func (*FloatingInfo) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{57}
+}
+
+func (x *FloatingInfo) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *FloatingInfo) GetDesc() string {
+	if x != nil {
+		return x.Desc
+	}
+	return ""
+}
+
+func (x *FloatingInfo) GetLengthLimit() int32 {
+	if x != nil {
+		return x.LengthLimit
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetTimeLimit() int32 {
+	if x != nil {
+		return x.TimeLimit
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetNotCollectAllRate() int32 {
+	if x != nil {
+		return x.NotCollectAllRate
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetCollectAllRate() int32 {
+	if x != nil {
+		return x.CollectAllRate
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetFirstAddScore() int32 {
+	if x != nil {
+		return x.FirstAddScore
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetAddScore() int32 {
+	if x != nil {
+		return x.AddScore
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetImgurl() string {
+	if x != nil {
+		return x.Imgurl
+	}
+	return ""
+}
+
+func (x *FloatingInfo) GetArea() string {
+	if x != nil {
+		return x.Area
+	}
+	return ""
+}
+
+func (x *FloatingInfo) GetNeedNum() int32 {
+	if x != nil {
+		return x.NeedNum
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetDiamondLimit() int32 {
+	if x != nil {
+		return x.DiamondLimit
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetReliveLimit() int32 {
+	if x != nil {
+		return x.ReliveLimit
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetIsRare() int32 {
+	if x != nil {
+		return x.IsRare
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetImgScale() float32 {
+	if x != nil {
+		return x.ImgScale
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetMaps() []int32 {
+	if x != nil {
+		return x.Maps
+	}
+	return nil
+}
+
+func (x *FloatingInfo) GetPeriod() string {
+	if x != nil {
+		return x.Period
+	}
+	return ""
+}
+
+func (x *FloatingInfo) GetMiddleItemId() int32 {
+	if x != nil {
+		return x.MiddleItemId
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetUnlockDesc() string {
+	if x != nil {
+		return x.UnlockDesc
+	}
+	return ""
+}
+
+func (x *FloatingInfo) GetTotalLimit() int32 {
+	if x != nil {
+		return x.TotalLimit
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetWallNotCollectAllRate() int32 {
+	if x != nil {
+		return x.WallNotCollectAllRate
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetWallCollectAllRate() int32 {
+	if x != nil {
+		return x.WallCollectAllRate
+	}
+	return 0
+}
+
+func (x *FloatingInfo) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+type TreasureHouseThemeInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ThemeId               int32  `protobuf:"varint,1,opt,name=ThemeId,proto3" json:"ThemeId,omitempty"`
+	MapAssetPath          string `protobuf:"bytes,2,opt,name=MapAssetPath,proto3" json:"MapAssetPath,omitempty"`
+	CenterSpawnPrefabPath string `protobuf:"bytes,3,opt,name=CenterSpawnPrefabPath,proto3" json:"CenterSpawnPrefabPath,omitempty"`
+	CandyElementId        int32  `protobuf:"varint,4,opt,name=CandyElementId,proto3" json:"CandyElementId,omitempty"`
+	MushroomElementId     int32  `protobuf:"varint,5,opt,name=MushroomElementId,proto3" json:"MushroomElementId,omitempty"`
+	SpawnScale            int32  `protobuf:"varint,6,opt,name=SpawnScale,proto3" json:"SpawnScale,omitempty"`
+	MushRoomId            int32  `protobuf:"varint,7,opt,name=MushRoomId,proto3" json:"MushRoomId,omitempty"`
+	BroadcastUrl          string `protobuf:"bytes,8,opt,name=broadcast_url,json=broadcastUrl,proto3" json:"broadcast_url,omitempty"`
+	ProgressContent       string `protobuf:"bytes,9,opt,name=progress_content,json=progressContent,proto3" json:"progress_content,omitempty"`
+	StartTime             int32  `protobuf:"varint,10,opt,name=StartTime,proto3" json:"StartTime,omitempty"`
+	EndTime               int32  `protobuf:"varint,11,opt,name=EndTime,proto3" json:"EndTime,omitempty"`
+}
+
+func (x *TreasureHouseThemeInfo) Reset() {
+	*x = TreasureHouseThemeInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[58]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TreasureHouseThemeInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TreasureHouseThemeInfo) ProtoMessage() {}
+
+func (x *TreasureHouseThemeInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[58]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TreasureHouseThemeInfo.ProtoReflect.Descriptor instead.
+func (*TreasureHouseThemeInfo) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *TreasureHouseThemeInfo) GetThemeId() int32 {
+	if x != nil {
+		return x.ThemeId
+	}
+	return 0
+}
+
+func (x *TreasureHouseThemeInfo) GetMapAssetPath() string {
+	if x != nil {
+		return x.MapAssetPath
+	}
+	return ""
+}
+
+func (x *TreasureHouseThemeInfo) GetCenterSpawnPrefabPath() string {
+	if x != nil {
+		return x.CenterSpawnPrefabPath
+	}
+	return ""
+}
+
+func (x *TreasureHouseThemeInfo) GetCandyElementId() int32 {
+	if x != nil {
+		return x.CandyElementId
+	}
+	return 0
+}
+
+func (x *TreasureHouseThemeInfo) GetMushroomElementId() int32 {
+	if x != nil {
+		return x.MushroomElementId
+	}
+	return 0
+}
+
+func (x *TreasureHouseThemeInfo) GetSpawnScale() int32 {
+	if x != nil {
+		return x.SpawnScale
+	}
+	return 0
+}
+
+func (x *TreasureHouseThemeInfo) GetMushRoomId() int32 {
+	if x != nil {
+		return x.MushRoomId
+	}
+	return 0
+}
+
+func (x *TreasureHouseThemeInfo) GetBroadcastUrl() string {
+	if x != nil {
+		return x.BroadcastUrl
+	}
+	return ""
+}
+
+func (x *TreasureHouseThemeInfo) GetProgressContent() string {
+	if x != nil {
+		return x.ProgressContent
+	}
+	return ""
+}
+
+func (x *TreasureHouseThemeInfo) GetStartTime() int32 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *TreasureHouseThemeInfo) GetEndTime() int32 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+type BossTheme struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ThemeId         int32   `protobuf:"varint,1,opt,name=theme_id,json=themeId,proto3" json:"theme_id,omitempty"`
+	BossFirecracker []int32 `protobuf:"varint,2,rep,packed,name=boss_firecracker,json=bossFirecracker,proto3" json:"boss_firecracker,omitempty"`
+	Blood           string  `protobuf:"bytes,3,opt,name=blood,proto3" json:"blood,omitempty"`
+	Desc            string  `protobuf:"bytes,4,opt,name=desc,proto3" json:"desc,omitempty"`
+	EntityId        int32   `protobuf:"varint,5,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`
+	AddScore        int32   `protobuf:"varint,6,opt,name=add_score,json=addScore,proto3" json:"add_score,omitempty"`
+	AddFloating     []int32 `protobuf:"varint,7,rep,packed,name=add_floating,json=addFloating,proto3" json:"add_floating,omitempty"`
+	AddFloatingRate []int32 `protobuf:"varint,8,rep,packed,name=add_floating_rate,json=addFloatingRate,proto3" json:"add_floating_rate,omitempty"`
+	PropId          int32   `protobuf:"varint,9,opt,name=prop_id,json=propId,proto3" json:"prop_id,omitempty"`
+	PropTime        int32   `protobuf:"varint,10,opt,name=prop_time,json=propTime,proto3" json:"prop_time,omitempty"`
+	StartTime       int64   `protobuf:"varint,11,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime         int64   `protobuf:"varint,12,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	Type            int32   `protobuf:"varint,13,opt,name=type,proto3" json:"type,omitempty"`
+}
+
+func (x *BossTheme) Reset() {
+	*x = BossTheme{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[59]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BossTheme) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BossTheme) ProtoMessage() {}
+
+func (x *BossTheme) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[59]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BossTheme.ProtoReflect.Descriptor instead.
+func (*BossTheme) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{59}
+}
+
+func (x *BossTheme) GetThemeId() int32 {
+	if x != nil {
+		return x.ThemeId
+	}
+	return 0
+}
+
+func (x *BossTheme) GetBossFirecracker() []int32 {
+	if x != nil {
+		return x.BossFirecracker
+	}
+	return nil
+}
+
+func (x *BossTheme) GetBlood() string {
+	if x != nil {
+		return x.Blood
+	}
+	return ""
+}
+
+func (x *BossTheme) GetDesc() string {
+	if x != nil {
+		return x.Desc
+	}
+	return ""
+}
+
+func (x *BossTheme) GetEntityId() int32 {
+	if x != nil {
+		return x.EntityId
+	}
+	return 0
+}
+
+func (x *BossTheme) GetAddScore() int32 {
+	if x != nil {
+		return x.AddScore
+	}
+	return 0
+}
+
+func (x *BossTheme) GetAddFloating() []int32 {
+	if x != nil {
+		return x.AddFloating
+	}
+	return nil
+}
+
+func (x *BossTheme) GetAddFloatingRate() []int32 {
+	if x != nil {
+		return x.AddFloatingRate
+	}
+	return nil
+}
+
+func (x *BossTheme) GetPropId() int32 {
+	if x != nil {
+		return x.PropId
+	}
+	return 0
+}
+
+func (x *BossTheme) GetPropTime() int32 {
+	if x != nil {
+		return x.PropTime
+	}
+	return 0
+}
+
+func (x *BossTheme) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *BossTheme) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *BossTheme) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+type ExtraBuff struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ColdSecond int32                      `protobuf:"varint,1,opt,name=cold_second,json=coldSecond,proto3" json:"cold_second,omitempty"`
+	Interval   int32                      `protobuf:"varint,2,opt,name=interval,proto3" json:"interval,omitempty"`
+	DailyLimit int32                      `protobuf:"varint,3,opt,name=daily_limit,json=dailyLimit,proto3" json:"daily_limit,omitempty"`
+	BuffList   []*ExtraBuff_ExtraBuffInfo `protobuf:"bytes,4,rep,name=buff_list,json=buffList,proto3" json:"buff_list,omitempty"`
+}
+
+func (x *ExtraBuff) Reset() {
+	*x = ExtraBuff{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[60]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ExtraBuff) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExtraBuff) ProtoMessage() {}
+
+func (x *ExtraBuff) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[60]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExtraBuff.ProtoReflect.Descriptor instead.
+func (*ExtraBuff) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{60}
+}
+
+func (x *ExtraBuff) GetColdSecond() int32 {
+	if x != nil {
+		return x.ColdSecond
+	}
+	return 0
+}
+
+func (x *ExtraBuff) GetInterval() int32 {
+	if x != nil {
+		return x.Interval
+	}
+	return 0
+}
+
+func (x *ExtraBuff) GetDailyLimit() int32 {
+	if x != nil {
+		return x.DailyLimit
+	}
+	return 0
+}
+
+func (x *ExtraBuff) GetBuffList() []*ExtraBuff_ExtraBuffInfo {
+	if x != nil {
+		return x.BuffList
+	}
+	return nil
+}
+
+type FloatingAiSkinRateInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	IllustrateId    int32 `protobuf:"varint,1,opt,name=illustrate_id,json=illustrateId,proto3" json:"illustrate_id,omitempty"`
+	SpecialSkinRate int32 `protobuf:"varint,2,opt,name=special_skin_rate,json=specialSkinRate,proto3" json:"special_skin_rate,omitempty"`
+}
+
+func (x *FloatingAiSkinRateInfo) Reset() {
+	*x = FloatingAiSkinRateInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[61]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FloatingAiSkinRateInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FloatingAiSkinRateInfo) ProtoMessage() {}
+
+func (x *FloatingAiSkinRateInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[61]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FloatingAiSkinRateInfo.ProtoReflect.Descriptor instead.
+func (*FloatingAiSkinRateInfo) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{61}
+}
+
+func (x *FloatingAiSkinRateInfo) GetIllustrateId() int32 {
+	if x != nil {
+		return x.IllustrateId
+	}
+	return 0
+}
+
+func (x *FloatingAiSkinRateInfo) GetSpecialSkinRate() int32 {
+	if x != nil {
+		return x.SpecialSkinRate
+	}
+	return 0
+}
+
+type FloatingAiKillEffect struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	KillEffectId int32 `protobuf:"varint,1,opt,name=kill_effect_id,json=killEffectId,proto3" json:"kill_effect_id,omitempty"`
+	RandomWeight int32 `protobuf:"varint,2,opt,name=random_weight,json=randomWeight,proto3" json:"random_weight,omitempty"`
+	StartTime    int64 `protobuf:"varint,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime      int64 `protobuf:"varint,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	IllustrateId int32 `protobuf:"varint,5,opt,name=illustrate_id,json=illustrateId,proto3" json:"illustrate_id,omitempty"`
+}
+
+func (x *FloatingAiKillEffect) Reset() {
+	*x = FloatingAiKillEffect{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[62]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FloatingAiKillEffect) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FloatingAiKillEffect) ProtoMessage() {}
+
+func (x *FloatingAiKillEffect) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[62]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FloatingAiKillEffect.ProtoReflect.Descriptor instead.
+func (*FloatingAiKillEffect) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{62}
+}
+
+func (x *FloatingAiKillEffect) GetKillEffectId() int32 {
+	if x != nil {
+		return x.KillEffectId
+	}
+	return 0
+}
+
+func (x *FloatingAiKillEffect) GetRandomWeight() int32 {
+	if x != nil {
+		return x.RandomWeight
+	}
+	return 0
+}
+
+func (x *FloatingAiKillEffect) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *FloatingAiKillEffect) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *FloatingAiKillEffect) GetIllustrateId() int32 {
+	if x != nil {
+		return x.IllustrateId
+	}
+	return 0
+}
+
+type FloatingAiKillEffectRateInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	IllustrateId          int32 `protobuf:"varint,1,opt,name=illustrate_id,json=illustrateId,proto3" json:"illustrate_id,omitempty"`
+	SpecialKillEffectRate int32 `protobuf:"varint,2,opt,name=special_kill_effect_rate,json=specialKillEffectRate,proto3" json:"special_kill_effect_rate,omitempty"`
+}
+
+func (x *FloatingAiKillEffectRateInfo) Reset() {
+	*x = FloatingAiKillEffectRateInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[63]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FloatingAiKillEffectRateInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FloatingAiKillEffectRateInfo) ProtoMessage() {}
+
+func (x *FloatingAiKillEffectRateInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[63]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FloatingAiKillEffectRateInfo.ProtoReflect.Descriptor instead.
+func (*FloatingAiKillEffectRateInfo) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{63}
+}
+
+func (x *FloatingAiKillEffectRateInfo) GetIllustrateId() int32 {
+	if x != nil {
+		return x.IllustrateId
+	}
+	return 0
+}
+
+func (x *FloatingAiKillEffectRateInfo) GetSpecialKillEffectRate() int32 {
+	if x != nil {
+		return x.SpecialKillEffectRate
+	}
+	return 0
+}
+
+type FloatingMainMapTheme struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	IllustrateId int32  `protobuf:"varint,1,opt,name=illustrate_id,json=illustrateId,proto3" json:"illustrate_id,omitempty"`
+	MapAssetPath string `protobuf:"bytes,2,opt,name=map_asset_path,json=mapAssetPath,proto3" json:"map_asset_path,omitempty"`
+}
+
+func (x *FloatingMainMapTheme) Reset() {
+	*x = FloatingMainMapTheme{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[64]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FloatingMainMapTheme) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FloatingMainMapTheme) ProtoMessage() {}
+
+func (x *FloatingMainMapTheme) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[64]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FloatingMainMapTheme.ProtoReflect.Descriptor instead.
+func (*FloatingMainMapTheme) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{64}
+}
+
+func (x *FloatingMainMapTheme) GetIllustrateId() int32 {
+	if x != nil {
+		return x.IllustrateId
+	}
+	return 0
+}
+
+func (x *FloatingMainMapTheme) GetMapAssetPath() string {
+	if x != nil {
+		return x.MapAssetPath
+	}
+	return ""
+}
+
+type FloatingAiSkin struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	SkinId       int32 `protobuf:"varint,1,opt,name=skin_id,json=skinId,proto3" json:"skin_id,omitempty"`
+	RandomWeight int32 `protobuf:"varint,2,opt,name=random_weight,json=randomWeight,proto3" json:"random_weight,omitempty"`
+	StartTime    int64 `protobuf:"varint,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime      int64 `protobuf:"varint,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	IllustrateId int32 `protobuf:"varint,5,opt,name=illustrate_id,json=illustrateId,proto3" json:"illustrate_id,omitempty"`
+}
+
+func (x *FloatingAiSkin) Reset() {
+	*x = FloatingAiSkin{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[65]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FloatingAiSkin) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FloatingAiSkin) ProtoMessage() {}
+
+func (x *FloatingAiSkin) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[65]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FloatingAiSkin.ProtoReflect.Descriptor instead.
+func (*FloatingAiSkin) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *FloatingAiSkin) GetSkinId() int32 {
+	if x != nil {
+		return x.SkinId
+	}
+	return 0
+}
+
+func (x *FloatingAiSkin) GetRandomWeight() int32 {
+	if x != nil {
+		return x.RandomWeight
+	}
+	return 0
+}
+
+func (x *FloatingAiSkin) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *FloatingAiSkin) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *FloatingAiSkin) GetIllustrateId() int32 {
+	if x != nil {
+		return x.IllustrateId
+	}
+	return 0
+}
+
+//season activity start
+type SeasonCaiDan struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id     int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name   string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Desc   string `protobuf:"bytes,3,opt,name=desc,proto3" json:"desc,omitempty"`
+	Imgurl string `protobuf:"bytes,4,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
+}
+
+func (x *SeasonCaiDan) Reset() {
+	*x = SeasonCaiDan{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[66]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SeasonCaiDan) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeasonCaiDan) ProtoMessage() {}
+
+func (x *SeasonCaiDan) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[66]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeasonCaiDan.ProtoReflect.Descriptor instead.
+func (*SeasonCaiDan) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{66}
+}
+
+func (x *SeasonCaiDan) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *SeasonCaiDan) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *SeasonCaiDan) GetDesc() string {
+	if x != nil {
+		return x.Desc
+	}
+	return ""
+}
+
+func (x *SeasonCaiDan) GetImgurl() string {
+	if x != nil {
+		return x.Imgurl
+	}
+	return ""
+}
+
+type SeasonActivity struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	SeasonId           int32           `protobuf:"varint,1,opt,name=season_id,json=seasonId,proto3" json:"season_id,omitempty"`
+	StartTime          int64           `protobuf:"varint,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime            int64           `protobuf:"varint,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	CaidanList         []*SeasonCaiDan `protobuf:"bytes,4,rep,name=caidan_list,json=caidanList,proto3" json:"caidan_list,omitempty"`
+	SeasonHomepageUrl  string          `protobuf:"bytes,5,opt,name=season_homepage_url,json=seasonHomepageUrl,proto3" json:"season_homepage_url,omitempty"`
+	PassportUrl        string          `protobuf:"bytes,6,opt,name=passport_url,json=passportUrl,proto3" json:"passport_url,omitempty"`
+	TreasureHuntingUrl string          `protobuf:"bytes,7,opt,name=treasure_hunting_url,json=treasureHuntingUrl,proto3" json:"treasure_hunting_url,omitempty"`
+	ChaseSeaUrl        string          `protobuf:"bytes,8,opt,name=chase_sea_url,json=chaseSeaUrl,proto3" json:"chase_sea_url,omitempty"`
+	TrueLoveUrl        string          `protobuf:"bytes,9,opt,name=true_love_url,json=trueLoveUrl,proto3" json:"true_love_url,omitempty"`
+}
+
+func (x *SeasonActivity) Reset() {
+	*x = SeasonActivity{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[67]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SeasonActivity) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeasonActivity) ProtoMessage() {}
+
+func (x *SeasonActivity) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[67]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeasonActivity.ProtoReflect.Descriptor instead.
+func (*SeasonActivity) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{67}
+}
+
+func (x *SeasonActivity) GetSeasonId() int32 {
+	if x != nil {
+		return x.SeasonId
+	}
+	return 0
+}
+
+func (x *SeasonActivity) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *SeasonActivity) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *SeasonActivity) GetCaidanList() []*SeasonCaiDan {
+	if x != nil {
+		return x.CaidanList
+	}
+	return nil
+}
+
+func (x *SeasonActivity) GetSeasonHomepageUrl() string {
+	if x != nil {
+		return x.SeasonHomepageUrl
+	}
+	return ""
+}
+
+func (x *SeasonActivity) GetPassportUrl() string {
+	if x != nil {
+		return x.PassportUrl
+	}
+	return ""
+}
+
+func (x *SeasonActivity) GetTreasureHuntingUrl() string {
+	if x != nil {
+		return x.TreasureHuntingUrl
+	}
+	return ""
+}
+
+func (x *SeasonActivity) GetChaseSeaUrl() string {
+	if x != nil {
+		return x.ChaseSeaUrl
+	}
+	return ""
+}
+
+func (x *SeasonActivity) GetTrueLoveUrl() string {
+	if x != nil {
+		return x.TrueLoveUrl
+	}
+	return ""
+}
+
 type GiftWallConfig_NamePlate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4834,7 +6316,7 @@ type GiftWallConfig_NamePlate struct {
 func (x *GiftWallConfig_NamePlate) Reset() {
 	*x = GiftWallConfig_NamePlate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_profile_config_proto_msgTypes[53]
+		mi := &file_snakecommon_profile_config_proto_msgTypes[68]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4847,7 +6329,7 @@ func (x *GiftWallConfig_NamePlate) String() string {
 func (*GiftWallConfig_NamePlate) ProtoMessage() {}
 
 func (x *GiftWallConfig_NamePlate) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_profile_config_proto_msgTypes[53]
+	mi := &file_snakecommon_profile_config_proto_msgTypes[68]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4894,6 +6376,85 @@ func (x *GiftWallConfig_NamePlate) GetNeedStar() int32 {
 func (x *GiftWallConfig_NamePlate) GetName() string {
 	if x != nil {
 		return x.Name
+	}
+	return ""
+}
+
+type ExtraBuff_ExtraBuffInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id    int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Value int32  `protobuf:"varint,2,opt,name=value,proto3" json:"value,omitempty"`
+	Name  string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Rate  int32  `protobuf:"varint,4,opt,name=rate,proto3" json:"rate,omitempty"`
+	Tips  string `protobuf:"bytes,5,opt,name=tips,proto3" json:"tips,omitempty"`
+}
+
+func (x *ExtraBuff_ExtraBuffInfo) Reset() {
+	*x = ExtraBuff_ExtraBuffInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[70]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ExtraBuff_ExtraBuffInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExtraBuff_ExtraBuffInfo) ProtoMessage() {}
+
+func (x *ExtraBuff_ExtraBuffInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[70]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExtraBuff_ExtraBuffInfo.ProtoReflect.Descriptor instead.
+func (*ExtraBuff_ExtraBuffInfo) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{60, 0}
+}
+
+func (x *ExtraBuff_ExtraBuffInfo) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ExtraBuff_ExtraBuffInfo) GetValue() int32 {
+	if x != nil {
+		return x.Value
+	}
+	return 0
+}
+
+func (x *ExtraBuff_ExtraBuffInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *ExtraBuff_ExtraBuffInfo) GetRate() int32 {
+	if x != nil {
+		return x.Rate
+	}
+	return 0
+}
+
+func (x *ExtraBuff_ExtraBuffInfo) GetTips() string {
+	if x != nil {
+		return x.Tips
 	}
 	return ""
 }
@@ -5764,11 +7325,302 @@ var file_snakecommon_profile_config_proto_rawDesc = []byte{
 	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
 	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x69, 0x6d, 0x67,
-	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x69, 0x6d, 0x67, 0x42, 0x2d, 0x5a, 0x2b, 0x67,
-	0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61,
-	0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73,
-	0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x69, 0x6d, 0x67, 0x22, 0xe4, 0x07, 0x0a, 0x11,
+	0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x56,
+	0x32, 0x12, 0x15, 0x0a, 0x06, 0x61, 0x63, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x61, 0x63, 0x74, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72,
+	0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x73, 0x74,
+	0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74,
+	0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69,
+	0x6d, 0x65, 0x12, 0x69, 0x0a, 0x1a, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x5f, 0x72,
+	0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x5f, 0x76, 0x32,
+	0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x49, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x46,
+	0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x43, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x52, 0x17, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x65,
+	0x66, 0x72, 0x65, 0x73, 0x68, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x56, 0x32, 0x12, 0x42, 0x0a,
+	0x0f, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x49, 0x6e, 0x66,
+	0x6f, 0x52, 0x0e, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x43, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x12, 0x4a, 0x0a, 0x0e, 0x74, 0x72, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x5f, 0x68, 0x6f,
+	0x75, 0x73, 0x65, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x54, 0x72, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65,
+	0x48, 0x6f, 0x75, 0x73, 0x65, 0x54, 0x68, 0x65, 0x6d, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0d,
+	0x74, 0x72, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x48, 0x6f, 0x75, 0x73, 0x65, 0x12, 0x2a, 0x0a,
+	0x04, 0x62, 0x6f, 0x73, 0x73, 0x18, 0x07, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x42, 0x6f, 0x73, 0x73, 0x54, 0x68,
+	0x65, 0x6d, 0x65, 0x52, 0x04, 0x62, 0x6f, 0x73, 0x73, 0x12, 0x35, 0x0a, 0x0a, 0x65, 0x78, 0x74,
+	0x72, 0x61, 0x5f, 0x62, 0x75, 0x66, 0x66, 0x18, 0x08, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x45, 0x78, 0x74, 0x72,
+	0x61, 0x42, 0x75, 0x66, 0x66, 0x52, 0x09, 0x65, 0x78, 0x74, 0x72, 0x61, 0x42, 0x75, 0x66, 0x66,
+	0x12, 0x34, 0x0a, 0x07, 0x61, 0x69, 0x5f, 0x73, 0x6b, 0x69, 0x6e, 0x18, 0x09, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x1b, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
+	0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x41, 0x69, 0x53, 0x6b, 0x69, 0x6e, 0x52, 0x06,
+	0x61, 0x69, 0x53, 0x6b, 0x69, 0x6e, 0x12, 0x45, 0x0a, 0x0c, 0x61, 0x69, 0x5f, 0x73, 0x6b, 0x69,
+	0x6e, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x0a, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x73,
+	0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x46, 0x6c, 0x6f, 0x61, 0x74,
+	0x69, 0x6e, 0x67, 0x41, 0x69, 0x53, 0x6b, 0x69, 0x6e, 0x52, 0x61, 0x74, 0x65, 0x49, 0x6e, 0x66,
+	0x6f, 0x52, 0x0a, 0x61, 0x69, 0x53, 0x6b, 0x69, 0x6e, 0x52, 0x61, 0x74, 0x65, 0x12, 0x46, 0x0a,
+	0x0d, 0x61, 0x69, 0x5f, 0x6b, 0x69, 0x6c, 0x6c, 0x65, 0x66, 0x66, 0x65, 0x63, 0x74, 0x18, 0x0b,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
+	0x6f, 0x6e, 0x2e, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x41, 0x69, 0x4b, 0x69, 0x6c,
+	0x6c, 0x45, 0x66, 0x66, 0x65, 0x63, 0x74, 0x52, 0x0c, 0x61, 0x69, 0x4b, 0x69, 0x6c, 0x6c, 0x65,
+	0x66, 0x66, 0x65, 0x63, 0x74, 0x12, 0x57, 0x0a, 0x12, 0x61, 0x69, 0x5f, 0x6b, 0x69, 0x6c, 0x6c,
+	0x65, 0x66, 0x66, 0x65, 0x63, 0x74, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x0c, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x29, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
+	0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x41, 0x69, 0x4b, 0x69, 0x6c, 0x6c, 0x45, 0x66,
+	0x66, 0x65, 0x63, 0x74, 0x52, 0x61, 0x74, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x10, 0x61, 0x69,
+	0x4b, 0x69, 0x6c, 0x6c, 0x65, 0x66, 0x66, 0x65, 0x63, 0x74, 0x52, 0x61, 0x74, 0x65, 0x12, 0x47,
+	0x0a, 0x0e, 0x6d, 0x61, 0x69, 0x6e, 0x5f, 0x6d, 0x61, 0x70, 0x5f, 0x74, 0x68, 0x65, 0x6d, 0x65,
+	0x18, 0x0d, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x4d, 0x61, 0x69,
+	0x6e, 0x4d, 0x61, 0x70, 0x54, 0x68, 0x65, 0x6d, 0x65, 0x52, 0x0c, 0x6d, 0x61, 0x69, 0x6e, 0x4d,
+	0x61, 0x70, 0x54, 0x68, 0x65, 0x6d, 0x65, 0x12, 0x4a, 0x0a, 0x11, 0x69, 0x6c, 0x6c, 0x75, 0x73,
+	0x74, 0x72, 0x61, 0x74, 0x65, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x0e, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x2e, 0x49, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x52, 0x10, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x12, 0x26, 0x0a, 0x0f, 0x69, 0x63, 0x6f, 0x6e, 0x5f, 0x73, 0x74, 0x61, 0x72,
+	0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x69, 0x63,
+	0x6f, 0x6e, 0x53, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x22, 0x0a, 0x0d, 0x69,
+	0x63, 0x6f, 0x6e, 0x5f, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x10, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x0b, 0x69, 0x63, 0x6f, 0x6e, 0x45, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12,
+	0x21, 0x0a, 0x0c, 0x68, 0x6f, 0x6d, 0x65, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x75, 0x72, 0x6c, 0x18,
+	0x11, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x68, 0x6f, 0x6d, 0x65, 0x70, 0x61, 0x67, 0x65, 0x55,
+	0x72, 0x6c, 0x22, 0x36, 0x0a, 0x10, 0x49, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0xd0, 0x01, 0x0a, 0x1f, 0x49,
+	0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e,
+	0x67, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x17,
+	0x0a, 0x07, 0x70, 0x6f, 0x6f, 0x6c, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x06, 0x70, 0x6f, 0x6f, 0x6c, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74,
+	0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61,
+	0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69,
+	0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d,
+	0x65, 0x12, 0x5a, 0x0a, 0x17, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x5f, 0x72, 0x65,
+	0x66, 0x72, 0x65, 0x73, 0x68, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x22, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x2e, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x15, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67,
+	0x52, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x22, 0xd3, 0x02,
+	0x0a, 0x15, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x66, 0x72, 0x65, 0x73,
+	0x68, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x29, 0x0a, 0x10, 0x72, 0x65, 0x66, 0x72, 0x65,
+	0x73, 0x68, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x76, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x05, 0x52, 0x0f, 0x72, 0x65, 0x66, 0x72, 0x65, 0x73, 0x68, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x76,
+	0x61, 0x6c, 0x12, 0x23, 0x0a, 0x0d, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x5f, 0x6b,
+	0x69, 0x6e, 0x64, 0x18, 0x02, 0x20, 0x03, 0x28, 0x05, 0x52, 0x0c, 0x66, 0x6c, 0x6f, 0x61, 0x74,
+	0x69, 0x6e, 0x67, 0x4b, 0x69, 0x6e, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x66, 0x6c, 0x6f, 0x61, 0x74,
+	0x69, 0x6e, 0x67, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x03, 0x20, 0x03, 0x28, 0x05, 0x52, 0x0b, 0x66,
+	0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x4e, 0x75, 0x6d, 0x12, 0x25, 0x0a, 0x0e, 0x66, 0x6c,
+	0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x5f, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x0d, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x61, 0x6e, 0x67,
+	0x65, 0x12, 0x32, 0x0a, 0x15, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x5f, 0x6d, 0x69,
+	0x6e, 0x5f, 0x64, 0x69, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x13, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x4d, 0x69, 0x6e, 0x44, 0x69, 0x73,
+	0x74, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x77, 0x61, 0x6c, 0x6c, 0x5f, 0x72, 0x61,
+	0x74, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x77, 0x61, 0x6c, 0x6c, 0x52, 0x61,
+	0x74, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x77, 0x61, 0x6c, 0x6c, 0x5f, 0x64, 0x69, 0x73, 0x74, 0x61,
+	0x6e, 0x63, 0x65, 0x18, 0x07, 0x20, 0x03, 0x28, 0x05, 0x52, 0x0c, 0x77, 0x61, 0x6c, 0x6c, 0x44,
+	0x69, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x2a, 0x0a, 0x11, 0x77, 0x61, 0x6c, 0x6c, 0x5f,
+	0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x08, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x0f, 0x77, 0x61, 0x6c, 0x6c, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67,
+	0x4e, 0x75, 0x6d, 0x22, 0x82, 0x06, 0x0a, 0x0c, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67,
+	0x49, 0x6e, 0x66, 0x6f, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x12, 0x21, 0x0a, 0x0c,
+	0x6c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x5f, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x0b, 0x6c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12,
+	0x1d, 0x0a, 0x0a, 0x74, 0x69, 0x6d, 0x65, 0x5f, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x05, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x09, 0x74, 0x69, 0x6d, 0x65, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x2f,
+	0x0a, 0x14, 0x6e, 0x6f, 0x74, 0x5f, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x5f, 0x61, 0x6c,
+	0x6c, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x05, 0x52, 0x11, 0x6e, 0x6f,
+	0x74, 0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x61, 0x74, 0x65, 0x12,
+	0x28, 0x0a, 0x10, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x5f, 0x61, 0x6c, 0x6c, 0x5f, 0x72,
+	0x61, 0x74, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0e, 0x63, 0x6f, 0x6c, 0x6c, 0x65,
+	0x63, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x61, 0x74, 0x65, 0x12, 0x26, 0x0a, 0x0f, 0x66, 0x69, 0x72,
+	0x73, 0x74, 0x5f, 0x61, 0x64, 0x64, 0x5f, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x18, 0x08, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x0d, 0x66, 0x69, 0x72, 0x73, 0x74, 0x41, 0x64, 0x64, 0x53, 0x63, 0x6f, 0x72,
+	0x65, 0x12, 0x1b, 0x0a, 0x09, 0x61, 0x64, 0x64, 0x5f, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x18, 0x09,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x61, 0x64, 0x64, 0x53, 0x63, 0x6f, 0x72, 0x65, 0x12, 0x16,
+	0x0a, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
+	0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x61, 0x72, 0x65, 0x61, 0x18, 0x0b,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x61, 0x72, 0x65, 0x61, 0x12, 0x19, 0x0a, 0x08, 0x6e, 0x65,
+	0x65, 0x64, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x6e, 0x65,
+	0x65, 0x64, 0x4e, 0x75, 0x6d, 0x12, 0x23, 0x0a, 0x0d, 0x64, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64,
+	0x5f, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x64, 0x69,
+	0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x72, 0x65,
+	0x6c, 0x69, 0x76, 0x65, 0x5f, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x0b, 0x72, 0x65, 0x6c, 0x69, 0x76, 0x65, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x17, 0x0a,
+	0x07, 0x69, 0x73, 0x5f, 0x72, 0x61, 0x72, 0x65, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06,
+	0x69, 0x73, 0x52, 0x61, 0x72, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x69, 0x6d, 0x67, 0x5f, 0x73, 0x63,
+	0x61, 0x6c, 0x65, 0x18, 0x10, 0x20, 0x01, 0x28, 0x02, 0x52, 0x08, 0x69, 0x6d, 0x67, 0x53, 0x63,
+	0x61, 0x6c, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6d, 0x61, 0x70, 0x73, 0x18, 0x11, 0x20, 0x03, 0x28,
+	0x05, 0x52, 0x04, 0x6d, 0x61, 0x70, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x70, 0x65, 0x72, 0x69, 0x6f,
+	0x64, 0x18, 0x12, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x65, 0x72, 0x69, 0x6f, 0x64, 0x12,
+	0x24, 0x0a, 0x0e, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x5f, 0x69,
+	0x64, 0x18, 0x13, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x49,
+	0x74, 0x65, 0x6d, 0x49, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x75, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x5f,
+	0x64, 0x65, 0x73, 0x63, 0x18, 0x14, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x75, 0x6e, 0x6c, 0x6f,
+	0x63, 0x6b, 0x44, 0x65, 0x73, 0x63, 0x12, 0x1f, 0x0a, 0x0b, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x5f,
+	0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x15, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x74, 0x6f, 0x74,
+	0x61, 0x6c, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x38, 0x0a, 0x19, 0x77, 0x61, 0x6c, 0x6c, 0x5f,
+	0x6e, 0x6f, 0x74, 0x5f, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x5f, 0x61, 0x6c, 0x6c, 0x5f,
+	0x72, 0x61, 0x74, 0x65, 0x18, 0x16, 0x20, 0x01, 0x28, 0x05, 0x52, 0x15, 0x77, 0x61, 0x6c, 0x6c,
+	0x4e, 0x6f, 0x74, 0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x61, 0x74,
+	0x65, 0x12, 0x31, 0x0a, 0x15, 0x77, 0x61, 0x6c, 0x6c, 0x5f, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63,
+	0x74, 0x5f, 0x61, 0x6c, 0x6c, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x17, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x12, 0x77, 0x61, 0x6c, 0x6c, 0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x41, 0x6c, 0x6c,
+	0x52, 0x61, 0x74, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x18, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0xaa, 0x03, 0x0a, 0x16, 0x54, 0x72, 0x65,
+	0x61, 0x73, 0x75, 0x72, 0x65, 0x48, 0x6f, 0x75, 0x73, 0x65, 0x54, 0x68, 0x65, 0x6d, 0x65, 0x49,
+	0x6e, 0x66, 0x6f, 0x12, 0x18, 0x0a, 0x07, 0x54, 0x68, 0x65, 0x6d, 0x65, 0x49, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x54, 0x68, 0x65, 0x6d, 0x65, 0x49, 0x64, 0x12, 0x22, 0x0a,
+	0x0c, 0x4d, 0x61, 0x70, 0x41, 0x73, 0x73, 0x65, 0x74, 0x50, 0x61, 0x74, 0x68, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0c, 0x4d, 0x61, 0x70, 0x41, 0x73, 0x73, 0x65, 0x74, 0x50, 0x61, 0x74,
+	0x68, 0x12, 0x34, 0x0a, 0x15, 0x43, 0x65, 0x6e, 0x74, 0x65, 0x72, 0x53, 0x70, 0x61, 0x77, 0x6e,
+	0x50, 0x72, 0x65, 0x66, 0x61, 0x62, 0x50, 0x61, 0x74, 0x68, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x15, 0x43, 0x65, 0x6e, 0x74, 0x65, 0x72, 0x53, 0x70, 0x61, 0x77, 0x6e, 0x50, 0x72, 0x65,
+	0x66, 0x61, 0x62, 0x50, 0x61, 0x74, 0x68, 0x12, 0x26, 0x0a, 0x0e, 0x43, 0x61, 0x6e, 0x64, 0x79,
+	0x45, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x0e, 0x43, 0x61, 0x6e, 0x64, 0x79, 0x45, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x12,
+	0x2c, 0x0a, 0x11, 0x4d, 0x75, 0x73, 0x68, 0x72, 0x6f, 0x6f, 0x6d, 0x45, 0x6c, 0x65, 0x6d, 0x65,
+	0x6e, 0x74, 0x49, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x11, 0x4d, 0x75, 0x73, 0x68,
+	0x72, 0x6f, 0x6f, 0x6d, 0x45, 0x6c, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x12, 0x1e, 0x0a,
+	0x0a, 0x53, 0x70, 0x61, 0x77, 0x6e, 0x53, 0x63, 0x61, 0x6c, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x0a, 0x53, 0x70, 0x61, 0x77, 0x6e, 0x53, 0x63, 0x61, 0x6c, 0x65, 0x12, 0x1e, 0x0a,
+	0x0a, 0x4d, 0x75, 0x73, 0x68, 0x52, 0x6f, 0x6f, 0x6d, 0x49, 0x64, 0x18, 0x07, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x0a, 0x4d, 0x75, 0x73, 0x68, 0x52, 0x6f, 0x6f, 0x6d, 0x49, 0x64, 0x12, 0x23, 0x0a,
+	0x0d, 0x62, 0x72, 0x6f, 0x61, 0x64, 0x63, 0x61, 0x73, 0x74, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x08,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x62, 0x72, 0x6f, 0x61, 0x64, 0x63, 0x61, 0x73, 0x74, 0x55,
+	0x72, 0x6c, 0x12, 0x29, 0x0a, 0x10, 0x70, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x5f, 0x63,
+	0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x70, 0x72,
+	0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x12, 0x1c, 0x0a,
+	0x09, 0x53, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x09, 0x53, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x45,
+	0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x45, 0x6e,
+	0x64, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x88, 0x03, 0x0a, 0x09, 0x42, 0x6f, 0x73, 0x73, 0x54, 0x68,
+	0x65, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x68, 0x65, 0x6d, 0x65, 0x5f, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x74, 0x68, 0x65, 0x6d, 0x65, 0x49, 0x64, 0x12, 0x29,
+	0x0a, 0x10, 0x62, 0x6f, 0x73, 0x73, 0x5f, 0x66, 0x69, 0x72, 0x65, 0x63, 0x72, 0x61, 0x63, 0x6b,
+	0x65, 0x72, 0x18, 0x02, 0x20, 0x03, 0x28, 0x05, 0x52, 0x0f, 0x62, 0x6f, 0x73, 0x73, 0x46, 0x69,
+	0x72, 0x65, 0x63, 0x72, 0x61, 0x63, 0x6b, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x62, 0x6c, 0x6f,
+	0x6f, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x62, 0x6c, 0x6f, 0x6f, 0x64, 0x12,
+	0x12, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64,
+	0x65, 0x73, 0x63, 0x12, 0x1b, 0x0a, 0x09, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x5f, 0x69, 0x64,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x64,
+	0x12, 0x1b, 0x0a, 0x09, 0x61, 0x64, 0x64, 0x5f, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x18, 0x06, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x08, 0x61, 0x64, 0x64, 0x53, 0x63, 0x6f, 0x72, 0x65, 0x12, 0x21, 0x0a,
+	0x0c, 0x61, 0x64, 0x64, 0x5f, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x07, 0x20,
+	0x03, 0x28, 0x05, 0x52, 0x0b, 0x61, 0x64, 0x64, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67,
+	0x12, 0x2a, 0x0a, 0x11, 0x61, 0x64, 0x64, 0x5f, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67,
+	0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x08, 0x20, 0x03, 0x28, 0x05, 0x52, 0x0f, 0x61, 0x64, 0x64,
+	0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x61, 0x74, 0x65, 0x12, 0x17, 0x0a, 0x07,
+	0x70, 0x72, 0x6f, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x09, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x70,
+	0x72, 0x6f, 0x70, 0x49, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x72, 0x6f, 0x70, 0x5f, 0x74, 0x69,
+	0x6d, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x70, 0x72, 0x6f, 0x70, 0x54, 0x69,
+	0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65,
+	0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d,
+	0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x0c, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04,
+	0x74, 0x79, 0x70, 0x65, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65,
+	0x22, 0x9f, 0x02, 0x0a, 0x09, 0x45, 0x78, 0x74, 0x72, 0x61, 0x42, 0x75, 0x66, 0x66, 0x12, 0x1f,
+	0x0a, 0x0b, 0x63, 0x6f, 0x6c, 0x64, 0x5f, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x0a, 0x63, 0x6f, 0x6c, 0x64, 0x53, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x12,
+	0x1a, 0x0a, 0x08, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x76, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x08, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x76, 0x61, 0x6c, 0x12, 0x1f, 0x0a, 0x0b, 0x64,
+	0x61, 0x69, 0x6c, 0x79, 0x5f, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x0a, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x41, 0x0a, 0x09,
+	0x62, 0x75, 0x66, 0x66, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x24, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x45, 0x78,
+	0x74, 0x72, 0x61, 0x42, 0x75, 0x66, 0x66, 0x2e, 0x45, 0x78, 0x74, 0x72, 0x61, 0x42, 0x75, 0x66,
+	0x66, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x08, 0x62, 0x75, 0x66, 0x66, 0x4c, 0x69, 0x73, 0x74, 0x1a,
+	0x71, 0x0a, 0x0d, 0x45, 0x78, 0x74, 0x72, 0x61, 0x42, 0x75, 0x66, 0x66, 0x49, 0x6e, 0x66, 0x6f,
+	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64,
+	0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x72, 0x61,
+	0x74, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x72, 0x61, 0x74, 0x65, 0x12, 0x12,
+	0x0a, 0x04, 0x74, 0x69, 0x70, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x69,
+	0x70, 0x73, 0x22, 0x69, 0x0a, 0x16, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x41, 0x69,
+	0x53, 0x6b, 0x69, 0x6e, 0x52, 0x61, 0x74, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x23, 0x0a, 0x0d,
+	0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x0c, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x49,
+	0x64, 0x12, 0x2a, 0x0a, 0x11, 0x73, 0x70, 0x65, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x6b, 0x69,
+	0x6e, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0f, 0x73, 0x70,
+	0x65, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x6b, 0x69, 0x6e, 0x52, 0x61, 0x74, 0x65, 0x22, 0xc0, 0x01,
+	0x0a, 0x14, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x41, 0x69, 0x4b, 0x69, 0x6c, 0x6c,
+	0x45, 0x66, 0x66, 0x65, 0x63, 0x74, 0x12, 0x24, 0x0a, 0x0e, 0x6b, 0x69, 0x6c, 0x6c, 0x5f, 0x65,
+	0x66, 0x66, 0x65, 0x63, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c,
+	0x6b, 0x69, 0x6c, 0x6c, 0x45, 0x66, 0x66, 0x65, 0x63, 0x74, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x0d,
+	0x72, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x5f, 0x77, 0x65, 0x69, 0x67, 0x68, 0x74, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x0c, 0x72, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x57, 0x65, 0x69, 0x67, 0x68,
+	0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65,
+	0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x69,
+	0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x05, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x0c, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x49, 0x64,
+	0x22, 0x7c, 0x0a, 0x1c, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x41, 0x69, 0x4b, 0x69,
+	0x6c, 0x6c, 0x45, 0x66, 0x66, 0x65, 0x63, 0x74, 0x52, 0x61, 0x74, 0x65, 0x49, 0x6e, 0x66, 0x6f,
+	0x12, 0x23, 0x0a, 0x0d, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72,
+	0x61, 0x74, 0x65, 0x49, 0x64, 0x12, 0x37, 0x0a, 0x18, 0x73, 0x70, 0x65, 0x63, 0x69, 0x61, 0x6c,
+	0x5f, 0x6b, 0x69, 0x6c, 0x6c, 0x5f, 0x65, 0x66, 0x66, 0x65, 0x63, 0x74, 0x5f, 0x72, 0x61, 0x74,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x15, 0x73, 0x70, 0x65, 0x63, 0x69, 0x61, 0x6c,
+	0x4b, 0x69, 0x6c, 0x6c, 0x45, 0x66, 0x66, 0x65, 0x63, 0x74, 0x52, 0x61, 0x74, 0x65, 0x22, 0x61,
+	0x0a, 0x14, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x4d, 0x61, 0x69, 0x6e, 0x4d, 0x61,
+	0x70, 0x54, 0x68, 0x65, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74,
+	0x72, 0x61, 0x74, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x69,
+	0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x49, 0x64, 0x12, 0x24, 0x0a, 0x0e, 0x6d,
+	0x61, 0x70, 0x5f, 0x61, 0x73, 0x73, 0x65, 0x74, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x61, 0x70, 0x41, 0x73, 0x73, 0x65, 0x74, 0x50, 0x61, 0x74,
+	0x68, 0x22, 0xad, 0x01, 0x0a, 0x0e, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x41, 0x69,
+	0x53, 0x6b, 0x69, 0x6e, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6b, 0x69, 0x6e, 0x5f, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73, 0x6b, 0x69, 0x6e, 0x49, 0x64, 0x12, 0x23, 0x0a,
+	0x0d, 0x72, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x5f, 0x77, 0x65, 0x69, 0x67, 0x68, 0x74, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x72, 0x61, 0x6e, 0x64, 0x6f, 0x6d, 0x57, 0x65, 0x69, 0x67,
+	0x68, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d,
+	0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d,
+	0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x05, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x0c, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x49,
+	0x64, 0x22, 0x5e, 0x0a, 0x0c, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x43, 0x61, 0x69, 0x44, 0x61,
+	0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69,
+	0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d, 0x67,
+	0x75, 0x72, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72,
+	0x6c, 0x22, 0xf0, 0x02, 0x0a, 0x0e, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x41, 0x63, 0x74, 0x69,
+	0x76, 0x69, 0x74, 0x79, 0x12, 0x1b, 0x0a, 0x09, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x49,
+	0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65,
+	0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x3a, 0x0a, 0x0b, 0x63,
+	0x61, 0x69, 0x64, 0x61, 0x6e, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x19, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x53,
+	0x65, 0x61, 0x73, 0x6f, 0x6e, 0x43, 0x61, 0x69, 0x44, 0x61, 0x6e, 0x52, 0x0a, 0x63, 0x61, 0x69,
+	0x64, 0x61, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x2e, 0x0a, 0x13, 0x73, 0x65, 0x61, 0x73, 0x6f,
+	0x6e, 0x5f, 0x68, 0x6f, 0x6d, 0x65, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x05,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x48, 0x6f, 0x6d, 0x65,
+	0x70, 0x61, 0x67, 0x65, 0x55, 0x72, 0x6c, 0x12, 0x21, 0x0a, 0x0c, 0x70, 0x61, 0x73, 0x73, 0x70,
+	0x6f, 0x72, 0x74, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70,
+	0x61, 0x73, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x55, 0x72, 0x6c, 0x12, 0x30, 0x0a, 0x14, 0x74, 0x72,
+	0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x5f, 0x68, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x5f, 0x75,
+	0x72, 0x6c, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x74, 0x72, 0x65, 0x61, 0x73, 0x75,
+	0x72, 0x65, 0x48, 0x75, 0x6e, 0x74, 0x69, 0x6e, 0x67, 0x55, 0x72, 0x6c, 0x12, 0x22, 0x0a, 0x0d,
+	0x63, 0x68, 0x61, 0x73, 0x65, 0x5f, 0x73, 0x65, 0x61, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x08, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x68, 0x61, 0x73, 0x65, 0x53, 0x65, 0x61, 0x55, 0x72, 0x6c,
+	0x12, 0x22, 0x0a, 0x0d, 0x74, 0x72, 0x75, 0x65, 0x5f, 0x6c, 0x6f, 0x76, 0x65, 0x5f, 0x75, 0x72,
+	0x6c, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x74, 0x72, 0x75, 0x65, 0x4c, 0x6f, 0x76,
+	0x65, 0x55, 0x72, 0x6c, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a,
+	0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d,
+	0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -5783,97 +7635,113 @@ func file_snakecommon_profile_config_proto_rawDescGZIP() []byte {
 	return file_snakecommon_profile_config_proto_rawDescData
 }
 
-var file_snakecommon_profile_config_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
+var file_snakecommon_profile_config_proto_msgTypes = make([]protoimpl.MessageInfo, 71)
 var file_snakecommon_profile_config_proto_goTypes = []interface{}{
-	(*ChargeVipConfig)(nil),          // 0: snakecommon.ChargeVipConfig
-	(*VipLevel)(nil),                 // 1: snakecommon.VipLevel
-	(*VipPrivilege)(nil),             // 2: snakecommon.VipPrivilege
-	(*MonthCardConfig)(nil),          // 3: snakecommon.MonthCardConfig
-	(*MonthCardInfo)(nil),            // 4: snakecommon.MonthCardInfo
-	(*MonthCardPackItem)(nil),        // 5: snakecommon.MonthCardPackItem
-	(*ShowBadgeConfig)(nil),          // 6: snakecommon.ShowBadgeConfig
-	(*BadgeTitle)(nil),               // 7: snakecommon.BadgeTitle
-	(*CharmTourConfig)(nil),          // 8: snakecommon.CharmTourConfig
-	(*CharmTourTitleItem)(nil),       // 9: snakecommon.CharmTourTitleItem
-	(*CharmTourLevelItem)(nil),       // 10: snakecommon.CharmTourLevelItem
-	(*NameplateItem)(nil),            // 11: snakecommon.NameplateItem
-	(*GiftWallConfig)(nil),           // 12: snakecommon.GiftWallConfig
-	(*HatchEgg)(nil),                 // 13: snakecommon.HatchEgg
-	(*EggLevelInfo)(nil),             // 14: snakecommon.EggLevelInfo
-	(*NewMeetupV3Config)(nil),        // 15: snakecommon.NewMeetupV3Config
-	(*MeetupShowItem)(nil),           // 16: snakecommon.MeetupShowItem
-	(*MeetupConfigItem)(nil),         // 17: snakecommon.MeetupConfigItem
-	(*SingleDayReward)(nil),          // 18: snakecommon.SingleDayReward
-	(*SingleRewardItem)(nil),         // 19: snakecommon.SingleRewardItem
-	(*MeetupBuffItem)(nil),           // 20: snakecommon.MeetupBuffItem
-	(*EndlessGameRewardConfig)(nil),  // 21: snakecommon.EndlessGameRewardConfig
-	(*EndlessGameRewardItem)(nil),    // 22: snakecommon.EndlessGameRewardItem
-	(*PassCheckV2)(nil),              // 23: snakecommon.PassCheckV2
-	(*PassCheckDailyWelfare)(nil),    // 24: snakecommon.PassCheckDailyWelfare
-	(*PassCheckBreakReward)(nil),     // 25: snakecommon.PassCheckBreakReward
-	(*PassSeasonNotifyConfig)(nil),   // 26: snakecommon.PassSeasonNotifyConfig
-	(*PassCommonConfig)(nil),         // 27: snakecommon.PassCommonConfig
-	(*PassRewardConfig)(nil),         // 28: snakecommon.PassRewardConfig
-	(*PassCheckIcon)(nil),            // 29: snakecommon.PassCheckIcon
-	(*PassCheckRankItem)(nil),        // 30: snakecommon.PassCheckRankItem
-	(*PassCheckRewardPreview)(nil),   // 31: snakecommon.PassCheckRewardPreview
-	(*PassCheckWindowReward)(nil),    // 32: snakecommon.PassCheckWindowReward
-	(*PassTaskConfig)(nil),           // 33: snakecommon.PassTaskConfig
-	(*DailyTask)(nil),                // 34: snakecommon.DailyTask
-	(*WeeklyTask)(nil),               // 35: snakecommon.WeeklyTask
-	(*SeasonTask)(nil),               // 36: snakecommon.SeasonTask
-	(*GradeTask)(nil),                // 37: snakecommon.GradeTask
-	(*PassTaskModel)(nil),            // 38: snakecommon.PassTaskModel
-	(*PassStoreConfig)(nil),          // 39: snakecommon.PassStoreConfig
-	(*ExchangeStore)(nil),            // 40: snakecommon.ExchangeStore
-	(*PassTotalRankReward)(nil),      // 41: snakecommon.PassTotalRankReward
-	(*TurntableConfig)(nil),          // 42: snakecommon.TurntableConfig
-	(*TurntableRewardTable)(nil),     // 43: snakecommon.TurntableRewardTable
-	(*TurntableSubConfig)(nil),       // 44: snakecommon.TurntableSubConfig
-	(*SkinUgcV2Config)(nil),          // 45: snakecommon.SkinUgcV2Config
-	(*UgcTopic)(nil),                 // 46: snakecommon.UgcTopic
-	(*ShowIllustrationConfig)(nil),   // 47: snakecommon.ShowIllustrationConfig
-	(*ShowIllustrationTitle)(nil),    // 48: snakecommon.ShowIllustrationTitle
-	(*ShowIllustrationSeason)(nil),   // 49: snakecommon.ShowIllustrationSeason
-	(*SeasonResource)(nil),           // 50: snakecommon.SeasonResource
-	(*GiftIllustrationConfig)(nil),   // 51: snakecommon.GiftIllustrationConfig
-	(*GiftTitleItemConfig)(nil),      // 52: snakecommon.GiftTitleItemConfig
-	(*GiftWallConfig_NamePlate)(nil), // 53: snakecommon.GiftWallConfig.NamePlate
-	nil,                              // 54: snakecommon.NewMeetupV3Config.ShowConfigEntry
-	(*config.RewardConfig)(nil),      // 55: SnakeMain.Config.RewardConfig
-	(*CConvert)(nil),                 // 56: snakecommon.CConvert
-	(*CPriceInfo)(nil),               // 57: snakecommon.CPriceInfo
-	(*config.PackModel)(nil),         // 58: SnakeMain.Config.PackModel
+	(*ChargeVipConfig)(nil),                 // 0: snakecommon.ChargeVipConfig
+	(*VipLevel)(nil),                        // 1: snakecommon.VipLevel
+	(*VipPrivilege)(nil),                    // 2: snakecommon.VipPrivilege
+	(*MonthCardConfig)(nil),                 // 3: snakecommon.MonthCardConfig
+	(*MonthCardInfo)(nil),                   // 4: snakecommon.MonthCardInfo
+	(*MonthCardPackItem)(nil),               // 5: snakecommon.MonthCardPackItem
+	(*ShowBadgeConfig)(nil),                 // 6: snakecommon.ShowBadgeConfig
+	(*BadgeTitle)(nil),                      // 7: snakecommon.BadgeTitle
+	(*CharmTourConfig)(nil),                 // 8: snakecommon.CharmTourConfig
+	(*CharmTourTitleItem)(nil),              // 9: snakecommon.CharmTourTitleItem
+	(*CharmTourLevelItem)(nil),              // 10: snakecommon.CharmTourLevelItem
+	(*NameplateItem)(nil),                   // 11: snakecommon.NameplateItem
+	(*GiftWallConfig)(nil),                  // 12: snakecommon.GiftWallConfig
+	(*HatchEgg)(nil),                        // 13: snakecommon.HatchEgg
+	(*EggLevelInfo)(nil),                    // 14: snakecommon.EggLevelInfo
+	(*NewMeetupV3Config)(nil),               // 15: snakecommon.NewMeetupV3Config
+	(*MeetupShowItem)(nil),                  // 16: snakecommon.MeetupShowItem
+	(*MeetupConfigItem)(nil),                // 17: snakecommon.MeetupConfigItem
+	(*SingleDayReward)(nil),                 // 18: snakecommon.SingleDayReward
+	(*SingleRewardItem)(nil),                // 19: snakecommon.SingleRewardItem
+	(*MeetupBuffItem)(nil),                  // 20: snakecommon.MeetupBuffItem
+	(*EndlessGameRewardConfig)(nil),         // 21: snakecommon.EndlessGameRewardConfig
+	(*EndlessGameRewardItem)(nil),           // 22: snakecommon.EndlessGameRewardItem
+	(*PassCheckV2)(nil),                     // 23: snakecommon.PassCheckV2
+	(*PassCheckDailyWelfare)(nil),           // 24: snakecommon.PassCheckDailyWelfare
+	(*PassCheckBreakReward)(nil),            // 25: snakecommon.PassCheckBreakReward
+	(*PassSeasonNotifyConfig)(nil),          // 26: snakecommon.PassSeasonNotifyConfig
+	(*PassCommonConfig)(nil),                // 27: snakecommon.PassCommonConfig
+	(*PassRewardConfig)(nil),                // 28: snakecommon.PassRewardConfig
+	(*PassCheckIcon)(nil),                   // 29: snakecommon.PassCheckIcon
+	(*PassCheckRankItem)(nil),               // 30: snakecommon.PassCheckRankItem
+	(*PassCheckRewardPreview)(nil),          // 31: snakecommon.PassCheckRewardPreview
+	(*PassCheckWindowReward)(nil),           // 32: snakecommon.PassCheckWindowReward
+	(*PassTaskConfig)(nil),                  // 33: snakecommon.PassTaskConfig
+	(*DailyTask)(nil),                       // 34: snakecommon.DailyTask
+	(*WeeklyTask)(nil),                      // 35: snakecommon.WeeklyTask
+	(*SeasonTask)(nil),                      // 36: snakecommon.SeasonTask
+	(*GradeTask)(nil),                       // 37: snakecommon.GradeTask
+	(*PassTaskModel)(nil),                   // 38: snakecommon.PassTaskModel
+	(*PassStoreConfig)(nil),                 // 39: snakecommon.PassStoreConfig
+	(*ExchangeStore)(nil),                   // 40: snakecommon.ExchangeStore
+	(*PassTotalRankReward)(nil),             // 41: snakecommon.PassTotalRankReward
+	(*TurntableConfig)(nil),                 // 42: snakecommon.TurntableConfig
+	(*TurntableRewardTable)(nil),            // 43: snakecommon.TurntableRewardTable
+	(*TurntableSubConfig)(nil),              // 44: snakecommon.TurntableSubConfig
+	(*SkinUgcV2Config)(nil),                 // 45: snakecommon.SkinUgcV2Config
+	(*UgcTopic)(nil),                        // 46: snakecommon.UgcTopic
+	(*ShowIllustrationConfig)(nil),          // 47: snakecommon.ShowIllustrationConfig
+	(*ShowIllustrationTitle)(nil),           // 48: snakecommon.ShowIllustrationTitle
+	(*ShowIllustrationSeason)(nil),          // 49: snakecommon.ShowIllustrationSeason
+	(*SeasonResource)(nil),                  // 50: snakecommon.SeasonResource
+	(*GiftIllustrationConfig)(nil),          // 51: snakecommon.GiftIllustrationConfig
+	(*GiftTitleItemConfig)(nil),             // 52: snakecommon.GiftTitleItemConfig
+	(*EndlessFloatingV2)(nil),               // 53: snakecommon.EndlessFloatingV2
+	(*IllustrateConfig)(nil),                // 54: snakecommon.IllustrateConfig
+	(*IllustrateFloatingRefreshConfig)(nil), // 55: snakecommon.IllustrateFloatingRefreshConfig
+	(*FloatingRefreshConfig)(nil),           // 56: snakecommon.FloatingRefreshConfig
+	(*FloatingInfo)(nil),                    // 57: snakecommon.FloatingInfo
+	(*TreasureHouseThemeInfo)(nil),          // 58: snakecommon.TreasureHouseThemeInfo
+	(*BossTheme)(nil),                       // 59: snakecommon.BossTheme
+	(*ExtraBuff)(nil),                       // 60: snakecommon.ExtraBuff
+	(*FloatingAiSkinRateInfo)(nil),          // 61: snakecommon.FloatingAiSkinRateInfo
+	(*FloatingAiKillEffect)(nil),            // 62: snakecommon.FloatingAiKillEffect
+	(*FloatingAiKillEffectRateInfo)(nil),    // 63: snakecommon.FloatingAiKillEffectRateInfo
+	(*FloatingMainMapTheme)(nil),            // 64: snakecommon.FloatingMainMapTheme
+	(*FloatingAiSkin)(nil),                  // 65: snakecommon.FloatingAiSkin
+	(*SeasonCaiDan)(nil),                    // 66: snakecommon.SeasonCaiDan
+	(*SeasonActivity)(nil),                  // 67: snakecommon.SeasonActivity
+	(*GiftWallConfig_NamePlate)(nil),        // 68: snakecommon.GiftWallConfig.NamePlate
+	nil,                                     // 69: snakecommon.NewMeetupV3Config.ShowConfigEntry
+	(*ExtraBuff_ExtraBuffInfo)(nil),         // 70: snakecommon.ExtraBuff.ExtraBuffInfo
+	(*config.RewardConfig)(nil),             // 71: SnakeMain.Config.RewardConfig
+	(*CConvert)(nil),                        // 72: snakecommon.CConvert
+	(*CPriceInfo)(nil),                      // 73: snakecommon.CPriceInfo
+	(*config.PackModel)(nil),                // 74: SnakeMain.Config.PackModel
 }
 var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	1,  // 0: snakecommon.ChargeVipConfig.level_list:type_name -> snakecommon.VipLevel
 	2,  // 1: snakecommon.VipLevel.privilege:type_name -> snakecommon.VipPrivilege
-	55, // 2: snakecommon.VipLevel.reward_list:type_name -> SnakeMain.Config.RewardConfig
-	55, // 3: snakecommon.VipLevel.week_reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 2: snakecommon.VipLevel.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	71, // 3: snakecommon.VipLevel.week_reward:type_name -> SnakeMain.Config.RewardConfig
 	4,  // 4: snakecommon.MonthCardConfig.little_month_card:type_name -> snakecommon.MonthCardInfo
 	4,  // 5: snakecommon.MonthCardConfig.super_month_card:type_name -> snakecommon.MonthCardInfo
-	55, // 6: snakecommon.MonthCardInfo.daily_reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 6: snakecommon.MonthCardInfo.daily_reward:type_name -> SnakeMain.Config.RewardConfig
 	5,  // 7: snakecommon.MonthCardInfo.pack_list:type_name -> snakecommon.MonthCardPackItem
 	7,  // 8: snakecommon.ShowBadgeConfig.title_list:type_name -> snakecommon.BadgeTitle
-	55, // 9: snakecommon.BadgeTitle.rewards:type_name -> SnakeMain.Config.RewardConfig
+	71, // 9: snakecommon.BadgeTitle.rewards:type_name -> SnakeMain.Config.RewardConfig
 	9,  // 10: snakecommon.CharmTourConfig.charm_title_list:type_name -> snakecommon.CharmTourTitleItem
 	10, // 11: snakecommon.CharmTourConfig.charm_level_list:type_name -> snakecommon.CharmTourLevelItem
 	11, // 12: snakecommon.CharmTourConfig.nameplate_list:type_name -> snakecommon.NameplateItem
-	55, // 13: snakecommon.CharmTourTitleItem.rewards:type_name -> SnakeMain.Config.RewardConfig
-	53, // 14: snakecommon.GiftWallConfig.nameplate_list:type_name -> snakecommon.GiftWallConfig.NamePlate
-	55, // 15: snakecommon.HatchEgg.reward_review_list:type_name -> SnakeMain.Config.RewardConfig
+	71, // 13: snakecommon.CharmTourTitleItem.rewards:type_name -> SnakeMain.Config.RewardConfig
+	68, // 14: snakecommon.GiftWallConfig.nameplate_list:type_name -> snakecommon.GiftWallConfig.NamePlate
+	71, // 15: snakecommon.HatchEgg.reward_review_list:type_name -> SnakeMain.Config.RewardConfig
 	14, // 16: snakecommon.HatchEgg.egg_list:type_name -> snakecommon.EggLevelInfo
-	55, // 17: snakecommon.EggLevelInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	71, // 17: snakecommon.EggLevelInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
 	17, // 18: snakecommon.NewMeetupV3Config.list:type_name -> snakecommon.MeetupConfigItem
-	54, // 19: snakecommon.NewMeetupV3Config.show_config:type_name -> snakecommon.NewMeetupV3Config.ShowConfigEntry
+	69, // 19: snakecommon.NewMeetupV3Config.show_config:type_name -> snakecommon.NewMeetupV3Config.ShowConfigEntry
 	18, // 20: snakecommon.MeetupConfigItem.days_list:type_name -> snakecommon.SingleDayReward
 	20, // 21: snakecommon.MeetupConfigItem.buff:type_name -> snakecommon.MeetupBuffItem
 	19, // 22: snakecommon.SingleDayReward.length_list:type_name -> snakecommon.SingleRewardItem
-	55, // 23: snakecommon.SingleRewardItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
-	55, // 24: snakecommon.SingleRewardItem.extra_reward:type_name -> SnakeMain.Config.RewardConfig
-	55, // 25: snakecommon.MeetupBuffItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	71, // 23: snakecommon.SingleRewardItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	71, // 24: snakecommon.SingleRewardItem.extra_reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 25: snakecommon.MeetupBuffItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
 	22, // 26: snakecommon.EndlessGameRewardConfig.list:type_name -> snakecommon.EndlessGameRewardItem
-	55, // 27: snakecommon.EndlessGameRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 27: snakecommon.EndlessGameRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
 	27, // 28: snakecommon.PassCheckV2.common:type_name -> snakecommon.PassCommonConfig
 	28, // 29: snakecommon.PassCheckV2.reward_config:type_name -> snakecommon.PassRewardConfig
 	33, // 30: snakecommon.PassCheckV2.task_config:type_name -> snakecommon.PassTaskConfig
@@ -5882,20 +7750,20 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	26, // 33: snakecommon.PassCheckV2.season_notify:type_name -> snakecommon.PassSeasonNotifyConfig
 	24, // 34: snakecommon.PassCheckV2.daily_welfare:type_name -> snakecommon.PassCheckDailyWelfare
 	25, // 35: snakecommon.PassCheckV2.break_reward:type_name -> snakecommon.PassCheckBreakReward
-	55, // 36: snakecommon.PassCheckDailyWelfare.reward:type_name -> SnakeMain.Config.RewardConfig
-	55, // 37: snakecommon.PassCheckBreakReward.reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 36: snakecommon.PassCheckDailyWelfare.reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 37: snakecommon.PassCheckBreakReward.reward:type_name -> SnakeMain.Config.RewardConfig
 	30, // 38: snakecommon.PassRewardConfig.reward_list:type_name -> snakecommon.PassCheckRankItem
 	31, // 39: snakecommon.PassRewardConfig.reward_preview:type_name -> snakecommon.PassCheckRewardPreview
-	55, // 40: snakecommon.PassRewardConfig.reward_sort:type_name -> SnakeMain.Config.RewardConfig
+	71, // 40: snakecommon.PassRewardConfig.reward_sort:type_name -> SnakeMain.Config.RewardConfig
 	29, // 41: snakecommon.PassRewardConfig.icon_list:type_name -> snakecommon.PassCheckIcon
-	55, // 42: snakecommon.PassCheckRankItem.free_reward:type_name -> SnakeMain.Config.RewardConfig
-	55, // 43: snakecommon.PassCheckRankItem.high_reward:type_name -> SnakeMain.Config.RewardConfig
-	55, // 44: snakecommon.PassCheckRewardPreview.free_reward:type_name -> SnakeMain.Config.RewardConfig
-	55, // 45: snakecommon.PassCheckRewardPreview.high_reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 42: snakecommon.PassCheckRankItem.free_reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 43: snakecommon.PassCheckRankItem.high_reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 44: snakecommon.PassCheckRewardPreview.free_reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 45: snakecommon.PassCheckRewardPreview.high_reward:type_name -> SnakeMain.Config.RewardConfig
 	32, // 46: snakecommon.PassCheckRewardPreview.window_reward:type_name -> snakecommon.PassCheckWindowReward
-	55, // 47: snakecommon.PassCheckRewardPreview.honor_reward:type_name -> SnakeMain.Config.RewardConfig
-	55, // 48: snakecommon.PassCheckRewardPreview.luxury_reward:type_name -> SnakeMain.Config.RewardConfig
-	56, // 49: snakecommon.PassCheckWindowReward.convert:type_name -> snakecommon.CConvert
+	71, // 47: snakecommon.PassCheckRewardPreview.honor_reward:type_name -> SnakeMain.Config.RewardConfig
+	71, // 48: snakecommon.PassCheckRewardPreview.luxury_reward:type_name -> SnakeMain.Config.RewardConfig
+	72, // 49: snakecommon.PassCheckWindowReward.convert:type_name -> snakecommon.CConvert
 	36, // 50: snakecommon.PassTaskConfig.season_task:type_name -> snakecommon.SeasonTask
 	37, // 51: snakecommon.PassTaskConfig.grade_task:type_name -> snakecommon.GradeTask
 	35, // 52: snakecommon.PassTaskConfig.weekly_task:type_name -> snakecommon.WeeklyTask
@@ -5903,11 +7771,11 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	38, // 54: snakecommon.WeeklyTask.task_list:type_name -> snakecommon.PassTaskModel
 	38, // 55: snakecommon.SeasonTask.task_list:type_name -> snakecommon.PassTaskModel
 	38, // 56: snakecommon.GradeTask.task_list:type_name -> snakecommon.PassTaskModel
-	57, // 57: snakecommon.PassStoreConfig.rank_price:type_name -> snakecommon.CPriceInfo
+	73, // 57: snakecommon.PassStoreConfig.rank_price:type_name -> snakecommon.CPriceInfo
 	40, // 58: snakecommon.PassStoreConfig.exchange_store:type_name -> snakecommon.ExchangeStore
-	58, // 59: snakecommon.PassStoreConfig.high_store:type_name -> SnakeMain.Config.PackModel
-	57, // 60: snakecommon.ExchangeStore.price:type_name -> snakecommon.CPriceInfo
-	55, // 61: snakecommon.PassTotalRankReward.reward:type_name -> SnakeMain.Config.RewardConfig
+	74, // 59: snakecommon.PassStoreConfig.high_store:type_name -> SnakeMain.Config.PackModel
+	73, // 60: snakecommon.ExchangeStore.price:type_name -> snakecommon.CPriceInfo
+	71, // 61: snakecommon.PassTotalRankReward.reward:type_name -> SnakeMain.Config.RewardConfig
 	43, // 62: snakecommon.TurntableConfig.reward_table:type_name -> snakecommon.TurntableRewardTable
 	44, // 63: snakecommon.TurntableConfig.config:type_name -> snakecommon.TurntableSubConfig
 	46, // 64: snakecommon.SkinUgcV2Config.skin_topic_list:type_name -> snakecommon.UgcTopic
@@ -5916,15 +7784,29 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	46, // 67: snakecommon.SkinUgcV2Config.suit_topic_list:type_name -> snakecommon.UgcTopic
 	48, // 68: snakecommon.ShowIllustrationConfig.title_list:type_name -> snakecommon.ShowIllustrationTitle
 	49, // 69: snakecommon.ShowIllustrationConfig.season_list:type_name -> snakecommon.ShowIllustrationSeason
-	55, // 70: snakecommon.ShowIllustrationSeason.rewards:type_name -> SnakeMain.Config.RewardConfig
+	71, // 70: snakecommon.ShowIllustrationSeason.rewards:type_name -> SnakeMain.Config.RewardConfig
 	50, // 71: snakecommon.ShowIllustrationSeason.resources:type_name -> snakecommon.SeasonResource
 	52, // 72: snakecommon.GiftIllustrationConfig.title_list:type_name -> snakecommon.GiftTitleItemConfig
-	16, // 73: snakecommon.NewMeetupV3Config.ShowConfigEntry.value:type_name -> snakecommon.MeetupShowItem
-	74, // [74:74] is the sub-list for method output_type
-	74, // [74:74] is the sub-list for method input_type
-	74, // [74:74] is the sub-list for extension type_name
-	74, // [74:74] is the sub-list for extension extendee
-	0,  // [0:74] is the sub-list for field type_name
+	55, // 73: snakecommon.EndlessFloatingV2.floating_refresh_config_v2:type_name -> snakecommon.IllustrateFloatingRefreshConfig
+	57, // 74: snakecommon.EndlessFloatingV2.floating_config:type_name -> snakecommon.FloatingInfo
+	58, // 75: snakecommon.EndlessFloatingV2.treasure_house:type_name -> snakecommon.TreasureHouseThemeInfo
+	59, // 76: snakecommon.EndlessFloatingV2.boss:type_name -> snakecommon.BossTheme
+	60, // 77: snakecommon.EndlessFloatingV2.extra_buff:type_name -> snakecommon.ExtraBuff
+	65, // 78: snakecommon.EndlessFloatingV2.ai_skin:type_name -> snakecommon.FloatingAiSkin
+	61, // 79: snakecommon.EndlessFloatingV2.ai_skin_rate:type_name -> snakecommon.FloatingAiSkinRateInfo
+	62, // 80: snakecommon.EndlessFloatingV2.ai_killeffect:type_name -> snakecommon.FloatingAiKillEffect
+	63, // 81: snakecommon.EndlessFloatingV2.ai_killeffect_rate:type_name -> snakecommon.FloatingAiKillEffectRateInfo
+	64, // 82: snakecommon.EndlessFloatingV2.main_map_theme:type_name -> snakecommon.FloatingMainMapTheme
+	54, // 83: snakecommon.EndlessFloatingV2.illustrate_config:type_name -> snakecommon.IllustrateConfig
+	56, // 84: snakecommon.IllustrateFloatingRefreshConfig.floating_refresh_config:type_name -> snakecommon.FloatingRefreshConfig
+	70, // 85: snakecommon.ExtraBuff.buff_list:type_name -> snakecommon.ExtraBuff.ExtraBuffInfo
+	66, // 86: snakecommon.SeasonActivity.caidan_list:type_name -> snakecommon.SeasonCaiDan
+	16, // 87: snakecommon.NewMeetupV3Config.ShowConfigEntry.value:type_name -> snakecommon.MeetupShowItem
+	88, // [88:88] is the sub-list for method output_type
+	88, // [88:88] is the sub-list for method input_type
+	88, // [88:88] is the sub-list for extension type_name
+	88, // [88:88] is the sub-list for extension extendee
+	0,  // [0:88] is the sub-list for field type_name
 }
 
 func init() { file_snakecommon_profile_config_proto_init() }
@@ -6571,7 +8453,199 @@ func file_snakecommon_profile_config_proto_init() {
 			}
 		}
 		file_snakecommon_profile_config_proto_msgTypes[53].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EndlessFloatingV2); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[54].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IllustrateConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IllustrateFloatingRefreshConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FloatingRefreshConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FloatingInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TreasureHouseThemeInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BossTheme); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ExtraBuff); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[61].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FloatingAiSkinRateInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[62].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FloatingAiKillEffect); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[63].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FloatingAiKillEffectRateInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[64].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FloatingMainMapTheme); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[65].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FloatingAiSkin); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[66].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SeasonCaiDan); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[67].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SeasonActivity); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[68].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GiftWallConfig_NamePlate); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[70].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ExtraBuff_ExtraBuffInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6590,7 +8664,7 @@ func file_snakecommon_profile_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_profile_config_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   55,
+			NumMessages:   71,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
