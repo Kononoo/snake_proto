@@ -175,8 +175,8 @@ message MiddleItem {
   string get_method_desc = 7;
   int32 worth_level = 8;
   int32 type = 9;
-  int32 start_time = 10;
-  int32 end_time = 11;
+  int64 start_time = 10;
+  int64 end_time = 11;
 }
 
 message CurrencyStore {
