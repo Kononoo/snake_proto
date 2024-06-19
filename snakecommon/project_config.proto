@@ -524,7 +524,7 @@ message PingConfig {
 // === ping_config end =======================================
 
 // === reward_config start =======================================
-message RewardConfig {
+message RewardMarkConfig {
   repeated RewardMark reward_marks = 1;
 }
 
@@ -742,7 +742,6 @@ message UserConfig {
   int32 start_endless_flag = 12; // 是否首页直接进无尽，0否1是
   repeated int32 home_login_days = 13;//新用户第多少天登录 首次回首页后弹登录
   int32 nickname_home_count = 14;//新用户第三天登录 多少次回首页后弹改名
-  ShowConfig show_config = 15;
   AntiAddiction anti_addiction = 16;
   int32 online_interval_seconds = 17;
   GameEndSkin game_end_skin = 18;
