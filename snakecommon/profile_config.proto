@@ -558,3 +558,172 @@ message GiftTitleItemConfig{
 }
 // gift_illustration End
 
+// endless floating v2 start
+
+message EndlessFloatingV2 {
+  string act_id = 1;
+  int32 start_time = 2;
+  int32 end_time = 3;
+  repeated IllustrateFloatingRefreshConfig floating_refresh_config_v2 = 4;
+  repeated FloatingInfo floating_config = 5;
+  repeated TreasureHouseThemeInfo treasure_house = 6;
+  repeated BossTheme boss = 7;
+  ExtraBuff extra_buff = 8;
+  repeated FloatingAiSkin ai_skin = 9;
+  repeated FloatingAiSkinRateInfo ai_skin_rate = 10;
+  repeated FloatingAiKillEffect ai_killeffect = 11;
+  repeated FloatingAiKillEffectRateInfo ai_killeffect_rate = 12;
+  repeated FloatingMainMapTheme main_map_theme = 13;
+  repeated IllustrateConfig illustrate_config = 14;
+  int64 icon_start_time = 15;
+  int64 icon_end_time = 16;
+  string homepage_url = 17;
+}
+
+message IllustrateConfig {
+  int32 id = 1;
+  int32 type = 2;
+}
+
+message IllustrateFloatingRefreshConfig{
+  int32 pool_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+  FloatingRefreshConfig floating_refresh_config = 4;
+}
+
+message FloatingRefreshConfig {
+  repeated int32 refresh_interval = 1;
+  repeated int32 floating_kind = 2;
+  repeated int32 floating_num = 3;
+  int32 floating_range = 4;
+  int32 floating_min_distance = 5;
+  int32 wall_rate = 6;
+  repeated int32 wall_distance = 7;
+  int32 wall_floating_num = 8;
+}
+
+message FloatingInfo {
+  int32 id = 1;
+  string name = 2;
+  string desc = 3;
+  int32 length_limit = 4;
+  int32 time_limit = 5;
+  int32 not_collect_all_rate = 6;
+  int32 collect_all_rate = 7;
+  int32 first_add_score = 8;
+  int32 add_score = 9;
+  string imgurl = 10;
+  string area = 11;
+  int32 need_num = 12;
+  int32 diamond_limit = 13;
+  int32 relive_limit = 14;
+  int32 is_rare = 15;
+  float img_scale = 16;
+  repeated int32 maps = 17;
+  string period = 18;
+  int32 middle_item_id = 19;
+  string unlock_desc = 20;
+  int32 total_limit = 21;
+  int32 wall_not_collect_all_rate = 22;
+  int32 wall_collect_all_rate = 23;
+  int32 type = 24;
+}
+
+message TreasureHouseThemeInfo {
+  int32 ThemeId = 1;
+  string MapAssetPath = 2;
+  string CenterSpawnPrefabPath = 3;
+  int32 CandyElementId = 4;
+  int32 MushroomElementId = 5;
+  int32 SpawnScale = 6;
+  int32 MushRoomId = 7;
+  string broadcast_url = 8;
+  string progress_content = 9;
+  int32 StartTime = 10;
+  int32 EndTime = 11;
+}
+
+message BossTheme {
+  int32 theme_id = 1;
+  repeated int32 boss_firecracker = 2;
+  string blood = 3;
+  string desc = 4;
+  int32 entity_id = 5;
+  int32 add_score = 6;
+  repeated int32 add_floating = 7;
+  repeated int32 add_floating_rate = 8;
+  int32 prop_id = 9;
+  int32 prop_time = 10;
+  int64 start_time = 11;
+  int64 end_time = 12;
+  int32 type = 13;
+}
+
+message ExtraBuff {
+  int32 cold_second = 1;
+  int32 interval = 2;
+  int32 daily_limit = 3;
+  message ExtraBuffInfo {
+    int32 id = 1;
+    int32 value = 2;
+    string name = 3;
+    int32 rate = 4;
+    string tips = 5;
+  }
+  repeated ExtraBuffInfo buff_list = 4;
+}
+
+message FloatingAiSkinRateInfo {
+  int32 illustrate_id = 1;
+  int32 special_skin_rate = 2;
+}
+
+message FloatingAiKillEffect {
+  int32 kill_effect_id = 1;
+  int32 random_weight = 2;
+  int64 start_time = 3;
+  int64 end_time = 4;
+  int32 illustrate_id = 5;
+}
+
+message FloatingAiKillEffectRateInfo {
+  int32 illustrate_id = 1;
+  int32 special_kill_effect_rate = 2;
+}
+
+message FloatingMainMapTheme{
+  int32 illustrate_id = 1;
+  string map_asset_path = 2;
+}
+
+message FloatingAiSkin {
+  int32 skin_id = 1;
+  int32 random_weight = 2;
+  int64 start_time = 3;
+  int64 end_time = 4;
+  int32 illustrate_id = 5;
+}
+
+//endless floating v2 end
+
+//season activity start
+message SeasonCaiDan {
+  int32 id = 1;
+  string name = 2;
+  string desc = 3;
+  string imgurl = 4;
+}
+
+message SeasonActivity {
+  int32 season_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+  repeated SeasonCaiDan caidan_list = 4;
+  string season_homepage_url = 5;
+  string passport_url = 6;
+  string treasure_hunting_url = 7;
+  string chase_sea_url = 8;
+  string true_love_url = 9;
+}
+//season activity end
