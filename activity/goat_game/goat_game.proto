@@ -88,9 +88,6 @@ message GetEndlessChestInfoRsp {
   int32 show_day_limit = 4; // 每日次数限制
   EndlessChestReward reward = 5; // 奖励配置
   int64 totay_shown_count = 6; // 今日已出现次数
-  int64 through_wall_start_time = 7; // 穿墙开始时间
-  int64 through_wall_end_time = 8; // 穿墙结束时间
-  repeated string through_wall_white_list = 9; // 允许穿墙白名单
 }
 
 message EndlessChestReward {
