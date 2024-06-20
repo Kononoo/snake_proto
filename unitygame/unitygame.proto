@@ -352,6 +352,7 @@ message EventTaskInfo {
 message ReportUnitygameScoreReq {
   int32 game_mode = 1;
   bytes result = 2;  // 使用 pb 进行序列化和反序列化
+  int64 checksum = 3; // 校验码
 }
 
 message ReportUnitygameScoreRsp {
