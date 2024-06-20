@@ -409,15 +409,15 @@ message TextConfig {
   string qualifying_beta_rule = 5;
   string gift_rule = 6;
   string endless_tips = 7;
-
-  map<string, GiftLikeTextList> gift_like_text_list_v2 = 8;
+  GiftLikeTextList gift_like_text_list = 8;
   repeated ShortCutConfig quick_phrase_text_list = 9;
   repeated string ai_anchor_nickname_list = 10;
   repeated ReportBehavior report_behavior_list = 11;
 }
 
 message GiftLikeTextList {
-  repeated string value = 1;
+  repeated string enemy = 1;
+  repeated string partner = 2;
 }
 
 message ShortCutConfig {
