@@ -70,6 +70,7 @@ message ShowBadgeConfig {
   repeated BadgeTitle title_list = 2;
   string show_illustration_desc_url = 3;
   string activity_id = 4;
+  int64  show_pack_pop_cd_sec = 5;
 }
 
 message BadgeTitle {
@@ -80,6 +81,8 @@ message BadgeTitle {
   int32 end_show_level = 5;
   string desc = 6;
   string name = 7;
+  int64  pack_id = 8;
+  int64  effect_sec = 9;
 }
 // ======== show_badge end ====================================================
 
