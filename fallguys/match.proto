@@ -95,17 +95,18 @@ message UploadMetricRsq {
 }
 
 message GetAIListReq {
-  repeated int32 level_ids = 1; // 关卡id列表
-  int32 num = 2; // 需要的ai数量
+  int32 num = 1; // 需要的ai数量
+  map<int32, int32> level_version = 2; // {关卡id:关卡版本}
 }
 
 message AIItem {
   string born_pos = 1; // 起始点坐标
   string ai_url = 2; // ai数据链接
-  int32 ai_level = 3; // ai等级，1:低级，2:中级，3:高级
 }
 message AIList {
-  repeated AIItem list = 1; // ai列表
+  repeated AIItem low_list = 1; // 低等ai列表
+  repeated AIItem mid_list = 2; // 中等ai列表
+  repeated AIItem high_list = 3; // 高等ai列表
 }
 message GetAIListRsp {
   map<int32, AIList> ai_map = 1;// 每个关卡对应的ai列表
