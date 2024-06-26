@@ -728,5 +728,14 @@ message SeasonActivity {
   string treasure_hunting_url = 7;
   string chase_sea_url = 8;
   string true_love_url = 9;
+  string game_url = 10;
+  string meetup_url = 11;
+  string season_illustration_url = 12;
+  repeated SeasonRollSkin roll_skin = 13;
+}
+
+message SeasonRollSkin {
+  int32 skin_id = 1;
+  int64 unlock_time = 2;
 }
 //season activity end
