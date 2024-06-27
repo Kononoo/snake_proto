@@ -27,6 +27,7 @@ message SyncStateRsp {
 message Winner {
   string uid = 1; // 玩家uid
   int32 rank = 2; // 名次
+  bool is_ai = 3; // 是否是ai
 }
 
 // 游戏结束时untiy server通知游戏结果
