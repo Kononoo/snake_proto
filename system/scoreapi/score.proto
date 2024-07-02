@@ -4,6 +4,16 @@ package scoreapi;
 
 option go_package = "git.17zjh.com/snake/snake_proto/system/scoreapi";
 
+// get_user_score_info request
+message UserScoreReq {
+    string uid = 1;
+    string target_uid = 2;
+    int64 visit = 3;
+    string version = 4;
+    int64 platform = 5;
+
+}
+
 // get_user_score_info response
 message UserScoreResp {
     // user_info
