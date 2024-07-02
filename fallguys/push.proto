@@ -38,3 +38,8 @@ message PuStartStressTest {
   sint32 gameMode = 1;  //游戏模式,903 糖豆人大逃杀，904 大逃杀娱乐
   int32 rid = 2; // 房间id
 }
+
+// 匹配过程中信息展示
+message PuMatchInfo {
+  int32 PlayerNum = 1; // 房间中人数信息
+}
