@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package userapi;
+
+option go_package = "git.17zjh.com/snake/snake_proto/system/userapi";
+
+// user_api/update_signature req
+message UpdateSignatureReq {
+  string uid = 1;
+  string signature = 2;
+
+}
+
+// user_api/update_signature resp
+message UpdateSignatureResp {
+  int64 signature_remain = 1;
+
+}
+
+// user_api/update_gender req
+message UpdateGenderReq {
+  string uid = 1;
+  int64 gender = 2;
+  int64 price = 3;
+
+}
+
+// user_api/update_gender resp
+message UpdateGenderResp {
+  int64 remain = 1;
+
+}
+
+// user_api/update_user_info req
+message UpdateUserInfoReq {
+  string uid = 1;
+  int64 platform = 2;
+  string version = 3;
+  string market = 4;
+  string push_id = 5;
+  string push_channel = 6;
+  int64 age = 7;
+  string avatar = 8;
+  string headimgurl = 9;
+  string province = 10;
+  string city = 11;
+  int64 box_id = 12;
+  int64 gender = 13;
+
+}
+
+// user_api/update_user_avatar req
+message UpdateUserAvatarReq {
+  string uid = 1;
+  string avatar = 2;
+  string headimgurl = 3;
+
+}
+
+// user_api/update_user_avatar resp
+message UpdateUserAvatarResp {
+  int64 avatar_remain = 1;
+  int64 state = 2;
+
+}
