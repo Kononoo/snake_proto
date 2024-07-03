@@ -6,324 +6,321 @@ option go_package = "git.17zjh.com/snake/snake_proto/system/scoreapi";
 
 // get_user_score_info request
 message UserScoreReq {
-    string uid = 1;
-    string target_uid = 2;
-    int64 visit = 3;
-    string version = 4;
-    int64 platform = 5;
+  string uid = 1;
+  string target_uid = 2;
+  int64 visit = 3;
+  string version = 4;
+  int64 platform = 5;
 
 }
 
 // get_user_score_info response
 message UserScoreResp {
-    // user_info
-    string uid = 1;
-    int64 is_underage = 2;
-    int64 age = 3;
-    int64 gender = 4;
-    string nickname = 5;
-    string avatar = 6;
-    string big_avatar = 7;
-    int64 avatar_state = 8;
-    // score
-    int64 end_len = 9;
-    string end_len_rank = 10;
-    int64 limit_len = 11;
-    string limit_len_rank = 12;
-    int64 end_kill = 13;
-    string end_kill_rank = 14;
-    int64 limit_kill = 15;
-    string limit_kill_rank = 16;
-    int64 len = 17;
-    int64 kill = 18;
-    int64 game_count = 19;
-    UserExciteStat excite_stat = 20;
-    // grade_info
-    GradeInfo grade_info = 21;
-    int64 box_id = 22;
-    FreeStats free_stats = 23;
-    QualifyingStatsResp qualifying_stats = 24;
-    HappyCoinResp happycoin_stats = 25;
-    int64 login_type = 26;
-    Area area = 27;
-    repeated Photo photo_list = 28;
-    string signature = 29;
-    repeated SeasonRank season_honor = 30;
-    string remark = 31;
-    int64 following_count = 32;
-    int64 follower_count = 33;
-    int64 is_follower = 34;
-    OtherClanInfo clan_info = 35;
-    SocialInfo social_info = 36;
-    int64 show = 37;
-    UserHomepageItem user_item_list = 38;
-    MarryInfoResp marry_info = 39;
-    UserTitleRank user_title_list = 40;
-    repeated UserTitleInfo user_wear_title = 41;
-    TeamKillResp team_kill = 42;
-    SimpleGameDetail race_normal_stats = 43;
-    int64 player_id = 44;
-    int64 is_master = 45;
-    int64 is_prentice = 46;
-    int64 hide_mentorship = 47;
-    int64 mentorship = 48;
-    int64 master_point = 49;
-    int64 charm_exp_level = 50;
-    int64 homepage_show_id = 51;
-    int64 homepage_open_id = 52;
-    int64 home_pendant_id = 53;
-    int64 verified = 54;
-    string verified_desc = 55;
-    int64 nickname_remain = 56;
-    int64 avatar_remain = 57;
-    int64 signature_remain = 58;
-    int64 social_bg_id = 59;
-    int64 charge_exp = 60;
-    repeated GiftItem gift_collect_list = 61;
-    repeated int64 charm_level_got_list = 62;
-    // 好友状态信息 1是单向好友
-    int64 friend_state = 63;
+  // user_info
+  string uid = 1;
+  int64 is_underage = 2;
+  int64 age = 3;
+  int64 gender = 4;
+  string nickname = 5;
+  string avatar = 6;
+  string big_avatar = 7;
+  int64 avatar_state = 8;
+  // score
+  int64 end_len = 9;
+  string end_len_rank = 10;
+  int64 limit_len = 11;
+  string limit_len_rank = 12;
+  int64 end_kill = 13;
+  string end_kill_rank = 14;
+  int64 limit_kill = 15;
+  string limit_kill_rank = 16;
+  int64 len = 17;
+  int64 kill = 18;
+  int64 game_count = 19;
+  UserExciteStat excite_stat = 20;
+  // grade_info
+  GradeInfo grade_info = 21;
+  int64 box_id = 22;
+  FreeStats free_stats = 23;
+  QualifyingStatsResp qualifying_stats = 24;
+  HappyCoinResp happycoin_stats = 25;
+  int64 login_type = 26;
+  Area area = 27;
+  repeated Photo photo_list = 28;
+  string signature = 29;
+  repeated SeasonRank season_honor = 30;
+  string remark = 31;
+  int64 following_count = 32;
+  int64 follower_count = 33;
+  int64 is_follower = 34;
+  OtherClanInfo clan_info = 35;
+  SocialInfo social_info = 36;
+  int64 show = 37;
+  UserHomepageItem user_item_list = 38;
+  MarryInfoResp marry_info = 39;
+  repeated UserBagTitle user_title_list = 40;
+  repeated UserTitleInfo user_wear_title = 41;
+  TeamKillResp team_kill = 42;
+  SimpleGameDetail race_normal_stats = 43;
+  int64 player_id = 44;
+  int64 is_master = 45;
+  int64 is_prentice = 46;
+  int64 hide_mentorship = 47;
+  int64 mentorship = 48;
+  int64 master_point = 49;
+  int64 charm_exp_level = 50;
+  int64 homepage_show_id = 51;
+  int64 homepage_open_id = 52;
+  int64 home_pendant_id = 53;
+  int64 verified = 54;
+  string verified_desc = 55;
+  int64 nickname_remain = 56;
+  int64 avatar_remain = 57;
+  int64 signature_remain = 58;
+  int64 social_bg_id = 59;
+  int64 charge_exp = 60;
+  repeated GiftItem gift_collect_list = 61;
+  repeated int64 charm_level_got_list = 62;
+  // 好友状态信息 1是单向好友
+  int64 friend_state = 63;
 
 }
 
 message UserExciteStat {
-    int64 max_score = 1;
-    int64 max_time = 2;
-    int64 max_kill = 3;
-    int64 max_hit = 4;
-    int64 total_count = 5;
-    int64 survive_time = 6;
-    string week = 7;
-    int64 week_score = 8;
-    string month = 9;
-    int64 month_score = 10;
+  int64 max_score = 1;
+  int64 max_time = 2;
+  int64 max_kill = 3;
+  int64 max_hit = 4;
+  int64 total_count = 5;
+  int64 survive_time = 6;
+  string week = 7;
+  int64 week_score = 8;
+  string month = 9;
+  int64 month_score = 10;
 
 }
 
 message GradeInfo {
-    int64 ultimate = 1;
-    int64 star = 2;
-    int64 max_star = 3;
-    int64 time = 4;
-    int64 unlock = 5;
-    repeated int64 rank_count = 6;
-    int64 PvpCount = 7;
+  int64 ultimate = 1;
+  int64 star = 2;
+  int64 max_star = 3;
+  int64 time = 4;
+  int64 unlock = 5;
+  repeated int64 rank_count = 6;
+  int64 PvpCount = 7;
 
 }
 
 message FreeStats {
-    int64 times = 1;
-    int64 kill = 2;
-    int64 max_kill = 3;
-    int64 max_length = 4;
+  int64 times = 1;
+  int64 kill = 2;
+  int64 max_kill = 3;
+  int64 max_length = 4;
 
 }
 
 message QualifyingStatsResp {
-    repeated HonorItem honor_list = 1;
-    int64 kill = 2;
-    int64 max_kill = 3;
-    int64 max_length = 4;
-    int64 mvp = 5;
-    int64 pvp_count = 6;
-    SeasonRank max_honor = 7;
+  repeated HonorItem honor_list = 1;
+  int64 kill = 2;
+  int64 max_kill = 3;
+  int64 max_length = 4;
+  int64 mvp = 5;
+  int64 pvp_count = 6;
+  SeasonRank max_honor = 7;
 
 }
 
 message HonorItem {
-    string honor_id = 1;
-    int64 value = 2;
+  string honor_id = 1;
+  int64 value = 2;
 
 }
 
 message SeasonRank {
-    string season = 1;
-    int64 prime_rank = 2;
-    int64 star = 3;
+  string season = 1;
+  int64 prime_rank = 2;
+  int64 star = 3;
 
 }
 
 // 返回的happy_stats结构
 message HappyCoinResp {
-    int64 max_happycoin = 1;
-    int64 is_ceo = 2;
-    string earn_rate = 3;
-    string history_earn = 4;
-    string max_earn = 5;
-    int64 total_games = 6;
-    int64 total_kill = 7;
+  int64 max_happycoin = 1;
+  int64 is_ceo = 2;
+  string earn_rate = 3;
+  string history_earn = 4;
+  string max_earn = 5;
+  int64 total_games = 6;
+  int64 total_kill = 7;
 
 }
 
 message Area {
-    string province = 1;
-    string city = 2;
+  string province = 1;
+  string city = 2;
 
 }
 
 message Photo {
-    string photo_id = 1;
-    int64 state = 2;
-    string url = 3;
+  string photo_id = 1;
+  int64 state = 2;
+  string url = 3;
 
 }
 
 message OtherClanInfo {
-    string clan_id = 1;
-    string name = 2;
-    int64 role = 3;
-    string logo_id = 4;
-    int64 index = 5;
-    int64 reward_id = 6;
-    Area area = 7;
+  string clan_id = 1;
+  string name = 2;
+  int64 role = 3;
+  string logo_id = 4;
+  int64 index = 5;
+  int64 reward_id = 6;
+  Area area = 7;
 
-}
-
-message UserHomepageItem {
-    repeated int64 skin = 1;
-    repeated int64 user_kill = 2;
-    repeated int64 team_skin = 3;
-    repeated UserLimitItem user_face = 4;
-    repeated UserLimitItem team_suit_list = 5;
-
-}
-
-message UserLimitItem {
-    int64 item_id = 1;
-    int64 expire_time = 2;
-    int64 remain_time = 3;
-    int64 add_time = 4;
-
-}
-
-message MarryInfoResp {
-    int64 marry_id = 1;
-    string marry_time = 2;
-    int64 ring_id = 3;
-    int64 love = 4;
-    string desc = 5;
-    string days = 6;
-    int64 wedding_state = 7;
-    SimpleUserInfo cp_user_info = 8;
-    repeated UserRingInfo ring_list = 9;
-    int64 love_rank = 10;
-    int64 couple_bg_id = 11;
-    int64 couple_bg_id_v2 = 12;
-    string couple_bg_owner_v2 = 13;
-    repeated CoupleBgInfo couple_bg_list = 14;
-
-}
-
-message SimpleUserInfo {
-    string uid = 1;
-    string nickname = 2;
-    string avatar = 3;
-    int64 box_id = 4;
-    int64 gender = 5;
-    int64 verified = 6;
-
-}
-
-message UserRingInfo {
-    int64 ring_id = 1;
-    int64 num = 2;
-    int64 used_num = 3;
-    int64 time = 4;
-
-}
-
-message CoupleBgInfo {
-    int64 item_id = 1;
-    int64 expire_time = 2;
-    string owner = 3;
-
-}
-
-message UserTitleRank {
-
-}
-
-message UserBagTitle {
-    int64 item_id = 1;
-    int64 expire_time = 2;
-    int64 remain_time = 3;
-    int64 get_count = 4;
-    int64 get_time = 5;
-
-}
-
-message UserTitleInfo {
-    int64 item_id = 1;
-    int64 expire_time = 2;
-    int64 wear_time = 3;
-    int64 home_ui = 4;
-
-}
-
-message TeamKillResp {
-    int64 played = 1;
-    string record = 2;
-    string ppg = 3;
-    string kpg = 4;
-    int64 mvp = 5;
-    int64 max_record = 6;
-    int64 max_score = 7;
-    int64 max_kill_score = 8;
-    int64 pvp = 9;
-
-}
-
-message SimpleGameDetail {
-    int64 mvp = 1;
-    int64 kill = 2;
-    int64 pvp_count = 3;
-    int64 max_length = 4;
-    int64 max_kill = 5;
-    int64 time = 6;
-
-}
-
-message GiftItem {
-    int64 id = 1;
-    int64 num = 2;
 }
 
 message SocialInfo {
-    int64 my_care = 1;
-    int64 my_care_state = 2;
-    repeated SocialCharmInfo care_list = 3;
-    repeated SocialGiftCache gift_list = 4;
-    int64 charm = 5;
+  int64 my_care = 1;
+  int64 my_care_state = 2;
+  repeated SocialCharmInfo care_list = 3;
+  repeated SocialGiftCache gift_list = 4;
+  int64 charm = 5;
 
 }
 
 message SocialCharmInfo {
-    string uid = 1;
-    int64 charm = 2;
-    string nickname = 3;
-    string avatar = 4;
-    int64 gender = 5;
-    int64 box_id = 6;
-    int64 index = 7;
-    int64 time = 8;
-    int64 care = 9;
-    int64 charm_exp_level = 10;
-    int64 verified = 11;
-    int64 social_bg_id = 12;
+  string uid = 1;
+  int64 charm = 2;
+  string nickname = 3;
+  string avatar = 4;
+  int64 gender = 5;
+  int64 box_id = 6;
+  int64 index = 7;
+  int64 time = 8;
+  int64 care = 9;
+  int64 charm_exp_level = 10;
+  int64 verified = 11;
+  int64 social_bg_id = 12;
 
 }
 
 message SocialGiftCache {
-    string uid = 1;
-    int64 gender = 2;
-    string nickname = 3;
-    string avatar = 4;
-    int64 box_id = 5;
-    int64 gift_id = 6;
-    int64 num = 7;
-    int64 send_time = 8;
-    int64 log_id = 9;
-    int64 charm_exp_level = 10;
-    int64 verified = 11;
+  string uid = 1;
+  int64 gender = 2;
+  string nickname = 3;
+  string avatar = 4;
+  int64 box_id = 5;
+  int64 gift_id = 6;
+  int64 num = 7;
+  int64 send_time = 8;
+  int64 log_id = 9;
+  int64 charm_exp_level = 10;
+  int64 verified = 11;
+
+}
+
+message UserHomepageItem {
+  repeated int64 skin = 1;
+  repeated int64 user_kill = 2;
+  repeated int64 team_skin = 3;
+  repeated UserLimitItem user_face = 4;
+  repeated UserLimitItem team_suit_list = 5;
+
+}
+
+message UserLimitItem {
+  int64 item_id = 1;
+  int64 expire_time = 2;
+  int64 remain_time = 3;
+  int64 add_time = 4;
+
+}
+
+message MarryInfoResp {
+  int64 marry_id = 1;
+  string marry_time = 2;
+  int64 ring_id = 3;
+  int64 love = 4;
+  string desc = 5;
+  string days = 6;
+  int64 wedding_state = 7;
+  SimpleUserInfo cp_user_info = 8;
+  repeated UserRingInfo ring_list = 9;
+  int64 love_rank = 10;
+  int64 couple_bg_id = 11;
+  int64 couple_bg_id_v2 = 12;
+  string couple_bg_owner_v2 = 13;
+  repeated CoupleBgInfo couple_bg_list = 14;
+
+}
+
+message CoupleBgInfo {
+  int64 item_id = 1;
+  int64 expire_time = 2;
+  string owner = 3;
+
+}
+
+message SimpleUserInfo {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+  int64 box_id = 4;
+  int64 gender = 5;
+  int64 verified = 6;
+
+}
+
+message UserRingInfo {
+  int64 ring_id = 1;
+  int64 num = 2;
+  int64 used_num = 3;
+  int64 time = 4;
+
+}
+
+message UserBagTitle {
+  int64 item_id = 1;
+  int64 expire_time = 2;
+  int64 remain_time = 3;
+  int64 get_count = 4;
+  int64 get_time = 5;
+
+}
+
+message UserTitleInfo {
+  int64 item_id = 1;
+  int64 expire_time = 2;
+  int64 wear_time = 3;
+  int64 home_ui = 4;
+
+}
+
+message TeamKillResp {
+  int64 played = 1;
+  string record = 2;
+  string ppg = 3;
+  string kpg = 4;
+  int64 mvp = 5;
+  int64 max_record = 6;
+  int64 max_score = 7;
+  int64 max_kill_score = 8;
+  int64 pvp = 9;
+
+}
+
+message SimpleGameDetail {
+  int64 mvp = 1;
+  int64 kill = 2;
+  int64 pvp_count = 3;
+  int64 max_length = 4;
+  int64 max_kill = 5;
+  int64 time = 6;
+
+}
+
+message GiftItem {
+  int64 id = 1;
+  int64 num = 2;
 
 }
