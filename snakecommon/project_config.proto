@@ -255,6 +255,7 @@ message RankConfig {
   repeated string prime_top_urls = 12;
   repeated RankLevel level = 13;
   repeated RankReward rank_reward = 14;
+  string prime_king_range_text = 15;
 }
 
 message RankReward {
