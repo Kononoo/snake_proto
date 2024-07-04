@@ -14,8 +14,15 @@ message UserScoreReq {
 
 }
 
+message UserScoreHttpRsp {
+  UserScoreRsp data = 1;
+  int64 code = 2;
+  string msg = 3;
+  int64 time = 4;
+}
+
 // get_user_score_info response
-message UserScoreResp {
+message UserScoreRsp {
   // user_info
   string uid = 1;
   int64 is_underage = 2;
