@@ -732,6 +732,8 @@ message SeasonActivity {
   string meetup_url = 11;
   string season_illustration_url = 12;
   repeated SeasonRollSkin roll_skin = 13;
+  string current_pv_url = 14;
+  string review_pv_url = 15;
 }
 
 message SeasonRollSkin {
@@ -739,3 +741,66 @@ message SeasonRollSkin {
   int64 unlock_time = 2;
 }
 //season activity end
+
+// 照片墙 Start
+message PhotoWallConfig {
+  PhotoWallActivityConfig activity = 1;
+  string photo_wall_text = 2;
+}
+
+message PhotoWallActivityConfig {
+  int32 id = 1;
+  string name = 2;
+  string activity_text = 3;
+  string media_url = 4;
+  string upgrade_text = 5;
+  string reset_text = 6;
+  string title_url = 7;
+  int64 start_time = 8;
+  int64 end_time = 9;
+  int64 lastest_end_time = 10;
+  int32 gift_id = 11;
+  string exp_name = 12;
+  int32 like_reward_limit = 13;
+  repeated PhotoWallIconConfig icon_config = 14;
+  repeated PhotoWallLevelsItem levels = 15;
+  PhotoWallGuardian guardian = 16;
+}
+
+message PhotoWallIconConfig {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string btn_url = 3;
+  string img_url = 4;
+}
+
+message PhotoWallLevelsItem {
+  int32 level = 1;
+  string img_url = 2;
+  string like_reward_name = 3;
+  int32 anim_type = 4;
+  string anim_url = 5;
+  int32 chest_id = 6;
+  int32 exp = 7;
+}
+
+message PhotoWallGuardian {
+  int32 continue_sec = 1;
+  int64 start_time = 2;
+  string continue_img = 3;
+  int32 anim_type = 4;
+  string anim_url = 5;
+  int32 middle_item_id = 6;
+}
+// 照片墙 End
+
+message GoatEndlessChest {
+  int64 start_time = 1;
+  int64 end_time = 2;
+}
+
+message EndlessThroughWall{
+  int64 start_time = 1;
+  int64 end_time = 2;
+  repeated string white_list = 3;
+}
