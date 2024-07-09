@@ -63,3 +63,17 @@ message UpdateUserAvatarResp {
   int64 state = 2;
 
 }
+
+// user_api/update_nickname req
+message UpdateUserNickNameReq {
+  string uid = 1;
+  string nickname = 2;
+  string push_id = 3;
+  string push_channel = 4;
+  int64 cost_type = 5;
+}
+
+// user_api/update_nickname resp
+message UpdateUserNickNameResp {
+  int64 nickname_remain = 1;
+}
