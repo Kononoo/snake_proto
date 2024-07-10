@@ -500,6 +500,134 @@ func (x *UpdateUserAvatarResp) GetState() int64 {
 	return 0
 }
 
+// user_api/update_nickname req
+type UpdateUserNickNameReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid         string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Nickname    string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	PushId      string `protobuf:"bytes,3,opt,name=push_id,json=pushId,proto3" json:"push_id,omitempty"`
+	PushChannel string `protobuf:"bytes,4,opt,name=push_channel,json=pushChannel,proto3" json:"push_channel,omitempty"`
+	CostType    int64  `protobuf:"varint,5,opt,name=cost_type,json=costType,proto3" json:"cost_type,omitempty"`
+}
+
+func (x *UpdateUserNickNameReq) Reset() {
+	*x = UpdateUserNickNameReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_userapi_user_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateUserNickNameReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUserNickNameReq) ProtoMessage() {}
+
+func (x *UpdateUserNickNameReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_userapi_user_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUserNickNameReq.ProtoReflect.Descriptor instead.
+func (*UpdateUserNickNameReq) Descriptor() ([]byte, []int) {
+	return file_system_userapi_user_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *UpdateUserNickNameReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *UpdateUserNickNameReq) GetNickname() string {
+	if x != nil {
+		return x.Nickname
+	}
+	return ""
+}
+
+func (x *UpdateUserNickNameReq) GetPushId() string {
+	if x != nil {
+		return x.PushId
+	}
+	return ""
+}
+
+func (x *UpdateUserNickNameReq) GetPushChannel() string {
+	if x != nil {
+		return x.PushChannel
+	}
+	return ""
+}
+
+func (x *UpdateUserNickNameReq) GetCostType() int64 {
+	if x != nil {
+		return x.CostType
+	}
+	return 0
+}
+
+// user_api/update_nickname resp
+type UpdateUserNickNameResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	NicknameRemain int64 `protobuf:"varint,1,opt,name=nickname_remain,json=nicknameRemain,proto3" json:"nickname_remain,omitempty"`
+}
+
+func (x *UpdateUserNickNameResp) Reset() {
+	*x = UpdateUserNickNameResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_userapi_user_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateUserNickNameResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUserNickNameResp) ProtoMessage() {}
+
+func (x *UpdateUserNickNameResp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_userapi_user_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUserNickNameResp.ProtoReflect.Descriptor instead.
+func (*UpdateUserNickNameResp) Descriptor() ([]byte, []int) {
+	return file_system_userapi_user_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *UpdateUserNickNameResp) GetNicknameRemain() int64 {
+	if x != nil {
+		return x.NicknameRemain
+	}
+	return 0
+}
+
 var File_system_userapi_user_proto protoreflect.FileDescriptor
 
 var file_system_userapi_user_proto_rawDesc = []byte{
@@ -554,11 +682,25 @@ var file_system_userapi_user_proto_rawDesc = []byte{
 	0x23, 0x0a, 0x0d, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x5f, 0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0c, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x52, 0x65,
 	0x6d, 0x61, 0x69, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69,
-	0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
-	0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x79,
-	0x73, 0x74, 0x65, 0x6d, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x9e, 0x01, 0x0a, 0x15, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x4e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d,
+	0x65, 0x52, 0x65, 0x71, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x6e, 0x69, 0x63, 0x6b, 0x6e, 0x61,
+	0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x69, 0x63, 0x6b, 0x6e, 0x61,
+	0x6d, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x75, 0x73, 0x68, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x75, 0x73, 0x68, 0x49, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x70,
+	0x75, 0x73, 0x68, 0x5f, 0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0b, 0x70, 0x75, 0x73, 0x68, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x12, 0x1b,
+	0x0a, 0x09, 0x63, 0x6f, 0x73, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x08, 0x63, 0x6f, 0x73, 0x74, 0x54, 0x79, 0x70, 0x65, 0x22, 0x41, 0x0a, 0x16, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x55, 0x73, 0x65, 0x72, 0x4e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d,
+	0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x27, 0x0a, 0x0f, 0x6e, 0x69, 0x63, 0x6b, 0x6e, 0x61, 0x6d,
+	0x65, 0x5f, 0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e,
+	0x6e, 0x69, 0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x6d, 0x61, 0x69, 0x6e, 0x42, 0x30,
+	0x5a, 0x2e, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x61, 0x70, 0x69,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -573,15 +715,17 @@ func file_system_userapi_user_proto_rawDescGZIP() []byte {
 	return file_system_userapi_user_proto_rawDescData
 }
 
-var file_system_userapi_user_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_system_userapi_user_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_system_userapi_user_proto_goTypes = []interface{}{
-	(*UpdateSignatureReq)(nil),   // 0: userapi.UpdateSignatureReq
-	(*UpdateSignatureResp)(nil),  // 1: userapi.UpdateSignatureResp
-	(*UpdateGenderReq)(nil),      // 2: userapi.UpdateGenderReq
-	(*UpdateGenderResp)(nil),     // 3: userapi.UpdateGenderResp
-	(*UpdateUserInfoReq)(nil),    // 4: userapi.UpdateUserInfoReq
-	(*UpdateUserAvatarReq)(nil),  // 5: userapi.UpdateUserAvatarReq
-	(*UpdateUserAvatarResp)(nil), // 6: userapi.UpdateUserAvatarResp
+	(*UpdateSignatureReq)(nil),     // 0: userapi.UpdateSignatureReq
+	(*UpdateSignatureResp)(nil),    // 1: userapi.UpdateSignatureResp
+	(*UpdateGenderReq)(nil),        // 2: userapi.UpdateGenderReq
+	(*UpdateGenderResp)(nil),       // 3: userapi.UpdateGenderResp
+	(*UpdateUserInfoReq)(nil),      // 4: userapi.UpdateUserInfoReq
+	(*UpdateUserAvatarReq)(nil),    // 5: userapi.UpdateUserAvatarReq
+	(*UpdateUserAvatarResp)(nil),   // 6: userapi.UpdateUserAvatarResp
+	(*UpdateUserNickNameReq)(nil),  // 7: userapi.UpdateUserNickNameReq
+	(*UpdateUserNickNameResp)(nil), // 8: userapi.UpdateUserNickNameResp
 }
 var file_system_userapi_user_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -681,6 +825,30 @@ func file_system_userapi_user_proto_init() {
 				return nil
 			}
 		}
+		file_system_userapi_user_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateUserNickNameReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_userapi_user_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateUserNickNameResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -688,7 +856,7 @@ func file_system_userapi_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_system_userapi_user_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
