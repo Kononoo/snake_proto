@@ -5,6 +5,7 @@ package friendapi;
 option go_package = "git.17zjh.com/snake/snake_proto/system/friendapi";
 
 // friend_api/set_friend_remark req
+// route: friendapi.SetFriendRemark
 message SetFriendRemarkReq {
   string uid = 1;
   string friend_uid = 2;
@@ -13,6 +14,7 @@ message SetFriendRemarkReq {
 }
 
 // friend_api/add_following req
+// route: friendapi.AddFollowing
 message AddFollowingReq {
   string uid = 1;
   string following_uid = 2;
@@ -87,6 +89,7 @@ message GradeInfo {
 }
 
 // friend_api/delete_following req
+// route: friendapi.DeleteFollowing
 message DeleteFollowingReq {
   string uid = 1;
   string following_uid = 2;
@@ -95,6 +98,7 @@ message DeleteFollowingReq {
 
 
 // friend_api/add_black_user req
+// route: friendapi.AddBlackUser
 message AddBlackUserReq {
   string uid = 1;
   string black_uid = 2;

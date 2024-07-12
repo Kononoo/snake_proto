@@ -5,6 +5,7 @@ package skinapi;
 option go_package = "git.17zjh.com/snake/snake_proto/system/skinapi";
 
 // skin_api/update_title_state req
+// route: skin.UpdateTitleState
 message UpdateTitleStateReq {
   string uid = 1;
   string version = 2;
@@ -29,6 +30,7 @@ message UserTitleInfo {
 }
 
 // skin_api/update_homepage_show_state req
+// route: skin.UpdateHomepageShowState
 message UpdateHomepageShowStateReq {
   string uid = 1;
   string version = 2;
@@ -40,6 +42,7 @@ message UpdateHomepageShowStateReq {
 }
 
 // skin_api/update_homepage_open_state req
+// route: skin.UpdateHomepageOpenState
 message UpdateHomepageOpenStateReq {
   string uid = 1;
   string version = 2;
@@ -51,6 +54,7 @@ message UpdateHomepageOpenStateReq {
 }
 
 // skin_api/update_home_pendant req
+// route: skin.UpdateHomePendantState
 message UpdateHomePendantStateReq {
   string uid = 1;
   int64 home_pendant_id = 2;

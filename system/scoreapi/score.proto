@@ -5,6 +5,7 @@ package scoreapi;
 option go_package = "git.17zjh.com/snake/snake_proto/system/scoreapi";
 
 // get_user_score_info request
+// route: score.GetUserScoreInfo
 message UserScoreReq {
   string uid = 1;
   string target_uid = 2;
