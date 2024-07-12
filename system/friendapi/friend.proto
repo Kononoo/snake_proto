@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package friendapi;
+
+option go_package = "git.17zjh.com/snake/snake_proto/system/friendapi";
+
+message SetFriendRemarkReq {
+  string uid = 1;
+  string friend_uid = 2;
+  string remark = 3;
+
+}
+
+message AddFollowingReq {
+  string uid = 1;
+  string following_uid = 2;
+  string version = 3;
+  int64 source = 4;
+  int64 source_v2 = 5;
+  int64 platform = 6;
+
+}
+
+// 存储好友信息
+message FriendInfo {
+  string uid = 1;
+  int64 time = 2;
+  int64 friend_state = 3;
+  string remark = 4;
+  string nickname = 5;
+  string avatar = 6;
+  int64 gender = 7;
+  int64 box_id = 8;
+  int64 charm = 9;
+  int64 show = 10;
+  int64 week = 11;
+  int64 tw_end = 12;
+  int64 tw_limit = 13;
+  Mentorship mentorship = 14;
+  GradeInfo grade_info = 15;
+  FriendExciteInfo excite_info = 16;
+  FriendEscapeInfo escape_info = 17;
+  int64 is_underage = 18;
+  int64 charm_exp_level = 19;
+  int64 verified = 20;
+  int64 social_bg_id = 21;
+  int64 charge_exp = 22;
+
+}
+
+message Mentorship {
+  int64 bond_value = 1;
+  bool is_fade = 2;
+  int64 ship_type = 3;
+
+}
+
+message FriendExciteInfo {
+  int64 week_best = 1;
+  int64 history_best = 2;
+  string week = 3;
+  string month = 4;
+
+}
+
+message FriendEscapeInfo {
+  int64 acc_point = 1;
+
+}
+
+message GradeInfo {
+  int64 ultimate = 1;
+  int64 star = 2;
+  int64 max_star = 3;
+  int64 time = 4;
+  int64 unlock = 5;
+  repeated int64 rank_count = 6;
+  int64 PvpCount = 7;
+
+}
