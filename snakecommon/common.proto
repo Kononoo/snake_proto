@@ -9,3 +9,6 @@ message HttpCommRsp {
   int32 time = 4;
   string traceId = 5;
 }
+
+// 空返回
+message EmptyResponse {}

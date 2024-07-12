@@ -4,6 +4,7 @@ package friendapi;
 
 option go_package = "git.17zjh.com/snake/snake_proto/system/friendapi";
 
+// friend_api/set_friend_remark req
 message SetFriendRemarkReq {
   string uid = 1;
   string friend_uid = 2;
@@ -11,6 +12,7 @@ message SetFriendRemarkReq {
 
 }
 
+// friend_api/add_following req
 message AddFollowingReq {
   string uid = 1;
   string following_uid = 2;
@@ -19,6 +21,11 @@ message AddFollowingReq {
   int64 source_v2 = 5;
   int64 platform = 6;
 
+}
+
+// friend_api/add_following resp
+message AddFollowingResp {
+  FriendInfo following_user_info=1;
 }
 
 // 存储好友信息
@@ -76,5 +83,20 @@ message GradeInfo {
   int64 unlock = 5;
   repeated int64 rank_count = 6;
   int64 PvpCount = 7;
+
+}
+
+// friend_api/delete_following req
+message DeleteFollowingReq {
+  string uid = 1;
+  string following_uid = 2;
+
+}
+
+
+// friend_api/add_black_user req
+message AddBlackUserReq {
+  string uid = 1;
+  string black_uid = 2;
 
 }
