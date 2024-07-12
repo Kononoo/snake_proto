@@ -169,6 +169,11 @@ message HatchEgg {
   string title_desc = 10;
   string title_url = 11;
   string bg_url = 12;
+  int64 id = 13;
+  int64 reward_review_id = 14;
+  string reward_review_title = 15;
+  string admin_title = 16;
+  string title = 17;
 }
 
 message EggLevelInfo {
@@ -207,6 +212,8 @@ message MeetupConfigItem {
   repeated SingleDayReward days_list = 7;
   string buff_desc = 8;
   repeated MeetupBuffItem buff = 9;
+  string title_url = 10;
+  string button_msg = 11;
 }
 
 message SingleDayReward {
@@ -276,8 +283,8 @@ message PassCheckV2 {
   int32 max_break_level = 6; // 最大突破礼等级
   repeated PassTotalRankReward total_reward = 7;//榜单奖励
   PassSeasonNotifyConfig season_notify = 8;
-  PassCheckDailyWelfare daily_welfare = 9;
-  PassCheckBreakReward break_reward = 10;
+  repeated PassCheckDailyWelfare daily_welfare = 9;
+  repeated PassCheckBreakReward break_reward = 10;
   int64 out_loop_level = 11;
   string pass_check_pack_act_id = 12;
 }

@@ -333,6 +333,10 @@ message PackInfo {
   int32 need_vip = 17;
   int32 nabob_addition = 18;
   string lucky_desc = 19;
+  int64 buy_times = 20;
+  int64 add_rank =21;
+  int64 del_ad_min = 22;
+  repeated PriceInfo price_info = 23;
 }
 
 message PackMultiPriceInfo {
@@ -1297,6 +1301,7 @@ message RewardConfig { // 服务器配置奖励的通用结构
   int32 total_limit = 23;
   int32 baodi_times = 24; // 普通奖励配置中保底次数
   int32 reset_baodi = 25; // 获得后是否重置保底  0 不重置 1 重置
+  int64 id = 26;
 }
 
 message RewardInfo { // 客户端奖励配置结构
