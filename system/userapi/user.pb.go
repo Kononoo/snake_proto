@@ -21,6 +21,7 @@ const (
 )
 
 // user_api/update_signature req
+// route: userapi.UpdateSignature
 type UpdateSignatureReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -125,6 +126,7 @@ func (x *UpdateSignatureResp) GetSignatureRemain() int64 {
 }
 
 // user_api/update_gender req
+// route: userapi.UpdateGender
 type UpdateGenderReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -237,6 +239,7 @@ func (x *UpdateGenderResp) GetRemain() int64 {
 }
 
 // user_api/update_user_info req
+// route: userapi.UpdateUserInfo
 type UpdateUserInfoReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -381,6 +384,7 @@ func (x *UpdateUserInfoReq) GetGender() int64 {
 }
 
 // user_api/update_user_avatar req
+// route: userapi.UpdateUserAvatar
 type UpdateUserAvatarReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -501,6 +505,7 @@ func (x *UpdateUserAvatarResp) GetState() int64 {
 }
 
 // user_api/update_nickname req
+// route: userapi.UpdateUserNickname
 type UpdateUserNickNameReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -21,6 +21,7 @@ const (
 )
 
 // get_user_score_info request
+// route: score.GetUserScoreInfo
 type UserScoreReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

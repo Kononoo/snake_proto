@@ -21,6 +21,7 @@ const (
 )
 
 // skin_api/update_title_state req
+// route: skin.UpdateTitleState
 type UpdateTitleStateReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -220,6 +221,7 @@ func (x *UserTitleInfo) GetHomeUi() int64 {
 }
 
 // skin_api/update_homepage_show_state req
+// route: skin.UpdateHomepageShowState
 type UpdateHomepageShowStateReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -308,6 +310,7 @@ func (x *UpdateHomepageShowStateReq) GetOn() bool {
 }
 
 // skin_api/update_homepage_open_state req
+// route: skin.UpdateHomepageOpenState
 type UpdateHomepageOpenStateReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -396,6 +399,7 @@ func (x *UpdateHomepageOpenStateReq) GetOn() bool {
 }
 
 // skin_api/update_home_pendant req
+// route: skin.UpdateHomePendantState
 type UpdateHomePendantStateReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

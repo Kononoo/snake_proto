@@ -21,6 +21,7 @@ const (
 )
 
 // friend_api/set_friend_remark req
+// route: friendapi.SetFriendRemark
 type SetFriendRemarkReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -85,6 +86,7 @@ func (x *SetFriendRemarkReq) GetRemark() string {
 }
 
 // friend_api/add_following req
+// route: friendapi.AddFollowing
 type AddFollowingReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -713,6 +715,7 @@ func (x *GradeInfo) GetPvpCount() int64 {
 }
 
 // friend_api/delete_following req
+// route: friendapi.DeleteFollowing
 type DeleteFollowingReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -769,6 +772,7 @@ func (x *DeleteFollowingReq) GetFollowingUid() string {
 }
 
 // friend_api/add_black_user req
+// route: friendapi.AddBlackUser
 type AddBlackUserReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
