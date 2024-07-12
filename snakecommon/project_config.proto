@@ -507,7 +507,7 @@ message HomeBackground {
   string skin_floor_bg_imgurl = 6;
   string top_shadow_imgurl = 7;
   string left_shadow_imgurl = 8;
-  int32 unity_home_bg = 9;
+  int64 unity_home_bg = 9;
 }
 // === ui_config_v3 end =======================================
 
