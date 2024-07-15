@@ -11,4 +11,4 @@ message HttpCommRsp {
 }
 
 // 空返回
-message EmptyResponse {}
+message EmptyRsp {}
