@@ -12,8 +12,8 @@ message UpdateSignatureReq {
 
 }
 
-// user_api/update_signature resp
-message UpdateSignatureResp {
+// user_api/update_signature rsp
+message UpdateSignatureRsp {
   int64 signature_remain = 1;
 
 }
@@ -27,8 +27,8 @@ message UpdateGenderReq {
 
 }
 
-// user_api/update_gender resp
-message UpdateGenderResp {
+// user_api/update_gender rsp
+message UpdateGenderRsp {
   int64 remain = 1;
 
 }
@@ -62,7 +62,7 @@ message UpdateUserAvatarReq {
 }
 
 // user_api/update_user_avatar resp
-message UpdateUserAvatarResp {
+message UpdateUserAvatarRsp {
   int64 avatar_remain = 1;
   int64 state = 2;
 
@@ -78,7 +78,7 @@ message UpdateUserNickNameReq {
   int64 cost_type = 5;
 }
 
-// user_api/update_nickname resp
-message UpdateUserNickNameResp {
+// user_api/update_nickname rsp
+message UpdateUserNickNameRsp {
   int64 nickname_remain = 1;
 }

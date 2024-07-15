@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package toolapi;
+
+option go_package = "git.17zjh.com/snake/snake_proto/system/toolapi";
+
+// tool_api/upload_report req
+// route: toolapi.UploadReport
+message UploadReportReq {
+  uint64 id = 1;
+  string uid = 2;
+  string target_uid = 3;
+  int64 scene = 4;
+  string report_content = 5;
+  string behavior_ids = 6;
+  string extra = 7;
+  int64 state = 8;
+  string market = 9;
+  int64 platform = 10;
+  int64 create_time = 11;
+
+}
+
+message UploadReportRsp {
+  string tips = 1;
+
+}
+

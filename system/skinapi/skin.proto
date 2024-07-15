@@ -15,8 +15,8 @@ message UpdateTitleStateReq {
 
 }
 
-// skin_api/update_title_state resp
-message UpdateTitleStateResp {
+// skin_api/update_title_state rsp
+message UpdateTitleStateRsp {
   repeated UserTitleInfo user_wear_title = 1;
 
 }

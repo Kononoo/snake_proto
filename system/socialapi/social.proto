@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package socialapi;
+
+option go_package = "git.17zjh.com/snake/snake_proto/system/socialapi";
+
+// social_api/get_care_top_list req
+// route: socialapi.GetCareTopList
+message GetCareTopListReq {
+  string target_uid = 1;
+
+}
+
+message GetCareTopListRsp {
+  repeated SocialCharmInfo care_list = 1;
+
+}
+
+message SocialCharmInfo {
+  string uid = 1;
+  int64 charm = 2;
+  string nickname = 3;
+  string avatar = 4;
+  int64 gender = 5;
+  int64 box_id = 6;
+  int64 index = 7;
+  int64 time = 8;
+  int64 care = 9;
+  int64 charm_exp_level = 10;
+  int64 verified = 11;
+  int64 social_bg_id = 12;
+
+}
+
+// social_api/get_user_gift_list req
+// route: socialapi.GetUserGiftList
+message GetUserGiftListReq {
+  string target_uid = 1;
+
+}
+
+message GetUserGiftListRsp {
+  repeated SocialGiftCache receive_list = 1;
+
+}
+
+message SocialGiftCache {
+  string uid = 1;
+  int64 gender = 2;
+  string nickname = 3;
+  string avatar = 4;
+  int64 box_id = 5;
+  int64 gift_id = 6;
+  int64 num = 7;
+  int64 send_time = 8;
+  int64 log_id = 9;
+  int64 charm_exp_level = 10;
+  int64 verified = 11;
+
+}
+
+// social_api/get_gift_log req
+// route: socialapi.GetGiftLog
+message GetGiftLogReq {
+  string uid = 1;
+
+}
+
+message GetGiftLogRsp {
+  repeated SocialGiftCache send_list = 1;
+  repeated SocialGiftCache receive_list = 2;
+
+}
