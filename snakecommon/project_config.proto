@@ -824,6 +824,7 @@ message FlagsConfig {
   int32 disable_invisible_memory_reclamation = 27;
   int32 yyb_tobid_ad_switch = 28;
   int32 not_show_idfa = 29;
+  int32 silence_download = 30;
 }
 
 message FeedbackConfig {
