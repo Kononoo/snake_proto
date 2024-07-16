@@ -1203,7 +1203,7 @@ message MasterPrenticeStrategyItem {
 
 // === hot_config start ========================================
 message HotConfig {
-  int32 in_review_state = 1;
+  int32 market_state = 1;
   string sub_config = 2; // 小秘书配置
 }
 // === hot_config end ========================================
