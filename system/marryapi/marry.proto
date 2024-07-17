@@ -42,7 +42,7 @@ message GetChurchInfoReq {
 
 message GetChurchInfoRsp {
   repeated ChurchMsg msg_list = 1;
-  repeated WeddingInfo wedding_list = 2;
+  repeated WeddingInfo wedding_list = 2; // most count is 20
   repeated UserRingInfo ring_list = 3;
 
 }
@@ -98,4 +98,18 @@ message SimpleUserInfo {
   int64 gender = 5;
   int64 verified = 6;
 
+}
+
+// route: marryapi.GetWeddingList req
+// 分页查询
+message GetWeddingListReq{
+  int64 page_offset = 1; // 偏移页数，从0开始计数
+  int64 page_size = 2; // 页的大小，一次查询返回的记录数
+
+  int64 platform = 3;
+}
+
+message GetWeddingListRsp{
+  int64 total = 1; // 记录总数
+  repeated WeddingInfo wedding_list = 2;
 }
