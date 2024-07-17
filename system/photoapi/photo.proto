@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package photoapi;
+
+option go_package = "git.17zjh.com/snake/snake_proto/system/photoapi";
+import "snakecommon/config.proto";
+
+// user_api/get_photo_wall_info req; route: photoapi.GetPhotoWallInfo
+// user_api/like_photo_wall req; route: photoapi.LikePhotoWall
+message PhotoWallCommonReq {
+  string uid = 1;
+  string target_uid = 2;
+
+}
+
+// user_api/get_photo_wall_info rsp
+message PhotoWallInfoRsp {
+  int64 liked_count = 1;
+  bool has_liked_today = 2;
+  int64 exp_value = 3;
+  int64 guardian_num = 4;
+  int64 remain_reward_count = 5;
+
+}
+
+// user_api/like_photo_wall rsp
+message PhotoWallLikeRsp {
+  int64 liked_count = 1;
+  int64 remain_reward_count = 2;
+  repeated snakecommon.CRewardItem reward_list = 3;
+
+}
+
+// user_api/delete_photo req
+// route: photoapi.DeletePhoto
+message DeletePhotoReq {
+  string uid = 1;
+  string photo_id = 2;
+
+}
+
+message DeletePhotoRsp {
+  repeated Photo photo_list = 1;
+
+}
+
+message Photo {
+  string photo_id = 1;
+  int64 state = 2;
+  string url = 3;
+
+}
+
+// user_api/upload_photo req
+// route: photoapi.UploadPhoto
+message UploadPhotoReq {
+  string uid = 1;
+  string key = 2;
+
+}
+
+message UploadPhotoRsp {
+  repeated Photo photo_list = 1;
+
+}
