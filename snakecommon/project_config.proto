@@ -74,10 +74,10 @@ message OlGameConfig {
   int32 exit_button_plan = 22; // 4.3.28新增,中途退出按钮状态方案
   int32 qualifying_guide = 23; //1:强引导，2：弱引导
   int32 ol_game_predict_data_count_new = 24;
-  MatchBackgroudConfig match_backgroud = 25;
+  MatchBackgroundConfig match_background = 25;
 }
 
-message MatchBackgroudConfig {
+message MatchBackgroundConfig {
   int32 anim_type = 1;
   string anim_src = 2;
   string static_imgurl = 3;
