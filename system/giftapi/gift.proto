@@ -16,7 +16,21 @@ message GetGiftRecordReq {
 }
 
 message GetGiftRecordRsp {
-  repeated GiftItem list = 1;
+  repeated UserReceiveGiftInfo list = 1;
+  int64 self_send_num = 2;
+
+}
+
+message UserReceiveGiftInfo {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+  int64 box_id = 4;
+  int64 num = 5;
+  int64 verified = 6;
+  int64 charm_exp_level = 7;
+  int64 is_black = 8;
+  int64 gender = 9;
 
 }
 
