@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package giftapi;
+
+option go_package = "git.17zjh.com/snake/snake_proto/system/giftapi";
+
+import "snakecommon/config.proto";
+
+// gift_api/get_gift_record req
+// route: giftapi.GetGiftRecord
+message GetGiftRecordReq {
+  string uid = 1;
+  string target_uid = 2;
+  int64 gift_id = 3;
+
+}
+
+message GetGiftRecordRsp {
+  repeated GiftItem list = 1;
+
+}
+
+message GiftItem {
+  int64 id = 1;
+  int64 num = 2;
+
+}
+
+// gift_api/get_gift_detail req
+// route: giftapi.GetGiftDetail
+message GetGiftDetailReq {
+  string uid = 1;
+  string target_uid = 2;
+  int64 gift_id = 3;
+
+}
+
+message GetGiftDetailRsp {
+  int64 num = 1;
+  int64 light_time = 2;
+  int64 is_black = 3;
+  string uid = 4;
+  string nickname = 5;
+  string avatar = 6;
+  int64 box_id = 7;
+  int64 charm = 8;
+  string gift_name = 9;
+  int64 verified = 10;
+  int64 charm_exp_level = 11;
+  int64 gender = 12;
+
+}
+
+// gift_api/upload_view_status req
+// route: giftapi.UploadViewStatus
+message UploadViewStatusReq {
+  string uid = 1;
+  string target_uid = 2;
+
+}
+
+// gift_api/self_gift_record req
+// route: giftapi.SelfGiftRecord
+message SelfGiftRecordReq {
+  string uid = 1;
+  string target_uid = 2;
+
+}
+
+message SelfGiftRecordRsp {
+  repeated GiftItem list = 1;
+
+}
+
+// gift_api/get_charm_level_reward req
+// route: giftapi.GetCharmLevelReward
+message GetCharmLevelRewardReq {
+  string uid = 1;
+  int64 id = 2;
+
+}
+
+message GetCharmLevelRewardRsp {
+  repeated snakecommon.CRewardItem reward_list = 1;
+
+}
