@@ -811,3 +811,27 @@ message EndlessThroughWall{
   int64 end_time = 2;
   repeated string white_list = 3;
 }
+
+// 贪吃蛇首充 Start
+message FirstChargeConfig {
+  string act_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+  string support_version = 4;
+  int32 unlock_money = 5;
+  string unlock_money_url = 6;
+  repeated FirstChargeSkinRewardInfo skin_list = 7;
+  repeated FirstChargeUnlockRewardInfo unlock_rewards = 8;
+}
+
+message FirstChargeSkinRewardInfo {
+  int32 item_id = 1;
+  string imgurl = 2;
+  string name = 3;
+}
+
+message FirstChargeUnlockRewardInfo{
+  int32 day = 1;
+  repeated snakecommon.CRewardItem rewards = 2;
+}
+// 贪吃蛇首充 End
