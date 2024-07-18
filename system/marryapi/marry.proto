@@ -113,3 +113,36 @@ message GetWeddingListRsp{
   int64 total = 1; // 记录总数
   repeated WeddingInfo wedding_list = 2;
 }
+
+// marry_api/get_create_wedding_state req
+// route: marryapi.GetCreateWeddingState
+message GetCreateWeddingStateReq {
+  string uid = 1;
+  string version = 2;
+  int64 platform = 3;
+  string market = 4;
+
+}
+
+message GetCreateWeddingStateRsp {
+  int64 type = 1;
+  string msg = 2;
+  WeddingInfo invitation_info = 3;
+  repeated Wrs marry_time_list = 4;
+
+}
+
+message Item {
+  int64 finish_time = 1;
+  int64 start_time = 2;
+  bool state = 3;
+
+}
+
+message Wrs {
+  string day = 1;
+  int64 time = 2;
+  repeated Item sub_list = 3;
+  repeated Item limit_sub_list = 4;
+
+}
