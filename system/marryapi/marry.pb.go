@@ -915,6 +915,284 @@ func (x *GetWeddingListRsp) GetWeddingList() []*WeddingInfo {
 	return nil
 }
 
+// marry_api/get_create_wedding_state req
+// route: marryapi.GetCreateWeddingState
+type GetCreateWeddingStateReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid      string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Version  string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
+	Platform int64  `protobuf:"varint,3,opt,name=platform,proto3" json:"platform,omitempty"`
+	Market   string `protobuf:"bytes,4,opt,name=market,proto3" json:"market,omitempty"`
+}
+
+func (x *GetCreateWeddingStateReq) Reset() {
+	*x = GetCreateWeddingStateReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_marryapi_marry_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetCreateWeddingStateReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCreateWeddingStateReq) ProtoMessage() {}
+
+func (x *GetCreateWeddingStateReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_marryapi_marry_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCreateWeddingStateReq.ProtoReflect.Descriptor instead.
+func (*GetCreateWeddingStateReq) Descriptor() ([]byte, []int) {
+	return file_system_marryapi_marry_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetCreateWeddingStateReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *GetCreateWeddingStateReq) GetVersion() string {
+	if x != nil {
+		return x.Version
+	}
+	return ""
+}
+
+func (x *GetCreateWeddingStateReq) GetPlatform() int64 {
+	if x != nil {
+		return x.Platform
+	}
+	return 0
+}
+
+func (x *GetCreateWeddingStateReq) GetMarket() string {
+	if x != nil {
+		return x.Market
+	}
+	return ""
+}
+
+type GetCreateWeddingStateRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Type           int64        `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
+	Msg            string       `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	InvitationInfo *WeddingInfo `protobuf:"bytes,3,opt,name=invitation_info,json=invitationInfo,proto3" json:"invitation_info,omitempty"`
+	MarryTimeList  []*Wrs       `protobuf:"bytes,4,rep,name=marry_time_list,json=marryTimeList,proto3" json:"marry_time_list,omitempty"`
+}
+
+func (x *GetCreateWeddingStateRsp) Reset() {
+	*x = GetCreateWeddingStateRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_marryapi_marry_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetCreateWeddingStateRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCreateWeddingStateRsp) ProtoMessage() {}
+
+func (x *GetCreateWeddingStateRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_marryapi_marry_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCreateWeddingStateRsp.ProtoReflect.Descriptor instead.
+func (*GetCreateWeddingStateRsp) Descriptor() ([]byte, []int) {
+	return file_system_marryapi_marry_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *GetCreateWeddingStateRsp) GetType() int64 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *GetCreateWeddingStateRsp) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *GetCreateWeddingStateRsp) GetInvitationInfo() *WeddingInfo {
+	if x != nil {
+		return x.InvitationInfo
+	}
+	return nil
+}
+
+func (x *GetCreateWeddingStateRsp) GetMarryTimeList() []*Wrs {
+	if x != nil {
+		return x.MarryTimeList
+	}
+	return nil
+}
+
+type Item struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	FinishTime int64 `protobuf:"varint,1,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
+	StartTime  int64 `protobuf:"varint,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	State      bool  `protobuf:"varint,3,opt,name=state,proto3" json:"state,omitempty"`
+}
+
+func (x *Item) Reset() {
+	*x = Item{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_marryapi_marry_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Item) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Item) ProtoMessage() {}
+
+func (x *Item) ProtoReflect() protoreflect.Message {
+	mi := &file_system_marryapi_marry_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Item.ProtoReflect.Descriptor instead.
+func (*Item) Descriptor() ([]byte, []int) {
+	return file_system_marryapi_marry_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *Item) GetFinishTime() int64 {
+	if x != nil {
+		return x.FinishTime
+	}
+	return 0
+}
+
+func (x *Item) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *Item) GetState() bool {
+	if x != nil {
+		return x.State
+	}
+	return false
+}
+
+type Wrs struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Day          string  `protobuf:"bytes,1,opt,name=day,proto3" json:"day,omitempty"`
+	Time         int64   `protobuf:"varint,2,opt,name=time,proto3" json:"time,omitempty"`
+	SubList      []*Item `protobuf:"bytes,3,rep,name=sub_list,json=subList,proto3" json:"sub_list,omitempty"`
+	LimitSubList []*Item `protobuf:"bytes,4,rep,name=limit_sub_list,json=limitSubList,proto3" json:"limit_sub_list,omitempty"`
+}
+
+func (x *Wrs) Reset() {
+	*x = Wrs{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_marryapi_marry_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Wrs) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Wrs) ProtoMessage() {}
+
+func (x *Wrs) ProtoReflect() protoreflect.Message {
+	mi := &file_system_marryapi_marry_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Wrs.ProtoReflect.Descriptor instead.
+func (*Wrs) Descriptor() ([]byte, []int) {
+	return file_system_marryapi_marry_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *Wrs) GetDay() string {
+	if x != nil {
+		return x.Day
+	}
+	return ""
+}
+
+func (x *Wrs) GetTime() int64 {
+	if x != nil {
+		return x.Time
+	}
+	return 0
+}
+
+func (x *Wrs) GetSubList() []*Item {
+	if x != nil {
+		return x.SubList
+	}
+	return nil
+}
+
+func (x *Wrs) GetLimitSubList() []*Item {
+	if x != nil {
+		return x.LimitSubList
+	}
+	return nil
+}
+
 var File_system_marryapi_marry_proto protoreflect.FileDescriptor
 
 var file_system_marryapi_marry_proto_rawDesc = []byte{
@@ -1039,11 +1317,45 @@ var file_system_marryapi_marry_proto_rawDesc = []byte{
 	0x74, 0x61, 0x6c, 0x12, 0x38, 0x0a, 0x0c, 0x77, 0x65, 0x64, 0x64, 0x69, 0x6e, 0x67, 0x5f, 0x6c,
 	0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x6d, 0x61, 0x72, 0x72,
 	0x79, 0x61, 0x70, 0x69, 0x2e, 0x57, 0x65, 0x64, 0x64, 0x69, 0x6e, 0x67, 0x49, 0x6e, 0x66, 0x6f,
-	0x52, 0x0b, 0x77, 0x65, 0x64, 0x64, 0x69, 0x6e, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x42, 0x31, 0x5a,
-	0x2f, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73,
-	0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x6d, 0x61, 0x72, 0x72, 0x79, 0x61, 0x70, 0x69,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x0b, 0x77, 0x65, 0x64, 0x64, 0x69, 0x6e, 0x67, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x7a, 0x0a,
+	0x18, 0x47, 0x65, 0x74, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x57, 0x65, 0x64, 0x64, 0x69, 0x6e,
+	0x67, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x76,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65,
+	0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
+	0x6d, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
+	0x6d, 0x12, 0x16, 0x0a, 0x06, 0x6d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x06, 0x6d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x22, 0xb7, 0x01, 0x0a, 0x18, 0x47, 0x65,
+	0x74, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x57, 0x65, 0x64, 0x64, 0x69, 0x6e, 0x67, 0x53, 0x74,
+	0x61, 0x74, 0x65, 0x52, 0x73, 0x70, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x73,
+	0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6d, 0x73, 0x67, 0x12, 0x3e, 0x0a, 0x0f,
+	0x69, 0x6e, 0x76, 0x69, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x6d, 0x61, 0x72, 0x72, 0x79, 0x61, 0x70, 0x69,
+	0x2e, 0x57, 0x65, 0x64, 0x64, 0x69, 0x6e, 0x67, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0e, 0x69, 0x6e,
+	0x76, 0x69, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x35, 0x0a, 0x0f,
+	0x6d, 0x61, 0x72, 0x72, 0x79, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18,
+	0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0d, 0x2e, 0x6d, 0x61, 0x72, 0x72, 0x79, 0x61, 0x70, 0x69,
+	0x2e, 0x57, 0x72, 0x73, 0x52, 0x0d, 0x6d, 0x61, 0x72, 0x72, 0x79, 0x54, 0x69, 0x6d, 0x65, 0x4c,
+	0x69, 0x73, 0x74, 0x22, 0x5c, 0x0a, 0x04, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x1f, 0x0a, 0x0b, 0x66,
+	0x69, 0x6e, 0x69, 0x73, 0x68, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x0a, 0x66, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a,
+	0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x73,
+	0x74, 0x61, 0x74, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74,
+	0x65, 0x22, 0x8c, 0x01, 0x0a, 0x03, 0x57, 0x72, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x64, 0x61, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x64, 0x61, 0x79, 0x12, 0x12, 0x0a, 0x04, 0x74,
+	0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x12,
+	0x29, 0x0a, 0x08, 0x73, 0x75, 0x62, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x0e, 0x2e, 0x6d, 0x61, 0x72, 0x72, 0x79, 0x61, 0x70, 0x69, 0x2e, 0x49, 0x74, 0x65,
+	0x6d, 0x52, 0x07, 0x73, 0x75, 0x62, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x34, 0x0a, 0x0e, 0x6c, 0x69,
+	0x6d, 0x69, 0x74, 0x5f, 0x73, 0x75, 0x62, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x04, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x6d, 0x61, 0x72, 0x72, 0x79, 0x61, 0x70, 0x69, 0x2e, 0x49, 0x74,
+	0x65, 0x6d, 0x52, 0x0c, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x53, 0x75, 0x62, 0x4c, 0x69, 0x73, 0x74,
+	0x42, 0x31, 0x5a, 0x2f, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f,
+	0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x6d, 0x61, 0x72, 0x72, 0x79,
+	0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1058,34 +1370,42 @@ func file_system_marryapi_marry_proto_rawDescGZIP() []byte {
 	return file_system_marryapi_marry_proto_rawDescData
 }
 
-var file_system_marryapi_marry_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_system_marryapi_marry_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_system_marryapi_marry_proto_goTypes = []interface{}{
-	(*ChangeRingReq)(nil),       // 0: marryapi.ChangeRingReq
-	(*MarkReadReq)(nil),         // 1: marryapi.MarkReadReq
-	(*UpdateCoupleBgV2Req)(nil), // 2: marryapi.UpdateCoupleBgV2Req
-	(*GetChurchInfoReq)(nil),    // 3: marryapi.GetChurchInfoReq
-	(*GetChurchInfoRsp)(nil),    // 4: marryapi.GetChurchInfoRsp
-	(*UserRingInfo)(nil),        // 5: marryapi.UserRingInfo
-	(*WeddingInfo)(nil),         // 6: marryapi.WeddingInfo
-	(*ChurchMsg)(nil),           // 7: marryapi.ChurchMsg
-	(*SimpleUserInfo)(nil),      // 8: marryapi.SimpleUserInfo
-	(*GetWeddingListReq)(nil),   // 9: marryapi.GetWeddingListReq
-	(*GetWeddingListRsp)(nil),   // 10: marryapi.GetWeddingListRsp
+	(*ChangeRingReq)(nil),            // 0: marryapi.ChangeRingReq
+	(*MarkReadReq)(nil),              // 1: marryapi.MarkReadReq
+	(*UpdateCoupleBgV2Req)(nil),      // 2: marryapi.UpdateCoupleBgV2Req
+	(*GetChurchInfoReq)(nil),         // 3: marryapi.GetChurchInfoReq
+	(*GetChurchInfoRsp)(nil),         // 4: marryapi.GetChurchInfoRsp
+	(*UserRingInfo)(nil),             // 5: marryapi.UserRingInfo
+	(*WeddingInfo)(nil),              // 6: marryapi.WeddingInfo
+	(*ChurchMsg)(nil),                // 7: marryapi.ChurchMsg
+	(*SimpleUserInfo)(nil),           // 8: marryapi.SimpleUserInfo
+	(*GetWeddingListReq)(nil),        // 9: marryapi.GetWeddingListReq
+	(*GetWeddingListRsp)(nil),        // 10: marryapi.GetWeddingListRsp
+	(*GetCreateWeddingStateReq)(nil), // 11: marryapi.GetCreateWeddingStateReq
+	(*GetCreateWeddingStateRsp)(nil), // 12: marryapi.GetCreateWeddingStateRsp
+	(*Item)(nil),                     // 13: marryapi.Item
+	(*Wrs)(nil),                      // 14: marryapi.Wrs
 }
 var file_system_marryapi_marry_proto_depIdxs = []int32{
-	7, // 0: marryapi.GetChurchInfoRsp.msg_list:type_name -> marryapi.ChurchMsg
-	6, // 1: marryapi.GetChurchInfoRsp.wedding_list:type_name -> marryapi.WeddingInfo
-	5, // 2: marryapi.GetChurchInfoRsp.ring_list:type_name -> marryapi.UserRingInfo
-	8, // 3: marryapi.WeddingInfo.cp_user_info:type_name -> marryapi.SimpleUserInfo
-	8, // 4: marryapi.WeddingInfo.user_info:type_name -> marryapi.SimpleUserInfo
-	8, // 5: marryapi.ChurchMsg.user_info:type_name -> marryapi.SimpleUserInfo
-	8, // 6: marryapi.ChurchMsg.cp_user_info:type_name -> marryapi.SimpleUserInfo
-	6, // 7: marryapi.GetWeddingListRsp.wedding_list:type_name -> marryapi.WeddingInfo
-	8, // [8:8] is the sub-list for method output_type
-	8, // [8:8] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	7,  // 0: marryapi.GetChurchInfoRsp.msg_list:type_name -> marryapi.ChurchMsg
+	6,  // 1: marryapi.GetChurchInfoRsp.wedding_list:type_name -> marryapi.WeddingInfo
+	5,  // 2: marryapi.GetChurchInfoRsp.ring_list:type_name -> marryapi.UserRingInfo
+	8,  // 3: marryapi.WeddingInfo.cp_user_info:type_name -> marryapi.SimpleUserInfo
+	8,  // 4: marryapi.WeddingInfo.user_info:type_name -> marryapi.SimpleUserInfo
+	8,  // 5: marryapi.ChurchMsg.user_info:type_name -> marryapi.SimpleUserInfo
+	8,  // 6: marryapi.ChurchMsg.cp_user_info:type_name -> marryapi.SimpleUserInfo
+	6,  // 7: marryapi.GetWeddingListRsp.wedding_list:type_name -> marryapi.WeddingInfo
+	6,  // 8: marryapi.GetCreateWeddingStateRsp.invitation_info:type_name -> marryapi.WeddingInfo
+	14, // 9: marryapi.GetCreateWeddingStateRsp.marry_time_list:type_name -> marryapi.Wrs
+	13, // 10: marryapi.Wrs.sub_list:type_name -> marryapi.Item
+	13, // 11: marryapi.Wrs.limit_sub_list:type_name -> marryapi.Item
+	12, // [12:12] is the sub-list for method output_type
+	12, // [12:12] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_system_marryapi_marry_proto_init() }
@@ -1226,6 +1546,54 @@ func file_system_marryapi_marry_proto_init() {
 				return nil
 			}
 		}
+		file_system_marryapi_marry_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetCreateWeddingStateReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_marryapi_marry_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetCreateWeddingStateRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_marryapi_marry_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Item); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_marryapi_marry_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Wrs); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1233,7 +1601,7 @@ func file_system_marryapi_marry_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_system_marryapi_marry_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
