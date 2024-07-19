@@ -1,0 +1,273 @@
+syntax = "proto3";
+package mentorshipapi;
+option go_package = "git.17zjh.com/snake/snake_proto/system/mentorshipapi";
+import "snakecommon/config.proto";
+
+// mentorship_api/task_info req
+// route: mentorshipapi.TaskInfo
+message TaskInfoReq {
+  string uid = 1;
+  int64 type = 2;
+
+}
+
+message TaskInfoRsp {
+  repeated TaskInfo list = 1;
+
+}
+
+message TaskInfo {
+  int64 apply_finish_ts = 1;
+  string avatar = 2;
+  int64 bond_value = 3;
+  int64 box_id = 4;
+  DirectTask direct_task = 5;
+  FinishTask finish_task = 6;
+  int64 join_ts = 7;
+  string nickname = 8;
+  TeachTask teach_task = 9;
+  int64 type = 10;
+  string uid = 11;
+  int64 verified = 12;
+
+}
+
+message TeachTask {
+  repeated Task grow_task = 1;
+  repeated Task team_task = 2;
+
+}
+
+message DirectTask {
+  repeated Task grow_task = 1;
+  repeated Task team_task = 2;
+
+}
+
+message FinishTask {
+  repeated Task task = 1;
+
+}
+
+message Task {
+  int64 id = 1;
+  repeated SubTask list = 2;
+
+}
+
+message SubTask {
+  string btn_url = 1;
+  string desc = 2;
+  int64 need = 3;
+  int64 period = 4;
+  int64 progress = 5;
+  repeated snakecommon.CRewardItem reward_list = 6;
+  int64 state = 7;
+  int64 task_id = 8;
+  string title = 9;
+  int64 type = 10;
+
+}
+
+// mentorship_api/deal_mentorship req
+// route: mentorshipapi.DealMentorship
+message DealMentorshipReq {
+  string uid = 1;
+  string target_uid = 2;
+  int64 operation = 3;
+  int64 platform = 4;
+  string source = 5;
+
+}
+
+message DealMentorshipRsp {
+  int64 state = 1;
+  string msg = 2;
+
+}
+
+// mentorship_api/get_task_reward req
+// route: mentorshipapi.GetTaskReward
+message GetTaskRewardReq {
+  int64 task_type = 1;
+  string uid = 2;
+  string target_uid = 3;
+  int64 id = 4;
+  int64 task_id = 5;
+}
+
+message GetTaskRewardRsp {
+  repeated snakecommon.CRewardItem reward_list = 1;
+
+}
+
+// mentorship_api/get_finish_msg req
+// route: mentorshipapi.GetFinishMsg
+message GetFinishMsgReq {
+  string uid = 1;
+
+}
+
+message GetFinishMsgRsp {
+  repeated FinishMsg finish_msg = 1;
+  bool taken_reward = 2;
+
+}
+
+message FinishMsg {
+  string uid = 1;
+  bool reward = 2;
+
+}
+
+// mentorship_api/take_finish_reward req
+// route: mentorshipapi.TakeFinishReward
+message TakeFinishRewardReq {
+  string uid = 1;
+  string master_uid = 2;
+
+}
+
+// mentorship_api/get_privilege req
+// route: mentorshipapi.GetPrivilege
+message GetPrivilegeReq {
+  string uid = 1;
+
+}
+
+message GetPrivilegeRsp {
+  int64 master_point = 1;
+  repeated PrivilegeReward privilege_reward = 2;
+
+}
+
+message PrivilegeReward {
+  int64 state = 1;
+
+}
+
+// mentorship_api/take_privilege_reward req
+// route: mentorshipapi.TakePrivilegeReward
+message TakePrivilegeRewardReq {
+  string uid = 1;
+  int64 level = 2;
+
+}
+
+message TakePrivilegeRewardRsp {
+  repeated snakecommon.CRewardItem reward_list = 1;
+
+}
+
+// mentorship_api/master_info req
+// route: mentorshipapi.MasterInfo
+message MasterInfoReq {
+  string target_uid = 1;
+
+}
+
+message MasterInfoRsp {
+  repeated MasterInfo master_list = 1;
+
+}
+
+message GradeInfo {
+  int64 ultimate = 1;
+  int64 star = 2;
+  int64 max_star = 3;
+  int64 time = 4;
+  int64 unlock = 5;
+  repeated int64 rank_count = 6;
+
+}
+
+message MasterPrenticeWithUserInfo {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+  int64 gender = 4;
+  int64 box_id = 5;
+  GradeInfo grade_info = 6;
+  int64 bond_value = 7;
+  int64 join_ts = 8;
+  int64 finish_ts = 9;
+  int64 direct_ts = 10;
+  int64 apply_break_ts = 11;
+  string apply_break_uid = 12;
+  int64 charm_exp_level = 13;
+  int64 verified = 14;
+
+}
+
+message MasterInfo {
+  int64 apply_break_ts = 1;
+  string apply_break_uid = 2;
+  string avatar = 3;
+  int64 bond_value = 4;
+  int64 bond_value_update_ts = 5;
+  int64 box_id = 6;
+  int64 charm_exp_level = 7;
+  repeated MasterPrenticeWithUserInfo direct = 8;
+  int64 direct_ts = 9;
+  repeated MasterPrenticeWithUserInfo finish = 10;
+  int64 gender = 11;
+  GradeInfo grade_info = 12;
+  int64 join_ts = 13;
+  int64 master_point = 14;
+  string nickname = 15;
+  repeated MasterPrenticeWithUserInfo teach = 16;
+  int64 type = 17;
+  string uid = 18;
+  int64 verified = 19;
+
+}
+
+// mentorship_api/apprentice_info req
+// route: mentorshipapi.GetApprenticeInfo
+message GetApprenticeInfoReq {
+  string target_uid = 1;
+
+}
+
+message GetApprenticeInfoRsp {
+  repeated MasterInfo direct = 1;
+  repeated MasterInfo finish = 2;
+  repeated MasterInfo teach = 3;
+
+}
+
+// mentorship_api/get_msg_list req
+// route: mentorshipapi.GetMsgList
+message GetMsgListReq {
+  string uid = 1;
+  int64 cursor = 2;
+
+}
+
+message GetMsgListRsp {
+  repeated MsgItem list = 1;
+
+}
+
+message MsgItem {
+  int64 id = 1;
+  string uid = 2;
+  string content = 3;
+  int64 type = 4;
+
+}
+
+// mentorship_api/deal_msg req
+// route: mentorshipapi.DealMsg
+message DealMsgReq {
+  string uid = 1;
+  int64 id = 2;
+  int64 operation = 3;
+
+}
+
+message DealMsgRsp {
+  int64 state = 1;
+  string msg = 2;
+
+}
