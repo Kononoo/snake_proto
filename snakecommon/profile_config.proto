@@ -811,3 +811,15 @@ message EndlessThroughWall{
   int64 end_time = 2;
   repeated string white_list = 3;
 }
+
+// super_show start
+message SuperShow {
+  string start_time_str = 1;
+  string end_time_str = 2;
+  int64 start_time = 3;
+  int64 end_time = 4;
+  int64 skin_id = 5;
+  int64 anim_type = 6;
+  string anim_url = 7;
+}
+// super_show end
