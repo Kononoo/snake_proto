@@ -10981,6 +10981,687 @@ func (x *ProductConfig) GetStoreConfig() *config.StoreConfig {
 	return nil
 }
 
+// wedding_config start
+type WeddingConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ForceDivorceNeedDiamond int64              `protobuf:"varint,1,opt,name=force_divorce_need_diamond,json=forceDivorceNeedDiamond,proto3" json:"force_divorce_need_diamond,omitempty"`
+	Contact                 string             `protobuf:"bytes,2,opt,name=contact,proto3" json:"contact,omitempty"`
+	TemplateList            []*WeddingTemplate `protobuf:"bytes,3,rep,name=template_list,json=templateList,proto3" json:"template_list,omitempty"`
+	LimitedTemplateList     []*WeddingTemplate `protobuf:"bytes,4,rep,name=limited_template_list,json=limitedTemplateList,proto3" json:"limited_template_list,omitempty"`
+	TemplateUrl             string             `protobuf:"bytes,5,opt,name=template_url,json=templateUrl,proto3" json:"template_url,omitempty"`
+	MusicList               []*WeddingMusic    `protobuf:"bytes,6,rep,name=music_list,json=musicList,proto3" json:"music_list,omitempty"`
+	MusicUrl                string             `protobuf:"bytes,7,opt,name=music_url,json=musicUrl,proto3" json:"music_url,omitempty"`
+	TextList                []string           `protobuf:"bytes,8,rep,name=text_list,json=textList,proto3" json:"text_list,omitempty"`
+}
+
+func (x *WeddingConfig) Reset() {
+	*x = WeddingConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[122]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *WeddingConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WeddingConfig) ProtoMessage() {}
+
+func (x *WeddingConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[122]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WeddingConfig.ProtoReflect.Descriptor instead.
+func (*WeddingConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{122}
+}
+
+func (x *WeddingConfig) GetForceDivorceNeedDiamond() int64 {
+	if x != nil {
+		return x.ForceDivorceNeedDiamond
+	}
+	return 0
+}
+
+func (x *WeddingConfig) GetContact() string {
+	if x != nil {
+		return x.Contact
+	}
+	return ""
+}
+
+func (x *WeddingConfig) GetTemplateList() []*WeddingTemplate {
+	if x != nil {
+		return x.TemplateList
+	}
+	return nil
+}
+
+func (x *WeddingConfig) GetLimitedTemplateList() []*WeddingTemplate {
+	if x != nil {
+		return x.LimitedTemplateList
+	}
+	return nil
+}
+
+func (x *WeddingConfig) GetTemplateUrl() string {
+	if x != nil {
+		return x.TemplateUrl
+	}
+	return ""
+}
+
+func (x *WeddingConfig) GetMusicList() []*WeddingMusic {
+	if x != nil {
+		return x.MusicList
+	}
+	return nil
+}
+
+func (x *WeddingConfig) GetMusicUrl() string {
+	if x != nil {
+		return x.MusicUrl
+	}
+	return ""
+}
+
+func (x *WeddingConfig) GetTextList() []string {
+	if x != nil {
+		return x.TextList
+	}
+	return nil
+}
+
+type WeddingTemplate struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Imgurl     string `protobuf:"bytes,1,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
+	Name       string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	TemplateId int64  `protobuf:"varint,3,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
+	Version    int64  `protobuf:"varint,4,opt,name=version,proto3" json:"version,omitempty"`
+}
+
+func (x *WeddingTemplate) Reset() {
+	*x = WeddingTemplate{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[123]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *WeddingTemplate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WeddingTemplate) ProtoMessage() {}
+
+func (x *WeddingTemplate) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[123]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WeddingTemplate.ProtoReflect.Descriptor instead.
+func (*WeddingTemplate) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{123}
+}
+
+func (x *WeddingTemplate) GetImgurl() string {
+	if x != nil {
+		return x.Imgurl
+	}
+	return ""
+}
+
+func (x *WeddingTemplate) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *WeddingTemplate) GetTemplateId() int64 {
+	if x != nil {
+		return x.TemplateId
+	}
+	return 0
+}
+
+func (x *WeddingTemplate) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type WeddingMusic struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name    string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	MusicId int64  `protobuf:"varint,2,opt,name=music_id,json=musicId,proto3" json:"music_id,omitempty"`
+}
+
+func (x *WeddingMusic) Reset() {
+	*x = WeddingMusic{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[124]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *WeddingMusic) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WeddingMusic) ProtoMessage() {}
+
+func (x *WeddingMusic) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[124]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WeddingMusic.ProtoReflect.Descriptor instead.
+func (*WeddingMusic) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{124}
+}
+
+func (x *WeddingMusic) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *WeddingMusic) GetMusicId() int64 {
+	if x != nil {
+		return x.MusicId
+	}
+	return 0
+}
+
+// happy_mode_config start
+type HappycoinConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id            int32  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Happycoin     int64  `protobuf:"varint,2,opt,name=happycoin,proto3" json:"happycoin,omitempty"`
+	FreeHappycoin int64  `protobuf:"varint,3,opt,name=free_happycoin,json=freeHappycoin,proto3" json:"free_happycoin,omitempty"`
+	CostDiamond   int64  `protobuf:"varint,4,opt,name=cost_diamond,json=costDiamond,proto3" json:"cost_diamond,omitempty"`
+	Imgurl        string `protobuf:"bytes,5,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
+	FreeImgurl    string `protobuf:"bytes,6,opt,name=free_imgurl,json=freeImgurl,proto3" json:"free_imgurl,omitempty"`
+}
+
+func (x *HappycoinConfig) Reset() {
+	*x = HappycoinConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[125]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HappycoinConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HappycoinConfig) ProtoMessage() {}
+
+func (x *HappycoinConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[125]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HappycoinConfig.ProtoReflect.Descriptor instead.
+func (*HappycoinConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{125}
+}
+
+func (x *HappycoinConfig) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *HappycoinConfig) GetHappycoin() int64 {
+	if x != nil {
+		return x.Happycoin
+	}
+	return 0
+}
+
+func (x *HappycoinConfig) GetFreeHappycoin() int64 {
+	if x != nil {
+		return x.FreeHappycoin
+	}
+	return 0
+}
+
+func (x *HappycoinConfig) GetCostDiamond() int64 {
+	if x != nil {
+		return x.CostDiamond
+	}
+	return 0
+}
+
+func (x *HappycoinConfig) GetImgurl() string {
+	if x != nil {
+		return x.Imgurl
+	}
+	return ""
+}
+
+func (x *HappycoinConfig) GetFreeImgurl() string {
+	if x != nil {
+		return x.FreeImgurl
+	}
+	return ""
+}
+
+type LengthFee struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Length int32 `protobuf:"varint,1,opt,name=length,proto3" json:"length,omitempty"`
+	Fee    int32 `protobuf:"varint,2,opt,name=fee,proto3" json:"fee,omitempty"`
+}
+
+func (x *LengthFee) Reset() {
+	*x = LengthFee{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[126]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LengthFee) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LengthFee) ProtoMessage() {}
+
+func (x *LengthFee) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[126]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LengthFee.ProtoReflect.Descriptor instead.
+func (*LengthFee) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{126}
+}
+
+func (x *LengthFee) GetLength() int32 {
+	if x != nil {
+		return x.Length
+	}
+	return 0
+}
+
+func (x *LengthFee) GetFee() int32 {
+	if x != nil {
+		return x.Fee
+	}
+	return 0
+}
+
+type HappyModeRace struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	RaceId       int32        `protobuf:"varint,1,opt,name=race_id,json=raceId,proto3" json:"race_id,omitempty"`
+	Name         string       `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	EntranceFee  int32        `protobuf:"varint,3,opt,name=entrance_fee,json=entranceFee,proto3" json:"entrance_fee,omitempty"`
+	LowLimit     int32        `protobuf:"varint,4,opt,name=low_limit,json=lowLimit,proto3" json:"low_limit,omitempty"`
+	UpperLimit   int32        `protobuf:"varint,5,opt,name=upper_limit,json=upperLimit,proto3" json:"upper_limit,omitempty"`
+	ImgUrl       string       `protobuf:"bytes,6,opt,name=img_url,json=imgUrl,proto3" json:"img_url,omitempty"`
+	LengthConfig []*LengthFee `protobuf:"bytes,7,rep,name=length_config,json=lengthConfig,proto3" json:"length_config,omitempty"`
+	HideNickName int32        `protobuf:"varint,8,opt,name=hide_nick_name,json=hideNickName,proto3" json:"hide_nick_name,omitempty"`
+}
+
+func (x *HappyModeRace) Reset() {
+	*x = HappyModeRace{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[127]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HappyModeRace) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HappyModeRace) ProtoMessage() {}
+
+func (x *HappyModeRace) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[127]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HappyModeRace.ProtoReflect.Descriptor instead.
+func (*HappyModeRace) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{127}
+}
+
+func (x *HappyModeRace) GetRaceId() int32 {
+	if x != nil {
+		return x.RaceId
+	}
+	return 0
+}
+
+func (x *HappyModeRace) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *HappyModeRace) GetEntranceFee() int32 {
+	if x != nil {
+		return x.EntranceFee
+	}
+	return 0
+}
+
+func (x *HappyModeRace) GetLowLimit() int32 {
+	if x != nil {
+		return x.LowLimit
+	}
+	return 0
+}
+
+func (x *HappyModeRace) GetUpperLimit() int32 {
+	if x != nil {
+		return x.UpperLimit
+	}
+	return 0
+}
+
+func (x *HappyModeRace) GetImgUrl() string {
+	if x != nil {
+		return x.ImgUrl
+	}
+	return ""
+}
+
+func (x *HappyModeRace) GetLengthConfig() []*LengthFee {
+	if x != nil {
+		return x.LengthConfig
+	}
+	return nil
+}
+
+func (x *HappyModeRace) GetHideNickName() int32 {
+	if x != nil {
+		return x.HideNickName
+	}
+	return 0
+}
+
+type LowIncomeConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Num       int32 `protobuf:"varint,1,opt,name=num,proto3" json:"num,omitempty"`
+	Happycoin int32 `protobuf:"varint,2,opt,name=happycoin,proto3" json:"happycoin,omitempty"`
+}
+
+func (x *LowIncomeConfig) Reset() {
+	*x = LowIncomeConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[128]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LowIncomeConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LowIncomeConfig) ProtoMessage() {}
+
+func (x *LowIncomeConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[128]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LowIncomeConfig.ProtoReflect.Descriptor instead.
+func (*LowIncomeConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{128}
+}
+
+func (x *LowIncomeConfig) GetNum() int32 {
+	if x != nil {
+		return x.Num
+	}
+	return 0
+}
+
+func (x *LowIncomeConfig) GetHappycoin() int32 {
+	if x != nil {
+		return x.Happycoin
+	}
+	return 0
+}
+
+type HappyModeTitleConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StartNum int32  `protobuf:"varint,1,opt,name=start_num,json=startNum,proto3" json:"start_num,omitempty"`
+	Rank     int32  `protobuf:"varint,2,opt,name=rank,proto3" json:"rank,omitempty"`
+	Name     string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	BgIndex  string `protobuf:"bytes,4,opt,name=bg_index,json=bgIndex,proto3" json:"bg_index,omitempty"`
+}
+
+func (x *HappyModeTitleConfig) Reset() {
+	*x = HappyModeTitleConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[129]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HappyModeTitleConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HappyModeTitleConfig) ProtoMessage() {}
+
+func (x *HappyModeTitleConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[129]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HappyModeTitleConfig.ProtoReflect.Descriptor instead.
+func (*HappyModeTitleConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{129}
+}
+
+func (x *HappyModeTitleConfig) GetStartNum() int32 {
+	if x != nil {
+		return x.StartNum
+	}
+	return 0
+}
+
+func (x *HappyModeTitleConfig) GetRank() int32 {
+	if x != nil {
+		return x.Rank
+	}
+	return 0
+}
+
+func (x *HappyModeTitleConfig) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *HappyModeTitleConfig) GetBgIndex() string {
+	if x != nil {
+		return x.BgIndex
+	}
+	return ""
+}
+
+type HappyModeConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	HappycoinList   []*HappycoinConfig      `protobuf:"bytes,1,rep,name=happycoin_list,json=happycoinList,proto3" json:"happycoin_list,omitempty"`
+	LowIncomeConfig *LowIncomeConfig        `protobuf:"bytes,2,opt,name=low_income_config,json=lowIncomeConfig,proto3" json:"low_income_config,omitempty"`
+	RaceConfig      []*HappyModeRace        `protobuf:"bytes,3,rep,name=race_config,json=raceConfig,proto3" json:"race_config,omitempty"`
+	TitleConfig     []*HappyModeTitleConfig `protobuf:"bytes,4,rep,name=title_config,json=titleConfig,proto3" json:"title_config,omitempty"`
+	RaceTimeConfig  *RaceTimeConfig         `protobuf:"bytes,5,opt,name=race_time_config,json=raceTimeConfig,proto3" json:"race_time_config,omitempty"`
+}
+
+func (x *HappyModeConfig) Reset() {
+	*x = HappyModeConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[130]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HappyModeConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HappyModeConfig) ProtoMessage() {}
+
+func (x *HappyModeConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[130]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HappyModeConfig.ProtoReflect.Descriptor instead.
+func (*HappyModeConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{130}
+}
+
+func (x *HappyModeConfig) GetHappycoinList() []*HappycoinConfig {
+	if x != nil {
+		return x.HappycoinList
+	}
+	return nil
+}
+
+func (x *HappyModeConfig) GetLowIncomeConfig() *LowIncomeConfig {
+	if x != nil {
+		return x.LowIncomeConfig
+	}
+	return nil
+}
+
+func (x *HappyModeConfig) GetRaceConfig() []*HappyModeRace {
+	if x != nil {
+		return x.RaceConfig
+	}
+	return nil
+}
+
+func (x *HappyModeConfig) GetTitleConfig() []*HappyModeTitleConfig {
+	if x != nil {
+		return x.TitleConfig
+	}
+	return nil
+}
+
+func (x *HappyModeConfig) GetRaceTimeConfig() *RaceTimeConfig {
+	if x != nil {
+		return x.RaceTimeConfig
+	}
+	return nil
+}
+
 var File_snakecommon_project_config_proto protoreflect.FileDescriptor
 
 var file_snakecommon_project_config_proto_rawDesc = []byte{
@@ -13145,10 +13826,115 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1d, 0x2e,
 	0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
 	0x2e, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x0b, 0x73, 0x74,
-	0x6f, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74,
-	0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61,
-	0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x22, 0x92, 0x03, 0x0a, 0x0d, 0x57, 0x65,
+	0x64, 0x64, 0x69, 0x6e, 0x67, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x3b, 0x0a, 0x1a, 0x66,
+	0x6f, 0x72, 0x63, 0x65, 0x5f, 0x64, 0x69, 0x76, 0x6f, 0x72, 0x63, 0x65, 0x5f, 0x6e, 0x65, 0x65,
+	0x64, 0x5f, 0x64, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x17, 0x66, 0x6f, 0x72, 0x63, 0x65, 0x44, 0x69, 0x76, 0x6f, 0x72, 0x63, 0x65, 0x4e, 0x65, 0x65,
+	0x64, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6e, 0x74,
+	0x61, 0x63, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x61,
+	0x63, 0x74, 0x12, 0x41, 0x0a, 0x0d, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x5f, 0x6c,
+	0x69, 0x73, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x57, 0x65, 0x64, 0x64, 0x69, 0x6e, 0x67, 0x54,
+	0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x52, 0x0c, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74,
+	0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x50, 0x0a, 0x15, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x65, 0x64,
+	0x5f, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x04,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
+	0x6f, 0x6e, 0x2e, 0x57, 0x65, 0x64, 0x64, 0x69, 0x6e, 0x67, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61,
+	0x74, 0x65, 0x52, 0x13, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x65, 0x64, 0x54, 0x65, 0x6d, 0x70, 0x6c,
+	0x61, 0x74, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x74, 0x65, 0x6d, 0x70, 0x6c,
+	0x61, 0x74, 0x65, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x74,
+	0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x55, 0x72, 0x6c, 0x12, 0x38, 0x0a, 0x0a, 0x6d, 0x75,
+	0x73, 0x69, 0x63, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19,
+	0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x57, 0x65, 0x64,
+	0x64, 0x69, 0x6e, 0x67, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x52, 0x09, 0x6d, 0x75, 0x73, 0x69, 0x63,
+	0x4c, 0x69, 0x73, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x5f, 0x75, 0x72,
+	0x6c, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6d, 0x75, 0x73, 0x69, 0x63, 0x55, 0x72,
+	0x6c, 0x12, 0x1b, 0x0a, 0x09, 0x74, 0x65, 0x78, 0x74, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x08,
+	0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x74, 0x65, 0x78, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x78,
+	0x0a, 0x0f, 0x57, 0x65, 0x64, 0x64, 0x69, 0x6e, 0x67, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74,
+	0x65, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1f, 0x0a,
+	0x0b, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x0a, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x49, 0x64, 0x12, 0x18,
+	0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0x3d, 0x0a, 0x0c, 0x57, 0x65, 0x64, 0x64,
+	0x69, 0x6e, 0x67, 0x4d, 0x75, 0x73, 0x69, 0x63, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08,
+	0x6d, 0x75, 0x73, 0x69, 0x63, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07,
+	0x6d, 0x75, 0x73, 0x69, 0x63, 0x49, 0x64, 0x22, 0xc2, 0x01, 0x0a, 0x0f, 0x48, 0x61, 0x70, 0x70,
+	0x79, 0x63, 0x6f, 0x69, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x0e, 0x0a, 0x02, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x68,
+	0x61, 0x70, 0x70, 0x79, 0x63, 0x6f, 0x69, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09,
+	0x68, 0x61, 0x70, 0x70, 0x79, 0x63, 0x6f, 0x69, 0x6e, 0x12, 0x25, 0x0a, 0x0e, 0x66, 0x72, 0x65,
+	0x65, 0x5f, 0x68, 0x61, 0x70, 0x70, 0x79, 0x63, 0x6f, 0x69, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x0d, 0x66, 0x72, 0x65, 0x65, 0x48, 0x61, 0x70, 0x70, 0x79, 0x63, 0x6f, 0x69, 0x6e,
+	0x12, 0x21, 0x0a, 0x0c, 0x63, 0x6f, 0x73, 0x74, 0x5f, 0x64, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x63, 0x6f, 0x73, 0x74, 0x44, 0x69, 0x61, 0x6d,
+	0x6f, 0x6e, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x05, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12, 0x1f, 0x0a, 0x0b, 0x66,
+	0x72, 0x65, 0x65, 0x5f, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0a, 0x66, 0x72, 0x65, 0x65, 0x49, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x22, 0x35, 0x0a, 0x09,
+	0x4c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x46, 0x65, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x6c, 0x65, 0x6e,
+	0x67, 0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x6c, 0x65, 0x6e, 0x67, 0x74,
+	0x68, 0x12, 0x10, 0x0a, 0x03, 0x66, 0x65, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03,
+	0x66, 0x65, 0x65, 0x22, 0x99, 0x02, 0x0a, 0x0d, 0x48, 0x61, 0x70, 0x70, 0x79, 0x4d, 0x6f, 0x64,
+	0x65, 0x52, 0x61, 0x63, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x61, 0x63, 0x65, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x61, 0x63, 0x65, 0x49, 0x64, 0x12, 0x12,
+	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61,
+	0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x65, 0x6e, 0x74, 0x72, 0x61, 0x6e, 0x63, 0x65, 0x5f, 0x66,
+	0x65, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x65, 0x6e, 0x74, 0x72, 0x61, 0x6e,
+	0x63, 0x65, 0x46, 0x65, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x6c, 0x6f, 0x77, 0x5f, 0x6c, 0x69, 0x6d,
+	0x69, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x6c, 0x6f, 0x77, 0x4c, 0x69, 0x6d,
+	0x69, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x75, 0x70, 0x70, 0x65, 0x72, 0x5f, 0x6c, 0x69, 0x6d, 0x69,
+	0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x75, 0x70, 0x70, 0x65, 0x72, 0x4c, 0x69,
+	0x6d, 0x69, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x6d, 0x67, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x06,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x55, 0x72, 0x6c, 0x12, 0x3b, 0x0a, 0x0d,
+	0x6c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x07, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x2e, 0x4c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x46, 0x65, 0x65, 0x52, 0x0c, 0x6c, 0x65, 0x6e,
+	0x67, 0x74, 0x68, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x24, 0x0a, 0x0e, 0x68, 0x69, 0x64,
+	0x65, 0x5f, 0x6e, 0x69, 0x63, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x0c, 0x68, 0x69, 0x64, 0x65, 0x4e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d, 0x65, 0x22,
+	0x41, 0x0a, 0x0f, 0x4c, 0x6f, 0x77, 0x49, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x43, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x03, 0x6e, 0x75, 0x6d, 0x12, 0x1c, 0x0a, 0x09, 0x68, 0x61, 0x70, 0x70, 0x79, 0x63, 0x6f, 0x69,
+	0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x68, 0x61, 0x70, 0x70, 0x79, 0x63, 0x6f,
+	0x69, 0x6e, 0x22, 0x76, 0x0a, 0x14, 0x48, 0x61, 0x70, 0x70, 0x79, 0x4d, 0x6f, 0x64, 0x65, 0x54,
+	0x69, 0x74, 0x6c, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x1b, 0x0a, 0x09, 0x73, 0x74,
+	0x61, 0x72, 0x74, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x73,
+	0x74, 0x61, 0x72, 0x74, 0x4e, 0x75, 0x6d, 0x12, 0x12, 0x0a, 0x04, 0x72, 0x61, 0x6e, 0x6b, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x72, 0x61, 0x6e, 0x6b, 0x12, 0x12, 0x0a, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12,
+	0x19, 0x0a, 0x08, 0x62, 0x67, 0x5f, 0x69, 0x6e, 0x64, 0x65, 0x78, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x07, 0x62, 0x67, 0x49, 0x6e, 0x64, 0x65, 0x78, 0x22, 0xea, 0x02, 0x0a, 0x0f, 0x48,
+	0x61, 0x70, 0x70, 0x79, 0x4d, 0x6f, 0x64, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x43,
+	0x0a, 0x0e, 0x68, 0x61, 0x70, 0x70, 0x79, 0x63, 0x6f, 0x69, 0x6e, 0x5f, 0x6c, 0x69, 0x73, 0x74,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x48, 0x61, 0x70, 0x70, 0x79, 0x63, 0x6f, 0x69, 0x6e, 0x43, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x52, 0x0d, 0x68, 0x61, 0x70, 0x70, 0x79, 0x63, 0x6f, 0x69, 0x6e, 0x4c,
+	0x69, 0x73, 0x74, 0x12, 0x48, 0x0a, 0x11, 0x6c, 0x6f, 0x77, 0x5f, 0x69, 0x6e, 0x63, 0x6f, 0x6d,
+	0x65, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c,
+	0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4c, 0x6f, 0x77,
+	0x49, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x0f, 0x6c, 0x6f,
+	0x77, 0x49, 0x6e, 0x63, 0x6f, 0x6d, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x3b, 0x0a,
+	0x0b, 0x72, 0x61, 0x63, 0x65, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x03, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x2e, 0x48, 0x61, 0x70, 0x70, 0x79, 0x4d, 0x6f, 0x64, 0x65, 0x52, 0x61, 0x63, 0x65, 0x52, 0x0a,
+	0x72, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x44, 0x0a, 0x0c, 0x74, 0x69,
+	0x74, 0x6c, 0x65, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x21, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x48,
+	0x61, 0x70, 0x70, 0x79, 0x4d, 0x6f, 0x64, 0x65, 0x54, 0x69, 0x74, 0x6c, 0x65, 0x43, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x52, 0x0b, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x12, 0x45, 0x0a, 0x10, 0x72, 0x61, 0x63, 0x65, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x5f, 0x63, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x73, 0x6e, 0x61,
+	0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x52, 0x61, 0x63, 0x65, 0x54, 0x69, 0x6d,
+	0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x0e, 0x72, 0x61, 0x63, 0x65, 0x54, 0x69, 0x6d,
+	0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31,
+	0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73,
+	0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -13164,7 +13950,7 @@ func file_snakecommon_project_config_proto_rawDescGZIP() []byte {
 }
 
 var file_snakecommon_project_config_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_snakecommon_project_config_proto_msgTypes = make([]protoimpl.MessageInfo, 127)
+var file_snakecommon_project_config_proto_msgTypes = make([]protoimpl.MessageInfo, 136)
 var file_snakecommon_project_config_proto_goTypes = []interface{}{
 	(ShortCutConfig_SceneType)(0),      // 0: snakecommon.ShortCutConfig.SceneType
 	(*ConfigVersionInfo)(nil),          // 1: snakecommon.ConfigVersionInfo
@@ -13289,25 +14075,34 @@ var file_snakecommon_project_config_proto_goTypes = []interface{}{
 	(*MasterPrenticeStrategyItem)(nil), // 120: snakecommon.MasterPrenticeStrategyItem
 	(*HotConfig)(nil),                  // 121: snakecommon.HotConfig
 	(*ProductConfig)(nil),              // 122: snakecommon.ProductConfig
-	nil,                                // 123: snakecommon.ConfigVersionInfo.FlagsEntry
-	nil,                                // 124: snakecommon.ClanConfig.ClanRaceRewardEntry
-	nil,                                // 125: snakecommon.PingConfig.PingIpListEntry
-	nil,                                // 126: snakecommon.ShowAdConfig.AdPercentEntry
-	nil,                                // 127: snakecommon.AdPopupsConfig.PopupPositionConfigEntry
-	(*CPriceInfo)(nil),                 // 128: snakecommon.CPriceInfo
-	(*config.RewardConfig)(nil),        // 129: SnakeMain.Config.RewardConfig
-	(*RMBPackGoodsInfo)(nil),           // 130: snakecommon.RMBPackGoodsInfo
-	(*config.PackModel)(nil),           // 131: SnakeMain.Config.PackModel
-	(*config.Property)(nil),            // 132: SnakeMain.Config.Property
-	(*config.CurrencyStore)(nil),       // 133: SnakeMain.Config.CurrencyStore
-	(*config.MiddleItem)(nil),          // 134: SnakeMain.Config.MiddleItem
-	(*config.DrawCardGuideConfig)(nil), // 135: SnakeMain.Config.DrawCardGuideConfig
-	(*config.StoreConfig)(nil),         // 136: SnakeMain.Config.StoreConfig
+	(*WeddingConfig)(nil),              // 123: snakecommon.WeddingConfig
+	(*WeddingTemplate)(nil),            // 124: snakecommon.WeddingTemplate
+	(*WeddingMusic)(nil),               // 125: snakecommon.WeddingMusic
+	(*HappycoinConfig)(nil),            // 126: snakecommon.HappycoinConfig
+	(*LengthFee)(nil),                  // 127: snakecommon.LengthFee
+	(*HappyModeRace)(nil),              // 128: snakecommon.HappyModeRace
+	(*LowIncomeConfig)(nil),            // 129: snakecommon.LowIncomeConfig
+	(*HappyModeTitleConfig)(nil),       // 130: snakecommon.HappyModeTitleConfig
+	(*HappyModeConfig)(nil),            // 131: snakecommon.HappyModeConfig
+	nil,                                // 132: snakecommon.ConfigVersionInfo.FlagsEntry
+	nil,                                // 133: snakecommon.ClanConfig.ClanRaceRewardEntry
+	nil,                                // 134: snakecommon.PingConfig.PingIpListEntry
+	nil,                                // 135: snakecommon.ShowAdConfig.AdPercentEntry
+	nil,                                // 136: snakecommon.AdPopupsConfig.PopupPositionConfigEntry
+	(*CPriceInfo)(nil),                 // 137: snakecommon.CPriceInfo
+	(*config.RewardConfig)(nil),        // 138: SnakeMain.Config.RewardConfig
+	(*RMBPackGoodsInfo)(nil),           // 139: snakecommon.RMBPackGoodsInfo
+	(*config.PackModel)(nil),           // 140: SnakeMain.Config.PackModel
+	(*config.Property)(nil),            // 141: SnakeMain.Config.Property
+	(*config.CurrencyStore)(nil),       // 142: SnakeMain.Config.CurrencyStore
+	(*config.MiddleItem)(nil),          // 143: SnakeMain.Config.MiddleItem
+	(*config.DrawCardGuideConfig)(nil), // 144: SnakeMain.Config.DrawCardGuideConfig
+	(*config.StoreConfig)(nil),         // 145: SnakeMain.Config.StoreConfig
 }
 var file_snakecommon_project_config_proto_depIdxs = []int32{
-	123, // 0: snakecommon.ConfigVersionInfo.flags:type_name -> snakecommon.ConfigVersionInfo.FlagsEntry
+	132, // 0: snakecommon.ConfigVersionInfo.flags:type_name -> snakecommon.ConfigVersionInfo.FlagsEntry
 	3,   // 1: snakecommon.EndLessBuffPropConfigV2.list:type_name -> snakecommon.EndLessBuffPropInfo
-	128, // 2: snakecommon.EndLessBuffPropInfo.price_list:type_name -> snakecommon.CPriceInfo
+	137, // 2: snakecommon.EndLessBuffPropInfo.price_list:type_name -> snakecommon.CPriceInfo
 	4,   // 3: snakecommon.EndLessBuffPropInfo.prop_list:type_name -> snakecommon.RandomPropInfo
 	6,   // 4: snakecommon.HuaweiHighlight.highlight_list:type_name -> snakecommon.HighLightInfo
 	9,   // 5: snakecommon.OlGameConfig.game_status_track:type_name -> snakecommon.GameStatusTrack
@@ -13321,19 +14116,19 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	8,   // 13: snakecommon.OlGameConfig.match_background:type_name -> snakecommon.MatchBackgroundConfig
 	11,  // 14: snakecommon.GrassConfig.grass:type_name -> snakecommon.GrassInfo
 	13,  // 15: snakecommon.TeamSuit.new_suit:type_name -> snakecommon.TeamSuitNewSuitInfo
-	128, // 16: snakecommon.TeamKillProp.price_list:type_name -> snakecommon.CPriceInfo
-	129, // 17: snakecommon.TeamKillProp.prop_list:type_name -> SnakeMain.Config.RewardConfig
+	137, // 16: snakecommon.TeamKillProp.price_list:type_name -> snakecommon.CPriceInfo
+	138, // 17: snakecommon.TeamKillProp.prop_list:type_name -> SnakeMain.Config.RewardConfig
 	20,  // 18: snakecommon.ClanConfig.rule_desc:type_name -> snakecommon.RuleDesc
 	22,  // 19: snakecommon.ClanConfig.race_time_config:type_name -> snakecommon.RaceTimeConfig
-	124, // 20: snakecommon.ClanConfig.clan_race_reward:type_name -> snakecommon.ClanConfig.ClanRaceRewardEntry
+	133, // 20: snakecommon.ClanConfig.clan_race_reward:type_name -> snakecommon.ClanConfig.ClanRaceRewardEntry
 	24,  // 21: snakecommon.ClanConfig.level_config:type_name -> snakecommon.ClanLevelInfo
 	25,  // 22: snakecommon.ClanConfig.reward_config:type_name -> snakecommon.NewClanRewardItem
 	25,  // 23: snakecommon.ClanConfig.reward_explain_config:type_name -> snakecommon.NewClanRewardItem
 	21,  // 24: snakecommon.RuleDesc.active_point_addition:type_name -> snakecommon.ActivePointAddition
-	129, // 25: snakecommon.NewClanRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
+	138, // 25: snakecommon.NewClanRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
 	28,  // 26: snakecommon.RankConfig.level:type_name -> snakecommon.RankLevel
 	27,  // 27: snakecommon.RankConfig.rank_reward:type_name -> snakecommon.RankReward
-	129, // 28: snakecommon.RankReward.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	138, // 28: snakecommon.RankReward.reward_list:type_name -> SnakeMain.Config.RewardConfig
 	34,  // 29: snakecommon.ShareConfig.channel_config:type_name -> snakecommon.ChannelConfig
 	35,  // 30: snakecommon.ShareConfig.game_invite:type_name -> snakecommon.GameInvite
 	33,  // 31: snakecommon.ShareConfig.video_share_icon:type_name -> snakecommon.VideoShareIcon
@@ -13341,7 +14136,7 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	31,  // 33: snakecommon.ShareConfig.share_tag:type_name -> snakecommon.ShareTag
 	38,  // 34: snakecommon.SocialConfig.charm_level:type_name -> snakecommon.CharmLevelItem
 	37,  // 35: snakecommon.SocialConfig.charm_top_config:type_name -> snakecommon.CharmTopConfig
-	129, // 36: snakecommon.SocialConfig.marry_rewards:type_name -> SnakeMain.Config.RewardConfig
+	138, // 36: snakecommon.SocialConfig.marry_rewards:type_name -> SnakeMain.Config.RewardConfig
 	40,  // 37: snakecommon.CharmExpConfig.charm_exp_ranks:type_name -> snakecommon.CharmExpRank
 	41,  // 38: snakecommon.CharmExpConfig.privilege_config:type_name -> snakecommon.CharmPrivilegeItem
 	43,  // 39: snakecommon.TextConfig.gift_like_text_list:type_name -> snakecommon.GiftLikeTextList
@@ -13362,7 +14157,7 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	47,  // 54: snakecommon.UiConfigV3.plant_icon:type_name -> snakecommon.GameIcon
 	47,  // 55: snakecommon.UiConfigV3.fallguys_icon:type_name -> snakecommon.GameIcon
 	48,  // 56: snakecommon.GameIcon.bubble:type_name -> snakecommon.Bubble
-	125, // 57: snakecommon.PingConfig.ping_ip_list:type_name -> snakecommon.PingConfig.PingIpListEntry
+	134, // 57: snakecommon.PingConfig.ping_ip_list:type_name -> snakecommon.PingConfig.PingIpListEntry
 	53,  // 58: snakecommon.RewardMarkConfig.reward_marks:type_name -> snakecommon.RewardMark
 	61,  // 59: snakecommon.ShowAdConfig.snake_coin_ad_config:type_name -> snakecommon.AdRewardModel
 	61,  // 60: snakecommon.ShowAdConfig.coupon_ad_config:type_name -> snakecommon.AdRewardModel
@@ -13375,21 +14170,21 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	60,  // 67: snakecommon.ShowAdConfig.endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
 	60,  // 68: snakecommon.ShowAdConfig.noad_endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
 	60,  // 69: snakecommon.ShowAdConfig.melee_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
-	126, // 70: snakecommon.ShowAdConfig.ad_percent:type_name -> snakecommon.ShowAdConfig.AdPercentEntry
+	135, // 70: snakecommon.ShowAdConfig.ad_percent:type_name -> snakecommon.ShowAdConfig.AdPercentEntry
 	55,  // 71: snakecommon.ShowAdConfig.cross_promotions:type_name -> snakecommon.CrossPromotions
 	56,  // 72: snakecommon.CrossPromotions.source:type_name -> snakecommon.CrossPromotionsSource
-	127, // 73: snakecommon.AdPopupsConfig.popup_position_config:type_name -> snakecommon.AdPopupsConfig.PopupPositionConfigEntry
-	130, // 74: snakecommon.OrderConfig.pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
-	130, // 75: snakecommon.OrderConfig.diamond_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	136, // 73: snakecommon.AdPopupsConfig.popup_position_config:type_name -> snakecommon.AdPopupsConfig.PopupPositionConfigEntry
+	139, // 74: snakecommon.OrderConfig.pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	139, // 75: snakecommon.OrderConfig.diamond_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
 	64,  // 76: snakecommon.OrderConfig.first_charge_popup:type_name -> snakecommon.FirstChargePopup
-	130, // 77: snakecommon.OrderConfig.red_pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	139, // 77: snakecommon.OrderConfig.red_pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
 	65,  // 78: snakecommon.OrderConfig.random_double_client_info:type_name -> snakecommon.RandomDoubleClientInfo
 	71,  // 79: snakecommon.ShowConfig.level_config:type_name -> snakecommon.ShowLevelConfig
 	72,  // 80: snakecommon.ShowConfig.skill_name:type_name -> snakecommon.ShowSkillName
 	70,  // 81: snakecommon.ShowConfig.icon_style:type_name -> snakecommon.ShowIconStyle
 	69,  // 82: snakecommon.ShowConfig.pack_config:type_name -> snakecommon.ShowPackItem
-	131, // 83: snakecommon.ShowPackItem.pack_info:type_name -> SnakeMain.Config.PackModel
-	129, // 84: snakecommon.ShowLevelConfig.reward:type_name -> SnakeMain.Config.RewardConfig
+	140, // 83: snakecommon.ShowPackItem.pack_info:type_name -> SnakeMain.Config.PackModel
+	138, // 84: snakecommon.ShowLevelConfig.reward:type_name -> SnakeMain.Config.RewardConfig
 	73,  // 85: snakecommon.ShowLevelConfig.game_skill_list:type_name -> snakecommon.ShowSkillBuff
 	91,  // 86: snakecommon.UserConfig.abnormal_store:type_name -> snakecommon.DeviceConfig
 	92,  // 87: snakecommon.UserConfig.anti_addiction:type_name -> snakecommon.AntiAddiction
@@ -13399,7 +14194,7 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	80,  // 91: snakecommon.UserConfig.setting_conf:type_name -> snakecommon.SettingConfig
 	79,  // 92: snakecommon.UserConfig.feedback:type_name -> snakecommon.FeedbackConfig
 	78,  // 93: snakecommon.UserConfig.flags:type_name -> snakecommon.FlagsConfig
-	129, // 94: snakecommon.UserConfig.certify_reward:type_name -> SnakeMain.Config.RewardConfig
+	138, // 94: snakecommon.UserConfig.certify_reward:type_name -> SnakeMain.Config.RewardConfig
 	102, // 95: snakecommon.UserConfig.register_survey:type_name -> snakecommon.RegisterSurvey
 	103, // 96: snakecommon.UserConfig.recruit_popup:type_name -> snakecommon.RecruitPopup
 	76,  // 97: snakecommon.UserConfig.minor_limit:type_name -> snakecommon.MinorLimit
@@ -13424,9 +14219,9 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	95,  // 116: snakecommon.AntiAddiction.infant_notify:type_name -> snakecommon.MinorNotify
 	94,  // 117: snakecommon.Notify.uncertified:type_name -> snakecommon.CertifyGameConfig
 	94,  // 118: snakecommon.Notify.minor:type_name -> snakecommon.CertifyGameConfig
-	129, // 119: snakecommon.IdfaConfig.reward:type_name -> SnakeMain.Config.RewardConfig
-	129, // 120: snakecommon.RegisterSurvey.reward:type_name -> SnakeMain.Config.RewardConfig
-	129, // 121: snakecommon.NewUserConfig.guide_reward:type_name -> SnakeMain.Config.RewardConfig
+	138, // 119: snakecommon.IdfaConfig.reward:type_name -> SnakeMain.Config.RewardConfig
+	138, // 120: snakecommon.RegisterSurvey.reward:type_name -> SnakeMain.Config.RewardConfig
+	138, // 121: snakecommon.NewUserConfig.guide_reward:type_name -> SnakeMain.Config.RewardConfig
 	112, // 122: snakecommon.WildStormConfig.wild_storm_list:type_name -> snakecommon.WildStormListItem
 	105, // 123: snakecommon.OfflineGameConfig.endless_revive_config:type_name -> snakecommon.ReviveConfigItem
 	105, // 124: snakecommon.OfflineGameConfig.endless_revive_config_ab1:type_name -> snakecommon.ReviveConfigItem
@@ -13445,21 +14240,30 @@ var file_snakecommon_project_config_proto_depIdxs = []int32{
 	119, // 137: snakecommon.MentorshipConfig.finish_reward:type_name -> snakecommon.MentorFinishReward
 	120, // 138: snakecommon.MentorshipConfig.master_prentice_strategy:type_name -> snakecommon.MasterPrenticeStrategyItem
 	117, // 139: snakecommon.MentorPrivilegeInfo.privilege:type_name -> snakecommon.PrivilegeDetailInfo
-	129, // 140: snakecommon.MentorPrivilegeInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
-	129, // 141: snakecommon.MentorFinishReward.master_reward:type_name -> SnakeMain.Config.RewardConfig
-	129, // 142: snakecommon.MentorFinishReward.prentice_reward:type_name -> SnakeMain.Config.RewardConfig
-	132, // 143: snakecommon.ProductConfig.property:type_name -> SnakeMain.Config.Property
-	133, // 144: snakecommon.ProductConfig.currency_store:type_name -> SnakeMain.Config.CurrencyStore
-	134, // 145: snakecommon.ProductConfig.middle_item_list:type_name -> SnakeMain.Config.MiddleItem
-	135, // 146: snakecommon.ProductConfig.draw_card_guide_config:type_name -> SnakeMain.Config.DrawCardGuideConfig
-	136, // 147: snakecommon.ProductConfig.store_config:type_name -> SnakeMain.Config.StoreConfig
-	23,  // 148: snakecommon.ClanConfig.ClanRaceRewardEntry.value:type_name -> snakecommon.ClanRaceReward
-	58,  // 149: snakecommon.AdPopupsConfig.PopupPositionConfigEntry.value:type_name -> snakecommon.PopupPosition
-	150, // [150:150] is the sub-list for method output_type
-	150, // [150:150] is the sub-list for method input_type
-	150, // [150:150] is the sub-list for extension type_name
-	150, // [150:150] is the sub-list for extension extendee
-	0,   // [0:150] is the sub-list for field type_name
+	138, // 140: snakecommon.MentorPrivilegeInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	138, // 141: snakecommon.MentorFinishReward.master_reward:type_name -> SnakeMain.Config.RewardConfig
+	138, // 142: snakecommon.MentorFinishReward.prentice_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 143: snakecommon.ProductConfig.property:type_name -> SnakeMain.Config.Property
+	142, // 144: snakecommon.ProductConfig.currency_store:type_name -> SnakeMain.Config.CurrencyStore
+	143, // 145: snakecommon.ProductConfig.middle_item_list:type_name -> SnakeMain.Config.MiddleItem
+	144, // 146: snakecommon.ProductConfig.draw_card_guide_config:type_name -> SnakeMain.Config.DrawCardGuideConfig
+	145, // 147: snakecommon.ProductConfig.store_config:type_name -> SnakeMain.Config.StoreConfig
+	124, // 148: snakecommon.WeddingConfig.template_list:type_name -> snakecommon.WeddingTemplate
+	124, // 149: snakecommon.WeddingConfig.limited_template_list:type_name -> snakecommon.WeddingTemplate
+	125, // 150: snakecommon.WeddingConfig.music_list:type_name -> snakecommon.WeddingMusic
+	127, // 151: snakecommon.HappyModeRace.length_config:type_name -> snakecommon.LengthFee
+	126, // 152: snakecommon.HappyModeConfig.happycoin_list:type_name -> snakecommon.HappycoinConfig
+	129, // 153: snakecommon.HappyModeConfig.low_income_config:type_name -> snakecommon.LowIncomeConfig
+	128, // 154: snakecommon.HappyModeConfig.race_config:type_name -> snakecommon.HappyModeRace
+	130, // 155: snakecommon.HappyModeConfig.title_config:type_name -> snakecommon.HappyModeTitleConfig
+	22,  // 156: snakecommon.HappyModeConfig.race_time_config:type_name -> snakecommon.RaceTimeConfig
+	23,  // 157: snakecommon.ClanConfig.ClanRaceRewardEntry.value:type_name -> snakecommon.ClanRaceReward
+	58,  // 158: snakecommon.AdPopupsConfig.PopupPositionConfigEntry.value:type_name -> snakecommon.PopupPosition
+	159, // [159:159] is the sub-list for method output_type
+	159, // [159:159] is the sub-list for method input_type
+	159, // [159:159] is the sub-list for extension type_name
+	159, // [159:159] is the sub-list for extension extendee
+	0,   // [0:159] is the sub-list for field type_name
 }
 
 func init() { file_snakecommon_project_config_proto_init() }
@@ -14933,6 +15737,114 @@ func file_snakecommon_project_config_proto_init() {
 				return nil
 			}
 		}
+		file_snakecommon_project_config_proto_msgTypes[122].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*WeddingConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[123].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*WeddingTemplate); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[124].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*WeddingMusic); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[125].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*HappycoinConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[126].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LengthFee); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[127].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*HappyModeRace); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[128].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LowIncomeConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[129].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*HappyModeTitleConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[130].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*HappyModeConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -14940,7 +15852,7 @@ func file_snakecommon_project_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_project_config_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   127,
+			NumMessages:   136,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
