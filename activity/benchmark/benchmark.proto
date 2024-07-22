@@ -19,6 +19,7 @@ message BenchmarkReq {
   int64 vip_expire_time = 11;
   repeated string tags = 12;
   int64 data_len = 13;
+  bool compress = 14;
 }
 
 message BenchmarkRsp {
@@ -37,6 +38,7 @@ message BenchmarkRsp {
   repeated string recommendations = 13;
   map<string, string> server_metadata = 14;
   repeated BenchmarkItem items = 15;
+  bytes compress_data = 16;
 }
 
 message BenchmarkItem {

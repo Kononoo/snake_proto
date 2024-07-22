@@ -1,0 +1,148 @@
+syntax = "proto3";
+
+package marryapi;
+
+option go_package = "git.17zjh.com/snake/snake_proto/system/marryapi";
+
+// marry_api/change_ring req
+// route: marryapi.ChangeRing
+message ChangeRingReq {
+  string uid = 1;
+  int64 ring_id = 2;
+
+}
+
+// marry_api/mark_read req
+// route: marryapi.MarkRead
+message MarkReadReq {
+  string uid = 1;
+  int64 msg_id = 2;
+
+}
+
+// marry_api/update_couple_bg_v2 req
+// route: marryapi.UpdateCoupleBgV2
+message UpdateCoupleBgV2Req {
+  string uid = 1;
+  int64 couple_bg_id = 2;
+  bool on = 3;
+  string owner = 4;
+  string version = 5;
+
+}
+
+// marry_api/get_church_info req
+// route: marryapi.GetChurchInfo
+message GetChurchInfoReq {
+  string uid = 1;
+  int64 platform = 2;
+  int64 source = 3;
+
+}
+
+message GetChurchInfoRsp {
+  repeated ChurchMsg msg_list = 1;
+  repeated WeddingInfo wedding_list = 2; // most count is 20
+  repeated UserRingInfo ring_list = 3;
+
+}
+
+message UserRingInfo {
+  int64 ring_id = 1;
+  int64 num = 2;
+  int64 used_num = 3;
+  int64 time = 4;
+
+}
+
+message WeddingInfo {
+  int64 wedding_id = 1;
+  int64 marry_id = 2;
+  int64 template_id = 3;
+  int64 music_id = 4;
+  int64 platform = 5;
+  int64 ring_id = 6;
+  int64 room_limit = 7;
+  string content = 8;
+  SimpleUserInfo cp_user_info = 9;
+  SimpleUserInfo user_info = 10;
+  int64 start_time = 11;
+  int64 finish_time = 12;
+  int64 add_time = 13;
+  int64 join_type = 14;
+
+}
+
+message ChurchMsg {
+  int64 msg_id = 1;
+  int64 type = 2;
+  int64 request_id = 3;
+  string title = 4;
+  string content = 5;
+  string title_v2 = 6;
+  string content_v2 = 7;
+  int64 ring_id = 8;
+  int64 wedding_id = 9;
+  string invite_uid = 10;
+  int64 marry_id = 11;
+  SimpleUserInfo user_info = 12;
+  SimpleUserInfo cp_user_info = 13;
+
+}
+
+message SimpleUserInfo {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+  int64 box_id = 4;
+  int64 gender = 5;
+  int64 verified = 6;
+
+}
+
+// route: marryapi.GetWeddingList req
+// 分页查询
+message GetWeddingListReq{
+  int64 page_offset = 1; // 偏移页数，从0开始计数
+  int64 page_size = 2; // 页的大小，一次查询返回的记录数
+
+  int64 platform = 3;
+}
+
+message GetWeddingListRsp{
+  int64 total = 1; // 记录总数
+  repeated WeddingInfo wedding_list = 2;
+}
+
+// marry_api/get_create_wedding_state req
+// route: marryapi.GetCreateWeddingState
+message GetCreateWeddingStateReq {
+  string uid = 1;
+  string version = 2;
+  int64 platform = 3;
+  string market = 4;
+
+}
+
+message GetCreateWeddingStateRsp {
+  int64 type = 1;
+  string msg = 2;
+  WeddingInfo invitation_info = 3;
+  repeated Wrs marry_time_list = 4;
+
+}
+
+message Item {
+  int64 finish_time = 1;
+  int64 start_time = 2;
+  bool state = 3;
+
+}
+
+message Wrs {
+  string day = 1;
+  int64 time = 2;
+  repeated Item sub_list = 3;
+  repeated Item limit_sub_list = 4;
+
+}
