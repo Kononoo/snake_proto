@@ -341,6 +341,7 @@ message GoatPlayerScore {
   int32 collect_bucket_count = 17;   // 收集桶个数
   int32 score = 18; // 分数
   repeated EventTaskInfo task_add_progress = 19; // 本局的任务进度情况
+  int64 max_die_time = 20; // 最久死了多久（毫秒），一直维护一个最大值
 }
 
 message EventTaskInfo {
