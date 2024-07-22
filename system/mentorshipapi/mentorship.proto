@@ -230,9 +230,9 @@ message GetApprenticeInfoReq {
 }
 
 message GetApprenticeInfoRsp {
-  repeated MasterInfo direct = 1;
-  repeated MasterInfo finish = 2;
-  repeated MasterInfo teach = 3;
+  repeated MasterPrenticeWithUserInfo direct = 1;
+  repeated MasterPrenticeWithUserInfo finish = 2;
+  repeated MasterPrenticeWithUserInfo teach = 3;
 
 }
 
