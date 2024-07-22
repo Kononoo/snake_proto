@@ -1217,3 +1217,76 @@ message ProductConfig {
   SnakeMain.Config.StoreConfig store_config = 5; // proto商店配置
 }
 // product_config end =========================================
+
+// wedding_config start
+message WeddingConfig {
+  int64 force_divorce_need_diamond = 1;
+  string contact = 2;
+  repeated WeddingTemplate template_list = 3;
+  repeated WeddingTemplate limited_template_list = 4;
+  string template_url = 5;
+  repeated WeddingMusic music_list = 6;
+  string music_url = 7;
+  repeated string text_list = 8;
+}
+
+message WeddingTemplate {
+  string imgurl = 1;
+  string name = 2;
+  int64 template_id = 3;
+  int64 version = 4;
+}
+
+message WeddingMusic {
+  string name = 1;
+  int64 music_id = 2;
+}
+// wedding_config end
+
+// happy_mode_config start
+message HappycoinConfig {
+  int32 id = 1;
+  int64 happycoin = 2;
+  int64 free_happycoin = 3;
+  int64 cost_diamond = 4;
+  string imgurl = 5;
+  string free_imgurl = 6;
+}
+
+message LengthFee {
+  int32 length = 1;
+  int32 fee = 2;
+}
+
+message HappyModeRace {
+  int32 race_id = 1;
+  string name = 2;
+  int32 entrance_fee = 3;
+  int32 low_limit = 4;
+  int32 upper_limit = 5;
+  string img_url = 6;
+  repeated LengthFee length_config = 7;
+  int32 hide_nick_name = 8;
+}
+
+message LowIncomeConfig {
+  int32 num = 1;
+  int32 happycoin = 2;
+}
+
+message HappyModeTitleConfig {
+  int32 start_num = 1;
+  int32 rank = 2;
+  string name = 3;
+  string bg_index = 4;
+}
+
+message HappyModeConfig {
+  repeated HappycoinConfig happycoin_list = 1;
+  LowIncomeConfig low_income_config = 2;
+  repeated HappyModeRace race_config = 3;
+  repeated HappyModeTitleConfig title_config = 4;
+  RaceTimeConfig race_time_config = 5;
+}
+// happy_mode_config end
+
