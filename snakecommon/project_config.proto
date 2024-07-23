@@ -1245,7 +1245,7 @@ message WeddingMusic {
 
 // happy_mode_config start
 message HappycoinConfig {
-  int32 id = 1;
+  int64 id = 1;
   int64 happycoin = 2;
   int64 free_happycoin = 3;
   int64 cost_diamond = 4;
@@ -1254,29 +1254,29 @@ message HappycoinConfig {
 }
 
 message LengthFee {
-  int32 length = 1;
-  int32 fee = 2;
+  int64 length = 1;
+  int64 fee = 2;
 }
 
 message HappyModeRace {
-  int32 race_id = 1;
+  int64 race_id = 1;
   string name = 2;
-  int32 entrance_fee = 3;
-  int32 low_limit = 4;
-  int32 upper_limit = 5;
+  int64 entrance_fee = 3;
+  int64 low_limit = 4;
+  int64 upper_limit = 5;
   string img_url = 6;
   repeated LengthFee length_config = 7;
-  int32 hide_nick_name = 8;
+  int64 hide_nick_name = 8;
 }
 
 message LowIncomeConfig {
-  int32 num = 1;
-  int32 happycoin = 2;
+  int64 num = 1;
+  int64 happycoin = 2;
 }
 
 message HappyModeTitleConfig {
-  int32 start_num = 1;
-  int32 rank = 2;
+  int64 start_num = 1;
+  int64 rank = 2;
   string name = 3;
   string bg_index = 4;
 }
