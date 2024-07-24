@@ -3,7 +3,7 @@ syntax = "proto3";
 package match;
 option go_package = "git.17zjh.com/snake/snake_proto/matchx/match";
 
-message CretateGroupReq { // 创建队伍
+message CreateGroupReq { // 创建队伍
   int64 game_mode = 1;
   int64 mode_version = 2;
   int64 skin_id = 3; // 当前穿戴的皮肤
@@ -53,6 +53,8 @@ message RejectInviteReq { // 拒绝邀请
   int64 source = 1;
   string message = 2; // 拒绝邀请的消息
   int64 game_mode = 3;
+}
+message RejectInviteRsp {
 }
 
 message RejectInviteNotify { // 拒绝邀请的push
