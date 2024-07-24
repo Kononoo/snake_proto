@@ -14,5 +14,6 @@ enum cmd {
   Master = 6; // 中心服（仅服务器使用）
   Gate = 7; // 网关服（仅服务器使用)
   UnitySvcCtl = 8; // unity server控制服务（仅服务器使用)
-  Match = 9; // 匹配服
+  Match = 9; // 匹配服（仅服务器使用）
+  Matchx = 10; // 新匹配服
 }
