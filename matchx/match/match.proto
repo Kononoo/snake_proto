@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package match;
+option go_package = "git.17zjh.com/snake/snake_proto/matchx/match";
+
+message CretateGroupReq { // 创建队伍
+  int64 game_mode = 1;
+  int64 mode_version = 2;
+  int64 skin_id = 3; // 当前穿戴的皮肤
+  bytes payload = 4; // 额外的数据
+}
+message CreateGroupRsp {
+  int64 group_id = 1; // 创建的队伍id
+}
+
+message ExitGroupReq { // 退出队伍
+}
+message ExitGroupRsp {
+}
+
+message DissolveGroupReq { // 解散队伍
+}
+message DissolveGroupRsp {
+}
+
+message InviteFriendReq { // 邀请好友
+  string target_uid = 1; // 邀请的目标玩家uid
+  int64 source = 2; // 邀请的来源
+}
+message InviteFriendRsp {
+}
+
+message InviteFriendNotify { // 邀请好友的push消息
+  string source_uid = 1; // 邀请者uid
+  int64 game_mode = 2;
+  int64 mode_version = 3;
+  int64 source = 4;
+}
+
+message AcceptInviteReq { // 同意邀请
+  int64 source = 1;
+  int64 skin_id = 2;
+  int64 game_mode = 3;
+}
+message AcceptInviteRsp {
+}
+
+message AcceptInviteNotify { // 同意邀请的push
+  string uid = 1; // 同意邀请的玩家
+}
+
+message RejectInviteReq { // 拒绝邀请
+  int64 source = 1;
+  string message = 2; // 拒绝邀请的消息
+  int64 game_mode = 3;
+}
+
+message RejectInviteNotify { // 拒绝邀请的push
+  string uid = 1; // 拒绝邀请的玩家
+  string message = 2; // 拒绝邀请的消息
+}
+
+message KickReq { // 踢出队伍
+  string target_uid = 1; // 被踢的玩家uid
+}
+message KickRsp {
+}
+
+message KickNotify { // 踢出队伍的push
+  int64 group_id = 1; //队伍id
+}
+
+message StartMatchReq { // 开始匹配
+  int64 game_mode = 1;
+  int64 mode_version = 2;
+  int64 skin_id = 3; // 当前穿戴的皮肤
+  bytes payload = 4; // 额外的数据
+}
+message StartMatchRsp {
+  int64 group_id = 1;
+  int64 need_player_num = 2; // 需要的玩家人数
+  bytes payload = 3; // 额外的数据
+}
+
+message MatchSuccessNotify { // 匹配成功的push
+  int64 rid = 1; // 房间id
+  int64 game_mode = 2;
+  int64 mode_version = 3;
+}
