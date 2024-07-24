@@ -60,13 +60,13 @@ message RejectInviteNotify { // 拒绝邀请的push
   string message = 2; // 拒绝邀请的消息
 }
 
-message KickReq { // 踢出队伍
+message GroupKickReq { // 踢出队伍
   string target_uid = 1; // 被踢的玩家uid
 }
-message KickRsp {
+message GroupKickRsp {
 }
 
-message KickNotify { // 踢出队伍的push
+message GroupKickNotify { // 踢出队伍的push
   int64 group_id = 1; //队伍id
 }
 
@@ -86,4 +86,45 @@ message MatchSuccessNotify { // 匹配成功的push
   int64 rid = 1; // 房间id
   int64 game_mode = 2;
   int64 mode_version = 3;
+  int64 max_player_num = 4; // 最大的人数上限
+  int64 player_index = 5; // 玩家在房间中的位置，从1开始
+  int64 team_id = 6; // 阵营id
+  RelayServer relay_server = 7; // relay服务器信息，帧同步模式玩法需要用到
+  bytes payload = 8; // 额外的数据
+}
+
+message RelayServer { // relay服务器信息
+  string ip = 1;
+  int64 tcp_port = 2;
+  int64 udp_port = 3;
+  bytes relay_sign = 4;
+}
+
+message CancelMatchReq { // 取消匹配
+}
+message CancelMatchRsp {
+}
+
+message UploadAttrReq { // 上传用户属性
+  int64 skin_id = 1;
+  string nickname = 2;
+  bytes payload = 3; // 额外属性
+}
+message UploadAttrRsp {
+}
+
+message ExitGameReq { // 退出游戏
+  int64 exit_type = 1; // 退出类型
+}
+message ExitGameRsp {
+}
+
+message GroupReadyReq { // 队伍准备
+}
+message GroupReadyRsp {
+}
+
+message CancelGroupReadyReq { // 取消队伍准备
+}
+message CancelGroupReadyRsp {
 }
