@@ -1,0 +1,132 @@
+syntax = "proto3";
+
+package match;
+option go_package = "git.17zjh.com/snake/snake_proto/matchx/match";
+
+message CreateGroupReq { // 创建队伍
+  int64 game_mode = 1;
+  int64 mode_version = 2;
+  int64 skin_id = 3; // 当前穿戴的皮肤
+  bytes payload = 4; // 额外的数据
+}
+message CreateGroupRsp {
+  int64 group_id = 1; // 创建的队伍id
+}
+
+message ExitGroupReq { // 退出队伍
+}
+message ExitGroupRsp {
+}
+
+message DissolveGroupReq { // 解散队伍
+}
+message DissolveGroupRsp {
+}
+
+message InviteFriendReq { // 邀请好友
+  string target_uid = 1; // 邀请的目标玩家uid
+  int64 source = 2; // 邀请的来源
+}
+message InviteFriendRsp {
+}
+
+message InviteFriendNotify { // 邀请好友的push消息
+  string source_uid = 1; // 邀请者uid
+  int64 game_mode = 2;
+  int64 mode_version = 3;
+  int64 source = 4;
+}
+
+message AcceptInviteReq { // 同意邀请
+  int64 source = 1;
+  int64 skin_id = 2;
+  int64 game_mode = 3;
+}
+message AcceptInviteRsp {
+}
+
+message AcceptInviteNotify { // 同意邀请的push
+  string uid = 1; // 同意邀请的玩家
+}
+
+message RejectInviteReq { // 拒绝邀请
+  int64 source = 1;
+  string message = 2; // 拒绝邀请的消息
+  int64 game_mode = 3;
+}
+message RejectInviteRsp {
+}
+
+message RejectInviteNotify { // 拒绝邀请的push
+  string uid = 1; // 拒绝邀请的玩家
+  string message = 2; // 拒绝邀请的消息
+}
+
+message GroupKickReq { // 踢出队伍
+  string target_uid = 1; // 被踢的玩家uid
+}
+message GroupKickRsp {
+}
+
+message GroupKickNotify { // 踢出队伍的push
+  int64 group_id = 1; //队伍id
+}
+
+message StartMatchReq { // 开始匹配
+  int64 game_mode = 1;
+  int64 mode_version = 2;
+  int64 skin_id = 3; // 当前穿戴的皮肤
+  bytes payload = 4; // 额外的数据
+}
+message StartMatchRsp {
+  int64 group_id = 1;
+  int64 need_player_num = 2; // 需要的玩家人数
+  bytes payload = 3; // 额外的数据
+}
+
+message MatchSuccessNotify { // 匹配成功的push
+  int64 rid = 1; // 房间id
+  int64 game_mode = 2;
+  int64 mode_version = 3;
+  int64 max_player_num = 4; // 最大的人数上限
+  int64 player_index = 5; // 玩家在房间中的位置，从1开始
+  int64 team_id = 6; // 阵营id
+  RelayServer relay_server = 7; // relay服务器信息，帧同步模式玩法需要用到
+  bytes payload = 8; // 额外的数据
+}
+
+message RelayServer { // relay服务器信息
+  string ip = 1;
+  int64 tcp_port = 2;
+  int64 udp_port = 3;
+  bytes relay_sign = 4;
+}
+
+message CancelMatchReq { // 取消匹配
+}
+message CancelMatchRsp {
+}
+
+message UploadAttrReq { // 上传用户属性
+  int64 skin_id = 1;
+  string nickname = 2;
+  bytes payload = 3; // 额外属性
+}
+message UploadAttrRsp {
+}
+
+message ExitGameReq { // 退出游戏
+  int64 exit_type = 1; // 退出类型
+}
+message ExitGameRsp {
+}
+
+message GroupReadyReq { // 队伍准备
+}
+message GroupReadyRsp {
+}
+
+message CancelGroupReadyReq { // 取消队伍准备
+}
+message CancelGroupReadyRsp {
+}
