@@ -507,6 +507,7 @@ message SkinUgcV2Config {
   repeated UgcTopic suit_topic_list = 8;
   int64 vip_cost = 9;
   string title_url = 10;
+  bool show_on_homepage = 11;
 }
 
 message UgcTopic {
