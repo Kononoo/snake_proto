@@ -825,6 +825,7 @@ message FlagsConfig {
   int32 yyb_tobid_ad_switch = 28;
   int32 not_show_idfa = 29;
   int32 silence_download = 30;
+  int32 chat_backup = 31; // 聊天备份, 默认0为不备份
 }
 
 message FeedbackConfig {
