@@ -8,12 +8,10 @@ message FarmConfig {
   int64 start_time = 3; // 开始时间
   int64 end_time = 4; // 结束时间
   int32 unlock_need_skin_num = 5; // 解锁玩法需要的皮肤数量
-  int32 prompt_need_skin_num = 6; // 玩法提示需要的皮肤数量
-  FarmHomePrompt home_prompt = 7; // 首页提示
+  FarmHomePrompt home_prompt = 6; // 首页提示
 }
 
 message FarmHomePrompt {
   bool open_switch = 1; // 强引导开关
   string unlock_content = 2; // 解锁引导内容
-  string prompt_content = 3; // 玩法提示内容
 }
