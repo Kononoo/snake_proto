@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package magic_skin;
 
-option go_package = "git.17zjh.com/snake/snake_proto/activity/goat_game";
+option go_package = "git.17zjh.com/snake/snake_proto/activity/magic_skin";
 
 message GetInfoReq {
 }
