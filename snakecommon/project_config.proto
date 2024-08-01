@@ -1246,7 +1246,7 @@ message WeddingMusic {
 
 // happy_mode_config start
 message HappycoinConfig {
-  int64 id = 1;
+  int64 happycoin_id = 1;
   int64 happycoin = 2;
   int64 free_happycoin = 3;
   int64 cost_diamond = 4;
