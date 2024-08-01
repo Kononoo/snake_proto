@@ -60,7 +60,7 @@ message TopListItem {
 
 message LockSectionReq {
   int64 section_type = 1; // 组件类型
-  bool lock = 2; // 是否加锁
+  bool is_lock = 2; // 是否加锁
 }
 
 message LockSectionRsp {
