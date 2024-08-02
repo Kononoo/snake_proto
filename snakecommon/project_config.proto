@@ -1154,6 +1154,7 @@ message OfflineGameConfig {
   WildStormConfig wild_storm = 23;
   EndLessBuffPropInfo  endless_buff_prop = 24;
   int32 anthap_shake = 25; // 震动开关
+  bool open_unity_endless_black_hole = 26; // 是否开启 unity 无尽黑洞
 }
 
 // === offline_game_config end ========================================
