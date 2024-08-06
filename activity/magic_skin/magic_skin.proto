@@ -25,10 +25,9 @@ message GetInfoRsp {
     string magic_skin_jump_link = 8; // 获取幻化皮肤的活动跳转链接
     int64 base_cost_coin = 9; // 基础的消耗幻化币数量
     map<int64, int64> extra_cost_coin = 10; // {锁定属性的个数:额外消耗的幻化币数量}
-    map<int64, int64> lockable_section = 11; // {激活的组件数量:可锁定组件数量}
-    map<int64, int64> unlock_section = 12; // {组件类型：激活所需幻化值}
-    int64 save_skin_limit = 13; // 保存藏品次数限制
-    int64 save_cost_crystal = 14; // 每次保存藏品消耗的水晶数量
+    map<int64, int64> unlock_section = 11; // {组件类型：激活所需幻化值}
+    int64 save_skin_limit = 12; // 保存藏品次数限制
+    int64 save_cost_crystal = 13; // 每次保存藏品消耗的水晶数量
   }
 
   Config config = 1; // 配置数据
