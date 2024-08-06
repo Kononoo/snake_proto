@@ -5,6 +5,7 @@ package magic_skin;
 option go_package = "git.17zjh.com/snake/snake_proto/activity/magic_skin";
 
 message GetInfoReq {
+  string act_id = 1;
 }
 
 message GetInfoRsp {
@@ -61,12 +62,14 @@ message TopListItem {
 message LockSectionReq {
   int64 section_type = 1; // 组件类型
   bool is_lock = 2; // 是否加锁
+  string act_id = 3;
 }
 
 message LockSectionRsp {
 }
 
 message RefreshSkinReq {
+  string act_id = 1;
 }
 
 message RefreshSkinRsp {
@@ -75,7 +78,7 @@ message RefreshSkinRsp {
 }
 
 message SaveSkinReq {
-
+  string act_id = 1;
 }
 
 message SaveSkinRsp {
@@ -84,7 +87,7 @@ message SaveSkinRsp {
 }
 
 message RestoreSkinReq {
-
+  string act_id = 1;
 }
 
 message RestoreSkinRsp {
@@ -94,6 +97,7 @@ message RestoreSkinRsp {
 
 message GetTopListReq {
   int64 top_type = 1; // 1 皮肤幻化排行，2:累计幻化排行
+  string act_id = 2;
 }
 
 message GetTopListRsp {
