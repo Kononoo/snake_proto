@@ -15,10 +15,10 @@ message EmptyRsp {}
 
 
 message ActivityBase  {
-  string actId   =1;
-  string   startTime =2;
-  string endTime  =3;
-  string Desc = 4;
-  string actCenterId= 5;
-  string drawCardID=6;
+  string act_id   =1;
+  string   start_time =2;
+  string end_time  =3;
+  string desc = 4;
+  string act_center_id= 5;
+  string draw_card_id=6;
 }
