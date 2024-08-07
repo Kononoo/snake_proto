@@ -2,6 +2,8 @@ syntax = "proto3";
 package snakecommon;
 option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 
+import "snakecommon/common.proto";
+
 message FarmConfig {
   string act_id = 1; // 活动id
   string link_url = 2; // 玩法链接
@@ -15,4 +17,9 @@ message FarmConfig {
 message FarmHomePrompt {
   bool open_switch = 1; // 强引导开关
   string unlock_content = 2; // 解锁引导内容
+}
+
+message MagicSkinConfig {
+  ActivityBase base = 1;
+  string btn_link = 2;
 }

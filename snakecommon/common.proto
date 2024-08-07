@@ -12,3 +12,13 @@ message HttpCommRsp {
 
 // 空返回
 message EmptyRsp {}
+
+
+message ActivityBase  {
+  string actId   =1;
+  string   startTime =2;
+  string endTime  =3;
+  string Desc = 4;
+  string actCenterId= 5;
+  string drawCardID=6;
+}
