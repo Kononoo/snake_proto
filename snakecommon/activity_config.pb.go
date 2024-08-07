@@ -31,7 +31,7 @@ type FarmConfig struct {
 	EndTime           int64           `protobuf:"varint,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`                                   // 结束时间
 	UnlockNeedSkinNum int32           `protobuf:"varint,5,opt,name=unlock_need_skin_num,json=unlockNeedSkinNum,proto3" json:"unlock_need_skin_num,omitempty"` // 解锁玩法需要的皮肤数量
 	HomePrompt        *FarmHomePrompt `protobuf:"bytes,6,opt,name=home_prompt,json=homePrompt,proto3" json:"home_prompt,omitempty"`                           // 首页提示
-	BubbleIntervalSec int64           `protobuf:"varint,7,opt,name=bubble_interval_sec,json=bubbleIntervalSec,proto3" json:"bubble_interval_sec,omitempty"`   // 首页气泡提示间隔时间 BubbleIntervalSec
+	BubbleIntervalSec int64           `protobuf:"varint,7,opt,name=bubble_interval_sec,json=bubbleIntervalSec,proto3" json:"bubble_interval_sec,omitempty"`   // 首页气泡提示间隔时间
 }
 
 func (x *FarmConfig) Reset() {
