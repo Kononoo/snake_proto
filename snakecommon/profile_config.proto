@@ -773,6 +773,7 @@ message PhotoWallActivityConfig {
   repeated PhotoWallIconConfig icon_config = 14;
   repeated PhotoWallLevelsItem levels = 15;
   PhotoWallGuardian guardian = 16;
+  string media_url_v2 = 17; // unity使用
 }
 
 message PhotoWallIconConfig {

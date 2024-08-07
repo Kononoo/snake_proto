@@ -11,6 +11,7 @@ message FarmConfig {
   int64 end_time = 4; // 结束时间
   int32 unlock_need_skin_num = 5; // 解锁玩法需要的皮肤数量
   FarmHomePrompt home_prompt = 6; // 首页提示
+  int64 BubbleIntervalSec = 7; // 首页气泡提示间隔时间
 }
 
 message FarmHomePrompt {
