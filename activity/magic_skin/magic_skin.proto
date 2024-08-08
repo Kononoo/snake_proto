@@ -56,6 +56,7 @@ message TopListItem {
   int64 box_id = 4; // 头像框
   int64 score = 5;
   Skin skin = 6; // 皮肤信息
+  bool verified = 7; // 是否认证
 }
 
 message LockSectionReq {
