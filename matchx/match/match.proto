@@ -23,6 +23,10 @@ message DissolveGroupReq { // 解散队伍
 message DissolveGroupRsp {
 }
 
+message DissolveGroupNotify { // 解散队伍的push
+  int64 group_id = 1; // 队伍id
+}
+
 message InviteFriendReq { // 邀请好友
   string target_uid = 1; // 邀请的目标玩家uid
   int64 source = 2; // 邀请的来源
