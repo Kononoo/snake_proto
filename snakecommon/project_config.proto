@@ -1357,8 +1357,8 @@ message AiLevelWeight {
 }
 
 message AiLengthRange {
-  int32 min_length = 1;
-  int32 max_length = 2;
+  int64 min_length = 1;
+  int64 max_length = 2;
   int32 initial_count = 3;
   int32 max_count = 4;
   repeated AiLevelWeight level_list = 5;
@@ -1372,7 +1372,7 @@ message FloaterConfig {
   int32 born_radius = 4;
   int32 floater_score = 5;
   int32 interval_time = 6;
-  repeated int32 born_len2 = 7;
+  repeated int64 born_len2 = 7;
   int32 max_count = 8;
   string desc = 9;
   string svga_url = 10;
@@ -1392,8 +1392,8 @@ message AiDifficultyConfig {
 
 message AiBornPool {
   int32 id = 1;
-  int32 min_length = 2;
-  int32 max_length = 3;
+  int64 min_length = 2;
+  int64 max_length = 3;
   int32 max_count = 4;
   repeated AiLevelWeight level_list = 5;
 }
@@ -1491,96 +1491,30 @@ message MapBorder {
   int32 map_invisible_duration = 6;
 }
 
-message MusicChar {
-  string image_url = 1;
-  int64 audio_id = 2;
-  int64 score = 3;
-  int64 time = 4;
-  int64 min_range = 5;
-  int64 range = 6;
-  int64 left_time = 7;
-}
-
-message BonusChar {
-  string desc = 1;
-  int64 probability = 2;
-  repeated BonusWord words = 3;
-}
-
-message BonusWord {
-  string char = 1;
-  string image_url = 2;
-  string image_light_url = 3;
-  repeated Point points = 4; // point改为points，这里的结构变了，不支持二维数组
-}
-
-message Point {
-  double x = 1;
-  double y = 2;
-}
-
-message EndlessBonus {
-  int64 bonus_n_food_min_range = 1;
-  double bonus_b_magnet_gains = 2;
-  int64 bonus_b_map_w = 3;
-  int64 bonus_b_map_h = 4;
-  int64 bonus_b_food_score = 5;
-  int64 bonus_b_time = 6;
-  repeated MusicChar music_chars = 7;
-  int64 bonus_normal_prob = 8;
-  int64 bonus_big_prob = 9;
-  int64 bonus_normal_max = 10;
-  repeated int64 bonus_start_array = 11;
-  int64 bonus_cd = 12;
-  int64 bonus_b_food_size = 13;
-  int64 bonus_b_enter_food_size = 14;
-  int64 bonus_n_food_size = 15;
-  int64 bonus_n_food_score = 16;
-  int64 bonus_n_time = 17;
-  int64 bonus_n_food_cd = 18;
-  int64 bonus_n_food_count = 19;
-  int64 bonus_n_food_range = 20;
-  int64 bonus_b_magnet_prop = 21;
-  int64 bonus_b_magnet_max = 22;
-  int64 bonus_b_magnet_time = 23;
-  int64 bonus_b_char_percent = 24;
-  int64 bonus_b_born_x = 25;
-  int64 bonus_b_born_y = 26;
-  repeated BonusChar bonus_b_char_array = 27;
-}
-
 message AiConfigV3 {
   StarSnake star_snake = 1;
-  int32 use_endless_bonus = 2;
   float map_rate = 3;
   float camera_max_factor = 4;
   float camera_min_factor = 5;
-  int32 eat_food_rate_change_scope = 6;
-  int32 eat_food_count_for_increase_node = 7;
-  int32 player_eat_food_rate_change_scope = 8;
-  int32 player_eat_food_count_for_increase_node = 9;
+  float eat_food_rate_change_scope = 6;
+  float eat_food_count_for_increase_node = 7;
+  float player_eat_food_rate_change_scope = 8;
+  float player_eat_food_count_for_increase_node = 9;
   float ai_born_length_limit_rate = 10;
   float ai_wreck_convert_rate = 11;
   float revive_weaken_percent = 12;
-  int32 ai_emoji = 13;
   int64 length_camera_param = 14;
   int64 length_width_param = 15;
-  int32 emoji = 16;
-  int32 revenge = 17;
-  int32 death_camera = 18;
-  int64 collide_less_check = 19;
-  int32 eat_food_rate_change_scope_low = 20;
-  int32 eat_food_count_for_increase_node_low = 21;
+  float eat_food_rate_change_scope_low = 20;
+  float eat_food_count_for_increase_node_low = 21;
   repeated AiWreckNodeScoreRange ai_wreck_node_score_range = 22;
   repeated AiWreckNodeScoreRange ai_wreck_node_score_range_low = 23;
   repeated AiLevel ai_level_list = 24;
   repeated AiLengthRange ai_length_range = 25;
   FloaterConfig floater_config = 26;
   repeated AiDifficultyConfig ai_difficulty_config_list = 27;
-  EndlessBonus endless_bonus = 28;
   EndlessBonusNew endless_bonus_new = 29;
-  float map_rate_h = 30;
-  int32 born_length = 31;
+  int64 born_length = 31;
   int32 min_born_kill = 32;
   int32 max_born_kill = 33;
   int32 born_kill = 34;
