@@ -1071,15 +1071,21 @@ message SingleGameAiConfigItem {
   double ai_snake_view_angle = 5;
 }
 
-//message FloaterConfig {
-//  repeated int32 born_len = 1;
-//  int32 born_count = 2;
-//  int32 born_count_v2 = 3;
-//  int32 born_radius = 4;
-//  int32 floater_score = 5;
-//  int32 interval_time = 6;
-//  repeated int32 born_len2 = 7;
-//}
+message FloaterConfigOld {
+  repeated int32 born_len = 1;
+  int32 born_count = 2;
+  int32 born_count_v2 = 3;
+  int32 born_radius = 4;
+  int32 floater_score = 5;
+  int32 interval_time = 6;
+  repeated int32 born_len2 = 7;
+  int64 max_count = 8;
+  string desc = 9;
+  string svga_url = 10;
+  string imgurl = 11;
+  string reward_img = 12;
+  int64 refresh_type = 13;
+}
 
 message ActivityMapConfig {
   int64 start_time = 1;
@@ -1146,7 +1152,7 @@ message OfflineGameConfig {
   int32 new_kill_broadcast = 15;
   int32 new_map = 16;
   int32 recover = 17;
-  FloaterConfig floater_config = 18; // 貌似已经废弃，移到到ai_config_v3配置里了
+  FloaterConfigOld floater_config = 18; // 貌似已经废弃，移到到ai_config_v3配置里了
   EndlessLimitConfig endless_limit_config = 19;
   ActivityMapConfig activity_map_config = 20;
   EndlessBubbleConfig endless_bubble = 21;
