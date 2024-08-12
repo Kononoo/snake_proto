@@ -644,6 +644,13 @@ message OrderConfig {
   repeated int32 excite_popup_order = 9;
   int32 need_bind = 10;
   RandomDoubleClientInfo random_double_client_info = 11; // 需要返回给客户端的数据
+  AlipayDiscount alipay_discount = 12;
+}
+
+message AlipayDiscount {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string copy_writing = 3;
 }
 
 message FirstChargePopup {
