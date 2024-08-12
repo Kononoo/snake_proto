@@ -140,12 +140,13 @@ message ExitGameReq { // 退出游戏
 message ExitGameRsp {
 }
 
-message GroupReadyReq { // 队伍准备
+message GroupReadyReq { // 队伍成员准备
+  bool is_auto = 1; // 是否自动准备，部分游戏模式需要强制手动准备
 }
 message GroupReadyRsp {
 }
 
-message CancelGroupReadyReq { // 取消队伍准备
+message CancelGroupReadyReq { // 队伍成员取消准备
 }
 message CancelGroupReadyRsp {
 }
