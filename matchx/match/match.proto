@@ -27,6 +27,21 @@ message DissolveGroupNotify { // 解散队伍的push
   int64 group_id = 1; // 队伍id
 }
 
+message GroupMember { // 队伍成员
+  string uid = 1; // 玩家uid
+  int64 skin_id = 2; // 玩家当前使用的皮肤id
+  bytes payload = 3;
+}
+
+message GroupMemberChangeNotify { // 队伍成员push
+  int64 group_id = 1;
+  string Owner = 2;
+  int64 game_mode = 3;
+  int64 mode_version = 4;
+  repeated GroupMember members = 5;
+  bytes payload = 6;
+ }
+
 message InviteFriendReq { // 邀请好友
   string target_uid = 1; // 邀请的目标玩家uid
   int64 source = 2; // 邀请的来源
