@@ -33,7 +33,7 @@ message GroupMember { // 队伍成员
   bytes payload = 3;
 }
 
-message GroupMemberChangeNotify { // 队伍成员push
+message SyncGroupMemberNotify { // 队伍成员push
   int64 group_id = 1;
   string Owner = 2;
   int64 game_mode = 3;
