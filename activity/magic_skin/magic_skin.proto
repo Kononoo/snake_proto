@@ -24,10 +24,11 @@ message GetInfoRsp {
     int64 magic_skin_id = 7; // 本期活动指定的幻化皮肤id
     string magic_skin_jump_link = 8; // 获取幻化皮肤的活动跳转链接
     int64 base_cost_coin = 9; // 基础的消耗幻化币数量
-    map<int64, int64> extra_cost_coin = 10; // {锁定属性的个数:额外消耗的幻化币数量}
-    map<int64, int64> unlock_section = 11; // {组件类型：激活所需幻化值}
-    int64 save_skin_limit = 12; // 保存藏品次数限制
-    int64 save_cost_crystal = 13; // 每次保存藏品消耗的水晶数量
+    int64 exchange_rate = 10; // 1幻化币价值多少苹果
+    map<int64, int64> extra_cost_coin = 11; // {锁定属性的个数:额外消耗的幻化币数量}
+    map<int64, int64> unlock_section = 12; // {组件类型：激活所需幻化值}
+    int64 save_skin_limit = 13; // 保存藏品次数限制
+    int64 save_cost_crystal = 14; // 每次保存藏品消耗的水晶数量
   }
 
   Config config = 1; // 配置数据
@@ -35,12 +36,10 @@ message GetInfoRsp {
   int64 crystal = 3; // 水晶数量
   repeated TopListItem top_list = 4; // 前几名的幻化排行信息
   int64 total_score = 5; // 累计幻化值
-  Skin current_skin = 6; // 当前生效的皮肤信息，皮肤id为0表示未解锁幻化皮肤
+  repeated Skin save_skins = 6; // 保存的皮肤列表 数组长度为0代表没有保存过，数组最后一次为 上一次保存
   int64 pending_skin_id = 7;  // 待保存的皮肤id
   int64 last_skin_id = 8; // 上次幻化的皮肤id
-  repeated int64 unlock_sections = 9; // 已激活的组件类型
-  int64 save_skin_num = 10; // 已保存藏品的次数
-  repeated int64 locked_section = 11; // 已锁定的组件类型
+  repeated int64 locked_section = 9; // 已锁定的组件类型
 }
 
 message Skin {
