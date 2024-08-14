@@ -595,7 +595,15 @@ message SkinInfo {
   string unity_anim_version = 25; // unity资源支持版本
   string unity_party_anim_key = 26; // unity2d派对动效
   string unity_party_anim_version = 27; // unity2d派对动效
-  int32 enter_unity = 28;
+  int32 enter_unity = 28; // 是否进入 unity
+  repeated MagicSkinSection sections = 29; // 幻化皮肤组件
+}
+
+message MagicSkinSection {
+  int32 type = 1; // 组件类型
+  int32 id = 2; // 组件ID
+  string style_img = 3; // 款式图
+  string style_name = 4; // 款式名
 }
 
 message Feature {
