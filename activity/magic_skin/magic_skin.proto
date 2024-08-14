@@ -10,7 +10,7 @@ message Section {
   int64 id = 3;  // 样式id
   string style_img = 4; // 样式名
   string style_name = 5; // 样式图
-  string worth_level = 6;
+  int64 worth_level = 6;
   int64 default = 7;  // 是否为默认样式
 }
 
