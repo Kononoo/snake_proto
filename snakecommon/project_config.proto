@@ -1535,3 +1535,28 @@ message AiConfigV3 {
 }
 
 // ai_config_v3 end
+
+
+// system_config start
+message GameConfig {
+  int64 beta_flag = 1;     // 0:未开启，1:正式开启：2:公测中, 3:入口屏蔽
+  int64 process_flag = 2;  // 0:主进程，1:独立进程
+  string start_time = 3;   // 开始时间，格式：01：00
+  string end_time = 4;     // 结束时间
+  int64 star_limit = 5;
+  int64 use_mode_version = 6;
+  int64 rate = 7;
+}
+
+message SystemConfig {
+  map<string, GameConfig> game_configs = 1;     // key: game_mode
+  map<string, bool> endless_exp = 2;            // 无尽难度实验白名单
+  map<string, bool> ol_endless_pk = 3;          // 多人无尽比赛模式名单
+  map<string, bool> voice_room_uids = 4;        // 语音房白名单
+  map<string, bool> telephone_black_list = 5;   // 手机号黑名单
+  map<string, bool> idcard_black_list = 6;      // 身份证黑名单
+  map<string, bool> voice_white_owner_list = 7; // 主播白名单
+  map<string, bool> ol_endless_entrance = 8;    // 无尽对决白名单
+  map<string, bool> ios_shake = 9;              // iOS震动白名单
+}
+// system_config end
