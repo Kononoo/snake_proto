@@ -395,8 +395,8 @@ func (LotteryType) EnumDescriptor() ([]byte, []int) {
 	return file_voiceroom_voiceroom_proto_rawDescGZIP(), []int{2}
 }
 
-//1: 获取房间信息，2：封禁语音房上麦，3：语音房间解散，4：重置语音房间房名，5：重置语音房间公告，6：用户当前房间拉下推荐
-//7：push房间公告，8：踢出房间，9：发送个人消息, 10：push房主魅力勋章等级变化
+// 1: 获取房间信息，2：封禁语音房上麦，3：语音房间解散，4：重置语音房间房名，5：重置语音房间公告，6：用户当前房间拉下推荐
+// 7：push房间公告，8：踢出房间，9：发送个人消息, 10：push房主魅力勋章等级变化
 type InnerCallType int32
 
 const (
@@ -2940,7 +2940,7 @@ type PuPlayerChangeMsg struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	//  repeated playerChangeItem change_list = 1;
+	// repeated playerChangeItem change_list = 1;
 	OnlinePlayer int32               `protobuf:"varint,2,opt,name=online_player,json=onlinePlayer,proto3" json:"online_player,omitempty"` //最新的在线人数
 	Detail       *PlayerChangeDetail `protobuf:"bytes,3,opt,name=detail,proto3" json:"detail,omitempty"`
 }
@@ -3487,7 +3487,7 @@ type HandleSeatInviteReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	//  int32 opt = 1; // 1同意，2拒绝
+	// int32 opt = 1; // 1同意，2拒绝
 	MicOpen   bool  `protobuf:"varint,2,opt,name=mic_open,json=micOpen,proto3" json:"mic_open,omitempty"` //自己的麦是否开了
 	SeatIndex int32 `protobuf:"varint,3,opt,name=seat_index,json=seatIndex,proto3" json:"seat_index,omitempty"`
 }

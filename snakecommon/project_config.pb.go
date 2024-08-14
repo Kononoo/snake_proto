@@ -8564,7 +8564,7 @@ func (x *Notify) GetMinor() []*CertifyGameConfig {
 	return nil
 }
 
-//*
+// *
 // game_time : 10800
 // msg : 【健康系统】您今日的累计游戏时间已经超过3小时，为了您的健康，请您下线休息，做适当身体活动，注意劳逸结合。
 type CertifyGameConfig struct {
@@ -8630,10 +8630,11 @@ func (x *CertifyGameConfig) GetIntervalTime() int32 {
 	return 0
 }
 
-//*
+// *
 // "login_text": "为空则没有宵禁","begin": "22:00","end": "08:00",
-//         "workday_active": 3600,"holiday_active": 10800,"active_text": "超时提醒",
-//         "active_notice": "剩余活跃时间提醒{remain}占位","notice_interval": 1800
+//
+//	"workday_active": 3600,"holiday_active": 10800,"active_text": "超时提醒",
+//	"active_notice": "剩余活跃时间提醒{remain}占位","notice_interval": 1800
 type MinorNotify struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -9385,16 +9386,17 @@ func (x *RecruitPopup) GetSecretaryMsg() string {
 	return ""
 }
 
-//*
-// "new_user_config": {
-//     "player_eat_food_rate_change_scope": 200,
-//     "player_eat_food_count_for_increase_node": 10,
-// 		"eat_food_rate_change_scope": 200,
-//     "eat_food_count_for_increase_node": 10,
-//     "guide_candy_total_count": 100, //新手引导糖果总个数
-//   	"guide_candy_score": 100, //新手引导糖果分数
-//     "free_revive_game_count": 5, //新手无尽前几局每局第一次免费复活
-//   }
+// *
+//
+//	"new_user_config": {
+//	    "player_eat_food_rate_change_scope": 200,
+//	    "player_eat_food_count_for_increase_node": 10,
+//			"eat_food_rate_change_scope": 200,
+//	    "eat_food_count_for_increase_node": 10,
+//	    "guide_candy_total_count": 100, //新手引导糖果总个数
+//	  	"guide_candy_score": 100, //新手引导糖果分数
+//	    "free_revive_game_count": 5, //新手无尽前几局每局第一次免费复活
+//	  }
 type NewUserConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

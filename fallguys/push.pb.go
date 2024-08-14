@@ -66,7 +66,7 @@ func (PushType) EnumDescriptor() ([]byte, []int) {
 	return file_fallguys_push_proto_rawDescGZIP(), []int{0}
 }
 
-//玩家类型
+// 玩家类型
 type PlayerType int32
 
 const (

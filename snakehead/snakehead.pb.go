@@ -79,7 +79,7 @@ func (Lang) EnumDescriptor() ([]byte, []int) {
 	return file_snakehead_snakehead_proto_rawDescGZIP(), []int{0}
 }
 
-//游戏模式，除100可得gameId
+// 游戏模式，除100可得gameId
 type GameMode int32
 
 const (
@@ -365,7 +365,7 @@ func (x *UnityRspHead) GetPid() int32 {
 	return 0
 }
 
-//--------------grpc做网关(忽略)-------------
+// --------------grpc做网关(忽略)-------------
 type CommonUnityReqMsg struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
