@@ -7,11 +7,11 @@ option go_package = "git.17zjh.com/snake/snake_proto/activity/magic_skin";
 // 样式
 message Section {
   int64 component_type = 1; // 组件类型
+  string component_name = 2; // 组件名称
   int64 id = 3;  // 样式id
   string style_img = 4; // 样式名
-  string style_name = 5; // 样式图
-  int64 worth_level = 6;
-  int64 default = 7;  // 是否为默认样式
+  int64 worth_level = 5;
+  int64 is_default = 6;  // 是否为默认样式
 }
 
 message GetInfoReq {
@@ -59,7 +59,7 @@ message Skin {
   int64 id = 1; // 原生皮肤id
   int64 score = 2; // 幻化值
   int64 number = 3; // 藏品编号
-  repeated Section sections = 4; // 样式列表，默认样式不传
+  repeated int64 section_ids = 4; // 样式列表，默认样式不传
 }
 
 message TopListItem {
@@ -87,7 +87,7 @@ message RefreshSkinReq {
 
 message RefreshSkinRsp {
   Skin skin = 1; //幻化后的皮肤id
-  int64 coin = 4; // 更新幻化币数量
+  int64 coin = 2; // 更新幻化币数量
 }
 
 message SaveSkinReq {
@@ -105,7 +105,7 @@ message RestoreSkinReq {
 
 message RestoreSkinRsp {
   int64 skin_id = 1; //复原后的皮肤id
-  int64 coin = 4; // 更新幻化币数量
+  int64 coin = 2; // 更新幻化币数量
 }
 
 message GetTopListReq {
