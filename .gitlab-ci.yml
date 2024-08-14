@@ -6,7 +6,7 @@ stages:
   - build
 
 build:
-  image: public-acr-sh-aliyun-registry-vpc.cn-shanghai.cr.aliyuncs.com/tools/golang:1.17.5-stretch
+  image: public-acr-sh-aliyun-registry.cn-shanghai.cr.aliyuncs.com/tools/golang:1.20.14-bullseye
   stage: build
   script:
     - export GOPROXY="https://goproxy.cn,direct"
