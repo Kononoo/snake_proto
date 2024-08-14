@@ -4,6 +4,16 @@ package magic_skin;
 
 option go_package = "git.17zjh.com/snake/snake_proto/activity/magic_skin";
 
+// 样式
+message Section {
+  int64 component_type = 1; // 组件类型
+  int64 id = 3;  // 样式id
+  string style_img = 4; // 样式名
+  string style_name = 5; // 样式图
+  string worth_level = 6;
+  int64 default = 7;  // 是否为默认样式
+}
+
 message GetInfoReq {
   string act_id = 1;
 }
@@ -20,15 +30,17 @@ message GetInfoRsp {
     repeated DescItem desc = 3; // 活动说明
     int64 coin_item_id = 4; // 幻化币道具id
     int64 crystal_item_id = 5; // 幻化水晶道具id
-    int64 default_skin_id = 6; // 默认的皮肤id
-    int64 magic_skin_id = 7; // 本期活动指定的幻化皮肤id
-    string magic_skin_jump_link = 8; // 获取幻化皮肤的活动跳转链接
-    int64 base_cost_coin = 9; // 基础的消耗幻化币数量
-    int64 exchange_rate = 10; // 1幻化币价值多少苹果
-    map<int64, int64> extra_cost_coin = 11; // {锁定属性的个数:额外消耗的幻化币数量}
-    map<int64, int64> unlock_section = 12; // {组件类型：激活所需幻化值}
-    int64 save_skin_limit = 13; // 保存藏品次数限制
-    int64 save_cost_crystal = 14; // 每次保存藏品消耗的水晶数量
+    int64 magic_skin_id = 6; // 本期活动指定的幻化皮肤id
+    string magic_skin_jump_link = 7; // 获取幻化皮肤的活动跳转链接
+    int64 base_cost_coin = 8; // 基础的消耗幻化币数量
+    int64 exchange_rate = 9; // 1幻化币价值多少苹果
+    map<int64, int64> extra_cost_coin = 10; // {锁定属性的个数:额外消耗的幻化币数量}
+    map<int64, int64> unlock_section = 11; // {组件类型：激活所需幻化值}
+    int64 save_skin_limit = 12; // 保存藏品次数限制
+    int64 save_cost_crystal = 13; // 每次保存藏品消耗的水晶数量
+    string coin_pack_link = 14; //  代币获取跳转链接:礼包
+    string coin_act_link = 15; // 代币获取跳转链接:活动
+    repeated Section sections = 16; // 本期活动幻化皮肤所有组件
   }
 
   Config config = 1; // 配置数据
@@ -37,15 +49,18 @@ message GetInfoRsp {
   repeated TopListItem top_list = 4; // 前几名的幻化排行信息
   int64 total_score = 5; // 累计幻化值
   repeated Skin save_skins = 6; // 保存的皮肤列表 数组长度为0代表没有保存过，数组最后一次为 上一次保存
-  int64 pending_skin_id = 7;  // 待保存的皮肤id
-  int64 last_skin_id = 8; // 上次幻化的皮肤id
+  Skin pending_skin = 7;  // 待保存的皮肤id
+  Skin last_skin = 8; // 上次幻化的皮肤id
   repeated int64 locked_section = 9; // 已锁定的组件类型
 }
 
 message Skin {
-  int64 id = 1; // 皮肤id
+  int64 id = 1; // 原生皮肤id
   int64 score = 2; // 幻化值
   int64 number = 3; // 藏品编号
+  repeated Section sections = 4; // 样式列表，默认样式不传
+  int64 show_worth = 5; // show值
+  int64 worth_level = 6; // 等级
 }
 
 message TopListItem {
@@ -72,7 +87,7 @@ message RefreshSkinReq {
 }
 
 message RefreshSkinRsp {
-  int64 skin_id = 1; //幻化后的皮肤id
+  Skin skin = 1; //幻化后的皮肤id
   int64 coin = 4; // 更新幻化币数量
 }
 
