@@ -118,6 +118,12 @@ message MatchSuccessNotify { // 匹配成功的push
   bytes payload = 8; // 额外的数据
 }
 
+message SyncGroupStateNotify { // 同步队伍状态
+  int64 group_id = 1;
+  int64 state = 2; // 状态
+  string operator = 3; // 操作者uid
+}
+
 message RelayServer { // relay服务器信息
   string ip = 1;
   int64 tcp_port = 2;
