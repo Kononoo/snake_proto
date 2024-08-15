@@ -1537,7 +1537,7 @@ message AiConfigV3 {
 // ai_config_v3 end
 
 
-// system_config start
+// =====  system_config start  =======
 message GameConfig {
   int64 beta_flag = 1;     // 0:未开启，1:正式开启：2:公测中, 3:入口屏蔽
   int64 process_flag = 2;  // 0:主进程，1:独立进程
@@ -1559,4 +1559,610 @@ message SystemConfig {
   map<string, bool> ol_endless_entrance = 8;    // 无尽对决白名单
   map<string, bool> ios_shake = 9;              // iOS震动白名单
 }
-// system_config end
+// ======  system_config end  =========
+
+
+
+// ==========  reward_config start  =======
+message RewardConfig {
+  int64 directly_share_switch = 1;
+  int64 invite_per_reward = 2;
+  int64 invite_reward_day_limit = 3;
+  int64 invite_total_reward = 4;
+  string money_reward_contact = 5;
+  repeated RegisterReward register_reward = 6;
+  int64 share_per_reward = 7;
+  int64 share_reward_day_limit = 8;
+  int64 share_reward_week_limit = 9;
+  int64 wechat_appeal_switch = 10;
+  string wechat_qr_code_url = 11;
+  int64 wechat_reward_coin = 12;
+}
+
+message RegisterReward {
+  string bg_img = 1;
+  string gif_img = 2;
+  string source = 3;
+}
+// ==========   reward_config end  ========
+
+
+
+//  ===== interface_expire  start  =======
+message InterfaceExpire {
+    ActivityAPI activity_api = 1;
+    ClanAPI clan_api = 2;
+    ExpireConfig config = 3;
+    EventAPI event_api = 4;
+    FriendAPI friend_api = 5;
+    InboxAPI inbox_api = 6;
+    NearbyAPI nearby_api = 7;
+    ScoreAPI score_api = 8;
+    ShareAPI share_api = 9;
+    TopListV2 top_list_v2 = 10;
+    VoiceRoomAPI voice_room_api = 11;
+}
+message ActivityAPI {
+    int64 get_activity_list = 1;
+    int64 get_latest_activity = 2;
+}
+
+message ClanAPI {
+    int64 get_clan_info = 1;
+    int64 get_clan_member_list = 2;
+}
+
+message ExpireConfig {
+    int64 get_beta_state = 1;
+}
+
+message EventAPI {
+    int64 get_event_list = 1;
+    int64 get_event_list_v2 = 2;
+}
+
+message FriendAPI {
+    int64 get_friend_list = 1;
+}
+
+message InboxAPI {
+    int64 get_mail_list = 1;
+}
+
+message NearbyAPI {
+    int64 get_nearby = 1;
+}
+
+message ScoreAPI {
+    int64 get_prime_info = 1;
+    int64 get_rank = 2;
+    int64 get_user_score_info = 3;
+}
+
+message ShareAPI {
+    int64 get_share_info = 1;
+}
+
+message TopListV2 {
+    int64 get_clan_top_list = 1;
+    int64 get_clan_top_list_v2 = 2;
+    int64 get_excite_top_list = 3;
+    int64 get_marry_top_list = 4;
+    int64 get_skin_top_list = 5;
+    int64 get_top_list = 6;
+    int64 get_top_list_v2 = 7;
+}
+
+message VoiceRoomAPI {
+    int64 get_config = 1;
+}
+//  ===== interface_expire  start  =======
+
+
+
+
+// =========   ms_config start   ========
+message MsConfig {
+  int64 hb_rate = 1;
+  repeated string log_relay = 2;
+  repeated MsAddr ms_addr = 3;
+  repeated MsAddr ms_addr2 = 4;
+  int64 relay_hb_rate = 5;
+}
+message MsAddr {
+  string host = 1;
+  int64  port = 2;
+}
+// ========  ms_config end  ==========
+
+
+
+
+// ==========   province_list start ========
+message ProvinceList {
+  repeated string province_list = 1;
+}
+// ==========   province_list end ========
+
+
+
+
+// ========  province_pinyin_list  start =======
+message ProvincePinyinList {
+  repeated string province_pinyin_list = 1;
+}
+// ========  province_pinyin_list  edn =======
+
+
+
+
+// ========   excite_mode_config  start  ===========
+message ExciteModeConfig {
+    repeated int64 ad_hat_popup = 1;
+    repeated GamePropList game_prop_list = 2;
+    repeated GamePropList game_prop_list2 = 3;
+    ParamConfig param_config = 4;
+    int64 life_ab_test = 5;
+    repeated string text_config = 6;
+    ModeGameConfig game_config = 7;
+}
+message GamePropList {
+    string desc = 1;
+    string effect_desc = 2;
+    repeated ModeLevelInfo level_info = 3;
+    string name = 4;
+    int64 prop_id = 5;
+    string upgrade_desc = 6;
+}
+message ModeLevelInfo {
+    int64 cost_goldcoin = 1;
+    int64 effect = 2;
+    int64 level = 3;
+}
+
+message ParamConfig {
+    InGame in_game = 1;
+    repeated PropRate prop_rate = 2;
+    RateConfig rate_config = 3;
+    int64 relive_limit = 4;
+}
+message InGame {
+    int64 combo_interval = 1;
+    double eat_efficiency = 2;
+    int64 max_prop_num = 3;
+    repeated int64 speed_up_reduce = 4;
+}
+
+message PropRate {
+    int64 AI = 1;
+    int64 map = 2;
+    int64 prop_id = 3;
+    int64 stone = 4;
+}
+
+message Ai {
+    double K = 1;
+    double boss = 2;
+    int64 normal = 3;
+    double special = 4;
+}
+
+message Map {
+    int64 cycle_time = 1;
+    int64 num = 2;
+}
+
+message Stone {
+    double rate = 1;
+}
+
+message RateConfig {
+    Ai AI = 1;
+    Map map = 2;
+    Stone stone = 3;
+}
+
+message ModeGameConfig {
+    repeated AiLevelList ai_level_list = 1;
+    double eat_efficiency = 2;
+    int64 food_count = 3;
+    int64 helmet_limit_count = 4;
+    int64 map_height = 5;
+    int64 map_width = 6;
+    int64 prop_fury_electricity = 7;
+    int64 prop_kill_fury = 8;
+    SelfElectricityConfig self_electricity_config = 9;
+    int64 self_start_len = 10;
+    ShockConfig shock_config = 11;
+    int64 speed_up_reduce = 12;
+    repeated StageConfigs stage_configs = 13;
+    int64 stone_count = 14;
+    int64 stone_relive_time = 15;
+}
+message AiLevelList {
+    double brain_attack_chosen_per_frame_rate = 1;
+    double brain_attack_circle_inner_radius = 2;
+    int64 brain_attack_circle_outer_radius = 3;
+    repeated BrainAttackTime brain_attack_time = 4;
+    int64 brain_visible_degree = 5;
+    int64 collision_ai_rate = 6;
+    int64 collision_border_rate = 7;
+    int64 collision_stone_rate = 8;
+    int64 collision_wreck_rate = 9;
+    int64 level = 10;
+}
+
+message BrainAttackTime {
+    int64 time = 1;
+    int64 weight = 2;
+}
+
+message SelfElectricityConfig {
+    int64 electricity_cd_time = 1;
+    double electricity_explore_max_radius = 2;
+    int64 electricity_explore_time = 3;
+    double electricity_warning_induction_distance = 4;
+    int64 electricity_warning_time = 5;
+}
+
+message ShockConfig {
+    double shock_explore_max_radius = 1;
+    double shock_explore_time = 2;
+}
+
+message AiTypeList {
+    int64 ai_count = 1;
+    int64 ai_type = 2;
+    int64 attacker_count = 3;
+    int64 level = 4;
+    int64 range_len = 5;
+    repeated int64 skin_list = 6;
+    int64 start_len = 7;
+}
+
+message ElectricityConfig {
+    int64 electricity_cd_time = 1;
+    double electricity_explore_max_radius = 2;
+    int64 electricity_explore_time = 3;
+    double electricity_warning_induction_distance = 4;
+    int64 electricity_warning_time = 5;
+}
+
+message MissileConfig {
+    double missile_ai_detect_distance = 1;
+    int64 missile_cd_time = 2;
+    double missile_explode_induction_distance = 3;
+    double missile_explode_radius = 4;
+    double missile_explode_time = 5;
+    int64 missile_fly_time = 6;
+    double missile_prepare_time = 7;
+    int64 missile_scanning_time = 8;
+    int64 missile_speed_rate = 9;
+}
+
+message AiConfig {
+    repeated AiTypeList ai_type_list = 1;
+    ElectricityConfig electricity_config = 2;
+    MissileConfig missile_config = 3;
+}
+
+message PropBornInfos {
+    int64 prop_born_time = 1;
+    int64 prop_count = 2;
+    int64 prop_refresh_time = 3;
+    int64 prop_type = 4;
+}
+
+message PropWeightList {
+    int64 prop_weight_battery = 1;
+    int64 prop_weight_coin = 2;
+    int64 prop_weight_cordial = 3;
+    int64 prop_weight_double_score = 4;
+    int64 prop_weight_hamburger = 5;
+    int64 prop_weight_helmet = 6;
+    int64 prop_weight_invincible = 7;
+    int64 prop_weight_magnet = 8;
+    int64 prop_weight_time = 9;
+    int64 type = 10;
+}
+
+message PropConfig {
+    repeated PropBornInfos prop_born_infos = 1;
+    int64 prop_refresh_max_survival_count = 2;
+    repeated PropWeightList prop_weight_list = 3;
+}
+
+message StageConfigs {
+    AiConfig ai_config = 1;
+    int64 ai_revive_time = 2;
+    PropConfig prop_config = 3;
+    int64 stage_end_time = 4;
+    int64 stage_start_time = 5;
+    int64 stage_type = 6;
+}
+// ========   excite_mode_config  end  ===========
+
+
+
+
+// ========   emulator start  =========
+message Emulator {
+  repeated AppCheck app_check = 1;
+  repeated CheatAppCheck cheat_app_check = 2;
+  repeated ShellCheck shell_check = 3;
+  repeated string weak_cpu = 4;
+}
+message AppCheck {
+  string emulator_type = 1;
+  repeated string package_names = 2;
+}
+message CheatAppCheck {
+  string cheat_type = 1;
+  repeated string package_names = 2;
+}
+message ShellCheck {
+  string cmd = 1;
+  string emulator_type = 2;
+  repeated string features = 3;
+}
+// =========  emulator end  ==========
+
+
+
+
+// ======  little_game start =====
+message LittleGame {
+   map<string, LittleGameSrc> littleGames = 1;
+}
+message LittleGameSrc {
+  repeated LittleGameSrcItem items = 1;
+}
+message LittleGameSrcItem {
+  int64 game_id = 1;
+  string md5 = 2;
+  string src = 3;
+  string loading_url = 4;
+  int64 exit_flag = 5;
+  int64 transparent = 6;
+  int64 use_web = 7;
+}
+//  ======= little_game  end ========
+
+
+
+// ======= review_market  start ======
+message ReviewMarket {
+  map<string, string> review_market = 1;
+}
+// ======= review_market  end ======
+
+
+
+// ====== little_game_ui_config  start ========
+message LittleGameUiConf {
+    LittleGameUi android = 1;
+    LittleGameUi android_ad = 2;
+    LittleGameUi ios = 3;
+}
+message LittleGameUi {
+    repeated GameList game_list = 1;
+    string home_corner_url = 2;
+    string home_text_url = 3;
+    string recommend_jump_url = 4;
+}
+message GameList {
+    string game_corner_url = 1;
+    string game_url = 2;
+    string home_url = 3;
+    string jump_url = 4;
+    int64 open_flag = 5;
+    string text_url = 6;
+}
+// ====== little_game_ui_config  end ========
+
+
+
+
+// ============   score_config start  ==========
+message ScoreInfoConfig {
+  QualifyingDisplayScoreConfig qualifying_display_score_rule = 1;
+  repeated SnakeCoinConfig qualifying_snake_coin_rule = 2;
+  repeated SnakeCoinConfig escape_snake_coin_rule = 3;
+  EscapePointRule escape_point_rule = 4;
+  repeated KVInt escape_clan_cup = 5;
+  SeasonNotifyConfig season_notify = 6;
+  repeated SingleDoubleSnakeCoin single_double_snake_coin_rule = 7;
+  repeated SnakeCoinCalcConfig endless_snake_coin_rule = 8;
+  repeated SnakeCoinCalcConfig limit_snake_coin_rule = 9;
+}
+message QualifyingDisplayScoreConfig {
+  repeated DisplayScoreCalcConfig length_config = 1;
+  repeated DisplayScoreCalcConfig kill_config = 2;
+  repeated DisplayScoreCalcConfig eat_config = 3;
+  repeated DisplayScoreCalcConfig killed_config = 4;
+  repeated DisplayScoreCalcConfig destroy_config = 5;
+  repeated DisplayScoreCalcConfig boss_kill_config = 6;
+}
+message SnakeCoinConfig {
+  int64 team_rank = 1;
+  int64 coin_start = 2;
+  int64 coin_end = 3;
+}
+message EscapePointRule {
+  repeated KVInt rank_point = 1;
+  repeated KVInt action_point = 2;
+  repeated KVInt kill_point = 3;
+}
+message KVInt {
+  int64 key = 1;
+  int64 value = 2;
+}
+message DisplayScoreCalcConfig {
+  int64 length_start = 1;
+  int64 length_end = 2;
+  double rate = 3;
+}
+message SeasonNotifyConfig {
+  string bottom = 1;
+  repeated string top = 2;
+  string jump_url = 3;
+}
+message SingleDoubleSnakeCoin {
+  int64 length_start = 1;
+  int64 length_end = 2;
+  repeated double rate_config = 3;
+  repeated SnakeCoinAdCalcConfig calc_config = 4;
+}
+message SnakeCoinAdCalcConfig {
+  double rate = 1;
+  int64 probability = 2;
+}
+message SnakeCoinCalcConfig {
+  int64 length_start = 1;
+  int64 length_end = 2;
+  int64 coin_start = 3;
+  int64 coin_end = 4;
+}
+// ===========    score_config end   ===========
+
+
+
+
+// =======   android_market start  ========
+message AndroidMarket {
+  repeated string official_market = 1;    // 官方市场列表
+  repeated string no_ad_market = 2;       // 无广告市场列表
+  repeated string hide_act_market = 3;    // 审核模式隐藏活动入口的市场列表
+}
+// =========  android_market end  ==========
+
+
+
+
+// ==========  simulation  start   ========
+message SimulConfig {
+  repeated string default_building_list = 1;
+  repeated string default_role_list = 2;
+  repeated string default_staff_list = 3;
+  repeated string default_scene_list = 4;
+  repeated string default_special_list = 5;
+  repeated SimulTaskItem task_list = 6;
+  int64 default_coin = 7;
+  map<string, BuildingSet> building_set = 8;
+  map<string, StaffSet> staff_set = 9;
+  SnakeMain.Config.RewardConfig reward_config = 10;
+  repeated TimedTaskInfo timed_task_list = 11;
+  repeated TimedTaskCoinConfig timed_task_coin_config = 12;
+}
+
+message SimulTaskItem {
+  string title = 1;
+  string task_id = 2;
+  int64 task_category = 3;
+  int64 task_type = 4;
+  string obj_id = 5;
+  int64 process = 6;
+  int64 need_num = 7;
+  repeated SimulReward reward = 8;
+}
+
+message SimulReward {
+  int64 type = 1;
+  int64 num = 2;
+}
+
+message BuildingSet {
+  int64 max_level = 1;
+  repeated Detail detail = 2;
+}
+
+message Detail {
+  int64 likes = 1;
+}
+
+message StaffSet {
+  int64 max_level = 1;
+  repeated Detail detail = 2;
+}
+
+message TimedTaskInfo {
+  string title = 1;
+  int64 task_category = 2;
+  int64 task_type = 3;
+  string obj_type = 4;
+  int64 index = 5;
+  int64 process = 6;
+  int64 need_num = 7;
+  int64 coin = 8;
+  int64 start_time = 9;
+  int64 duration = 10;
+  int64 is_valid = 11;
+  int64 is_taken = 12;
+}
+
+message TimedTaskCoinConfig {
+  int64 likes = 1;
+  int64 coins = 2;
+}
+// =========  simulation  end ===========
+
+
+
+// ========   summon_config start   =========
+message SomeMessage {
+    repeated  Aiconfig ai_config = 1;
+    int64     enable_debug = 2;
+    Mapconfig map_config = 3;
+}
+message Aiconfig {
+    repeated Config config = 1;
+}
+message Config {
+    int64 level = 1;
+    int64 num = 2;
+}
+message Mapconfig {
+    int64 height = 1;
+    int64 width = 2;
+}
+//  =========  summon_config end  ============
+
+
+
+// ======  ios_patch  start ======
+message IosPatch {
+  map<string, IosPatchList> path = 1;
+}
+message IosPatchList {
+  repeated IosPatchItem ios_patch = 1;
+}
+message IosPatchItem {
+  repeated string os_version = 1;
+  repeated string device_name = 2;
+  repeated string device_id = 3;
+  string patch = 4;
+  string patch_version = 5;
+  int64 enable = 6;
+}
+// ======  ios_patch end ==========
+
+
+
+
+// ===== unity_assets  start ======
+message UnityAssert {
+  map<string, AssertMap> unity_assert = 1;
+}
+message AssertMap {
+  map<string, Assert> assert = 1;
+}
+message Assert {
+  repeated AssertItem asserts = 1;
+}
+message AssertItem {
+  string name = 1;
+  string src = 2;
+  string md5 = 3;
+  string hmac = 4;
+}
+// =======  unity_assert  end
