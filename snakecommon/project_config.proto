@@ -1220,6 +1220,7 @@ message MasterPrenticeStrategyItem {
 message HotConfig {
   int32 market_state = 1;
   string sub_config = 2; // 小秘书配置
+  string unity_loading_url = 3; // unity loading配置资源包
 }
 // === hot_config end ========================================
 
