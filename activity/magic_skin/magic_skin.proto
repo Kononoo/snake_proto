@@ -4,14 +4,19 @@ package magic_skin;
 
 option go_package = "git.17zjh.com/snake/snake_proto/activity/magic_skin";
 
-// 样式
-message Section {
+// 组件
+message Component {
   int64 component_type = 1; // 组件类型
   string component_name = 2; // 组件名称
-  int64 id = 3;  // 样式id
-  string style_img = 4; // 样式名
-  int64 worth_level = 5;
-  int64 is_default = 6;  // 是否为默认样式
+}
+
+// 样式
+message Section {
+  Component component = 1; // 组件类型
+  int64 id = 2;  // 样式id
+  string style_img = 3; // 样式名
+  int64 worth_level = 4;
+  int64 is_default = 5;  // 是否为默认样式
 }
 
 message GetInfoReq {
@@ -41,7 +46,8 @@ message GetInfoRsp {
     int64 save_cost_crystal = 14; // 每次保存藏品消耗的水晶数量
     string coin_pack_link = 15; //  代币获取跳转链接:礼包
     string coin_act_link = 16; // 代币获取跳转链接:活动
-    repeated Section sections = 17; // 本期活动幻化皮肤所有组件
+    repeated Component components = 17; // 本期幻化皮肤组件列表
+    repeated Section sections = 18; // 本期活动幻化皮肤所有样式
   }
 
   Config config = 1; // 配置数据
@@ -50,9 +56,10 @@ message GetInfoRsp {
   repeated TopListItem top_list = 4; // 前几名的幻化排行信息
   int64 total_score = 5; // 累计幻化值
   repeated Skin save_skins = 6; // 保存的皮肤列表 数组长度为0代表没有保存过，数组最后一次为 上一次保存
-  Skin pending_skin = 7;  // 待保存的皮肤id
-  Skin last_skin = 8; // 上次幻化的皮肤id
+  Skin pending_skin = 7;  // 待保存的皮肤
+  Skin last_skin = 8; // 上次幻化的皮肤
   repeated int64 locked_section = 9; // 已锁定的组件类型
+  int64 transform_cnt  = 10; //幻化次数
 }
 
 message Skin {
@@ -104,8 +111,7 @@ message RestoreSkinReq {
 }
 
 message RestoreSkinRsp {
-  int64 skin_id = 1; //复原后的皮肤id
-  int64 coin = 2; // 更新幻化币数量
+  int64 coin = 1; // 更新幻化币数量
 }
 
 message GetTopListReq {
