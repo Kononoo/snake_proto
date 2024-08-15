@@ -2100,19 +2100,19 @@ message TimedTaskCoinConfig {
 
 
 // ========   summon_config start   =========
-message SomeMessage {
-    repeated  Aiconfig ai_config = 1;
+message SummonConfig {
+    repeated  SummonAiConfig ai_config = 1;
     int64     enable_debug = 2;
-    Mapconfig map_config = 3;
+    MapConfig map_config = 3;
 }
-message Aiconfig {
-    repeated Config config = 1;
+message SummonAiConfig {
+    repeated SummonConfigItem config = 1;
 }
-message Config {
+message SummonConfigItem {
     int64 level = 1;
     int64 num = 2;
 }
-message Mapconfig {
+message MapConfig {
     int64 height = 1;
     int64 width = 2;
 }
@@ -2141,19 +2141,19 @@ message IosPatchItem {
 
 
 // ===== unity_assets  start ======
-message UnityAssert {
-  map<string, AssertMap> unity_assert = 1;
+message UnityAssets {
+  map<string, AssetMap> versions = 1;
 }
-message AssertMap {
-  map<string, Assert> assert = 1;
+message AssetMap {
+  map<string, Asset> platforms = 1;
 }
-message Assert {
-  repeated AssertItem asserts = 1;
+message Asset {
+  repeated AssetItem assets = 1;
 }
-message AssertItem {
+message AssetItem {
   string name = 1;
   string src = 2;
   string md5 = 3;
   string hmac = 4;
 }
-// =======  unity_assert  end
+// =======  unity_assets  end
