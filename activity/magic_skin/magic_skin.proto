@@ -6,8 +6,8 @@ option go_package = "git.17zjh.com/snake/snake_proto/activity/magic_skin";
 
 // 组件
 message Component {
-  int64 component_type = 1; // 组件类型
-  string component_name = 2; // 组件名称
+  int64 type = 1; // 组件类型
+  string name = 2; // 组件名称
 }
 
 // 样式
