@@ -1678,20 +1678,12 @@ message MsAddr {
 
 
 
-// ==========   province_list start ========
-message ProvinceList {
+// ==========   province_config start ========
+message ProvinceConfig {
   repeated string province_list = 1;
+  repeated string province_pinyin_list = 2;
 }
-// ==========   province_list end ========
-
-
-
-
-// ========  province_pinyin_list  start =======
-message ProvincePinyinList {
-  repeated string province_pinyin_list = 1;
-}
-// ========  province_pinyin_list  edn =======
+// ==========   province_config end ========
 
 
 
