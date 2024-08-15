@@ -1672,6 +1672,7 @@ message MsConfig {
 message MsAddr {
   string host = 1;
   int64  port = 2;
+  string host_bak = 3;
 }
 // ========  ms_config end  ==========
 
