@@ -1940,9 +1940,7 @@ message ReviewMarket {
 
 // ====== little_game_ui_config  start ========
 message LittleGameUiConf {
-    LittleGameUi android = 1;
-    LittleGameUi android_ad = 2;
-    LittleGameUi ios = 3;
+    map<string, LittleGameUi> config = 1;
 }
 message LittleGameUi {
     repeated GameList game_list = 1;
