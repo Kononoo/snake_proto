@@ -165,3 +165,7 @@ message CancelGroupReadyReq { // 队伍成员取消准备
 }
 message CancelGroupReadyRsp {
 }
+
+message CancelGroupReadyNotify { // 队伍成员取消准备push
+  string uid = 1; // 玩家uid
+}
