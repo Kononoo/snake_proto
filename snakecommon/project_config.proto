@@ -1709,7 +1709,7 @@ message GamePropList {
 }
 message ModeLevelInfo {
     int64 cost_goldcoin = 1;
-    int64 effect = 2;
+    double effect = 2;
     int64 level = 3;
 }
 
