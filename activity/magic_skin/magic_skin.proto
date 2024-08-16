@@ -53,8 +53,7 @@ message GetInfoRsp {
     string coin_act_link = 16; // 代币获取跳转链接:活动
     repeated Component components = 17; // 本期幻化皮肤组件列表
     repeated Section sections = 18; // 本期活动幻化皮肤所有样式
-    Link CoinPack = 19; // 礼包获取代币跳转链接
-    Link CoinAct = 20; //  活动获取代币跳转链接
+    repeated Link CoinGetLinks = 19; // 代币获取跳转链接
   }
 
   Config config = 1; // 配置数据
