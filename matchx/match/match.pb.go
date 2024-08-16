@@ -1837,6 +1837,61 @@ func (*GroupReadyRsp) Descriptor() ([]byte, []int) {
 	return file_matchx_match_match_proto_rawDescGZIP(), []int{33}
 }
 
+type GroupReadyNotify struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid    string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                      // 玩家uid
+	IsAuto bool   `protobuf:"varint,2,opt,name=is_auto,json=isAuto,proto3" json:"is_auto,omitempty"` // 是否自动准备
+}
+
+func (x *GroupReadyNotify) Reset() {
+	*x = GroupReadyNotify{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_matchx_match_match_proto_msgTypes[34]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GroupReadyNotify) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupReadyNotify) ProtoMessage() {}
+
+func (x *GroupReadyNotify) ProtoReflect() protoreflect.Message {
+	mi := &file_matchx_match_match_proto_msgTypes[34]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupReadyNotify.ProtoReflect.Descriptor instead.
+func (*GroupReadyNotify) Descriptor() ([]byte, []int) {
+	return file_matchx_match_match_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *GroupReadyNotify) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *GroupReadyNotify) GetIsAuto() bool {
+	if x != nil {
+		return x.IsAuto
+	}
+	return false
+}
+
 type CancelGroupReadyReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1846,7 +1901,7 @@ type CancelGroupReadyReq struct {
 func (x *CancelGroupReadyReq) Reset() {
 	*x = CancelGroupReadyReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_matchx_match_match_proto_msgTypes[34]
+		mi := &file_matchx_match_match_proto_msgTypes[35]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1859,7 +1914,7 @@ func (x *CancelGroupReadyReq) String() string {
 func (*CancelGroupReadyReq) ProtoMessage() {}
 
 func (x *CancelGroupReadyReq) ProtoReflect() protoreflect.Message {
-	mi := &file_matchx_match_match_proto_msgTypes[34]
+	mi := &file_matchx_match_match_proto_msgTypes[35]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1872,7 +1927,7 @@ func (x *CancelGroupReadyReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelGroupReadyReq.ProtoReflect.Descriptor instead.
 func (*CancelGroupReadyReq) Descriptor() ([]byte, []int) {
-	return file_matchx_match_match_proto_rawDescGZIP(), []int{34}
+	return file_matchx_match_match_proto_rawDescGZIP(), []int{35}
 }
 
 type CancelGroupReadyRsp struct {
@@ -1884,7 +1939,7 @@ type CancelGroupReadyRsp struct {
 func (x *CancelGroupReadyRsp) Reset() {
 	*x = CancelGroupReadyRsp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_matchx_match_match_proto_msgTypes[35]
+		mi := &file_matchx_match_match_proto_msgTypes[36]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1897,7 +1952,7 @@ func (x *CancelGroupReadyRsp) String() string {
 func (*CancelGroupReadyRsp) ProtoMessage() {}
 
 func (x *CancelGroupReadyRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_matchx_match_match_proto_msgTypes[35]
+	mi := &file_matchx_match_match_proto_msgTypes[36]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1910,7 +1965,7 @@ func (x *CancelGroupReadyRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelGroupReadyRsp.ProtoReflect.Descriptor instead.
 func (*CancelGroupReadyRsp) Descriptor() ([]byte, []int) {
-	return file_matchx_match_match_proto_rawDescGZIP(), []int{35}
+	return file_matchx_match_match_proto_rawDescGZIP(), []int{36}
 }
 
 var File_matchx_match_match_proto protoreflect.FileDescriptor
@@ -2069,13 +2124,17 @@ var file_matchx_match_match_proto_rawDesc = []byte{
 	0x64, 0x79, 0x52, 0x65, 0x71, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x61, 0x75, 0x74, 0x6f,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x69, 0x73, 0x41, 0x75, 0x74, 0x6f, 0x22, 0x0f,
 	0x0a, 0x0d, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x61, 0x64, 0x79, 0x52, 0x73, 0x70, 0x22,
-	0x15, 0x0a, 0x13, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65,
-	0x61, 0x64, 0x79, 0x52, 0x65, 0x71, 0x22, 0x15, 0x0a, 0x13, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c,
-	0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x61, 0x64, 0x79, 0x52, 0x73, 0x70, 0x42, 0x2e, 0x5a,
-	0x2c, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73,
-	0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x78, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x3d, 0x0a, 0x10, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x61, 0x64, 0x79, 0x4e, 0x6f, 0x74,
+	0x69, 0x66, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x61, 0x75, 0x74, 0x6f,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x69, 0x73, 0x41, 0x75, 0x74, 0x6f, 0x22, 0x15,
+	0x0a, 0x13, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x61,
+	0x64, 0x79, 0x52, 0x65, 0x71, 0x22, 0x15, 0x0a, 0x13, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x61, 0x64, 0x79, 0x52, 0x73, 0x70, 0x42, 0x2e, 0x5a, 0x2c,
+	0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
+	0x6d, 0x61, 0x74, 0x63, 0x68, 0x78, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2090,7 +2149,7 @@ func file_matchx_match_match_proto_rawDescGZIP() []byte {
 	return file_matchx_match_match_proto_rawDescData
 }
 
-var file_matchx_match_match_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
+var file_matchx_match_match_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
 var file_matchx_match_match_proto_goTypes = []interface{}{
 	(*CreateGroupReq)(nil),        // 0: match.CreateGroupReq
 	(*CreateGroupRsp)(nil),        // 1: match.CreateGroupRsp
@@ -2126,8 +2185,9 @@ var file_matchx_match_match_proto_goTypes = []interface{}{
 	(*ExitGameRsp)(nil),           // 31: match.ExitGameRsp
 	(*GroupReadyReq)(nil),         // 32: match.GroupReadyReq
 	(*GroupReadyRsp)(nil),         // 33: match.GroupReadyRsp
-	(*CancelGroupReadyReq)(nil),   // 34: match.CancelGroupReadyReq
-	(*CancelGroupReadyRsp)(nil),   // 35: match.CancelGroupReadyRsp
+	(*GroupReadyNotify)(nil),      // 34: match.GroupReadyNotify
+	(*CancelGroupReadyReq)(nil),   // 35: match.CancelGroupReadyReq
+	(*CancelGroupReadyRsp)(nil),   // 36: match.CancelGroupReadyRsp
 }
 var file_matchx_match_match_proto_depIdxs = []int32{
 	7,  // 0: match.SyncGroupMemberNotify.members:type_name -> match.GroupMember
@@ -2554,7 +2614,7 @@ func file_matchx_match_match_proto_init() {
 			}
 		}
 		file_matchx_match_match_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CancelGroupReadyReq); i {
+			switch v := v.(*GroupReadyNotify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2566,6 +2626,18 @@ func file_matchx_match_match_proto_init() {
 			}
 		}
 		file_matchx_match_match_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CancelGroupReadyReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_matchx_match_match_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CancelGroupReadyRsp); i {
 			case 0:
 				return &v.state
@@ -2584,7 +2656,7 @@ func file_matchx_match_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_matchx_match_match_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   36,
+			NumMessages:   37,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
