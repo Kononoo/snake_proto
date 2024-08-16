@@ -14,7 +14,7 @@ message Component {
 message Section {
   Component component = 1; // 组件类型
   int64 id = 2;  // 样式id
-  string style_img = 3; // 样式名
+  string style_name = 3; // 样式名
   int64 worth_level = 4;
   int64 is_default = 5;  // 是否为默认样式
 }
@@ -28,6 +28,11 @@ message GetInfoRsp {
     string title = 1; // 标题
     string content = 2; // 内容
   }
+  message Link {
+    string title = 1; // 标题
+    string link = 2; // 跳转链接
+  }
+
 
   message Config {
     int64 start_time = 1; // 开始时间戳
@@ -48,6 +53,8 @@ message GetInfoRsp {
     string coin_act_link = 16; // 代币获取跳转链接:活动
     repeated Component components = 17; // 本期幻化皮肤组件列表
     repeated Section sections = 18; // 本期活动幻化皮肤所有样式
+    Link CoinPack = 19; // 礼包获取代币跳转链接
+    Link CoinAct = 20; //  活动获取代币跳转链接
   }
 
   Config config = 1; // 配置数据
