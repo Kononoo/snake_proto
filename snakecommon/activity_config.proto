@@ -19,6 +19,9 @@ message FarmHomePrompt {
 }
 
 message MagicSkinConfig {
-  ActivityBase base = 1;
-  string btn_link = 2;
+  int64 start_time = 1;
+  int64 end_time = 2;
+  int64 icon_imgurl = 3;
+  string btn_link = 4;
+  string title = 5;
 }
