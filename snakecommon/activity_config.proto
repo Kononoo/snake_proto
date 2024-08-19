@@ -22,5 +22,5 @@ message FarmHomePrompt {
 message MagicSkinConfig {
   int64 start_time = 1;
   int64 end_time = 2;
-  string icon_imgurl = 3;
+  string btn_link = 3;
 }
