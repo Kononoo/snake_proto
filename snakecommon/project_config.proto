@@ -1959,7 +1959,7 @@ message GameList {
 message ScoreInfoConfig {
   QualifyingDisplayScoreConfig qualifying_display_score_rule = 1;
   repeated SnakeCoinConfig qualifying_score_coin_rule = 2;
-  repeated SnakeCoinConfig escape_snake_coin_rule = 3;
+  repeated SnakeCoinConfig escape_score_coin_rule = 3;
   EscapePointRule escape_point_rule = 4;
   repeated KVInt escape_cup_map = 5;
   SeasonNotifyConfig season_notify = 6;
@@ -2042,9 +2042,22 @@ message SimulConfig {
   int64 default_coin = 7;
   map<string, BuildingSet> building_set = 8;
   map<string, StaffSet> staff_set = 9;
-  SnakeMain.Config.RewardConfig reward_config = 10;
+  SimulRewardConfig reward_config = 10;
   repeated TimedTaskInfo timed_task_list = 11;
   repeated TimedTaskCoinConfig timed_task_coin_config = 12;
+}
+
+message SimulRewardConfig {
+  SimulRewardCondition reward_condition = 1;
+  SimulRewardMail reward_mail = 2;
+}
+message SimulRewardCondition {
+  int64 likes = 1;
+}
+message SimulRewardMail {
+  string title = 1;
+  string content = 2;
+  repeated SnakeMain.Config.RewardConfig reward_list = 3;
 }
 
 message SimulTaskItem {
@@ -2102,9 +2115,9 @@ message TimedTaskCoinConfig {
 
 // ========   summon_config start   =========
 message SummonConfig {
-    repeated  SummonAiConfig ai_config = 1;
-    int64     enable_debug = 2;
-    MapConfig map_config = 3;
+    repeated  SummonAiConfig aiConfig = 1;
+    int64     enableDebug = 2;
+    MapConfig mapConfig = 3;
 }
 message SummonAiConfig {
     repeated SummonConfigItem config = 1;
