@@ -126,3 +126,8 @@ message GetTopListReq {
 message GetTopListRsp {
   repeated TopListItem list = 1;
 }
+
+message CoinNotify {
+  int64 coin = 1; // 幻化币数量
+  int64 crystal = 2; // 水晶数量
+}
