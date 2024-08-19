@@ -1710,7 +1710,7 @@ message GamePropList {
 }
 message ModeLevelInfo {
     int64 cost_goldcoin = 1;
-    int64 effect = 2;
+    double effect = 2;
     int64 level = 3;
 }
 
@@ -1958,10 +1958,10 @@ message GameList {
 // ============   score_config start  ==========
 message ScoreInfoConfig {
   QualifyingDisplayScoreConfig qualifying_display_score_rule = 1;
-  repeated SnakeCoinConfig qualifying_snake_coin_rule = 2;
+  repeated SnakeCoinConfig qualifying_score_coin_rule = 2;
   repeated SnakeCoinConfig escape_snake_coin_rule = 3;
   EscapePointRule escape_point_rule = 4;
-  repeated KVInt escape_clan_cup = 5;
+  repeated KVInt escape_cup_map = 5;
   SeasonNotifyConfig season_notify = 6;
   repeated SingleDoubleSnakeCoin single_double_snake_coin_rule = 7;
   repeated SnakeCoinCalcConfig endless_snake_coin_rule = 8;
@@ -1997,7 +1997,7 @@ message DisplayScoreCalcConfig {
 message SeasonNotifyConfig {
   string bottom = 1;
   repeated string top = 2;
-  string jump_url = 3;
+  string jumpurl = 3;
 }
 message SingleDoubleSnakeCoin {
   int64 length_start = 1;
