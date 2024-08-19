@@ -1830,7 +1830,7 @@ message MissileConfig {
     int64 missile_fly_time = 6;
     double missile_prepare_time = 7;
     int64 missile_scanning_time = 8;
-    int64 missile_speed_rate = 9;
+    double missile_speed_rate = 9;
 }
 
 message AiConfig {
