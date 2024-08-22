@@ -44,7 +44,7 @@ message GetInfoRsp {
     int64 start_time = 1; // 开始时间戳
     int64 end_time = 2; // 结束时间戳
     repeated DescItem desc = 3; // 活动说明
-    Coin coin_item_id = 4; // 幻化币道具id
+    Coin coin_item = 4; // 幻化币道具id
     Coin crystal_item = 5; // 幻化水晶道具id
     int64 default_skin_id = 6; // 本期活动指定的幻化皮肤id 原生
     int64 magic_skin_id = 7; // 本期活动指定的幻化皮肤id
