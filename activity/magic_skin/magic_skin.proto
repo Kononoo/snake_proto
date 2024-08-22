@@ -135,5 +135,8 @@ message GetTopListRsp {
 
 message CoinNotify {
   int64 coin = 1; // 幻化币数量
-  int64 crystal = 2; // 水晶数量
+}
+
+message SaveCoinNotify {
+  int64 crystal = 1; // 水晶数量
 }
