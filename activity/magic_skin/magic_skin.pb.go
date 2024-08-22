@@ -1057,8 +1057,7 @@ type CoinNotify struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Coin    int64 `protobuf:"varint,1,opt,name=coin,proto3" json:"coin,omitempty"`       // 幻化币数量
-	Crystal int64 `protobuf:"varint,2,opt,name=crystal,proto3" json:"crystal,omitempty"` // 水晶数量
+	Coin int64 `protobuf:"varint,1,opt,name=coin,proto3" json:"coin,omitempty"` // 幻化币数量
 }
 
 func (x *CoinNotify) Reset() {
@@ -1100,7 +1099,47 @@ func (x *CoinNotify) GetCoin() int64 {
 	return 0
 }
 
-func (x *CoinNotify) GetCrystal() int64 {
+type SaveCoinNotify struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Crystal int64 `protobuf:"varint,1,opt,name=crystal,proto3" json:"crystal,omitempty"` // 水晶数量
+}
+
+func (x *SaveCoinNotify) Reset() {
+	*x = SaveCoinNotify{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SaveCoinNotify) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SaveCoinNotify) ProtoMessage() {}
+
+func (x *SaveCoinNotify) ProtoReflect() protoreflect.Message {
+	mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SaveCoinNotify.ProtoReflect.Descriptor instead.
+func (*SaveCoinNotify) Descriptor() ([]byte, []int) {
+	return file_activity_magic_skin_magic_skin_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *SaveCoinNotify) GetCrystal() int64 {
 	if x != nil {
 		return x.Crystal
 	}
@@ -1119,7 +1158,7 @@ type GetInfoRsp_DescItem struct {
 func (x *GetInfoRsp_DescItem) Reset() {
 	*x = GetInfoRsp_DescItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[18]
+		mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1132,7 +1171,7 @@ func (x *GetInfoRsp_DescItem) String() string {
 func (*GetInfoRsp_DescItem) ProtoMessage() {}
 
 func (x *GetInfoRsp_DescItem) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[18]
+	mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1174,7 +1213,7 @@ type GetInfoRsp_Link struct {
 func (x *GetInfoRsp_Link) Reset() {
 	*x = GetInfoRsp_Link{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[19]
+		mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1187,7 +1226,7 @@ func (x *GetInfoRsp_Link) String() string {
 func (*GetInfoRsp_Link) ProtoMessage() {}
 
 func (x *GetInfoRsp_Link) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[19]
+	mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1244,7 +1283,7 @@ type GetInfoRsp_Config struct {
 func (x *GetInfoRsp_Config) Reset() {
 	*x = GetInfoRsp_Config{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[20]
+		mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1257,7 +1296,7 @@ func (x *GetInfoRsp_Config) String() string {
 func (*GetInfoRsp_Config) ProtoMessage() {}
 
 func (x *GetInfoRsp_Config) ProtoReflect() protoreflect.Message {
-	mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[20]
+	mi := &file_activity_magic_skin_magic_skin_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1578,15 +1617,16 @@ var file_activity_magic_skin_magic_skin_proto_rawDesc = []byte{
 	0x3c, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x54, 0x6f, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x73, 0x70,
 	0x12, 0x2b, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17,
 	0x2e, 0x6d, 0x61, 0x67, 0x69, 0x63, 0x5f, 0x73, 0x6b, 0x69, 0x6e, 0x2e, 0x54, 0x6f, 0x70, 0x4c,
-	0x69, 0x73, 0x74, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0x3a, 0x0a,
+	0x69, 0x73, 0x74, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0x20, 0x0a,
 	0x0a, 0x43, 0x6f, 0x69, 0x6e, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x12, 0x12, 0x0a, 0x04, 0x63,
-	0x6f, 0x69, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x63, 0x6f, 0x69, 0x6e, 0x12,
-	0x18, 0x0a, 0x07, 0x63, 0x72, 0x79, 0x73, 0x74, 0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x07, 0x63, 0x72, 0x79, 0x73, 0x74, 0x61, 0x6c, 0x42, 0x35, 0x5a, 0x33, 0x67, 0x69, 0x74,
-	0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x61, 0x63, 0x74,
-	0x69, 0x76, 0x69, 0x74, 0x79, 0x2f, 0x6d, 0x61, 0x67, 0x69, 0x63, 0x5f, 0x73, 0x6b, 0x69, 0x6e,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x69, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x63, 0x6f, 0x69, 0x6e, 0x22,
+	0x2a, 0x0a, 0x0e, 0x53, 0x61, 0x76, 0x65, 0x43, 0x6f, 0x69, 0x6e, 0x4e, 0x6f, 0x74, 0x69, 0x66,
+	0x79, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x72, 0x79, 0x73, 0x74, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x07, 0x63, 0x72, 0x79, 0x73, 0x74, 0x61, 0x6c, 0x42, 0x35, 0x5a, 0x33, 0x67,
+	0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61,
+	0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x61,
+	0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x2f, 0x6d, 0x61, 0x67, 0x69, 0x63, 0x5f, 0x73, 0x6b,
+	0x69, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1601,7 +1641,7 @@ func file_activity_magic_skin_magic_skin_proto_rawDescGZIP() []byte {
 	return file_activity_magic_skin_magic_skin_proto_rawDescData
 }
 
-var file_activity_magic_skin_magic_skin_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
+var file_activity_magic_skin_magic_skin_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
 var file_activity_magic_skin_magic_skin_proto_goTypes = []interface{}{
 	(*Component)(nil),           // 0: magic_skin.Component
 	(*Section)(nil),             // 1: magic_skin.Section
@@ -1621,16 +1661,17 @@ var file_activity_magic_skin_magic_skin_proto_goTypes = []interface{}{
 	(*GetTopListReq)(nil),       // 15: magic_skin.GetTopListReq
 	(*GetTopListRsp)(nil),       // 16: magic_skin.GetTopListRsp
 	(*CoinNotify)(nil),          // 17: magic_skin.CoinNotify
-	(*GetInfoRsp_DescItem)(nil), // 18: magic_skin.GetInfoRsp.DescItem
-	(*GetInfoRsp_Link)(nil),     // 19: magic_skin.GetInfoRsp.Link
-	(*GetInfoRsp_Config)(nil),   // 20: magic_skin.GetInfoRsp.Config
-	nil,                         // 21: magic_skin.GetInfoRsp.Config.ExtraCostCoinEntry
-	nil,                         // 22: magic_skin.GetInfoRsp.Config.UnlockSectionEntry
-	nil,                         // 23: magic_skin.GetInfoRsp.Config.SaveCostCrystalEntry
+	(*SaveCoinNotify)(nil),      // 18: magic_skin.SaveCoinNotify
+	(*GetInfoRsp_DescItem)(nil), // 19: magic_skin.GetInfoRsp.DescItem
+	(*GetInfoRsp_Link)(nil),     // 20: magic_skin.GetInfoRsp.Link
+	(*GetInfoRsp_Config)(nil),   // 21: magic_skin.GetInfoRsp.Config
+	nil,                         // 22: magic_skin.GetInfoRsp.Config.ExtraCostCoinEntry
+	nil,                         // 23: magic_skin.GetInfoRsp.Config.UnlockSectionEntry
+	nil,                         // 24: magic_skin.GetInfoRsp.Config.SaveCostCrystalEntry
 }
 var file_activity_magic_skin_magic_skin_proto_depIdxs = []int32{
 	0,  // 0: magic_skin.Section.component:type_name -> magic_skin.Component
-	20, // 1: magic_skin.GetInfoRsp.config:type_name -> magic_skin.GetInfoRsp.Config
+	21, // 1: magic_skin.GetInfoRsp.config:type_name -> magic_skin.GetInfoRsp.Config
 	6,  // 2: magic_skin.GetInfoRsp.top_list:type_name -> magic_skin.TopListItem
 	5,  // 3: magic_skin.GetInfoRsp.save_skins:type_name -> magic_skin.Skin
 	5,  // 4: magic_skin.GetInfoRsp.pending_skin:type_name -> magic_skin.Skin
@@ -1640,15 +1681,15 @@ var file_activity_magic_skin_magic_skin_proto_depIdxs = []int32{
 	5,  // 8: magic_skin.RefreshSkinRsp.skin:type_name -> magic_skin.Skin
 	5,  // 9: magic_skin.SaveSkinRsp.current_skin:type_name -> magic_skin.Skin
 	6,  // 10: magic_skin.GetTopListRsp.list:type_name -> magic_skin.TopListItem
-	18, // 11: magic_skin.GetInfoRsp.Config.desc:type_name -> magic_skin.GetInfoRsp.DescItem
+	19, // 11: magic_skin.GetInfoRsp.Config.desc:type_name -> magic_skin.GetInfoRsp.DescItem
 	3,  // 12: magic_skin.GetInfoRsp.Config.coin_item:type_name -> magic_skin.Coin
 	3,  // 13: magic_skin.GetInfoRsp.Config.crystal_item:type_name -> magic_skin.Coin
-	21, // 14: magic_skin.GetInfoRsp.Config.extra_cost_coin:type_name -> magic_skin.GetInfoRsp.Config.ExtraCostCoinEntry
-	22, // 15: magic_skin.GetInfoRsp.Config.unlock_section:type_name -> magic_skin.GetInfoRsp.Config.UnlockSectionEntry
-	23, // 16: magic_skin.GetInfoRsp.Config.save_cost_crystal:type_name -> magic_skin.GetInfoRsp.Config.SaveCostCrystalEntry
+	22, // 14: magic_skin.GetInfoRsp.Config.extra_cost_coin:type_name -> magic_skin.GetInfoRsp.Config.ExtraCostCoinEntry
+	23, // 15: magic_skin.GetInfoRsp.Config.unlock_section:type_name -> magic_skin.GetInfoRsp.Config.UnlockSectionEntry
+	24, // 16: magic_skin.GetInfoRsp.Config.save_cost_crystal:type_name -> magic_skin.GetInfoRsp.Config.SaveCostCrystalEntry
 	0,  // 17: magic_skin.GetInfoRsp.Config.components:type_name -> magic_skin.Component
 	1,  // 18: magic_skin.GetInfoRsp.Config.sections:type_name -> magic_skin.Section
-	19, // 19: magic_skin.GetInfoRsp.Config.CoinGetLinks:type_name -> magic_skin.GetInfoRsp.Link
+	20, // 19: magic_skin.GetInfoRsp.Config.CoinGetLinks:type_name -> magic_skin.GetInfoRsp.Link
 	20, // [20:20] is the sub-list for method output_type
 	20, // [20:20] is the sub-list for method input_type
 	20, // [20:20] is the sub-list for extension type_name
@@ -1879,7 +1920,7 @@ func file_activity_magic_skin_magic_skin_proto_init() {
 			}
 		}
 		file_activity_magic_skin_magic_skin_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetInfoRsp_DescItem); i {
+			switch v := v.(*SaveCoinNotify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1891,7 +1932,7 @@ func file_activity_magic_skin_magic_skin_proto_init() {
 			}
 		}
 		file_activity_magic_skin_magic_skin_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetInfoRsp_Link); i {
+			switch v := v.(*GetInfoRsp_DescItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1903,6 +1944,18 @@ func file_activity_magic_skin_magic_skin_proto_init() {
 			}
 		}
 		file_activity_magic_skin_magic_skin_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetInfoRsp_Link); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_activity_magic_skin_magic_skin_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetInfoRsp_Config); i {
 			case 0:
 				return &v.state
@@ -1921,7 +1974,7 @@ func file_activity_magic_skin_magic_skin_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_activity_magic_skin_magic_skin_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   24,
+			NumMessages:   25,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
