@@ -48,7 +48,7 @@ message GetInfoRsp {
     map<int64, int64> extra_cost_coin = 11; // {锁定属性的个数:额外消耗的幻化币数量}
     map<int64, int64> unlock_section = 12; // {组件类型：激活所需幻化值}
     int64 save_skin_limit = 13; // 保存藏品次数限制
-    int64 save_cost_crystal = 14; // 每次保存藏品消耗的水晶数量
+    map<int64, int64> save_cost_crystal = 14; // 每次保存藏品消耗的水晶数量
     repeated Component components = 15; // 本期幻化皮肤组件列表
     repeated Section sections = 16; // 本期活动幻化皮肤所有样式
     repeated Link CoinGetLinks = 17; // 代币获取跳转链接
