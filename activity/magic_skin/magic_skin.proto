@@ -4,6 +4,8 @@ package magic_skin;
 
 option go_package = "git.17zjh.com/snake/snake_proto/activity/magic_skin";
 
+import "snakeapi/base.proto";
+
 // 组件
 message Component {
   int64 type = 1; // 组件类型
@@ -114,6 +116,7 @@ message SaveSkinReq {
 message SaveSkinRsp {
   int64 crystal = 1; // 更新水晶数量
   Skin current_skin = 2; // 更新当前皮肤信息
+  snakeapi.RewardItem RewardItem = 3; // 奖励
 }
 
 message RestoreSkinReq {
