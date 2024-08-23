@@ -111,7 +111,7 @@ message MatchSuccessNotify { // 匹配成功的push
   int64 rid = 1; // 房间id
   int64 game_mode = 2;
   int64 mode_version = 3;
-  int64 max_player_num = 4; // 最大的人数上限
+  int64 room_member_limit = 4; // 房间成员最大的人数上限
   int64 player_index = 5; // 玩家在房间中的位置，从1开始
   int64 team_id = 6; // 阵营id
   RelayServer relay_server = 7; // relay服务器信息，帧同步模式玩法需要用到
