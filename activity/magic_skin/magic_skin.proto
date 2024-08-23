@@ -135,8 +135,9 @@ message GetTopListRsp {
 
 message CoinNotify {
   int64 coin = 1; // 幻化币数量
+  int64 skin_id =2; // 代币id
 }
 
-message SaveCoinNotify {
-  int64 crystal = 1; // 水晶数量
+message SkinNotify {
+  int64 skin_id =1;
 }
