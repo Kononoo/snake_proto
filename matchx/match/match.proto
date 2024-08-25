@@ -128,7 +128,8 @@ message RelayServer { // relay服务器信息
   string ip = 1;
   int64 tcp_port = 2;
   int64 udp_port = 3;
-  bytes relay_sign = 4;
+  int64 kcp_port = 4;
+  bytes relay_sign = 5;
 }
 
 message CancelMatchReq { // 取消匹配
