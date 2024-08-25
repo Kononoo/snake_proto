@@ -111,13 +111,14 @@ message MatchSuccessNotify { // 匹配成功的push
   int64 rid = 1; // 房间id
   int64 game_mode = 2; // 游戏模式
   int64 mode_version = 3; // 模式版本号
-  int64 room_member_limit = 4; // 房间成员最大的人数上限
-  int64 time_limit = 5; // 房间时长限制秒
-  int64 matched_ts = 6; // 匹配成功的时间戳
-  int64 player_index = 7; // 玩家在房间中的位置，从1开始
-  int64 team_id = 8; // 阵营id
-  RelayServer relay_server = 9; // relay服务器信息，帧同步模式玩法需要用到
-  bytes payload = 10; // 额外的数据
+  int64 seed = 4; // 随机种子
+  int64 room_member_limit = 5; // 房间成员最大的人数上限
+  int64 time_limit = 6; // 房间时长限制秒
+  int64 matched_ts = 7; // 匹配成功的时间戳
+  int64 player_index = 8; // 玩家在房间中的位置，从1开始
+  int64 team_id = 9; // 阵营id
+  RelayServer relay_server = 10; // relay服务器信息，帧同步模式玩法需要用到
+  bytes payload = 11; // 额外的数据
 }
 
 message SyncGroupStateNotify { // 同步队伍状态
