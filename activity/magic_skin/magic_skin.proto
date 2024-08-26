@@ -60,6 +60,7 @@ message GetInfoRsp {
     repeated Component components = 15; // 本期幻化皮肤组件列表
     repeated Section sections = 16; // 本期活动幻化皮肤所有样式
     repeated Link CoinGetLinks = 17; // 代币获取跳转链接
+    repeated string SaveCoinLink = 18; // 保存代币获取跳转链接
   }
 
   Config config = 1; // 配置数据
