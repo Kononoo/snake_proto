@@ -1295,7 +1295,7 @@ type GetInfoRsp_Config struct {
 	Components        []*Component           `protobuf:"bytes,15,rep,name=components,proto3" json:"components,omitempty"`                                                                                                                              // 本期幻化皮肤组件列表
 	Sections          []*Section             `protobuf:"bytes,16,rep,name=sections,proto3" json:"sections,omitempty"`                                                                                                                                  // 本期活动幻化皮肤所有样式
 	CoinGetLinks      []*GetInfoRsp_Link     `protobuf:"bytes,17,rep,name=coin_get_links,json=coinGetLinks,proto3" json:"coin_get_links,omitempty"`                                                                                                    // 代币获取跳转链接
-	SaveCoinLink      []string               `protobuf:"bytes,18,rep,name=save_coin_link,json=saveCoinLink,proto3" json:"save_coin_link,omitempty"`                                                                                                    // 保存代币获取跳转链接
+	SaveCoinLink      string                 `protobuf:"bytes,18,opt,name=save_coin_link,json=saveCoinLink,proto3" json:"save_coin_link,omitempty"`                                                                                                    // 保存代币获取跳转链接
 }
 
 func (x *GetInfoRsp_Config) Reset() {
@@ -1449,11 +1449,11 @@ func (x *GetInfoRsp_Config) GetCoinGetLinks() []*GetInfoRsp_Link {
 	return nil
 }
 
-func (x *GetInfoRsp_Config) GetSaveCoinLink() []string {
+func (x *GetInfoRsp_Config) GetSaveCoinLink() string {
 	if x != nil {
 		return x.SaveCoinLink
 	}
-	return nil
+	return ""
 }
 
 var File_activity_magic_skin_magic_skin_proto protoreflect.FileDescriptor
@@ -1576,7 +1576,7 @@ var file_activity_magic_skin_magic_skin_proto_rawDesc = []byte{
 	0x73, 0x6b, 0x69, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x73, 0x70, 0x2e,
 	0x4c, 0x69, 0x6e, 0x6b, 0x52, 0x0c, 0x63, 0x6f, 0x69, 0x6e, 0x47, 0x65, 0x74, 0x4c, 0x69, 0x6e,
 	0x6b, 0x73, 0x12, 0x24, 0x0a, 0x0e, 0x73, 0x61, 0x76, 0x65, 0x5f, 0x63, 0x6f, 0x69, 0x6e, 0x5f,
-	0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x12, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0c, 0x73, 0x61, 0x76, 0x65,
+	0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x12, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x73, 0x61, 0x76, 0x65,
 	0x43, 0x6f, 0x69, 0x6e, 0x4c, 0x69, 0x6e, 0x6b, 0x1a, 0x40, 0x0a, 0x12, 0x45, 0x78, 0x74, 0x72,
 	0x61, 0x43, 0x6f, 0x73, 0x74, 0x43, 0x6f, 0x69, 0x6e, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10,
 	0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6b, 0x65, 0x79,
