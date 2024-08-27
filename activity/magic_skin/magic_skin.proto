@@ -74,7 +74,7 @@ message GetInfoRsp {
   Skin last_skin = 8; // 上次幻化的皮肤
   repeated int64 locked_section = 9; // 已锁定的组件类型
   int64 transform_cnt  = 10; //幻化次数
-  bool CanRestore = 11; // 能否复原
+  bool can_restore = 11; // 能否复原
 }
 
 message Skin {
@@ -110,7 +110,7 @@ message RefreshSkinReq {
 message RefreshSkinRsp {
   Skin skin = 1; //幻化后的皮肤id
   int64 coin = 2; // 更新幻化币数量
-  bool CanRestore = 3; // 能否复原
+  bool can_restore = 3; // 能否复原
 }
 
 message SaveSkinReq {
@@ -121,7 +121,7 @@ message SaveSkinRsp {
   int64 crystal = 1; // 更新水晶数量
   Skin current_skin = 2; // 更新当前皮肤信息
   snakeapi.RewardItem RewardItem = 3; // 奖励
-  bool CanRestore = 4; // 能否复原
+  bool can_restore = 4; // 能否复原
 }
 
 message RestoreSkinReq {
@@ -130,7 +130,7 @@ message RestoreSkinReq {
 
 message RestoreSkinRsp {
   int64 coin = 1; // 更新幻化币数量
-  bool CanRestore = 2; // 能否复原
+  bool can_restore = 2; // 能否复原
   int64 total_score = 3; // 累计幻化值
   Skin pending_skin = 4;  // 待保存的皮肤
 }
