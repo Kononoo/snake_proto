@@ -841,6 +841,7 @@ message FlagsConfig {
   int32 not_show_idfa = 29;
   int32 silence_download = 30;
   int32 chat_backup = 31; // 聊天备份, 默认0为不备份
+  int32 unity_endless_v2=32; // 是否开启新unity无尽
 }
 
 message FeedbackConfig {
