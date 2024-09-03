@@ -463,6 +463,7 @@ message UiConfigV3 {
   GameIcon plant_icon = 14;
   string more_game_bgurl = 15;
   GameIcon fallguys_icon = 16;
+  repeated LittleGameIcon little_game_icon = 17;
 }
 
 message GameIcon {
@@ -484,6 +485,13 @@ message GameIcon {
   string open_day_end = 16;
   int64 start_time = 17;
   int64 end_time = 18;
+}
+
+message LittleGameIcon {
+  GameIcon game_icon = 1;
+  string eid_dev = 2;
+  string eid_online = 3;
+  string e_flag = 4;
 }
 
 message Bubble {
@@ -1888,7 +1896,7 @@ message Emulator {
 }
 message AppCheck {
   string emulator_type = 1;
-  repeated string package_names = 2;
+  repeated string packege_names = 2;
 }
 message CheatAppCheck {
   string cheat_type = 1;
