@@ -1745,7 +1745,7 @@ message PropRate {
 message Ai {
     double K = 1;
     double boss = 2;
-    int64 normal = 3;
+    double normal = 3;
     double special = 4;
 }
 
