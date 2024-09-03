@@ -117,8 +117,9 @@ message MatchSuccessNotify { // 匹配成功的push
   int64 matched_ts = 7; // 匹配成功的时间戳
   int64 player_index = 8; // 玩家在房间中的位置，从1开始
   int64 team_id = 9; // 阵营id
-  RelayServer relay_server = 10; // relay服务器信息，帧同步模式玩法需要用到
-  bytes payload = 11; // 额外的数据
+  repeated int64 team_id_list = 10; // 阵营id列表
+  RelayServer relay_server = 11; // relay服务器信息，帧同步模式玩法需要用到
+  bytes payload = 12; // 额外的数据
 }
 
 message SyncGroupStateNotify { // 同步队伍状态
