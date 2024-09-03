@@ -1896,7 +1896,7 @@ message Emulator {
 }
 message AppCheck {
   string emulator_type = 1;
-  repeated string package_names = 2;
+  repeated string packege_names = 2;
 }
 message CheatAppCheck {
   string cheat_type = 1;
