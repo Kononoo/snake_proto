@@ -62,6 +62,7 @@ message GetInfoRsp {
     repeated Link coin_get_links = 17; // 代币获取跳转链接
     string save_coin_link = 18; // 保存代币获取跳转链接
     string source = 19; // 活动source
+    string free_coin_get = 20; // 免费代币领取
   }
 
   Config config = 1; // 配置数据
