@@ -23,4 +23,13 @@ message MagicSkinConfig {
   int64 start_time = 1;
   int64 end_time = 2;
   string btn_link = 3;
+  repeated MagicSkinData data = 4;
+}
+
+message MagicSkinData{
+  string act_id = 1; // 活动id
+  string name = 2; // 活动名称
+  string img_url = 3; // 活动图片
+  int64 start_time = 4; // 开始时间
+  int64 end_time = 5;// 结束时间
 }

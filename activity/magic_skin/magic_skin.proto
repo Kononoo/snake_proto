@@ -92,6 +92,7 @@ message TopListItem {
   int64 score = 5;
   Skin skin = 6; // 皮肤信息
   bool verified = 7; // 是否认证
+  repeated Skin save_skins = 8; // 保存的皮肤列表
 }
 
 message LockSectionReq {
