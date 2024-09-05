@@ -2124,9 +2124,9 @@ message TimedTaskCoinConfig {
 
 // ========   summon_config start   =========
 message SummonConfig {
-    repeated  SummonAiConfig aiConfig = 1;
-    int64     enableDebug = 2;
-    MapConfig mapConfig = 3;
+    repeated  SummonAiConfig ai_config = 1;
+    int64     enable_debug = 2;
+    MapConfig map_config = 3;
 }
 message SummonAiConfig {
     repeated SummonConfigItem config = 1;
