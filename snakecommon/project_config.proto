@@ -1915,7 +1915,7 @@ message ShellCheck {
 
 // ======  little_game start =====
 message LittleGame {
-   map<string, LittleGameSrc> littleGames = 1;
+   map<string, LittleGameSrc> little_games = 1;
 }
 message LittleGameSrc {
   repeated LittleGameSrcItem items = 1;
