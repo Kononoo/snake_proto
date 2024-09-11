@@ -1995,8 +1995,8 @@ message EscapePointRule {
   repeated KVInt kill_point = 3;
 }
 message KVInt {
-  int64 key = 1;
-  int64 value = 2;
+  int64 Key = 1;
+  int64 Value = 2;
 }
 message DisplayScoreCalcConfig {
   int64 length_start = 1;
