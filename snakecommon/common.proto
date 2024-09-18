@@ -12,3 +12,12 @@ message HttpCommRsp {
 
 // 空返回
 message EmptyRsp {}
+
+
+// loading页配置
+message LoadingConfig {
+  repeated string background_animation  = 1; // 背景动效
+  repeated string loading_animation     = 2; // loading动效
+  repeated string activity_text         = 3; // 活动文案
+  repeated string base_text             = 4; // 兜底文案
+}
