@@ -21,3 +21,11 @@ message LoadingConfig {
   repeated string activity_text         = 3; // 活动文案
   repeated string base_text             = 4; // 兜底文案
 }
+
+message PVConfig{
+  int32 id = 1;
+  int32 anim_type = 2;
+  string anim_url = 3;
+  int32 times = 4;
+  int32 force_watch_time = 5;
+}
