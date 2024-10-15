@@ -464,6 +464,7 @@ message UiConfigV3 {
   string more_game_bgurl = 15;
   GameIcon fallguys_icon = 16;
   repeated LittleGameIcon little_game_icon = 17;
+  Compose compose = 18;
 }
 
 message GameIcon {
@@ -516,6 +517,13 @@ message HomeBackground {
   string top_shadow_imgurl = 7;
   string left_shadow_imgurl = 8;
   int64 unity_home_bg = 9;
+}
+
+message Compose {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string icon = 3;
+  string link = 4;
 }
 // === ui_config_v3 end =======================================
 
