@@ -518,6 +518,7 @@ message HomeBackground {
   string left_shadow_imgurl = 8;
   int64 unity_home_bg = 9;
 }
+
 // === ui_config_v3 end =======================================
 
 
