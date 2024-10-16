@@ -573,6 +573,10 @@ message ShowAdConfig {
   bool open_buy_link = 23; // 是否开启购买链接
   string buy_month_card_link = 24; // 购买月卡弹窗链接
   string buy_ad_card_link = 25; // 购买广告券弹窗链接
+  string buy_toast = 26; // 购买弹窗toast
+  string special_buy_toast = 27; // 特殊购买弹窗toast
+  repeated string buy_toast_list = 28; // 购买弹窗toast列表
+  repeated string special_buy_toast_list = 29; // 特殊购买弹窗toast列表
 }
 
 message CrossPromotions {
