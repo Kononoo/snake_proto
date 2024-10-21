@@ -577,6 +577,7 @@ message ShowAdConfig {
   string special_buy_toast = 27; // 特殊购买弹窗toast
   repeated string buy_toast_list = 28; // 购买弹窗toast列表
   repeated string special_buy_toast_list = 29; // 特殊购买弹窗toast列表
+  string ad_act_set_link = 30; // 广告券合集活动跳转链接
 }
 
 message CrossPromotions {
