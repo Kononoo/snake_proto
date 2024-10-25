@@ -414,6 +414,7 @@ message TextConfig {
   repeated ShortCutConfig quick_phrase_text_list = 9;
   repeated string ai_anchor_nickname_list = 10;
   repeated ReportBehavior report_behavior_list = 11;
+  repeated ReportBehavior ad_report_behavior_list = 12;
 }
 
 message GiftLikeTextList {
@@ -1353,24 +1354,24 @@ message AiLevel {
   float wreck_dis_factor = 4;
   float ai_snake_view_angle = 5;
   float floater_dis_factor = 6;
-  
+
   float speedup_rate = 7;
   float speedup_time = 8;
   float change_direction_rate = 9;
-  
+
   float attack_border_dis_factor = 10;
   float attack_snake_dis_factor = 11;
   float attack_wreck_dis_factor = 12;
   float attack_ai_snake_view_angle = 13;
-  
+
   float attack_circle_dis_factor = 14;
   float attack_rate = 15;
   float attacking_score = 16;
   float delay_direction_rate = 17;
   float attack_floater_dis_factor = 18;
-  
+
   repeated AttackTime attack_times = 19;
-  
+
   float wreck_rate = 20;
   float wreck_born_rate = 21;
   float wreck_score_rate = 22;
@@ -1548,7 +1549,7 @@ message AiConfigV3 {
   int32 min_born_kill = 32;
   int32 max_born_kill = 33;
   int32 born_kill = 34;
-  
+
 }
 
 // ai_config_v3 end
