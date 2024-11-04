@@ -35,7 +35,7 @@ message GroupMember { // 队伍成员
 
 message SyncGroupMemberNotify { // 队伍成员push
   int64 group_id = 1;
-  string Owner = 2;
+  string owner = 2;
   int64 game_mode = 3;
   int64 mode_version = 4;
   repeated GroupMember members = 5;
