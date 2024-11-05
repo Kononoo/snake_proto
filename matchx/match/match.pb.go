@@ -2148,6 +2148,146 @@ func (x *CancelGroupReadyNotify) GetUid() string {
 	return ""
 }
 
+type SetVoiceStateReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	State int64 `protobuf:"varint,1,opt,name=state,proto3" json:"state,omitempty"`
+}
+
+func (x *SetVoiceStateReq) Reset() {
+	*x = SetVoiceStateReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_matchx_match_match_proto_msgTypes[40]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetVoiceStateReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetVoiceStateReq) ProtoMessage() {}
+
+func (x *SetVoiceStateReq) ProtoReflect() protoreflect.Message {
+	mi := &file_matchx_match_match_proto_msgTypes[40]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetVoiceStateReq.ProtoReflect.Descriptor instead.
+func (*SetVoiceStateReq) Descriptor() ([]byte, []int) {
+	return file_matchx_match_match_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *SetVoiceStateReq) GetState() int64 {
+	if x != nil {
+		return x.State
+	}
+	return 0
+}
+
+type SetVoiceStateRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *SetVoiceStateRsp) Reset() {
+	*x = SetVoiceStateRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_matchx_match_match_proto_msgTypes[41]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetVoiceStateRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetVoiceStateRsp) ProtoMessage() {}
+
+func (x *SetVoiceStateRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_matchx_match_match_proto_msgTypes[41]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetVoiceStateRsp.ProtoReflect.Descriptor instead.
+func (*SetVoiceStateRsp) Descriptor() ([]byte, []int) {
+	return file_matchx_match_match_proto_rawDescGZIP(), []int{41}
+}
+
+type VoiceStateNotify struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid   string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`      // 玩家uid
+	State int64  `protobuf:"varint,2,opt,name=state,proto3" json:"state,omitempty"` // 语音状态
+}
+
+func (x *VoiceStateNotify) Reset() {
+	*x = VoiceStateNotify{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_matchx_match_match_proto_msgTypes[42]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VoiceStateNotify) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VoiceStateNotify) ProtoMessage() {}
+
+func (x *VoiceStateNotify) ProtoReflect() protoreflect.Message {
+	mi := &file_matchx_match_match_proto_msgTypes[42]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VoiceStateNotify.ProtoReflect.Descriptor instead.
+func (*VoiceStateNotify) Descriptor() ([]byte, []int) {
+	return file_matchx_match_match_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *VoiceStateNotify) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *VoiceStateNotify) GetState() int64 {
+	if x != nil {
+		return x.State
+	}
+	return 0
+}
+
 var File_matchx_match_match_proto protoreflect.FileDescriptor
 
 var file_matchx_match_match_proto_rawDesc = []byte{
@@ -2328,11 +2468,18 @@ var file_matchx_match_match_proto_rawDesc = []byte{
 	0x6e, 0x63, 0x65, 0x6c, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x61, 0x64, 0x79, 0x52, 0x73,
 	0x70, 0x22, 0x2a, 0x0a, 0x16, 0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x47, 0x72, 0x6f, 0x75, 0x70,
 	0x52, 0x65, 0x61, 0x64, 0x79, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x75,
-	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69, 0x64, 0x42, 0x2e, 0x5a,
-	0x2c, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73,
-	0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x78, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69, 0x64, 0x22, 0x28, 0x0a,
+	0x10, 0x53, 0x65, 0x74, 0x56, 0x6f, 0x69, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x65,
+	0x71, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x12, 0x0a, 0x10, 0x53, 0x65, 0x74, 0x56, 0x6f,
+	0x69, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x73, 0x70, 0x22, 0x3a, 0x0a, 0x10, 0x56,
+	0x6f, 0x69, 0x63, 0x65, 0x53, 0x74, 0x61, 0x74, 0x65, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x12,
+	0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69,
+	0x64, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x42, 0x2e, 0x5a, 0x2c, 0x67, 0x69, 0x74, 0x2e, 0x31,
+	0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73,
+	0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68,
+	0x78, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2347,7 +2494,7 @@ func file_matchx_match_match_proto_rawDescGZIP() []byte {
 	return file_matchx_match_match_proto_rawDescData
 }
 
-var file_matchx_match_match_proto_msgTypes = make([]protoimpl.MessageInfo, 40)
+var file_matchx_match_match_proto_msgTypes = make([]protoimpl.MessageInfo, 43)
 var file_matchx_match_match_proto_goTypes = []interface{}{
 	(*CreateGroupReq)(nil),         // 0: match.CreateGroupReq
 	(*CreateGroupRsp)(nil),         // 1: match.CreateGroupRsp
@@ -2389,6 +2536,9 @@ var file_matchx_match_match_proto_goTypes = []interface{}{
 	(*CancelGroupReadyReq)(nil),    // 37: match.CancelGroupReadyReq
 	(*CancelGroupReadyRsp)(nil),    // 38: match.CancelGroupReadyRsp
 	(*CancelGroupReadyNotify)(nil), // 39: match.CancelGroupReadyNotify
+	(*SetVoiceStateReq)(nil),       // 40: match.SetVoiceStateReq
+	(*SetVoiceStateRsp)(nil),       // 41: match.SetVoiceStateRsp
+	(*VoiceStateNotify)(nil),       // 42: match.VoiceStateNotify
 }
 var file_matchx_match_match_proto_depIdxs = []int32{
 	7,  // 0: match.SyncGroupMemberNotify.members:type_name -> match.GroupMember
@@ -2886,6 +3036,42 @@ func file_matchx_match_match_proto_init() {
 				return nil
 			}
 		}
+		file_matchx_match_match_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetVoiceStateReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_matchx_match_match_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetVoiceStateRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_matchx_match_match_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VoiceStateNotify); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -2893,7 +3079,7 @@ func file_matchx_match_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_matchx_match_match_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   40,
+			NumMessages:   43,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
