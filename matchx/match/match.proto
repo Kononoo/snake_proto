@@ -193,3 +193,9 @@ message VoiceStateNotify { // 语音状态push
   string uid = 1; // 玩家uid
   int64 state = 2; // 语音状态
 }
+
+message MatchxRestore { // matchx的恢复数据
+  int64 state = 1; // 玩家状态
+  MatchSuccessNotify match_info = 2;
+  SyncGroupMemberNotify group_member = 3;
+}
