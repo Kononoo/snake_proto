@@ -181,3 +181,14 @@ message CancelGroupReadyRsp {
 message CancelGroupReadyNotify { // 队伍成员取消准备push
   string uid = 1; // 玩家uid
 }
+
+message SetVoiceStateReq { // 设置语音状态
+  int64 state = 1;
+}
+
+message SetVoiceStateRsp {}
+
+message VoiceStateNotify { // 语音状态push
+  string uid = 1; // 玩家uid
+  int64 state = 2; // 语音状态
+}
