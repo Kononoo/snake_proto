@@ -49,6 +49,13 @@ message InviteFriendReq { // 邀请好友
 message InviteFriendRsp {
 }
 
+message InviteFriendsReq { // 邀请多个好友
+  repeated string target_uid = 1; // 邀请的目标玩家uid列表
+  int64 source = 2; // 邀请的来源
+}
+message InviteFriendsRsp {
+}
+
 message InviteFriendNotify { // 邀请好友的push消息
   string source_uid = 1; // 邀请者uid
   int64 game_mode = 2;
