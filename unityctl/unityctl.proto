@@ -149,6 +149,20 @@ message GetUploadLogTokenRsp {
   string url = 9;
 }
 
+// 获取贪吃蛇apollo配置，版本号是最新的不下发数据
+message GetSnakeConfigReq {
+  string namespace = 1; // 命名空间
+  map<string, string> keys = 2; // 配置名 -> 版本号
+}
+message GetSnakeConfigRsp {
+  map<string, SnakeConfigItem> configs = 1; // 配置名 -> 配置值
+}
+
+message SnakeConfigItem {
+  int64 version = 1;
+  string value = 2;
+}
+
 service UnityctlServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
   rpc EndGame (EndGameReq) returns (EndGameRsp) {}
@@ -158,4 +172,5 @@ service UnityctlServer {
   rpc GetUnityConfig(GetUnityConfigReq) returns (GetUnityConfigRsp) {}
   rpc GetModeVersion(GetModeVersionReq) returns (GetModeVersionRsp) {}
   rpc GetUploadLogToken(GetUploadLogTokenReq) returns (GetUploadLogTokenRsp) {}
+  rpc GetSnakeConfig(GetSnakeConfigReq) returns (GetSnakeConfigRsp) {}
 }
