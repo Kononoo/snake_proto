@@ -31,6 +31,7 @@ message GroupMember { // 队伍成员
   string uid = 1; // 玩家uid
   int64 skin_id = 2; // 玩家当前使用的皮肤id
   bytes payload = 3;
+  int64 voice_state = 4; // 语音状态
 }
 
 message SyncGroupMemberNotify { // 队伍成员push
