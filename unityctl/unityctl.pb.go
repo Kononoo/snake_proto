@@ -1027,10 +1027,10 @@ type GetUnityConfigReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	NamespacePrefix string   `protobuf:"bytes,1,opt,name=namespace_prefix,json=namespacePrefix,proto3" json:"namespace_prefix,omitempty"` // 命名空间前缀
-	ClientVersion   string   `protobuf:"bytes,2,opt,name=client_version,json=clientVersion,proto3" json:"client_version,omitempty"`       // 客户端版本
-	HotVersion      string   `protobuf:"bytes,3,opt,name=hot_version,json=hotVersion,proto3" json:"hot_version,omitempty"`                // 热更版本
-	Keys            []string `protobuf:"bytes,4,rep,name=keys,proto3" json:"keys,omitempty"`
+	NamespacePrefix string            `protobuf:"bytes,1,opt,name=namespace_prefix,json=namespacePrefix,proto3" json:"namespace_prefix,omitempty"`                                            // 命名空间前缀
+	ClientVersion   string            `protobuf:"bytes,2,opt,name=client_version,json=clientVersion,proto3" json:"client_version,omitempty"`                                                  // 客户端版本
+	HotVersion      string            `protobuf:"bytes,3,opt,name=hot_version,json=hotVersion,proto3" json:"hot_version,omitempty"`                                                           // 热更版本
+	Keys            map[string]string `protobuf:"bytes,4,rep,name=keys,proto3" json:"keys,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"` // key -> md5
 }
 
 func (x *GetUnityConfigReq) Reset() {
@@ -1086,7 +1086,7 @@ func (x *GetUnityConfigReq) GetHotVersion() string {
 	return ""
 }
 
-func (x *GetUnityConfigReq) GetKeys() []string {
+func (x *GetUnityConfigReq) GetKeys() map[string]string {
 	if x != nil {
 		return x.Keys
 	}
@@ -1744,7 +1744,7 @@ var file_unityctl_unityctl_proto_rawDesc = []byte{
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
 	0x2e, 0x53, 0x74, 0x72, 0x75, 0x63, 0x74, 0x52, 0x03, 0x6b, 0x76, 0x73, 0x22, 0x11, 0x0a, 0x0f,
 	0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x52, 0x73, 0x71, 0x22,
-	0x9a, 0x01, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x55, 0x6e, 0x69, 0x74, 0x79, 0x43, 0x6f, 0x6e, 0x66,
+	0xfa, 0x01, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x55, 0x6e, 0x69, 0x74, 0x79, 0x43, 0x6f, 0x6e, 0x66,
 	0x69, 0x67, 0x52, 0x65, 0x71, 0x12, 0x29, 0x0a, 0x10, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x70, 0x61,
 	0x63, 0x65, 0x5f, 0x70, 0x72, 0x65, 0x66, 0x69, 0x78, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x0f, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x70, 0x61, 0x63, 0x65, 0x50, 0x72, 0x65, 0x66, 0x69, 0x78,
@@ -1752,8 +1752,14 @@ var file_unityctl_unityctl_proto_rawDesc = []byte{
 	0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
 	0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x1f, 0x0a, 0x0b, 0x68, 0x6f, 0x74, 0x5f, 0x76,
 	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x68, 0x6f,
-	0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x6b, 0x65, 0x79, 0x73,
-	0x18, 0x04, 0x20, 0x03, 0x28, 0x09, 0x52, 0x04, 0x6b, 0x65, 0x79, 0x73, 0x22, 0x53, 0x0a, 0x0f,
+	0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x39, 0x0a, 0x04, 0x6b, 0x65, 0x79, 0x73,
+	0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x75, 0x6e, 0x69, 0x74, 0x79, 0x63, 0x74,
+	0x6c, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x6e, 0x69, 0x74, 0x79, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x52, 0x65, 0x71, 0x2e, 0x4b, 0x65, 0x79, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x04, 0x6b,
+	0x65, 0x79, 0x73, 0x1a, 0x37, 0x0a, 0x09, 0x4b, 0x65, 0x79, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b,
+	0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x53, 0x0a, 0x0f,
 	0x55, 0x6e, 0x69, 0x74, 0x79, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x49, 0x74, 0x65, 0x6d, 0x12,
 	0x10, 0x0a, 0x03, 0x6d, 0x64, 0x35, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6d, 0x64,
 	0x35, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01,
@@ -1895,7 +1901,7 @@ func file_unityctl_unityctl_proto_rawDescGZIP() []byte {
 }
 
 var file_unityctl_unityctl_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_unityctl_unityctl_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
+var file_unityctl_unityctl_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_unityctl_unityctl_proto_goTypes = []interface{}{
 	(RoomState)(0),               // 0: unityctl.RoomState
 	(TeamEndlessSettleType)(0),   // 1: unityctl.TeamEndlessSettleType
@@ -1922,45 +1928,47 @@ var file_unityctl_unityctl_proto_goTypes = []interface{}{
 	(*GetSnakeConfigReq)(nil),    // 22: unityctl.GetSnakeConfigReq
 	(*GetSnakeConfigRsp)(nil),    // 23: unityctl.GetSnakeConfigRsp
 	(*SnakeConfigItem)(nil),      // 24: unityctl.SnakeConfigItem
-	nil,                          // 25: unityctl.GetUnityConfigRsp.ConfigsEntry
-	nil,                          // 26: unityctl.GetSnakeConfigReq.KeysEntry
-	nil,                          // 27: unityctl.GetSnakeConfigRsp.ConfigsEntry
-	(PushType)(0),                // 28: unityctl.PushType
-	(*structpb.Struct)(nil),      // 29: google.protobuf.Struct
+	nil,                          // 25: unityctl.GetUnityConfigReq.KeysEntry
+	nil,                          // 26: unityctl.GetUnityConfigRsp.ConfigsEntry
+	nil,                          // 27: unityctl.GetSnakeConfigReq.KeysEntry
+	nil,                          // 28: unityctl.GetSnakeConfigRsp.ConfigsEntry
+	(PushType)(0),                // 29: unityctl.PushType
+	(*structpb.Struct)(nil),      // 30: google.protobuf.Struct
 }
 var file_unityctl_unityctl_proto_depIdxs = []int32{
 	0,  // 0: unityctl.SyncStateReq.state:type_name -> unityctl.RoomState
 	1,  // 1: unityctl.TeamEndlessEndGame.settle_type:type_name -> unityctl.TeamEndlessSettleType
-	28, // 2: unityctl.SubscribeRsp.pushType:type_name -> unityctl.PushType
-	29, // 3: unityctl.UploadMetricReq.kvs:type_name -> google.protobuf.Struct
-	25, // 4: unityctl.GetUnityConfigRsp.configs:type_name -> unityctl.GetUnityConfigRsp.ConfigsEntry
-	26, // 5: unityctl.GetSnakeConfigReq.keys:type_name -> unityctl.GetSnakeConfigReq.KeysEntry
-	27, // 6: unityctl.GetSnakeConfigRsp.configs:type_name -> unityctl.GetSnakeConfigRsp.ConfigsEntry
-	16, // 7: unityctl.GetUnityConfigRsp.ConfigsEntry.value:type_name -> unityctl.UnityConfigItem
-	24, // 8: unityctl.GetSnakeConfigRsp.ConfigsEntry.value:type_name -> unityctl.SnakeConfigItem
-	2,  // 9: unityctl.UnityctlServer.SyncState:input_type -> unityctl.SyncStateReq
-	6,  // 10: unityctl.UnityctlServer.EndGame:input_type -> unityctl.EndGameReq
-	11, // 11: unityctl.UnityctlServer.GameReady:input_type -> unityctl.GameReadyReq
-	9,  // 12: unityctl.UnityctlServer.Subscribe:input_type -> unityctl.SubscribeReq
-	13, // 13: unityctl.UnityctlServer.UploadMetric:input_type -> unityctl.UploadMetricReq
-	15, // 14: unityctl.UnityctlServer.GetUnityConfig:input_type -> unityctl.GetUnityConfigReq
-	18, // 15: unityctl.UnityctlServer.GetModeVersion:input_type -> unityctl.GetModeVersionReq
-	20, // 16: unityctl.UnityctlServer.GetUploadLogToken:input_type -> unityctl.GetUploadLogTokenReq
-	22, // 17: unityctl.UnityctlServer.GetSnakeConfig:input_type -> unityctl.GetSnakeConfigReq
-	3,  // 18: unityctl.UnityctlServer.SyncState:output_type -> unityctl.SyncStateRsp
-	8,  // 19: unityctl.UnityctlServer.EndGame:output_type -> unityctl.EndGameRsp
-	12, // 20: unityctl.UnityctlServer.GameReady:output_type -> unityctl.GameReadyRsp
-	10, // 21: unityctl.UnityctlServer.Subscribe:output_type -> unityctl.SubscribeRsp
-	14, // 22: unityctl.UnityctlServer.UploadMetric:output_type -> unityctl.UploadMetricRsq
-	17, // 23: unityctl.UnityctlServer.GetUnityConfig:output_type -> unityctl.GetUnityConfigRsp
-	19, // 24: unityctl.UnityctlServer.GetModeVersion:output_type -> unityctl.GetModeVersionRsp
-	21, // 25: unityctl.UnityctlServer.GetUploadLogToken:output_type -> unityctl.GetUploadLogTokenRsp
-	23, // 26: unityctl.UnityctlServer.GetSnakeConfig:output_type -> unityctl.GetSnakeConfigRsp
-	18, // [18:27] is the sub-list for method output_type
-	9,  // [9:18] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	29, // 2: unityctl.SubscribeRsp.pushType:type_name -> unityctl.PushType
+	30, // 3: unityctl.UploadMetricReq.kvs:type_name -> google.protobuf.Struct
+	25, // 4: unityctl.GetUnityConfigReq.keys:type_name -> unityctl.GetUnityConfigReq.KeysEntry
+	26, // 5: unityctl.GetUnityConfigRsp.configs:type_name -> unityctl.GetUnityConfigRsp.ConfigsEntry
+	27, // 6: unityctl.GetSnakeConfigReq.keys:type_name -> unityctl.GetSnakeConfigReq.KeysEntry
+	28, // 7: unityctl.GetSnakeConfigRsp.configs:type_name -> unityctl.GetSnakeConfigRsp.ConfigsEntry
+	16, // 8: unityctl.GetUnityConfigRsp.ConfigsEntry.value:type_name -> unityctl.UnityConfigItem
+	24, // 9: unityctl.GetSnakeConfigRsp.ConfigsEntry.value:type_name -> unityctl.SnakeConfigItem
+	2,  // 10: unityctl.UnityctlServer.SyncState:input_type -> unityctl.SyncStateReq
+	6,  // 11: unityctl.UnityctlServer.EndGame:input_type -> unityctl.EndGameReq
+	11, // 12: unityctl.UnityctlServer.GameReady:input_type -> unityctl.GameReadyReq
+	9,  // 13: unityctl.UnityctlServer.Subscribe:input_type -> unityctl.SubscribeReq
+	13, // 14: unityctl.UnityctlServer.UploadMetric:input_type -> unityctl.UploadMetricReq
+	15, // 15: unityctl.UnityctlServer.GetUnityConfig:input_type -> unityctl.GetUnityConfigReq
+	18, // 16: unityctl.UnityctlServer.GetModeVersion:input_type -> unityctl.GetModeVersionReq
+	20, // 17: unityctl.UnityctlServer.GetUploadLogToken:input_type -> unityctl.GetUploadLogTokenReq
+	22, // 18: unityctl.UnityctlServer.GetSnakeConfig:input_type -> unityctl.GetSnakeConfigReq
+	3,  // 19: unityctl.UnityctlServer.SyncState:output_type -> unityctl.SyncStateRsp
+	8,  // 20: unityctl.UnityctlServer.EndGame:output_type -> unityctl.EndGameRsp
+	12, // 21: unityctl.UnityctlServer.GameReady:output_type -> unityctl.GameReadyRsp
+	10, // 22: unityctl.UnityctlServer.Subscribe:output_type -> unityctl.SubscribeRsp
+	14, // 23: unityctl.UnityctlServer.UploadMetric:output_type -> unityctl.UploadMetricRsq
+	17, // 24: unityctl.UnityctlServer.GetUnityConfig:output_type -> unityctl.GetUnityConfigRsp
+	19, // 25: unityctl.UnityctlServer.GetModeVersion:output_type -> unityctl.GetModeVersionRsp
+	21, // 26: unityctl.UnityctlServer.GetUploadLogToken:output_type -> unityctl.GetUploadLogTokenRsp
+	23, // 27: unityctl.UnityctlServer.GetSnakeConfig:output_type -> unityctl.GetSnakeConfigRsp
+	19, // [19:28] is the sub-list for method output_type
+	10, // [10:19] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_unityctl_unityctl_proto_init() }
@@ -2253,7 +2261,7 @@ func file_unityctl_unityctl_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_unityctl_unityctl_proto_rawDesc,
 			NumEnums:      2,
-			NumMessages:   26,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
