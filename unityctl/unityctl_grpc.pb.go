@@ -26,6 +26,7 @@ type UnityctlServerClient interface {
 	GetUnityConfig(ctx context.Context, in *GetUnityConfigReq, opts ...grpc.CallOption) (*GetUnityConfigRsp, error)
 	GetModeVersion(ctx context.Context, in *GetModeVersionReq, opts ...grpc.CallOption) (*GetModeVersionRsp, error)
 	GetUploadLogToken(ctx context.Context, in *GetUploadLogTokenReq, opts ...grpc.CallOption) (*GetUploadLogTokenRsp, error)
+	GetSnakeConfig(ctx context.Context, in *GetSnakeConfigReq, opts ...grpc.CallOption) (*GetSnakeConfigRsp, error)
 }
 
 type unityctlServerClient struct {
@@ -156,6 +157,15 @@ func (c *unityctlServerClient) GetUploadLogToken(ctx context.Context, in *GetUpl
 	return out, nil
 }
 
+func (c *unityctlServerClient) GetSnakeConfig(ctx context.Context, in *GetSnakeConfigReq, opts ...grpc.CallOption) (*GetSnakeConfigRsp, error) {
+	out := new(GetSnakeConfigRsp)
+	err := c.cc.Invoke(ctx, "/unityctl.UnityctlServer/GetSnakeConfig", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UnityctlServerServer is the server API for UnityctlServer service.
 // All implementations should embed UnimplementedUnityctlServerServer
 // for forward compatibility
@@ -168,6 +178,7 @@ type UnityctlServerServer interface {
 	GetUnityConfig(context.Context, *GetUnityConfigReq) (*GetUnityConfigRsp, error)
 	GetModeVersion(context.Context, *GetModeVersionReq) (*GetModeVersionRsp, error)
 	GetUploadLogToken(context.Context, *GetUploadLogTokenReq) (*GetUploadLogTokenRsp, error)
+	GetSnakeConfig(context.Context, *GetSnakeConfigReq) (*GetSnakeConfigRsp, error)
 }
 
 // UnimplementedUnityctlServerServer should be embedded to have forward compatible implementations.
@@ -197,6 +208,9 @@ func (UnimplementedUnityctlServerServer) GetModeVersion(context.Context, *GetMod
 }
 func (UnimplementedUnityctlServerServer) GetUploadLogToken(context.Context, *GetUploadLogTokenReq) (*GetUploadLogTokenRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUploadLogToken not implemented")
+}
+func (UnimplementedUnityctlServerServer) GetSnakeConfig(context.Context, *GetSnakeConfigReq) (*GetSnakeConfigRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSnakeConfig not implemented")
 }
 
 // UnsafeUnityctlServerServer may be embedded to opt out of forward compatibility for this service.
@@ -365,6 +379,24 @@ func _UnityctlServer_GetUploadLogToken_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UnityctlServer_GetSnakeConfig_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSnakeConfigReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UnityctlServerServer).GetSnakeConfig(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/unityctl.UnityctlServer/GetSnakeConfig",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UnityctlServerServer).GetSnakeConfig(ctx, req.(*GetSnakeConfigReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UnityctlServer_ServiceDesc is the grpc.ServiceDesc for UnityctlServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -395,6 +427,10 @@ var UnityctlServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUploadLogToken",
 			Handler:    _UnityctlServer_GetUploadLogToken_Handler,
+		},
+		{
+			MethodName: "GetSnakeConfig",
+			Handler:    _UnityctlServer_GetSnakeConfig_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
