@@ -26,3 +26,5 @@ message EndGameNotify { // push结算信息
 message GetGameResultReq { // 获取结算信息
 
 }
+
+message GetGameResultRsp {}
