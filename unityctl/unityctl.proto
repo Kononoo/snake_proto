@@ -135,7 +135,8 @@ message GetModeVersionReq {
 }
 
 message GetModeVersionRsp {
-  int32 mode_version = 1;
+  int32 ios_mode_version = 1;
+  int32 android_mode_version = 2;
 }
 
 // 获取日志上传token
