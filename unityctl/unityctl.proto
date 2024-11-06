@@ -158,7 +158,7 @@ message GetUploadLogTokenRsp {
 // 获取贪吃蛇apollo配置，版本号是最新的不下发数据
 message GetSnakeConfigReq {
   string namespace = 1; // 命名空间
-  map<string, string> keys = 2; // 配置名 -> 版本号
+  map<string, int64> keys = 2; // 配置名 -> 版本号
 }
 message GetSnakeConfigRsp {
   map<string, SnakeConfigItem> configs = 1; // 配置名 -> 配置值
