@@ -114,7 +114,7 @@ message GetUnityConfigReq {
   string namespace_prefix = 1; // 命名空间前缀
   string client_version = 2; // 客户端版本
   string hot_version = 3; // 热更版本
-  repeated string keys = 4;
+  map<string, string> keys = 4; // key -> md5
 }
 
 message UnityConfigItem {
