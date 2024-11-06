@@ -25,6 +25,16 @@ message SyncStateReq {
 message SyncStateRsp {
 }
 
+// 游戏开始前，unity server通知游戏开始
+message StartGameReq {
+  string addr = 1; // ip:端口
+  int32 rid = 2; // 房间id
+  int32 game_mode = 3; // 游戏模式
+  bytes payload = 4; // 额外数据
+}
+message StartGameRsp {
+}
+
 // 游戏结束时untiy server通知游戏结果
 message EndGameReq {
   string addr = 1; // ip:端口
