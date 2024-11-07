@@ -31,11 +31,12 @@ message GroupMember { // 队伍成员
   string uid = 1; // 玩家uid
   int64 skin_id = 2; // 玩家当前使用的皮肤id
   bytes payload = 3;
+  int64 voice_state = 4; // 语音状态
 }
 
 message SyncGroupMemberNotify { // 队伍成员push
   int64 group_id = 1;
-  string Owner = 2;
+  string owner = 2;
   int64 game_mode = 3;
   int64 mode_version = 4;
   repeated GroupMember members = 5;
@@ -47,6 +48,13 @@ message InviteFriendReq { // 邀请好友
   int64 source = 2; // 邀请的来源
 }
 message InviteFriendRsp {
+}
+
+message InviteFriendsReq { // 邀请多个好友
+  repeated string target_uid = 1; // 邀请的目标玩家uid列表
+  int64 source = 2; // 邀请的来源
+}
+message InviteFriendsRsp {
 }
 
 message InviteFriendNotify { // 邀请好友的push消息
@@ -173,4 +181,21 @@ message CancelGroupReadyRsp {
 
 message CancelGroupReadyNotify { // 队伍成员取消准备push
   string uid = 1; // 玩家uid
+}
+
+message SetVoiceStateReq { // 设置语音状态
+  int64 state = 1;
+}
+
+message SetVoiceStateRsp {}
+
+message VoiceStateNotify { // 语音状态push
+  string uid = 1; // 玩家uid
+  int64 state = 2; // 语音状态
+}
+
+message MatchxRestore { // matchx的恢复数据
+  int64 state = 1; // 玩家状态
+  MatchSuccessNotify match_info = 2;
+  SyncGroupMemberNotify group_member = 3;
 }

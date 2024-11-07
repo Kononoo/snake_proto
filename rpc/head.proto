@@ -17,4 +17,6 @@ enum cmd {
   Match = 9; // 匹配服（仅服务器使用）
   Matchx = 10; // 新匹配服
   Social = 11; // 社交服
+  Cron = 12; // 定时任务服务
+  Admin = 13; // 管理后台
 }

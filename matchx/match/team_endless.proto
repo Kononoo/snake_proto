@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package match;
+option go_package = "git.17zjh.com/snake/snake_proto/matchx/match";
+
+// 多人无尽玩法额外信息定义
+
+message TeamEndlessGroupMember { // 多人无尽：队伍成员额外信息，存储在GroupMember的payload中
+
+}
+
+message TeamEndlessMatchSuccess { // 多人无尽：匹配成功额外数据，存储在payload中
+  string host = 1; // unityserver房间ip地址和端口信息
+}
+
+message TeamEndlessUploadAttr { // 多人无尽：上传用户额外属性，存储在payload中
+  // 根据实际需要来添加字段
+}

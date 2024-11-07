@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package endless;
+option go_package = "git.17zjh.com/snake/snake_proto/system/endless";
+
+message GetRecentPartnerReq { // 获取最近队友
+  int32 game_mode = 1;  // 游戏模式
+}
+
+message GetRecentPartnerRsp {
+  repeated Partner user_list = 1;
+}
+
+message Partner {
+  string uid = 1;
+  string nickname = 2;
+  string avatar = 3;
+  int32 box_id = 4;
+  int32 verified = 5;
+}
+
+message EndGameNotify { // push结算信息
+
+}
+
+message GetGameResultReq { // 获取结算信息
+
+}
+
+message GetGameResultRsp {}
