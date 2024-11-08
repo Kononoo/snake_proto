@@ -170,6 +170,20 @@ message SnakeConfigItem {
   string value = 2;
 }
 
+// 结算后玩家选择主动退出游戏或强制踢出游戏
+message ExitGameReq {
+  string addr = 1; // ip:端口
+  int32 rid = 2; // 房间id
+  int32 game_mode = 3; // 游戏模式
+  bytes payload = 4; // 额外数据
+}
+message ExitGameRsp {
+}
+
+message TeamEndlessExitGame {
+  string uid = 1;
+}
+
 service UnityctlServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
   rpc EndGame (EndGameReq) returns (EndGameRsp) {}
@@ -180,4 +194,5 @@ service UnityctlServer {
   rpc GetModeVersion(GetModeVersionReq) returns (GetModeVersionRsp) {}
   rpc GetUploadLogToken(GetUploadLogTokenReq) returns (GetUploadLogTokenRsp) {}
   rpc GetSnakeConfig(GetSnakeConfigReq) returns (GetSnakeConfigRsp) {}
+  rpc ExitGame(ExitGameReq) returns (ExitGameRsp) {}
 }
