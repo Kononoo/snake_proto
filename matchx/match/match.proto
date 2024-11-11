@@ -32,6 +32,7 @@ message GroupMember { // 队伍成员
   int64 skin_id = 2; // 玩家当前使用的皮肤id
   bytes payload = 3;
   int64 voice_state = 4; // 语音状态
+  int32 team_id = 5;
 }
 
 message SyncGroupMemberNotify { // 队伍成员push
@@ -128,6 +129,18 @@ message MatchSuccessNotify { // 匹配成功的push
   repeated int64 team_id_list = 10; // 阵营id列表
   RelayServer relay_server = 11; // relay服务器信息，帧同步模式玩法需要用到
   bytes payload = 12; // 额外的数据
+  repeated RoomMember members = 13;
+}
+
+message RoomMember {
+  string uid = 1; // 玩家uid
+  string nickname = 2;
+  int64 skin_id = 3; // 玩家当前使用的皮肤id
+  int64 voice_state = 4; // 语音状态
+  int64 team_id = 5;
+  int64 group_id = 6;
+  bool is_original = 7; // 是否是初始匹配加入的玩家
+  bytes payload = 8;
 }
 
 message SyncGroupStateNotify { // 同步队伍状态
