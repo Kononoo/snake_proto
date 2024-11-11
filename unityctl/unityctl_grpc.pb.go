@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UnityctlServerClient interface {
 	SyncState(ctx context.Context, in *SyncStateReq, opts ...grpc.CallOption) (*SyncStateRsp, error)
+	StartGame(ctx context.Context, in *StartGameReq, opts ...grpc.CallOption) (*StartGameRsp, error)
 	EndGame(ctx context.Context, in *EndGameReq, opts ...grpc.CallOption) (*EndGameRsp, error)
 	GameReady(ctx context.Context, in *GameReadyReq, opts ...grpc.CallOption) (*GameReadyRsp, error)
 	Subscribe(ctx context.Context, in *SubscribeReq, opts ...grpc.CallOption) (UnityctlServer_SubscribeClient, error)
@@ -41,6 +42,15 @@ func NewUnityctlServerClient(cc grpc.ClientConnInterface) UnityctlServerClient {
 func (c *unityctlServerClient) SyncState(ctx context.Context, in *SyncStateReq, opts ...grpc.CallOption) (*SyncStateRsp, error) {
 	out := new(SyncStateRsp)
 	err := c.cc.Invoke(ctx, "/unityctl.UnityctlServer/SyncState", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *unityctlServerClient) StartGame(ctx context.Context, in *StartGameReq, opts ...grpc.CallOption) (*StartGameRsp, error) {
+	out := new(StartGameRsp)
+	err := c.cc.Invoke(ctx, "/unityctl.UnityctlServer/StartGame", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -181,6 +191,7 @@ func (c *unityctlServerClient) ExitGame(ctx context.Context, in *ExitGameReq, op
 // for forward compatibility
 type UnityctlServerServer interface {
 	SyncState(context.Context, *SyncStateReq) (*SyncStateRsp, error)
+	StartGame(context.Context, *StartGameReq) (*StartGameRsp, error)
 	EndGame(context.Context, *EndGameReq) (*EndGameRsp, error)
 	GameReady(context.Context, *GameReadyReq) (*GameReadyRsp, error)
 	Subscribe(*SubscribeReq, UnityctlServer_SubscribeServer) error
@@ -198,6 +209,9 @@ type UnimplementedUnityctlServerServer struct {
 
 func (UnimplementedUnityctlServerServer) SyncState(context.Context, *SyncStateReq) (*SyncStateRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SyncState not implemented")
+}
+func (UnimplementedUnityctlServerServer) StartGame(context.Context, *StartGameReq) (*StartGameRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartGame not implemented")
 }
 func (UnimplementedUnityctlServerServer) EndGame(context.Context, *EndGameReq) (*EndGameRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EndGame not implemented")
@@ -252,6 +266,24 @@ func _UnityctlServer_SyncState_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UnityctlServerServer).SyncState(ctx, req.(*SyncStateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UnityctlServer_StartGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartGameReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UnityctlServerServer).StartGame(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/unityctl.UnityctlServer/StartGame",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UnityctlServerServer).StartGame(ctx, req.(*StartGameReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -439,6 +471,10 @@ var UnityctlServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SyncState",
 			Handler:    _UnityctlServer_SyncState_Handler,
+		},
+		{
+			MethodName: "StartGame",
+			Handler:    _UnityctlServer_StartGame_Handler,
 		},
 		{
 			MethodName: "EndGame",
