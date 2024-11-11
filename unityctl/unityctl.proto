@@ -186,6 +186,7 @@ message TeamEndlessExitGame {
 
 service UnityctlServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
+  rpc StartGame(StartGameReq) returns (StartGameRsp) {}
   rpc EndGame (EndGameReq) returns (EndGameRsp) {}
   rpc GameReady (GameReadyReq) returns (GameReadyRsp) {}
   rpc Subscribe (SubscribeReq) returns (stream SubscribeRsp) {}
