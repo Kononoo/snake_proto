@@ -1,0 +1,119 @@
+syntax = "proto3";
+
+import "snakeapi/base.proto";
+import "unityctl/common.proto";
+package unityctl;
+option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
+
+message UserGameTask {
+  int64 day_progress = 1;
+  int64 day_reward = 2;
+  int64 week_progress = 3;
+  int64 week_reward = 4;
+  int64 update_time = 5;
+  int64 pre_day_progress = 6;
+  int64 pre_day_reward = 7;
+  int64 pre_week_progress = 8;
+  int64 pre_week_reward = 9;
+  int64 pre_time = 10;
+}
+
+message UserEgg {
+  int64 id = 1;
+  int32 level = 2;
+  int32 state = 3;
+  int32 pos = 4;
+  int64 open_time = 5;
+  int64 ad_count = 6;
+}
+
+message UserEggProgress {
+  repeated UserEgg egg_list = 1;
+  int32 hatched = 2;
+  int32 get_new = 3;
+  int32 didi = 4;
+}
+
+message PassCheckExpDetail {
+  int64 count = 1;
+  int32 mark_id = 2;
+  string from = 3;
+}
+
+message GamePassCheckExp {
+  int64 exp = 1;
+  int64 day_exp = 2;
+  repeated PassCheckExpDetail exp_detail = 3;
+}
+
+message ActReward {
+  string desc = 1;
+  repeated snakeapi.RewardItem reward_list = 2;
+}
+
+message GameExtraReward {
+  repeated snakeapi.RewardItem reward_list = 1;
+  string btn_link = 2;
+}
+
+message UserMeetupProgress {
+  int64 act_id = 1;
+  int64 finish = 2;
+  int64 len = 3;
+  int64 add_len = 4;
+  int64 days = 5;
+  repeated TaskInfo task_info = 6;
+}
+
+message UserMeetupProgressItem {
+  UserMeetupProgress progress = 1;
+  string title_url = 2;
+  string button_msg = 3;
+  int64 start_time = 4;
+}
+
+message UserElGameReward {
+  int64 len = 1;
+  int64 add_len = 2;
+  repeated TaskInfo task_info = 3;
+}
+
+message TeamEndlessEndGameNotify {
+  string rank = 1;
+  map<string, int32> recommend_info = 2;
+  int64 cup = 3;
+  int64 total_len = 4;
+  map<string, int32> opened_chest = 5;
+  int64 display_score = 6;
+  int64 snake_coin = 7;
+  int64 week_snake_coin = 8;
+  repeated SnakeCoinDetailItem snake_coin_detail = 9;
+  int32 ad_flag = 10;
+  map<string, int32> turntable = 11;
+  int32 qualifying_unlock = 12;
+  UserGameTask game_task = 13;
+  UserEggProgress hatch_egg = 14;
+  GamePassCheckExp pass_check = 15;
+  double difficulty_score = 16;
+  ActReward act_reward = 17;
+  repeated GameExtraReward extra_reward = 18;
+  string icon_url = 19;
+  repeated snakeapi.RewardItem endless_reward_list = 20;
+  UserMeetupProgress new_meetup = 21;
+  UserMeetupProgress new_meetup_v2 = 22;
+  UserMeetupProgress new_meetup_v3 = 23;
+  repeated UserMeetupProgressItem new_meetup_v3_list = 24;
+  UserElGameReward endless_game_reward = 25;
+  repeated string new_end_popup_order1 = 26;
+  WebBanner web_banner = 27;
+  string compose_coin = 28;
+  FloatingInfo floating_v2 = 29;
+  repeated EndlessTeammate teammates = 30; // 队友信息
+}
+
+message EndlessTeammate {
+  string uid = 1;
+  int32 score = 2;
+  int32 tag = 3;
+  bool liked = 4; // 是否是自己
+}

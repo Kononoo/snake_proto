@@ -3,6 +3,7 @@ syntax = "proto3";
 package unityctl;
 option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
 import "unityctl/push.proto";
+import "unityctl/endless.proto";
 import "google/protobuf/struct.proto";
 
 enum RoomState {
@@ -64,6 +65,7 @@ message TeamEndlessEndGame {
   string score = 20;
   int32 collect = 21;
   TeamEndlessSettleType settle_type = 22; // 结算类型
+  repeated EndlessTeammate teammates = 23; // 队友
 }
 
 enum TeamEndlessSettleType {
