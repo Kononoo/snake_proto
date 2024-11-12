@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "snakeapi/base.proto";
+import "snakecommon/config.proto";
 import "unityctl/common.proto";
 package unityctl;
 option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
@@ -48,11 +48,11 @@ message GamePassCheckExp {
 
 message ActReward {
   string desc = 1;
-  repeated snakeapi.RewardItem reward_list = 2;
+  repeated snakecommon.CRewardItem reward_list = 2;
 }
 
 message GameExtraReward {
-  repeated snakeapi.RewardItem reward_list = 1;
+  repeated snakecommon.CRewardItem reward_list = 1;
   string btn_link = 2;
 }
 
@@ -98,7 +98,7 @@ message TeamEndlessEndGameNotify {
   ActReward act_reward = 17;
   repeated GameExtraReward extra_reward = 18;
   string icon_url = 19;
-  repeated snakeapi.RewardItem endless_reward_list = 20;
+  repeated snakecommon.CRewardItem endless_reward_list = 20;
   UserMeetupProgress new_meetup = 21;
   UserMeetupProgress new_meetup_v2 = 22;
   UserMeetupProgress new_meetup_v3 = 23;

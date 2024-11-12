@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "snakeapi/base.proto";
+import "snakecommon/config.proto";
 package unityctl;
 option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
 
@@ -30,7 +30,7 @@ message FloatingItem {
 }
 
 message FloatingInfo {
-  repeated snakeapi.RewardItem reward_list = 1;
+  repeated snakecommon.CRewardItem reward_list = 1;
   int32 red_dot = 2;
   repeated FloatingItem floating_list = 3;
 }
