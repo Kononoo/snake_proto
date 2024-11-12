@@ -6,6 +6,7 @@ option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
 enum PushType { // push消息类型
   SyncGameInfo = 0; //初始化房间
   StartStressTest = 1; // 开始压测
+  NotifyExitGame = 2; // 通知unity server玩家退出游戏
 }
 
 //玩家类型
@@ -35,4 +36,9 @@ message PuSyncGameInfo {
 message PuStartStressTest {
   sint32 gameMode = 1;  //游戏模式
   int32 rid = 2; // 房间id
+}
+
+message PuExitGame {
+  int32 game_mode = 1;
+  string uid = 2; // 玩家uid
 }
