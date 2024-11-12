@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "snakeapi/base.proto";
+package unityctl;
+option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
+
+message SnakeCoinDetailItem {
+  int64 count = 1;
+  int32 mark_id = 2;
+  string from = 3;
+}
+
+message TaskInfo {
+  int64 id = 1;
+  int32 state = 2;
+  int64 ad = 3;
+  bool own = 4;
+}
+
+message WebBanner {
+  int64 id = 1;
+  string url = 2;
+}
+
+message FloatingItem {
+  int64 id = 1;
+  int64 num = 2;
+  int64 add = 3;
+  int32 state = 4;
+}
+
+message FloatingInfo {
+  repeated snakeapi.RewardItem reward_list = 1;
+  int32 red_dot = 2;
+  repeated FloatingItem floating_list = 3;
+}
