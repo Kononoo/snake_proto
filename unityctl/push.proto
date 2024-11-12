@@ -38,7 +38,7 @@ message PuStartStressTest {
   int32 rid = 2; // 房间id
 }
 
-message PuExitGame {
+message PuNotifyExitGame {
   int32 game_mode = 1;
   string uid = 2; // 玩家uid
 }
