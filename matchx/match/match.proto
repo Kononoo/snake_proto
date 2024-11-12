@@ -141,6 +141,7 @@ message RoomMember {
   int64 group_id = 6;
   bool is_original = 7; // 是否是初始匹配加入的玩家
   bytes payload = 8;
+  int64 kill_effect = 9; // 击杀特效
 }
 
 message SyncGroupStateNotify { // 同步队伍状态
@@ -166,6 +167,7 @@ message UploadAttrReq { // 上传用户属性
   int64 skin_id = 1;
   string nickname = 2;
   bytes payload = 3; // 额外属性
+  int64 kill_effect = 4; // 击杀特效
 }
 message UploadAttrRsp {
 }
