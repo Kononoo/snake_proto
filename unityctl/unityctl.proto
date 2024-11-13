@@ -3,7 +3,7 @@ syntax = "proto3";
 package unityctl;
 option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
 import "unityctl/push.proto";
-import "google/protobuf/struct.proto";
+import "unityctl/struct.proto";
 
 enum RoomState {
   Idle = 0; // 空闲
