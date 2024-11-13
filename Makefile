@@ -53,5 +53,5 @@ matchx:
     	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./matchx/*/*.proto
 
 unityctl:
-	protoc --go_out=. --go_opt=paths=source_relative\
- 		--go-grpc_out=. --go-grpc_opt=require_unimplemented_servers=false,paths=source_relative ./unityctl/*.proto
+	ls ./unityctl/*.proto | grep -v "struct.proto" | xargs protoc --go_out=. --go_opt=paths=source_relative\
+ 		--go-grpc_out=. --go-grpc_opt=require_unimplemented_servers=false,paths=source_relative
