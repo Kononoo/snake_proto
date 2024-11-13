@@ -852,8 +852,8 @@ message FirstChargeUnlockRewardInfo{
 // 贪吃蛇首充 End
 
 
-// ======== double_pass_check 双人通行证配置 start ====================================================
-message CoublePassCheck {
+// ======== couple_pass_check 双人通行证配置 start ====================================================
+message CouplePassCheck {
   string act_id = 1;                                  // 活动ID
   CPCPrompt prompt = 2;                               // 活动引导配置
   string title = 3;                                   // 活动标题
@@ -972,4 +972,4 @@ message CPCIntimateRelationship {
   string activity_link = 5;                   // 活动跳转链接
   int32 dissolve_limit = 6;                   // 解除关系次数上限
 }
-// ======== double_pass_check end ====================================================
+// ======== couple_pass_check end ====================================================
