@@ -3,7 +3,7 @@ syntax = "proto3";
 package unityctl;
 option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
 import "unityctl/push.proto";
-import "google/protobuf/struct.proto";
+import "unityctl/struct.proto";
 
 enum RoomState {
   Idle = 0; // 空闲
@@ -43,34 +43,6 @@ message EndGameReq {
   bytes payload = 4; // 额外数据
 }
 
-// 玩家结算时的一些数据，同top_list_v2/update_score接口
-message TeamEndlessEndGame {
-  string uid = 1; // 结算的玩家uid
-  int32 platform = 3;
-  string market = 4;
-  string version = 5;
-  string device_id = 6;
-  int32 kill = 9;
-  int32 length = 10;
-  int32 login_type = 11;
-  int32 buff = 12;
-  int32 first_charge_state = 13;
-  int32 relive_count = 14;
-  string relive_types = 15;
-  int32 skin_id = 16;
-  int32 new_score = 17;
-  int32 game_time = 18;
-  int32 destroy_length = 19;
-  string score = 20;
-  int32 collect = 21;
-  TeamEndlessSettleType settle_type = 22; // 结算类型
-}
-
-enum TeamEndlessSettleType {
-  Normal = 0; // 正常主动结算
-  Abnormal = 1; // 异常结算
-}
-
 message EndGameRsp {
 }
 
@@ -103,7 +75,7 @@ message UploadMetricReq {
   int32 platform = 4;
   string market = 5;
   string version = 6;
-  google.protobuf.Struct kvs = 7;
+  Struct kvs = 7;
 }
 
 message UploadMetricRsq {
@@ -170,8 +142,23 @@ message SnakeConfigItem {
   string value = 2;
 }
 
+// 结算后玩家选择主动退出游戏或强制踢出游戏
+message ExitGameReq {
+  string addr = 1; // ip:端口
+  int32 rid = 2; // 房间id
+  int32 game_mode = 3; // 游戏模式
+  bytes payload = 4; // 额外数据
+}
+message ExitGameRsp {
+}
+
+message TeamEndlessExitGame {
+  string uid = 1;
+}
+
 service UnityctlServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
+  rpc StartGame(StartGameReq) returns (StartGameRsp) {}
   rpc EndGame (EndGameReq) returns (EndGameRsp) {}
   rpc GameReady (GameReadyReq) returns (GameReadyRsp) {}
   rpc Subscribe (SubscribeReq) returns (stream SubscribeRsp) {}
@@ -180,4 +167,5 @@ service UnityctlServer {
   rpc GetModeVersion(GetModeVersionReq) returns (GetModeVersionRsp) {}
   rpc GetUploadLogToken(GetUploadLogTokenReq) returns (GetUploadLogTokenRsp) {}
   rpc GetSnakeConfig(GetSnakeConfigReq) returns (GetSnakeConfigRsp) {}
+  rpc ExitGame(ExitGameReq) returns (ExitGameRsp) {}
 }

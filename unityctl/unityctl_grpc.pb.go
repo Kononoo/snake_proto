@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UnityctlServerClient interface {
 	SyncState(ctx context.Context, in *SyncStateReq, opts ...grpc.CallOption) (*SyncStateRsp, error)
+	StartGame(ctx context.Context, in *StartGameReq, opts ...grpc.CallOption) (*StartGameRsp, error)
 	EndGame(ctx context.Context, in *EndGameReq, opts ...grpc.CallOption) (*EndGameRsp, error)
 	GameReady(ctx context.Context, in *GameReadyReq, opts ...grpc.CallOption) (*GameReadyRsp, error)
 	Subscribe(ctx context.Context, in *SubscribeReq, opts ...grpc.CallOption) (UnityctlServer_SubscribeClient, error)
@@ -27,6 +28,7 @@ type UnityctlServerClient interface {
 	GetModeVersion(ctx context.Context, in *GetModeVersionReq, opts ...grpc.CallOption) (*GetModeVersionRsp, error)
 	GetUploadLogToken(ctx context.Context, in *GetUploadLogTokenReq, opts ...grpc.CallOption) (*GetUploadLogTokenRsp, error)
 	GetSnakeConfig(ctx context.Context, in *GetSnakeConfigReq, opts ...grpc.CallOption) (*GetSnakeConfigRsp, error)
+	ExitGame(ctx context.Context, in *ExitGameReq, opts ...grpc.CallOption) (*ExitGameRsp, error)
 }
 
 type unityctlServerClient struct {
@@ -40,6 +42,15 @@ func NewUnityctlServerClient(cc grpc.ClientConnInterface) UnityctlServerClient {
 func (c *unityctlServerClient) SyncState(ctx context.Context, in *SyncStateReq, opts ...grpc.CallOption) (*SyncStateRsp, error) {
 	out := new(SyncStateRsp)
 	err := c.cc.Invoke(ctx, "/unityctl.UnityctlServer/SyncState", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *unityctlServerClient) StartGame(ctx context.Context, in *StartGameReq, opts ...grpc.CallOption) (*StartGameRsp, error) {
+	out := new(StartGameRsp)
+	err := c.cc.Invoke(ctx, "/unityctl.UnityctlServer/StartGame", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -166,11 +177,21 @@ func (c *unityctlServerClient) GetSnakeConfig(ctx context.Context, in *GetSnakeC
 	return out, nil
 }
 
+func (c *unityctlServerClient) ExitGame(ctx context.Context, in *ExitGameReq, opts ...grpc.CallOption) (*ExitGameRsp, error) {
+	out := new(ExitGameRsp)
+	err := c.cc.Invoke(ctx, "/unityctl.UnityctlServer/ExitGame", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UnityctlServerServer is the server API for UnityctlServer service.
 // All implementations should embed UnimplementedUnityctlServerServer
 // for forward compatibility
 type UnityctlServerServer interface {
 	SyncState(context.Context, *SyncStateReq) (*SyncStateRsp, error)
+	StartGame(context.Context, *StartGameReq) (*StartGameRsp, error)
 	EndGame(context.Context, *EndGameReq) (*EndGameRsp, error)
 	GameReady(context.Context, *GameReadyReq) (*GameReadyRsp, error)
 	Subscribe(*SubscribeReq, UnityctlServer_SubscribeServer) error
@@ -179,6 +200,7 @@ type UnityctlServerServer interface {
 	GetModeVersion(context.Context, *GetModeVersionReq) (*GetModeVersionRsp, error)
 	GetUploadLogToken(context.Context, *GetUploadLogTokenReq) (*GetUploadLogTokenRsp, error)
 	GetSnakeConfig(context.Context, *GetSnakeConfigReq) (*GetSnakeConfigRsp, error)
+	ExitGame(context.Context, *ExitGameReq) (*ExitGameRsp, error)
 }
 
 // UnimplementedUnityctlServerServer should be embedded to have forward compatible implementations.
@@ -187,6 +209,9 @@ type UnimplementedUnityctlServerServer struct {
 
 func (UnimplementedUnityctlServerServer) SyncState(context.Context, *SyncStateReq) (*SyncStateRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SyncState not implemented")
+}
+func (UnimplementedUnityctlServerServer) StartGame(context.Context, *StartGameReq) (*StartGameRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartGame not implemented")
 }
 func (UnimplementedUnityctlServerServer) EndGame(context.Context, *EndGameReq) (*EndGameRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EndGame not implemented")
@@ -211,6 +236,9 @@ func (UnimplementedUnityctlServerServer) GetUploadLogToken(context.Context, *Get
 }
 func (UnimplementedUnityctlServerServer) GetSnakeConfig(context.Context, *GetSnakeConfigReq) (*GetSnakeConfigRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSnakeConfig not implemented")
+}
+func (UnimplementedUnityctlServerServer) ExitGame(context.Context, *ExitGameReq) (*ExitGameRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExitGame not implemented")
 }
 
 // UnsafeUnityctlServerServer may be embedded to opt out of forward compatibility for this service.
@@ -238,6 +266,24 @@ func _UnityctlServer_SyncState_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UnityctlServerServer).SyncState(ctx, req.(*SyncStateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UnityctlServer_StartGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartGameReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UnityctlServerServer).StartGame(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/unityctl.UnityctlServer/StartGame",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UnityctlServerServer).StartGame(ctx, req.(*StartGameReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -397,6 +443,24 @@ func _UnityctlServer_GetSnakeConfig_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UnityctlServer_ExitGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExitGameReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UnityctlServerServer).ExitGame(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/unityctl.UnityctlServer/ExitGame",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UnityctlServerServer).ExitGame(ctx, req.(*ExitGameReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UnityctlServer_ServiceDesc is the grpc.ServiceDesc for UnityctlServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -407,6 +471,10 @@ var UnityctlServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SyncState",
 			Handler:    _UnityctlServer_SyncState_Handler,
+		},
+		{
+			MethodName: "StartGame",
+			Handler:    _UnityctlServer_StartGame_Handler,
 		},
 		{
 			MethodName: "EndGame",
@@ -431,6 +499,10 @@ var UnityctlServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetSnakeConfig",
 			Handler:    _UnityctlServer_GetSnakeConfig_Handler,
+		},
+		{
+			MethodName: "ExitGame",
+			Handler:    _UnityctlServer_ExitGame_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
