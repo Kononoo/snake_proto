@@ -67,7 +67,7 @@ message PassCheckExpDetail {
 
 message GamePassCheckExp {
   int64 exp = 1;
-  int64 day_exp = 2;
+  int64 day = 2;
   repeated PassCheckExpDetail exp_detail = 3;
 }
 
@@ -132,7 +132,7 @@ message TeamEndlessEndGameNotify {
   repeated string new_end_popup_order1 = 26;
   WebBanner web_banner = 27;
   string compose_coin = 28;
-  FloatingInfo floating_v2 = 29;
+  FloatingInfo floating_info = 29;
   repeated EndlessTeammate teammates = 30; // 队友信息
 }
 
@@ -169,6 +169,6 @@ message FloatingItem {
 
 message FloatingInfo {
   repeated snakecommon.CRewardItem reward_list = 1;
-  int32 red_dot = 2;
+  int32 home_reddot = 2;
   repeated FloatingItem floating_list = 3;
 }
