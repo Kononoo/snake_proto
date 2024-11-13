@@ -75,7 +75,7 @@ message UploadMetricReq {
   int32 platform = 4;
   string market = 5;
   string version = 6;
-  google.protobuf.Struct kvs = 7;
+  Struct kvs = 7;
 }
 
 message UploadMetricRsq {

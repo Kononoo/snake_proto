@@ -140,7 +140,6 @@ message EndlessTeammate {
   string uid = 1;
   int32 score = 2;
   int32 tag = 3;
-  bool liked = 4; // 是否点赞
 }
 
 message SnakeCoinDetailItem {
