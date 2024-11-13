@@ -3,6 +3,7 @@ package snakecommon;
 option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 
 import "snakecommon/config.proto";
+import "snakecommon/task.proto";
 import "snakeapi/config/SKStore.Proto";
 
 
@@ -849,3 +850,126 @@ message FirstChargeUnlockRewardInfo{
   repeated snakecommon.CRewardItem rewards = 2;
 }
 // 贪吃蛇首充 End
+
+
+// ======== double_pass_check 双人通行证配置 start ====================================================
+message CoublePassCheck {
+  string act_id = 1;                                  // 活动ID
+  CPCPrompt prompt = 2;                               // 活动引导配置
+  string title = 3;                                   // 活动标题
+  string desc = 4;                                    // 活动说明
+  int64 start_time = 5;                               // 开始时间
+  int64 end_time = 6;                                 // 结束时间
+  repeated CPCMainSkin main_skins = 7;                // 主资源皮肤配置
+  CPCLevelConf level_conf = 8;                        // 等级配置
+  CPCPackConf pack_conf = 9;                          // 礼包配置
+  CPCCoupleMilestone couple_milestone = 10;           // 双人里程碑配置
+  string pack_buff_activity_link = 11;                // 礼包buff活动跳转链接
+  CPCTaskConf task_conf = 12;                         // 任务配置
+  CPCExchangeStore exchange_store = 13;               // 兑换商店配置
+  CPCIntimateRelationship intimate_relationship = 14; // 亲密关系配置
+}
+
+message CPCPrompt {
+  string title = 1;                // 标题
+  int32 skin_id = 2;              // 第一步：情侣皮肤
+  int32 couple_background_id = 3;  // 第二步：情侣背景
+  int32 box_id = 4;               // 第三步：情侣头框
+  int32 designation_id = 5;        // 第三步：亲密称谓
+}
+
+message CPCMainSkin {
+  int32 skin_id = 1;                      // 皮肤ID
+  string skin_anim = 2;                   // 皮肤动效
+  string backgroud_img_url = 3;           // 获取详情底图链接
+  repeated string button_urls = 4;         // 获取详情按钮跳转链接
+}
+
+message CPCLevelConf {
+  int32 max_level = 1;                    // 上限等级
+  SnakeMain.Config.RewardConfig repeat_reward = 2;   // 达到上限等级后每五级的重复奖励，付费线
+  repeated CPCLevel levels = 3;            // 等级配置
+  repeated CPCMilestone milestones = 4;    // 里程碑配置
+}
+
+message CPCLevel {
+  int32 level = 1;                        // 等级
+  int32 pb = 2;                          // 当前等级所需经验值
+  repeated string worth_level_imgs = 3;    // 稀有度底图
+  repeated SnakeMain.Config.RewardConfig free_rewards = 4;          // 免费奖励配置
+  repeated SnakeMain.Config.RewardConfig pay_rewards = 5;          // 付费奖励配置
+}
+
+message CPCMilestone {
+  int32 level = 1;                        // 里程碑等级
+  string mark = 2;                        // 里程碑标记
+  string prompt = 3;                      // 里程碑提示文案
+}
+
+message CPCPackConf {
+  CPCPackInfo basic_pack = 1;             // 基础礼包
+  CPCPackInfo advanced_pack = 2;          // 进阶礼包
+  CPCPackInfo luxury_pack = 3;            // 豪华礼包
+}
+
+message CPCPackInfo {
+  int32 pack_id = 1;                      // 礼包ID
+  string prompt_1 = 2;                    // 当前距离活动结束大于24小时时提示文案
+  string prompt_2 = 3;                    // 当前距离活动结束小于24小时时提示文案
+}
+
+message CPCCoupleMilestone {
+  repeated int32 pack_ids = 1;            // 礼包ID列表
+}
+
+message CPCTaskConf {
+  repeated CPCTaskSkin main_skins = 1;    // 皮肤配置
+  CPCTaskInfo daily_task = 2;             // 每日挑战
+  CPCTaskInfo weekly_task = 3;            // 每周挑战
+  repeated CPCGiftInfo gift = 4;          // 礼物配置
+  int32 intimacy_qualifying_daily_limit = 5;  // 与好友组队团战亲密度每日上限
+  int32 intimacy_up_star_daily_limit = 6;     // 与好友组队升星星亲密度每日上限
+  int32 intimacy_send_gift_daily_limit = 7;   // 与好友互赠指定礼物亲密度每日上限
+}
+
+message CPCTaskSkin {
+  int32 skin_id = 1;                         // 皮肤ID
+  string skin_anim = 2;                      // 皮肤动效
+  string exchange_buff_activity_link = 3;     // 兑换buff活动跳转链接
+}
+
+message CPCTaskInfo {
+  string desc = 1;                           // 描述
+  repeated int32 event_ids = 2;              // 任务活动ID列表
+  repeated int32 intimate_event_ids = 3;      // 亲密任务活动ID列表
+  repeated EventTask event_infos = 4;         // 任务配置，服务器读取填充
+}
+
+message CPCGiftInfo {
+  int32 gift_id = 1;                         // 礼物ID
+  int32 pb = 2;                              // 增加经验值
+  int32 intimacy = 3;                        // 增加的亲密度
+}
+
+message CPCExchangeStore {
+  int32 gift_box_voucher_id = 1;             // 礼盒兑换券ID
+  int32 exchange_currency_id = 2;             // 兑换货币ID
+  repeated CPCExchangeItem items = 3;         // 兑换物品列表
+}
+
+message CPCExchangeItem {
+  SnakeMain.Config.RewardConfig reward_info = 1;    // 奖励信息
+  int32 exchange_limit = 2;                   // 兑换上限，0表示无上限
+  int32 gift_box_voucher_count = 3;           // 需要的礼盒兑换券数量
+  int32 exchange_currency_count = 4;          // 需要的兑换货币数量
+}
+
+message CPCIntimateRelationship {
+  bool open_intimate_space = 1;               // 是否开启亲密空间
+  int32 invite_cd_sec = 2;                    // 邀请冷却时间，单位秒
+  int32 invite_expire_sec = 3;                // 邀请有效期，单位秒
+  string invite_message = 4;                  // 邀请文案
+  string activity_link = 5;                   // 活动跳转链接
+  int32 dissolve_limit = 6;                   // 解除关系次数上限
+}
+// ======== double_pass_check end ====================================================
