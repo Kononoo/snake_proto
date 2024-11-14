@@ -868,6 +868,9 @@ message CouplePassCheck {
   CPCTaskConf task_conf = 12;                         // 任务配置
   CPCExchangeStore exchange_store = 13;               // 兑换商店配置
   CPCIntimateRelationship intimate_relationship = 14; // 亲密关系配置
+  int32 single_pb_item_id = 15;                       // 单人经验值道具 ID
+  int32 couple_pb_item_id = 16;                       // 双人经验值道具 ID
+  int32 intimacy_item_id = 17;                        // 亲密度道具 ID
 }
 
 message CPCPrompt {
@@ -894,10 +897,9 @@ message CPCLevelConf {
 
 message CPCLevel {
   int32 level = 1;                        // 等级
-  int32 pb = 2;                          // 当前等级所需经验值
-  repeated string worth_level_imgs = 3;    // 稀有度底图
-  repeated SnakeMain.Config.RewardConfig free_rewards = 4;          // 免费奖励配置
-  repeated SnakeMain.Config.RewardConfig pay_rewards = 5;          // 付费奖励配置
+  int64 pb = 2;                          // 当前等级所需经验值
+  repeated SnakeMain.Config.RewardConfig free_rewards = 3;          // 免费奖励配置
+  repeated SnakeMain.Config.RewardConfig pay_rewards = 4;          // 付费奖励配置
 }
 
 message CPCMilestone {
@@ -927,10 +929,11 @@ message CPCTaskConf {
   repeated CPCTaskSkin main_skins = 1;    // 皮肤配置
   CPCTaskInfo daily_task = 2;             // 每日挑战
   CPCTaskInfo weekly_task = 3;            // 每周挑战
-  repeated CPCGiftInfo gift = 4;          // 礼物配置
-  int32 intimacy_qualifying_daily_limit = 5;  // 与好友组队团战亲密度每日上限
-  int32 intimacy_up_star_daily_limit = 6;     // 与好友组队升星星亲密度每日上限
-  int32 intimacy_send_gift_daily_limit = 7;   // 与好友互赠指定礼物亲密度每日上限
+  CPCTaskInfo gift_task = 4;              // 送礼挑战
+  repeated CPCGiftInfo gift = 5;          // 礼物配置
+  int64 intimacy_qualifying_daily_limit = 6;  // 与好友组队团战亲密度每日上限
+  int64 intimacy_up_star_daily_limit = 7;     // 与好友组队升星星亲密度每日上限
+  int64 intimacy_send_gift_daily_limit = 8;   // 与好友互赠指定礼物亲密度每日上限
 }
 
 message CPCTaskSkin {
@@ -948,8 +951,8 @@ message CPCTaskInfo {
 
 message CPCGiftInfo {
   int32 gift_id = 1;                         // 礼物ID
-  int32 pb = 2;                              // 增加经验值
-  int32 intimacy = 3;                        // 增加的亲密度
+  int64 pb = 2;                              // 增加经验值
+  int64 intimacy = 3;                        // 增加的亲密度
 }
 
 message CPCExchangeStore {
@@ -963,23 +966,24 @@ message CPCExchangeStore {
 message CPCExchangeItem {
   int32 index = 1;                             // 索引
   SnakeMain.Config.RewardConfig reward_info = 2;    // 奖励信息
-  int32 exchange_limit = 3;                   // 兑换上限，0表示无上限
-  int32 gift_box_voucher_count = 4;           // 需要的礼盒兑换券数量
-  int32 exchange_currency_count = 5;          // 需要的兑换货币数量
+  int64 exchange_limit = 3;                   // 兑换上限，0表示无上限
+  int64 gift_box_voucher_count = 4;           // 需要的礼盒兑换券数量
+  int64 exchange_currency_count = 5;          // 需要的兑换货币数量
 }
 
 message CPCIntimateRelationship {
   bool open_intimate_space = 1;               // 是否开启亲密空间
-  int32 invite_cd_sec = 2;                    // 邀请冷却时间，单位秒
-  int32 invite_expire_sec = 3;                // 邀请有效期，单位秒
+  int64 invite_cd_sec = 2;                    // 邀请冷却时间，单位秒
+  int64 invite_expire_sec = 3;                // 邀请有效期，单位秒
   string invite_message = 4;                  // 邀请文案
   string activity_link = 5;                   // 活动跳转链接
   int32 dissolve_limit = 6;                   // 解除关系次数上限
   repeated CPCIntimateLevelItem level_config = 7; // 亲密度等级配置
+  int64 apply_expire_sec = 8;                   // 申请亲密称谓有效期，单位秒
 }
 
 message CPCIntimateLevelItem {
   int32 level = 1; // 亲密度等级
-  int32 intimacy = 2; // 需要的亲密度
+  int64 intimacy = 2; // 需要的亲密度
 }
 // ======== couple_pass_check end ====================================================
