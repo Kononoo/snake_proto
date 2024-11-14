@@ -148,12 +148,9 @@ message ExitGameReq {
   int32 rid = 2; // 房间id
   int32 game_mode = 3; // 游戏模式
   bytes payload = 4; // 额外数据
+  string uid = 5;
 }
 message ExitGameRsp {
-}
-
-message TeamEndlessExitGame {
-  string uid = 1;
 }
 
 service UnityctlServer {

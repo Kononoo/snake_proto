@@ -7411,8 +7411,8 @@ func (x *FirstChargeUnlockRewardInfo) GetRewards() []*CRewardItem {
 	return nil
 }
 
-// ======== double_pass_check 双人通行证配置 start ====================================================
-type CoublePassCheck struct {
+// ======== couple_pass_check 双人通行证配置 start ====================================================
+type CouplePassCheck struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -7433,8 +7433,8 @@ type CoublePassCheck struct {
 	IntimateRelationship *CPCIntimateRelationship `protobuf:"bytes,14,opt,name=intimate_relationship,json=intimateRelationship,proto3" json:"intimate_relationship,omitempty"`     // 亲密关系配置
 }
 
-func (x *CoublePassCheck) Reset() {
-	*x = CoublePassCheck{}
+func (x *CouplePassCheck) Reset() {
+	*x = CouplePassCheck{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_snakecommon_profile_config_proto_msgTypes[80]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -7442,13 +7442,13 @@ func (x *CoublePassCheck) Reset() {
 	}
 }
 
-func (x *CoublePassCheck) String() string {
+func (x *CouplePassCheck) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CoublePassCheck) ProtoMessage() {}
+func (*CouplePassCheck) ProtoMessage() {}
 
-func (x *CoublePassCheck) ProtoReflect() protoreflect.Message {
+func (x *CouplePassCheck) ProtoReflect() protoreflect.Message {
 	mi := &file_snakecommon_profile_config_proto_msgTypes[80]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -7460,103 +7460,103 @@ func (x *CoublePassCheck) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CoublePassCheck.ProtoReflect.Descriptor instead.
-func (*CoublePassCheck) Descriptor() ([]byte, []int) {
+// Deprecated: Use CouplePassCheck.ProtoReflect.Descriptor instead.
+func (*CouplePassCheck) Descriptor() ([]byte, []int) {
 	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{80}
 }
 
-func (x *CoublePassCheck) GetActId() string {
+func (x *CouplePassCheck) GetActId() string {
 	if x != nil {
 		return x.ActId
 	}
 	return ""
 }
 
-func (x *CoublePassCheck) GetPrompt() *CPCPrompt {
+func (x *CouplePassCheck) GetPrompt() *CPCPrompt {
 	if x != nil {
 		return x.Prompt
 	}
 	return nil
 }
 
-func (x *CoublePassCheck) GetTitle() string {
+func (x *CouplePassCheck) GetTitle() string {
 	if x != nil {
 		return x.Title
 	}
 	return ""
 }
 
-func (x *CoublePassCheck) GetDesc() string {
+func (x *CouplePassCheck) GetDesc() string {
 	if x != nil {
 		return x.Desc
 	}
 	return ""
 }
 
-func (x *CoublePassCheck) GetStartTime() int64 {
+func (x *CouplePassCheck) GetStartTime() int64 {
 	if x != nil {
 		return x.StartTime
 	}
 	return 0
 }
 
-func (x *CoublePassCheck) GetEndTime() int64 {
+func (x *CouplePassCheck) GetEndTime() int64 {
 	if x != nil {
 		return x.EndTime
 	}
 	return 0
 }
 
-func (x *CoublePassCheck) GetMainSkins() []*CPCMainSkin {
+func (x *CouplePassCheck) GetMainSkins() []*CPCMainSkin {
 	if x != nil {
 		return x.MainSkins
 	}
 	return nil
 }
 
-func (x *CoublePassCheck) GetLevelConf() *CPCLevelConf {
+func (x *CouplePassCheck) GetLevelConf() *CPCLevelConf {
 	if x != nil {
 		return x.LevelConf
 	}
 	return nil
 }
 
-func (x *CoublePassCheck) GetPackConf() *CPCPackConf {
+func (x *CouplePassCheck) GetPackConf() *CPCPackConf {
 	if x != nil {
 		return x.PackConf
 	}
 	return nil
 }
 
-func (x *CoublePassCheck) GetCoupleMilestone() *CPCCoupleMilestone {
+func (x *CouplePassCheck) GetCoupleMilestone() *CPCCoupleMilestone {
 	if x != nil {
 		return x.CoupleMilestone
 	}
 	return nil
 }
 
-func (x *CoublePassCheck) GetPackBuffActivityLink() string {
+func (x *CouplePassCheck) GetPackBuffActivityLink() string {
 	if x != nil {
 		return x.PackBuffActivityLink
 	}
 	return ""
 }
 
-func (x *CoublePassCheck) GetTaskConf() *CPCTaskConf {
+func (x *CouplePassCheck) GetTaskConf() *CPCTaskConf {
 	if x != nil {
 		return x.TaskConf
 	}
 	return nil
 }
 
-func (x *CoublePassCheck) GetExchangeStore() *CPCExchangeStore {
+func (x *CouplePassCheck) GetExchangeStore() *CPCExchangeStore {
 	if x != nil {
 		return x.ExchangeStore
 	}
 	return nil
 }
 
-func (x *CoublePassCheck) GetIntimateRelationship() *CPCIntimateRelationship {
+func (x *CouplePassCheck) GetIntimateRelationship() *CPCIntimateRelationship {
 	if x != nil {
 		return x.IntimateRelationship
 	}
@@ -10117,7 +10117,7 @@ var file_snakecommon_profile_config_proto_rawDesc = []byte{
 	0x79, 0x12, 0x32, 0x0a, 0x07, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x18, 0x02, 0x20, 0x03,
 	0x28, 0x0b, 0x32, 0x18, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
 	0x2e, 0x43, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x07, 0x72, 0x65,
-	0x77, 0x61, 0x72, 0x64, 0x73, 0x22, 0xc1, 0x05, 0x0a, 0x0f, 0x43, 0x6f, 0x75, 0x62, 0x6c, 0x65,
+	0x77, 0x61, 0x72, 0x64, 0x73, 0x22, 0xc1, 0x05, 0x0a, 0x0f, 0x43, 0x6f, 0x75, 0x70, 0x6c, 0x65,
 	0x50, 0x61, 0x73, 0x73, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x12, 0x15, 0x0a, 0x06, 0x61, 0x63, 0x74,
 	0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x61, 0x63, 0x74, 0x49, 0x64,
 	0x12, 0x2e, 0x0a, 0x06, 0x70, 0x72, 0x6f, 0x6d, 0x70, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
@@ -10429,7 +10429,7 @@ var file_snakecommon_profile_config_proto_goTypes = []interface{}{
 	(*FirstChargeConfig)(nil),               // 77: snakecommon.FirstChargeConfig
 	(*FirstChargeSkinRewardInfo)(nil),       // 78: snakecommon.FirstChargeSkinRewardInfo
 	(*FirstChargeUnlockRewardInfo)(nil),     // 79: snakecommon.FirstChargeUnlockRewardInfo
-	(*CoublePassCheck)(nil),                 // 80: snakecommon.CoublePassCheck
+	(*CouplePassCheck)(nil),                 // 80: snakecommon.CouplePassCheck
 	(*CPCPrompt)(nil),                       // 81: snakecommon.CPCPrompt
 	(*CPCMainSkin)(nil),                     // 82: snakecommon.CPCMainSkin
 	(*CPCLevelConf)(nil),                    // 83: snakecommon.CPCLevelConf
@@ -10551,14 +10551,14 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	78,  // 92: snakecommon.FirstChargeConfig.skin_list:type_name -> snakecommon.FirstChargeSkinRewardInfo
 	79,  // 93: snakecommon.FirstChargeConfig.unlock_rewards:type_name -> snakecommon.FirstChargeUnlockRewardInfo
 	103, // 94: snakecommon.FirstChargeUnlockRewardInfo.rewards:type_name -> snakecommon.CRewardItem
-	81,  // 95: snakecommon.CoublePassCheck.prompt:type_name -> snakecommon.CPCPrompt
-	82,  // 96: snakecommon.CoublePassCheck.main_skins:type_name -> snakecommon.CPCMainSkin
-	83,  // 97: snakecommon.CoublePassCheck.level_conf:type_name -> snakecommon.CPCLevelConf
-	86,  // 98: snakecommon.CoublePassCheck.pack_conf:type_name -> snakecommon.CPCPackConf
-	88,  // 99: snakecommon.CoublePassCheck.couple_milestone:type_name -> snakecommon.CPCCoupleMilestone
-	89,  // 100: snakecommon.CoublePassCheck.task_conf:type_name -> snakecommon.CPCTaskConf
-	93,  // 101: snakecommon.CoublePassCheck.exchange_store:type_name -> snakecommon.CPCExchangeStore
-	95,  // 102: snakecommon.CoublePassCheck.intimate_relationship:type_name -> snakecommon.CPCIntimateRelationship
+	81,  // 95: snakecommon.CouplePassCheck.prompt:type_name -> snakecommon.CPCPrompt
+	82,  // 96: snakecommon.CouplePassCheck.main_skins:type_name -> snakecommon.CPCMainSkin
+	83,  // 97: snakecommon.CouplePassCheck.level_conf:type_name -> snakecommon.CPCLevelConf
+	86,  // 98: snakecommon.CouplePassCheck.pack_conf:type_name -> snakecommon.CPCPackConf
+	88,  // 99: snakecommon.CouplePassCheck.couple_milestone:type_name -> snakecommon.CPCCoupleMilestone
+	89,  // 100: snakecommon.CouplePassCheck.task_conf:type_name -> snakecommon.CPCTaskConf
+	93,  // 101: snakecommon.CouplePassCheck.exchange_store:type_name -> snakecommon.CPCExchangeStore
+	95,  // 102: snakecommon.CouplePassCheck.intimate_relationship:type_name -> snakecommon.CPCIntimateRelationship
 	99,  // 103: snakecommon.CPCLevelConf.repeat_reward:type_name -> SnakeMain.Config.RewardConfig
 	84,  // 104: snakecommon.CPCLevelConf.levels:type_name -> snakecommon.CPCLevel
 	85,  // 105: snakecommon.CPCLevelConf.milestones:type_name -> snakecommon.CPCMilestone
@@ -11551,7 +11551,7 @@ func file_snakecommon_profile_config_proto_init() {
 			}
 		}
 		file_snakecommon_profile_config_proto_msgTypes[80].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CoublePassCheck); i {
+			switch v := v.(*CouplePassCheck); i {
 			case 0:
 				return &v.state
 			case 1:
