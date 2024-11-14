@@ -955,14 +955,17 @@ message CPCGiftInfo {
 message CPCExchangeStore {
   int32 gift_box_voucher_id = 1;             // 礼盒兑换券ID
   int32 exchange_currency_id = 2;             // 兑换货币ID
-  repeated CPCExchangeItem items = 3;         // 兑换物品列表
+  int32 gift_box_voucher_img = 3;             // 礼盒图片
+  int32 exchange_currency_img = 4;             // 兑换货币图片
+  repeated CPCExchangeItem items = 5;         // 兑换物品列表
 }
 
 message CPCExchangeItem {
-  SnakeMain.Config.RewardConfig reward_info = 1;    // 奖励信息
-  int32 exchange_limit = 2;                   // 兑换上限，0表示无上限
-  int32 gift_box_voucher_count = 3;           // 需要的礼盒兑换券数量
-  int32 exchange_currency_count = 4;          // 需要的兑换货币数量
+  int32 index = 1;                             // 索引
+  SnakeMain.Config.RewardConfig reward_info = 2;    // 奖励信息
+  int32 exchange_limit = 3;                   // 兑换上限，0表示无上限
+  int32 gift_box_voucher_count = 4;           // 需要的礼盒兑换券数量
+  int32 exchange_currency_count = 5;          // 需要的兑换货币数量
 }
 
 message CPCIntimateRelationship {
@@ -972,5 +975,11 @@ message CPCIntimateRelationship {
   string invite_message = 4;                  // 邀请文案
   string activity_link = 5;                   // 活动跳转链接
   int32 dissolve_limit = 6;                   // 解除关系次数上限
+  repeated CPCIntimateLevelItem level_config = 7; // 亲密度等级配置
+}
+
+message CPCIntimateLevelItem {
+  int32 level = 1; // 亲密度等级
+  int32 intimacy = 2; // 需要的亲密度
 }
 // ======== couple_pass_check end ====================================================
