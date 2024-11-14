@@ -139,7 +139,8 @@ message TeamEndlessEndGameNotify {
 message EndlessTeammate {
   string uid = 1;
   int32 score = 2;
-  int32 tag = 3;
+  int32 skinId = 3;
+  repeated int32 tag = 4;
 }
 
 message SnakeCoinDetailItem {
