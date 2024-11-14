@@ -3,7 +3,6 @@ syntax = "proto3";
 package unityctl;
 option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
 import "unityctl/push.proto";
-import "unityctl/struct.proto";
 
 enum RoomState {
   Idle = 0; // 空闲
@@ -75,7 +74,7 @@ message UploadMetricReq {
   int32 platform = 4;
   string market = 5;
   string version = 6;
-  Struct kvs = 7;
+  bytes kvs = 7; // JSON 序列化
 }
 
 message UploadMetricRsq {
