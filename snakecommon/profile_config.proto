@@ -975,5 +975,11 @@ message CPCIntimateRelationship {
   string invite_message = 4;                  // 邀请文案
   string activity_link = 5;                   // 活动跳转链接
   int32 dissolve_limit = 6;                   // 解除关系次数上限
+  repeated CPCIntimateLevelItem level_config = 7; // 亲密度等级配置
+}
+
+message CPCIntimateLevelItem {
+  int32 level = 1; // 亲密度等级
+  int32 intimacy = 2; // 需要的亲密度
 }
 // ======== couple_pass_check end ====================================================
