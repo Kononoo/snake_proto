@@ -901,9 +901,10 @@ message CPCLevel {
 }
 
 message CPCMilestone {
-  int32 level = 1;                        // 里程碑等级
-  string mark = 2;                        // 里程碑标记
-  string prompt = 3;                      // 里程碑提示文案
+  int32 id = 1;                           // 里程碑ID
+  int32 level = 2;                        // 里程碑等级
+  string mark = 3;                        // 里程碑标记
+  string prompt = 4;                      // 里程碑提示文案
 }
 
 message CPCPackConf {
