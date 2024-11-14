@@ -955,7 +955,9 @@ message CPCGiftInfo {
 message CPCExchangeStore {
   int32 gift_box_voucher_id = 1;             // 礼盒兑换券ID
   int32 exchange_currency_id = 2;             // 兑换货币ID
-  repeated CPCExchangeItem items = 3;         // 兑换物品列表
+  int32 gift_box_voucher_img = 3;             // 礼盒图片
+  int32 exchange_currency_img = 4;             // 兑换货币图片
+  repeated CPCExchangeItem items = 5;         // 兑换物品列表
 }
 
 message CPCExchangeItem {
