@@ -25,6 +25,7 @@ message TeamEndlessEndGame {
   int32 collect = 21;
   TeamEndlessSettleType settle_type = 22; // 结算类型
   repeated EndlessTeammate teammates = 23; // 队友
+  repeated string followed_list = 24; // 被关注的 uid
 }
 
 enum TeamEndlessSettleType {

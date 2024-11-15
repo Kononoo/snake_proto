@@ -134,6 +134,7 @@ message TeamEndlessEndGameNotify {
   string compose_coin = 28;
   FloatingInfo floating_info = 29;
   repeated EndlessTeammate teammates = 30; // 队友信息
+  repeated string followed_list = 31; // 被关注的 uid
 }
 
 message EndlessTeammate {
