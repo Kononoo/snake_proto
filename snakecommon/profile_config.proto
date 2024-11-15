@@ -875,10 +875,11 @@ message CouplePassCheck {
 
 message CPCPrompt {
   string title = 1;                // 标题
-  int32 skin_id = 2;              // 第一步：情侣皮肤
+  string skin_url = 2;              // 第一步：情侣皮肤
   int32 couple_background_id = 3;  // 第二步：情侣背景
-  int32 box_id = 4;               // 第三步：情侣头框
-  int32 designation_id = 5;        // 第三步：亲密称谓
+  int32 box_id_1 = 4;               // 第三步：情侣头框1
+  int32 box_id_2 = 5;               // 第三步：情侣头框2
+  int32 designation_id = 6;        // 第三步：亲密称谓
 }
 
 message CPCMainSkin {
@@ -958,8 +959,8 @@ message CPCGiftInfo {
 message CPCExchangeStore {
   int32 gift_box_voucher_id = 1;             // 礼盒兑换券ID
   int32 exchange_currency_id = 2;             // 兑换货币ID
-  int32 gift_box_voucher_img = 3;             // 礼盒图片
-  int32 exchange_currency_img = 4;             // 兑换货币图片
+  string gift_box_voucher_img = 3;             // 礼盒图片
+  string exchange_currency_img = 4;             // 兑换货币图片
   repeated CPCExchangeItem items = 5;         // 兑换物品列表
 }
 
