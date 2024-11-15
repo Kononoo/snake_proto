@@ -142,8 +142,9 @@ message RoomMember {
   bool is_original = 7; // 是否是初始匹配加入的玩家
   bytes payload = 8;
   int64 kill_effect = 9; // 击杀特效
-  int64 show_level = 10;
-  int64 show_value = 11;
+  int64 show_level = 10; // show等级
+  int64 show_value = 11; // show值
+  string show_skill = 12; // show的属性加成
 }
 
 message SyncGroupStateNotify { // 同步队伍状态
@@ -172,6 +173,7 @@ message UploadAttrReq { // 上传用户属性
   int64 kill_effect = 4; // 击杀特效
   int64 show_level = 5; // show等级
   int64 show_value = 6; // show值
+  string show_skill = 7; // show的属性加成
 }
 message UploadAttrRsp {
 }
