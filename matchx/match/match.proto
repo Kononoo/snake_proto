@@ -116,6 +116,12 @@ message StartMatchRsp {
   bytes payload = 3; // 额外的数据
 }
 
+enum MatchType {
+  MatchTypeNone = 0;
+  MatchTypeNormal  = 1; // 普通匹配
+  MatchTypeDynamic = 2; // 动态匹配
+}
+
 message MatchSuccessNotify { // 匹配成功的push
   int64 rid = 1; // 房间id
   int64 game_mode = 2; // 游戏模式
@@ -130,6 +136,7 @@ message MatchSuccessNotify { // 匹配成功的push
   RelayServer relay_server = 11; // relay服务器信息，帧同步模式玩法需要用到
   bytes payload = 12; // 额外的数据
   repeated RoomMember members = 13;
+  MatchType match_type = 14; // 匹配类型
 }
 
 message RoomMember {
