@@ -20,15 +20,15 @@ message Partner {
   int32 verified = 5;
 }
 
-message EndGameNotify { // push结算信息
-
-}
-
 message GetGameResultReq { // 获取结算信息
+  string uid = 1;
+  int64 rid = 2;
 
 }
 
-message GetGameResultRsp {}
+message GetGameResultRsp {
+  EndGameNotify result = 1;
+}
 
 message UserGameTask {
   int64 day_progress = 1;
@@ -103,7 +103,7 @@ message UserElGameReward {
   repeated TaskInfo task_info = 3;
 }
 
-message TeamEndlessEndGameNotify {
+message EndGameNotify {
   string rank = 1;
   map<string, int32> recommend_info = 2;
   int64 cup = 3;
