@@ -886,7 +886,8 @@ message CPCMainSkin {
   int32 skin_id = 1;                      // 皮肤ID
   string skin_anim = 2;                   // 皮肤动效
   string backgroud_img_url = 3;           // 获取详情底图链接
-  repeated string button_urls = 4;         // 获取详情按钮跳转链接
+  string backgroud_color = 4;             // 获取详情底图颜色
+  repeated string button_urls = 5;         // 获取详情按钮跳转链接
 }
 
 message CPCLevelConf {
