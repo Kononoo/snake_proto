@@ -886,21 +886,22 @@ message CPCMainSkin {
   int32 skin_id = 1;                      // 皮肤ID
   string skin_anim = 2;                   // 皮肤动效
   string backgroud_img_url = 3;           // 获取详情底图链接
-  repeated string button_urls = 4;         // 获取详情按钮跳转链接
+  string backgroud_color = 4;             // 获取详情底图颜色
+  repeated string button_urls = 5;         // 获取详情按钮跳转链接
 }
 
 message CPCLevelConf {
-  int32 max_level = 1;                    // 上限等级
-  SnakeMain.Config.RewardConfig repeat_reward = 2;   // 达到上限等级后每五级的重复奖励，付费线
-  repeated CPCLevel levels = 3;            // 等级配置
-  repeated CPCMilestone milestones = 4;    // 里程碑配置
+  int32 max_level = 1;                               // 上限等级
+  int32 pb_per_level = 2;                            // 每级需要的经验值
+  SnakeMain.Config.RewardConfig repeat_reward = 3;   // 达到上限等级后每五级的重复奖励，付费线
+  repeated CPCLevel levels = 4;                      // 等级配置
+  repeated CPCMilestone milestones = 5;              // 里程碑配置
 }
 
 message CPCLevel {
   int32 level = 1;                        // 等级
-  int64 pb = 2;                          // 当前等级所需经验值
-  repeated SnakeMain.Config.RewardConfig free_rewards = 3;          // 免费奖励配置
-  repeated SnakeMain.Config.RewardConfig pay_rewards = 4;          // 付费奖励配置
+  repeated SnakeMain.Config.RewardConfig free_rewards = 2;          // 免费奖励配置
+  repeated SnakeMain.Config.RewardConfig pay_rewards = 3;          // 付费奖励配置
 }
 
 message CPCMilestone {
