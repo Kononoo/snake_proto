@@ -7,6 +7,7 @@ enum PushType { // push消息类型
   SyncGameInfo = 0; //初始化房间
   StartStressTest = 1; // 开始压测
   NotifyExitGame = 2; // 通知unity server玩家退出游戏
+  NotifyEnterGame = 3; // 通知有玩家中途加入
 }
 
 //玩家类型
@@ -21,7 +22,10 @@ message PlayerInfo{
     int32 platform = 3; // 平台
     string market = 4; // 应用市场
     string version = 5; // 客户端版本
-    int32 skin_id = 6; // 皮肤 ID
+    int64 show_level = 6; // show等级
+    int64 show_value = 7; // show值
+    string show_skill = 8; // show的属性加成
+    int64 game_count = 9; // 游戏局数
 }
 
 // 向UnityServer同步房间信息
@@ -38,7 +42,14 @@ message PuStartStressTest {
   int32 rid = 2; // 房间id
 }
 
+// 通知玩家退出游戏
 message PuNotifyExitGame {
   int32 game_mode = 1;
   string uid = 2; // 玩家uid
+}
+
+// 通知玩家中途加入
+message PuNotifyEnterGame {
+  int32 game_mode = 1;
+  PlayerInfo player = 2;
 }

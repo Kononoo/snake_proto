@@ -116,6 +116,12 @@ message StartMatchRsp {
   bytes payload = 3; // 额外的数据
 }
 
+enum MatchType {
+  MatchTypeNone = 0;
+  MatchTypeNormal  = 1; // 普通匹配
+  MatchTypeDynamic = 2; // 动态匹配
+}
+
 message MatchSuccessNotify { // 匹配成功的push
   int64 rid = 1; // 房间id
   int64 game_mode = 2; // 游戏模式
@@ -130,6 +136,7 @@ message MatchSuccessNotify { // 匹配成功的push
   RelayServer relay_server = 11; // relay服务器信息，帧同步模式玩法需要用到
   bytes payload = 12; // 额外的数据
   repeated RoomMember members = 13;
+  MatchType match_type = 14; // 匹配类型
 }
 
 message RoomMember {
@@ -142,6 +149,9 @@ message RoomMember {
   bool is_original = 7; // 是否是初始匹配加入的玩家
   bytes payload = 8;
   int64 kill_effect = 9; // 击杀特效
+  int64 show_level = 10; // show等级
+  int64 show_value = 11; // show值
+  string show_skill = 12; // show的属性加成
 }
 
 message SyncGroupStateNotify { // 同步队伍状态
@@ -168,6 +178,9 @@ message UploadAttrReq { // 上传用户属性
   string nickname = 2;
   bytes payload = 3; // 额外属性
   int64 kill_effect = 4; // 击杀特效
+  int64 show_level = 5; // show等级
+  int64 show_value = 6; // show值
+  string show_skill = 7; // show的属性加成
 }
 message UploadAttrRsp {
 }

@@ -20,15 +20,15 @@ message Partner {
   int32 verified = 5;
 }
 
-message EndGameNotify { // push结算信息
-
-}
-
 message GetGameResultReq { // 获取结算信息
+  string uid = 1;
+  int64 rid = 2;
 
 }
 
-message GetGameResultRsp {}
+message GetGameResultRsp {
+  EndGameNotify result = 1;
+}
 
 message UserGameTask {
   int64 day_progress = 1;
@@ -103,7 +103,7 @@ message UserElGameReward {
   repeated TaskInfo task_info = 3;
 }
 
-message TeamEndlessEndGameNotify {
+message EndGameNotify {
   string rank = 1;
   map<string, int32> recommend_info = 2;
   int64 cup = 3;
@@ -134,12 +134,14 @@ message TeamEndlessEndGameNotify {
   string compose_coin = 28;
   FloatingInfo floating_info = 29;
   repeated EndlessTeammate teammates = 30; // 队友信息
+  repeated string followed_list = 31; // 被关注的 uid
 }
 
 message EndlessTeammate {
   string uid = 1;
   int32 score = 2;
-  int32 tag = 3;
+  int32 skinId = 3;
+  repeated int32 tag = 4;
 }
 
 message SnakeCoinDetailItem {
