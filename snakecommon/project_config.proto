@@ -415,6 +415,7 @@ message TextConfig {
   repeated string ai_anchor_nickname_list = 10;
   repeated ReportBehavior report_behavior_list = 11;
   repeated ReportBehavior ad_report_behavior_list = 12;
+  string follower_top_list_tips = 13;
 }
 
 message GiftLikeTextList {
