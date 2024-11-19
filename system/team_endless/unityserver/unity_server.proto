@@ -26,11 +26,13 @@ message TeamEndlessEndGame {
   TeamEndlessSettleType settle_type = 22; // 结算类型
   repeated EndlessTeammate teammates = 23; // 队友
   repeated string followed_list = 24; // 被关注的 uid
+  int64 game_count = 25; // 对局次数
 }
 
 enum TeamEndlessSettleType {
   Normal = 0; // 正常主动结算
   Abnormal = 1; // 异常结算
+  Exception = 2; // 发生未知错误，默认不进行结算
 }
 
 message EndlessTeammate {
