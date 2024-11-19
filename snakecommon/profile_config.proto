@@ -915,12 +915,14 @@ message CPCPackConf {
   CPCPackInfo basic_pack = 1;             // 基础礼包
   CPCPackInfo advanced_pack = 2;          // 进阶礼包
   CPCPackInfo luxury_pack = 3;            // 豪华礼包
+  string luxury_img_url = 4;              // 豪华礼包图片
 }
 
 message CPCPackInfo {
   int32 pack_id = 1;                      // 礼包ID
-  string prompt_1 = 2;                    // 当前距离活动结束大于24小时时提示文案
-  string prompt_2 = 3;                    // 当前距离活动结束小于24小时时提示文案
+  repeated SnakeMain.Config.RewardConfig rewards = 2; // 奖励配置
+  string prompt_1 = 3;                    // 当前距离活动结束大于24小时时提示文案
+  string prompt_2 = 4;                    // 当前距离活动结束小于24小时时提示文案
 }
 
 message CPCCoupleMilestone {
