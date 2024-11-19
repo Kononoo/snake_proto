@@ -1420,3 +1420,26 @@ enum PropType {
 }
 
 // store end
+
+// intimate_appellation start
+message IntimateAppellationList {
+  repeated IntimateAppellationModel intimate_appellation_list = 1;
+}
+// room bg start
+message IntimateAppellationModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  IntimateAppellationInfo info = 5;
+}
+
+message IntimateAppellationInfo {
+  repeated IntimateAppellationAnimationItem anim_list = 1;
+}
+
+message IntimateAppellationAnimationItem {
+  int64 level = 1;
+  string anim_url = 2;
+}
+// intimate_appellation end
