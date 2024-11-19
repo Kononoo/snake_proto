@@ -174,3 +174,11 @@ message FloatingInfo {
   int32 home_reddot = 2;
   repeated FloatingItem floating_list = 3;
 }
+
+// 更新新手引导进度
+message UpdateGuideProgressReq {
+  bool done = 1; // 是否已完成新手引导
+}
+
+message UpdateGuideProgressRsp {
+}

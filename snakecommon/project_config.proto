@@ -415,6 +415,7 @@ message TextConfig {
   repeated string ai_anchor_nickname_list = 10;
   repeated ReportBehavior report_behavior_list = 11;
   repeated ReportBehavior ad_report_behavior_list = 12;
+  string follower_top_list_tips = 13;
 }
 
 message GiftLikeTextList {
@@ -2197,6 +2198,13 @@ message AssetItem {
 message TeamEndlessConfig {
   bool switch = 1;
   string desc = 2;
+
+  message Guide { // 新手引导配置
+    int64 game_count = 1; // 需要的单人无尽游戏局数
+    int64 highest_score = 2; // 单人无尽最高分数要求
+  }
+
+  Guide guide = 3;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

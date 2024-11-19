@@ -29,3 +29,7 @@ message PVConfig{
   int32 times = 4;
   int32 force_watch_time = 5;
 }
+
+message FollowerTopListTipsConfig{
+  string tips = 1;
+}

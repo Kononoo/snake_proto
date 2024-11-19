@@ -1711,6 +1711,92 @@ func (x *FloatingInfo) GetFloatingList() []*FloatingItem {
 	return nil
 }
 
+// 更新新手引导进度
+type UpdateGuideProgressReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Done bool `protobuf:"varint,1,opt,name=done,proto3" json:"done,omitempty"` // 是否已完成新手引导
+}
+
+func (x *UpdateGuideProgressReq) Reset() {
+	*x = UpdateGuideProgressReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[22]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateGuideProgressReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateGuideProgressReq) ProtoMessage() {}
+
+func (x *UpdateGuideProgressReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[22]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateGuideProgressReq.ProtoReflect.Descriptor instead.
+func (*UpdateGuideProgressReq) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *UpdateGuideProgressReq) GetDone() bool {
+	if x != nil {
+		return x.Done
+	}
+	return false
+}
+
+type UpdateGuideProgressRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *UpdateGuideProgressRsp) Reset() {
+	*x = UpdateGuideProgressRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[23]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateGuideProgressRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateGuideProgressRsp) ProtoMessage() {}
+
+func (x *UpdateGuideProgressRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[23]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateGuideProgressRsp.ProtoReflect.Descriptor instead.
+func (*UpdateGuideProgressRsp) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{23}
+}
+
 var File_system_team_endless_team_endless_proto protoreflect.FileDescriptor
 
 var file_system_team_endless_team_endless_proto_rawDesc = []byte{
@@ -1987,11 +2073,15 @@ var file_system_team_endless_team_endless_proto_rawDesc = []byte{
 	0x69, 0x6e, 0x67, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x15,
 	0x2e, 0x65, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x2e, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e,
 	0x67, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x0c, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x4c,
-	0x69, 0x73, 0x74, 0x42, 0x35, 0x5a, 0x33, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68,
-	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x74, 0x65,
-	0x61, 0x6d, 0x5f, 0x65, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x69, 0x73, 0x74, 0x22, 0x2c, 0x0a, 0x16, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x47, 0x75, 0x69,
+	0x64, 0x65, 0x50, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a,
+	0x04, 0x64, 0x6f, 0x6e, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x04, 0x64, 0x6f, 0x6e,
+	0x65, 0x22, 0x18, 0x0a, 0x16, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x47, 0x75, 0x69, 0x64, 0x65,
+	0x50, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x52, 0x73, 0x70, 0x42, 0x35, 0x5a, 0x33, 0x67,
+	0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61,
+	0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73,
+	0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x65, 0x6e, 0x64, 0x6c, 0x65,
+	0x73, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2006,7 +2096,7 @@ func file_system_team_endless_team_endless_proto_rawDescGZIP() []byte {
 	return file_system_team_endless_team_endless_proto_rawDescData
 }
 
-var file_system_team_endless_team_endless_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_system_team_endless_team_endless_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_system_team_endless_team_endless_proto_goTypes = []interface{}{
 	(*GetRecentPartnerReq)(nil),     // 0: endless.GetRecentPartnerReq
 	(*GetRecentPartnerRsp)(nil),     // 1: endless.GetRecentPartnerRsp
@@ -2030,31 +2120,33 @@ var file_system_team_endless_team_endless_proto_goTypes = []interface{}{
 	(*WebBanner)(nil),               // 19: endless.WebBanner
 	(*FloatingItem)(nil),            // 20: endless.FloatingItem
 	(*FloatingInfo)(nil),            // 21: endless.FloatingInfo
-	nil,                             // 22: endless.EndGameNotify.RecommendInfoEntry
-	nil,                             // 23: endless.EndGameNotify.OpenedChestEntry
-	nil,                             // 24: endless.EndGameNotify.TurntableEntry
-	(*snakecommon.CRewardItem)(nil), // 25: snakecommon.CRewardItem
+	(*UpdateGuideProgressReq)(nil),  // 22: endless.UpdateGuideProgressReq
+	(*UpdateGuideProgressRsp)(nil),  // 23: endless.UpdateGuideProgressRsp
+	nil,                             // 24: endless.EndGameNotify.RecommendInfoEntry
+	nil,                             // 25: endless.EndGameNotify.OpenedChestEntry
+	nil,                             // 26: endless.EndGameNotify.TurntableEntry
+	(*snakecommon.CRewardItem)(nil), // 27: snakecommon.CRewardItem
 }
 var file_system_team_endless_team_endless_proto_depIdxs = []int32{
 	2,  // 0: endless.GetRecentPartnerRsp.user_list:type_name -> endless.Partner
 	15, // 1: endless.GetGameResultRsp.result:type_name -> endless.EndGameNotify
 	6,  // 2: endless.UserEggProgress.egg_list:type_name -> endless.UserEgg
 	8,  // 3: endless.GamePassCheckExp.exp_detail:type_name -> endless.PassCheckExpDetail
-	25, // 4: endless.ActReward.reward_list:type_name -> snakecommon.CRewardItem
-	25, // 5: endless.GameExtraReward.reward_list:type_name -> snakecommon.CRewardItem
+	27, // 4: endless.ActReward.reward_list:type_name -> snakecommon.CRewardItem
+	27, // 5: endless.GameExtraReward.reward_list:type_name -> snakecommon.CRewardItem
 	18, // 6: endless.UserMeetupProgress.task_info:type_name -> endless.TaskInfo
 	12, // 7: endless.UserMeetupProgressItem.progress:type_name -> endless.UserMeetupProgress
 	18, // 8: endless.UserElGameReward.task_info:type_name -> endless.TaskInfo
-	22, // 9: endless.EndGameNotify.recommend_info:type_name -> endless.EndGameNotify.RecommendInfoEntry
-	23, // 10: endless.EndGameNotify.opened_chest:type_name -> endless.EndGameNotify.OpenedChestEntry
+	24, // 9: endless.EndGameNotify.recommend_info:type_name -> endless.EndGameNotify.RecommendInfoEntry
+	25, // 10: endless.EndGameNotify.opened_chest:type_name -> endless.EndGameNotify.OpenedChestEntry
 	17, // 11: endless.EndGameNotify.snake_coin_detail:type_name -> endless.SnakeCoinDetailItem
-	24, // 12: endless.EndGameNotify.turntable:type_name -> endless.EndGameNotify.TurntableEntry
+	26, // 12: endless.EndGameNotify.turntable:type_name -> endless.EndGameNotify.TurntableEntry
 	5,  // 13: endless.EndGameNotify.game_task:type_name -> endless.UserGameTask
 	7,  // 14: endless.EndGameNotify.hatch_egg:type_name -> endless.UserEggProgress
 	9,  // 15: endless.EndGameNotify.pass_check:type_name -> endless.GamePassCheckExp
 	10, // 16: endless.EndGameNotify.act_reward:type_name -> endless.ActReward
 	11, // 17: endless.EndGameNotify.extra_reward:type_name -> endless.GameExtraReward
-	25, // 18: endless.EndGameNotify.endless_reward_list:type_name -> snakecommon.CRewardItem
+	27, // 18: endless.EndGameNotify.endless_reward_list:type_name -> snakecommon.CRewardItem
 	12, // 19: endless.EndGameNotify.new_meetup:type_name -> endless.UserMeetupProgress
 	12, // 20: endless.EndGameNotify.new_meetup_v2:type_name -> endless.UserMeetupProgress
 	12, // 21: endless.EndGameNotify.new_meetup_v3:type_name -> endless.UserMeetupProgress
@@ -2063,7 +2155,7 @@ var file_system_team_endless_team_endless_proto_depIdxs = []int32{
 	19, // 24: endless.EndGameNotify.web_banner:type_name -> endless.WebBanner
 	21, // 25: endless.EndGameNotify.floating_info:type_name -> endless.FloatingInfo
 	16, // 26: endless.EndGameNotify.teammates:type_name -> endless.EndlessTeammate
-	25, // 27: endless.FloatingInfo.reward_list:type_name -> snakecommon.CRewardItem
+	27, // 27: endless.FloatingInfo.reward_list:type_name -> snakecommon.CRewardItem
 	20, // 28: endless.FloatingInfo.floating_list:type_name -> endless.FloatingItem
 	29, // [29:29] is the sub-list for method output_type
 	29, // [29:29] is the sub-list for method input_type
@@ -2342,6 +2434,30 @@ func file_system_team_endless_team_endless_proto_init() {
 				return nil
 			}
 		}
+		file_system_team_endless_team_endless_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateGuideProgressReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateGuideProgressRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -2349,7 +2465,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_system_team_endless_team_endless_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   25,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
