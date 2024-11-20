@@ -62,6 +62,7 @@ message GameReadyReq { // unity server初始化成功后通知
   string ds_id = 4; // unity server id 标识
   int32 rid = 5; // 房间 id
   int32 game_mode = 6;
+  string reason = 7; // 失败的原因
 }
 message GameReadyRsp{
 }
