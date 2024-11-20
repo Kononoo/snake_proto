@@ -152,6 +152,7 @@ message RoomMember {
   int64 show_level = 10; // show等级
   int64 show_value = 11; // show值
   string show_skill = 12; // show的属性加成
+  bool is_ai = 13; // 是否是ai
 }
 
 message SyncGroupStateNotify { // 同步队伍状态
