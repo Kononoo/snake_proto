@@ -973,6 +973,7 @@ message CPCExchangeItem {
   int64 exchange_limit = 3;                   // 兑换上限，0表示无上限
   int64 gift_box_voucher_count = 4;           // 需要的礼盒兑换券数量
   int64 exchange_currency_count = 5;          // 需要的兑换货币数量
+  string reward_anim = 6;                    // 奖励动效，不配置则读取资源配置
 }
 
 message CPCIntimateRelationship {
