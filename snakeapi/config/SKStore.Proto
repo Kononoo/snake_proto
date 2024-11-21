@@ -1437,7 +1437,8 @@ message IntimateAppellationModel {
 }
 
 message IntimateAppellationInfo {
-  repeated IntimateAppellationAnimationItem anim_list = 1;
+  string font_color = 1;
+  repeated IntimateAppellationAnimationItem anim_list = 2;
 }
 
 message IntimateAppellationAnimationItem {
