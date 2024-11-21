@@ -984,6 +984,18 @@ message CPCIntimateRelationship {
   int64 dissolve_limit = 5;                   // 解除关系次数上限
   repeated CPCIntimateLevelItem level_config = 6; // 亲密度等级配置
   int64 apply_expire_sec = 7;                   // 申请亲密称谓有效期，单位秒
+  int64 single_game_intimacy = 8; // 单局增加亲密值
+  int64 daily_game_limit = 9; // 每日游戏亲密值上限
+  int64 single_star_intimacy = 10; // 每颗星星增加亲密值
+  int64 daily_star_limit = 11; // 每日星星亲密值上限
+  repeated CPCGiftIntimacyItem gift_intimacy_list = 12; // 送礼亲密值配置
+  int64 daily_gift_limit = 13; // 每日送礼亲密值上限
+}
+
+message CPCGiftIntimacyItem {
+  int64 gift_id = 1;
+  int64 intimacy = 2; // 每个礼物增加亲密值
+  int64 milestone = 3; // 每个礼物增加里程
 }
 
 message CPCIntimateLevelItem {
