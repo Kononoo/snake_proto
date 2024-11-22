@@ -467,6 +467,7 @@ message UiConfigV3 {
   GameIcon fallguys_icon = 16;
   repeated LittleGameIcon little_game_icon = 17;
   GameIcon compose = 18;
+  GameIcon couple_passcheck = 19;
 }
 
 message GameIcon {
