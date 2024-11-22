@@ -938,6 +938,15 @@ message CPCTaskConf {
   int64 intimacy_qualifying_daily_limit = 6;  // 与好友组队团战亲密度每日上限
   int64 intimacy_up_star_daily_limit = 7;     // 与好友组队升星星亲密度每日上限
   int64 intimacy_send_gift_daily_limit = 8;   // 与好友互赠指定礼物亲密度每日上限
+  int64 single_game_intimacy = 9; // 单局增加亲密值
+  int64 single_star_intimacy = 10; // 每颗星星增加亲密值
+  repeated CPCGiftIntimacyItem gift_intimacy_list = 11; // 送礼亲密值配置
+}
+
+message CPCGiftIntimacyItem {
+  int64 gift_id = 1;
+  int64 intimacy = 2; // 每个礼物增加亲密值
+  int64 milestone = 3; // 每个礼物增加里程
 }
 
 message CPCTaskSkin {
