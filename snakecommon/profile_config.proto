@@ -994,6 +994,7 @@ message CPCIntimateRelationship {
   int64 dissolve_limit = 5;                   // 解除关系次数上限
   repeated CPCIntimateLevelItem level_config = 6; // 亲密度等级配置
   int64 apply_expire_sec = 7;                   // 申请亲密称谓有效期，单位秒
+  repeated int32 default_owned_designation_ids = 8; // 默认拥有的亲密称谓ID列表
 }
 
 message CPCIntimateLevelItem {
