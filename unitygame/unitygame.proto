@@ -84,7 +84,7 @@ message frameItem {
 //游戏帧的具体内容
 message gameAction {
   int32 num = 1;
-  int32 cmd = 2; //0为移动，1复活，2中途加入，3用游戏道具，4玩家退出，5语音；如果没有某个玩家说明没发帧，按之前方向移动
+  int32 cmd = 2; //0为移动，1复活，2中途加入，3用游戏道具，4玩家退出，5语音，6开启AI接管，7取消AI接管；如果没有某个玩家说明没发帧，按之前方向移动
   int32 param = 3; //根据cmd代表不同属性：0为movement，3道具id
   userAttribute attr = 4; //根据cmd代表不同属性：2中途加入人的属性
   int32 mode_param = 5; //作用跟 param 一样，主要用于特定玩法的数据帧同步
@@ -114,6 +114,8 @@ enum command {
   CommandUseProp = 3;
   CommandExitGame = 4;
   CommandSetVoite = 5;
+  CommandAITakeOverOn = 6; // 开启 AI 接管，参考: https://wepie.feishu.cn/wiki/N7cUwnNoOidmMvk1k6ac08CVnFh#share-WguXdnlp3oEmAoxDhGHcgTZXncf
+  CommandAITakeOverOff = 7; // 取消 AI 接管，参考: https://wepie.feishu.cn/wiki/N7cUwnNoOidmMvk1k6ac08CVnFh#share-WguXdnlp3oEmAoxDhGHcgTZXncf
 }
 
 //发游戏内指令和帧
