@@ -974,7 +974,9 @@ message CPCExchangeStore {
   int32 exchange_currency_id = 2;             // 兑换货币ID
   string gift_box_voucher_img = 3;             // 礼盒图片
   string exchange_currency_img = 4;             // 兑换货币图片
-  repeated CPCExchangeItem items = 5;         // 兑换物品列表
+  string gift_box_voucher_name = 5;             // 礼盒兑换券名称
+  string exchange_currency_name = 6;           // 兑换货币名称
+  repeated CPCExchangeItem items = 7;         // 兑换物品列表
 }
 
 message CPCExchangeItem {
