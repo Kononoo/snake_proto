@@ -992,7 +992,6 @@ message CPCIntimateRelationship {
   int64 invite_cd_sec = 1;                    // 邀请冷却时间，单位秒
   int64 invite_expire_sec = 2;                // 邀请有效期，单位秒
   string invite_message = 3;                  // 邀请文案
-  string activity_link = 4;                   // 活动跳转链接
   int64 dissolve_limit = 5;                   // 解除关系次数上限
   repeated CPCIntimateLevelItem level_config = 6; // 亲密度等级配置
   int64 apply_expire_sec = 7;                   // 申请亲密称谓有效期，单位秒
