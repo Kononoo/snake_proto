@@ -188,3 +188,12 @@ message UpdateGuideProgressReq {
 
 message UpdateGuideProgressRsp {
 }
+
+// 获取新手AI信息
+message GetNewbieAiReq {
+}
+
+message GetNewbieAiRsp {
+  string uid = 1; // 为空时表示没有ai
+  int64 skin_id = 2;
+}
