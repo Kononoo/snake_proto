@@ -120,11 +120,12 @@ type Partner struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uid      string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
-	Nickname string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
-	Avatar   string `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`
-	BoxId    int32  `protobuf:"varint,4,opt,name=box_id,json=boxId,proto3" json:"box_id,omitempty"`
-	Verified int32  `protobuf:"varint,5,opt,name=verified,proto3" json:"verified,omitempty"`
+	Uid       string     `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Nickname  string     `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	Avatar    string     `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	BoxId     int32      `protobuf:"varint,4,opt,name=box_id,json=boxId,proto3" json:"box_id,omitempty"`
+	Verified  int32      `protobuf:"varint,5,opt,name=verified,proto3" json:"verified,omitempty"`
+	GradeInfo *GradeInfo `protobuf:"bytes,6,opt,name=grade_info,json=gradeInfo,proto3" json:"grade_info,omitempty"`
 }
 
 func (x *Partner) Reset() {
@@ -194,6 +195,69 @@ func (x *Partner) GetVerified() int32 {
 	return 0
 }
 
+func (x *Partner) GetGradeInfo() *GradeInfo {
+	if x != nil {
+		return x.GradeInfo
+	}
+	return nil
+}
+
+// 玩家段位信息
+type GradeInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Ultimate int32 `protobuf:"zigzag32,1,opt,name=ultimate,proto3" json:"ultimate,omitempty"` // 是否王者，1：是
+	Star     int32 `protobuf:"varint,2,opt,name=star,proto3" json:"star,omitempty"`           // 星星数
+}
+
+func (x *GradeInfo) Reset() {
+	*x = GradeInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GradeInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GradeInfo) ProtoMessage() {}
+
+func (x *GradeInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GradeInfo.ProtoReflect.Descriptor instead.
+func (*GradeInfo) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GradeInfo) GetUltimate() int32 {
+	if x != nil {
+		return x.Ultimate
+	}
+	return 0
+}
+
+func (x *GradeInfo) GetStar() int32 {
+	if x != nil {
+		return x.Star
+	}
+	return 0
+}
+
 type GetGameResultReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -206,7 +270,7 @@ type GetGameResultReq struct {
 func (x *GetGameResultReq) Reset() {
 	*x = GetGameResultReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[3]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -219,7 +283,7 @@ func (x *GetGameResultReq) String() string {
 func (*GetGameResultReq) ProtoMessage() {}
 
 func (x *GetGameResultReq) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[3]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -232,7 +296,7 @@ func (x *GetGameResultReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGameResultReq.ProtoReflect.Descriptor instead.
 func (*GetGameResultReq) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{3}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetGameResultReq) GetUid() string {
@@ -260,7 +324,7 @@ type GetGameResultRsp struct {
 func (x *GetGameResultRsp) Reset() {
 	*x = GetGameResultRsp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[4]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -273,7 +337,7 @@ func (x *GetGameResultRsp) String() string {
 func (*GetGameResultRsp) ProtoMessage() {}
 
 func (x *GetGameResultRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[4]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -286,7 +350,7 @@ func (x *GetGameResultRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetGameResultRsp.ProtoReflect.Descriptor instead.
 func (*GetGameResultRsp) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{4}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetGameResultRsp) GetResult() *EndGameNotify {
@@ -316,7 +380,7 @@ type UserGameTask struct {
 func (x *UserGameTask) Reset() {
 	*x = UserGameTask{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[5]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -329,7 +393,7 @@ func (x *UserGameTask) String() string {
 func (*UserGameTask) ProtoMessage() {}
 
 func (x *UserGameTask) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[5]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -342,7 +406,7 @@ func (x *UserGameTask) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserGameTask.ProtoReflect.Descriptor instead.
 func (*UserGameTask) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{5}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UserGameTask) GetDayProgress() int64 {
@@ -431,7 +495,7 @@ type UserEgg struct {
 func (x *UserEgg) Reset() {
 	*x = UserEgg{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[6]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -444,7 +508,7 @@ func (x *UserEgg) String() string {
 func (*UserEgg) ProtoMessage() {}
 
 func (x *UserEgg) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[6]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -457,7 +521,7 @@ func (x *UserEgg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserEgg.ProtoReflect.Descriptor instead.
 func (*UserEgg) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{6}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *UserEgg) GetId() int64 {
@@ -516,7 +580,7 @@ type UserEggProgress struct {
 func (x *UserEggProgress) Reset() {
 	*x = UserEggProgress{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[7]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -529,7 +593,7 @@ func (x *UserEggProgress) String() string {
 func (*UserEggProgress) ProtoMessage() {}
 
 func (x *UserEggProgress) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[7]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -542,7 +606,7 @@ func (x *UserEggProgress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserEggProgress.ProtoReflect.Descriptor instead.
 func (*UserEggProgress) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{7}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UserEggProgress) GetEggList() []*UserEgg {
@@ -586,7 +650,7 @@ type PassCheckExpDetail struct {
 func (x *PassCheckExpDetail) Reset() {
 	*x = PassCheckExpDetail{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[8]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -599,7 +663,7 @@ func (x *PassCheckExpDetail) String() string {
 func (*PassCheckExpDetail) ProtoMessage() {}
 
 func (x *PassCheckExpDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[8]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -612,7 +676,7 @@ func (x *PassCheckExpDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PassCheckExpDetail.ProtoReflect.Descriptor instead.
 func (*PassCheckExpDetail) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{8}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *PassCheckExpDetail) GetCount() int64 {
@@ -649,7 +713,7 @@ type GamePassCheckExp struct {
 func (x *GamePassCheckExp) Reset() {
 	*x = GamePassCheckExp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[9]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -662,7 +726,7 @@ func (x *GamePassCheckExp) String() string {
 func (*GamePassCheckExp) ProtoMessage() {}
 
 func (x *GamePassCheckExp) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[9]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -675,7 +739,7 @@ func (x *GamePassCheckExp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GamePassCheckExp.ProtoReflect.Descriptor instead.
 func (*GamePassCheckExp) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{9}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GamePassCheckExp) GetExp() int64 {
@@ -711,7 +775,7 @@ type ActReward struct {
 func (x *ActReward) Reset() {
 	*x = ActReward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[10]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -724,7 +788,7 @@ func (x *ActReward) String() string {
 func (*ActReward) ProtoMessage() {}
 
 func (x *ActReward) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[10]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -737,7 +801,7 @@ func (x *ActReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActReward.ProtoReflect.Descriptor instead.
 func (*ActReward) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{10}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ActReward) GetDesc() string {
@@ -766,7 +830,7 @@ type GameExtraReward struct {
 func (x *GameExtraReward) Reset() {
 	*x = GameExtraReward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[11]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -779,7 +843,7 @@ func (x *GameExtraReward) String() string {
 func (*GameExtraReward) ProtoMessage() {}
 
 func (x *GameExtraReward) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[11]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -792,7 +856,7 @@ func (x *GameExtraReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameExtraReward.ProtoReflect.Descriptor instead.
 func (*GameExtraReward) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{11}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GameExtraReward) GetRewardList() []*snakecommon.CRewardItem {
@@ -825,7 +889,7 @@ type UserMeetupProgress struct {
 func (x *UserMeetupProgress) Reset() {
 	*x = UserMeetupProgress{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[12]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -838,7 +902,7 @@ func (x *UserMeetupProgress) String() string {
 func (*UserMeetupProgress) ProtoMessage() {}
 
 func (x *UserMeetupProgress) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[12]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -851,7 +915,7 @@ func (x *UserMeetupProgress) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserMeetupProgress.ProtoReflect.Descriptor instead.
 func (*UserMeetupProgress) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{12}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *UserMeetupProgress) GetActId() int64 {
@@ -910,7 +974,7 @@ type UserMeetupProgressItem struct {
 func (x *UserMeetupProgressItem) Reset() {
 	*x = UserMeetupProgressItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[13]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -923,7 +987,7 @@ func (x *UserMeetupProgressItem) String() string {
 func (*UserMeetupProgressItem) ProtoMessage() {}
 
 func (x *UserMeetupProgressItem) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[13]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -936,7 +1000,7 @@ func (x *UserMeetupProgressItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserMeetupProgressItem.ProtoReflect.Descriptor instead.
 func (*UserMeetupProgressItem) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{13}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UserMeetupProgressItem) GetProgress() *UserMeetupProgress {
@@ -980,7 +1044,7 @@ type UserElGameReward struct {
 func (x *UserElGameReward) Reset() {
 	*x = UserElGameReward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[14]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -993,7 +1057,7 @@ func (x *UserElGameReward) String() string {
 func (*UserElGameReward) ProtoMessage() {}
 
 func (x *UserElGameReward) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[14]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1006,7 +1070,7 @@ func (x *UserElGameReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserElGameReward.ProtoReflect.Descriptor instead.
 func (*UserElGameReward) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{14}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *UserElGameReward) GetLen() int64 {
@@ -1071,7 +1135,7 @@ type EndGameNotify struct {
 func (x *EndGameNotify) Reset() {
 	*x = EndGameNotify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[15]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1084,7 +1148,7 @@ func (x *EndGameNotify) String() string {
 func (*EndGameNotify) ProtoMessage() {}
 
 func (x *EndGameNotify) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[15]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1097,7 +1161,7 @@ func (x *EndGameNotify) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndGameNotify.ProtoReflect.Descriptor instead.
 func (*EndGameNotify) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{15}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *EndGameNotify) GetRank() string {
@@ -1331,7 +1395,7 @@ type EndlessTeammate struct {
 func (x *EndlessTeammate) Reset() {
 	*x = EndlessTeammate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[16]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1344,7 +1408,7 @@ func (x *EndlessTeammate) String() string {
 func (*EndlessTeammate) ProtoMessage() {}
 
 func (x *EndlessTeammate) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[16]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1357,7 +1421,7 @@ func (x *EndlessTeammate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessTeammate.ProtoReflect.Descriptor instead.
 func (*EndlessTeammate) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{16}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *EndlessTeammate) GetUid() string {
@@ -1401,7 +1465,7 @@ type SnakeCoinDetailItem struct {
 func (x *SnakeCoinDetailItem) Reset() {
 	*x = SnakeCoinDetailItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[17]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1414,7 +1478,7 @@ func (x *SnakeCoinDetailItem) String() string {
 func (*SnakeCoinDetailItem) ProtoMessage() {}
 
 func (x *SnakeCoinDetailItem) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[17]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1427,7 +1491,7 @@ func (x *SnakeCoinDetailItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SnakeCoinDetailItem.ProtoReflect.Descriptor instead.
 func (*SnakeCoinDetailItem) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{17}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *SnakeCoinDetailItem) GetCount() int64 {
@@ -1465,7 +1529,7 @@ type TaskInfo struct {
 func (x *TaskInfo) Reset() {
 	*x = TaskInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[18]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1478,7 +1542,7 @@ func (x *TaskInfo) String() string {
 func (*TaskInfo) ProtoMessage() {}
 
 func (x *TaskInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[18]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1491,7 +1555,7 @@ func (x *TaskInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TaskInfo.ProtoReflect.Descriptor instead.
 func (*TaskInfo) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{18}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *TaskInfo) GetId() int64 {
@@ -1534,7 +1598,7 @@ type WebBanner struct {
 func (x *WebBanner) Reset() {
 	*x = WebBanner{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[19]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1547,7 +1611,7 @@ func (x *WebBanner) String() string {
 func (*WebBanner) ProtoMessage() {}
 
 func (x *WebBanner) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[19]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1560,7 +1624,7 @@ func (x *WebBanner) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WebBanner.ProtoReflect.Descriptor instead.
 func (*WebBanner) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{19}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *WebBanner) GetId() int64 {
@@ -1591,7 +1655,7 @@ type FloatingItem struct {
 func (x *FloatingItem) Reset() {
 	*x = FloatingItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[20]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1604,7 +1668,7 @@ func (x *FloatingItem) String() string {
 func (*FloatingItem) ProtoMessage() {}
 
 func (x *FloatingItem) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[20]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1617,7 +1681,7 @@ func (x *FloatingItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FloatingItem.ProtoReflect.Descriptor instead.
 func (*FloatingItem) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{20}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *FloatingItem) GetId() int64 {
@@ -1661,7 +1725,7 @@ type FloatingInfo struct {
 func (x *FloatingInfo) Reset() {
 	*x = FloatingInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[21]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1674,7 +1738,7 @@ func (x *FloatingInfo) String() string {
 func (*FloatingInfo) ProtoMessage() {}
 
 func (x *FloatingInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[21]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1687,7 +1751,7 @@ func (x *FloatingInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FloatingInfo.ProtoReflect.Descriptor instead.
 func (*FloatingInfo) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{21}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *FloatingInfo) GetRewardList() []*snakecommon.CRewardItem {
@@ -1723,7 +1787,7 @@ type UpdateGuideProgressReq struct {
 func (x *UpdateGuideProgressReq) Reset() {
 	*x = UpdateGuideProgressReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[22]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1736,7 +1800,7 @@ func (x *UpdateGuideProgressReq) String() string {
 func (*UpdateGuideProgressReq) ProtoMessage() {}
 
 func (x *UpdateGuideProgressReq) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[22]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1749,7 +1813,7 @@ func (x *UpdateGuideProgressReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGuideProgressReq.ProtoReflect.Descriptor instead.
 func (*UpdateGuideProgressReq) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{22}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *UpdateGuideProgressReq) GetDone() bool {
@@ -1768,7 +1832,7 @@ type UpdateGuideProgressRsp struct {
 func (x *UpdateGuideProgressRsp) Reset() {
 	*x = UpdateGuideProgressRsp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_team_endless_proto_msgTypes[23]
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1781,7 +1845,7 @@ func (x *UpdateGuideProgressRsp) String() string {
 func (*UpdateGuideProgressRsp) ProtoMessage() {}
 
 func (x *UpdateGuideProgressRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_team_endless_proto_msgTypes[23]
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1794,7 +1858,101 @@ func (x *UpdateGuideProgressRsp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateGuideProgressRsp.ProtoReflect.Descriptor instead.
 func (*UpdateGuideProgressRsp) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{23}
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{24}
+}
+
+// 获取新手AI信息
+type GetNewbieAiReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetNewbieAiReq) Reset() {
+	*x = GetNewbieAiReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[25]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetNewbieAiReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetNewbieAiReq) ProtoMessage() {}
+
+func (x *GetNewbieAiReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[25]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetNewbieAiReq.ProtoReflect.Descriptor instead.
+func (*GetNewbieAiReq) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{25}
+}
+
+type GetNewbieAiRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid    string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // 为空时表示没有ai
+	SkinId int64  `protobuf:"varint,2,opt,name=skin_id,json=skinId,proto3" json:"skin_id,omitempty"`
+}
+
+func (x *GetNewbieAiRsp) Reset() {
+	*x = GetNewbieAiRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[26]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetNewbieAiRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetNewbieAiRsp) ProtoMessage() {}
+
+func (x *GetNewbieAiRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[26]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetNewbieAiRsp.ProtoReflect.Descriptor instead.
+func (*GetNewbieAiRsp) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *GetNewbieAiRsp) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *GetNewbieAiRsp) GetSkinId() int64 {
+	if x != nil {
+		return x.SkinId
+	}
+	return 0
 }
 
 var File_system_team_endless_team_endless_proto protoreflect.FileDescriptor
@@ -1812,7 +1970,7 @@ var file_system_team_endless_team_endless_proto_rawDesc = []byte{
 	0x6e, 0x65, 0x72, 0x52, 0x73, 0x70, 0x12, 0x2d, 0x0a, 0x09, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x6c,
 	0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x65, 0x6e, 0x64, 0x6c,
 	0x65, 0x73, 0x73, 0x2e, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72, 0x52, 0x08, 0x75, 0x73, 0x65,
-	0x72, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x82, 0x01, 0x0a, 0x07, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65,
+	0x72, 0x4c, 0x69, 0x73, 0x74, 0x22, 0xb5, 0x01, 0x0a, 0x07, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65,
 	0x72, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
 	0x75, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x6e, 0x69, 0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x18,
 	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x69, 0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x12,
@@ -1820,7 +1978,14 @@ var file_system_team_endless_team_endless_proto_rawDesc = []byte{
 	0x06, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x12, 0x15, 0x0a, 0x06, 0x62, 0x6f, 0x78, 0x5f, 0x69,
 	0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x62, 0x6f, 0x78, 0x49, 0x64, 0x12, 0x1a,
 	0x0a, 0x08, 0x76, 0x65, 0x72, 0x69, 0x66, 0x69, 0x65, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05,
-	0x52, 0x08, 0x76, 0x65, 0x72, 0x69, 0x66, 0x69, 0x65, 0x64, 0x22, 0x36, 0x0a, 0x10, 0x47, 0x65,
+	0x52, 0x08, 0x76, 0x65, 0x72, 0x69, 0x66, 0x69, 0x65, 0x64, 0x12, 0x31, 0x0a, 0x0a, 0x67, 0x72,
+	0x61, 0x64, 0x65, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12,
+	0x2e, 0x65, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x2e, 0x47, 0x72, 0x61, 0x64, 0x65, 0x49, 0x6e,
+	0x66, 0x6f, 0x52, 0x09, 0x67, 0x72, 0x61, 0x64, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x22, 0x3b, 0x0a,
+	0x09, 0x47, 0x72, 0x61, 0x64, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x6c,
+	0x74, 0x69, 0x6d, 0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x11, 0x52, 0x08, 0x75, 0x6c,
+	0x74, 0x69, 0x6d, 0x61, 0x74, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x74, 0x61, 0x72, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x73, 0x74, 0x61, 0x72, 0x22, 0x36, 0x0a, 0x10, 0x47, 0x65,
 	0x74, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x52, 0x65, 0x71, 0x12, 0x10,
 	0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69, 0x64,
 	0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x72,
@@ -2077,11 +2242,16 @@ var file_system_team_endless_team_endless_proto_rawDesc = []byte{
 	0x64, 0x65, 0x50, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a,
 	0x04, 0x64, 0x6f, 0x6e, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x04, 0x64, 0x6f, 0x6e,
 	0x65, 0x22, 0x18, 0x0a, 0x16, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x47, 0x75, 0x69, 0x64, 0x65,
-	0x50, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x52, 0x73, 0x70, 0x42, 0x35, 0x5a, 0x33, 0x67,
-	0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61,
-	0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73,
-	0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x65, 0x6e, 0x64, 0x6c, 0x65,
-	0x73, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x50, 0x72, 0x6f, 0x67, 0x72, 0x65, 0x73, 0x73, 0x52, 0x73, 0x70, 0x22, 0x10, 0x0a, 0x0e, 0x47,
+	0x65, 0x74, 0x4e, 0x65, 0x77, 0x62, 0x69, 0x65, 0x41, 0x69, 0x52, 0x65, 0x71, 0x22, 0x3b, 0x0a,
+	0x0e, 0x47, 0x65, 0x74, 0x4e, 0x65, 0x77, 0x62, 0x69, 0x65, 0x41, 0x69, 0x52, 0x73, 0x70, 0x12,
+	0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x69,
+	0x64, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6b, 0x69, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x06, 0x73, 0x6b, 0x69, 0x6e, 0x49, 0x64, 0x42, 0x35, 0x5a, 0x33, 0x67, 0x69,
+	0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x79,
+	0x73, 0x74, 0x65, 0x6d, 0x2f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x65, 0x6e, 0x64, 0x6c, 0x65, 0x73,
+	0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2096,72 +2266,76 @@ func file_system_team_endless_team_endless_proto_rawDescGZIP() []byte {
 	return file_system_team_endless_team_endless_proto_rawDescData
 }
 
-var file_system_team_endless_team_endless_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_system_team_endless_team_endless_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_system_team_endless_team_endless_proto_goTypes = []interface{}{
 	(*GetRecentPartnerReq)(nil),     // 0: endless.GetRecentPartnerReq
 	(*GetRecentPartnerRsp)(nil),     // 1: endless.GetRecentPartnerRsp
 	(*Partner)(nil),                 // 2: endless.Partner
-	(*GetGameResultReq)(nil),        // 3: endless.GetGameResultReq
-	(*GetGameResultRsp)(nil),        // 4: endless.GetGameResultRsp
-	(*UserGameTask)(nil),            // 5: endless.UserGameTask
-	(*UserEgg)(nil),                 // 6: endless.UserEgg
-	(*UserEggProgress)(nil),         // 7: endless.UserEggProgress
-	(*PassCheckExpDetail)(nil),      // 8: endless.PassCheckExpDetail
-	(*GamePassCheckExp)(nil),        // 9: endless.GamePassCheckExp
-	(*ActReward)(nil),               // 10: endless.ActReward
-	(*GameExtraReward)(nil),         // 11: endless.GameExtraReward
-	(*UserMeetupProgress)(nil),      // 12: endless.UserMeetupProgress
-	(*UserMeetupProgressItem)(nil),  // 13: endless.UserMeetupProgressItem
-	(*UserElGameReward)(nil),        // 14: endless.UserElGameReward
-	(*EndGameNotify)(nil),           // 15: endless.EndGameNotify
-	(*EndlessTeammate)(nil),         // 16: endless.EndlessTeammate
-	(*SnakeCoinDetailItem)(nil),     // 17: endless.SnakeCoinDetailItem
-	(*TaskInfo)(nil),                // 18: endless.TaskInfo
-	(*WebBanner)(nil),               // 19: endless.WebBanner
-	(*FloatingItem)(nil),            // 20: endless.FloatingItem
-	(*FloatingInfo)(nil),            // 21: endless.FloatingInfo
-	(*UpdateGuideProgressReq)(nil),  // 22: endless.UpdateGuideProgressReq
-	(*UpdateGuideProgressRsp)(nil),  // 23: endless.UpdateGuideProgressRsp
-	nil,                             // 24: endless.EndGameNotify.RecommendInfoEntry
-	nil,                             // 25: endless.EndGameNotify.OpenedChestEntry
-	nil,                             // 26: endless.EndGameNotify.TurntableEntry
-	(*snakecommon.CRewardItem)(nil), // 27: snakecommon.CRewardItem
+	(*GradeInfo)(nil),               // 3: endless.GradeInfo
+	(*GetGameResultReq)(nil),        // 4: endless.GetGameResultReq
+	(*GetGameResultRsp)(nil),        // 5: endless.GetGameResultRsp
+	(*UserGameTask)(nil),            // 6: endless.UserGameTask
+	(*UserEgg)(nil),                 // 7: endless.UserEgg
+	(*UserEggProgress)(nil),         // 8: endless.UserEggProgress
+	(*PassCheckExpDetail)(nil),      // 9: endless.PassCheckExpDetail
+	(*GamePassCheckExp)(nil),        // 10: endless.GamePassCheckExp
+	(*ActReward)(nil),               // 11: endless.ActReward
+	(*GameExtraReward)(nil),         // 12: endless.GameExtraReward
+	(*UserMeetupProgress)(nil),      // 13: endless.UserMeetupProgress
+	(*UserMeetupProgressItem)(nil),  // 14: endless.UserMeetupProgressItem
+	(*UserElGameReward)(nil),        // 15: endless.UserElGameReward
+	(*EndGameNotify)(nil),           // 16: endless.EndGameNotify
+	(*EndlessTeammate)(nil),         // 17: endless.EndlessTeammate
+	(*SnakeCoinDetailItem)(nil),     // 18: endless.SnakeCoinDetailItem
+	(*TaskInfo)(nil),                // 19: endless.TaskInfo
+	(*WebBanner)(nil),               // 20: endless.WebBanner
+	(*FloatingItem)(nil),            // 21: endless.FloatingItem
+	(*FloatingInfo)(nil),            // 22: endless.FloatingInfo
+	(*UpdateGuideProgressReq)(nil),  // 23: endless.UpdateGuideProgressReq
+	(*UpdateGuideProgressRsp)(nil),  // 24: endless.UpdateGuideProgressRsp
+	(*GetNewbieAiReq)(nil),          // 25: endless.GetNewbieAiReq
+	(*GetNewbieAiRsp)(nil),          // 26: endless.GetNewbieAiRsp
+	nil,                             // 27: endless.EndGameNotify.RecommendInfoEntry
+	nil,                             // 28: endless.EndGameNotify.OpenedChestEntry
+	nil,                             // 29: endless.EndGameNotify.TurntableEntry
+	(*snakecommon.CRewardItem)(nil), // 30: snakecommon.CRewardItem
 }
 var file_system_team_endless_team_endless_proto_depIdxs = []int32{
 	2,  // 0: endless.GetRecentPartnerRsp.user_list:type_name -> endless.Partner
-	15, // 1: endless.GetGameResultRsp.result:type_name -> endless.EndGameNotify
-	6,  // 2: endless.UserEggProgress.egg_list:type_name -> endless.UserEgg
-	8,  // 3: endless.GamePassCheckExp.exp_detail:type_name -> endless.PassCheckExpDetail
-	27, // 4: endless.ActReward.reward_list:type_name -> snakecommon.CRewardItem
-	27, // 5: endless.GameExtraReward.reward_list:type_name -> snakecommon.CRewardItem
-	18, // 6: endless.UserMeetupProgress.task_info:type_name -> endless.TaskInfo
-	12, // 7: endless.UserMeetupProgressItem.progress:type_name -> endless.UserMeetupProgress
-	18, // 8: endless.UserElGameReward.task_info:type_name -> endless.TaskInfo
-	24, // 9: endless.EndGameNotify.recommend_info:type_name -> endless.EndGameNotify.RecommendInfoEntry
-	25, // 10: endless.EndGameNotify.opened_chest:type_name -> endless.EndGameNotify.OpenedChestEntry
-	17, // 11: endless.EndGameNotify.snake_coin_detail:type_name -> endless.SnakeCoinDetailItem
-	26, // 12: endless.EndGameNotify.turntable:type_name -> endless.EndGameNotify.TurntableEntry
-	5,  // 13: endless.EndGameNotify.game_task:type_name -> endless.UserGameTask
-	7,  // 14: endless.EndGameNotify.hatch_egg:type_name -> endless.UserEggProgress
-	9,  // 15: endless.EndGameNotify.pass_check:type_name -> endless.GamePassCheckExp
-	10, // 16: endless.EndGameNotify.act_reward:type_name -> endless.ActReward
-	11, // 17: endless.EndGameNotify.extra_reward:type_name -> endless.GameExtraReward
-	27, // 18: endless.EndGameNotify.endless_reward_list:type_name -> snakecommon.CRewardItem
-	12, // 19: endless.EndGameNotify.new_meetup:type_name -> endless.UserMeetupProgress
-	12, // 20: endless.EndGameNotify.new_meetup_v2:type_name -> endless.UserMeetupProgress
-	12, // 21: endless.EndGameNotify.new_meetup_v3:type_name -> endless.UserMeetupProgress
-	13, // 22: endless.EndGameNotify.new_meetup_v3_list:type_name -> endless.UserMeetupProgressItem
-	14, // 23: endless.EndGameNotify.endless_game_reward:type_name -> endless.UserElGameReward
-	19, // 24: endless.EndGameNotify.web_banner:type_name -> endless.WebBanner
-	21, // 25: endless.EndGameNotify.floating_info:type_name -> endless.FloatingInfo
-	16, // 26: endless.EndGameNotify.teammates:type_name -> endless.EndlessTeammate
-	27, // 27: endless.FloatingInfo.reward_list:type_name -> snakecommon.CRewardItem
-	20, // 28: endless.FloatingInfo.floating_list:type_name -> endless.FloatingItem
-	29, // [29:29] is the sub-list for method output_type
-	29, // [29:29] is the sub-list for method input_type
-	29, // [29:29] is the sub-list for extension type_name
-	29, // [29:29] is the sub-list for extension extendee
-	0,  // [0:29] is the sub-list for field type_name
+	3,  // 1: endless.Partner.grade_info:type_name -> endless.GradeInfo
+	16, // 2: endless.GetGameResultRsp.result:type_name -> endless.EndGameNotify
+	7,  // 3: endless.UserEggProgress.egg_list:type_name -> endless.UserEgg
+	9,  // 4: endless.GamePassCheckExp.exp_detail:type_name -> endless.PassCheckExpDetail
+	30, // 5: endless.ActReward.reward_list:type_name -> snakecommon.CRewardItem
+	30, // 6: endless.GameExtraReward.reward_list:type_name -> snakecommon.CRewardItem
+	19, // 7: endless.UserMeetupProgress.task_info:type_name -> endless.TaskInfo
+	13, // 8: endless.UserMeetupProgressItem.progress:type_name -> endless.UserMeetupProgress
+	19, // 9: endless.UserElGameReward.task_info:type_name -> endless.TaskInfo
+	27, // 10: endless.EndGameNotify.recommend_info:type_name -> endless.EndGameNotify.RecommendInfoEntry
+	28, // 11: endless.EndGameNotify.opened_chest:type_name -> endless.EndGameNotify.OpenedChestEntry
+	18, // 12: endless.EndGameNotify.snake_coin_detail:type_name -> endless.SnakeCoinDetailItem
+	29, // 13: endless.EndGameNotify.turntable:type_name -> endless.EndGameNotify.TurntableEntry
+	6,  // 14: endless.EndGameNotify.game_task:type_name -> endless.UserGameTask
+	8,  // 15: endless.EndGameNotify.hatch_egg:type_name -> endless.UserEggProgress
+	10, // 16: endless.EndGameNotify.pass_check:type_name -> endless.GamePassCheckExp
+	11, // 17: endless.EndGameNotify.act_reward:type_name -> endless.ActReward
+	12, // 18: endless.EndGameNotify.extra_reward:type_name -> endless.GameExtraReward
+	30, // 19: endless.EndGameNotify.endless_reward_list:type_name -> snakecommon.CRewardItem
+	13, // 20: endless.EndGameNotify.new_meetup:type_name -> endless.UserMeetupProgress
+	13, // 21: endless.EndGameNotify.new_meetup_v2:type_name -> endless.UserMeetupProgress
+	13, // 22: endless.EndGameNotify.new_meetup_v3:type_name -> endless.UserMeetupProgress
+	14, // 23: endless.EndGameNotify.new_meetup_v3_list:type_name -> endless.UserMeetupProgressItem
+	15, // 24: endless.EndGameNotify.endless_game_reward:type_name -> endless.UserElGameReward
+	20, // 25: endless.EndGameNotify.web_banner:type_name -> endless.WebBanner
+	22, // 26: endless.EndGameNotify.floating_info:type_name -> endless.FloatingInfo
+	17, // 27: endless.EndGameNotify.teammates:type_name -> endless.EndlessTeammate
+	30, // 28: endless.FloatingInfo.reward_list:type_name -> snakecommon.CRewardItem
+	21, // 29: endless.FloatingInfo.floating_list:type_name -> endless.FloatingItem
+	30, // [30:30] is the sub-list for method output_type
+	30, // [30:30] is the sub-list for method input_type
+	30, // [30:30] is the sub-list for extension type_name
+	30, // [30:30] is the sub-list for extension extendee
+	0,  // [0:30] is the sub-list for field type_name
 }
 
 func init() { file_system_team_endless_team_endless_proto_init() }
@@ -2207,7 +2381,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetGameResultReq); i {
+			switch v := v.(*GradeInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2219,7 +2393,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetGameResultRsp); i {
+			switch v := v.(*GetGameResultReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2231,7 +2405,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserGameTask); i {
+			switch v := v.(*GetGameResultRsp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2243,7 +2417,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserEgg); i {
+			switch v := v.(*UserGameTask); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2255,7 +2429,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserEggProgress); i {
+			switch v := v.(*UserEgg); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2267,7 +2441,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PassCheckExpDetail); i {
+			switch v := v.(*UserEggProgress); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2279,7 +2453,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GamePassCheckExp); i {
+			switch v := v.(*PassCheckExpDetail); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2291,7 +2465,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ActReward); i {
+			switch v := v.(*GamePassCheckExp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2303,7 +2477,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GameExtraReward); i {
+			switch v := v.(*ActReward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2315,7 +2489,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserMeetupProgress); i {
+			switch v := v.(*GameExtraReward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2327,7 +2501,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserMeetupProgressItem); i {
+			switch v := v.(*UserMeetupProgress); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2339,7 +2513,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserElGameReward); i {
+			switch v := v.(*UserMeetupProgressItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2351,7 +2525,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndGameNotify); i {
+			switch v := v.(*UserElGameReward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2363,7 +2537,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessTeammate); i {
+			switch v := v.(*EndGameNotify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2375,7 +2549,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SnakeCoinDetailItem); i {
+			switch v := v.(*EndlessTeammate); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2387,7 +2561,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TaskInfo); i {
+			switch v := v.(*SnakeCoinDetailItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2399,7 +2573,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WebBanner); i {
+			switch v := v.(*TaskInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2411,7 +2585,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FloatingItem); i {
+			switch v := v.(*WebBanner); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2423,7 +2597,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FloatingInfo); i {
+			switch v := v.(*FloatingItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2435,7 +2609,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateGuideProgressReq); i {
+			switch v := v.(*FloatingInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2447,7 +2621,43 @@ func file_system_team_endless_team_endless_proto_init() {
 			}
 		}
 		file_system_team_endless_team_endless_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UpdateGuideProgressReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdateGuideProgressRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetNewbieAiReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetNewbieAiRsp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2465,7 +2675,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_system_team_endless_team_endless_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   27,
+			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -18,6 +18,13 @@ message Partner {
   string avatar = 3;
   int32 box_id = 4;
   int32 verified = 5;
+  GradeInfo grade_info = 6;
+}
+
+// 玩家段位信息
+message GradeInfo {
+  sint32 ultimate = 1; // 是否王者，1：是
+  int32 star = 2; // 星星数
 }
 
 message GetGameResultReq { // 获取结算信息
@@ -180,4 +187,13 @@ message UpdateGuideProgressReq {
 }
 
 message UpdateGuideProgressRsp {
+}
+
+// 获取新手AI信息
+message GetNewbieAiReq {
+}
+
+message GetNewbieAiRsp {
+  string uid = 1; // 为空时表示没有ai
+  int64 skin_id = 2;
 }

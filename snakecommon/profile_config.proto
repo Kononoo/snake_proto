@@ -938,12 +938,22 @@ message CPCTaskConf {
   int64 intimacy_qualifying_daily_limit = 6;  // 与好友组队团战亲密度每日上限
   int64 intimacy_up_star_daily_limit = 7;     // 与好友组队升星星亲密度每日上限
   int64 intimacy_send_gift_daily_limit = 8;   // 与好友互赠指定礼物亲密度每日上限
+  int64 single_game_intimacy = 9; // 单局增加亲密值
+  int64 single_star_intimacy = 10; // 每颗星星增加亲密值
+  repeated CPCGiftIntimacyItem gift_intimacy_list = 11; // 送礼亲密值配置
+}
+
+message CPCGiftIntimacyItem {
+  int64 gift_id = 1;
+  int64 intimacy = 2; // 每个礼物增加亲密值
+  int64 milestone = 3; // 每个礼物增加里程
 }
 
 message CPCTaskSkin {
   int32 skin_id = 1;                         // 皮肤ID
   string skin_anim = 2;                      // 皮肤动效
   string exchange_buff_activity_link = 3;     // 兑换buff活动跳转链接
+  string background_color = 4;               // 皮肤背景颜色
 }
 
 message CPCTaskInfo {
@@ -964,7 +974,9 @@ message CPCExchangeStore {
   int32 exchange_currency_id = 2;             // 兑换货币ID
   string gift_box_voucher_img = 3;             // 礼盒图片
   string exchange_currency_img = 4;             // 兑换货币图片
-  repeated CPCExchangeItem items = 5;         // 兑换物品列表
+  string gift_box_voucher_name = 5;             // 礼盒兑换券名称
+  string exchange_currency_name = 6;           // 兑换货币名称
+  repeated CPCExchangeItem items = 7;         // 兑换物品列表
 }
 
 message CPCExchangeItem {
@@ -973,16 +985,17 @@ message CPCExchangeItem {
   int64 exchange_limit = 3;                   // 兑换上限，0表示无上限
   int64 gift_box_voucher_count = 4;           // 需要的礼盒兑换券数量
   int64 exchange_currency_count = 5;          // 需要的兑换货币数量
+  string reward_anim = 6;                    // 奖励动效，不配置则读取资源配置
 }
 
 message CPCIntimateRelationship {
   int64 invite_cd_sec = 1;                    // 邀请冷却时间，单位秒
   int64 invite_expire_sec = 2;                // 邀请有效期，单位秒
   string invite_message = 3;                  // 邀请文案
-  string activity_link = 4;                   // 活动跳转链接
   int64 dissolve_limit = 5;                   // 解除关系次数上限
   repeated CPCIntimateLevelItem level_config = 6; // 亲密度等级配置
   int64 apply_expire_sec = 7;                   // 申请亲密称谓有效期，单位秒
+  repeated int32 default_owned_designation_ids = 8; // 默认拥有的亲密称谓ID列表
 }
 
 message CPCIntimateLevelItem {

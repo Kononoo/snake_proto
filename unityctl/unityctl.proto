@@ -153,6 +153,22 @@ message ExitGameReq {
 message ExitGameRsp {
 }
 
+// 通用的push消息的ack请求
+message AckReq {
+  bool ok = 1; // push是否处理成功
+  string msgId = 2; // push消息中的唯一标识
+  string addr = 3; // ip:端口
+  string ds_id = 4; // unity server id 标识
+  int32 rid = 5; // 房间 id
+  int32 game_mode = 6; // 游戏模式
+  string failed_reason = 7; // 失败的原因
+  PushType push_type = 8; // ack的push类型
+  bytes payload = 9; // 额外数据
+}
+
+message AckRsp {
+}
+
 service UnityctlServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
   rpc StartGame(StartGameReq) returns (StartGameRsp) {}
@@ -165,4 +181,5 @@ service UnityctlServer {
   rpc GetUploadLogToken(GetUploadLogTokenReq) returns (GetUploadLogTokenRsp) {}
   rpc GetSnakeConfig(GetSnakeConfigReq) returns (GetSnakeConfigRsp) {}
   rpc ExitGame(ExitGameReq) returns (ExitGameRsp) {}
+  rpc Ack(AckReq) returns (AckRsp) {}
 }

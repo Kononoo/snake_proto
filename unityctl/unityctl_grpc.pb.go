@@ -29,6 +29,7 @@ type UnityctlServerClient interface {
 	GetUploadLogToken(ctx context.Context, in *GetUploadLogTokenReq, opts ...grpc.CallOption) (*GetUploadLogTokenRsp, error)
 	GetSnakeConfig(ctx context.Context, in *GetSnakeConfigReq, opts ...grpc.CallOption) (*GetSnakeConfigRsp, error)
 	ExitGame(ctx context.Context, in *ExitGameReq, opts ...grpc.CallOption) (*ExitGameRsp, error)
+	Ack(ctx context.Context, in *AckReq, opts ...grpc.CallOption) (*AckRsp, error)
 }
 
 type unityctlServerClient struct {
@@ -186,6 +187,15 @@ func (c *unityctlServerClient) ExitGame(ctx context.Context, in *ExitGameReq, op
 	return out, nil
 }
 
+func (c *unityctlServerClient) Ack(ctx context.Context, in *AckReq, opts ...grpc.CallOption) (*AckRsp, error) {
+	out := new(AckRsp)
+	err := c.cc.Invoke(ctx, "/unityctl.UnityctlServer/Ack", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UnityctlServerServer is the server API for UnityctlServer service.
 // All implementations should embed UnimplementedUnityctlServerServer
 // for forward compatibility
@@ -201,6 +211,7 @@ type UnityctlServerServer interface {
 	GetUploadLogToken(context.Context, *GetUploadLogTokenReq) (*GetUploadLogTokenRsp, error)
 	GetSnakeConfig(context.Context, *GetSnakeConfigReq) (*GetSnakeConfigRsp, error)
 	ExitGame(context.Context, *ExitGameReq) (*ExitGameRsp, error)
+	Ack(context.Context, *AckReq) (*AckRsp, error)
 }
 
 // UnimplementedUnityctlServerServer should be embedded to have forward compatible implementations.
@@ -239,6 +250,9 @@ func (UnimplementedUnityctlServerServer) GetSnakeConfig(context.Context, *GetSna
 }
 func (UnimplementedUnityctlServerServer) ExitGame(context.Context, *ExitGameReq) (*ExitGameRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExitGame not implemented")
+}
+func (UnimplementedUnityctlServerServer) Ack(context.Context, *AckReq) (*AckRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Ack not implemented")
 }
 
 // UnsafeUnityctlServerServer may be embedded to opt out of forward compatibility for this service.
@@ -461,6 +475,24 @@ func _UnityctlServer_ExitGame_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UnityctlServer_Ack_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AckReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UnityctlServerServer).Ack(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/unityctl.UnityctlServer/Ack",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UnityctlServerServer).Ack(ctx, req.(*AckReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UnityctlServer_ServiceDesc is the grpc.ServiceDesc for UnityctlServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -503,6 +535,10 @@ var UnityctlServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ExitGame",
 			Handler:    _UnityctlServer_ExitGame_Handler,
+		},
+		{
+			MethodName: "Ack",
+			Handler:    _UnityctlServer_Ack_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
