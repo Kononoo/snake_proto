@@ -1439,10 +1439,12 @@ message IntimateAppellationModel {
 message IntimateAppellationInfo {
   repeated IntimateAppellationAnimationItem anim_list = 1;
   string font_color = 2;
+  string unity_anim_key = 3; // 关联 unity 动效的 key
+  string unity_anim_version = 4; // 关联 unity 动效 version
+
 }
 
 message IntimateAppellationAnimationItem {
   int64 level = 1;
-  string anim_url = 2;
 }
 // intimate_appellation end
