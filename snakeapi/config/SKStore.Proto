@@ -1441,7 +1441,6 @@ message IntimateAppellationInfo {
   string font_color = 2;
   string unity_anim_key = 3; // 关联 unity 动效的 key
   string unity_anim_version = 4; // 关联 unity 动效 version
-
 }
 
 message IntimateAppellationAnimationItem {
