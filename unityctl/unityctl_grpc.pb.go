@@ -30,6 +30,7 @@ type UnityctlServerClient interface {
 	GetSnakeConfig(ctx context.Context, in *GetSnakeConfigReq, opts ...grpc.CallOption) (*GetSnakeConfigRsp, error)
 	ExitGame(ctx context.Context, in *ExitGameReq, opts ...grpc.CallOption) (*ExitGameRsp, error)
 	Ack(ctx context.Context, in *AckReq, opts ...grpc.CallOption) (*AckRsp, error)
+	UpdateGameCount(ctx context.Context, in *UpdateGameCountReq, opts ...grpc.CallOption) (*UpdateGameCountRsp, error)
 }
 
 type unityctlServerClient struct {
@@ -196,6 +197,15 @@ func (c *unityctlServerClient) Ack(ctx context.Context, in *AckReq, opts ...grpc
 	return out, nil
 }
 
+func (c *unityctlServerClient) UpdateGameCount(ctx context.Context, in *UpdateGameCountReq, opts ...grpc.CallOption) (*UpdateGameCountRsp, error) {
+	out := new(UpdateGameCountRsp)
+	err := c.cc.Invoke(ctx, "/unityctl.UnityctlServer/UpdateGameCount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UnityctlServerServer is the server API for UnityctlServer service.
 // All implementations should embed UnimplementedUnityctlServerServer
 // for forward compatibility
@@ -212,6 +222,7 @@ type UnityctlServerServer interface {
 	GetSnakeConfig(context.Context, *GetSnakeConfigReq) (*GetSnakeConfigRsp, error)
 	ExitGame(context.Context, *ExitGameReq) (*ExitGameRsp, error)
 	Ack(context.Context, *AckReq) (*AckRsp, error)
+	UpdateGameCount(context.Context, *UpdateGameCountReq) (*UpdateGameCountRsp, error)
 }
 
 // UnimplementedUnityctlServerServer should be embedded to have forward compatible implementations.
@@ -253,6 +264,9 @@ func (UnimplementedUnityctlServerServer) ExitGame(context.Context, *ExitGameReq)
 }
 func (UnimplementedUnityctlServerServer) Ack(context.Context, *AckReq) (*AckRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ack not implemented")
+}
+func (UnimplementedUnityctlServerServer) UpdateGameCount(context.Context, *UpdateGameCountReq) (*UpdateGameCountRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateGameCount not implemented")
 }
 
 // UnsafeUnityctlServerServer may be embedded to opt out of forward compatibility for this service.
@@ -493,6 +507,24 @@ func _UnityctlServer_Ack_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UnityctlServer_UpdateGameCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateGameCountReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UnityctlServerServer).UpdateGameCount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/unityctl.UnityctlServer/UpdateGameCount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UnityctlServerServer).UpdateGameCount(ctx, req.(*UpdateGameCountReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UnityctlServer_ServiceDesc is the grpc.ServiceDesc for UnityctlServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -539,6 +571,10 @@ var UnityctlServer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Ack",
 			Handler:    _UnityctlServer_Ack_Handler,
+		},
+		{
+			MethodName: "UpdateGameCount",
+			Handler:    _UnityctlServer_UpdateGameCount_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
