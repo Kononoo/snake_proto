@@ -170,6 +170,15 @@ message AckReq {
 message AckRsp {
 }
 
+// 更新unity server游戏局数
+message UpdateGameCountReq{
+  string addr = 1; // ip:端口
+  int32 rid = 2; // 房间id
+  int32 game_mode = 3; // 游戏模式
+}
+message UpdateGameCountRsp{
+}
+
 service UnityctlServer {
   rpc SyncState (SyncStateReq) returns (SyncStateRsp) {}
   rpc StartGame(StartGameReq) returns (StartGameRsp) {}
@@ -183,4 +192,5 @@ service UnityctlServer {
   rpc GetSnakeConfig(GetSnakeConfigReq) returns (GetSnakeConfigRsp) {}
   rpc ExitGame(ExitGameReq) returns (ExitGameRsp) {}
   rpc Ack(AckReq) returns (AckRsp) {}
+  rpc UpdateGameCount(UpdateGameCountReq) returns (UpdateGameCountRsp) {}
 }
