@@ -40,4 +40,5 @@ message SnakeAreaConfig {
   int64 end_time = 3;// 结束时间
   int64 target_length = 4;// 达成挑战的目标长度
   string reward_icon = 5; // 奖励icon
+  int64 change_loc_limit = 6; // 修改定位上限
 }
