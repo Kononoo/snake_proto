@@ -8,6 +8,7 @@ enum PushType { // push消息类型
   StartStressTest = 1; // 开始压测
   NotifyExitGame = 2; // 通知unity server玩家退出游戏
   NotifyEnterGame = 3; // 通知有玩家中途加入
+  Ping = 4;
 }
 
 //玩家类型

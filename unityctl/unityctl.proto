@@ -22,6 +22,7 @@ message SyncStateReq {
 }
 
 message SyncStateRsp {
+  bool reconnect = 1; // 是否需要重连
 }
 
 // 游戏开始前，unity server通知游戏开始
