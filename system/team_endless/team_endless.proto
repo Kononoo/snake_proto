@@ -30,6 +30,7 @@ message GradeInfo {
 message GetGameResultReq { // 获取结算信息
   string uid = 1;
   int64 rid = 2;
+  string game_id = 3; // 本局游戏的id，用于区分不同对局的结算，防止重复结算
 }
 
 message GetGameResultRsp {
