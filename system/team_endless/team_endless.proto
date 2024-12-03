@@ -142,6 +142,7 @@ message EndGameNotify {
   FloatingInfo floating_info = 29;
   repeated EndlessTeammate teammates = 30; // 队友信息
   repeated string followed_list = 31; // 被关注的 uid
+  string game_id = 32; // 本局游戏的id，用于区分不同对局的结算，防止重复结算
 }
 
 message EndlessTeammate {
