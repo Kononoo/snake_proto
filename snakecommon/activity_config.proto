@@ -40,4 +40,5 @@ message SnakeAreaConfig {
   int64 end_time = 3;// 结束时间
   int64 target_length = 4;// 达成挑战的目标长度
   string reward_icon = 5; // 奖励icon
+  string btn_url = 6; // 跳转链接
 }
