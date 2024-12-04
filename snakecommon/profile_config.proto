@@ -871,6 +871,8 @@ message CouplePassCheck {
   int32 single_pb_item_id = 15;                       // 单人经验值道具 ID
   int32 couple_pb_item_id = 16;                       // 双人经验值道具 ID
   int32 intimacy_item_id = 17;                        // 亲密度道具 ID
+  string ios_hotfix_unity_version = 18;
+  string android_hotfix_unity_version = 19;
 }
 
 message CPCPrompt {
