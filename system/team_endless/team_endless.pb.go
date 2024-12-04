@@ -1971,6 +1971,281 @@ func (x *GetNewbieAiRsp) GetSkinId() int64 {
 	return 0
 }
 
+// 获取赛季奖励状态
+type GetSeasonRewardStateReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetSeasonRewardStateReq) Reset() {
+	*x = GetSeasonRewardStateReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[27]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetSeasonRewardStateReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSeasonRewardStateReq) ProtoMessage() {}
+
+func (x *GetSeasonRewardStateReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[27]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSeasonRewardStateReq.ProtoReflect.Descriptor instead.
+func (*GetSeasonRewardStateReq) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{27}
+}
+
+type GetSeasonRewardStateRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	TakenRewardRankIds []int32 `protobuf:"varint,1,rep,packed,name=taken_reward_rank_ids,json=takenRewardRankIds,proto3" json:"taken_reward_rank_ids,omitempty"` // 已领取奖励的段位id列表
+}
+
+func (x *GetSeasonRewardStateRsp) Reset() {
+	*x = GetSeasonRewardStateRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[28]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetSeasonRewardStateRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSeasonRewardStateRsp) ProtoMessage() {}
+
+func (x *GetSeasonRewardStateRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[28]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSeasonRewardStateRsp.ProtoReflect.Descriptor instead.
+func (*GetSeasonRewardStateRsp) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *GetSeasonRewardStateRsp) GetTakenRewardRankIds() []int32 {
+	if x != nil {
+		return x.TakenRewardRankIds
+	}
+	return nil
+}
+
+// 一键领取赛季奖励
+type GetAllSeasonRewardReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetAllSeasonRewardReq) Reset() {
+	*x = GetAllSeasonRewardReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[29]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllSeasonRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllSeasonRewardReq) ProtoMessage() {}
+
+func (x *GetAllSeasonRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[29]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllSeasonRewardReq.ProtoReflect.Descriptor instead.
+func (*GetAllSeasonRewardReq) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{29}
+}
+
+type GetAllSeasonRewardRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	RewardList         []*snakecommon.CRewardItem `protobuf:"bytes,1,rep,name=reward_list,json=rewardList,proto3" json:"reward_list,omitempty"`
+	TakenRewardRankIds []int32                    `protobuf:"varint,2,rep,packed,name=taken_reward_rank_ids,json=takenRewardRankIds,proto3" json:"taken_reward_rank_ids,omitempty"` // 已领取奖励的段位id列表
+}
+
+func (x *GetAllSeasonRewardRsp) Reset() {
+	*x = GetAllSeasonRewardRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[30]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetAllSeasonRewardRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllSeasonRewardRsp) ProtoMessage() {}
+
+func (x *GetAllSeasonRewardRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[30]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllSeasonRewardRsp.ProtoReflect.Descriptor instead.
+func (*GetAllSeasonRewardRsp) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *GetAllSeasonRewardRsp) GetRewardList() []*snakecommon.CRewardItem {
+	if x != nil {
+		return x.RewardList
+	}
+	return nil
+}
+
+func (x *GetAllSeasonRewardRsp) GetTakenRewardRankIds() []int32 {
+	if x != nil {
+		return x.TakenRewardRankIds
+	}
+	return nil
+}
+
+// 领取指定段位的赛季奖励
+type GetSeasonRewardReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	RankId int32 `protobuf:"varint,1,opt,name=rank_id,json=rankId,proto3" json:"rank_id,omitempty"` // 段位id
+}
+
+func (x *GetSeasonRewardReq) Reset() {
+	*x = GetSeasonRewardReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[31]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetSeasonRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSeasonRewardReq) ProtoMessage() {}
+
+func (x *GetSeasonRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[31]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSeasonRewardReq.ProtoReflect.Descriptor instead.
+func (*GetSeasonRewardReq) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *GetSeasonRewardReq) GetRankId() int32 {
+	if x != nil {
+		return x.RankId
+	}
+	return 0
+}
+
+type GetSeasonRewardRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	RewardList []*snakecommon.CRewardItem `protobuf:"bytes,1,rep,name=reward_list,json=rewardList,proto3" json:"reward_list,omitempty"`
+}
+
+func (x *GetSeasonRewardRsp) Reset() {
+	*x = GetSeasonRewardRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[32]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetSeasonRewardRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSeasonRewardRsp) ProtoMessage() {}
+
+func (x *GetSeasonRewardRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[32]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSeasonRewardRsp.ProtoReflect.Descriptor instead.
+func (*GetSeasonRewardRsp) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *GetSeasonRewardRsp) GetRewardList() []*snakecommon.CRewardItem {
+	if x != nil {
+		return x.RewardList
+	}
+	return nil
+}
+
 var File_system_team_endless_team_endless_proto protoreflect.FileDescriptor
 
 var file_system_team_endless_team_endless_proto_rawDesc = []byte{
@@ -2266,11 +2541,36 @@ var file_system_team_endless_team_endless_proto_rawDesc = []byte{
 	0x3b, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x4e, 0x65, 0x77, 0x62, 0x69, 0x65, 0x41, 0x69, 0x52, 0x73,
 	0x70, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
 	0x75, 0x69, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6b, 0x69, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x73, 0x6b, 0x69, 0x6e, 0x49, 0x64, 0x42, 0x35, 0x5a, 0x33,
-	0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e,
-	0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
-	0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x65, 0x6e, 0x64, 0x6c,
-	0x65, 0x73, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x73, 0x6b, 0x69, 0x6e, 0x49, 0x64, 0x22, 0x19, 0x0a, 0x17,
+	0x47, 0x65, 0x74, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x53,
+	0x74, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x22, 0x4c, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x53, 0x65,
+	0x61, 0x73, 0x6f, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52,
+	0x73, 0x70, 0x12, 0x31, 0x0a, 0x15, 0x74, 0x61, 0x6b, 0x65, 0x6e, 0x5f, 0x72, 0x65, 0x77, 0x61,
+	0x72, 0x64, 0x5f, 0x72, 0x61, 0x6e, 0x6b, 0x5f, 0x69, 0x64, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x05, 0x52, 0x12, 0x74, 0x61, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x61,
+	0x6e, 0x6b, 0x49, 0x64, 0x73, 0x22, 0x17, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x53,
+	0x65, 0x61, 0x73, 0x6f, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x71, 0x22, 0x85,
+	0x01, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x41, 0x6c, 0x6c, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x52,
+	0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x73, 0x70, 0x12, 0x39, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61,
+	0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x52, 0x65, 0x77,
+	0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c,
+	0x69, 0x73, 0x74, 0x12, 0x31, 0x0a, 0x15, 0x74, 0x61, 0x6b, 0x65, 0x6e, 0x5f, 0x72, 0x65, 0x77,
+	0x61, 0x72, 0x64, 0x5f, 0x72, 0x61, 0x6e, 0x6b, 0x5f, 0x69, 0x64, 0x73, 0x18, 0x02, 0x20, 0x03,
+	0x28, 0x05, 0x52, 0x12, 0x74, 0x61, 0x6b, 0x65, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52,
+	0x61, 0x6e, 0x6b, 0x49, 0x64, 0x73, 0x22, 0x2d, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x65, 0x61,
+	0x73, 0x6f, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x65, 0x71, 0x12, 0x17, 0x0a, 0x07,
+	0x72, 0x61, 0x6e, 0x6b, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72,
+	0x61, 0x6e, 0x6b, 0x49, 0x64, 0x22, 0x4f, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x65, 0x61, 0x73,
+	0x6f, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x52, 0x73, 0x70, 0x12, 0x39, 0x0a, 0x0b, 0x72,
+	0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x18, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43,
+	0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61,
+	0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x42, 0x35, 0x5a, 0x33, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37,
+	0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d,
+	0x2f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x65, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2285,7 +2585,7 @@ func file_system_team_endless_team_endless_proto_rawDescGZIP() []byte {
 	return file_system_team_endless_team_endless_proto_rawDescData
 }
 
-var file_system_team_endless_team_endless_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_system_team_endless_team_endless_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
 var file_system_team_endless_team_endless_proto_goTypes = []interface{}{
 	(*GetRecentPartnerReq)(nil),     // 0: endless.GetRecentPartnerReq
 	(*GetRecentPartnerRsp)(nil),     // 1: endless.GetRecentPartnerRsp
@@ -2314,10 +2614,16 @@ var file_system_team_endless_team_endless_proto_goTypes = []interface{}{
 	(*UpdateGuideProgressRsp)(nil),  // 24: endless.UpdateGuideProgressRsp
 	(*GetNewbieAiReq)(nil),          // 25: endless.GetNewbieAiReq
 	(*GetNewbieAiRsp)(nil),          // 26: endless.GetNewbieAiRsp
-	nil,                             // 27: endless.EndGameNotify.RecommendInfoEntry
-	nil,                             // 28: endless.EndGameNotify.OpenedChestEntry
-	nil,                             // 29: endless.EndGameNotify.TurntableEntry
-	(*snakecommon.CRewardItem)(nil), // 30: snakecommon.CRewardItem
+	(*GetSeasonRewardStateReq)(nil), // 27: endless.GetSeasonRewardStateReq
+	(*GetSeasonRewardStateRsp)(nil), // 28: endless.GetSeasonRewardStateRsp
+	(*GetAllSeasonRewardReq)(nil),   // 29: endless.GetAllSeasonRewardReq
+	(*GetAllSeasonRewardRsp)(nil),   // 30: endless.GetAllSeasonRewardRsp
+	(*GetSeasonRewardReq)(nil),      // 31: endless.GetSeasonRewardReq
+	(*GetSeasonRewardRsp)(nil),      // 32: endless.GetSeasonRewardRsp
+	nil,                             // 33: endless.EndGameNotify.RecommendInfoEntry
+	nil,                             // 34: endless.EndGameNotify.OpenedChestEntry
+	nil,                             // 35: endless.EndGameNotify.TurntableEntry
+	(*snakecommon.CRewardItem)(nil), // 36: snakecommon.CRewardItem
 }
 var file_system_team_endless_team_endless_proto_depIdxs = []int32{
 	2,  // 0: endless.GetRecentPartnerRsp.user_list:type_name -> endless.Partner
@@ -2325,21 +2631,21 @@ var file_system_team_endless_team_endless_proto_depIdxs = []int32{
 	16, // 2: endless.GetGameResultRsp.result:type_name -> endless.EndGameNotify
 	7,  // 3: endless.UserEggProgress.egg_list:type_name -> endless.UserEgg
 	9,  // 4: endless.GamePassCheckExp.exp_detail:type_name -> endless.PassCheckExpDetail
-	30, // 5: endless.ActReward.reward_list:type_name -> snakecommon.CRewardItem
-	30, // 6: endless.GameExtraReward.reward_list:type_name -> snakecommon.CRewardItem
+	36, // 5: endless.ActReward.reward_list:type_name -> snakecommon.CRewardItem
+	36, // 6: endless.GameExtraReward.reward_list:type_name -> snakecommon.CRewardItem
 	19, // 7: endless.UserMeetupProgress.task_info:type_name -> endless.TaskInfo
 	13, // 8: endless.UserMeetupProgressItem.progress:type_name -> endless.UserMeetupProgress
 	19, // 9: endless.UserElGameReward.task_info:type_name -> endless.TaskInfo
-	27, // 10: endless.EndGameNotify.recommend_info:type_name -> endless.EndGameNotify.RecommendInfoEntry
-	28, // 11: endless.EndGameNotify.opened_chest:type_name -> endless.EndGameNotify.OpenedChestEntry
+	33, // 10: endless.EndGameNotify.recommend_info:type_name -> endless.EndGameNotify.RecommendInfoEntry
+	34, // 11: endless.EndGameNotify.opened_chest:type_name -> endless.EndGameNotify.OpenedChestEntry
 	18, // 12: endless.EndGameNotify.snake_coin_detail:type_name -> endless.SnakeCoinDetailItem
-	29, // 13: endless.EndGameNotify.turntable:type_name -> endless.EndGameNotify.TurntableEntry
+	35, // 13: endless.EndGameNotify.turntable:type_name -> endless.EndGameNotify.TurntableEntry
 	6,  // 14: endless.EndGameNotify.game_task:type_name -> endless.UserGameTask
 	8,  // 15: endless.EndGameNotify.hatch_egg:type_name -> endless.UserEggProgress
 	10, // 16: endless.EndGameNotify.pass_check:type_name -> endless.GamePassCheckExp
 	11, // 17: endless.EndGameNotify.act_reward:type_name -> endless.ActReward
 	12, // 18: endless.EndGameNotify.extra_reward:type_name -> endless.GameExtraReward
-	30, // 19: endless.EndGameNotify.endless_reward_list:type_name -> snakecommon.CRewardItem
+	36, // 19: endless.EndGameNotify.endless_reward_list:type_name -> snakecommon.CRewardItem
 	13, // 20: endless.EndGameNotify.new_meetup:type_name -> endless.UserMeetupProgress
 	13, // 21: endless.EndGameNotify.new_meetup_v2:type_name -> endless.UserMeetupProgress
 	13, // 22: endless.EndGameNotify.new_meetup_v3:type_name -> endless.UserMeetupProgress
@@ -2348,13 +2654,15 @@ var file_system_team_endless_team_endless_proto_depIdxs = []int32{
 	20, // 25: endless.EndGameNotify.web_banner:type_name -> endless.WebBanner
 	22, // 26: endless.EndGameNotify.floating_info:type_name -> endless.FloatingInfo
 	17, // 27: endless.EndGameNotify.teammates:type_name -> endless.EndlessTeammate
-	30, // 28: endless.FloatingInfo.reward_list:type_name -> snakecommon.CRewardItem
+	36, // 28: endless.FloatingInfo.reward_list:type_name -> snakecommon.CRewardItem
 	21, // 29: endless.FloatingInfo.floating_list:type_name -> endless.FloatingItem
-	30, // [30:30] is the sub-list for method output_type
-	30, // [30:30] is the sub-list for method input_type
-	30, // [30:30] is the sub-list for extension type_name
-	30, // [30:30] is the sub-list for extension extendee
-	0,  // [0:30] is the sub-list for field type_name
+	36, // 30: endless.GetAllSeasonRewardRsp.reward_list:type_name -> snakecommon.CRewardItem
+	36, // 31: endless.GetSeasonRewardRsp.reward_list:type_name -> snakecommon.CRewardItem
+	32, // [32:32] is the sub-list for method output_type
+	32, // [32:32] is the sub-list for method input_type
+	32, // [32:32] is the sub-list for extension type_name
+	32, // [32:32] is the sub-list for extension extendee
+	0,  // [0:32] is the sub-list for field type_name
 }
 
 func init() { file_system_team_endless_team_endless_proto_init() }
@@ -2687,6 +2995,78 @@ func file_system_team_endless_team_endless_proto_init() {
 				return nil
 			}
 		}
+		file_system_team_endless_team_endless_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetSeasonRewardStateReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetSeasonRewardStateRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetAllSeasonRewardReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetAllSeasonRewardRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetSeasonRewardReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetSeasonRewardRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -2694,7 +3074,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_system_team_endless_team_endless_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   30,
+			NumMessages:   36,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
