@@ -143,6 +143,8 @@ message EndGameNotify {
   repeated EndlessTeammate teammates = 30; // 队友信息
   repeated string followed_list = 31; // 被关注的 uid
   string game_id = 32; // 本局游戏的id，用于区分不同对局的结算，防止重复结算
+  int64 rank_score = 33; // 结算后的段位分
+  int64 delta_rank_score = 34; // 变化的段位分
 }
 
 message EndlessTeammate {
