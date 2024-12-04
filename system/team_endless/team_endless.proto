@@ -199,3 +199,26 @@ message GetNewbieAiRsp {
   string uid = 1; // 为空时表示没有ai
   int64 skin_id = 2;
 }
+
+// 获取赛季奖励状态
+message GetSeasonRewardStateReq {
+}
+message GetSeasonRewardStateRsp {
+  repeated int32 taken_reward_rank_ids = 1; // 已领取奖励的段位id列表
+}
+
+// 一键领取赛季奖励
+message GetAllSeasonRewardReq {
+}
+message GetAllSeasonRewardRsp {
+  repeated snakecommon.CRewardItem reward_list = 1;
+  repeated int32 taken_reward_rank_ids = 2; // 已领取奖励的段位id列表
+}
+
+// 领取指定段位的赛季奖励
+message GetSeasonRewardReq {
+  int32 rank_id = 1; // 段位id
+}
+message GetSeasonRewardRsp {
+  repeated snakecommon.CRewardItem reward_list = 1;
+}
