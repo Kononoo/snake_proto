@@ -2205,8 +2205,36 @@ message TeamEndlessConfig {
     int64 highest_score = 2; // 单人无尽最高分数要求
     repeated string instruction_texts = 3; // 引导文案
   }
-
   Guide guide = 3;
+
+  // 赛季配置
+  message SeasonRewardItem {
+    int32 rank_id = 1; // 大段位id
+    repeated snakecommon.CRewardItem reward_list = 2; // 奖励列表
+  }
+  message Season { // 赛季配置
+    int32 id = 1; // 赛季id
+    int64 start_time = 2; // 赛季开始时间
+    int64 end_time = 3; // 赛季结束时间
+    repeated SeasonRewardItem reward_list = 4; // 奖励列表
+  }
+  Season season = 4; // 赛季配置
+
+  // 段位配置
+  message BigRankItem {
+    int32 id = 1; // 大段位id
+    string name = 2; // 大段位名称
+  }
+  message SmallRank {
+    int32 id = 1; // 小段位id
+    string name = 2; // 小段位名称
+    int64 min = 3; // 小段位分数区间最小值
+    int64 max = 4; // 小段位分数区间最大值
+  }
+  message Rank { // 段位配置
+    repeated BigRankItem big_rank = 1; // 大段位列表
+    repeated SmallRank small_rank = 2; // 小段位列表
+  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
