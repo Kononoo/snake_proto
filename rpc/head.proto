@@ -19,4 +19,5 @@ enum cmd {
   Social = 11; // 社交服
   Cron = 12; // 定时任务服务
   Admin = 13; // 管理后台
+  UnityGame = 14; // 帧同步游戏服
 }
