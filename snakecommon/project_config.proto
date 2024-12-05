@@ -2218,7 +2218,7 @@ message TeamEndlessConfig {
     int64 end_time = 3; // 赛季结束时间
     repeated SeasonRewardItem reward_list = 4; // 奖励列表
   }
-  Season season = 4; // 赛季配置
+  repeated Season seasons = 4; // 赛季配置
 
   // 段位配置
   message BigRankItem {
