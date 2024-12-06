@@ -321,7 +321,7 @@ message PassCommonConfig {
   string guide_imgurl = 12;
   repeated int32 has_exp_mode = 13; //能获得且要展示经验的游戏模式
   int32 per_rank_exp = 14; //每个等级需要的经验
-  // 首页
+  // 活动首页
   string bg_url = 15; // 背景url
   int32 bg_anim_type = 16; // 主页背景动效类型
   string main_reward_url = 17; // 主奖励展示动效svga
@@ -340,7 +340,7 @@ message PassCommonConfig {
   string desc = 26;
   int32 task_card_id = 27; // 任务卡id
 
-  // 5.27.5 首页优化
+  // 游戏首页icon
   string level_color = 28; // 等级数值的颜色
   string icon = 29;        // 首页icon
 }
