@@ -224,3 +224,12 @@ message GetSeasonRewardReq {
 message GetSeasonRewardRsp {
   repeated snakecommon.CRewardItem reward_list = 1;
 }
+
+// 获取buff活动入口信息
+message GetBuffActivityEntryReq {
+}
+message GetBuffActivityEntryRsp {
+  bool show = 1; // 是否展示入口
+  string jump_link = 2; // 跳转链接
+  bool has_red_dot = 3; // 是否有红点
+}
