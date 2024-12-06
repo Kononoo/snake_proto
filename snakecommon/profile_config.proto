@@ -339,6 +339,10 @@ message PassCommonConfig {
   string rule_desc_tmpl = 25;
   string desc = 26;
   int32 task_card_id = 27; // 任务卡id
+
+  // 5.27.5 首页优化
+  string level_color = 28; // 等级数值的颜色
+  string icon = 29;        // 首页icon
 }
 
 message PassRewardConfig {
