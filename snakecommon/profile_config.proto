@@ -1126,8 +1126,8 @@ message StarFieldLottery {
   int64 one_price = 1; // 一次抽奖价格
   int64 ten_price = 2; // 十次抽奖价格
   int32 lottery_coin_id = 3; // 抽奖币ID
-  int64 lottery_coin_img = 4; // 抽奖币图片
-  int64 lottery_coin_name = 5; // 抽奖币名称
+  string lottery_coin_img = 4; // 抽奖币图片
+  string lottery_coin_name = 5; // 抽奖币名称
   repeated SFLotteryRewardItem reward_pool = 6; // 奖励池
   repeated SFLotteryGuaranteed guaranteed_config = 7; // 保底配置
   repeated SFLotteryGuaranteedPool guaranteed_reward = 8; // 保底奖励池
