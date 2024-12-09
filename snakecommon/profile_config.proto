@@ -1167,14 +1167,14 @@ message StarFieldTask {
 
 
 message SFDailyTask {
-  repeated int64 event_ids = 1; // 任务活动 ID 列表
+  repeated int32 event_ids = 1; // 任务活动 ID 列表
   repeated EventTask event_infos = 2;         // 任务配置，服务器读取填充
 }
 
 message SFWeeklyTaskItem {
   int64 week_num = 1; // 第几周
   int64 unlock_time = 2; // 解锁时间
-  repeated int64 event_ids = 3; // 任务活动 ID 列表
+  repeated int32 event_ids = 3; // 任务活动 ID 列表
   repeated EventTask event_infos = 4;   // 任务配置，服务器读取填充
 }
 
