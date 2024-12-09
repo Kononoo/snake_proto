@@ -1113,14 +1113,9 @@ message StarFieldExchangeStore {
 
 message SFExchangeItem {
   int32 index = 1; // 索引
-  SFExchangeRewardItem reward = 2; // 奖励配置
+  SnakeMain.Config.RewardConfig reward_info = 2; // 奖励配置
   int64 exchange_limit = 3; // 兑换上限，0表示无上限
   int64 middle_item_count = 4; // 需要的中间物品数量
-}
-
-message SFExchangeRewardItem {
-  SnakeMain.Config.RewardConfig reward_info = 1; // 奖励配置
-  string anim_url = 2; // 奖励动效
 }
 
 message StarFieldLottery {
