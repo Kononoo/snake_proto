@@ -1052,8 +1052,8 @@ message StarFieldLevelConf {
 
 message StarFieldLevel {
   int32 level = 1; // 等级
-  SnakeMain.Config.RewardConfig free_reward = 2; // 免费奖励配置
-  SnakeMain.Config.RewardConfig pay_reward = 3; // 付费奖励配置
+  repeated SnakeMain.Config.RewardConfig free_rewards = 2; // 免费奖励配置
+  repeated SnakeMain.Config.RewardConfig pay_rewards = 3; // 付费奖励配置
 }
 
 message StarFieldPackConf {
