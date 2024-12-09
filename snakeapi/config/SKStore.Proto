@@ -1315,6 +1315,7 @@ message RewardConfig { // 服务器配置奖励的通用结构
   int32 reset_baodi = 25; // 获得后是否重置保底  0 不重置 1 重置
   int64 id = 26;
   string desc = 27; // 奖励具体文案描述
+  string anim_url = 28;  // 动效 url
 }
 
 message RewardInfo { // 客户端奖励配置结构
