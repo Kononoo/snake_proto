@@ -2262,6 +2262,108 @@ func (x *GetSeasonRewardRsp) GetRewardList() []*snakecommon.CRewardItem {
 	return nil
 }
 
+// 获取buff活动入口信息
+type GetBuffActivityEntryReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GetBuffActivityEntryReq) Reset() {
+	*x = GetBuffActivityEntryReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[33]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetBuffActivityEntryReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBuffActivityEntryReq) ProtoMessage() {}
+
+func (x *GetBuffActivityEntryReq) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[33]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBuffActivityEntryReq.ProtoReflect.Descriptor instead.
+func (*GetBuffActivityEntryReq) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{33}
+}
+
+type GetBuffActivityEntryRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Show      bool   `protobuf:"varint,1,opt,name=show,proto3" json:"show,omitempty"`                              // 是否展示入口
+	JumpLink  string `protobuf:"bytes,2,opt,name=jump_link,json=jumpLink,proto3" json:"jump_link,omitempty"`       // 跳转链接
+	HasRedDot bool   `protobuf:"varint,3,opt,name=has_red_dot,json=hasRedDot,proto3" json:"has_red_dot,omitempty"` // 是否有红点
+}
+
+func (x *GetBuffActivityEntryRsp) Reset() {
+	*x = GetBuffActivityEntryRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_system_team_endless_team_endless_proto_msgTypes[34]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetBuffActivityEntryRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBuffActivityEntryRsp) ProtoMessage() {}
+
+func (x *GetBuffActivityEntryRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_system_team_endless_team_endless_proto_msgTypes[34]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBuffActivityEntryRsp.ProtoReflect.Descriptor instead.
+func (*GetBuffActivityEntryRsp) Descriptor() ([]byte, []int) {
+	return file_system_team_endless_team_endless_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *GetBuffActivityEntryRsp) GetShow() bool {
+	if x != nil {
+		return x.Show
+	}
+	return false
+}
+
+func (x *GetBuffActivityEntryRsp) GetJumpLink() string {
+	if x != nil {
+		return x.JumpLink
+	}
+	return ""
+}
+
+func (x *GetBuffActivityEntryRsp) GetHasRedDot() bool {
+	if x != nil {
+		return x.HasRedDot
+	}
+	return false
+}
+
 var File_system_team_endless_team_endless_proto protoreflect.FileDescriptor
 
 var file_system_team_endless_team_endless_proto_rawDesc = []byte{
@@ -2586,11 +2688,20 @@ var file_system_team_endless_team_endless_proto_rawDesc = []byte{
 	0x64, 0x52, 0x73, 0x70, 0x12, 0x39, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c,
 	0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x73, 0x6e, 0x61, 0x6b,
 	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49,
-	0x74, 0x65, 0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x42,
-	0x35, 0x5a, 0x33, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d,
-	0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x65,
-	0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x65, 0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x22,
+	0x19, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x42, 0x75, 0x66, 0x66, 0x41, 0x63, 0x74, 0x69, 0x76, 0x69,
+	0x74, 0x79, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x65, 0x71, 0x22, 0x6a, 0x0a, 0x17, 0x47, 0x65,
+	0x74, 0x42, 0x75, 0x66, 0x66, 0x41, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x45, 0x6e, 0x74,
+	0x72, 0x79, 0x52, 0x73, 0x70, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x68, 0x6f, 0x77, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x08, 0x52, 0x04, 0x73, 0x68, 0x6f, 0x77, 0x12, 0x1b, 0x0a, 0x09, 0x6a, 0x75, 0x6d,
+	0x70, 0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6a, 0x75,
+	0x6d, 0x70, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x1e, 0x0a, 0x0b, 0x68, 0x61, 0x73, 0x5f, 0x72, 0x65,
+	0x64, 0x5f, 0x64, 0x6f, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x68, 0x61, 0x73,
+	0x52, 0x65, 0x64, 0x44, 0x6f, 0x74, 0x42, 0x35, 0x5a, 0x33, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37,
+	0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d,
+	0x2f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x65, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2605,7 +2716,7 @@ func file_system_team_endless_team_endless_proto_rawDescGZIP() []byte {
 	return file_system_team_endless_team_endless_proto_rawDescData
 }
 
-var file_system_team_endless_team_endless_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
+var file_system_team_endless_team_endless_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
 var file_system_team_endless_team_endless_proto_goTypes = []interface{}{
 	(*GetRecentPartnerReq)(nil),     // 0: endless.GetRecentPartnerReq
 	(*GetRecentPartnerRsp)(nil),     // 1: endless.GetRecentPartnerRsp
@@ -2640,10 +2751,12 @@ var file_system_team_endless_team_endless_proto_goTypes = []interface{}{
 	(*GetAllSeasonRewardRsp)(nil),   // 30: endless.GetAllSeasonRewardRsp
 	(*GetSeasonRewardReq)(nil),      // 31: endless.GetSeasonRewardReq
 	(*GetSeasonRewardRsp)(nil),      // 32: endless.GetSeasonRewardRsp
-	nil,                             // 33: endless.EndGameNotify.RecommendInfoEntry
-	nil,                             // 34: endless.EndGameNotify.OpenedChestEntry
-	nil,                             // 35: endless.EndGameNotify.TurntableEntry
-	(*snakecommon.CRewardItem)(nil), // 36: snakecommon.CRewardItem
+	(*GetBuffActivityEntryReq)(nil), // 33: endless.GetBuffActivityEntryReq
+	(*GetBuffActivityEntryRsp)(nil), // 34: endless.GetBuffActivityEntryRsp
+	nil,                             // 35: endless.EndGameNotify.RecommendInfoEntry
+	nil,                             // 36: endless.EndGameNotify.OpenedChestEntry
+	nil,                             // 37: endless.EndGameNotify.TurntableEntry
+	(*snakecommon.CRewardItem)(nil), // 38: snakecommon.CRewardItem
 }
 var file_system_team_endless_team_endless_proto_depIdxs = []int32{
 	2,  // 0: endless.GetRecentPartnerRsp.user_list:type_name -> endless.Partner
@@ -2651,21 +2764,21 @@ var file_system_team_endless_team_endless_proto_depIdxs = []int32{
 	16, // 2: endless.GetGameResultRsp.result:type_name -> endless.EndGameNotify
 	7,  // 3: endless.UserEggProgress.egg_list:type_name -> endless.UserEgg
 	9,  // 4: endless.GamePassCheckExp.exp_detail:type_name -> endless.PassCheckExpDetail
-	36, // 5: endless.ActReward.reward_list:type_name -> snakecommon.CRewardItem
-	36, // 6: endless.GameExtraReward.reward_list:type_name -> snakecommon.CRewardItem
+	38, // 5: endless.ActReward.reward_list:type_name -> snakecommon.CRewardItem
+	38, // 6: endless.GameExtraReward.reward_list:type_name -> snakecommon.CRewardItem
 	19, // 7: endless.UserMeetupProgress.task_info:type_name -> endless.TaskInfo
 	13, // 8: endless.UserMeetupProgressItem.progress:type_name -> endless.UserMeetupProgress
 	19, // 9: endless.UserElGameReward.task_info:type_name -> endless.TaskInfo
-	33, // 10: endless.EndGameNotify.recommend_info:type_name -> endless.EndGameNotify.RecommendInfoEntry
-	34, // 11: endless.EndGameNotify.opened_chest:type_name -> endless.EndGameNotify.OpenedChestEntry
+	35, // 10: endless.EndGameNotify.recommend_info:type_name -> endless.EndGameNotify.RecommendInfoEntry
+	36, // 11: endless.EndGameNotify.opened_chest:type_name -> endless.EndGameNotify.OpenedChestEntry
 	18, // 12: endless.EndGameNotify.snake_coin_detail:type_name -> endless.SnakeCoinDetailItem
-	35, // 13: endless.EndGameNotify.turntable:type_name -> endless.EndGameNotify.TurntableEntry
+	37, // 13: endless.EndGameNotify.turntable:type_name -> endless.EndGameNotify.TurntableEntry
 	6,  // 14: endless.EndGameNotify.game_task:type_name -> endless.UserGameTask
 	8,  // 15: endless.EndGameNotify.hatch_egg:type_name -> endless.UserEggProgress
 	10, // 16: endless.EndGameNotify.pass_check:type_name -> endless.GamePassCheckExp
 	11, // 17: endless.EndGameNotify.act_reward:type_name -> endless.ActReward
 	12, // 18: endless.EndGameNotify.extra_reward:type_name -> endless.GameExtraReward
-	36, // 19: endless.EndGameNotify.endless_reward_list:type_name -> snakecommon.CRewardItem
+	38, // 19: endless.EndGameNotify.endless_reward_list:type_name -> snakecommon.CRewardItem
 	13, // 20: endless.EndGameNotify.new_meetup:type_name -> endless.UserMeetupProgress
 	13, // 21: endless.EndGameNotify.new_meetup_v2:type_name -> endless.UserMeetupProgress
 	13, // 22: endless.EndGameNotify.new_meetup_v3:type_name -> endless.UserMeetupProgress
@@ -2674,10 +2787,10 @@ var file_system_team_endless_team_endless_proto_depIdxs = []int32{
 	20, // 25: endless.EndGameNotify.web_banner:type_name -> endless.WebBanner
 	22, // 26: endless.EndGameNotify.floating_info:type_name -> endless.FloatingInfo
 	17, // 27: endless.EndGameNotify.teammates:type_name -> endless.EndlessTeammate
-	36, // 28: endless.FloatingInfo.reward_list:type_name -> snakecommon.CRewardItem
+	38, // 28: endless.FloatingInfo.reward_list:type_name -> snakecommon.CRewardItem
 	21, // 29: endless.FloatingInfo.floating_list:type_name -> endless.FloatingItem
-	36, // 30: endless.GetAllSeasonRewardRsp.reward_list:type_name -> snakecommon.CRewardItem
-	36, // 31: endless.GetSeasonRewardRsp.reward_list:type_name -> snakecommon.CRewardItem
+	38, // 30: endless.GetAllSeasonRewardRsp.reward_list:type_name -> snakecommon.CRewardItem
+	38, // 31: endless.GetSeasonRewardRsp.reward_list:type_name -> snakecommon.CRewardItem
 	32, // [32:32] is the sub-list for method output_type
 	32, // [32:32] is the sub-list for method input_type
 	32, // [32:32] is the sub-list for extension type_name
@@ -3087,6 +3200,30 @@ func file_system_team_endless_team_endless_proto_init() {
 				return nil
 			}
 		}
+		file_system_team_endless_team_endless_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetBuffActivityEntryReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_system_team_endless_team_endless_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetBuffActivityEntryRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -3094,7 +3231,7 @@ func file_system_team_endless_team_endless_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_system_team_endless_team_endless_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   36,
+			NumMessages:   38,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

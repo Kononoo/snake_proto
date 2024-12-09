@@ -41,4 +41,5 @@ message SnakeAreaConfig {
   int64 target_length = 4;// 达成挑战的目标长度
   string reward_icon = 5; // 奖励icon
   string btn_url = 6; // 跳转链接
+  string desc = 7; // 活动说明
 }

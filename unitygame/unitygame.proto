@@ -184,6 +184,7 @@ message BindReq {
   int32 player_count = 8;   // 匹配时的人数（排除ai）
   int32 platform = 9;
   int32 max_player_count = 10; // 最多人数
+  string version = 11; // 客户端版本号
 }
 
 message BindRsp {

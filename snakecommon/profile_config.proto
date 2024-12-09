@@ -5,6 +5,7 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 import "snakecommon/config.proto";
 import "snakecommon/task.proto";
 import "snakeapi/config/SKStore.Proto";
+import "snakecommon/project_config.proto";
 
 
 // ======== charge_vip_config start ====================================================
@@ -343,6 +344,7 @@ message PassCommonConfig {
   // 游戏首页icon
   string level_color = 28; // 等级数值的颜色
   string icon = 29;        // 首页icon
+  bool   icon_position_switch = 30; // 首页icon位置开关
 }
 
 message PassRewardConfig {
@@ -1009,3 +1011,182 @@ message CPCIntimateLevelItem {
   int64 intimacy = 2; // 需要的亲密度
 }
 // ======== couple_pass_check end ====================================================
+
+// ======== star_field_bp start ====================================================
+message StarFieldBp {
+  string act_id = 1; // 活动id
+  int32 turn = 2; // 活动轮次（每12期1轮）
+  int32 constellation_id = 3; // 星座id
+  int64 start_time = 4; // 开始时间
+  int64 end_time = 5; // 结束时间
+  string title = 6; // 活动标题
+  string desc = 7; // 活动描述
+  map<int32, string> constellation_name = 8; // 星座名称映射
+  snakecommon.GameIcon icon_config = 9; // 主页图标配置
+  repeated StarFieldBpMainReward main_rewards = 10; // 主资源皮肤配置
+  StarFieldLevelConf level_conf = 11; // 等级配置
+  StarFieldPackConf pack_conf = 12; // 礼包配置
+  StarFieldRankConf rank_conf = 13; // 排行榜配置
+  StarFieldHonorPage honor_page = 14; // 冠名页
+  StarFieldExchangeStore exchange_store = 15; // 兑换商店
+  StarFieldLottery lottery = 16; // 抽奖配置
+  StarFieldTask task_conf = 17; // 任务配置
+  StarFieldWish wish_conf = 18; // 祈福配置
+}
+
+message StarFieldBpMainReward {
+  int32 type = 1; // 奖励类型
+  int32 item_id = 2; // 奖励id
+  string anim_url = 3; // 奖励动效
+}
+
+message StarFieldLevelConf {
+  int32 pb_item_id = 1; // 经验道具 ID
+  int64 diamond_per_level = 2; // 每级需要的苹果数
+  int64 max_level = 3; // 最高等级，该登记后面重复奖励
+  int64 pb_per_level = 4; // 每级需要的经验值
+  int64 repeat_per_level = 5; // 每多少级重复奖励
+  SnakeMain.Config.RewardConfig  repeat_reward = 6; // 重复奖励配置
+  repeated StarFieldLevel levels = 7; // 等级配置
+  map<int32, SnakeMain.Config.RewardConfig> main_rewards = 8; // 重点奖励，key为等级
+}
+
+message StarFieldLevel {
+  int32 level = 1; // 等级
+  repeated SnakeMain.Config.RewardConfig free_rewards = 2; // 免费奖励配置
+  repeated SnakeMain.Config.RewardConfig pay_rewards = 3; // 付费奖励配置
+}
+
+message StarFieldPackConf {
+  StarFieldPackInfo basic_pack = 1; // 基础礼包
+  StarFieldPackInfo luxury_pack = 2; // 豪华礼包
+}
+
+message StarFieldPackInfo {
+  int32 pack_id = 1; // 礼包ID
+  repeated SnakeMain.Config.RewardConfig rewards = 2; // 奖励配置
+  string prompt_1 = 3; // 当前距离活动结束大于24小时时提示文案
+  string prompt_2 = 4; // 当前距离活动结束小于24小时时提示文案
+}
+
+message StarFieldRankConf {
+  SFRankSettleConf level_total_rank = 1; // 等级总榜
+  SFRankSettleConf level_daily_rank = 2; // 等级日榜
+  SFRankSettleConf gift_total_rank = 3; // 收礼总榜
+  SFRankSettleConf gift_daily_rank = 4; // 收礼日榜
+  repeated int32 gift_ids = 5; // 指定礼物 ID 列表
+}
+
+message SFRankSettleConf {
+  repeated SFSettleReward settle_rewards = 1; // 结算奖励配置
+}
+
+message SFSettleReward {
+  int32 min_rank = 1; // 最小排名
+  int32 max_rank = 2; // 最大排名
+  string mail_content = 3; // 邮件内容
+  repeated SnakeMain.Config.RewardConfig rewards = 4; // 奖励配置
+}
+
+message StarFieldHonorPage {
+  string intro = 1; // 冠名页说明文案
+  SFHonorSendReward send_reward = 2; // 赠礼配置
+}
+
+message SFHonorSendReward {
+  int64 daily_limit = 1; // 每日赠送次数上限
+  string mail_content = 2; // 邮件内容
+  repeated SFHonorSendRewardItem reward_pool = 3; // 奖励池
+}
+
+message SFHonorSendRewardItem {
+  SnakeMain.Config.RewardConfig reward = 1; // 奖励配置
+  int64 weight = 2; // 权重
+}
+
+message StarFieldExchangeStore {
+  int32 middle_item_id = 1; // 中间物品ID
+  string middle_item_img = 2; // 中间物品图片
+  string middle_item_name = 3; // 中间物品名称
+  repeated SFExchangeItem items = 4; // 兑换物品列表
+}
+
+message SFExchangeItem {
+  int32 index = 1; // 索引
+  SnakeMain.Config.RewardConfig reward_info = 2; // 奖励配置
+  int64 exchange_limit = 3; // 兑换上限，0表示无上限
+  int64 middle_item_count = 4; // 需要的中间物品数量
+}
+
+message StarFieldLottery {
+  int64 one_price = 1; // 一次抽奖价格
+  int64 ten_price = 2; // 十次抽奖价格
+  int32 lottery_coin_id = 3; // 抽奖币ID
+  string lottery_coin_img = 4; // 抽奖币图片
+  string lottery_coin_name = 5; // 抽奖币名称
+  repeated SFLotteryRewardItem reward_pool = 6; // 奖励池
+  repeated SFLotteryGuaranteed guaranteed_config = 7; // 保底配置
+  repeated SFLotteryGuaranteedPool guaranteed_reward = 8; // 保底奖励池
+  repeated SFLotteryAccuReward accu_rewards = 9; // 累抽奖励
+}
+
+message SFLotteryRewardItem {
+  int64 id = 1; // 唯一标识
+  SnakeMain.Config.RewardConfig reward_info = 2; // 奖励配置
+  int64 weight = 3; // 权重
+  bool is_special = 4; // 是否为特殊奖励
+  int64 coin_num = 5; // 唯一性资源折算的抽奖代币数量
+  int64 show_item_num = 6; // 唯一性资源折算的 show 卡数量
+  int64 limit = 7; // 抽中次数限制，0 表示无上限
+}
+
+message SFLotteryGuaranteed {
+  int64 low = 1; // 抽奖次数左值（包含）
+  int64 high = 2; // 抽奖次数右值（包含）
+  int64 weight = 3; // 权重
+}
+
+message SFLotteryGuaranteedPool {
+  int64 low = 1; // 保底次数左值（包含）
+  int64 high = 2; // 保底次数右值（包含）
+  repeated SFLotteryRewardItem reward_pool = 3; // 奖励池
+}
+
+
+message SFLotteryAccuReward {
+  int64 accu_id = 1; // 唯一标识
+  int64 lottery_count = 2; // 抽奖次数
+  SnakeMain.Config.RewardConfig reward = 3; // 奖励
+}
+
+
+message StarFieldTask {
+  SFDailyTask daily_task = 1; // 每日任务
+  repeated SFWeeklyTaskItem week_task_list = 2; // 每周任务
+}
+
+
+message SFDailyTask {
+  repeated int32 event_ids = 1; // 任务活动 ID 列表
+  repeated EventTask event_infos = 2;         // 任务配置，服务器读取填充
+}
+
+message SFWeeklyTaskItem {
+  int64 week_num = 1; // 第几周
+  int64 unlock_time = 2; // 解锁时间
+  repeated int32 event_ids = 3; // 任务活动 ID 列表
+  repeated EventTask event_infos = 4;   // 任务配置，服务器读取填充
+}
+
+message StarFieldWish {
+  repeated SFWishItem reward_pool = 1; // 祈福奖励池
+}
+
+message SFWishItem {
+  SnakeMain.Config.RewardConfig reward_info  = 1; // 奖励配置
+  int64 weight = 2; // 权重
+  int64 global_daily_limit = 3; // 单服每日限制
+  int32 rarity = 4; // 稀有度(1,2,3,4)
+}
+
+// ======== star_field_bp end ====================================================
