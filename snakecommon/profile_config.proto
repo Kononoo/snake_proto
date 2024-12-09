@@ -344,6 +344,7 @@ message PassCommonConfig {
   // 游戏首页icon
   string level_color = 28; // 等级数值的颜色
   string icon = 29;        // 首页icon
+  bool   icon_position_switch = 30; // 首页icon位置开关
 }
 
 message PassRewardConfig {
@@ -1014,7 +1015,7 @@ message CPCIntimateLevelItem {
 // ======== star_field_bp start ====================================================
 message StarFieldBp {
   string act_id = 1; // 活动id
-  int32 turn = 2; // 活动轮次（每12期1轮）  
+  int32 turn = 2; // 活动轮次（每12期1轮）
   int32 constellation_id = 3; // 星座id
   int64 start_time = 4; // 开始时间
   int64 end_time = 5; // 结束时间
@@ -1103,7 +1104,7 @@ message SFHonorSendRewardItem {
   int64 weight = 2; // 权重
 }
 
-message StarFieldExchangeStore {  
+message StarFieldExchangeStore {
   int32 middle_item_id = 1; // 中间物品ID
   string middle_item_img = 2; // 中间物品图片
   string middle_item_name = 3; // 中间物品名称
@@ -1145,13 +1146,13 @@ message SFLotteryRewardItem {
 }
 
 message SFLotteryGuaranteed {
-  int64 low = 1; // 抽奖次数左值（包含） 
+  int64 low = 1; // 抽奖次数左值（包含）
   int64 high = 2; // 抽奖次数右值（包含）
   int64 weight = 3; // 权重
 }
 
 message SFLotteryGuaranteedPool {
-  int64 low = 1; // 保底次数左值（包含） 
+  int64 low = 1; // 保底次数左值（包含）
   int64 high = 2; // 保底次数右值（包含）
   repeated SFLotteryRewardItem reward_pool = 3; // 奖励池
 }
