@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package match;
+option go_package = "git.17zjh.com/snake/snake_proto/matchx/match";
+
+// Unity 团战额外定义
+
+message UnityQualifyUploadAttr { // Unity 团战：上传用户额外属性，存储在payload中
+  repeated int64 skin_id_list = 1;
+  int64 suit_id = 2;
+  int64 team_broadcast_id = 3;
+  int64 team_bubble_id = 4;
+}
+
+message ReportRoomScoreNotify {
+}
+
