@@ -1060,6 +1060,7 @@ message StarFieldLevel {
 message StarFieldPackConf {
   StarFieldPackInfo basic_pack = 1; // 基础礼包
   StarFieldPackInfo luxury_pack = 2; // 豪华礼包
+  string background_img = 3; // 背景图片
 }
 
 message StarFieldPackInfo {
