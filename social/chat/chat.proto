@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package chat;
+option go_package = "git.17zjh.com/snake/snake_proto/social/chat";
+
+message QuickInviteReq { // 快速邀请
+  string uid = 1;
+  string content = 2;
+  string receiver = 3;
+  string message_id = 4;
+  int64 ultimate = 5;
+  int64 star = 6;
+  string nickname = 7;
+  int64 charm = 8;
+  int64 rated_level = 9;
+  int64 sub_type = 10;
+  int32 game_mode = 11;
+}
+message QuickInviteRsp {
+}
