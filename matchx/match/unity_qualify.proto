@@ -10,8 +10,14 @@ message UnityQualifyUploadAttr { // Unity 团战：上传用户额外属性，�
   int64 suit_id = 2;
   int64 team_broadcast_id = 3;
   int64 team_bubble_id = 4;
+  repeated SkinSkill skin_skill_list = 5;
 }
 
 message ReportRoomScoreNotify {
+}
+
+message SkinSkill {
+  int32 skill_type = 1;
+  double value = 2;
 }
 
