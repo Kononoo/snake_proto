@@ -2607,6 +2607,108 @@ func (x *MatchxRestore) GetGroupMember() *SyncGroupMemberNotify {
 	return nil
 }
 
+type GetInviteLastTeammateReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GameMode int32 `protobuf:"varint,1,opt,name=game_mode,json=gameMode,proto3" json:"game_mode,omitempty"`
+}
+
+func (x *GetInviteLastTeammateReq) Reset() {
+	*x = GetInviteLastTeammateReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_matchx_match_match_proto_msgTypes[45]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetInviteLastTeammateReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetInviteLastTeammateReq) ProtoMessage() {}
+
+func (x *GetInviteLastTeammateReq) ProtoReflect() protoreflect.Message {
+	mi := &file_matchx_match_match_proto_msgTypes[45]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetInviteLastTeammateReq.ProtoReflect.Descriptor instead.
+func (*GetInviteLastTeammateReq) Descriptor() ([]byte, []int) {
+	return file_matchx_match_match_proto_rawDescGZIP(), []int{45}
+}
+
+func (x *GetInviteLastTeammateReq) GetGameMode() int32 {
+	if x != nil {
+		return x.GameMode
+	}
+	return 0
+}
+
+type GetInviteLastTeammateRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid   string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`                   // 为空表示没有需要邀请的玩家
+	IsMvp bool   `protobuf:"varint,2,opt,name=is_mvp,json=isMvp,proto3" json:"is_mvp,omitempty"` // 是否是上局的mvp
+}
+
+func (x *GetInviteLastTeammateRsp) Reset() {
+	*x = GetInviteLastTeammateRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_matchx_match_match_proto_msgTypes[46]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetInviteLastTeammateRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetInviteLastTeammateRsp) ProtoMessage() {}
+
+func (x *GetInviteLastTeammateRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_matchx_match_match_proto_msgTypes[46]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetInviteLastTeammateRsp.ProtoReflect.Descriptor instead.
+func (*GetInviteLastTeammateRsp) Descriptor() ([]byte, []int) {
+	return file_matchx_match_match_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *GetInviteLastTeammateRsp) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *GetInviteLastTeammateRsp) GetIsMvp() bool {
+	if x != nil {
+		return x.IsMvp
+	}
+	return false
+}
+
 var File_matchx_match_match_proto protoreflect.FileDescriptor
 
 var file_matchx_match_match_proto_rawDesc = []byte{
@@ -2846,15 +2948,23 @@ var file_matchx_match_match_proto_rawDesc = []byte{
 	0x6f, 0x75, 0x70, 0x5f, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x1c, 0x2e, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x2e, 0x53, 0x79, 0x6e, 0x63, 0x47, 0x72, 0x6f,
 	0x75, 0x70, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x52, 0x0b,
-	0x67, 0x72, 0x6f, 0x75, 0x70, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x2a, 0x49, 0x0a, 0x09, 0x4d,
-	0x61, 0x74, 0x63, 0x68, 0x54, 0x79, 0x70, 0x65, 0x12, 0x11, 0x0a, 0x0d, 0x4d, 0x61, 0x74, 0x63,
-	0x68, 0x54, 0x79, 0x70, 0x65, 0x4e, 0x6f, 0x6e, 0x65, 0x10, 0x00, 0x12, 0x13, 0x0a, 0x0f, 0x4d,
-	0x61, 0x74, 0x63, 0x68, 0x54, 0x79, 0x70, 0x65, 0x4e, 0x6f, 0x72, 0x6d, 0x61, 0x6c, 0x10, 0x01,
-	0x12, 0x14, 0x0a, 0x10, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x79, 0x70, 0x65, 0x44, 0x79, 0x6e,
-	0x61, 0x6d, 0x69, 0x63, 0x10, 0x02, 0x42, 0x2e, 0x5a, 0x2c, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37,
-	0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e,
-	0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x78,
-	0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x67, 0x72, 0x6f, 0x75, 0x70, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x37, 0x0a, 0x18, 0x47,
+	0x65, 0x74, 0x49, 0x6e, 0x76, 0x69, 0x74, 0x65, 0x4c, 0x61, 0x73, 0x74, 0x54, 0x65, 0x61, 0x6d,
+	0x6d, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x1b, 0x0a, 0x09, 0x67, 0x61, 0x6d, 0x65, 0x5f,
+	0x6d, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x67, 0x61, 0x6d, 0x65,
+	0x4d, 0x6f, 0x64, 0x65, 0x22, 0x43, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x76, 0x69, 0x74,
+	0x65, 0x4c, 0x61, 0x73, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x6d, 0x61, 0x74, 0x65, 0x52, 0x73, 0x70,
+	0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75,
+	0x69, 0x64, 0x12, 0x15, 0x0a, 0x06, 0x69, 0x73, 0x5f, 0x6d, 0x76, 0x70, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x08, 0x52, 0x05, 0x69, 0x73, 0x4d, 0x76, 0x70, 0x2a, 0x49, 0x0a, 0x09, 0x4d, 0x61, 0x74,
+	0x63, 0x68, 0x54, 0x79, 0x70, 0x65, 0x12, 0x11, 0x0a, 0x0d, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54,
+	0x79, 0x70, 0x65, 0x4e, 0x6f, 0x6e, 0x65, 0x10, 0x00, 0x12, 0x13, 0x0a, 0x0f, 0x4d, 0x61, 0x74,
+	0x63, 0x68, 0x54, 0x79, 0x70, 0x65, 0x4e, 0x6f, 0x72, 0x6d, 0x61, 0x6c, 0x10, 0x01, 0x12, 0x14,
+	0x0a, 0x10, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x54, 0x79, 0x70, 0x65, 0x44, 0x79, 0x6e, 0x61, 0x6d,
+	0x69, 0x63, 0x10, 0x02, 0x42, 0x2e, 0x5a, 0x2c, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a,
+	0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x78, 0x2f, 0x6d,
+	0x61, 0x74, 0x63, 0x68, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2870,54 +2980,56 @@ func file_matchx_match_match_proto_rawDescGZIP() []byte {
 }
 
 var file_matchx_match_match_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_matchx_match_match_proto_msgTypes = make([]protoimpl.MessageInfo, 45)
+var file_matchx_match_match_proto_msgTypes = make([]protoimpl.MessageInfo, 47)
 var file_matchx_match_match_proto_goTypes = []interface{}{
-	(MatchType)(0),                 // 0: match.MatchType
-	(*CreateGroupReq)(nil),         // 1: match.CreateGroupReq
-	(*CreateGroupRsp)(nil),         // 2: match.CreateGroupRsp
-	(*ExitGroupReq)(nil),           // 3: match.ExitGroupReq
-	(*ExitGroupRsp)(nil),           // 4: match.ExitGroupRsp
-	(*DissolveGroupReq)(nil),       // 5: match.DissolveGroupReq
-	(*DissolveGroupRsp)(nil),       // 6: match.DissolveGroupRsp
-	(*DissolveGroupNotify)(nil),    // 7: match.DissolveGroupNotify
-	(*GroupMember)(nil),            // 8: match.GroupMember
-	(*SyncGroupMemberNotify)(nil),  // 9: match.SyncGroupMemberNotify
-	(*InviteFriendReq)(nil),        // 10: match.InviteFriendReq
-	(*InviteFriendRsp)(nil),        // 11: match.InviteFriendRsp
-	(*InviteFriendsReq)(nil),       // 12: match.InviteFriendsReq
-	(*InviteFriendsRsp)(nil),       // 13: match.InviteFriendsRsp
-	(*InviteFriendNotify)(nil),     // 14: match.InviteFriendNotify
-	(*AcceptInviteReq)(nil),        // 15: match.AcceptInviteReq
-	(*AcceptInviteRsp)(nil),        // 16: match.AcceptInviteRsp
-	(*AcceptInviteNotify)(nil),     // 17: match.AcceptInviteNotify
-	(*RejectInviteReq)(nil),        // 18: match.RejectInviteReq
-	(*RejectInviteRsp)(nil),        // 19: match.RejectInviteRsp
-	(*RejectInviteNotify)(nil),     // 20: match.RejectInviteNotify
-	(*GroupKickReq)(nil),           // 21: match.GroupKickReq
-	(*GroupKickRsp)(nil),           // 22: match.GroupKickRsp
-	(*GroupKickNotify)(nil),        // 23: match.GroupKickNotify
-	(*StartMatchReq)(nil),          // 24: match.StartMatchReq
-	(*StartMatchRsp)(nil),          // 25: match.StartMatchRsp
-	(*MatchSuccessNotify)(nil),     // 26: match.MatchSuccessNotify
-	(*RoomMember)(nil),             // 27: match.RoomMember
-	(*SyncGroupStateNotify)(nil),   // 28: match.SyncGroupStateNotify
-	(*RelayServer)(nil),            // 29: match.RelayServer
-	(*CancelMatchReq)(nil),         // 30: match.CancelMatchReq
-	(*CancelMatchRsp)(nil),         // 31: match.CancelMatchRsp
-	(*UploadAttrReq)(nil),          // 32: match.UploadAttrReq
-	(*UploadAttrRsp)(nil),          // 33: match.UploadAttrRsp
-	(*ExitGameReq)(nil),            // 34: match.ExitGameReq
-	(*ExitGameRsp)(nil),            // 35: match.ExitGameRsp
-	(*GroupReadyReq)(nil),          // 36: match.GroupReadyReq
-	(*GroupReadyRsp)(nil),          // 37: match.GroupReadyRsp
-	(*GroupReadyNotify)(nil),       // 38: match.GroupReadyNotify
-	(*CancelGroupReadyReq)(nil),    // 39: match.CancelGroupReadyReq
-	(*CancelGroupReadyRsp)(nil),    // 40: match.CancelGroupReadyRsp
-	(*CancelGroupReadyNotify)(nil), // 41: match.CancelGroupReadyNotify
-	(*SetVoiceStateReq)(nil),       // 42: match.SetVoiceStateReq
-	(*SetVoiceStateRsp)(nil),       // 43: match.SetVoiceStateRsp
-	(*VoiceStateNotify)(nil),       // 44: match.VoiceStateNotify
-	(*MatchxRestore)(nil),          // 45: match.MatchxRestore
+	(MatchType)(0),                   // 0: match.MatchType
+	(*CreateGroupReq)(nil),           // 1: match.CreateGroupReq
+	(*CreateGroupRsp)(nil),           // 2: match.CreateGroupRsp
+	(*ExitGroupReq)(nil),             // 3: match.ExitGroupReq
+	(*ExitGroupRsp)(nil),             // 4: match.ExitGroupRsp
+	(*DissolveGroupReq)(nil),         // 5: match.DissolveGroupReq
+	(*DissolveGroupRsp)(nil),         // 6: match.DissolveGroupRsp
+	(*DissolveGroupNotify)(nil),      // 7: match.DissolveGroupNotify
+	(*GroupMember)(nil),              // 8: match.GroupMember
+	(*SyncGroupMemberNotify)(nil),    // 9: match.SyncGroupMemberNotify
+	(*InviteFriendReq)(nil),          // 10: match.InviteFriendReq
+	(*InviteFriendRsp)(nil),          // 11: match.InviteFriendRsp
+	(*InviteFriendsReq)(nil),         // 12: match.InviteFriendsReq
+	(*InviteFriendsRsp)(nil),         // 13: match.InviteFriendsRsp
+	(*InviteFriendNotify)(nil),       // 14: match.InviteFriendNotify
+	(*AcceptInviteReq)(nil),          // 15: match.AcceptInviteReq
+	(*AcceptInviteRsp)(nil),          // 16: match.AcceptInviteRsp
+	(*AcceptInviteNotify)(nil),       // 17: match.AcceptInviteNotify
+	(*RejectInviteReq)(nil),          // 18: match.RejectInviteReq
+	(*RejectInviteRsp)(nil),          // 19: match.RejectInviteRsp
+	(*RejectInviteNotify)(nil),       // 20: match.RejectInviteNotify
+	(*GroupKickReq)(nil),             // 21: match.GroupKickReq
+	(*GroupKickRsp)(nil),             // 22: match.GroupKickRsp
+	(*GroupKickNotify)(nil),          // 23: match.GroupKickNotify
+	(*StartMatchReq)(nil),            // 24: match.StartMatchReq
+	(*StartMatchRsp)(nil),            // 25: match.StartMatchRsp
+	(*MatchSuccessNotify)(nil),       // 26: match.MatchSuccessNotify
+	(*RoomMember)(nil),               // 27: match.RoomMember
+	(*SyncGroupStateNotify)(nil),     // 28: match.SyncGroupStateNotify
+	(*RelayServer)(nil),              // 29: match.RelayServer
+	(*CancelMatchReq)(nil),           // 30: match.CancelMatchReq
+	(*CancelMatchRsp)(nil),           // 31: match.CancelMatchRsp
+	(*UploadAttrReq)(nil),            // 32: match.UploadAttrReq
+	(*UploadAttrRsp)(nil),            // 33: match.UploadAttrRsp
+	(*ExitGameReq)(nil),              // 34: match.ExitGameReq
+	(*ExitGameRsp)(nil),              // 35: match.ExitGameRsp
+	(*GroupReadyReq)(nil),            // 36: match.GroupReadyReq
+	(*GroupReadyRsp)(nil),            // 37: match.GroupReadyRsp
+	(*GroupReadyNotify)(nil),         // 38: match.GroupReadyNotify
+	(*CancelGroupReadyReq)(nil),      // 39: match.CancelGroupReadyReq
+	(*CancelGroupReadyRsp)(nil),      // 40: match.CancelGroupReadyRsp
+	(*CancelGroupReadyNotify)(nil),   // 41: match.CancelGroupReadyNotify
+	(*SetVoiceStateReq)(nil),         // 42: match.SetVoiceStateReq
+	(*SetVoiceStateRsp)(nil),         // 43: match.SetVoiceStateRsp
+	(*VoiceStateNotify)(nil),         // 44: match.VoiceStateNotify
+	(*MatchxRestore)(nil),            // 45: match.MatchxRestore
+	(*GetInviteLastTeammateReq)(nil), // 46: match.GetInviteLastTeammateReq
+	(*GetInviteLastTeammateRsp)(nil), // 47: match.GetInviteLastTeammateRsp
 }
 var file_matchx_match_match_proto_depIdxs = []int32{
 	8,  // 0: match.SyncGroupMemberNotify.members:type_name -> match.GroupMember
@@ -3479,6 +3591,30 @@ func file_matchx_match_match_proto_init() {
 				return nil
 			}
 		}
+		file_matchx_match_match_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetInviteLastTeammateReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_matchx_match_match_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetInviteLastTeammateRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -3486,7 +3622,7 @@ func file_matchx_match_match_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_matchx_match_match_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   45,
+			NumMessages:   47,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
