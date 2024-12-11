@@ -768,6 +768,24 @@ message GiftInfo {
   string gift_tab_desc = 31;
   int64 act_show_start = 32;
   int64 act_show_end = 33;
+  int64 type = 34;               // 礼物类型  0普通 1盲盒
+  RelatedGift related_gift = 35; // 盲盒该你来拿的礼物
+}
+
+message RelatedGift {
+  repeated int64 must = 1;  // 盲盒必得礼物id
+  RandGift rand = 2;        // 盲盒随机礼物
+}
+
+message RandGift {
+  int64 probability = 1;               // 随机池概率
+  repeated RandGiftItem gift_pool = 2; // 随机池
+  string probability_text = 3;         // 概率公示
+}
+
+message RandGiftItem {
+  int64 Id = 1;        // 随机礼物id
+  int64 weight = 2;    // 随机礼物权重
 }
 
 message GiftNumberConfig {
