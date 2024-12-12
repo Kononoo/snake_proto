@@ -20,6 +20,52 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type BanInviteType int32
+
+const (
+	BanInviteType_BanNotFollowingForToday BanInviteType = 0 // 今日不接受非关注邀请
+	BanInviteType_BanPlayerFor5mins       BanInviteType = 1 //  5分钟内不接受他的邀请
+)
+
+// Enum value maps for BanInviteType.
+var (
+	BanInviteType_name = map[int32]string{
+		0: "BanNotFollowingForToday",
+		1: "BanPlayerFor5mins",
+	}
+	BanInviteType_value = map[string]int32{
+		"BanNotFollowingForToday": 0,
+		"BanPlayerFor5mins":       1,
+	}
+)
+
+func (x BanInviteType) Enum() *BanInviteType {
+	p := new(BanInviteType)
+	*p = x
+	return p
+}
+
+func (x BanInviteType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (BanInviteType) Descriptor() protoreflect.EnumDescriptor {
+	return file_social_chat_chat_proto_enumTypes[0].Descriptor()
+}
+
+func (BanInviteType) Type() protoreflect.EnumType {
+	return &file_social_chat_chat_proto_enumTypes[0]
+}
+
+func (x BanInviteType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use BanInviteType.Descriptor instead.
+func (BanInviteType) EnumDescriptor() ([]byte, []int) {
+	return file_social_chat_chat_proto_rawDescGZIP(), []int{0}
+}
+
 type QuickInviteReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -185,6 +231,99 @@ func (*QuickInviteRsp) Descriptor() ([]byte, []int) {
 	return file_social_chat_chat_proto_rawDescGZIP(), []int{1}
 }
 
+type BanInviteReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	BanType BanInviteType `protobuf:"varint,1,opt,name=ban_type,json=banType,proto3,enum=chat.BanInviteType" json:"ban_type,omitempty"`
+	Uid     string        `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"` // 要屏蔽的玩家
+}
+
+func (x *BanInviteReq) Reset() {
+	*x = BanInviteReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_social_chat_chat_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BanInviteReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BanInviteReq) ProtoMessage() {}
+
+func (x *BanInviteReq) ProtoReflect() protoreflect.Message {
+	mi := &file_social_chat_chat_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BanInviteReq.ProtoReflect.Descriptor instead.
+func (*BanInviteReq) Descriptor() ([]byte, []int) {
+	return file_social_chat_chat_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *BanInviteReq) GetBanType() BanInviteType {
+	if x != nil {
+		return x.BanType
+	}
+	return BanInviteType_BanNotFollowingForToday
+}
+
+func (x *BanInviteReq) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+type BanInviteRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *BanInviteRsp) Reset() {
+	*x = BanInviteRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_social_chat_chat_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BanInviteRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BanInviteRsp) ProtoMessage() {}
+
+func (x *BanInviteRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_social_chat_chat_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BanInviteRsp.ProtoReflect.Descriptor instead.
+func (*BanInviteRsp) Descriptor() ([]byte, []int) {
+	return file_social_chat_chat_proto_rawDescGZIP(), []int{3}
+}
+
 var File_social_chat_chat_proto protoreflect.FileDescriptor
 
 var file_social_chat_chat_proto_rawDesc = []byte{
@@ -210,10 +349,21 @@ var file_social_chat_chat_proto_rawDesc = []byte{
 	0x75, 0x62, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x6d,
 	0x6f, 0x64, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x67, 0x61, 0x6d, 0x65, 0x4d,
 	0x6f, 0x64, 0x65, 0x22, 0x10, 0x0a, 0x0e, 0x51, 0x75, 0x69, 0x63, 0x6b, 0x49, 0x6e, 0x76, 0x69,
-	0x74, 0x65, 0x52, 0x73, 0x70, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a,
-	0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61,
-	0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x2f,
-	0x63, 0x68, 0x61, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x65, 0x52, 0x73, 0x70, 0x22, 0x50, 0x0a, 0x0c, 0x42, 0x61, 0x6e, 0x49, 0x6e, 0x76, 0x69,
+	0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x2e, 0x0a, 0x08, 0x62, 0x61, 0x6e, 0x5f, 0x74, 0x79, 0x70,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x13, 0x2e, 0x63, 0x68, 0x61, 0x74, 0x2e, 0x42,
+	0x61, 0x6e, 0x49, 0x6e, 0x76, 0x69, 0x74, 0x65, 0x54, 0x79, 0x70, 0x65, 0x52, 0x07, 0x62, 0x61,
+	0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x03, 0x75, 0x69, 0x64, 0x22, 0x0e, 0x0a, 0x0c, 0x42, 0x61, 0x6e, 0x49, 0x6e,
+	0x76, 0x69, 0x74, 0x65, 0x52, 0x73, 0x70, 0x2a, 0x43, 0x0a, 0x0d, 0x42, 0x61, 0x6e, 0x49, 0x6e,
+	0x76, 0x69, 0x74, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x17, 0x42, 0x61, 0x6e, 0x4e,
+	0x6f, 0x74, 0x46, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x69, 0x6e, 0x67, 0x46, 0x6f, 0x72, 0x54, 0x6f,
+	0x64, 0x61, 0x79, 0x10, 0x00, 0x12, 0x15, 0x0a, 0x11, 0x42, 0x61, 0x6e, 0x50, 0x6c, 0x61, 0x79,
+	0x65, 0x72, 0x46, 0x6f, 0x72, 0x35, 0x6d, 0x69, 0x6e, 0x73, 0x10, 0x01, 0x42, 0x2d, 0x5a, 0x2b,
+	0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
+	0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x2f, 0x63, 0x68, 0x61, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -228,17 +378,22 @@ func file_social_chat_chat_proto_rawDescGZIP() []byte {
 	return file_social_chat_chat_proto_rawDescData
 }
 
-var file_social_chat_chat_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_social_chat_chat_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_social_chat_chat_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_social_chat_chat_proto_goTypes = []interface{}{
-	(*QuickInviteReq)(nil), // 0: chat.QuickInviteReq
-	(*QuickInviteRsp)(nil), // 1: chat.QuickInviteRsp
+	(BanInviteType)(0),     // 0: chat.BanInviteType
+	(*QuickInviteReq)(nil), // 1: chat.QuickInviteReq
+	(*QuickInviteRsp)(nil), // 2: chat.QuickInviteRsp
+	(*BanInviteReq)(nil),   // 3: chat.BanInviteReq
+	(*BanInviteRsp)(nil),   // 4: chat.BanInviteRsp
 }
 var file_social_chat_chat_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: chat.BanInviteReq.ban_type:type_name -> chat.BanInviteType
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_social_chat_chat_proto_init() }
@@ -271,19 +426,44 @@ func file_social_chat_chat_proto_init() {
 				return nil
 			}
 		}
+		file_social_chat_chat_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BanInviteReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_social_chat_chat_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BanInviteRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_social_chat_chat_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   2,
+			NumEnums:      1,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_social_chat_chat_proto_goTypes,
 		DependencyIndexes: file_social_chat_chat_proto_depIdxs,
+		EnumInfos:         file_social_chat_chat_proto_enumTypes,
 		MessageInfos:      file_social_chat_chat_proto_msgTypes,
 	}.Build()
 	File_social_chat_chat_proto = out.File
