@@ -18,3 +18,16 @@ message QuickInviteReq { // 快速邀请
 }
 message QuickInviteRsp {
 }
+
+enum BanInviteType {
+  BanNotFollowingForToday = 0; // 今日不接受非关注邀请
+  BanPlayerFor5mins = 1; //  5分钟内不接受他的邀请
+}
+
+message BanInviteReq {
+  BanInviteType ban_type = 1;
+  string uid = 2; // 要屏蔽的玩家
+}
+
+message BanInviteRsp {
+}
