@@ -27,6 +27,7 @@ enum BanInviteType {
 message BanInviteReq {
   BanInviteType ban_type = 1;
   string uid = 2; // 要屏蔽的玩家
+  bool cancel = 3;
 }
 
 message BanInviteRsp {
