@@ -32,3 +32,13 @@ message BanInviteReq {
 
 message BanInviteRsp {
 }
+
+message GetInviteLastTeammateReq {
+  int32 game_mode = 1;
+  int64 room_id = 2; // 上局的房间id
+}
+
+message GetInviteLastTeammateRsp {
+  string uid = 1; // 为空表示没有需要邀请的玩家
+  bool is_mvp = 2; // 是否是上局的mvp
+}
