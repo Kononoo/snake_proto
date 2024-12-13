@@ -273,6 +273,7 @@ message RankLevel {
   string name = 5;
   int32 mvp = 6;
   string sprite_name = 7;
+  int32 level_id = 8; // 段位的 id
 }
 
 message SeasonInfo {
