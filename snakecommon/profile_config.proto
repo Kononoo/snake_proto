@@ -1087,6 +1087,7 @@ message SFSettleReward {
   int32 max_rank = 2; // 最大排名
   string mail_content = 3; // 邮件内容
   repeated SnakeMain.Config.RewardConfig rewards = 4; // 奖励配置
+  string mail_title = 5; // 邮件标题
 }
 
 message StarFieldHonorPage {
