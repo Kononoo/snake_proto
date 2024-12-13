@@ -231,6 +231,7 @@ message MatchxRestore { // matchx的恢复数据
 
 message GetInviteLastTeammateReq {
   int32 game_mode = 1;
+  int64 room_id = 2; // 上局的房间id
 }
 
 message GetInviteLastTeammateRsp {
