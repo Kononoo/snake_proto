@@ -207,6 +207,7 @@ message ReportScoreReq {
   int32 action_no = 3;  // 帧号
   repeated bossScore boss_score = 4;  // 击杀boss分数
   sint32 pid = 5;
+  sint32 make_wreck_score = 6; // 产生的残骸总分数
 }
 
 message PlayerScore {
