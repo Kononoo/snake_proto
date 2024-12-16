@@ -192,6 +192,53 @@ func (x *SkinSkill) GetValue() float64 {
 	return 0
 }
 
+type UnityQualifyRoomMember struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	AiLevel int32 `protobuf:"varint,1,opt,name=ai_level,json=aiLevel,proto3" json:"ai_level,omitempty"`
+}
+
+func (x *UnityQualifyRoomMember) Reset() {
+	*x = UnityQualifyRoomMember{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_matchx_match_unity_qualify_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UnityQualifyRoomMember) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnityQualifyRoomMember) ProtoMessage() {}
+
+func (x *UnityQualifyRoomMember) ProtoReflect() protoreflect.Message {
+	mi := &file_matchx_match_unity_qualify_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnityQualifyRoomMember.ProtoReflect.Descriptor instead.
+func (*UnityQualifyRoomMember) Descriptor() ([]byte, []int) {
+	return file_matchx_match_unity_qualify_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *UnityQualifyRoomMember) GetAiLevel() int32 {
+	if x != nil {
+		return x.AiLevel
+	}
+	return 0
+}
+
 var File_matchx_match_unity_qualify_proto protoreflect.FileDescriptor
 
 var file_matchx_match_unity_qualify_proto_rawDesc = []byte{
@@ -217,10 +264,14 @@ var file_matchx_match_unity_qualify_proto_rawDesc = []byte{
 	0x6c, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x6b, 0x69, 0x6c, 0x6c, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x73, 0x6b, 0x69, 0x6c, 0x6c, 0x54, 0x79, 0x70, 0x65,
 	0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x01, 0x52,
-	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x42, 0x2e, 0x5a, 0x2c, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37,
-	0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e,
-	0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x78,
-	0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x33, 0x0a, 0x16, 0x55, 0x6e, 0x69, 0x74, 0x79, 0x51,
+	0x75, 0x61, 0x6c, 0x69, 0x66, 0x79, 0x52, 0x6f, 0x6f, 0x6d, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72,
+	0x12, 0x19, 0x0a, 0x08, 0x61, 0x69, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x07, 0x61, 0x69, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x42, 0x2e, 0x5a, 0x2c, 0x67,
+	0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61,
+	0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x6d,
+	0x61, 0x74, 0x63, 0x68, 0x78, 0x2f, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -235,11 +286,12 @@ func file_matchx_match_unity_qualify_proto_rawDescGZIP() []byte {
 	return file_matchx_match_unity_qualify_proto_rawDescData
 }
 
-var file_matchx_match_unity_qualify_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_matchx_match_unity_qualify_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_matchx_match_unity_qualify_proto_goTypes = []interface{}{
 	(*UnityQualifyUploadAttr)(nil), // 0: match.UnityQualifyUploadAttr
 	(*ReportRoomScoreNotify)(nil),  // 1: match.ReportRoomScoreNotify
 	(*SkinSkill)(nil),              // 2: match.SkinSkill
+	(*UnityQualifyRoomMember)(nil), // 3: match.UnityQualifyRoomMember
 }
 var file_matchx_match_unity_qualify_proto_depIdxs = []int32{
 	2, // 0: match.UnityQualifyUploadAttr.skin_skill_list:type_name -> match.SkinSkill
@@ -292,6 +344,18 @@ func file_matchx_match_unity_qualify_proto_init() {
 				return nil
 			}
 		}
+		file_matchx_match_unity_qualify_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UnityQualifyRoomMember); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -299,7 +363,7 @@ func file_matchx_match_unity_qualify_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_matchx_match_unity_qualify_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
