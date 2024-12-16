@@ -23,5 +23,10 @@ message SkinSkill {
 
 message UnityQualifyRoomMember { // Unity 团战：房间内玩家额外信息，存储在RoomMember的payload中
   int32 ai_level = 1;
+  int64 team_broadcast_id = 2;
+  int64 team_bubble_id = 3;
+  int64 suit_id = 4;
+  int32 suit_chosen = 5;
+  repeated int64 skin_id_list = 6;
 }
 
