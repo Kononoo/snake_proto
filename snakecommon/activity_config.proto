@@ -3,6 +3,7 @@ package snakecommon;
 option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 
 import "snakecommon/common.proto";
+import "snakeapi/base.proto";
 
 message FarmConfig {
   string act_id = 1; // 活动id
@@ -39,7 +40,7 @@ message SnakeAreaConfig {
   int64 start_time = 2; // 开始时间
   int64 end_time = 3;// 结束时间
   int64 target_length = 4;// 达成挑战的目标长度
-  string reward_icon = 5; // 奖励icon
+  snakeapi.RewardItem rewardItem = 5; // 奖励
   string btn_url = 6; // 跳转链接
   string desc = 7; // 活动说明
 }
