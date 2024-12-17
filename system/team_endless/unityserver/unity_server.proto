@@ -28,6 +28,7 @@ message TeamEndlessEndGame {
   repeated string followed_list = 24; // 被关注的 uid
   int64 game_count = 25; // 对局次数
   string game_id = 26; // 本局游戏的id，用于区分不同对局的结算，防止重复结算
+  int32 tacit_count = 27; // 本局游戏默契次数
 }
 
 enum TeamEndlessSettleType {
