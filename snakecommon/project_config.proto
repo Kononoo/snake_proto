@@ -583,6 +583,7 @@ message ShowAdConfig {
   repeated string buy_toast_list = 28; // 购买弹窗toast列表
   repeated string special_buy_toast_list = 29; // 特殊购买弹窗toast列表
   string ad_act_set_link = 30; // 广告券合集活动跳转链接
+  map<string, AdPopupsConfig> ab_ad_popups_configs = 31; // 广告弹窗 ab 实验配置合集
 }
 
 message CrossPromotions {
