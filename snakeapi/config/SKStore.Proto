@@ -768,8 +768,13 @@ message GiftInfo {
   string gift_tab_desc = 31;
   int64 act_show_start = 32;
   int64 act_show_end = 33;
-  int64 type = 34;               // 礼物类型  0普通 1盲盒
+  GiftType type = 34;            // 礼物类型
   RelatedGift related_gift = 35; // 盲盒关联的礼物
+}
+
+enum GiftType {
+  NORMAL = 0;
+  BlindBOX = 1;
 }
 
 message RelatedGift {
