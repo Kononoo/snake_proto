@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "snakecommon/config.proto";
+
 package endless;
 option go_package = "git.17zjh.com/snake/snake_proto/system/team_endless";
 
@@ -145,6 +146,7 @@ message EndGameNotify {
   string game_id = 32; // 本局游戏的id，用于区分不同对局的结算，防止重复结算
   int64 rank_score = 33; // 结算后的段位分
   int64 delta_rank_score = 34; // 变化的段位分
+  BestTeammate best_teammate = 35;
 }
 
 message EndlessTeammate {
@@ -152,6 +154,15 @@ message EndlessTeammate {
   int32 score = 2;
   int32 skinId = 3;
   repeated int32 tag = 4;
+}
+
+message BestTeammate{
+  string uid=1;
+  int32 partner_count=2;
+  int32 partner_time=3;
+  int32 partner_share_length=4;
+  int32 partner_kill=5;
+  int32 partner_length=6;
 }
 
 message SnakeCoinDetailItem {

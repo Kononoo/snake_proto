@@ -29,6 +29,7 @@ message TeamEndlessEndGame {
   int64 game_count = 25; // 对局次数
   string game_id = 26; // 本局游戏的id，用于区分不同对局的结算，防止重复结算
   int32 tacit_count = 27; // 本局游戏默契次数
+  BestTeammate best_teammate = 28;
 }
 
 enum TeamEndlessSettleType {
@@ -42,4 +43,13 @@ message EndlessTeammate {
   int32 score = 2;
   int32 skinId = 3;
   repeated int32 tag = 4;
+}
+
+message BestTeammate{
+  string uid=1;
+  int32 partner_count=2;
+  int32 partner_time=3;
+  int32 partner_share_length=4;
+  int32 partner_kill=5;
+  int32 partner_length=6;
 }
