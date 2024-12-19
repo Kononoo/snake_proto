@@ -34,9 +34,8 @@ message UnityQualifyGroupMember {
   int32 state = 1; // 在队伍中状态。默认0准备好，1结算中，2未准备
   int64 ring_id = 2;
   int64 prop_id = 3;
-  int64 skin_id = 4; // 皮肤 id
-  int64 suit_id = 5; // 队服 id
-  int64 show_value = 6; // show 值
+  int64 suit_id = 4; // 队服 id
+  int64 show_value = 5; // show 值
 }
 
 message UnityQualifySyncGroupMemberNotify {
