@@ -228,3 +228,22 @@ message MatchxRestore { // matchx的恢复数据
   MatchSuccessNotify match_info = 2;
   SyncGroupMemberNotify group_member = 3;
 }
+
+message SetNearbyInviteReq {
+  bool setting = 1;
+}
+
+message SetNearbyInviteRsp {}
+
+message SetRecentInviteReq {
+  bool setting = 1;
+}
+
+message SetRecentInviteRsp {}
+
+message JoinGroupReq {
+  string group_user_uid = 1;
+  bytes payload = 2; // 额外的信息，每个游戏模式各自使用
+}
+
+message JoinGroupRsp {}
