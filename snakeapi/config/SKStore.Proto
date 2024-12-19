@@ -773,8 +773,8 @@ message GiftInfo {
 }
 
 enum GiftType {
-  NORMAL = 0;
-  BlindBOX = 1;
+  NormalGift = 0;
+  BlindBoxGift = 1;
 }
 
 message RelatedGift {
