@@ -1190,6 +1190,7 @@ message SFWishItem {
   int64 weight = 2; // 权重
   int64 global_daily_limit = 3; // 单服每日限制
   int32 rarity = 4; // 稀有度(1,2,3,4)
+  int64 index = 5; // 奖励唯一标识
 }
 
 // ======== star_field_bp end ====================================================
