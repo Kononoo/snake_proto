@@ -9,6 +9,10 @@ message TeamEndlessGroupMember { // 多人无尽：队伍成员额外信息，�
 
 }
 
+message TeamEndlessSyncGroupMemberNotify {
+  int64 max_star = 1; // 组队中的最大历史最大星星数 (HistoryMaxStar)
+}
+
 message TeamEndlessMatchSuccess { // 多人无尽：匹配成功额外数据，存储在payload中
   string host = 1; // unityserver房间ip地址和端口信息
 }

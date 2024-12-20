@@ -41,6 +41,6 @@ message UnityQualifyGroupMember {
 }
 
 message UnityQualifySyncGroupMemberNotify {
-  int64 max_star = 1;
+  int64 max_star = 1; // 组队中的最大历史最大星星数 (HistoryMaxStar)
 }
 
