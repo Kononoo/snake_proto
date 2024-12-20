@@ -147,6 +147,9 @@ message EndGameNotify {
   int64 rank_score = 33; // 结算后的段位分
   int64 delta_rank_score = 34; // 变化的段位分
   BestTeammate best_teammate = 35;
+  int32 tacit_count = 36; // 本局游戏默契次数
+  int64 length_delta_rank_score = 37; // 长度增加的段位分
+  int64 tacit_delta_rank_score = 38; // 默契次数增加的段位分
 }
 
 message EndlessTeammate {
