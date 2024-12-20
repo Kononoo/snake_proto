@@ -1099,6 +1099,7 @@ message SFHonorSendReward {
   int64 daily_limit = 1; // 每日赠送次数上限
   string mail_content = 2; // 邮件内容
   repeated SFHonorSendRewardItem reward_pool = 3; // 奖励池
+  string mail_title = 4; // 邮件标题
 }
 
 message SFHonorSendRewardItem {
