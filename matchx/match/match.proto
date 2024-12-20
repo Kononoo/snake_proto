@@ -137,6 +137,7 @@ message MatchSuccessNotify { // 匹配成功的push
   bytes payload = 12; // 额外的数据
   repeated RoomMember members = 13;
   MatchType match_type = 14; // 匹配类型
+  int64 room_type = 15; // 房间类型，迁移老 match 逻辑，默认填充为 1，分享成绩到战队的功能会用到
 }
 
 message RoomMember {
