@@ -379,7 +379,7 @@ type UnityQualifySyncGroupMemberNotify struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	MaxStar int64 `protobuf:"varint,1,opt,name=max_star,json=maxStar,proto3" json:"max_star,omitempty"`
+	MaxStar int64 `protobuf:"varint,1,opt,name=max_star,json=maxStar,proto3" json:"max_star,omitempty"` // 组队中的最大历史最大星星数 (HistoryMaxStar)
 }
 
 func (x *UnityQualifySyncGroupMemberNotify) Reset() {
