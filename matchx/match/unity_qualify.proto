@@ -28,6 +28,8 @@ message UnityQualifyRoomMember { // Unity 团战：房间内玩家额外信息�
   int64 suit_id = 4;
   int32 suit_chosen = 5;
   repeated int64 skin_id_list = 6;
+  int32 mentorship = 7;
+  int64 ring_id = 8;
 }
 
 message UnityQualifyGroupMember {
