@@ -29,6 +29,7 @@ message PlayerInfo{
     int64 game_count = 9; // 游戏局数
     string nickname = 10; // 玩家昵称
     int64 kill_effect = 11; // 击杀效果
+    int64 rank_score = 12; // 段位分
 }
 
 // 向UnityServer同步房间信息
