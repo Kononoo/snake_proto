@@ -597,6 +597,7 @@ message SkinInfo {
   string unity_party_anim_version = 27; // unity2d派对动效
   int32 enter_unity = 28; // 是否进入 unity
   repeated MagicSkinSection sections = 29; // 幻化皮肤组件
+  int32 team_unity_show = 30; // 团战unity动效， 1 展示，0 不展示
 }
 
 message MagicSkinSection {
