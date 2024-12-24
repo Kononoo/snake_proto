@@ -1032,6 +1032,7 @@ message StarFieldBp {
   StarFieldLottery lottery = 16; // 抽奖配置
   StarFieldTask task_conf = 17; // 任务配置
   StarFieldWish wish_conf = 18; // 祈福配置
+  string buff_link = 19; // 活动buff链接
 }
 
 message StarFieldBpMainReward {
