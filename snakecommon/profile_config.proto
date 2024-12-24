@@ -1132,7 +1132,7 @@ message StarFieldLottery {
   repeated SFLotteryGuaranteed guaranteed_config = 7; // 保底配置
   repeated SFLotteryGuaranteedPool guaranteed_reward = 8; // 保底奖励池
   repeated SFLotteryAccuReward accu_rewards = 9; // 累抽奖励
-  double coupon_ratio = 10; // 抽奖代币折算成奖券比例，奖券数量 = 抽奖代币数量 * coupon_ratio
+  int64 diamond_per_coin = 11; // 1个代币需要多少个苹果
 }
 
 message SFLotteryRewardItem {
