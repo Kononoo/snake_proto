@@ -2238,7 +2238,7 @@ message TeamEndlessConfig {
   message Rank { // 段位配置
     repeated BigRankItem big_rank = 1; // 大段位列表
     repeated SmallRankItem small_rank = 2; // 小段位列表
-    bool rank_desc = 3; // 段位说明
+    string rank_desc = 3; // 段位说明
   }
   Rank rank = 5;
 }
