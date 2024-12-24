@@ -242,9 +242,10 @@ message SetRecentInviteReq {
 
 message SetRecentInviteRsp {}
 
-message JoinGroupReq {
+message JoinGroupReq { // 通过附近的人、最近游玩等方式加入组队
   string group_user_uid = 1;
   bytes payload = 2; // 额外的信息，每个游戏模式各自使用
+  int64 source = 3; // 加入的场景
 }
 
 message JoinGroupRsp {}
