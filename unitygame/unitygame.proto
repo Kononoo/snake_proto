@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package unitygame;
 option go_package = "git.17zjh.com/snake/snake_proto/unitygame";
+import "matchx/match/match.proto";
 
 enum SnakeOpType {
   Undefined = 0;
@@ -361,4 +362,9 @@ message ReportUnitygameScoreReq {
 }
 
 message ReportUnitygameScoreRsp {
+}
+
+message ReplayGameInfo { // 游戏服回放的数据结构
+  match.MatchSuccessNotify match_info = 1;
+  unitygame.PuFrameMsg frames = 2;
 }
