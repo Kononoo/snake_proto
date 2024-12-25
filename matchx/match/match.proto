@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package match;
 option go_package = "git.17zjh.com/snake/snake_proto/matchx/match";
-import "unitygame/unitygame.proto";
 
 message CreateGroupReq { // 创建队伍
   int64 game_mode = 1;
@@ -252,7 +251,3 @@ message JoinGroupReq { // 通过附近的人、最近游玩等方式加入组队
 
 message JoinGroupRsp {}
 
-message ReplayGameInfo { // 游戏服回放的数据结构
-  MatchSuccessNotify match_info = 1;
-  unitygame.PuFrameMsg frames = 2;
-}
