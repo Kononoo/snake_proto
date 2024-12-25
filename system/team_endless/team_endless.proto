@@ -20,6 +20,7 @@ message Partner {
   int32 box_id = 4;
   int32 verified = 5;
   GradeInfo grade_info = 6;
+  int64 team_endless_rank_score = 7; // 多人无尽段位分
 }
 
 // 玩家段位信息
