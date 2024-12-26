@@ -783,7 +783,7 @@ message RelatedGift {
 }
 
 message MustGift {
-  repeated MustGiftItem gift_pool = 1; // 随机池
+  repeated MustGiftItem gift_pool = 1; // 必得奖池
 }
 
 message MustGiftItem {
