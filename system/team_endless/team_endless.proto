@@ -219,10 +219,10 @@ message GetNewbieAiRsp {
 
 // 获取赛季奖励状态
 message GetSeasonRewardStateReq {
-  int32 season_id = 1;
 }
 message GetSeasonRewardStateRsp {
   repeated int32 taken_reward_rank_ids = 1; // 已领取奖励的段位id列表
+  int32 season_id = 2;
 }
 
 // 一键领取赛季奖励
