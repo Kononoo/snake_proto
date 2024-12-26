@@ -44,6 +44,7 @@ message EndGameReq {
 }
 
 message EndGameRsp {
+  bytes payload = 1; // 额外数据
 }
 
 message SubscribeReq { // 客户端订阅push消息

@@ -32,6 +32,13 @@ message TeamEndlessEndGame {
   BestTeammate best_teammate = 28;
 }
 
+message TeamEndlessEndGameRsp {
+  int64 old_rank_score = 1; // 之前的段位分
+  int64 new_rank_score = 2; // 新的段位分
+  int64 new_rank_id = 3; // 新的段位id
+  int64 add_rank_score = 4; // 增加的段位分
+}
+
 enum TeamEndlessSettleType {
   Normal = 0; // 正常主动结算
   Abnormal = 1; // 异常结算
