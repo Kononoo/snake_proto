@@ -219,6 +219,7 @@ message GetNewbieAiRsp {
 
 // 获取赛季奖励状态
 message GetSeasonRewardStateReq {
+  int32 season_id = 1;
 }
 message GetSeasonRewardStateRsp {
   repeated int32 taken_reward_rank_ids = 1; // 已领取奖励的段位id列表
@@ -226,6 +227,7 @@ message GetSeasonRewardStateRsp {
 
 // 一键领取赛季奖励
 message GetAllSeasonRewardReq {
+  int32 season_id = 1;
 }
 message GetAllSeasonRewardRsp {
   repeated snakecommon.CRewardItem reward_list = 1;
@@ -235,6 +237,7 @@ message GetAllSeasonRewardRsp {
 // 领取指定段位的赛季奖励
 message GetSeasonRewardReq {
   int32 rank_id = 1; // 段位id
+  int32 season_id = 2;
 }
 message GetSeasonRewardRsp {
   repeated snakecommon.CRewardItem reward_list = 1;
