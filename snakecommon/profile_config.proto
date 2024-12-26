@@ -1196,3 +1196,17 @@ message SFWishItem {
 }
 
 // ======== star_field_bp end ====================================================
+
+// ======== newbie_checkin start ====================================================
+message NewbieCheckinConfig {
+  int64 endless_show_count = 1;
+  int64 user_register_time = 2;
+  repeated NewbieCheckinDayItem day_list = 3;
+}
+
+message NewbieCheckinDayItem {
+  string imgurl = 1;
+  string anim_url = 2;
+  repeated SnakeMain.Config.RewardConfig reward_list = 3;
+}
+// ======== newbie_checkin end ====================================================
