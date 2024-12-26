@@ -779,14 +779,19 @@ enum GiftType {
 }
 
 message RelatedGift {
-  repeated MustGiftItem must = 1;  // 盲盒必得礼物
-  RandGift rand = 2;               // 盲盒随机礼物
+  MustGift must = 1;  // 盲盒必得礼物
+  RandGift rand = 2;      // 盲盒随机礼物
+}
+
+message MustGift {
+  repeated MustGiftItem gift_pool = 1; // 必得奖池
 }
 
 message MustGiftItem {
   int64 Id = 1;        // 必得礼物id
   int64 num = 2;       // 必得礼物数量
 }
+
 
 message RandGift {
   int64 probability = 1;               // 随机池概率
