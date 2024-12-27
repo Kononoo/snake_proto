@@ -1208,5 +1208,6 @@ message NewbieCheckinDayItem {
   string imgurl = 1;
   string anim_url = 2;
   repeated SnakeMain.Config.RewardConfig reward_list = 3;
+  string unity_anim_url = 4;
 }
 // ======== newbie_checkin end ====================================================
