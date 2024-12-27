@@ -778,8 +778,8 @@ enum GiftType {
 }
 
 message RelatedGift {
-  MustGift must = 1;  // 盲盒必得礼物
-  RandGift rand = 2;      // 盲盒随机礼物
+  MustGift must_gift = 1;  // 盲盒必得礼物
+  RandGift rand = 2;       // 盲盒随机礼物
 }
 
 message MustGift {
