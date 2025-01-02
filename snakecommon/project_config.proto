@@ -805,7 +805,8 @@ message UserConfig {
   int32 third_failed_visitor_flag = 45;
   repeated string third_failed_visitor_market = 46;
   int32 relive_pack_auto_pop_count = 47;
-  string certify_vedio_url = 48; // 实名认证视频链接
+  string certify_vedio_url_v2 = 48; // 实名认证视频链接
+  string certify_reward_image_v2 = 49; // 实名认证奖励图片
 }
 
 message UnityFlags {
@@ -858,6 +859,7 @@ message FlagsConfig {
   int32 chat_backup = 31; // 聊天备份, 默认0为不备份
   int32 unity_endless_v2=32; // 是否开启新unity无尽
   int32 new_pay_api = 33; // unity是否使用新支付接口
+  int32 open_certify_guide_v2 = 34; // 是否开启实名认证 & 新手引导v2
 }
 
 message FeedbackConfig {
@@ -1085,7 +1087,6 @@ message NewUserConfig {
   string old_user_img = 13;
   repeated SnakeMain.Config.RewardConfig guide_reward = 14;
   int32 guide_skip_flag = 15; // 0关1开 新手引导流程修改实验开关
-  bool open_endless_guide_v2 = 16; // 是否开启无尽引导v2
 }
 // === user_config end ========================================
 
