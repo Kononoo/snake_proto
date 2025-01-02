@@ -1520,16 +1520,15 @@ message EndlessBonusNew {
   int32 ai_snake_leave_bonus_max_time = 9;
   repeated BonusFoodLevel bonus_food_level_list = 10;
   BonusLevelSettings bonus_level_settings = 11;
-  int64 spring_bouns_start_time = 12;  // 春节糖果活动开始时间
-  int64 spring_bouns_end_time = 13;  // 春节糖果活动结束时间
-  SpringSugarInfo spring_sugar_info = 14; // 春节糖果信息
 }
 
 message SpringSugarInfo {
-  int32 food_type = 1;
-  int32 food_score = 2;
-  int32 food_weight = 3;
-  int32 food_size = 4;
+  int64 start_time = 1;
+  int64 end_time = 2;
+  int32 food_type = 3;
+  int32 food_score = 4;
+  int32 food_weight = 5;
+  int32 food_size = 6;
 }
 
 message MapBorder {
@@ -1568,7 +1567,7 @@ message AiConfigV3 {
   int32 min_born_kill = 32;
   int32 max_born_kill = 33;
   int32 born_kill = 34;
-
+  SpringSugarInfo spring_sugar_info = 35;  // 春节糖果信息
 }
 
 // ai_config_v3 end
