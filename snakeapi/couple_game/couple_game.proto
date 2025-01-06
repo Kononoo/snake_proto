@@ -18,6 +18,7 @@ message ConfigResp {
   repeated string tips_pool = 6; // 匹配界面 tips 随机池
   string play_rule_desc = 7; // 玩法说明
   repeated int32 couple_skin_ids = 8; // 情侣皮肤 id 列表
+  BuffIcon buff_icon = 9; // buff 活动
 }
 
 message PropItem {
@@ -32,4 +33,11 @@ message GetInfoReq {
 message GetInfoResp {
   int32 total_pvp_count = 1;    // 双人模式总游戏局数
   int32 today_pvp_count = 2;    // 今日双人游戏局数
+}
+
+message BuffIcon {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string img_url = 3; // 图标
+  string btn_link = 4; // 跳转链接
 }
