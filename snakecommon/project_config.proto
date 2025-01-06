@@ -807,6 +807,7 @@ message UserConfig {
   int32 relive_pack_auto_pop_count = 47;
   string certify_vedio_url_v2 = 48; // 实名认证视频链接
   string certify_reward_image_v2 = 49; // 实名认证奖励图片
+  repeated SnakeMain.Config.RewardConfig certify_reward_v2 = 50; // 实名认证奖励
 }
 
 message UnityFlags {
