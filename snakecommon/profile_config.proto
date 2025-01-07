@@ -526,6 +526,7 @@ message UgcTopic {
   bool is_topic_create = 5;
   int64 upload_time = 6; // 主题开启时间
   string music = 7;
+  bool is_delete = 8; // 是否删除
 }
 // ugc_v2_config end
 
