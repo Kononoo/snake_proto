@@ -2219,6 +2219,8 @@ message TeamEndlessConfig {
     int64 highest_score = 2; // 单人无尽最高分数要求
     repeated string instruction_texts = 3; // 引导文案
     int64 back_game_count = 4; // 回流用户需要游戏的局数
+    int32 register_day = 5; // 需要注册天数>=x天
+    int64 before_register_time = 6; // 需要注册的时间戳 <=x
   }
   Guide guide = 3;
 
