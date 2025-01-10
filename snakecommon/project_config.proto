@@ -470,6 +470,7 @@ message UiConfigV3 {
   GameIcon compose = 18;
   GameIcon couple_passcheck = 19;
   bool use_5275_icon_layout = 20; // 是否使用5275版本优化后的首页icon布局
+  string teamendless_bgurl = 21; // 多人无尽按钮背景
 }
 
 message GameIcon {
