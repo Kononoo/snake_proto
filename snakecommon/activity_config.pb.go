@@ -415,6 +415,219 @@ func (x *SnakeAreaConfig) GetDesc() string {
 	return ""
 }
 
+type PointsChampConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ActId          int64                  `protobuf:"varint,1,opt,name=act_id,json=actId,proto3" json:"act_id,omitempty"`
+	StartTime      int64                  `protobuf:"varint,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime        int64                  `protobuf:"varint,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	ToplistTabName string                 `protobuf:"bytes,4,opt,name=toplist_tab_name,json=toplistTabName,proto3" json:"toplist_tab_name,omitempty"` // 排行榜页签名称
+	CompTypes      []*PointsChampCompType `protobuf:"bytes,5,rep,name=comp_types,json=compTypes,proto3" json:"comp_types,omitempty"`                  // 竞争维度
+	Areas          []*PointsChampAreaType `protobuf:"bytes,6,rep,name=areas,proto3" json:"areas,omitempty"`                                           // 大区
+	RegionalLink   string                 `protobuf:"bytes,7,opt,name=regional_link,json=regionalLink,proto3" json:"regional_link,omitempty"`         // 地区选拔赛跳转链接
+	NationalLink   string                 `protobuf:"bytes,8,opt,name=national_link,json=nationalLink,proto3" json:"national_link,omitempty"`         // 总决赛跳转链接
+}
+
+func (x *PointsChampConfig) Reset() {
+	*x = PointsChampConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_activity_config_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PointsChampConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PointsChampConfig) ProtoMessage() {}
+
+func (x *PointsChampConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_activity_config_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PointsChampConfig.ProtoReflect.Descriptor instead.
+func (*PointsChampConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_activity_config_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *PointsChampConfig) GetActId() int64 {
+	if x != nil {
+		return x.ActId
+	}
+	return 0
+}
+
+func (x *PointsChampConfig) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *PointsChampConfig) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *PointsChampConfig) GetToplistTabName() string {
+	if x != nil {
+		return x.ToplistTabName
+	}
+	return ""
+}
+
+func (x *PointsChampConfig) GetCompTypes() []*PointsChampCompType {
+	if x != nil {
+		return x.CompTypes
+	}
+	return nil
+}
+
+func (x *PointsChampConfig) GetAreas() []*PointsChampAreaType {
+	if x != nil {
+		return x.Areas
+	}
+	return nil
+}
+
+func (x *PointsChampConfig) GetRegionalLink() string {
+	if x != nil {
+		return x.RegionalLink
+	}
+	return ""
+}
+
+func (x *PointsChampConfig) GetNationalLink() string {
+	if x != nil {
+		return x.NationalLink
+	}
+	return ""
+}
+
+type PointsChampCompType struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	CompType int64  `protobuf:"varint,1,opt,name=comp_type,json=compType,proto3" json:"comp_type,omitempty"`
+	CompName string `protobuf:"bytes,2,opt,name=comp_name,json=compName,proto3" json:"comp_name,omitempty"`
+}
+
+func (x *PointsChampCompType) Reset() {
+	*x = PointsChampCompType{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_activity_config_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PointsChampCompType) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PointsChampCompType) ProtoMessage() {}
+
+func (x *PointsChampCompType) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_activity_config_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PointsChampCompType.ProtoReflect.Descriptor instead.
+func (*PointsChampCompType) Descriptor() ([]byte, []int) {
+	return file_snakecommon_activity_config_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *PointsChampCompType) GetCompType() int64 {
+	if x != nil {
+		return x.CompType
+	}
+	return 0
+}
+
+func (x *PointsChampCompType) GetCompName() string {
+	if x != nil {
+		return x.CompName
+	}
+	return ""
+}
+
+type PointsChampAreaType struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	AreaType int64  `protobuf:"varint,1,opt,name=area_type,json=areaType,proto3" json:"area_type,omitempty"`
+	AreaName string `protobuf:"bytes,2,opt,name=area_name,json=areaName,proto3" json:"area_name,omitempty"`
+}
+
+func (x *PointsChampAreaType) Reset() {
+	*x = PointsChampAreaType{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_activity_config_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PointsChampAreaType) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PointsChampAreaType) ProtoMessage() {}
+
+func (x *PointsChampAreaType) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_activity_config_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PointsChampAreaType.ProtoReflect.Descriptor instead.
+func (*PointsChampAreaType) Descriptor() ([]byte, []int) {
+	return file_snakecommon_activity_config_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *PointsChampAreaType) GetAreaType() int64 {
+	if x != nil {
+		return x.AreaType
+	}
+	return 0
+}
+
+func (x *PointsChampAreaType) GetAreaName() string {
+	if x != nil {
+		return x.AreaName
+	}
+	return ""
+}
+
 var File_snakecommon_activity_config_proto protoreflect.FileDescriptor
 
 var file_snakecommon_activity_config_proto_rawDesc = []byte{
@@ -479,10 +692,42 @@ var file_snakecommon_activity_config_proto_rawDesc = []byte{
 	0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x17, 0x0a, 0x07, 0x62,
 	0x74, 0x6e, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x62, 0x74,
 	0x6e, 0x55, 0x72, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63, 0x18, 0x07, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e,
-	0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f,
-	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
-	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x22, 0xd1, 0x02, 0x0a, 0x11, 0x50, 0x6f, 0x69,
+	0x6e, 0x74, 0x73, 0x43, 0x68, 0x61, 0x6d, 0x70, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x15,
+	0x0a, 0x06, 0x61, 0x63, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05,
+	0x61, 0x63, 0x74, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74,
+	0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74,
+	0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12,
+	0x28, 0x0a, 0x10, 0x74, 0x6f, 0x70, 0x6c, 0x69, 0x73, 0x74, 0x5f, 0x74, 0x61, 0x62, 0x5f, 0x6e,
+	0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x74, 0x6f, 0x70, 0x6c, 0x69,
+	0x73, 0x74, 0x54, 0x61, 0x62, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x3f, 0x0a, 0x0a, 0x63, 0x6f, 0x6d,
+	0x70, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x50, 0x6f, 0x69, 0x6e,
+	0x74, 0x73, 0x43, 0x68, 0x61, 0x6d, 0x70, 0x43, 0x6f, 0x6d, 0x70, 0x54, 0x79, 0x70, 0x65, 0x52,
+	0x09, 0x63, 0x6f, 0x6d, 0x70, 0x54, 0x79, 0x70, 0x65, 0x73, 0x12, 0x36, 0x0a, 0x05, 0x61, 0x72,
+	0x65, 0x61, 0x73, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x73, 0x43, 0x68,
+	0x61, 0x6d, 0x70, 0x41, 0x72, 0x65, 0x61, 0x54, 0x79, 0x70, 0x65, 0x52, 0x05, 0x61, 0x72, 0x65,
+	0x61, 0x73, 0x12, 0x23, 0x0a, 0x0d, 0x72, 0x65, 0x67, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x5f, 0x6c,
+	0x69, 0x6e, 0x6b, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x72, 0x65, 0x67, 0x69, 0x6f,
+	0x6e, 0x61, 0x6c, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x23, 0x0a, 0x0d, 0x6e, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x61, 0x6c, 0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c,
+	0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x4c, 0x69, 0x6e, 0x6b, 0x22, 0x4f, 0x0a, 0x13,
+	0x50, 0x6f, 0x69, 0x6e, 0x74, 0x73, 0x43, 0x68, 0x61, 0x6d, 0x70, 0x43, 0x6f, 0x6d, 0x70, 0x54,
+	0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x5f, 0x74, 0x79, 0x70, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x63, 0x6f, 0x6d, 0x70, 0x54, 0x79, 0x70, 0x65,
+	0x12, 0x1b, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x08, 0x63, 0x6f, 0x6d, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x4f, 0x0a,
+	0x13, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x73, 0x43, 0x68, 0x61, 0x6d, 0x70, 0x41, 0x72, 0x65, 0x61,
+	0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x61, 0x72, 0x65, 0x61, 0x5f, 0x74, 0x79, 0x70,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x61, 0x72, 0x65, 0x61, 0x54, 0x79, 0x70,
+	0x65, 0x12, 0x1b, 0x0a, 0x09, 0x61, 0x72, 0x65, 0x61, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x61, 0x72, 0x65, 0x61, 0x4e, 0x61, 0x6d, 0x65, 0x42, 0x2d,
+	0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -497,24 +742,29 @@ func file_snakecommon_activity_config_proto_rawDescGZIP() []byte {
 	return file_snakecommon_activity_config_proto_rawDescData
 }
 
-var file_snakecommon_activity_config_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_snakecommon_activity_config_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_snakecommon_activity_config_proto_goTypes = []interface{}{
-	(*FarmConfig)(nil),      // 0: snakecommon.FarmConfig
-	(*FarmHomePrompt)(nil),  // 1: snakecommon.FarmHomePrompt
-	(*MagicSkinConfig)(nil), // 2: snakecommon.MagicSkinConfig
-	(*MagicSkinData)(nil),   // 3: snakecommon.MagicSkinData
-	(*SnakeAreaConfig)(nil), // 4: snakecommon.SnakeAreaConfig
-	(*CRewardItem)(nil),     // 5: snakecommon.CRewardItem
+	(*FarmConfig)(nil),          // 0: snakecommon.FarmConfig
+	(*FarmHomePrompt)(nil),      // 1: snakecommon.FarmHomePrompt
+	(*MagicSkinConfig)(nil),     // 2: snakecommon.MagicSkinConfig
+	(*MagicSkinData)(nil),       // 3: snakecommon.MagicSkinData
+	(*SnakeAreaConfig)(nil),     // 4: snakecommon.SnakeAreaConfig
+	(*PointsChampConfig)(nil),   // 5: snakecommon.PointsChampConfig
+	(*PointsChampCompType)(nil), // 6: snakecommon.PointsChampCompType
+	(*PointsChampAreaType)(nil), // 7: snakecommon.PointsChampAreaType
+	(*CRewardItem)(nil),         // 8: snakecommon.CRewardItem
 }
 var file_snakecommon_activity_config_proto_depIdxs = []int32{
 	1, // 0: snakecommon.FarmConfig.home_prompt:type_name -> snakecommon.FarmHomePrompt
 	3, // 1: snakecommon.MagicSkinConfig.data:type_name -> snakecommon.MagicSkinData
-	5, // 2: snakecommon.SnakeAreaConfig.rewardItem:type_name -> snakecommon.CRewardItem
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	8, // 2: snakecommon.SnakeAreaConfig.rewardItem:type_name -> snakecommon.CRewardItem
+	6, // 3: snakecommon.PointsChampConfig.comp_types:type_name -> snakecommon.PointsChampCompType
+	7, // 4: snakecommon.PointsChampConfig.areas:type_name -> snakecommon.PointsChampAreaType
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_snakecommon_activity_config_proto_init() }
@@ -584,6 +834,42 @@ func file_snakecommon_activity_config_proto_init() {
 				return nil
 			}
 		}
+		file_snakecommon_activity_config_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PointsChampConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_activity_config_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PointsChampCompType); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_activity_config_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PointsChampAreaType); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -591,7 +877,7 @@ func file_snakecommon_activity_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_activity_config_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
