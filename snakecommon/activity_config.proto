@@ -54,6 +54,17 @@ message PointsChampConfig {
   string regional_link = 7; // 地区选拔赛跳转链接
   string national_link = 8; // 总决赛跳转链接
   PointsChampUserInfo user_info = 9;
+  int64 cur_phase_num = 11; // 当前阶段
+  repeated PointsChampPhase phases = 10; // 阶段配置
+}
+
+message PointsChampPhase {
+  int64 phase_num = 1; // 阶段
+  string title = 2;
+  int64 start_time = 3;
+  int64 end_time = 4;
+  string btn_link = 5; // 跳转链接
+  string btn_img_url = 6; // 展示图片
 }
 
 message PointsChampCompType {
