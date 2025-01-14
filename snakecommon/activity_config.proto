@@ -53,6 +53,7 @@ message PointsChampConfig {
   repeated PointsChampAreaType areas = 6; // 大区
   string regional_link = 7; // 地区选拔赛跳转链接
   string national_link = 8; // 总决赛跳转链接
+  PointsChampUserInfo user_info = 9;
 }
 
 message PointsChampCompType {
@@ -63,4 +64,8 @@ message PointsChampCompType {
 message PointsChampAreaType {
   int64 area_type = 1;
   string area_name = 2;
+}
+
+message PointsChampUserInfo {
+  string area_type = 1;
 }
