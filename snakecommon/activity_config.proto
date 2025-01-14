@@ -67,5 +67,5 @@ message PointsChampAreaType {
 }
 
 message PointsChampUserInfo {
-  string area_type = 1;
+  int64 area_type = 1;
 }
