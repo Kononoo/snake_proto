@@ -45,7 +45,7 @@ message SnakeAreaConfig {
 }
 
 message PointsChampConfig {
-  int64 act_id = 1;
+  string act_id = 1;
   int64 start_time = 2;
   int64 end_time = 3;
   string toplist_tab_name = 4; // 排行榜页签名称
