@@ -1171,7 +1171,8 @@ message SFLotteryAccuReward {
 
 message StarFieldTask {
   SFDailyTask daily_task = 1; // 每日任务
-  repeated SFWeeklyTaskItem week_task_list = 2; // 每周任务
+  repeated SFWeeklyTaskItem week_task_list = 2; // 每周任务（阶段式开放）
+  SFDailyTask weekly_task = 3; // 每周任务（自动刷新）
 }
 
 
