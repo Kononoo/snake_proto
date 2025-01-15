@@ -75,6 +75,15 @@ message OlGameConfig {
   int32 qualifying_guide = 23; //1:强引导，2：弱引导
   int32 ol_game_predict_data_count_new = 24;
   MatchBackgroundConfig match_background = 25;
+  JumpIcon jump_icon = 26; // 匹配界面跳转按钮
+}
+
+message JumpIcon {
+  string icon = 1; // 图标url
+  string link = 2; // 跳转链接
+  int64 start_time = 3; // 开始时间
+  int64 end_time = 4; // 结束时间
+  string support_version = 5; // 支持版本>=
 }
 
 message MatchBackgroundConfig {
