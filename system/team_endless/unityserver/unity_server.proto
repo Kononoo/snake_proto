@@ -39,6 +39,20 @@ message TeamEndlessEndGameRsp {
   int64 new_rank_score = 2; // 新的段位分
   int64 new_rank_id = 3; // 新的段位id
   int64 add_rank_score = 4; // 增加的段位分
+  AiInfo ai = 5; // 中途加入的ai,没有ai时为空
+}
+
+message TeamEndlessExitGameReq {
+  bool is_join_forbidden = 1; // 是否禁止中途加入
+}
+
+message TeamEndlessExitGameRsp {
+  AiInfo ai = 1; // 中途加入的ai
+}
+
+message AiInfo{
+  string uid = 1;  //玩家uid
+  int32 platform = 2; // 平台
 }
 
 enum TeamEndlessSettleType {
