@@ -76,7 +76,3 @@ message BestTeammate{
   int32 partner_kill=5;
   int32 partner_length=6;
 }
-
-message TeamEndlessExitGameReq {
-  bool is_join_forbidden = 1; // 是否禁止中途加入
-}
