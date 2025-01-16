@@ -53,6 +53,7 @@ message TeamEndlessExitGameRsp {
 message AiInfo{
   string uid = 1;  //玩家uid
   int32 platform = 2; // 平台
+  string nickname = 3; // 昵称
 }
 
 enum TeamEndlessSettleType {
