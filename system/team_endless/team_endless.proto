@@ -158,6 +158,7 @@ message EndlessTeammate {
   int32 score = 2;
   int32 skinId = 3;
   repeated int32 tag = 4;
+  bool is_ai = 5; // 是否ai
 }
 
 message BestTeammate{
