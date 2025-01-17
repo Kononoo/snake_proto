@@ -54,8 +54,9 @@ message PointsChampConfig {
   string regional_link = 7; // 地区选拔赛跳转链接
   string national_link = 8; // 总决赛跳转链接
   PointsChampUserInfo user_info = 9;
-  int64 cur_phase_num = 11; // 当前阶段
   repeated PointsChampPhase phases = 10; // 阶段配置
+  int64 cur_phase_num = 11; // 当前阶段
+  string toplist_item_link = 12; // 情缘排行榜中的按钮跳转链接
 }
 
 message PointsChampPhase {
