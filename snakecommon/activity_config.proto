@@ -71,6 +71,8 @@ message PointsChampPhase {
 message PointsChampCompType {
   int64 comp_type = 1;
   string comp_name = 2;
+  string point_name = 3; // 积分名称
+  bool with_partner = 4; // 是否组队上榜
 }
 
 message PointsChampAreaType {
