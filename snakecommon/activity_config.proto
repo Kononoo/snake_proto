@@ -82,4 +82,5 @@ message PointsChampAreaType {
 
 message PointsChampUserInfo {
   int64 area_type = 1;
+  int64 area_type_with_partner = 2;
 }
