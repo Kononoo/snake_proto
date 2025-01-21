@@ -132,6 +132,7 @@ message CommandReq {
 message CommandRsp {
   int32 action_no = 1; // command写入帧号
   int32 tick_no = 2; // 服务器当前帧号
+  int64 server_time = 3; // 服务器时间
 }
 
 //1资源加载中(可每秒一次)，2加载好可以开始。其他自定[10及以上]：快捷短语、集合
