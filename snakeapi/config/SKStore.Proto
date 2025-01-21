@@ -889,6 +889,11 @@ message PropInfo {
   int32 use_threshold = 9; // 抵扣券使用门槛
   string link = 10;
   string popup_url = 11;
+  int32 middle_item_id = 12; // 关联活动道具
+  int32 speed_start_time = 13; // 道具可加成开始时间
+  int32 speed_end_time = 14; // 道具可加成结束时间
+  int32 speed_ratio = 15; // 加速比例
+  int32 reward_type = 16; // 关联活动道具奖励类型
 }
 // prop end
 
