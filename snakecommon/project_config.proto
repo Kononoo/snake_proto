@@ -857,6 +857,7 @@ message FlagsConfig {
   int32 chat_backup = 31; // 聊天备份, 默认0为不备份
   int32 unity_endless_v2=32; // 是否开启新unity无尽
   int32 new_pay_api = 33; // unity是否使用新支付接口
+  int32 open_endless_adapt_low_device = 34; // 是否开启适配低端设备
 }
 
 message FeedbackConfig {
