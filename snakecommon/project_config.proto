@@ -875,6 +875,7 @@ message FlagsConfig {
   int32 open_endless_spring_bgm = 35; // 是否开启无尽春节背景音乐
   int32 open_teamgame_spring_bgm = 36; // 是否开启团战春节背景音乐
   int32 open_teamendless_spring_bgm = 37; // 是否开启多人无尽春节背景音乐
+  int32 open_endless_adapt_low_device = 38; // 是否开启适配低端设备
 }
 
 message FeedbackConfig {
