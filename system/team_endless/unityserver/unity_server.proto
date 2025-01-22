@@ -30,6 +30,30 @@ message TeamEndlessEndGame {
   string game_id = 26; // 本局游戏的id，用于区分不同对局的结算，防止重复结算
   int32 tacit_count = 27; // 本局游戏默契次数
   BestTeammate best_teammate = 28;
+  bool is_exit_game = 29; // 是否直接退出游戏
+  bool is_join_forbidden = 30; // 是否禁止中途加入
+}
+
+message TeamEndlessEndGameRsp {
+  int64 old_rank_score = 1; // 之前的段位分
+  int64 new_rank_score = 2; // 新的段位分
+  int64 new_rank_id = 3; // 新的段位id
+  int64 add_rank_score = 4; // 增加的段位分
+  AiInfo ai = 5; // 中途加入的ai,没有ai时为空
+}
+
+message TeamEndlessExitGameReq {
+  bool is_join_forbidden = 1; // 是否禁止中途加入
+}
+
+message TeamEndlessExitGameRsp {
+  AiInfo ai = 1; // 中途加入的ai
+}
+
+message AiInfo{
+  string uid = 1;  //玩家uid
+  int32 platform = 2; // 平台
+  string nickname = 3; // 昵称
 }
 
 enum TeamEndlessSettleType {
@@ -43,6 +67,7 @@ message EndlessTeammate {
   int32 score = 2;
   int32 skinId = 3;
   repeated int32 tag = 4;
+  bool is_ai = 5; // 是否ai
 }
 
 message BestTeammate{

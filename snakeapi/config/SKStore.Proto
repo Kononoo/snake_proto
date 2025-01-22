@@ -779,9 +779,19 @@ enum GiftType {
 }
 
 message RelatedGift {
-  repeated int64 must = 1;  // 盲盒必得礼物id
-  RandGift rand = 2;        // 盲盒随机礼物
+  MustGift must_reward = 1;  // 盲盒必得礼物
+  RandGift rand = 2;       // 盲盒随机礼物
 }
+
+message MustGift {
+  repeated MustGiftItem gift_pool = 1; // 必得奖池
+}
+
+message MustGiftItem {
+  int64 Id = 1;        // 必得礼物id
+  int64 num = 2;       // 必得礼物数量
+}
+
 
 message RandGift {
   int64 probability = 1;               // 随机池概率
@@ -792,6 +802,7 @@ message RandGift {
 message RandGiftItem {
   int64 Id = 1;        // 随机礼物id
   int64 weight = 2;    // 随机礼物权重
+  int64 num = 3;       // 随机礼物数量
 }
 
 message GiftNumberConfig {
@@ -878,6 +889,11 @@ message PropInfo {
   int32 use_threshold = 9; // 抵扣券使用门槛
   string link = 10;
   string popup_url = 11;
+  int32 middle_item_id = 12; // 关联活动道具
+  int32 speed_start_time = 13; // 道具可加成开始时间
+  int32 speed_end_time = 14; // 道具可加成结束时间
+  int32 speed_ratio = 15; // 加速比例
+  int32 reward_type = 16; // 关联活动道具奖励类型
 }
 // prop end
 
@@ -1373,6 +1389,8 @@ enum RewardType {
   REWARD_HAPPY_COIN = 10; //欢乐币
   REWARD_TYPE_EVENT_PROP = 11; // 活动道具
   REWARD_TYPE_AVATAR_BOX = 12; // 头像框
+  REWARD_TYPE_TEAM_SKIN = 13; // 团战皮肤
+  REWARD_TYPE_TEAM_SKIN_CHIP = 14; // 团战皮肤碎片
   REWARD_TYPE_GIFT_PACKS = 15; // 礼包
   REWARD_TYPE_HONOR = 16; // 荣耀水晶
   REWARD_TYPE_RING = 17; // 戒指
@@ -1383,13 +1401,16 @@ enum RewardType {
   REWARD_TYPE_BET_COIN = 22; //竞猜币
   REWARD_TYPE_COLORFUL_BEAN = 23; //彩豆
   REWARD_TYPE_CARD_BAG = 24; //卡包
+  REWARD_TYPE_COUPON = 25; // 奖券，ios占用
   REWARD_TYPE_VIP_CARD = 26; //会员卡
   REWARD_TYPE_CHAT_BUBBLE = 27; //气泡
   REWARD_TYPE_BUFF = 28; //游戏buff
   REWARD_MEDAL_COIN = 29; //勋章比
   REWARD_TITLE = 30; //称号
+  REWARD_TYPE_GIFT_BUFF = 31;// 礼物buff
   REWARD_PASS_BOX = 32; //通行证箱子
-
+  REWARD_TYPE_LUCKY_TICKEY = 33; // 好运金券
+  REWARD_TYPE_3D = 34;
   REWARD_GAME_FACE = 35; //游戏表情
 
   REWARD_ROOM_BACKGROUND = 36; // 语音房房间背景
@@ -1406,6 +1427,9 @@ enum RewardType {
   REWARD_SOCIAL_BG = 47; // 社交底板
   REWARD_HOMEPAGE_PENDANT = 48; // 主页挂件
   REWARD_ENDLESS_BACKGROUND = 49; // 无尽背景
+  REWARD_TYPE_UNITY_ANIMATION = 51; //unity动效
+  REWARD_TYPE_FALLGUY_COIN = 52; // 2d派对代币
+  REWARD_TYPE_FALLGUY_SKIN = 53; // 2d派对套装
   REWARD_INTIMATE_APPELLATION = 54; // 亲密称谓
 
   REWARD_MENTOR_POINT_ID = 158; // 名师点id

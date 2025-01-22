@@ -43,3 +43,44 @@ message SnakeAreaConfig {
   string btn_url = 6; // 跳转链接
   string desc = 7; // 活动说明
 }
+
+message PointsChampConfig {
+  string act_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+  string toplist_tab_name = 4; // 排行榜页签名称
+  repeated PointsChampCompType comp_types = 5; // 竞争维度
+  repeated PointsChampAreaType areas = 6; // 大区
+  string regional_link = 7; // 地区选拔赛跳转链接
+  string national_link = 8; // 总决赛跳转链接
+  PointsChampUserInfo user_info = 9;
+  repeated PointsChampPhase phases = 10; // 阶段配置
+  int64 cur_phase_num = 11; // 当前阶段
+  string toplist_item_link = 12; // 情缘排行榜中的按钮跳转链接
+}
+
+message PointsChampPhase {
+  int64 phase_num = 1; // 阶段
+  string title = 2;
+  int64 start_time = 3;
+  int64 end_time = 4;
+  string btn_link = 5; // 跳转链接
+  string btn_img_url = 6; // 展示图片
+}
+
+message PointsChampCompType {
+  int64 comp_type = 1;
+  string comp_name = 2;
+  string point_name = 3; // 积分名称
+  bool with_partner = 4; // 是否组队上榜
+}
+
+message PointsChampAreaType {
+  int64 area_type = 1;
+  string area_name = 2;
+}
+
+message PointsChampUserInfo {
+  int64 area_type = 1;
+  int64 area_type_with_partner = 2;
+}

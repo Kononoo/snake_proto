@@ -44,6 +44,8 @@ message EndGameReq {
 }
 
 message EndGameRsp {
+  int32 game_mode = 1; // 游戏模式
+  bytes payload = 2; // 额外数据
 }
 
 message SubscribeReq { // 客户端订阅push消息
@@ -153,6 +155,7 @@ message ExitGameReq {
   string uid = 5;
 }
 message ExitGameRsp {
+  bytes payload = 1;
 }
 
 // 通用的push消息的ack请求

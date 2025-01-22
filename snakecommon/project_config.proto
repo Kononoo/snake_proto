@@ -75,6 +75,15 @@ message OlGameConfig {
   int32 qualifying_guide = 23; //1:强引导，2：弱引导
   int32 ol_game_predict_data_count_new = 24;
   MatchBackgroundConfig match_background = 25;
+  JumpIcon jump_icon = 26; // 匹配界面跳转按钮
+}
+
+message JumpIcon {
+  string icon = 1; // 图标url
+  string link = 2; // 跳转链接
+  int64 start_time = 3; // 开始时间
+  int64 end_time = 4; // 结束时间
+  string support_version = 5; // 支持版本>=
 }
 
 message MatchBackgroundConfig {
@@ -470,6 +479,8 @@ message UiConfigV3 {
   GameIcon compose = 18;
   GameIcon couple_passcheck = 19;
   bool use_5275_icon_layout = 20; // 是否使用5275版本优化后的首页icon布局
+  string teamendless_bgurl = 21; // 多人无尽按钮背景
+  GameIcon points_champ_icon = 22; // 新春大赏入口 icon https://wepie.feishu.cn/docx/LFuLdbWnco1DjuxVi9AcRUdfnyc
 }
 
 message GameIcon {
@@ -789,7 +800,7 @@ message UserConfig {
   MinorLimit minor_limit = 29;
   string login_limit_msg = 30;
   string age_tips_text = 31;
-  string certify_reward_image = 32;
+  string certify_reward_image = 32;  // 实名认证奖励图片
   NewUserConfig new_user_config = 33;
   int32 open_cp_button = 34; // 是否开启cp背景更换按钮，1为开
   int32 alipay_certify = 35;
@@ -805,6 +816,9 @@ message UserConfig {
   int32 third_failed_visitor_flag = 45;
   repeated string third_failed_visitor_market = 46;
   int32 relive_pack_auto_pop_count = 47;
+  string certify_vedio_url_v2 = 48; // 实名认证视频链接
+  string certify_reward_image_v2 = 49; // 实名认证奖励图片
+  repeated SnakeMain.Config.RewardConfig certify_reward_v2 = 50; // 实名认证奖励
 }
 
 message UnityFlags {
@@ -857,7 +871,11 @@ message FlagsConfig {
   int32 chat_backup = 31; // 聊天备份, 默认0为不备份
   int32 unity_endless_v2=32; // 是否开启新unity无尽
   int32 new_pay_api = 33; // unity是否使用新支付接口
-  int32 open_endless_adapt_low_device = 34; // 是否开启适配低端设备
+  int32 open_certify_guide_v2 = 34; // 是否开启实名认证 & 新手引导v2
+  int32 open_endless_spring_bgm = 35; // 是否开启无尽春节背景音乐
+  int32 open_teamgame_spring_bgm = 36; // 是否开启团战春节背景音乐
+  int32 open_teamendless_spring_bgm = 37; // 是否开启多人无尽春节背景音乐
+  int32 open_endless_adapt_low_device = 38; // 是否开启适配低端设备
 }
 
 message FeedbackConfig {
@@ -1521,6 +1539,12 @@ message EndlessBonusNew {
   BonusLevelSettings bonus_level_settings = 11;
 }
 
+message SpringSugarInfo {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  repeated BonusFood food_list = 3;
+}
+
 message MapBorder {
   int32 door_open_animation_duration = 1;
   int32 door_close_animation_duration = 2;
@@ -1557,7 +1581,7 @@ message AiConfigV3 {
   int32 min_born_kill = 32;
   int32 max_born_kill = 33;
   int32 born_kill = 34;
-
+  SpringSugarInfo spring_sugar_info = 35;  // 春节糖果信息
 }
 
 // ai_config_v3 end
@@ -2209,6 +2233,9 @@ message TeamEndlessConfig {
     int64 game_count = 1; // 需要的单人无尽游戏局数
     int64 highest_score = 2; // 单人无尽最高分数要求
     repeated string instruction_texts = 3; // 引导文案
+    int64 back_game_count = 4; // 回流用户需要游戏的局数
+    int32 register_day = 5; // 需要注册天数>=x天
+    int64 before_register_time = 6; // 需要注册的时间戳 <=x
   }
   Guide guide = 3;
 
