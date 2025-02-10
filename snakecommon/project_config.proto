@@ -1562,7 +1562,7 @@ message AiNickListItem {
 
 message AiSkinListItem {
   string id = 1;
-  repeated int64 ai_nick_list = 2;
+  repeated int64 ai_skin_list = 2;
 }
 
 message AiConfigV3 {
