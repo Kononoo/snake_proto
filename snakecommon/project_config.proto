@@ -869,13 +869,14 @@ message FlagsConfig {
   int32 not_show_idfa = 29;
   int32 silence_download = 30;
   int32 chat_backup = 31; // 聊天备份, 默认0为不备份
-  int32 unity_endless_v2=32; // 是否开启新unity无尽
+  int32 unity_endless_v2 = 32; // 是否开启复刻unity无尽
   int32 new_pay_api = 33; // unity是否使用新支付接口
   int32 open_certify_guide_v2 = 34; // 是否开启实名认证 & 新手引导v2
   int32 open_endless_spring_bgm = 35; // 是否开启无尽春节背景音乐
   int32 open_teamgame_spring_bgm = 36; // 是否开启团战春节背景音乐
   int32 open_teamendless_spring_bgm = 37; // 是否开启多人无尽春节背景音乐
   int32 open_endless_adapt_low_device = 38; // 是否开启适配低端设备
+  int32 open_unity_voice_room = 39; // 是否开启unity语音房
 }
 
 message FeedbackConfig {
@@ -1554,6 +1555,16 @@ message MapBorder {
   int32 map_invisible_duration = 6;
 }
 
+message AiNickListItem {
+  string id = 1;
+  repeated string ai_nick_list = 2;
+}
+
+message AiSkinListItem {
+  string id = 1;
+  repeated int64 ai_skin_list = 2;
+}
+
 message AiConfigV3 {
   StarSnake star_snake = 1;
   float map_rate = 3;
@@ -1582,6 +1593,14 @@ message AiConfigV3 {
   int32 max_born_kill = 33;
   int32 born_kill = 34;
   SpringSugarInfo spring_sugar_info = 35;  // 春节糖果信息
+  int64 is_anchor = 36;
+  repeated AiNickListItem ai_nick_lists = 37;
+  string ai_nick_list_id = 38;
+  int64 ai_nick_num = 39;
+  repeated AiSkinListItem ai_skin_lists = 40;
+  string ai_skin_list_id = 41;
+  int64 ai_skin_num = 42;
+  int64 direction_limit = 43;
 }
 
 // ai_config_v3 end
@@ -1640,71 +1659,71 @@ message RegisterReward {
 
 //  ===== interface_expire  start  =======
 message InterfaceExpire {
-    ActivityAPI activity_api = 1;
-    ClanAPI clan_api = 2;
-    ExpireConfig config = 3;
-    EventAPI event_api = 4;
-    FriendAPI friend_api = 5;
-    InboxAPI inbox_api = 6;
-    NearbyAPI nearby_api = 7;
-    ScoreAPI score_api = 8;
-    ShareAPI share_api = 9;
-    TopListV2 top_list_v2 = 10;
-    VoiceRoomAPI voice_room_api = 11;
+  ActivityAPI activity_api = 1;
+  ClanAPI clan_api = 2;
+  ExpireConfig config = 3;
+  EventAPI event_api = 4;
+  FriendAPI friend_api = 5;
+  InboxAPI inbox_api = 6;
+  NearbyAPI nearby_api = 7;
+  ScoreAPI score_api = 8;
+  ShareAPI share_api = 9;
+  TopListV2 top_list_v2 = 10;
+  VoiceRoomAPI voice_room_api = 11;
 }
 message ActivityAPI {
-    int64 get_activity_list = 1;
-    int64 get_latest_activity = 2;
+  int64 get_activity_list = 1;
+  int64 get_latest_activity = 2;
 }
 
 message ClanAPI {
-    int64 get_clan_info = 1;
-    int64 get_clan_member_list = 2;
+  int64 get_clan_info = 1;
+  int64 get_clan_member_list = 2;
 }
 
 message ExpireConfig {
-    int64 get_beta_state = 1;
+  int64 get_beta_state = 1;
 }
 
 message EventAPI {
-    int64 get_event_list = 1;
-    int64 get_event_list_v2 = 2;
+  int64 get_event_list = 1;
+  int64 get_event_list_v2 = 2;
 }
 
 message FriendAPI {
-    int64 get_friend_list = 1;
+  int64 get_friend_list = 1;
 }
 
 message InboxAPI {
-    int64 get_mail_list = 1;
+  int64 get_mail_list = 1;
 }
 
 message NearbyAPI {
-    int64 get_nearby = 1;
+  int64 get_nearby = 1;
 }
 
 message ScoreAPI {
-    int64 get_prime_info = 1;
-    int64 get_rank = 2;
-    int64 get_user_score_info = 3;
+  int64 get_prime_info = 1;
+  int64 get_rank = 2;
+  int64 get_user_score_info = 3;
 }
 
 message ShareAPI {
-    int64 get_share_info = 1;
+  int64 get_share_info = 1;
 }
 
 message TopListV2 {
-    int64 get_clan_top_list = 1;
-    int64 get_clan_top_list_v2 = 2;
-    int64 get_excite_top_list = 3;
-    int64 get_marry_top_list = 4;
-    int64 get_skin_top_list = 5;
-    int64 get_top_list = 6;
-    int64 get_top_list_v2 = 7;
+  int64 get_clan_top_list = 1;
+  int64 get_clan_top_list_v2 = 2;
+  int64 get_excite_top_list = 3;
+  int64 get_marry_top_list = 4;
+  int64 get_skin_top_list = 5;
+  int64 get_top_list = 6;
+  int64 get_top_list_v2 = 7;
 }
 
 message VoiceRoomAPI {
-    int64 get_config = 1;
+  int64 get_config = 1;
 }
 //  ===== interface_expire  start  =======
 
@@ -1741,187 +1760,187 @@ message ProvinceConfig {
 
 // ========   excite_mode_config  start  ===========
 message ExciteModeConfig {
-    repeated int64 ad_hat_popup = 1;
-    repeated GamePropList game_prop_list = 2;
-    repeated GamePropList game_prop_list2 = 3;
-    ParamConfig param_config = 4;
-    int64 life_ab_test = 5;
-    repeated string text_config = 6;
-    ModeGameConfig game_config = 7;
+  repeated int64 ad_hat_popup = 1;
+  repeated GamePropList game_prop_list = 2;
+  repeated GamePropList game_prop_list2 = 3;
+  ParamConfig param_config = 4;
+  int64 life_ab_test = 5;
+  repeated string text_config = 6;
+  ModeGameConfig game_config = 7;
 }
 message GamePropList {
-    string desc = 1;
-    string effect_desc = 2;
-    repeated ModeLevelInfo level_info = 3;
-    string name = 4;
-    int64 prop_id = 5;
-    string upgrade_desc = 6;
+  string desc = 1;
+  string effect_desc = 2;
+  repeated ModeLevelInfo level_info = 3;
+  string name = 4;
+  int64 prop_id = 5;
+  string upgrade_desc = 6;
 }
 message ModeLevelInfo {
-    int64 cost_goldcoin = 1;
-    double effect = 2;
-    int64 level = 3;
+  int64 cost_goldcoin = 1;
+  double effect = 2;
+  int64 level = 3;
 }
 
 message ParamConfig {
-    InGame in_game = 1;
-    repeated PropRate prop_rate = 2;
-    RateConfig rate_config = 3;
-    int64 relive_limit = 4;
+  InGame in_game = 1;
+  repeated PropRate prop_rate = 2;
+  RateConfig rate_config = 3;
+  int64 relive_limit = 4;
 }
 message InGame {
-    int64 combo_interval = 1;
-    double eat_efficiency = 2;
-    int64 max_prop_num = 3;
-    repeated int64 speed_up_reduce = 4;
+  int64 combo_interval = 1;
+  double eat_efficiency = 2;
+  int64 max_prop_num = 3;
+  repeated int64 speed_up_reduce = 4;
 }
 
 message PropRate {
-    int64 AI = 1;
-    int64 map = 2;
-    int64 prop_id = 3;
-    int64 stone = 4;
+  int64 AI = 1;
+  int64 map = 2;
+  int64 prop_id = 3;
+  int64 stone = 4;
 }
 
 message Ai {
-    double K = 1;
-    double boss = 2;
-    double normal = 3;
-    double special = 4;
+  double K = 1;
+  double boss = 2;
+  double normal = 3;
+  double special = 4;
 }
 
 message Map {
-    int64 cycle_time = 1;
-    int64 num = 2;
+  int64 cycle_time = 1;
+  int64 num = 2;
 }
 
 message Stone {
-    double rate = 1;
+  double rate = 1;
 }
 
 message RateConfig {
-    Ai AI = 1;
-    Map map = 2;
-    Stone stone = 3;
+  Ai AI = 1;
+  Map map = 2;
+  Stone stone = 3;
 }
 
 message ModeGameConfig {
-    repeated AiLevelList ai_level_list = 1;
-    double eat_efficiency = 2;
-    int64 food_count = 3;
-    int64 helmet_limit_count = 4;
-    int64 map_height = 5;
-    int64 map_width = 6;
-    int64 prop_fury_electricity = 7;
-    int64 prop_kill_fury = 8;
-    SelfElectricityConfig self_electricity_config = 9;
-    int64 self_start_len = 10;
-    ShockConfig shock_config = 11;
-    int64 speed_up_reduce = 12;
-    repeated StageConfigs stage_configs = 13;
-    int64 stone_count = 14;
-    int64 stone_relive_time = 15;
+  repeated AiLevelList ai_level_list = 1;
+  double eat_efficiency = 2;
+  int64 food_count = 3;
+  int64 helmet_limit_count = 4;
+  int64 map_height = 5;
+  int64 map_width = 6;
+  int64 prop_fury_electricity = 7;
+  int64 prop_kill_fury = 8;
+  SelfElectricityConfig self_electricity_config = 9;
+  int64 self_start_len = 10;
+  ShockConfig shock_config = 11;
+  int64 speed_up_reduce = 12;
+  repeated StageConfigs stage_configs = 13;
+  int64 stone_count = 14;
+  int64 stone_relive_time = 15;
 }
 message AiLevelList {
-    double brain_attack_chosen_per_frame_rate = 1;
-    double brain_attack_circle_inner_radius = 2;
-    int64 brain_attack_circle_outer_radius = 3;
-    repeated BrainAttackTime brain_attack_time = 4;
-    int64 brain_visible_degree = 5;
-    int64 collision_ai_rate = 6;
-    int64 collision_border_rate = 7;
-    int64 collision_stone_rate = 8;
-    int64 collision_wreck_rate = 9;
-    int64 level = 10;
+  double brain_attack_chosen_per_frame_rate = 1;
+  double brain_attack_circle_inner_radius = 2;
+  int64 brain_attack_circle_outer_radius = 3;
+  repeated BrainAttackTime brain_attack_time = 4;
+  int64 brain_visible_degree = 5;
+  int64 collision_ai_rate = 6;
+  int64 collision_border_rate = 7;
+  int64 collision_stone_rate = 8;
+  int64 collision_wreck_rate = 9;
+  int64 level = 10;
 }
 
 message BrainAttackTime {
-    int64 time = 1;
-    int64 weight = 2;
+  int64 time = 1;
+  int64 weight = 2;
 }
 
 message SelfElectricityConfig {
-    int64 electricity_cd_time = 1;
-    double electricity_explore_max_radius = 2;
-    int64 electricity_explore_time = 3;
-    double electricity_warning_induction_distance = 4;
-    int64 electricity_warning_time = 5;
+  int64 electricity_cd_time = 1;
+  double electricity_explore_max_radius = 2;
+  int64 electricity_explore_time = 3;
+  double electricity_warning_induction_distance = 4;
+  int64 electricity_warning_time = 5;
 }
 
 message ShockConfig {
-    double shock_explore_max_radius = 1;
-    double shock_explore_time = 2;
+  double shock_explore_max_radius = 1;
+  double shock_explore_time = 2;
 }
 
 message AiTypeList {
-    int64 ai_count = 1;
-    int64 ai_type = 2;
-    int64 attacker_count = 3;
-    int64 level = 4;
-    int64 range_len = 5;
-    repeated int64 skin_list = 6;
-    int64 start_len = 7;
+  int64 ai_count = 1;
+  int64 ai_type = 2;
+  int64 attacker_count = 3;
+  int64 level = 4;
+  int64 range_len = 5;
+  repeated int64 skin_list = 6;
+  int64 start_len = 7;
 }
 
 message ElectricityConfig {
-    int64 electricity_cd_time = 1;
-    double electricity_explore_max_radius = 2;
-    int64 electricity_explore_time = 3;
-    double electricity_warning_induction_distance = 4;
-    int64 electricity_warning_time = 5;
+  int64 electricity_cd_time = 1;
+  double electricity_explore_max_radius = 2;
+  int64 electricity_explore_time = 3;
+  double electricity_warning_induction_distance = 4;
+  int64 electricity_warning_time = 5;
 }
 
 message MissileConfig {
-    double missile_ai_detect_distance = 1;
-    int64 missile_cd_time = 2;
-    double missile_explode_induction_distance = 3;
-    double missile_explode_radius = 4;
-    double missile_explode_time = 5;
-    int64 missile_fly_time = 6;
-    double missile_prepare_time = 7;
-    int64 missile_scanning_time = 8;
-    double missile_speed_rate = 9;
+  double missile_ai_detect_distance = 1;
+  int64 missile_cd_time = 2;
+  double missile_explode_induction_distance = 3;
+  double missile_explode_radius = 4;
+  double missile_explode_time = 5;
+  int64 missile_fly_time = 6;
+  double missile_prepare_time = 7;
+  int64 missile_scanning_time = 8;
+  double missile_speed_rate = 9;
 }
 
 message AiConfig {
-    repeated AiTypeList ai_type_list = 1;
-    ElectricityConfig electricity_config = 2;
-    MissileConfig missile_config = 3;
+  repeated AiTypeList ai_type_list = 1;
+  ElectricityConfig electricity_config = 2;
+  MissileConfig missile_config = 3;
 }
 
 message PropBornInfos {
-    int64 prop_born_time = 1;
-    int64 prop_count = 2;
-    int64 prop_refresh_time = 3;
-    int64 prop_type = 4;
+  int64 prop_born_time = 1;
+  int64 prop_count = 2;
+  int64 prop_refresh_time = 3;
+  int64 prop_type = 4;
 }
 
 message PropWeightList {
-    int64 prop_weight_battery = 1;
-    int64 prop_weight_coin = 2;
-    int64 prop_weight_cordial = 3;
-    int64 prop_weight_double_score = 4;
-    int64 prop_weight_hamburger = 5;
-    int64 prop_weight_helmet = 6;
-    int64 prop_weight_invincible = 7;
-    int64 prop_weight_magnet = 8;
-    int64 prop_weight_time = 9;
-    int64 type = 10;
+  int64 prop_weight_battery = 1;
+  int64 prop_weight_coin = 2;
+  int64 prop_weight_cordial = 3;
+  int64 prop_weight_double_score = 4;
+  int64 prop_weight_hamburger = 5;
+  int64 prop_weight_helmet = 6;
+  int64 prop_weight_invincible = 7;
+  int64 prop_weight_magnet = 8;
+  int64 prop_weight_time = 9;
+  int64 type = 10;
 }
 
 message PropConfig {
-    repeated PropBornInfos prop_born_infos = 1;
-    int64 prop_refresh_max_survival_count = 2;
-    repeated PropWeightList prop_weight_list = 3;
+  repeated PropBornInfos prop_born_infos = 1;
+  int64 prop_refresh_max_survival_count = 2;
+  repeated PropWeightList prop_weight_list = 3;
 }
 
 message StageConfigs {
-    AiConfig ai_config = 1;
-    int64 ai_revive_time = 2;
-    PropConfig prop_config = 3;
-    int64 stage_end_time = 4;
-    int64 stage_start_time = 5;
-    int64 stage_type = 6;
+  AiConfig ai_config = 1;
+  int64 ai_revive_time = 2;
+  PropConfig prop_config = 3;
+  int64 stage_end_time = 4;
+  int64 stage_start_time = 5;
+  int64 stage_type = 6;
 }
 // ========   excite_mode_config  end  ===========
 
@@ -1955,7 +1974,7 @@ message ShellCheck {
 
 // ======  little_game start =====
 message LittleGame {
-   map<string, LittleGameSrc> little_games = 1;
+  map<string, LittleGameSrc> little_games = 1;
 }
 message LittleGameSrc {
   repeated LittleGameSrcItem items = 1;
@@ -1983,21 +2002,21 @@ message ReviewMarket {
 
 // ====== little_game_ui_config  start ========
 message LittleGameUiConf {
-    map<string, LittleGameUi> config = 1;
+  map<string, LittleGameUi> config = 1;
 }
 message LittleGameUi {
-    repeated GameList game_list = 1;
-    string home_corner_url = 2;
-    string home_text_url = 3;
-    string recommend_jump_url = 4;
+  repeated GameList game_list = 1;
+  string home_corner_url = 2;
+  string home_text_url = 3;
+  string recommend_jump_url = 4;
 }
 message GameList {
-    string game_corner_url = 1;
-    string game_url = 2;
-    string home_url = 3;
-    string jump_url = 4;
-    int64 open_flag = 5;
-    string text_url = 6;
+  string game_corner_url = 1;
+  string game_url = 2;
+  string home_url = 3;
+  string jump_url = 4;
+  int64 open_flag = 5;
+  string text_url = 6;
 }
 // ====== little_game_ui_config  end ========
 
@@ -2164,20 +2183,20 @@ message TimedTaskCoinConfig {
 
 // ========   summon_config start   =========
 message SummonConfig {
-    repeated  SummonAiConfig aiConfig = 1;
-    int64     enableDebug = 2;
-    MapConfig mapConfig = 3;
+  repeated  SummonAiConfig aiConfig = 1;
+  int64     enableDebug = 2;
+  MapConfig mapConfig = 3;
 }
 message SummonAiConfig {
-    repeated SummonConfigItem config = 1;
+  repeated SummonConfigItem config = 1;
 }
 message SummonConfigItem {
-    int64 level = 1;
-    int64 num = 2;
+  int64 level = 1;
+  int64 num = 2;
 }
 message MapConfig {
-    int64 height = 1;
-    int64 width = 2;
+  int64 height = 1;
+  int64 width = 2;
 }
 //  =========  summon_config end  ============
 
@@ -2229,7 +2248,7 @@ message TeamEndlessConfig {
   bool switch = 1;
   string desc = 2;
 
-  message Guide { // 新手引导配置
+  message Guide {// 新手引导配置
     int64 game_count = 1; // 需要的单人无尽游戏局数
     int64 highest_score = 2; // 单人无尽最高分数要求
     repeated string instruction_texts = 3; // 引导文案
@@ -2244,7 +2263,7 @@ message TeamEndlessConfig {
     int32 rank_id = 1; // 大段位id
     repeated snakecommon.CRewardItem reward_list = 2; // 奖励列表
   }
-  message Season { // 赛季配置
+  message Season {// 赛季配置
     int32 id = 1; // 赛季id
     int64 start_time = 2; // 赛季开始时间
     int64 end_time = 3; // 赛季结束时间
@@ -2263,7 +2282,7 @@ message TeamEndlessConfig {
     int64 min = 3; // 小段位分数区间最小值
     int64 max = 4; // 小段位分数区间最大值
   }
-  message Rank { // 段位配置
+  message Rank {// 段位配置
     repeated BigRankItem big_rank = 1; // 大段位列表
     repeated SmallRankItem small_rank = 2; // 小段位列表
     string rank_desc = 3; // 段位说明
