@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package match;
+option go_package = "git.17zjh.com/snake/snake_proto/matchx/match";
+
+import "matchx/match/unity_qualify.proto";
+
+// 原生团战额外定义
+
+message NativeQualifyUploadAttr { // 原生团战：上传用户额外属性，存储在payload中
+  repeated int64 skin_id_list = 1;
+  int64 suit_id = 2;
+  int64 team_broadcast_id = 3;
+  int64 team_bubble_id = 4;
+  repeated SkinSkill skin_skill_list = 5;
+}
+
+message NativeQualifyReportRoomScoreNotify {
+}
+
+message NativeQualifyRoomMember { // 原生团战：房间内玩家额外信息，存储在RoomMember的payload中
+  int32 ai_level = 1;
+  int64 team_broadcast_id = 2;
+  int64 team_bubble_id = 3;
+  int64 suit_id = 4;
+  int32 suit_chosen = 5;
+  repeated int64 skin_id_list = 6;
+  int32 mentorship = 7;
+  int64 ring_id = 8;
+}
+
+message NativeQualifyGroupMember {
+  int32 state = 1; // 在队伍中状态。默认0准备好，1结算中，2未准备
+  int64 ring_id = 2;
+  int64 prop_id = 3;
+  int64 suit_id = 4; // 队服 id
+  int64 show_value = 5; // show 值
+}
+
+message NativeQualifySyncGroupMemberNotify {
+  int64 max_star = 1; // 组队中的最大历史最大星星数 (HistoryMaxStar)
+}
