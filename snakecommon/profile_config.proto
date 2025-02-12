@@ -883,6 +883,8 @@ message CouplePassCheck {
   int32 intimacy_item_id = 17;                        // 亲密度道具 ID
   string ios_hotfix_unity_version = 18;
   string android_hotfix_unity_version = 19;
+  CouplePassCheckMatchChat match_chat = 20; // 亲密速配
+  CouplePassCheckSpace couple_space = 21; // 亲密空间
 }
 
 message CPCPrompt {
@@ -1013,6 +1015,36 @@ message CPCIntimateRelationship {
 message CPCIntimateLevelItem {
   int32 level = 1; // 亲密度等级
   int64 intimacy = 2; // 需要的亲密度
+}
+
+message CouplePassCheckMatchChat {
+  string match_rule = 1; // 匹配规则
+  int64 match_timeout_sec = 2; // 匹配超时时间（秒）
+  int64 chat_time_limit_sec = 3; // 聊天时间限制（秒）
+  repeated string greetings = 4; // 招呼文案列表
+  repeated string quick_phrase_text_list = 5; // 快捷文案列表
+  string invite_prompt = 6; // 邀请提示文案
+  string invite_msg = 7; // 邀请文案
+}
+
+message CouplePassCheckSpace {
+  string intro = 1; // 介绍文案
+  repeated int32 background_need_heart_values = 2; // 背景需要的心动值
+  int32 heart_value_item_id = 3; // 心动值道具ID
+  CouplePassCheckSpaceChallenge challenge = 4; // 旅途挑战
+  CouplePassCheckSpaceTreasure treasure = 5; // 旅途宝藏
+}
+
+
+message CouplePassCheckSpaceChallenge {
+  repeated int32 event_ids = 1; // 任务活动ID列表
+  repeated EventTask event_infos = 2; // 任务配置，服务器读取填充
+}
+
+message CouplePassCheckSpaceTreasure {
+  int32 id = 1; // 宝藏阶段ID
+  int64 need_heart_value = 2; // 需要的心动值
+  SnakeMain.Config.RewardConfig reward = 3; // 奖励配置
 }
 // ======== couple_pass_check end ====================================================
 
