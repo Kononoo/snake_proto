@@ -702,6 +702,7 @@ message UnityQualifyingOpenConfig{
   string day_end_time = 3;
   repeated string markets = 4;
   repeated string versions = 5;
+  int32 relay_type = 6; // 控制游戏内是原生还是 unity 团战，0 表示 unity，1 表示原生
 }
 // === unity_qualifying_open_config end =======================================
 

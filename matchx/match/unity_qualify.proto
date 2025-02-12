@@ -44,3 +44,16 @@ message UnityQualifySyncGroupMemberNotify {
   int64 max_star = 1; // 组队中的最大历史最大星星数 (HistoryMaxStar)
 }
 
+message UnityQualifyJoinRoom {
+  int64 skin_id = 1;
+  int64 rank = 2;
+  repeated SkinSkill skin_skills = 3;
+  int64 kill_effect = 4;
+  repeated int64 skin_id_list = 5;
+  int64 show_level = 6;
+  string show_skill = 7;
+  int64 show_value = 8;
+  int64 prop_id = 9;
+  int32 role = 10;
+}
+

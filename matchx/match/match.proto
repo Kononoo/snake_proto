@@ -251,3 +251,9 @@ message JoinGroupReq { // 通过附近的人、最近游玩等方式加入组队
 
 message JoinGroupRsp {}
 
+message JoinRoomReq { // 加入好友对局
+  string friend_uid = 1;
+  bytes payload = 2; // 额外信息，每个游戏模式单独定义
+}
+
+message JoinRoomRsp {}
