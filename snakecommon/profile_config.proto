@@ -1033,7 +1033,7 @@ message CouplePassCheckSpace {
   repeated int32 background_need_heart_values = 2; // 背景需要的心动值
   int32 heart_value_item_id = 3; // 心动值道具ID
   CouplePassCheckSpaceChallenge challenge = 4; // 旅途挑战
-  CouplePassCheckSpaceTreasure treasure = 5; // 旅途宝藏
+  repeated CouplePassCheckSpaceTreasure treasure = 5; // 旅途宝藏
 }
 
 
