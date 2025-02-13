@@ -1025,6 +1025,7 @@ message CouplePassCheckMatchChat {
   repeated string quick_phrase_text_list = 5; // 快捷文案列表
   string invite_prompt = 6; // 邀请提示文案
   string invite_msg = 7; // 邀请文案
+  int64 daily_match_limit = 8; // 每日匹配次数上限
 }
 
 message CouplePassCheckSpace {
