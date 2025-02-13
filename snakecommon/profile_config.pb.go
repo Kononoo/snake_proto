@@ -9079,11 +9079,11 @@ type CouplePassCheckSpace struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Intro                     string                         `protobuf:"bytes,1,opt,name=intro,proto3" json:"intro,omitempty"`                                                                                      // 介绍文案
-	BackgroundNeedHeartValues []int32                        `protobuf:"varint,2,rep,packed,name=background_need_heart_values,json=backgroundNeedHeartValues,proto3" json:"background_need_heart_values,omitempty"` // 背景需要的心动值
-	HeartValueItemId          int32                          `protobuf:"varint,3,opt,name=heart_value_item_id,json=heartValueItemId,proto3" json:"heart_value_item_id,omitempty"`                                   // 心动值道具ID
-	Challenge                 *CouplePassCheckSpaceChallenge `protobuf:"bytes,4,opt,name=challenge,proto3" json:"challenge,omitempty"`                                                                              // 旅途挑战
-	Treasure                  *CouplePassCheckSpaceTreasure  `protobuf:"bytes,5,opt,name=treasure,proto3" json:"treasure,omitempty"`                                                                                // 旅途宝藏
+	Intro                     string                          `protobuf:"bytes,1,opt,name=intro,proto3" json:"intro,omitempty"`                                                                                      // 介绍文案
+	BackgroundNeedHeartValues []int32                         `protobuf:"varint,2,rep,packed,name=background_need_heart_values,json=backgroundNeedHeartValues,proto3" json:"background_need_heart_values,omitempty"` // 背景需要的心动值
+	HeartValueItemId          int32                           `protobuf:"varint,3,opt,name=heart_value_item_id,json=heartValueItemId,proto3" json:"heart_value_item_id,omitempty"`                                   // 心动值道具ID
+	Challenge                 *CouplePassCheckSpaceChallenge  `protobuf:"bytes,4,opt,name=challenge,proto3" json:"challenge,omitempty"`                                                                              // 旅途挑战
+	Treasure                  []*CouplePassCheckSpaceTreasure `protobuf:"bytes,5,rep,name=treasure,proto3" json:"treasure,omitempty"`                                                                                // 旅途宝藏
 }
 
 func (x *CouplePassCheckSpace) Reset() {
@@ -9146,7 +9146,7 @@ func (x *CouplePassCheckSpace) GetChallenge() *CouplePassCheckSpaceChallenge {
 	return nil
 }
 
-func (x *CouplePassCheckSpace) GetTreasure() *CouplePassCheckSpaceTreasure {
+func (x *CouplePassCheckSpace) GetTreasure() []*CouplePassCheckSpaceTreasure {
 	if x != nil {
 		return x.Treasure
 	}
@@ -13063,7 +13063,7 @@ var file_snakecommon_profile_config_proto_rawDesc = []byte{
 	0x50, 0x61, 0x73, 0x73, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x53, 0x70, 0x61, 0x63, 0x65, 0x43, 0x68,
 	0x61, 0x6c, 0x6c, 0x65, 0x6e, 0x67, 0x65, 0x52, 0x09, 0x63, 0x68, 0x61, 0x6c, 0x6c, 0x65, 0x6e,
 	0x67, 0x65, 0x12, 0x45, 0x0a, 0x08, 0x74, 0x72, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x18, 0x05,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
 	0x6f, 0x6e, 0x2e, 0x43, 0x6f, 0x75, 0x70, 0x6c, 0x65, 0x50, 0x61, 0x73, 0x73, 0x43, 0x68, 0x65,
 	0x63, 0x6b, 0x53, 0x70, 0x61, 0x63, 0x65, 0x54, 0x72, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x52,
 	0x08, 0x74, 0x72, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x22, 0x75, 0x0a, 0x1d, 0x43, 0x6f, 0x75,
