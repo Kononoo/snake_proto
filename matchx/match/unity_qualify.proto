@@ -39,6 +39,7 @@ message UnityQualifyRoomMember { // Unity 团战：房间内玩家额外信息�
   repeated int64 skin_id_list = 6;
   int32 mentorship = 7;
   int64 ring_id = 8;
+  bool malicious = 9; // 中途退出次数大于 x 次为恶意用户
 }
 
 message UnityQualifyGroupMember {
