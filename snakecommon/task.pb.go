@@ -20,6 +20,52 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type EventTaskType int32
+
+const (
+	EventTaskType_EventTaskTypeNormal EventTaskType = 0
+	EventTaskType_EventTaskTypeCycle  EventTaskType = 1
+)
+
+// Enum value maps for EventTaskType.
+var (
+	EventTaskType_name = map[int32]string{
+		0: "EventTaskTypeNormal",
+		1: "EventTaskTypeCycle",
+	}
+	EventTaskType_value = map[string]int32{
+		"EventTaskTypeNormal": 0,
+		"EventTaskTypeCycle":  1,
+	}
+)
+
+func (x EventTaskType) Enum() *EventTaskType {
+	p := new(EventTaskType)
+	*p = x
+	return p
+}
+
+func (x EventTaskType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (EventTaskType) Descriptor() protoreflect.EnumDescriptor {
+	return file_snakecommon_task_proto_enumTypes[0].Descriptor()
+}
+
+func (EventTaskType) Type() protoreflect.EnumType {
+	return &file_snakecommon_task_proto_enumTypes[0]
+}
+
+func (x EventTaskType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use EventTaskType.Descriptor instead.
+func (EventTaskType) EnumDescriptor() ([]byte, []int) {
+	return file_snakecommon_task_proto_rawDescGZIP(), []int{0}
+}
+
 // 任务状态
 type TaskState int32
 
@@ -57,11 +103,11 @@ func (x TaskState) String() string {
 }
 
 func (TaskState) Descriptor() protoreflect.EnumDescriptor {
-	return file_snakecommon_task_proto_enumTypes[0].Descriptor()
+	return file_snakecommon_task_proto_enumTypes[1].Descriptor()
 }
 
 func (TaskState) Type() protoreflect.EnumType {
-	return &file_snakecommon_task_proto_enumTypes[0]
+	return &file_snakecommon_task_proto_enumTypes[1]
 }
 
 func (x TaskState) Number() protoreflect.EnumNumber {
@@ -70,7 +116,7 @@ func (x TaskState) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use TaskState.Descriptor instead.
 func (TaskState) EnumDescriptor() ([]byte, []int) {
-	return file_snakecommon_task_proto_rawDescGZIP(), []int{0}
+	return file_snakecommon_task_proto_rawDescGZIP(), []int{1}
 }
 
 // 任务信息
@@ -79,18 +125,19 @@ type EventTask struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TaskId         int32          `protobuf:"varint,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`                          // 任务id
-	EventId        int32          `protobuf:"varint,2,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`                       // 任务所属任务活动id
-	NeedNum        int64          `protobuf:"varint,3,opt,name=need_num,json=needNum,proto3" json:"need_num,omitempty"`                       // 所需数量
-	Desc           string         `protobuf:"bytes,4,opt,name=desc,proto3" json:"desc,omitempty"`                                             // 任务描述，将 {} 替换成 need_num
-	BtnLink        string         `protobuf:"bytes,5,opt,name=btn_link,json=btnLink,proto3" json:"btn_link,omitempty"`                        // 跳转链接
-	BtnType        string         `protobuf:"bytes,6,opt,name=btn_type,json=btnType,proto3" json:"btn_type,omitempty"`                        // 跳转类型
-	State          TaskState      `protobuf:"varint,7,opt,name=state,proto3,enum=snakecommon.TaskState" json:"state,omitempty"`               // 任务状态
-	ProgressNum    int64          `protobuf:"varint,8,opt,name=progress_num,json=progressNum,proto3" json:"progress_num,omitempty"`           // 玩家进度
-	RewardItemList []*CRewardItem `protobuf:"bytes,9,rep,name=reward_item_list,json=rewardItemList,proto3" json:"reward_item_list,omitempty"` // 奖励列表
-	FilterType     int32          `protobuf:"varint,10,opt,name=filter_type,json=filterType,proto3" json:"filter_type,omitempty"`             // 指定任务需要的资源类型（可选）
-	FilterId       int32          `protobuf:"varint,11,opt,name=filter_id,json=filterId,proto3" json:"filter_id,omitempty"`                   // 指定任务需要的资源 id（可选）
-	FilterArgs     string         `protobuf:"bytes,12,opt,name=filter_args,json=filterArgs,proto3" json:"filter_args,omitempty"`              // 其他参数（自行解析并定义规则判断，可选）
+	TaskId         int32          `protobuf:"varint,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`                                       // 任务id
+	EventId        int32          `protobuf:"varint,2,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`                                    // 任务所属任务活动id
+	NeedNum        int64          `protobuf:"varint,3,opt,name=need_num,json=needNum,proto3" json:"need_num,omitempty"`                                    // 所需数量
+	Desc           string         `protobuf:"bytes,4,opt,name=desc,proto3" json:"desc,omitempty"`                                                          // 任务描述，将 {} 替换成 need_num
+	BtnLink        string         `protobuf:"bytes,5,opt,name=btn_link,json=btnLink,proto3" json:"btn_link,omitempty"`                                     // 跳转链接
+	BtnType        string         `protobuf:"bytes,6,opt,name=btn_type,json=btnType,proto3" json:"btn_type,omitempty"`                                     // 跳转类型
+	State          TaskState      `protobuf:"varint,7,opt,name=state,proto3,enum=snakecommon.TaskState" json:"state,omitempty"`                            // 任务状态
+	ProgressNum    int64          `protobuf:"varint,8,opt,name=progress_num,json=progressNum,proto3" json:"progress_num,omitempty"`                        // 玩家进度
+	RewardItemList []*CRewardItem `protobuf:"bytes,9,rep,name=reward_item_list,json=rewardItemList,proto3" json:"reward_item_list,omitempty"`              // 奖励列表
+	FilterType     int32          `protobuf:"varint,10,opt,name=filter_type,json=filterType,proto3" json:"filter_type,omitempty"`                          // 指定任务需要的资源类型（可选）
+	FilterId       int32          `protobuf:"varint,11,opt,name=filter_id,json=filterId,proto3" json:"filter_id,omitempty"`                                // 指定任务需要的资源 id（可选）
+	FilterArgs     string         `protobuf:"bytes,12,opt,name=filter_args,json=filterArgs,proto3" json:"filter_args,omitempty"`                           // 其他参数（自行解析并定义规则判断，可选）
+	TaskType       EventTaskType  `protobuf:"varint,13,opt,name=task_type,json=taskType,proto3,enum=snakecommon.EventTaskType" json:"task_type,omitempty"` // 任务类型
 }
 
 func (x *EventTask) Reset() {
@@ -209,6 +256,13 @@ func (x *EventTask) GetFilterArgs() string {
 	return ""
 }
 
+func (x *EventTask) GetTaskType() EventTaskType {
+	if x != nil {
+		return x.TaskType
+	}
+	return EventTaskType_EventTaskTypeNormal
+}
+
 var File_snakecommon_task_proto protoreflect.FileDescriptor
 
 var file_snakecommon_task_proto_rawDesc = []byte{
@@ -216,7 +270,7 @@ var file_snakecommon_task_proto_rawDesc = []byte{
 	0x73, 0x6b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0b, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
 	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x1a, 0x18, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
 	0x6f, 0x6e, 0x2f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22,
-	0x98, 0x03, 0x0a, 0x09, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x61, 0x73, 0x6b, 0x12, 0x17, 0x0a,
+	0xd1, 0x03, 0x0a, 0x09, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x61, 0x73, 0x6b, 0x12, 0x17, 0x0a,
 	0x07, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06,
 	0x74, 0x61, 0x73, 0x6b, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x5f,
 	0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x49,
@@ -241,14 +295,22 @@ var file_snakecommon_task_proto_rawDesc = []byte{
 	0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52,
 	0x08, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x49, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x66, 0x69, 0x6c,
 	0x74, 0x65, 0x72, 0x5f, 0x61, 0x72, 0x67, 0x73, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
-	0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x41, 0x72, 0x67, 0x73, 0x2a, 0x3b, 0x0a, 0x09, 0x54, 0x61,
-	0x73, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x09, 0x0a, 0x05, 0x55, 0x6e, 0x44, 0x65, 0x66,
-	0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x49, 0x6e, 0x69, 0x74, 0x10, 0x01, 0x12, 0x0d, 0x0a, 0x09,
-	0x43, 0x61, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x10, 0x02, 0x12, 0x0a, 0x0a, 0x06, 0x46,
-	0x69, 0x6e, 0x69, 0x73, 0x68, 0x10, 0x03, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31,
-	0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73,
-	0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x41, 0x72, 0x67, 0x73, 0x12, 0x37, 0x0a, 0x09, 0x74, 0x61,
+	0x73, 0x6b, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x1a, 0x2e,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x45, 0x76, 0x65, 0x6e,
+	0x74, 0x54, 0x61, 0x73, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x52, 0x08, 0x74, 0x61, 0x73, 0x6b, 0x54,
+	0x79, 0x70, 0x65, 0x2a, 0x40, 0x0a, 0x0d, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x61, 0x73, 0x6b,
+	0x54, 0x79, 0x70, 0x65, 0x12, 0x17, 0x0a, 0x13, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x61, 0x73,
+	0x6b, 0x54, 0x79, 0x70, 0x65, 0x4e, 0x6f, 0x72, 0x6d, 0x61, 0x6c, 0x10, 0x00, 0x12, 0x16, 0x0a,
+	0x12, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x61, 0x73, 0x6b, 0x54, 0x79, 0x70, 0x65, 0x43, 0x79,
+	0x63, 0x6c, 0x65, 0x10, 0x01, 0x2a, 0x3b, 0x0a, 0x09, 0x54, 0x61, 0x73, 0x6b, 0x53, 0x74, 0x61,
+	0x74, 0x65, 0x12, 0x09, 0x0a, 0x05, 0x55, 0x6e, 0x44, 0x65, 0x66, 0x10, 0x00, 0x12, 0x08, 0x0a,
+	0x04, 0x49, 0x6e, 0x69, 0x74, 0x10, 0x01, 0x12, 0x0d, 0x0a, 0x09, 0x43, 0x61, 0x6e, 0x52, 0x65,
+	0x77, 0x61, 0x72, 0x64, 0x10, 0x02, 0x12, 0x0a, 0x0a, 0x06, 0x46, 0x69, 0x6e, 0x69, 0x73, 0x68,
+	0x10, 0x03, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e,
+	0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -263,21 +325,23 @@ func file_snakecommon_task_proto_rawDescGZIP() []byte {
 	return file_snakecommon_task_proto_rawDescData
 }
 
-var file_snakecommon_task_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_snakecommon_task_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_snakecommon_task_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_snakecommon_task_proto_goTypes = []interface{}{
-	(TaskState)(0),      // 0: snakecommon.TaskState
-	(*EventTask)(nil),   // 1: snakecommon.EventTask
-	(*CRewardItem)(nil), // 2: snakecommon.CRewardItem
+	(EventTaskType)(0),  // 0: snakecommon.EventTaskType
+	(TaskState)(0),      // 1: snakecommon.TaskState
+	(*EventTask)(nil),   // 2: snakecommon.EventTask
+	(*CRewardItem)(nil), // 3: snakecommon.CRewardItem
 }
 var file_snakecommon_task_proto_depIdxs = []int32{
-	0, // 0: snakecommon.EventTask.state:type_name -> snakecommon.TaskState
-	2, // 1: snakecommon.EventTask.reward_item_list:type_name -> snakecommon.CRewardItem
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1, // 0: snakecommon.EventTask.state:type_name -> snakecommon.TaskState
+	3, // 1: snakecommon.EventTask.reward_item_list:type_name -> snakecommon.CRewardItem
+	0, // 2: snakecommon.EventTask.task_type:type_name -> snakecommon.EventTaskType
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_snakecommon_task_proto_init() }
@@ -305,7 +369,7 @@ func file_snakecommon_task_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_task_proto_rawDesc,
-			NumEnums:      1,
+			NumEnums:      2,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
