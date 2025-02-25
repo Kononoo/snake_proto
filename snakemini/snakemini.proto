@@ -1,0 +1,670 @@
+syntax = "proto3";
+
+option go_package="../snakemini";
+option objc_class_prefix = "PROTO";
+
+package pb;
+
+// -------------------------------------- MatchServer service definition --------------------------------------
+service MatchMonitor {
+    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
+    }
+}
+
+service Match {
+    rpc BindMatch (UidRequest) returns (BindResponse) {
+    }
+    rpc GetInGameState (UidRequest) returns (InGameStateReply) {
+    }
+    rpc Disconnect (UidRequest) returns (InGameStateReply) {
+    }
+    rpc MatchHandle (InternalReq) returns (RpcResponse) {
+    }
+}
+
+// ------------------------------------- GatewayServer service definition --------------------------------------------
+service GatewayMonitor {
+    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
+    }
+    rpc Reload (UidRequest) returns (ReplyEmpty) {
+    }
+}
+
+service Gateway {
+    rpc GatewayHandle (InternalReq) returns (RpcResponse) {
+    }
+    rpc PushClient (PushMsg) returns (UidList) {
+    }
+}
+
+//用一个rpc中转各服务间的请求，参数会有冗余
+message InternalReq {
+    int32 serverType = 1;
+    int32 serverId = 2;
+    string cmdId = 3;
+    int64 uid = 4;
+    string body = 6;
+    string reqExt = 7;
+    int32 user_type = 8;
+    string serverHost =9;
+}
+
+message RpcResponse {
+    ErrInfo err = 1;
+    string body = 2;
+}
+
+message PushMsg {
+    string cmdId = 1;
+    repeated int64 uid_list = 2;
+    string payload = 3;
+}
+
+message UidList {
+    repeated int64 uid_list = 1;
+}
+// ------------------------------------- RouteServer service definition --------------------------------------------
+service Route {
+    rpc Register (RegisterRequest) returns (ReplyEmpty) {
+    }
+    rpc HeartBeat (RegisterRequest) returns (ReplyEmpty) {
+    }
+}
+
+// ------------------------------------- RelayServer service definition --------------------------------------------
+service Relay {
+    rpc RelayHandle (InternalReq) returns (RpcResponse) {
+    }
+}
+
+service RelayMonitor {
+    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
+    }
+}
+
+message RegisterRequest {
+    ServerConfig config = 1;
+}
+
+message ServerConfig {
+    int32 server_type = 1;
+    int32 index = 2;
+    string intranet_host = 3;
+    string extranet_host = 4;
+    int32 tcp_port = 5;
+    int32 rpc_port = 6;
+    int32 monitor_port = 7;
+    int32 outer_port = 8;
+    int32 udp_port = 9;
+    int32 is_stop = 10;
+    string ws_addr=11;
+}
+
+message RedisServer {
+    RedisConfig user_redis = 1;
+    RedisConfig online_redis = 2;
+    int32 gateway_num = 3;
+}
+
+message RedisConfig {
+    string host = 1;
+    int32 port = 2;
+    string password = 3;
+}
+
+message BroadcastConfigs {
+    repeated ServerConfig servers = 1;
+    RedisServer redis_server = 2;
+}
+
+// ----------------------------------------- tool definition ------------------------------------------------
+message RequestHeader {
+    int32 packet_id = 1;
+    string command_id = 2;
+    int64 uid = 3;
+    int32 user_type = 4;
+}
+
+message ResponseHeader {
+    int32 packet_id = 1;
+    string command_id = 2;
+    int32 err_code = 3;
+    string err_msg = 4;
+}
+
+message PushHeader {
+    string command_id = 1;
+    int64 time = 2;
+}
+
+message PbRequest {
+    RequestHeader header = 1;
+    string body = 2;
+}
+
+message PbResponse {
+    ResponseHeader header = 1;
+    string body = 2;
+}
+
+message PbPush {
+    PushHeader header = 1;
+    string body = 2;
+}
+
+message ErrInfo {
+    int32 err_code = 1;
+    string err_message = 2;
+}
+
+message ReplyEmpty {
+    ErrInfo err = 1;
+}
+
+message PbUdpRequest {
+    string command_id = 1;
+    RelayUdpActionRequest action = 2;
+}
+
+message PbUdpPush {
+    string command_id = 1;
+    PushAction puaction = 2;
+}
+
+//绑定
+message BindRequest {
+    int64 uid = 1;
+    string sid = 2;
+    string version = 3;
+    int32 platform = 4;
+    int32 user_type = 5;
+}
+
+message BindResponse {
+    string info = 1;
+}
+
+message BindMatchInfo {
+    int32 state = 1;
+    GroupInfo group_info = 2;
+    MatchInfo match_info = 3;
+}
+
+message UidRequest {
+    int64 uid = 1;
+    map<string, int32> cmdMap = 2;
+}
+
+message HeartBeartRequest {
+    int64 client_time = 1;
+}
+
+message HeartBeartResponse {
+    int64 client_time = 1;
+    int64 server_time = 2;
+}
+
+//matchServer判断是否在房间中和游戏中
+message InGameStateReply {
+    ErrInfo err = 1;
+    int32 gid = 2;
+    int32 rid = 3;
+    int32 relay_server_id = 4;
+    string relay_host = 5;
+}
+
+message MatchUserInfo {
+    int64 uid = 1;
+    string openid = 2;
+    string version = 3;
+    int32 game_mode = 4;
+    int32 mode_version = 5;
+    int32 skin_id = 6;
+    int32 user_type = 7;
+    int32 platform = 8;
+    int32 rank = 9;
+    int32 history_max_star = 10;
+    int32 has_magnet = 11;
+    int32 kill_id = 12;
+}
+
+//创建队伍
+message CreateGroupRequest {
+    MatchUserInfo user_info = 1;
+}
+
+message CreateGroupResponse {
+    int32 gid = 1;
+}
+
+//加入队伍
+message JoinGroupRequest {
+    MatchUserInfo user_info = 1;
+    int64 invite_uid = 2;
+}
+
+message JoinGroupResponse {
+    GroupInfo group_info = 1;
+}
+
+//退出队伍
+message ExitGroupRequest {
+    int64 uid = 1;
+}
+
+message ExitGroupResponse {
+}
+
+//踢出队伍
+message KickRequest {
+    int64 uid = 1;
+    int64 kick_uid = 2;
+}
+
+message KickResponse {
+}
+
+message GroupInfoPush {
+    GroupInfo group_info = 1;
+}
+
+message GroupStatePush {
+    int32 state = 1;
+    int32 cancel = 2;
+}
+
+message GroupInfo {
+    int32 gid = 1;
+    int64 owner = 2;
+    repeated int64 uid_list = 3;
+    int32 game_mode = 4;
+    int32 mode_version = 5;
+    repeated GroupUserInfo user_infos = 6;
+}
+
+message GroupUserInfo {
+    int64  uid=1;
+    int32 skin_id =2;
+}
+
+//开始匹配
+message StartMatchRequest {
+    MatchUserInfo user_info = 1;
+}
+
+message StartMatchResponse {
+    int32 gid = 1;
+}
+
+message MatchSucPush {
+    MatchInfo match_info = 1;
+}
+
+message MatchInfo {
+    int32 rid = 1;
+    string access_info = 2;
+    repeated int64 uid_list = 3;
+    int32 team_id = 4;
+    repeated int32 team_id_list = 5;
+    int32 time_limit = 6;
+    int64 match_time = 7;
+    int32 num = 8;
+    int32 game_mode = 9;
+    int32 mode_version = 10;
+    int32 max_player_count = 11;
+    repeated int32 team_skin_id_list = 12;
+    repeated UserAttribute user_attr = 13;
+    int32 seed = 14;
+    bytes relay_sign = 15;
+    string udp_host = 16;
+    int32 udp_port = 17;
+    int32 config_version = 18;
+    string ws_addr = 19;
+}
+
+message UserAttribute {
+    int64 uid = 1;
+    int32 team_id = 2;
+    int32 skin_id = 3;
+    int32 num = 4;
+    int32 ai_level = 5;
+    int32 has_magnet = 6;
+    int32 kill_id = 7;
+}
+
+//退出队伍
+message ExitRoomRequest {
+    int64 uid = 1;
+    int32 exit_type = 2;
+}
+
+message ExitRoomResponse {
+}
+
+//游戏结束
+message UploadScoreRequest {
+    int32 rid = 1;
+    int64 uid = 2;
+    int32 num = 3;
+    repeated UserScore score_list = 4;
+}
+
+message UserScore {
+    int64 uid = 1;
+    int32 score = 2;
+    int32 kill = 3;
+    int32 be_kill = 4;
+    int32 relive = 5;
+    int32 hit_wall = 6;
+    int32 eat_star = 7;
+}
+
+message GameEndResponse {
+}
+
+message ReportRoomScore {
+    int32 rid = 1;
+    int64 start_time = 2;
+    int64 end_time = 3;
+    repeated UserScore score_list = 4;
+    repeated int64 uids = 5;
+}
+
+//获取游戏配置
+message GetGameConfigRequest {
+    int32 game_mode = 1;
+    int32 mode_version = 2;
+}
+
+//-------------------------relay-----------------------------
+
+message RelayBindUserInfo {
+    int64 uid = 1;
+    int32 rid = 2;
+    int32 seed = 3;
+    int32 max_player_count = 4;
+    int32 num = 5;
+    int32 time_limit = 6;
+    int64 match_time = 7;
+    bytes relay_sign = 8;
+    int32 game_mode = 9;
+    int32 mode_version = 10;
+    int32 platform = 11;
+    int32 user_type = 12;
+}
+
+message RelayBindRequest {
+    int64 uid = 1;
+    int32 rid = 2;
+    int32 seed = 3;
+    int32 max_player_count = 4;
+    int32 num = 5;
+    int32 time_limit = 6;
+    int64 match_time = 7;
+    bytes relay_sign = 8;
+    int32 game_mode = 9;
+    int32 mode_version = 10;
+    int32 platform = 11;
+    int32 user_type = 12;
+}
+
+message RelayStartInfo {
+    int64 start_time = 1;
+    int32 render_delay = 2;
+    int32 turn_time = 3;
+}
+
+message RelayBindResponse {
+    RelayStartInfo start_info = 1;
+    int32 state = 2;
+    int64 player_uid = 3;
+    int32 player_sid = 4;
+}
+
+message RelayPushStart {
+    RelayStartInfo start_info = 1;
+}
+
+message RelayCommandRequest {
+    int64 uid = 1;
+    int32 command = 2;
+    int32 revival_length = 3;
+    UserAttribute user_attr = 4;
+    int32 param =5;
+}
+
+message RelayGetHistoryFrameRequest {
+    int64 start_action_no = 1;
+    bool snapshot_needed = 2;
+    int64 uid = 3;
+}
+
+message FrameCommand {
+    int32 actionNo = 1;
+    repeated int32 actions = 2;
+    repeated int32 reliveUsers = 3;
+    repeated int32 shieldUsers = 4;
+    repeated int32 exitUsers = 5;
+    repeated ParamUser faceUsers = 6;
+    repeated ParamUser quickVoiceUsers = 7;
+}
+
+message ParamUser {
+    int32 num =1; // 玩家num
+    int32 p =2; // 参数
+}
+
+message RelayGetHistoryFrameResponse {
+    //    int64 action_no = 1;
+    //    bytes snapshot = 2;
+    repeated FrameCommand frame_command_list = 3;
+}
+
+message RelaySignalRequest {
+    int64 uid = 1;
+    int32 signal = 2;
+}
+
+message RelayPushSignal {
+    int32 num = 1;
+    int32 signal = 2;
+}
+
+message RelayExitGameRequest {
+    int64 uid = 1;
+    int32 exit_type = 2;
+}
+
+message RelaySnapShotRequest {
+    int64 action_no = 1;
+    bytes snapshot = 2;
+    int64 uid = 3;
+}
+
+message RelayReportRoomStateRequest {
+    int64 action_no = 1;
+    int32 state = 2;
+    int64 uid = 3;
+}
+
+message RelayChecksumRequest {
+    int64 action_no = 1;
+    double checksum = 2;
+    int64 uid = 3;
+    int32 random_count = 4;
+}
+
+message RushChecksumAbnormal {
+    int64 action_no = 1;
+}
+
+message RelayPushGameEnd {
+    int32 rid = 1;
+    int64 action_no = 2;
+}
+
+message RelayUdpSyncTimeRequest {
+    int64 uid = 1;
+    int32 temp_sid = 2;
+    int64 client_time = 3;
+}
+
+message RelayUdpSyncTimeResponse {
+    int64 server_time = 1;
+    int64 client_time = 2;
+}
+
+message RelayUdpActionRequest {
+    int64 player_uid = 1;
+    int32 player_sid = 2;
+    int32 action_no = 3;
+    int32 movement = 4;
+    int32 ack_action_no = 5;
+}
+
+message PushAction {
+    repeated FrameCommand frame_command_list = 1;
+}
+
+message RelayReportScoreRequest {
+    repeated int64 score_list = 1;
+    repeated int64 kill_list = 2;
+    int64 action_no = 3;
+    int64 uid = 4;
+    int32 rid = 5;
+}
+
+message RpcReportScoreRequest {
+    repeated int64 score_list = 1;
+    repeated int64 kill_list = 2;
+    int32 rid = 3;
+    int64 start_time = 4;
+    int64 end_time = 5;
+    int32 user_type = 6;
+    repeated int32 player_states = 7;
+}
+
+message RpcReportRoomStateRequest {
+    int32 rid = 1;
+    int32 state = 2;
+    int32 user_type = 3;
+}
+
+message RpcReportRoomAvailNumsRequest {
+    int32 rid = 1;
+    int32 user_type = 2;
+    repeated int32 num_list = 3;
+}
+
+message RpcReportAbnormalRequest {
+    int32 rid = 1;
+    int32 user_type = 2;
+    repeated int32 abnormal_nums = 3;
+}
+
+
+message RpcReportAbnormalNotifyRequest {
+    int32 rid = 1;
+    int32 user_type = 2;
+}
+
+message RpcReportRoomLockRequest {
+    int32 rid = 1;
+    int32 type = 2;
+    int32 user_type = 3;
+}
+
+//-------------------------relay-------------------------------
+
+message GetUserStateRequest {
+    repeated int64 uids = 1;
+}
+
+message UserStateInfo {
+    int64 uid = 1;
+    int32 state = 2;
+}
+
+message GetUserStateResponse {
+    repeated UserStateInfo states = 1;
+}
+
+message UpdateUserOnlineStateRequest {
+    int64 uid = 1;
+    int32 state = 2;
+}
+
+message UpdateUserStateRequest {
+    repeated int64 uid_list = 1;
+    int32 state = 2;
+}
+
+message InviteFriendRequest {
+    int64 invite_uid = 1;
+    int64 friend_uid = 2;
+    int32 source = 3;
+}
+
+message HandleInviteRequest {
+    int32 response = 1;
+    string msg = 2;
+    MatchUserInfo user_info = 3;
+    int64 invite_uid = 4;
+    int32 source = 5;
+}
+
+message BindUserInfo {
+    int64 uid = 1;
+    int32 state = 2;
+    int32 user_type = 3;
+    int32 platform = 4;
+    string version = 5;
+}
+
+message GetUserConnectorInfoResponse {
+    BindUserInfo user_info = 1;
+}
+
+message PushInviteFriend {
+    int64 invite_uid = 1;
+    int64 friend_uid = 2;
+    int32 source = 3;
+    int32 game_mode = 4;
+    int32 mode_version = 5;
+    int32 user_type = 6;
+    int32 platform = 7;
+}
+
+message PushHandleInvite {
+    string msg = 1;
+}
+
+message PushKicked {
+    int64 owner_uid = 1;
+}
+
+message SendGiftRequest {
+    int64 send_uid = 1;
+    int64 receive_uid = 2;
+    int32 gift_id = 3;
+    int32 source = 4;
+    int32 cost_type = 5;
+    int32 num = 6;
+    int32 rid = 7;
+    int32 user_type = 8;
+}
+
+message PushGameEndLike {
+    int64 send_uid = 1;
+    int64 receive_uid = 2;
+    string send_nickname = 3;
+    string receive_nickname = 4;
+    string send_gamename = 5;
+    string receive_gamename = 6;
+    string message = 7;
+}
+
+message CancelMatchRequest {
+    int64 uid = 1;
+    int32 is_timeout = 2;
+}
