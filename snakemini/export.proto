@@ -576,7 +576,7 @@ message SendGiftRequest {
     int32 user_type = 8; // 送礼人user_type
     int32 rec_user_type=9; // 收礼人user_type(跨渠道点赞预留)
     string ext=10; // 扩展字段，广告or分享 传{"position":xxx}
-    int32 version=11; // 版本号
+    string version=11; // 版本号
     int32 is_double=12; // 1 连击
     int32 bag_num=13; // 背包礼物数量
 }
