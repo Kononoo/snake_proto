@@ -196,6 +196,12 @@ message StartMatchResponse {
     int32 timeout=2; // 匹配超时时间
 }
 
+// 取消匹配
+message CancelMatchRequest {
+    int64 uid = 1;
+    int32 is_timeout = 2; // 是否超时取消
+}
+
 message MatchSucPush {
     MatchInfo match_info = 1;
 }
@@ -571,6 +577,8 @@ message SendGiftRequest {
     int32 rec_user_type=9; // 收礼人user_type(跨渠道点赞预留)
     string ext=10; // 扩展字段，广告or分享 传{"position":xxx}
     int32 version=11; // 版本号
+    int32 is_double=12; // 1 连击
+    int32 bag_num=13; // 背包礼物数量
 }
 
 message PushGameEndLike {
@@ -583,6 +591,7 @@ message PushGameEndLike {
     string message = 7;
 }
 
+// 送礼物 command_id=sendgift
 message PushSendGift {
     int64 send_uid = 1;
     int64 receive_uid = 2;
@@ -593,7 +602,16 @@ message PushSendGift {
     int32 count = 7; // 送礼个数
 }
 
-message CancelMatchRequest {
-    int64 uid = 1;
-    int32 is_timeout = 2;
+// 首页社交动态 command_id=socialtrend
+message PushSocialTrend {
+    int32 charm_change=1; // 魅力值+
+    int32 care_change=2; // 守护人数+
+    int32 visitor=3; // 访客+
 }
+
+// 货币余额 command_id=currency
+message PushCurrency {
+    int32 type = 1; // 货币类型 1 金币 18 苹果
+    int32 remain = 2; // 余额
+}
+
