@@ -1,7 +1,7 @@
 
-.PHONY: snakecommon snakehead rpc voiceroom music unitygame snakeapi system activity wxsnake fallguys matchx unityctl social
+.PHONY: snakecommon snakehead rpc voiceroom music unitygame snakeapi system activity snakemini fallguys matchx unityctl social
 
-all: snakecommon snakehead rpc voiceroom music unitygame snakeapi system activity wxsnake fallguys matchx unityctl social
+all: snakecommon snakehead rpc voiceroom music unitygame snakeapi system activity snakemini fallguys matchx unityctl social
 
 snakecommon:
 	protoc --go_out=. --go_opt=paths=source_relative ./snakecommon/*.proto
@@ -40,9 +40,9 @@ activity:
 	protoc  --proto_path=. --proto_path=/  --go_out=. --go_opt=paths=source_relative \
 	   --go-grpc_out=require_unimplemented_servers=false:. --go-grpc_opt=paths=source_relative  ./activity/*/*.proto
 
-wxsnake:
+snakemini:
 	protoc --go_out=. --go_opt=paths=source_relative\
-		--go-grpc_out=. --go-grpc_opt=require_unimplemented_servers=false,paths=source_relative ./wxsnake/*.proto
+		--go-grpc_out=. --go-grpc_opt=require_unimplemented_servers=false,paths=source_relative ./snakemini/*.proto
 
 fallguys:
 	protoc --go_out=. --go_opt=paths=source_relative\
