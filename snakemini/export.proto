@@ -604,9 +604,7 @@ message PushSendGift {
 
 // 首页社交动态 command_id=socialtrend
 message PushSocialTrend {
-    int32 charm_change=1; // 魅力值+
-    int32 care_change=2; // 守护人数+
-    int32 visitor=3; // 访客+
+   bool has_new = 1; // 是否是新动态
 }
 
 // 货币余额 command_id=currency
