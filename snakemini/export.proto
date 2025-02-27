@@ -193,6 +193,7 @@ message StartMatchRequest {
 
 message StartMatchResponse {
     int32 gid = 1;
+    int32 timeout=2; // 匹配超时时间
 }
 
 message MatchSucPush {
