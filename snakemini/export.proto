@@ -5,54 +5,6 @@ option objc_class_prefix = "PROTO";
 
 package pb;
 
-// -------------------------------------- MatchServer service definition --------------------------------------
-service MatchMonitor {
-    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
-    }
-}
-
-service Match {
-    rpc BindMatch (UidRequest) returns (BindResponse) {
-    }
-    rpc GetInGameState (UidRequest) returns (InGameStateReply) {
-    }
-    rpc Disconnect (UidRequest) returns (InGameStateReply) {
-    }
-    rpc MatchHandle (InternalReq) returns (RpcResponse) {
-    }
-}
-
-// ------------------------------------- GatewayServer service definition --------------------------------------------
-service GatewayMonitor {
-    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
-    }
-    rpc Reload (UidRequest) returns (ReplyEmpty) {
-    }
-}
-
-service Gateway {
-    rpc GatewayHandle (InternalReq) returns (RpcResponse) {
-    }
-    rpc PushClient (PushMsg) returns (UidList) {
-    }
-}
-
-//用一个rpc中转各服务间的请求，参数会有冗余
-message InternalReq {
-    int32 serverType = 1;
-    int32 serverId = 2;
-    string cmdId = 3;
-    int64 uid = 4;
-    string body = 6;
-    string reqExt = 7;
-    int32 user_type = 8;
-    string serverHost =9;
-}
-
-message RpcResponse {
-    ErrInfo err = 1;
-    string body = 2;
-}
 
 message PushMsg {
     string cmdId = 1;
@@ -62,59 +14,6 @@ message PushMsg {
 
 message UidList {
     repeated int64 uid_list = 1;
-}
-// ------------------------------------- RouteServer service definition --------------------------------------------
-service Route {
-    rpc Register (RegisterRequest) returns (ReplyEmpty) {
-    }
-    rpc HeartBeat (RegisterRequest) returns (ReplyEmpty) {
-    }
-}
-
-// ------------------------------------- RelayServer service definition --------------------------------------------
-service Relay {
-    rpc RelayHandle (InternalReq) returns (RpcResponse) {
-    }
-}
-
-service RelayMonitor {
-    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
-    }
-}
-
-message RegisterRequest {
-    ServerConfig config = 1;
-}
-
-message ServerConfig {
-    int32 server_type = 1;
-    int32 index = 2;
-    string intranet_host = 3;
-    string extranet_host = 4;
-    int32 tcp_port = 5;
-    int32 rpc_port = 6;
-    int32 monitor_port = 7;
-    int32 outer_port = 8;
-    int32 udp_port = 9;
-    int32 is_stop = 10;
-    string ws_addr=11;
-}
-
-message RedisServer {
-    RedisConfig user_redis = 1;
-    RedisConfig online_redis = 2;
-    int32 gateway_num = 3;
-}
-
-message RedisConfig {
-    string host = 1;
-    int32 port = 2;
-    string password = 3;
-}
-
-message BroadcastConfigs {
-    repeated ServerConfig servers = 1;
-    RedisServer redis_server = 2;
 }
 
 // ----------------------------------------- tool definition ------------------------------------------------
@@ -360,14 +259,6 @@ message UserScore {
 }
 
 message GameEndResponse {
-}
-
-message ReportRoomScore {
-    int32 rid = 1;
-    int64 start_time = 2;
-    int64 end_time = 3;
-    repeated UserScore score_list = 4;
-    repeated int64 uids = 5;
 }
 
 //获取游戏配置
@@ -643,15 +534,34 @@ message PushKicked {
     int64 owner_uid = 1;
 }
 
+enum SendGiftCost {
+    Free = 0; // 免费，比如点赞
+    Coin = 1;//金币
+    Diamond = 2; // 苹果
+    Ad = 3; // 广告
+    Share =4; // 分享
+    DouyinDiamond=5;// 抖音钻石
+}
+
+enum SendGiftSource {
+    UnknownSource=0;
+    QualifyingMVPPage = 1; // 团战MVP页
+    QualifyingSettlePage = 2; // 团战结算页
+    UserHomePage = 3; // 个人资料页
+}
+
 message SendGiftRequest {
-    int64 send_uid = 1;
-    int64 receive_uid = 2;
-    int32 gift_id = 3;
-    int32 source = 4;
-    int32 cost_type = 5;
-    int32 num = 6;
-    int32 rid = 7;
-    int32 user_type = 8;
+    int64 send_uid = 1; // 送礼人uid
+    int64 receive_uid = 2; // 收礼人uid
+    int32 gift_id = 3; // 礼物ID，30001团战点赞
+    SendGiftSource source = 4; // source 1和2 团战结算页，客户端定枚举
+    SendGiftCost cost_type = 5; // 付费类型 0 免费 1 金币 2 苹果 3 广告 4 分享 5 抖音钻石
+    int32 num = 6; // 送礼个数
+    int32 rid = 7; // 房间ID(团战结算页必传)
+    int32 user_type = 8; // 送礼人user_type
+    int32 rec_user_type=9; // 收礼人user_type(跨渠道点赞预留)
+    string ext=10; // 扩展字段，广告or分享 传{"position":xxx}
+    int32 version=11; // 版本号
 }
 
 message PushGameEndLike {
@@ -662,6 +572,16 @@ message PushGameEndLike {
     string send_gamename = 5;
     string receive_gamename = 6;
     string message = 7;
+}
+
+message PushSendGift {
+    int64 send_uid = 1;
+    int64 receive_uid = 2;
+    string send_nickname = 3;
+    string receive_nickname = 4;
+    string gift_id = 5;
+    string gift_name = 6;
+    int32 count = 7; // 送礼个数
 }
 
 message CancelMatchRequest {

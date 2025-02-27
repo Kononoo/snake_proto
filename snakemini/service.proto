@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option go_package="../snakemini";
+option objc_class_prefix = "PROTO";
+
+import "snakemini/export.proto";
+import "snakemini/internal.proto";
+
+
+package pb;
+
+// -------------------------------------- MatchServer service definition --------------------------------------
+service MatchMonitor {
+    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
+    }
+}
+
+service Match {
+    rpc BindMatch (UidRequest) returns (BindResponse) {
+    }
+    rpc GetInGameState (UidRequest) returns (InGameStateReply) {
+    }
+    rpc Disconnect (UidRequest) returns (InGameStateReply) {
+    }
+    rpc MatchHandle (InternalReq) returns (RpcResponse) {
+    }
+}
+
+// ------------------------------------- GatewayServer service definition --------------------------------------------
+service GatewayMonitor {
+    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
+    }
+    rpc Reload (UidRequest) returns (ReplyEmpty) {
+    }
+}
+
+service Gateway {
+    rpc GatewayHandle (InternalReq) returns (RpcResponse) {
+    }
+    rpc PushClient (PushMsg) returns (UidList) {
+    }
+}
+
+// ------------------------------------- RouteServer service definition --------------------------------------------
+service Route {
+    rpc Register (RegisterRequest) returns (ReplyEmpty) {
+    }
+    rpc HeartBeat (RegisterRequest) returns (ReplyEmpty) {
+    }
+}
+
+// ------------------------------------- RelayServer service definition --------------------------------------------
+service Relay {
+    rpc RelayHandle (InternalReq) returns (RpcResponse) {
+    }
+}
+
+service RelayMonitor {
+    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
+    }
+}
+

@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.20.3
-// source: snakemini/snakemini.proto
+// source: snakemini/service.proto
 
 package snakemini
 
@@ -99,7 +99,7 @@ var MatchMonitor_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "snakemini/snakemini.proto",
+	Metadata: "snakemini/service.proto",
 }
 
 // MatchClient is the client API for Match service.
@@ -291,7 +291,7 @@ var Match_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "snakemini/snakemini.proto",
+	Metadata: "snakemini/service.proto",
 }
 
 // GatewayMonitorClient is the client API for GatewayMonitor service.
@@ -411,7 +411,7 @@ var GatewayMonitor_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "snakemini/snakemini.proto",
+	Metadata: "snakemini/service.proto",
 }
 
 // GatewayClient is the client API for Gateway service.
@@ -531,7 +531,7 @@ var Gateway_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "snakemini/snakemini.proto",
+	Metadata: "snakemini/service.proto",
 }
 
 // RouteClient is the client API for Route service.
@@ -651,7 +651,7 @@ var Route_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "snakemini/snakemini.proto",
+	Metadata: "snakemini/service.proto",
 }
 
 // RelayClient is the client API for Relay service.
@@ -735,7 +735,7 @@ var Relay_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "snakemini/snakemini.proto",
+	Metadata: "snakemini/service.proto",
 }
 
 // RelayMonitorClient is the client API for RelayMonitor service.
@@ -819,5 +819,5 @@ var RelayMonitor_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "snakemini/snakemini.proto",
+	Metadata: "snakemini/service.proto",
 }

@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option go_package="../snakemini";
+option objc_class_prefix = "PROTO";
+
+import "snakemini/export.proto";
+
+package pb;
+
+
+//用一个rpc中转各服务间的请求，参数会有冗余
+message InternalReq {
+    int32 serverType = 1;
+    int32 serverId = 2;
+    string cmdId = 3;
+    int64 uid = 4;
+    string body = 6;
+    string reqExt = 7;
+    int32 user_type = 8;
+    string serverHost =9;
+}
+
+message RpcResponse {
+    ErrInfo err = 1;
+    string body = 2;
+}
+
+
+message RegisterRequest {
+    ServerConfig config = 1;
+}
+
+message ServerConfig {
+    int32 server_type = 1;
+    int32 index = 2;
+    string intranet_host = 3;
+    string extranet_host = 4;
+    int32 tcp_port = 5;
+    int32 rpc_port = 6;
+    int32 monitor_port = 7;
+    int32 outer_port = 8;
+    int32 udp_port = 9;
+    int32 is_stop = 10;
+    string ws_addr=11;
+}
+
+message RedisServer {
+    RedisConfig user_redis = 1;
+    RedisConfig online_redis = 2;
+    int32 gateway_num = 3;
+}
+
+message RedisConfig {
+    string host = 1;
+    int32 port = 2;
+    string password = 3;
+}
+
+message BroadcastConfigs {
+    repeated ServerConfig servers = 1;
+    RedisServer redis_server = 2;
+}
+
+
