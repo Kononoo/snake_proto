@@ -41,6 +41,7 @@
 - RelayMonitor 
   - Update 接收Broadcast
 ## export.proto 直接和客户端交互的proto
+- 客户端只同步export.proto即可，export.proto不依赖其他文件
 ### 对外基础协议
 - RequestHeader/ResponseHeader
 - PbRequest/PbResponse 
