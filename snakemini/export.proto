@@ -261,6 +261,14 @@ message UserScore {
 message GameEndResponse {
 }
 
+message ReportRoomScore {
+    int32 rid = 1;
+    int64 start_time = 2;
+    int64 end_time = 3;
+    repeated UserScore score_list = 4;
+    repeated int64 uids = 5;
+}
+
 //获取游戏配置
 message GetGameConfigRequest {
     int32 game_mode = 1;
