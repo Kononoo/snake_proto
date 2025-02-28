@@ -581,6 +581,11 @@ message SendGiftRequest {
     int32 bag_num=13; // 背包礼物数量
 }
 
+message SendGiftResponse {
+    int64 remain_diamond=1; // 剩余苹果
+    int64 remain_coin=2; // 剩余金币
+}
+
 message PushGameEndLike {
     int64 send_uid = 1;
     int64 receive_uid = 2;
