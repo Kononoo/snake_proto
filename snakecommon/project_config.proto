@@ -879,6 +879,7 @@ message FlagsConfig {
   int32 open_endless_adapt_low_device = 38; // 是否开启适配低端设备
   int32 open_unity_voice_room = 39; // 是否开启unity语音房
   int32 use_tobid_ad = 40; // ios双聚合广告选择开关
+  int32 open_snake_area_toast = 41; // 游戏内提示地域榜弹窗实验
 }
 
 message FeedbackConfig {
