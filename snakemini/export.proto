@@ -611,10 +611,3 @@ message PushSendGift {
 message PushSocialTrend {
    bool has_new = 1; // 是否是新动态
 }
-
-// 货币余额 command_id=currency
-message PushCurrency {
-    int32 type = 1; // 货币类型 1 金币 18 苹果
-    int32 remain = 2; // 余额
-}
-
