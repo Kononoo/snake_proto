@@ -1,52 +1,9 @@
 # 小游戏proto
-## internal.proto 内部协议相关proto
-### 各种内部协议定义
-- 比如 InternalReq 等
-### gateway内部rpc接口
-    const (
-        IntranetCommandIdUpdateUserState = "intra_updatestate"
-        IntranetCommandIdGetUserState    = "intra_getstate"
-        IntranetCommandIdGetUserConnInfo = "intra_getconninfo"
-    )
-### match内部rpc接口
-    const (
-        IntranetCommandIdReportRoomState      = "intra_reportroomstate"
-        IntranetCommandIdReportAvailNums      = "intra_reportavailnums"
-        IntranetCommandIdReportScore          = "intra_reportscore"
-        IntranetCommandIdReportAbnormal       = "intra_reportabnormal"
-        IntranetCommandIdReportAbnormalNotify = "intra_reportabnormalnotify"
-        IntranetCommandIdReportRoomLock       = "intra_reportroomlock"
-    )
-## service.proto 内部rpc相关
-- Route 管理服务对外提供接口
-  - Register 服务注册
-  - HeartBeat 心跳上报
-- Gateway
-  - GatewayHandle 处理上述 IntranetCommandId
-  - PushClient 给客户端发Push
-- GatewayMonitor
-  - Update 接收Broadcast
-  - Reload 自身重启
-- Match
-  - BindMatch 绑定匹配服
-  - GetInGameState 获取状态
-  - Disconnect 断开
-  - MatchHandle 处理上述 IntranetCommandId
-- MatchMonitor
-  - Update 接收Broadcast
-- Relay
-  - RelayHandle 处理 RqRelay
-    - relay对外接口通过gateway转发
-    - 此外relay还提供udp or websocket连接进行帧同步
-- RelayMonitor 
-  - Update 接收Broadcast
-## export.proto 直接和客户端交互的proto
-- 客户端只同步export.proto即可，export.proto不依赖其他文件
-### 对外基础协议
-- RequestHeader/ResponseHeader
-- PbRequest/PbResponse 
-- PushHeader
-- PbPush
+## internal.proto
+主要是monitor相关rpc的proto定义
+## rpc.proto
+- 主要是给客户端的rpc协议定义，but，序列化协议是json，所以这个proto只有服务器用
+- 客户端没用
 ### gateway 对外接口
     const (
         RqConnectorBindCommandId            = "bind"         //绑定
@@ -82,20 +39,53 @@
         RqRelayChecksumCommandId        = "checksum"        //
         RqRelayReportScoreCommandId     = "reportscore"     //
     )
-### 客户端Push
+## push.proto
+- 主要是给客户端的push协议定义，udp的除外
+### push定义
     const (
-    PushCommendIdSyncGroupInfo    = "groupinfo"   //同步房间信息
-    PushCommendIdSyncGroupState   = "groupstate"  //同步房间状态
-    PushCommendIdMatchSuc         = "matchsuc"    //匹配成功
-    PushCommendIdGetScore         = "getscore"    //结算成功获取成绩
-    PushCommendIdInviteFriend     = "invitereq"   //邀请好友
-    PushCommendIdHandleInvite     = "invitersp"   //邀请好友的回复
-    PushCommendIdStartGame        = "pustart"     //开始游戏
-    PushCommendIdSignal           = "signal"      //signal
-    PushCommendIdGameEnd          = "gameend"     //游戏结束
-    PushCommendIdChecksumAbnormal = "checksumerr" //checksum异常
-    PushCommendIdKicked           = "kicked"      //被踢了
-    PushCommendIdGameEndLike      = "gameendlike" //结算页点赞
-    PushCommendIdPushAction       = "puaction"    //push 帧数据
-    )
-
+        PushCommendIdSyncGroupInfo    = "groupinfo"   //同步房间信息
+        PushCommendIdSyncGroupState   = "groupstate"  //同步房间状态
+        PushCommendIdMatchSuc         = "matchsuc"    //匹配成功
+        PushCommendIdGetScore         = "getscore"    //结算成功获取成绩
+        PushCommendIdInviteFriend     = "invitereq"   //邀请好友
+        PushCommendIdHandleInvite     = "invitersp"   //邀请好友的回复
+        PushCommendIdStartGame        = "pustart"     //开始游戏
+        PushCommendIdSignal           = "signal"      //signal
+        PushCommendIdGameEnd          = "gameend"     //游戏结束
+        PushCommendIdChecksumAbnormal = "checksumerr" //checksum异常
+        PushCommendIdKicked           = "kicked"      //被踢了
+        PushCommendIdGameEndLike      = "gameendlike" //结算页点赞
+        PushCommendIdPushAction       = "puaction"    //push 帧数据
+      )
+## service.proto 内部rpc相关
+- Route 管理服务对外提供接口
+  - Register 服务注册
+  - HeartBeat 心跳上报
+- Gateway
+  - GatewayHandle 处理上述 IntranetCommandId
+  - PushClient 给客户端发Push
+- GatewayMonitor
+  - Update 接收Broadcast
+  - Reload 自身重启
+- Match
+  - BindMatch 绑定匹配服
+  - GetInGameState 获取状态
+  - Disconnect 断开
+  - MatchHandle 处理上述 IntranetCommandId
+- MatchMonitor
+  - Update 接收Broadcast
+- Relay
+  - RelayHandle 处理 RqRelay
+    - relay对外接口通过gateway转发
+    - 此外relay还提供udp or websocket连接进行帧同步
+- RelayMonitor 
+  - Update 接收Broadcast
+## export.proto 
+客户端需要使用的proto协议，包括两部分
+### 对外基础协议
+- RequestHeader/ResponseHeader
+- PbRequest/PbResponse
+- PushHeader
+- PbPush 
+### udp协议
+- action相关

@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+option go_package="../snakemini";
+option objc_class_prefix = "PROTO";
+
+
+import "snakemini/rpc.proto";
+
+package pb;
+
+
+message PushMsg {
+    string cmdId = 1;
+    repeated int64 uid_list = 2;
+    string payload = 3;
+}
+
+
+message GroupInfoPush {
+    GroupInfo group_info = 1;
+}
+
+message GroupStatePush {
+    int32 state = 1;
+    int32 cancel = 2;
+}
+
+
+message MatchSucPush {
+    MatchInfo match_info = 1;
+}
+
+
+message RelayPushStart {
+    RelayStartInfo start_info = 1;
+}
+
+
+message RelayPushSignal {
+    int32 num = 1;
+    int32 signal = 2;
+}
+
+
+message RushChecksumAbnormal {
+    int64 action_no = 1;
+}
+
+message RelayPushGameEnd {
+    int32 rid = 1;
+    int64 action_no = 2;
+}
+
+
+message PushInviteFriend {
+    int64 invite_uid = 1;
+    int64 friend_uid = 2;
+    int32 source = 3;
+    int32 game_mode = 4;
+    int32 mode_version = 5;
+    int32 user_type = 6;
+    int32 platform = 7;
+}
+
+message PushHandleInvite {
+    string msg = 1;
+}
+
+message PushKicked {
+    int64 owner_uid = 1;
+}
+
+message PushGameEndLike {
+    int64 send_uid = 1;
+    int64 receive_uid = 2;
+    string send_nickname = 3;
+    string receive_nickname = 4;
+    string send_gamename = 5;
+    string receive_gamename = 6;
+    string message = 7;
+}
+
+// 送礼物 command_id=sendgift
+message PushSendGift {
+    int64 send_uid = 1;
+    int64 receive_uid = 2;
+    string send_nickname = 3;
+    string receive_nickname = 4;
+    string gift_id = 5;
+    string gift_name = 6;
+    int32 count = 7; // 送礼个数
+}
+
+// 首页社交动态 command_id=socialtrend
+message PushSocialTrend {
+    bool has_new = 1; // 是否是新动态
+}

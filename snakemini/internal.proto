@@ -3,8 +3,6 @@ syntax = "proto3";
 option go_package="../snakemini";
 option objc_class_prefix = "PROTO";
 
-import "snakemini/export.proto";
-
 package pb;
 
 
@@ -18,11 +16,6 @@ message InternalReq {
     string reqExt = 7;
     int32 user_type = 8;
     string serverHost =9;
-}
-
-message RpcResponse {
-    ErrInfo err = 1;
-    string body = 2;
 }
 
 
