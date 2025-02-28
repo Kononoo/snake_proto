@@ -39,6 +39,11 @@ message PbPush {
     string body = 2;
 }
 
+message PbUdpRequest {
+    string command_id = 1;
+    RelayUdpActionRequest action = 2;
+}
+
 
 message RelayUdpActionRequest {
     int64 player_uid = 1;
