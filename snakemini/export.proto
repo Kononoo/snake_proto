@@ -83,6 +83,7 @@ enum APICommand {
     APICommandNewMessage=1; // 首页-新消息，无需解析payload
 }
 
+// 服务器Push command_id=apipush
 message APIPush {
     int32 command=1; // 指令
     string payload=2; // push消息内容，json格式
