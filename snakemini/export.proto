@@ -77,3 +77,13 @@ message ParamUser {
     int32 num =1; // 玩家num
     int32 p =2; // 参数
 }
+
+enum APICommand {
+    APICommandNone=0;
+    APICommandNewMessage=1; // 首页-新消息，无需解析payload
+}
+
+message APIPush {
+    int32 command=1; // 指令
+    string payload=2; // push消息内容，json格式
+}
