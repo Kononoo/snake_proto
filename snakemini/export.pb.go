@@ -814,6 +814,7 @@ func (x *ParamUser) GetP() int32 {
 	return 0
 }
 
+// 服务器Push command_id=apipush
 type APIPush struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
