@@ -426,7 +426,7 @@ message TextConfig {
   repeated ReportBehavior report_behavior_list = 11;
   repeated ReportBehavior ad_report_behavior_list = 12;
   string follower_top_list_tips = 13;
-  repeated string home_broadcast_close_scenes = 14; // 首页播报秀关闭场景
+  repeated string home_broadcast_scenes = 14; // 首页播报秀播报场景
 }
 
 message GiftLikeTextList {
