@@ -20,6 +20,52 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type APICommand int32
+
+const (
+	APICommand_APICommandNone       APICommand = 0
+	APICommand_APICommandNewMessage APICommand = 1 // 首页-新消息，无需解析payload
+)
+
+// Enum value maps for APICommand.
+var (
+	APICommand_name = map[int32]string{
+		0: "APICommandNone",
+		1: "APICommandNewMessage",
+	}
+	APICommand_value = map[string]int32{
+		"APICommandNone":       0,
+		"APICommandNewMessage": 1,
+	}
+)
+
+func (x APICommand) Enum() *APICommand {
+	p := new(APICommand)
+	*p = x
+	return p
+}
+
+func (x APICommand) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (APICommand) Descriptor() protoreflect.EnumDescriptor {
+	return file_snakemini_export_proto_enumTypes[0].Descriptor()
+}
+
+func (APICommand) Type() protoreflect.EnumType {
+	return &file_snakemini_export_proto_enumTypes[0]
+}
+
+func (x APICommand) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use APICommand.Descriptor instead.
+func (APICommand) EnumDescriptor() ([]byte, []int) {
+	return file_snakemini_export_proto_rawDescGZIP(), []int{0}
+}
+
 type RequestHeader struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -768,6 +814,61 @@ func (x *ParamUser) GetP() int32 {
 	return 0
 }
 
+type APIPush struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Command int32  `protobuf:"varint,1,opt,name=command,proto3" json:"command,omitempty"` // 指令
+	Payload string `protobuf:"bytes,2,opt,name=payload,proto3" json:"payload,omitempty"`  // push消息内容，json格式
+}
+
+func (x *APIPush) Reset() {
+	*x = APIPush{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_export_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *APIPush) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*APIPush) ProtoMessage() {}
+
+func (x *APIPush) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_export_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use APIPush.ProtoReflect.Descriptor instead.
+func (*APIPush) Descriptor() ([]byte, []int) {
+	return file_snakemini_export_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *APIPush) GetCommand() int32 {
+	if x != nil {
+		return x.Command
+	}
+	return 0
+}
+
+func (x *APIPush) GetPayload() string {
+	if x != nil {
+		return x.Payload
+	}
+	return ""
+}
+
 var File_snakemini_export_proto protoreflect.FileDescriptor
 
 var file_snakemini_export_proto_rawDesc = []byte{
@@ -854,9 +955,16 @@ var file_snakemini_export_proto_rawDesc = []byte{
 	0x69, 0x63, 0x65, 0x55, 0x73, 0x65, 0x72, 0x73, 0x22, 0x2b, 0x0a, 0x09, 0x50, 0x61, 0x72, 0x61,
 	0x6d, 0x55, 0x73, 0x65, 0x72, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x05, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x12, 0x0c, 0x0a, 0x01, 0x70, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x05, 0x52, 0x01, 0x70, 0x42, 0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
-	0x65, 0x6d, 0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x28, 0x05, 0x52, 0x01, 0x70, 0x22, 0x3d, 0x0a, 0x07, 0x41, 0x50, 0x49, 0x50, 0x75, 0x73, 0x68,
+	0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6d, 0x6d, 0x61, 0x6e, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x07, 0x63, 0x6f, 0x6d, 0x6d, 0x61, 0x6e, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x61,
+	0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x70, 0x61, 0x79,
+	0x6c, 0x6f, 0x61, 0x64, 0x2a, 0x3a, 0x0a, 0x0a, 0x41, 0x50, 0x49, 0x43, 0x6f, 0x6d, 0x6d, 0x61,
+	0x6e, 0x64, 0x12, 0x12, 0x0a, 0x0e, 0x41, 0x50, 0x49, 0x43, 0x6f, 0x6d, 0x6d, 0x61, 0x6e, 0x64,
+	0x4e, 0x6f, 0x6e, 0x65, 0x10, 0x00, 0x12, 0x18, 0x0a, 0x14, 0x41, 0x50, 0x49, 0x43, 0x6f, 0x6d,
+	0x6d, 0x61, 0x6e, 0x64, 0x4e, 0x65, 0x77, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x10, 0x01,
+	0x42, 0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d, 0x69, 0x6e, 0x69,
+	0xa2, 0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -871,30 +979,33 @@ func file_snakemini_export_proto_rawDescGZIP() []byte {
 	return file_snakemini_export_proto_rawDescData
 }
 
-var file_snakemini_export_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_snakemini_export_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_snakemini_export_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_snakemini_export_proto_goTypes = []interface{}{
-	(*RequestHeader)(nil),         // 0: pb.RequestHeader
-	(*ResponseHeader)(nil),        // 1: pb.ResponseHeader
-	(*PushHeader)(nil),            // 2: pb.PushHeader
-	(*PbRequest)(nil),             // 3: pb.PbRequest
-	(*PbResponse)(nil),            // 4: pb.PbResponse
-	(*PbPush)(nil),                // 5: pb.PbPush
-	(*PbUdpRequest)(nil),          // 6: pb.PbUdpRequest
-	(*RelayUdpActionRequest)(nil), // 7: pb.RelayUdpActionRequest
-	(*PbUdpPush)(nil),             // 8: pb.PbUdpPush
-	(*PushAction)(nil),            // 9: pb.PushAction
-	(*FrameCommand)(nil),          // 10: pb.FrameCommand
-	(*ParamUser)(nil),             // 11: pb.ParamUser
+	(APICommand)(0),               // 0: pb.APICommand
+	(*RequestHeader)(nil),         // 1: pb.RequestHeader
+	(*ResponseHeader)(nil),        // 2: pb.ResponseHeader
+	(*PushHeader)(nil),            // 3: pb.PushHeader
+	(*PbRequest)(nil),             // 4: pb.PbRequest
+	(*PbResponse)(nil),            // 5: pb.PbResponse
+	(*PbPush)(nil),                // 6: pb.PbPush
+	(*PbUdpRequest)(nil),          // 7: pb.PbUdpRequest
+	(*RelayUdpActionRequest)(nil), // 8: pb.RelayUdpActionRequest
+	(*PbUdpPush)(nil),             // 9: pb.PbUdpPush
+	(*PushAction)(nil),            // 10: pb.PushAction
+	(*FrameCommand)(nil),          // 11: pb.FrameCommand
+	(*ParamUser)(nil),             // 12: pb.ParamUser
+	(*APIPush)(nil),               // 13: pb.APIPush
 }
 var file_snakemini_export_proto_depIdxs = []int32{
-	0,  // 0: pb.PbRequest.header:type_name -> pb.RequestHeader
-	1,  // 1: pb.PbResponse.header:type_name -> pb.ResponseHeader
-	2,  // 2: pb.PbPush.header:type_name -> pb.PushHeader
-	7,  // 3: pb.PbUdpRequest.action:type_name -> pb.RelayUdpActionRequest
-	9,  // 4: pb.PbUdpPush.puaction:type_name -> pb.PushAction
-	10, // 5: pb.PushAction.frame_command_list:type_name -> pb.FrameCommand
-	11, // 6: pb.FrameCommand.faceUsers:type_name -> pb.ParamUser
-	11, // 7: pb.FrameCommand.quickVoiceUsers:type_name -> pb.ParamUser
+	1,  // 0: pb.PbRequest.header:type_name -> pb.RequestHeader
+	2,  // 1: pb.PbResponse.header:type_name -> pb.ResponseHeader
+	3,  // 2: pb.PbPush.header:type_name -> pb.PushHeader
+	8,  // 3: pb.PbUdpRequest.action:type_name -> pb.RelayUdpActionRequest
+	10, // 4: pb.PbUdpPush.puaction:type_name -> pb.PushAction
+	11, // 5: pb.PushAction.frame_command_list:type_name -> pb.FrameCommand
+	12, // 6: pb.FrameCommand.faceUsers:type_name -> pb.ParamUser
+	12, // 7: pb.FrameCommand.quickVoiceUsers:type_name -> pb.ParamUser
 	8,  // [8:8] is the sub-list for method output_type
 	8,  // [8:8] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
@@ -1052,19 +1163,32 @@ func file_snakemini_export_proto_init() {
 				return nil
 			}
 		}
+		file_snakemini_export_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*APIPush); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakemini_export_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   12,
+			NumEnums:      1,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_snakemini_export_proto_goTypes,
 		DependencyIndexes: file_snakemini_export_proto_depIdxs,
+		EnumInfos:         file_snakemini_export_proto_enumTypes,
 		MessageInfos:      file_snakemini_export_proto_msgTypes,
 	}.Build()
 	File_snakemini_export_proto = out.File
