@@ -28,6 +28,7 @@ message UnityQualifyMatchSuccessNotify { // 团战: 匹配成功 Push 额外信�
   int64 game_config_version = 1; // 游戏配置版本（目前只有原生团战有用）
   double room_rank_score = 2; // 房间段位分（目前只有原生团战有用）
   int64 team_voice = 3; // 组队语音（目前只有原生团战有用）
+  map<int32, UnityQualifyAIConfig> ai_pools = 4; // ai_level -> AI 行为配置
 }
 
 message UnityQualifyRoomMember { // Unity 团战：房间内玩家额外信息，存储在RoomMember的payload中
@@ -56,5 +57,32 @@ message UnityQualifySyncGroupMemberNotify {
 
 message UnityQualifyJoinRoom {
   UploadAttrReq attr = 1;
+}
+
+message UnityQualifyAIConfig { // AI 行为配置
+  int32 level = 1;
+  string comment = 2;
+  double border_dis_factor = 3;
+  double snake_dis_factor = 4;
+  double wreck_dis_factor = 5;
+  double floater_dis_factor = 6;
+  double ai_snake_view_angle = 7;
+  double attack_border_dis_factor = 8;
+  double attack_snake_dis_factor = 9;
+  double attack_wreck_dis_factor = 10;
+  double attack_ai_snake_view_angle = 11;
+  double attack_floater_dis_factor = 12;
+  double attack_circle_dis_factor = 13;
+  double attack_rate = 14;
+  double change_direction_rate = 15;
+  double delay_direction_rate = 16;
+  repeated AttackTimeConfig attack_times = 17;
+  double speedup_rate = 18;
+  double speedup_time = 19;
+
+  message AttackTimeConfig {
+    double time = 1;
+    int32 weight = 2;
+  }
 }
 
