@@ -881,6 +881,7 @@ message FlagsConfig {
   int32 open_unity_voice_room = 39; // 是否开启unity语音房
   int32 use_tobid_ad = 40; // ios双聚合广告选择开关
   int32 open_snake_area_toast = 41; // 游戏内提示地域榜弹窗实验
+  int32 gift_anim_multi_flag = 42; // 礼物动效 0：同时只能播放一个，1：同时播放多个
 }
 
 message FeedbackConfig {
