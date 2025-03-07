@@ -86,7 +86,7 @@ message PushSendGift {
     int64 receive_uid = 2;
     string send_nickname = 3;
     string receive_nickname = 4;
-    string gift_id = 5;
+    int32 gift_id = 5;
     string gift_name = 6;
     int32 count = 7; // 送礼个数
 }
