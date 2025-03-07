@@ -2298,3 +2298,28 @@ message TeamEndlessConfig {
 //----------------------------------------------------------------------------------------------------------------------
 // 多人无尽 end
 // ---------------------------------------------------------------------------------------------------------------------
+
+message NativeQualifyAIPool { // 原生团战 AI 行为配置
+  int32 level = 1;
+  string comment = 2;
+  double border_dis_factor = 3;
+  double snake_dis_factor = 4;
+  double wreck_dis_factor = 5;
+  double floater_dis_factor = 6;
+  double props_dis_factor = 7;
+  double ai_snake_view_angle = 8;
+  double attack_border_dis_factor = 9;
+  double attack_snake_dis_factor = 10;
+  double attack_wreck_dis_factor = 11;
+  double attack_ai_snake_view_angle = 12;
+  double attack_floater_dis_factor = 13;
+  double attack_props_dis_factor = 14;
+  double attack_circle_dis_factor = 15;
+  double attack_rate = 16;
+  double change_direction_rate = 17;
+  double delay_direction_rate = 18;
+  repeated int64 attack_times = 19;
+  repeated int64 attack_weights = 20;
+  double speedup_rate = 21;
+  double speedup_time = 22;
+}
