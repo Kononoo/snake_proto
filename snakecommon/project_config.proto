@@ -1080,6 +1080,7 @@ message RecruitPopup {
   string banner_url = 6;
   int32 screen_share = 7;
   string secretary_msg = 8;
+  string unity_banner_link = 9;
 }
 
 /**
