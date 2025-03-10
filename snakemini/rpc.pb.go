@@ -78,58 +78,6 @@ func (SendGiftCost) EnumDescriptor() ([]byte, []int) {
 	return file_snakemini_rpc_proto_rawDescGZIP(), []int{0}
 }
 
-type SendGiftSource int32
-
-const (
-	SendGiftSource_UnknownSource        SendGiftSource = 0
-	SendGiftSource_QualifyingMVPPage    SendGiftSource = 1 // 团战MVP页
-	SendGiftSource_QualifyingSettlePage SendGiftSource = 2 // 团战结算页
-	SendGiftSource_UserHomePage         SendGiftSource = 3 // 个人资料页
-)
-
-// Enum value maps for SendGiftSource.
-var (
-	SendGiftSource_name = map[int32]string{
-		0: "UnknownSource",
-		1: "QualifyingMVPPage",
-		2: "QualifyingSettlePage",
-		3: "UserHomePage",
-	}
-	SendGiftSource_value = map[string]int32{
-		"UnknownSource":        0,
-		"QualifyingMVPPage":    1,
-		"QualifyingSettlePage": 2,
-		"UserHomePage":         3,
-	}
-)
-
-func (x SendGiftSource) Enum() *SendGiftSource {
-	p := new(SendGiftSource)
-	*p = x
-	return p
-}
-
-func (x SendGiftSource) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (SendGiftSource) Descriptor() protoreflect.EnumDescriptor {
-	return file_snakemini_rpc_proto_enumTypes[1].Descriptor()
-}
-
-func (SendGiftSource) Type() protoreflect.EnumType {
-	return &file_snakemini_rpc_proto_enumTypes[1]
-}
-
-func (x SendGiftSource) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use SendGiftSource.Descriptor instead.
-func (SendGiftSource) EnumDescriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{1}
-}
-
 type UidList struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4328,20 +4276,20 @@ type SendGiftRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	SendUid     int64          `protobuf:"varint,1,opt,name=send_uid,json=sendUid,proto3" json:"send_uid,omitempty"`                         // 送礼人uid
-	ReceiveUid  int64          `protobuf:"varint,2,opt,name=receive_uid,json=receiveUid,proto3" json:"receive_uid,omitempty"`                // 收礼人uid
-	GiftId      int32          `protobuf:"varint,3,opt,name=gift_id,json=giftId,proto3" json:"gift_id,omitempty"`                            // 礼物ID，30001团战点赞
-	Source      SendGiftSource `protobuf:"varint,4,opt,name=source,proto3,enum=pb.SendGiftSource" json:"source,omitempty"`                   // source 1和2 团战结算页，客户端定枚举
-	CostType    SendGiftCost   `protobuf:"varint,5,opt,name=cost_type,json=costType,proto3,enum=pb.SendGiftCost" json:"cost_type,omitempty"` // 付费类型 0 免费 1 金币 2 苹果 3 广告 4 分享 5 抖音钻石
-	Num         int32          `protobuf:"varint,6,opt,name=num,proto3" json:"num,omitempty"`                                                // 送礼个数
-	Rid         int32          `protobuf:"varint,7,opt,name=rid,proto3" json:"rid,omitempty"`                                                // 房间ID(团战结算页必传)
-	UserType    int32          `protobuf:"varint,8,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`                      // 送礼人user_type
-	RecUserType int32          `protobuf:"varint,9,opt,name=rec_user_type,json=recUserType,proto3" json:"rec_user_type,omitempty"`           // 收礼人user_type(跨渠道点赞预留)
-	Ext         string         `protobuf:"bytes,10,opt,name=ext,proto3" json:"ext,omitempty"`                                                // 扩展字段，广告or分享 传{"position":xxx}
-	Version     string         `protobuf:"bytes,11,opt,name=version,proto3" json:"version,omitempty"`                                        // 版本号
-	ComboNum    int32          `protobuf:"varint,12,opt,name=combo_num,json=comboNum,proto3" json:"combo_num,omitempty"`                     // 连击次数，从1开始
-	ComboNonce  int64          `protobuf:"varint,13,opt,name=combo_nonce,json=comboNonce,proto3" json:"combo_nonce,omitempty"`               // 连击nonce，客户端取combo_num=1的毫秒时间戳
-	BagNum      int32          `protobuf:"varint,14,opt,name=bag_num,json=bagNum,proto3" json:"bag_num,omitempty"`                           // 背包礼物数量
+	SendUid     int64        `protobuf:"varint,1,opt,name=send_uid,json=sendUid,proto3" json:"send_uid,omitempty"`                         // 送礼人uid
+	ReceiveUid  int64        `protobuf:"varint,2,opt,name=receive_uid,json=receiveUid,proto3" json:"receive_uid,omitempty"`                // 收礼人uid
+	GiftId      int32        `protobuf:"varint,3,opt,name=gift_id,json=giftId,proto3" json:"gift_id,omitempty"`                            // 礼物ID，30001团战点赞
+	Source      string       `protobuf:"bytes,4,opt,name=source,proto3" json:"source,omitempty"`                                           // source 1和2 团战结算页，客户端定枚举
+	CostType    SendGiftCost `protobuf:"varint,5,opt,name=cost_type,json=costType,proto3,enum=pb.SendGiftCost" json:"cost_type,omitempty"` // 付费类型 0 免费 1 金币 2 苹果 3 广告 4 分享 5 抖音钻石
+	Num         int32        `protobuf:"varint,6,opt,name=num,proto3" json:"num,omitempty"`                                                // 送礼个数
+	Rid         int32        `protobuf:"varint,7,opt,name=rid,proto3" json:"rid,omitempty"`                                                // 房间ID(团战结算页必传)
+	UserType    int32        `protobuf:"varint,8,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`                      // 送礼人user_type
+	RecUserType int32        `protobuf:"varint,9,opt,name=rec_user_type,json=recUserType,proto3" json:"rec_user_type,omitempty"`           // 收礼人user_type(跨渠道点赞预留)
+	Ext         string       `protobuf:"bytes,10,opt,name=ext,proto3" json:"ext,omitempty"`                                                // 扩展字段，广告or分享 传{"position":xxx}
+	Version     string       `protobuf:"bytes,11,opt,name=version,proto3" json:"version,omitempty"`                                        // 版本号
+	ComboNum    int32        `protobuf:"varint,12,opt,name=combo_num,json=comboNum,proto3" json:"combo_num,omitempty"`                     // 连击次数，从1开始
+	ComboNonce  int64        `protobuf:"varint,13,opt,name=combo_nonce,json=comboNonce,proto3" json:"combo_nonce,omitempty"`               // 连击nonce，客户端取combo_num=1的毫秒时间戳
+	BagNum      int32        `protobuf:"varint,14,opt,name=bag_num,json=bagNum,proto3" json:"bag_num,omitempty"`                           // 背包礼物数量
 }
 
 func (x *SendGiftRequest) Reset() {
@@ -4397,11 +4345,11 @@ func (x *SendGiftRequest) GetGiftId() int32 {
 	return 0
 }
 
-func (x *SendGiftRequest) GetSource() SendGiftSource {
+func (x *SendGiftRequest) GetSource() string {
 	if x != nil {
 		return x.Source
 	}
-	return SendGiftSource_UnknownSource
+	return ""
 }
 
 func (x *SendGiftRequest) GetCostType() SendGiftCost {
@@ -4995,53 +4943,45 @@ var file_snakemini_rpc_proto_rawDesc = []byte{
 	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2d, 0x0a, 0x09, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x6e,
 	0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x70, 0x62, 0x2e, 0x42, 0x69,
 	0x6e, 0x64, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72,
-	0x49, 0x6e, 0x66, 0x6f, 0x22, 0xa9, 0x03, 0x0a, 0x0f, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66,
+	0x49, 0x6e, 0x66, 0x6f, 0x22, 0x95, 0x03, 0x0a, 0x0f, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66,
 	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x19, 0x0a, 0x08, 0x73, 0x65, 0x6e, 0x64,
 	0x5f, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x73, 0x65, 0x6e, 0x64,
 	0x55, 0x69, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x72, 0x65, 0x63, 0x65, 0x69, 0x76, 0x65, 0x5f, 0x75,
 	0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x72, 0x65, 0x63, 0x65, 0x69, 0x76,
 	0x65, 0x55, 0x69, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x67, 0x69, 0x66, 0x74, 0x5f, 0x69, 0x64, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x67, 0x69, 0x66, 0x74, 0x49, 0x64, 0x12, 0x2a, 0x0a,
-	0x06, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x12, 0x2e,
-	0x70, 0x62, 0x2e, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66, 0x74, 0x53, 0x6f, 0x75, 0x72, 0x63,
-	0x65, 0x52, 0x06, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x12, 0x2d, 0x0a, 0x09, 0x63, 0x6f, 0x73,
-	0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x10, 0x2e, 0x70,
-	0x62, 0x2e, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66, 0x74, 0x43, 0x6f, 0x73, 0x74, 0x52, 0x08,
-	0x63, 0x6f, 0x73, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18,
-	0x06, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69,
-	0x64, 0x18, 0x07, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x72, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09,
-	0x75, 0x73, 0x65, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x08, 0x75, 0x73, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x22, 0x0a, 0x0d, 0x72, 0x65, 0x63,
-	0x5f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x05,
-	0x52, 0x0b, 0x72, 0x65, 0x63, 0x55, 0x73, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x10, 0x0a,
-	0x03, 0x65, 0x78, 0x74, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x65, 0x78, 0x74, 0x12,
-	0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x1b, 0x0a, 0x09, 0x63, 0x6f, 0x6d,
-	0x62, 0x6f, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x63, 0x6f,
-	0x6d, 0x62, 0x6f, 0x4e, 0x75, 0x6d, 0x12, 0x1f, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x62, 0x6f, 0x5f,
-	0x6e, 0x6f, 0x6e, 0x63, 0x65, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x63, 0x6f, 0x6d,
-	0x62, 0x6f, 0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x62, 0x61, 0x67, 0x5f, 0x6e,
-	0x75, 0x6d, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x62, 0x61, 0x67, 0x4e, 0x75, 0x6d,
-	0x22, 0x5a, 0x0a, 0x10, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66, 0x74, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x0e, 0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e, 0x5f, 0x64,
-	0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x72, 0x65,
-	0x6d, 0x61, 0x69, 0x6e, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x72,
-	0x65, 0x6d, 0x61, 0x69, 0x6e, 0x5f, 0x63, 0x6f, 0x69, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x0a, 0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e, 0x43, 0x6f, 0x69, 0x6e, 0x2a, 0x55, 0x0a, 0x0c,
-	0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66, 0x74, 0x43, 0x6f, 0x73, 0x74, 0x12, 0x08, 0x0a, 0x04,
-	0x46, 0x72, 0x65, 0x65, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x43, 0x6f, 0x69, 0x6e, 0x10, 0x01,
-	0x12, 0x0b, 0x0a, 0x07, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x02, 0x12, 0x06, 0x0a,
-	0x02, 0x41, 0x64, 0x10, 0x03, 0x12, 0x09, 0x0a, 0x05, 0x53, 0x68, 0x61, 0x72, 0x65, 0x10, 0x04,
-	0x12, 0x11, 0x0a, 0x0d, 0x44, 0x6f, 0x75, 0x79, 0x69, 0x6e, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e,
-	0x64, 0x10, 0x05, 0x2a, 0x66, 0x0a, 0x0e, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66, 0x74, 0x53,
-	0x6f, 0x75, 0x72, 0x63, 0x65, 0x12, 0x11, 0x0a, 0x0d, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e,
-	0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x10, 0x00, 0x12, 0x15, 0x0a, 0x11, 0x51, 0x75, 0x61, 0x6c,
-	0x69, 0x66, 0x79, 0x69, 0x6e, 0x67, 0x4d, 0x56, 0x50, 0x50, 0x61, 0x67, 0x65, 0x10, 0x01, 0x12,
-	0x18, 0x0a, 0x14, 0x51, 0x75, 0x61, 0x6c, 0x69, 0x66, 0x79, 0x69, 0x6e, 0x67, 0x53, 0x65, 0x74,
-	0x74, 0x6c, 0x65, 0x50, 0x61, 0x67, 0x65, 0x10, 0x02, 0x12, 0x10, 0x0a, 0x0c, 0x55, 0x73, 0x65,
-	0x72, 0x48, 0x6f, 0x6d, 0x65, 0x50, 0x61, 0x67, 0x65, 0x10, 0x03, 0x42, 0x16, 0x5a, 0x0c, 0x2e,
-	0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d, 0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52,
-	0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x67, 0x69, 0x66, 0x74, 0x49, 0x64, 0x12, 0x16, 0x0a,
+	0x06, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73,
+	0x6f, 0x75, 0x72, 0x63, 0x65, 0x12, 0x2d, 0x0a, 0x09, 0x63, 0x6f, 0x73, 0x74, 0x5f, 0x74, 0x79,
+	0x70, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x10, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x65,
+	0x6e, 0x64, 0x47, 0x69, 0x66, 0x74, 0x43, 0x6f, 0x73, 0x74, 0x52, 0x08, 0x63, 0x6f, 0x73, 0x74,
+	0x54, 0x79, 0x70, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x06, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x07, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x03, 0x72, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x75, 0x73, 0x65, 0x72,
+	0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x75, 0x73, 0x65,
+	0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x22, 0x0a, 0x0d, 0x72, 0x65, 0x63, 0x5f, 0x75, 0x73, 0x65,
+	0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x72, 0x65,
+	0x63, 0x55, 0x73, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x65, 0x78, 0x74,
+	0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x65, 0x78, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x76,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65,
+	0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x1b, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x62, 0x6f, 0x5f, 0x6e,
+	0x75, 0x6d, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x63, 0x6f, 0x6d, 0x62, 0x6f, 0x4e,
+	0x75, 0x6d, 0x12, 0x1f, 0x0a, 0x0b, 0x63, 0x6f, 0x6d, 0x62, 0x6f, 0x5f, 0x6e, 0x6f, 0x6e, 0x63,
+	0x65, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x63, 0x6f, 0x6d, 0x62, 0x6f, 0x4e, 0x6f,
+	0x6e, 0x63, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x62, 0x61, 0x67, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x0e,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x62, 0x61, 0x67, 0x4e, 0x75, 0x6d, 0x22, 0x5a, 0x0a, 0x10,
+	0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x25, 0x0a, 0x0e, 0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e, 0x5f, 0x64, 0x69, 0x61, 0x6d, 0x6f,
+	0x6e, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e,
+	0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x72, 0x65, 0x6d, 0x61, 0x69,
+	0x6e, 0x5f, 0x63, 0x6f, 0x69, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x72, 0x65,
+	0x6d, 0x61, 0x69, 0x6e, 0x43, 0x6f, 0x69, 0x6e, 0x2a, 0x55, 0x0a, 0x0c, 0x53, 0x65, 0x6e, 0x64,
+	0x47, 0x69, 0x66, 0x74, 0x43, 0x6f, 0x73, 0x74, 0x12, 0x08, 0x0a, 0x04, 0x46, 0x72, 0x65, 0x65,
+	0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x43, 0x6f, 0x69, 0x6e, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07,
+	0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x02, 0x12, 0x06, 0x0a, 0x02, 0x41, 0x64, 0x10,
+	0x03, 0x12, 0x09, 0x0a, 0x05, 0x53, 0x68, 0x61, 0x72, 0x65, 0x10, 0x04, 0x12, 0x11, 0x0a, 0x0d,
+	0x44, 0x6f, 0x75, 0x79, 0x69, 0x6e, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x05, 0x42,
+	0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d, 0x69, 0x6e, 0x69, 0xa2,
+	0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -5056,108 +4996,106 @@ func file_snakemini_rpc_proto_rawDescGZIP() []byte {
 	return file_snakemini_rpc_proto_rawDescData
 }
 
-var file_snakemini_rpc_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_snakemini_rpc_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_snakemini_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 67)
 var file_snakemini_rpc_proto_goTypes = []interface{}{
 	(SendGiftCost)(0),                      // 0: pb.SendGiftCost
-	(SendGiftSource)(0),                    // 1: pb.SendGiftSource
-	(*UidList)(nil),                        // 2: pb.UidList
-	(*ErrInfo)(nil),                        // 3: pb.ErrInfo
-	(*RpcResponse)(nil),                    // 4: pb.RpcResponse
-	(*ReplyEmpty)(nil),                     // 5: pb.ReplyEmpty
-	(*BindRequest)(nil),                    // 6: pb.BindRequest
-	(*BindResponse)(nil),                   // 7: pb.BindResponse
-	(*BindMatchInfo)(nil),                  // 8: pb.BindMatchInfo
-	(*UidRequest)(nil),                     // 9: pb.UidRequest
-	(*HeartBeartRequest)(nil),              // 10: pb.HeartBeartRequest
-	(*HeartBeartResponse)(nil),             // 11: pb.HeartBeartResponse
-	(*InGameStateReply)(nil),               // 12: pb.InGameStateReply
-	(*MatchUserInfo)(nil),                  // 13: pb.MatchUserInfo
-	(*CreateGroupRequest)(nil),             // 14: pb.CreateGroupRequest
-	(*CreateGroupResponse)(nil),            // 15: pb.CreateGroupResponse
-	(*JoinGroupRequest)(nil),               // 16: pb.JoinGroupRequest
-	(*JoinGroupResponse)(nil),              // 17: pb.JoinGroupResponse
-	(*ExitGroupRequest)(nil),               // 18: pb.ExitGroupRequest
-	(*ExitGroupResponse)(nil),              // 19: pb.ExitGroupResponse
-	(*KickRequest)(nil),                    // 20: pb.KickRequest
-	(*KickResponse)(nil),                   // 21: pb.KickResponse
-	(*GroupInfo)(nil),                      // 22: pb.GroupInfo
-	(*GroupUserInfo)(nil),                  // 23: pb.GroupUserInfo
-	(*StartMatchRequest)(nil),              // 24: pb.StartMatchRequest
-	(*StartMatchResponse)(nil),             // 25: pb.StartMatchResponse
-	(*CancelMatchRequest)(nil),             // 26: pb.CancelMatchRequest
-	(*MatchInfo)(nil),                      // 27: pb.MatchInfo
-	(*UserAttribute)(nil),                  // 28: pb.UserAttribute
-	(*ExitRoomRequest)(nil),                // 29: pb.ExitRoomRequest
-	(*ExitRoomResponse)(nil),               // 30: pb.ExitRoomResponse
-	(*UploadScoreRequest)(nil),             // 31: pb.UploadScoreRequest
-	(*UserScore)(nil),                      // 32: pb.UserScore
-	(*GameEndResponse)(nil),                // 33: pb.GameEndResponse
-	(*ReportRoomScore)(nil),                // 34: pb.ReportRoomScore
-	(*GetGameConfigRequest)(nil),           // 35: pb.GetGameConfigRequest
-	(*RelayBindUserInfo)(nil),              // 36: pb.RelayBindUserInfo
-	(*RelayBindRequest)(nil),               // 37: pb.RelayBindRequest
-	(*RelayStartInfo)(nil),                 // 38: pb.RelayStartInfo
-	(*RelayBindResponse)(nil),              // 39: pb.RelayBindResponse
-	(*RelayCommandRequest)(nil),            // 40: pb.RelayCommandRequest
-	(*RelayGetHistoryFrameRequest)(nil),    // 41: pb.RelayGetHistoryFrameRequest
-	(*RelayGetHistoryFrameResponse)(nil),   // 42: pb.RelayGetHistoryFrameResponse
-	(*RelaySignalRequest)(nil),             // 43: pb.RelaySignalRequest
-	(*RelayExitGameRequest)(nil),           // 44: pb.RelayExitGameRequest
-	(*RelaySnapShotRequest)(nil),           // 45: pb.RelaySnapShotRequest
-	(*RelayReportRoomStateRequest)(nil),    // 46: pb.RelayReportRoomStateRequest
-	(*RelayChecksumRequest)(nil),           // 47: pb.RelayChecksumRequest
-	(*RelayUdpSyncTimeRequest)(nil),        // 48: pb.RelayUdpSyncTimeRequest
-	(*RelayUdpSyncTimeResponse)(nil),       // 49: pb.RelayUdpSyncTimeResponse
-	(*RelayReportScoreRequest)(nil),        // 50: pb.RelayReportScoreRequest
-	(*RpcReportScoreRequest)(nil),          // 51: pb.RpcReportScoreRequest
-	(*RpcReportRoomStateRequest)(nil),      // 52: pb.RpcReportRoomStateRequest
-	(*RpcReportRoomAvailNumsRequest)(nil),  // 53: pb.RpcReportRoomAvailNumsRequest
-	(*RpcReportAbnormalRequest)(nil),       // 54: pb.RpcReportAbnormalRequest
-	(*RpcReportAbnormalNotifyRequest)(nil), // 55: pb.RpcReportAbnormalNotifyRequest
-	(*RpcReportRoomLockRequest)(nil),       // 56: pb.RpcReportRoomLockRequest
-	(*GetUserStateRequest)(nil),            // 57: pb.GetUserStateRequest
-	(*UserStateInfo)(nil),                  // 58: pb.UserStateInfo
-	(*GetUserStateResponse)(nil),           // 59: pb.GetUserStateResponse
-	(*UpdateUserOnlineStateRequest)(nil),   // 60: pb.UpdateUserOnlineStateRequest
-	(*UpdateUserStateRequest)(nil),         // 61: pb.UpdateUserStateRequest
-	(*InviteFriendRequest)(nil),            // 62: pb.InviteFriendRequest
-	(*HandleInviteRequest)(nil),            // 63: pb.HandleInviteRequest
-	(*BindUserInfo)(nil),                   // 64: pb.BindUserInfo
-	(*GetUserConnectorInfoResponse)(nil),   // 65: pb.GetUserConnectorInfoResponse
-	(*SendGiftRequest)(nil),                // 66: pb.SendGiftRequest
-	(*SendGiftResponse)(nil),               // 67: pb.SendGiftResponse
-	nil,                                    // 68: pb.UidRequest.CmdMapEntry
-	(*FrameCommand)(nil),                   // 69: pb.FrameCommand
+	(*UidList)(nil),                        // 1: pb.UidList
+	(*ErrInfo)(nil),                        // 2: pb.ErrInfo
+	(*RpcResponse)(nil),                    // 3: pb.RpcResponse
+	(*ReplyEmpty)(nil),                     // 4: pb.ReplyEmpty
+	(*BindRequest)(nil),                    // 5: pb.BindRequest
+	(*BindResponse)(nil),                   // 6: pb.BindResponse
+	(*BindMatchInfo)(nil),                  // 7: pb.BindMatchInfo
+	(*UidRequest)(nil),                     // 8: pb.UidRequest
+	(*HeartBeartRequest)(nil),              // 9: pb.HeartBeartRequest
+	(*HeartBeartResponse)(nil),             // 10: pb.HeartBeartResponse
+	(*InGameStateReply)(nil),               // 11: pb.InGameStateReply
+	(*MatchUserInfo)(nil),                  // 12: pb.MatchUserInfo
+	(*CreateGroupRequest)(nil),             // 13: pb.CreateGroupRequest
+	(*CreateGroupResponse)(nil),            // 14: pb.CreateGroupResponse
+	(*JoinGroupRequest)(nil),               // 15: pb.JoinGroupRequest
+	(*JoinGroupResponse)(nil),              // 16: pb.JoinGroupResponse
+	(*ExitGroupRequest)(nil),               // 17: pb.ExitGroupRequest
+	(*ExitGroupResponse)(nil),              // 18: pb.ExitGroupResponse
+	(*KickRequest)(nil),                    // 19: pb.KickRequest
+	(*KickResponse)(nil),                   // 20: pb.KickResponse
+	(*GroupInfo)(nil),                      // 21: pb.GroupInfo
+	(*GroupUserInfo)(nil),                  // 22: pb.GroupUserInfo
+	(*StartMatchRequest)(nil),              // 23: pb.StartMatchRequest
+	(*StartMatchResponse)(nil),             // 24: pb.StartMatchResponse
+	(*CancelMatchRequest)(nil),             // 25: pb.CancelMatchRequest
+	(*MatchInfo)(nil),                      // 26: pb.MatchInfo
+	(*UserAttribute)(nil),                  // 27: pb.UserAttribute
+	(*ExitRoomRequest)(nil),                // 28: pb.ExitRoomRequest
+	(*ExitRoomResponse)(nil),               // 29: pb.ExitRoomResponse
+	(*UploadScoreRequest)(nil),             // 30: pb.UploadScoreRequest
+	(*UserScore)(nil),                      // 31: pb.UserScore
+	(*GameEndResponse)(nil),                // 32: pb.GameEndResponse
+	(*ReportRoomScore)(nil),                // 33: pb.ReportRoomScore
+	(*GetGameConfigRequest)(nil),           // 34: pb.GetGameConfigRequest
+	(*RelayBindUserInfo)(nil),              // 35: pb.RelayBindUserInfo
+	(*RelayBindRequest)(nil),               // 36: pb.RelayBindRequest
+	(*RelayStartInfo)(nil),                 // 37: pb.RelayStartInfo
+	(*RelayBindResponse)(nil),              // 38: pb.RelayBindResponse
+	(*RelayCommandRequest)(nil),            // 39: pb.RelayCommandRequest
+	(*RelayGetHistoryFrameRequest)(nil),    // 40: pb.RelayGetHistoryFrameRequest
+	(*RelayGetHistoryFrameResponse)(nil),   // 41: pb.RelayGetHistoryFrameResponse
+	(*RelaySignalRequest)(nil),             // 42: pb.RelaySignalRequest
+	(*RelayExitGameRequest)(nil),           // 43: pb.RelayExitGameRequest
+	(*RelaySnapShotRequest)(nil),           // 44: pb.RelaySnapShotRequest
+	(*RelayReportRoomStateRequest)(nil),    // 45: pb.RelayReportRoomStateRequest
+	(*RelayChecksumRequest)(nil),           // 46: pb.RelayChecksumRequest
+	(*RelayUdpSyncTimeRequest)(nil),        // 47: pb.RelayUdpSyncTimeRequest
+	(*RelayUdpSyncTimeResponse)(nil),       // 48: pb.RelayUdpSyncTimeResponse
+	(*RelayReportScoreRequest)(nil),        // 49: pb.RelayReportScoreRequest
+	(*RpcReportScoreRequest)(nil),          // 50: pb.RpcReportScoreRequest
+	(*RpcReportRoomStateRequest)(nil),      // 51: pb.RpcReportRoomStateRequest
+	(*RpcReportRoomAvailNumsRequest)(nil),  // 52: pb.RpcReportRoomAvailNumsRequest
+	(*RpcReportAbnormalRequest)(nil),       // 53: pb.RpcReportAbnormalRequest
+	(*RpcReportAbnormalNotifyRequest)(nil), // 54: pb.RpcReportAbnormalNotifyRequest
+	(*RpcReportRoomLockRequest)(nil),       // 55: pb.RpcReportRoomLockRequest
+	(*GetUserStateRequest)(nil),            // 56: pb.GetUserStateRequest
+	(*UserStateInfo)(nil),                  // 57: pb.UserStateInfo
+	(*GetUserStateResponse)(nil),           // 58: pb.GetUserStateResponse
+	(*UpdateUserOnlineStateRequest)(nil),   // 59: pb.UpdateUserOnlineStateRequest
+	(*UpdateUserStateRequest)(nil),         // 60: pb.UpdateUserStateRequest
+	(*InviteFriendRequest)(nil),            // 61: pb.InviteFriendRequest
+	(*HandleInviteRequest)(nil),            // 62: pb.HandleInviteRequest
+	(*BindUserInfo)(nil),                   // 63: pb.BindUserInfo
+	(*GetUserConnectorInfoResponse)(nil),   // 64: pb.GetUserConnectorInfoResponse
+	(*SendGiftRequest)(nil),                // 65: pb.SendGiftRequest
+	(*SendGiftResponse)(nil),               // 66: pb.SendGiftResponse
+	nil,                                    // 67: pb.UidRequest.CmdMapEntry
+	(*FrameCommand)(nil),                   // 68: pb.FrameCommand
 }
 var file_snakemini_rpc_proto_depIdxs = []int32{
-	3,  // 0: pb.RpcResponse.err:type_name -> pb.ErrInfo
-	3,  // 1: pb.ReplyEmpty.err:type_name -> pb.ErrInfo
-	22, // 2: pb.BindMatchInfo.group_info:type_name -> pb.GroupInfo
-	27, // 3: pb.BindMatchInfo.match_info:type_name -> pb.MatchInfo
-	68, // 4: pb.UidRequest.cmdMap:type_name -> pb.UidRequest.CmdMapEntry
-	3,  // 5: pb.InGameStateReply.err:type_name -> pb.ErrInfo
-	13, // 6: pb.CreateGroupRequest.user_info:type_name -> pb.MatchUserInfo
-	13, // 7: pb.JoinGroupRequest.user_info:type_name -> pb.MatchUserInfo
-	22, // 8: pb.JoinGroupResponse.group_info:type_name -> pb.GroupInfo
-	23, // 9: pb.GroupInfo.user_infos:type_name -> pb.GroupUserInfo
-	13, // 10: pb.StartMatchRequest.user_info:type_name -> pb.MatchUserInfo
-	28, // 11: pb.MatchInfo.user_attr:type_name -> pb.UserAttribute
-	32, // 12: pb.UploadScoreRequest.score_list:type_name -> pb.UserScore
-	32, // 13: pb.ReportRoomScore.score_list:type_name -> pb.UserScore
-	38, // 14: pb.RelayBindResponse.start_info:type_name -> pb.RelayStartInfo
-	28, // 15: pb.RelayCommandRequest.user_attr:type_name -> pb.UserAttribute
-	69, // 16: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
-	58, // 17: pb.GetUserStateResponse.states:type_name -> pb.UserStateInfo
-	13, // 18: pb.HandleInviteRequest.user_info:type_name -> pb.MatchUserInfo
-	64, // 19: pb.GetUserConnectorInfoResponse.user_info:type_name -> pb.BindUserInfo
-	1,  // 20: pb.SendGiftRequest.source:type_name -> pb.SendGiftSource
-	0,  // 21: pb.SendGiftRequest.cost_type:type_name -> pb.SendGiftCost
-	22, // [22:22] is the sub-list for method output_type
-	22, // [22:22] is the sub-list for method input_type
-	22, // [22:22] is the sub-list for extension type_name
-	22, // [22:22] is the sub-list for extension extendee
-	0,  // [0:22] is the sub-list for field type_name
+	2,  // 0: pb.RpcResponse.err:type_name -> pb.ErrInfo
+	2,  // 1: pb.ReplyEmpty.err:type_name -> pb.ErrInfo
+	21, // 2: pb.BindMatchInfo.group_info:type_name -> pb.GroupInfo
+	26, // 3: pb.BindMatchInfo.match_info:type_name -> pb.MatchInfo
+	67, // 4: pb.UidRequest.cmdMap:type_name -> pb.UidRequest.CmdMapEntry
+	2,  // 5: pb.InGameStateReply.err:type_name -> pb.ErrInfo
+	12, // 6: pb.CreateGroupRequest.user_info:type_name -> pb.MatchUserInfo
+	12, // 7: pb.JoinGroupRequest.user_info:type_name -> pb.MatchUserInfo
+	21, // 8: pb.JoinGroupResponse.group_info:type_name -> pb.GroupInfo
+	22, // 9: pb.GroupInfo.user_infos:type_name -> pb.GroupUserInfo
+	12, // 10: pb.StartMatchRequest.user_info:type_name -> pb.MatchUserInfo
+	27, // 11: pb.MatchInfo.user_attr:type_name -> pb.UserAttribute
+	31, // 12: pb.UploadScoreRequest.score_list:type_name -> pb.UserScore
+	31, // 13: pb.ReportRoomScore.score_list:type_name -> pb.UserScore
+	37, // 14: pb.RelayBindResponse.start_info:type_name -> pb.RelayStartInfo
+	27, // 15: pb.RelayCommandRequest.user_attr:type_name -> pb.UserAttribute
+	68, // 16: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
+	57, // 17: pb.GetUserStateResponse.states:type_name -> pb.UserStateInfo
+	12, // 18: pb.HandleInviteRequest.user_info:type_name -> pb.MatchUserInfo
+	63, // 19: pb.GetUserConnectorInfoResponse.user_info:type_name -> pb.BindUserInfo
+	0,  // 20: pb.SendGiftRequest.cost_type:type_name -> pb.SendGiftCost
+	21, // [21:21] is the sub-list for method output_type
+	21, // [21:21] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	21, // [21:21] is the sub-list for extension extendee
+	0,  // [0:21] is the sub-list for field type_name
 }
 
 func init() { file_snakemini_rpc_proto_init() }
@@ -5965,7 +5903,7 @@ func file_snakemini_rpc_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakemini_rpc_proto_rawDesc,
-			NumEnums:      2,
+			NumEnums:      1,
 			NumMessages:   67,
 			NumExtensions: 0,
 			NumServices:   0,
