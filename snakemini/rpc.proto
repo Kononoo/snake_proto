@@ -445,18 +445,11 @@ enum SendGiftCost {
     DouyinDiamond=5;// 抖音钻石
 }
 
-enum SendGiftSource {
-    UnknownSource=0;
-    QualifyingMVPPage = 1; // 团战MVP页
-    QualifyingSettlePage = 2; // 团战结算页
-    UserHomePage = 3; // 个人资料页
-}
-
 message SendGiftRequest {
     int64 send_uid = 1; // 送礼人uid
     int64 receive_uid = 2; // 收礼人uid
     int32 gift_id = 3; // 礼物ID，30001团战点赞
-    SendGiftSource source = 4; // source 1和2 团战结算页，客户端定枚举
+    string source = 4; // source 1和2 团战结算页，客户端定枚举
     SendGiftCost cost_type = 5; // 付费类型 0 免费 1 金币 2 苹果 3 广告 4 分享 5 抖音钻石
     int32 num = 6; // 送礼个数
     int32 rid = 7; // 房间ID(团战结算页必传)
