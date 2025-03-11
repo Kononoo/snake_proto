@@ -461,6 +461,7 @@ message SendGiftRequest {
     int64 combo_nonce=13; // 连击nonce，客户端取combo_num=1的毫秒时间戳
     int32 bag_num=14; // 背包礼物数量
     string source_str = 15; // 字符串
+    int32 platform=16;// 平台
 }
 
 message SendGiftResponse {
