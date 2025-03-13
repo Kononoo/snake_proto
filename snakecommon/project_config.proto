@@ -2324,4 +2324,6 @@ message NativeQualifyAIPool { // 原生团战 AI 行为配置
   repeated int64 attack_weights = 20;
   double speedup_rate = 21;
   double speedup_time = 22;
+  double ai_snake_view_radius_factor = 23;
+  double attack_ai_snake_view_radius_factor = 24;
 }
