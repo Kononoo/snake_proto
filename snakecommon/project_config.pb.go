@@ -20754,28 +20754,30 @@ type NativeQualifyAIPool struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Level                  int32   `protobuf:"varint,1,opt,name=level,proto3" json:"level,omitempty"`
-	Comment                string  `protobuf:"bytes,2,opt,name=comment,proto3" json:"comment,omitempty"`
-	BorderDisFactor        float64 `protobuf:"fixed64,3,opt,name=border_dis_factor,json=borderDisFactor,proto3" json:"border_dis_factor,omitempty"`
-	SnakeDisFactor         float64 `protobuf:"fixed64,4,opt,name=snake_dis_factor,json=snakeDisFactor,proto3" json:"snake_dis_factor,omitempty"`
-	WreckDisFactor         float64 `protobuf:"fixed64,5,opt,name=wreck_dis_factor,json=wreckDisFactor,proto3" json:"wreck_dis_factor,omitempty"`
-	FloaterDisFactor       float64 `protobuf:"fixed64,6,opt,name=floater_dis_factor,json=floaterDisFactor,proto3" json:"floater_dis_factor,omitempty"`
-	PropsDisFactor         float64 `protobuf:"fixed64,7,opt,name=props_dis_factor,json=propsDisFactor,proto3" json:"props_dis_factor,omitempty"`
-	AiSnakeViewAngle       float64 `protobuf:"fixed64,8,opt,name=ai_snake_view_angle,json=aiSnakeViewAngle,proto3" json:"ai_snake_view_angle,omitempty"`
-	AttackBorderDisFactor  float64 `protobuf:"fixed64,9,opt,name=attack_border_dis_factor,json=attackBorderDisFactor,proto3" json:"attack_border_dis_factor,omitempty"`
-	AttackSnakeDisFactor   float64 `protobuf:"fixed64,10,opt,name=attack_snake_dis_factor,json=attackSnakeDisFactor,proto3" json:"attack_snake_dis_factor,omitempty"`
-	AttackWreckDisFactor   float64 `protobuf:"fixed64,11,opt,name=attack_wreck_dis_factor,json=attackWreckDisFactor,proto3" json:"attack_wreck_dis_factor,omitempty"`
-	AttackAiSnakeViewAngle float64 `protobuf:"fixed64,12,opt,name=attack_ai_snake_view_angle,json=attackAiSnakeViewAngle,proto3" json:"attack_ai_snake_view_angle,omitempty"`
-	AttackFloaterDisFactor float64 `protobuf:"fixed64,13,opt,name=attack_floater_dis_factor,json=attackFloaterDisFactor,proto3" json:"attack_floater_dis_factor,omitempty"`
-	AttackPropsDisFactor   float64 `protobuf:"fixed64,14,opt,name=attack_props_dis_factor,json=attackPropsDisFactor,proto3" json:"attack_props_dis_factor,omitempty"`
-	AttackCircleDisFactor  float64 `protobuf:"fixed64,15,opt,name=attack_circle_dis_factor,json=attackCircleDisFactor,proto3" json:"attack_circle_dis_factor,omitempty"`
-	AttackRate             float64 `protobuf:"fixed64,16,opt,name=attack_rate,json=attackRate,proto3" json:"attack_rate,omitempty"`
-	ChangeDirectionRate    float64 `protobuf:"fixed64,17,opt,name=change_direction_rate,json=changeDirectionRate,proto3" json:"change_direction_rate,omitempty"`
-	DelayDirectionRate     float64 `protobuf:"fixed64,18,opt,name=delay_direction_rate,json=delayDirectionRate,proto3" json:"delay_direction_rate,omitempty"`
-	AttackTimes            []int64 `protobuf:"varint,19,rep,packed,name=attack_times,json=attackTimes,proto3" json:"attack_times,omitempty"`
-	AttackWeights          []int64 `protobuf:"varint,20,rep,packed,name=attack_weights,json=attackWeights,proto3" json:"attack_weights,omitempty"`
-	SpeedupRate            float64 `protobuf:"fixed64,21,opt,name=speedup_rate,json=speedupRate,proto3" json:"speedup_rate,omitempty"`
-	SpeedupTime            float64 `protobuf:"fixed64,22,opt,name=speedup_time,json=speedupTime,proto3" json:"speedup_time,omitempty"`
+	Level                         int32   `protobuf:"varint,1,opt,name=level,proto3" json:"level,omitempty"`
+	Comment                       string  `protobuf:"bytes,2,opt,name=comment,proto3" json:"comment,omitempty"`
+	BorderDisFactor               float64 `protobuf:"fixed64,3,opt,name=border_dis_factor,json=borderDisFactor,proto3" json:"border_dis_factor,omitempty"`
+	SnakeDisFactor                float64 `protobuf:"fixed64,4,opt,name=snake_dis_factor,json=snakeDisFactor,proto3" json:"snake_dis_factor,omitempty"`
+	WreckDisFactor                float64 `protobuf:"fixed64,5,opt,name=wreck_dis_factor,json=wreckDisFactor,proto3" json:"wreck_dis_factor,omitempty"`
+	FloaterDisFactor              float64 `protobuf:"fixed64,6,opt,name=floater_dis_factor,json=floaterDisFactor,proto3" json:"floater_dis_factor,omitempty"`
+	PropsDisFactor                float64 `protobuf:"fixed64,7,opt,name=props_dis_factor,json=propsDisFactor,proto3" json:"props_dis_factor,omitempty"`
+	AiSnakeViewAngle              float64 `protobuf:"fixed64,8,opt,name=ai_snake_view_angle,json=aiSnakeViewAngle,proto3" json:"ai_snake_view_angle,omitempty"`
+	AttackBorderDisFactor         float64 `protobuf:"fixed64,9,opt,name=attack_border_dis_factor,json=attackBorderDisFactor,proto3" json:"attack_border_dis_factor,omitempty"`
+	AttackSnakeDisFactor          float64 `protobuf:"fixed64,10,opt,name=attack_snake_dis_factor,json=attackSnakeDisFactor,proto3" json:"attack_snake_dis_factor,omitempty"`
+	AttackWreckDisFactor          float64 `protobuf:"fixed64,11,opt,name=attack_wreck_dis_factor,json=attackWreckDisFactor,proto3" json:"attack_wreck_dis_factor,omitempty"`
+	AttackAiSnakeViewAngle        float64 `protobuf:"fixed64,12,opt,name=attack_ai_snake_view_angle,json=attackAiSnakeViewAngle,proto3" json:"attack_ai_snake_view_angle,omitempty"`
+	AttackFloaterDisFactor        float64 `protobuf:"fixed64,13,opt,name=attack_floater_dis_factor,json=attackFloaterDisFactor,proto3" json:"attack_floater_dis_factor,omitempty"`
+	AttackPropsDisFactor          float64 `protobuf:"fixed64,14,opt,name=attack_props_dis_factor,json=attackPropsDisFactor,proto3" json:"attack_props_dis_factor,omitempty"`
+	AttackCircleDisFactor         float64 `protobuf:"fixed64,15,opt,name=attack_circle_dis_factor,json=attackCircleDisFactor,proto3" json:"attack_circle_dis_factor,omitempty"`
+	AttackRate                    float64 `protobuf:"fixed64,16,opt,name=attack_rate,json=attackRate,proto3" json:"attack_rate,omitempty"`
+	ChangeDirectionRate           float64 `protobuf:"fixed64,17,opt,name=change_direction_rate,json=changeDirectionRate,proto3" json:"change_direction_rate,omitempty"`
+	DelayDirectionRate            float64 `protobuf:"fixed64,18,opt,name=delay_direction_rate,json=delayDirectionRate,proto3" json:"delay_direction_rate,omitempty"`
+	AttackTimes                   []int64 `protobuf:"varint,19,rep,packed,name=attack_times,json=attackTimes,proto3" json:"attack_times,omitempty"`
+	AttackWeights                 []int64 `protobuf:"varint,20,rep,packed,name=attack_weights,json=attackWeights,proto3" json:"attack_weights,omitempty"`
+	SpeedupRate                   float64 `protobuf:"fixed64,21,opt,name=speedup_rate,json=speedupRate,proto3" json:"speedup_rate,omitempty"`
+	SpeedupTime                   float64 `protobuf:"fixed64,22,opt,name=speedup_time,json=speedupTime,proto3" json:"speedup_time,omitempty"`
+	AiSnakeViewRadiusFactor       float64 `protobuf:"fixed64,23,opt,name=ai_snake_view_radius_factor,json=aiSnakeViewRadiusFactor,proto3" json:"ai_snake_view_radius_factor,omitempty"`
+	AttackAiSnakeViewRadiusFactor float64 `protobuf:"fixed64,24,opt,name=attack_ai_snake_view_radius_factor,json=attackAiSnakeViewRadiusFactor,proto3" json:"attack_ai_snake_view_radius_factor,omitempty"`
 }
 
 func (x *NativeQualifyAIPool) Reset() {
@@ -20960,6 +20962,20 @@ func (x *NativeQualifyAIPool) GetSpeedupRate() float64 {
 func (x *NativeQualifyAIPool) GetSpeedupTime() float64 {
 	if x != nil {
 		return x.SpeedupTime
+	}
+	return 0
+}
+
+func (x *NativeQualifyAIPool) GetAiSnakeViewRadiusFactor() float64 {
+	if x != nil {
+		return x.AiSnakeViewRadiusFactor
+	}
+	return 0
+}
+
+func (x *NativeQualifyAIPool) GetAttackAiSnakeViewRadiusFactor() float64 {
+	if x != nil {
+		return x.AttackAiSnakeViewRadiusFactor
 	}
 	return 0
 }
@@ -25454,7 +25470,7 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x53, 0x6d, 0x61, 0x6c, 0x6c, 0x52, 0x61, 0x6e, 0x6b, 0x49,
 	0x74, 0x65, 0x6d, 0x52, 0x09, 0x73, 0x6d, 0x61, 0x6c, 0x6c, 0x52, 0x61, 0x6e, 0x6b, 0x12, 0x1b,
 	0x0a, 0x09, 0x72, 0x61, 0x6e, 0x6b, 0x5f, 0x64, 0x65, 0x73, 0x63, 0x18, 0x03, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x08, 0x72, 0x61, 0x6e, 0x6b, 0x44, 0x65, 0x73, 0x63, 0x22, 0xf1, 0x07, 0x0a, 0x13,
+	0x09, 0x52, 0x08, 0x72, 0x61, 0x6e, 0x6b, 0x44, 0x65, 0x73, 0x63, 0x22, 0xfa, 0x08, 0x0a, 0x13,
 	0x4e, 0x61, 0x74, 0x69, 0x76, 0x65, 0x51, 0x75, 0x61, 0x6c, 0x69, 0x66, 0x79, 0x41, 0x49, 0x50,
 	0x6f, 0x6f, 0x6c, 0x12, 0x14, 0x0a, 0x05, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x05, 0x52, 0x05, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6d,
@@ -25517,11 +25533,19 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x65, 0x64, 0x75, 0x70, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x15, 0x20, 0x01, 0x28, 0x01, 0x52,
 	0x0b, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x52, 0x61, 0x74, 0x65, 0x12, 0x21, 0x0a, 0x0c,
 	0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x16, 0x20, 0x01,
-	0x28, 0x01, 0x52, 0x0b, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x54, 0x69, 0x6d, 0x65, 0x42,
-	0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d,
-	0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x28, 0x01, 0x52, 0x0b, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x54, 0x69, 0x6d, 0x65, 0x12,
+	0x3c, 0x0a, 0x1b, 0x61, 0x69, 0x5f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x76, 0x69, 0x65, 0x77,
+	0x5f, 0x72, 0x61, 0x64, 0x69, 0x75, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x17,
+	0x20, 0x01, 0x28, 0x01, 0x52, 0x17, 0x61, 0x69, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x56, 0x69, 0x65,
+	0x77, 0x52, 0x61, 0x64, 0x69, 0x75, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x49, 0x0a,
+	0x22, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x61, 0x69, 0x5f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
+	0x5f, 0x76, 0x69, 0x65, 0x77, 0x5f, 0x72, 0x61, 0x64, 0x69, 0x75, 0x73, 0x5f, 0x66, 0x61, 0x63,
+	0x74, 0x6f, 0x72, 0x18, 0x18, 0x20, 0x01, 0x28, 0x01, 0x52, 0x1d, 0x61, 0x74, 0x74, 0x61, 0x63,
+	0x6b, 0x41, 0x69, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x56, 0x69, 0x65, 0x77, 0x52, 0x61, 0x64, 0x69,
+	0x75, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e,
+	0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
