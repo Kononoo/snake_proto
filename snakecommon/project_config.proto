@@ -1612,6 +1612,11 @@ message AiConfigV3 {
 
 // ai_config_v3 end
 
+message LimitAiConfigV3 {
+  AiConfigV3 base = 1;
+  int64 limit_time = 2; // 限制时间
+}
+
 
 // =====  system_config start  =======
 message GameConfig {
