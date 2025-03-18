@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+option go_package="../snakemini";
+option objc_class_prefix = "PROTO";
+
+import "snakemini/internal.proto";
+import "snakemini/rpc.proto";
+import "snakemini/push.proto";
+
+
+package pb;
+
+// 聊天频道类型
+enum ChannelType {
+    World = 0; // 世界频道
+    Single = 1; // 私聊
+    Group = 2; // 组队聊天
+    Room = 3; // 赛后频道
+}
+
+// 消息类型
+enum MessageType {
+    SystemMessage = 0; // 系统消息
+    TextMessage = 1; // 文本消息
+    ImageMessage = 2; // 图片消息
+    EmojiMessage = 3; // 表情消息
+    InviteMessage = 4; // 组队邀请消息
+    InviteInvalidMessage = 5; // 组队邀请失效消息
+    GiftMessage = 6; // 礼物消息
+}
+
+message Message {
+    string message_id = 1; // 消息ID，全局唯一
+    int64 sender = 2; // 发送人uid
+    MessageType message_type = 3; // 消息类型
+    bytes content = 4; // 根据 message_type 确定为不同的 Content 序列化
+    int64 time = 6; // 消息发送时间，unix微秒时间戳
+}
+
+// 系统消息
+message SystemContent {
+    string value = 1; // 文本内容
+}
+
+// 普通文本消息
+message TextContent {
+    string value = 1; // 文本内容
+}
+
+// 图片消息
+message ImageContent {
+    string url = 1; // 图片链接
+    int32 height = 2; // 图片高
+    int32 width = 3; // 图片宽
+}
+
+message EmojiContent {
+    string emoji_id = 1; // 表情ID
+}
+
+message InviteContent {
+    int64 group_id = 1; // 队伍ID
+    int32 game_mode = 2; // 游戏模式
+    int64 mode_version = 3; // 游戏版本，不同版本需屏蔽
+    int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
+    int32 limit =5;// 人数上限
+    int32 count =6; // 当前人数
+    int64 expire_ts = 7; // 邀请过期时间，unix秒
+}
+
+message InviteInvalidContent {
+    int64 group_id = 1; // 队伍ID
+}
+
+message GiftContent {
+    int64 send_uid = 1; // 送礼人uid
+    int64 receive_uid = 2; // 收礼人uid
+    string send_nickname = 3; // 送礼人昵称
+    string receive_nickname = 4; // 收礼人昵称
+    int32 gift_id = 5; // 礼物ID
+    string gift_name = 6; // 礼物名称
+    int32 count = 7; // 送礼个数
+    string dedication = 8; // 送礼赠言
+}
+
+message SendMessageReq {// 发送消息
+    ChannelType channel_type = 1; // 频道类型
+    string target = 2; // 发送目标，私聊为目标用户uid，其余不填
+    MessageType message_type = 3; // 消息类型
+    bytes content = 4; // 消息内容，用对应MessageType的Content解析
+}
+
+message SendMessageResp {
+    string message_id = 1; // 消息ID
+}
+
+message GetMessageListReq {// 拉取消息列表
+    ChannelType channel_type = 1; // 频道类型
+    string target = 2; // 发送目标，私聊为目标用户uid，其余不填
+    int64 page = 21;
+    int64 page_size = 22;
+}
+
+message GetMessageListResp {
+    repeated Message message_list = 1;
+}
+
+// command_id=new_message
+message PushNewMessage {
+    Message message = 1; // 消息内容
+    ChannelType channel_type = 2; // 频道类型
+    string channel_id = 3; // 发送频道ID，私聊为目标用户uid
+}
+
+message SingleChat {
+    int64 target_uid = 1; // 目标用户uid
+    int64 last_chat_ts = 2; // 上次聊天时间，unix秒
+    int64 last_read_ts = 3; // 上次已读时间，unix秒
+}
+
+message GetSingleChatListReq {} // 获取全部私聊列表
+
+message GetSingleChatListResp {
+    repeated SingleChat single_chat_list = 1;
+}
+
+message CreateSingleChatReq {// 创建私聊
+    int64 target_uid = 1; // 目标用户uid
+}
+
+message CreateSingleChatResp {}
+
+message DeleteSingleChatReq {// 删除私聊
+    int64 target_uid = 1; // 目标用户uid
+}
+
+message DeleteSingleChatResp {}
+
+
+message LiveRoomChatReq { // 退出赛后频道
+    int64 room_id = 1; // 房间ID
+}
+
+message LiveRoomChatResp {}
+

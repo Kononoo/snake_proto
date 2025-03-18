@@ -89,4 +89,5 @@ message PushSendGift {
     int32 gift_id = 5;
     string gift_name = 6;
     int32 count = 7; // 送礼个数
+    string dedication = 8; // 送礼赠言
 }

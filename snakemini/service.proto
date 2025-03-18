@@ -61,3 +61,15 @@ service RelayMonitor {
     }
 }
 
+
+// ------------------------------------- SocialServer service definition --------------------------------------------
+service Social {
+    rpc SocialHandle (InternalReq) returns (RpcResponse) {
+    }
+}
+
+service SocialMonitor {
+    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
+    }
+}
+
