@@ -14,19 +14,16 @@ package pb;
 enum ChannelType {
     World = 0; // 世界频道
     Single = 1; // 私聊
-    Group = 2; // 组队聊天
-    Room = 3; // 赛后频道
+    Room = 2; // 赛后频道
 }
 
 // 消息类型
 enum MessageType {
     SystemMessage = 0; // 系统消息
     TextMessage = 1; // 文本消息
-    ImageMessage = 2; // 图片消息
-    EmojiMessage = 3; // 表情消息
-    InviteMessage = 4; // 组队邀请消息
-    InviteInvalidMessage = 5; // 组队邀请失效消息
-    GiftMessage = 6; // 礼物消息
+    EmojiMessage = 2; // 表情消息
+    InviteMessage =3; // 组队邀请消息
+    GiftMessage = 4; // 礼物消息
 }
 
 message Message {
@@ -47,13 +44,6 @@ message TextContent {
     string value = 1; // 文本内容
 }
 
-// 图片消息
-message ImageContent {
-    string url = 1; // 图片链接
-    int32 height = 2; // 图片高
-    int32 width = 3; // 图片宽
-}
-
 message EmojiContent {
     string emoji_id = 1; // 表情ID
 }
@@ -66,10 +56,6 @@ message InviteContent {
     int32 limit =5;// 人数上限
     int32 count =6; // 当前人数
     int64 expire_ts = 7; // 邀请过期时间，unix秒
-}
-
-message InviteInvalidContent {
-    int64 group_id = 1; // 队伍ID
 }
 
 message GiftContent {
@@ -109,7 +95,7 @@ message GetMessageListResp {
 message PushNewMessage {
     Message message = 1; // 消息内容
     ChannelType channel_type = 2; // 频道类型
-    string channel_id = 3; // 发送频道ID，私聊为目标用户uid
+    string channel_id = 3; // 发送频道ID，私聊为目标用户uid，赛后为房间ID
 }
 
 message SingleChat {
