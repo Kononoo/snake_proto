@@ -66,6 +66,10 @@ service RelayMonitor {
 service Social {
     rpc SocialHandle (InternalReq) returns (RpcResponse) {
     }
+    rpc BindSocial (UidRequest) returns (BindResponse) {
+    }
+    rpc Disconnect (UidRequest) returns (ReplyEmpty) {
+    }
 }
 
 service SocialMonitor {
