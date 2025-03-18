@@ -823,7 +823,7 @@ var RelayMonitor_ServiceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SocialClient interface {
 	SocialHandle(ctx context.Context, in *InternalReq, opts ...grpc.CallOption) (*RpcResponse, error)
-	BindSocial(ctx context.Context, in *UidRequest, opts ...grpc.CallOption) (*BindResponse, error)
+	Bind(ctx context.Context, in *UidRequest, opts ...grpc.CallOption) (*BindResponse, error)
 	Disconnect(ctx context.Context, in *UidRequest, opts ...grpc.CallOption) (*ReplyEmpty, error)
 }
 
@@ -844,9 +844,9 @@ func (c *socialClient) SocialHandle(ctx context.Context, in *InternalReq, opts .
 	return out, nil
 }
 
-func (c *socialClient) BindSocial(ctx context.Context, in *UidRequest, opts ...grpc.CallOption) (*BindResponse, error) {
+func (c *socialClient) Bind(ctx context.Context, in *UidRequest, opts ...grpc.CallOption) (*BindResponse, error) {
 	out := new(BindResponse)
-	err := c.cc.Invoke(ctx, "/pb.Social/BindSocial", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.Social/Bind", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -867,7 +867,7 @@ func (c *socialClient) Disconnect(ctx context.Context, in *UidRequest, opts ...g
 // for forward compatibility
 type SocialServer interface {
 	SocialHandle(context.Context, *InternalReq) (*RpcResponse, error)
-	BindSocial(context.Context, *UidRequest) (*BindResponse, error)
+	Bind(context.Context, *UidRequest) (*BindResponse, error)
 	Disconnect(context.Context, *UidRequest) (*ReplyEmpty, error)
 }
 
@@ -878,8 +878,8 @@ type UnimplementedSocialServer struct {
 func (UnimplementedSocialServer) SocialHandle(context.Context, *InternalReq) (*RpcResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SocialHandle not implemented")
 }
-func (UnimplementedSocialServer) BindSocial(context.Context, *UidRequest) (*BindResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BindSocial not implemented")
+func (UnimplementedSocialServer) Bind(context.Context, *UidRequest) (*BindResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Bind not implemented")
 }
 func (UnimplementedSocialServer) Disconnect(context.Context, *UidRequest) (*ReplyEmpty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Disconnect not implemented")
@@ -914,20 +914,20 @@ func _Social_SocialHandle_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Social_BindSocial_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Social_Bind_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UidRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SocialServer).BindSocial(ctx, in)
+		return srv.(SocialServer).Bind(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Social/BindSocial",
+		FullMethod: "/pb.Social/Bind",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SocialServer).BindSocial(ctx, req.(*UidRequest))
+		return srv.(SocialServer).Bind(ctx, req.(*UidRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -962,8 +962,8 @@ var Social_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Social_SocialHandle_Handler,
 		},
 		{
-			MethodName: "BindSocial",
-			Handler:    _Social_BindSocial_Handler,
+			MethodName: "Bind",
+			Handler:    _Social_Bind_Handler,
 		},
 		{
 			MethodName: "Disconnect",
