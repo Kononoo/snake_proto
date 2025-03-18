@@ -817,3 +817,171 @@ var RelayMonitor_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "snakemini/service.proto",
 }
+
+// SocialClient is the client API for Social service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type SocialClient interface {
+	SocialHandle(ctx context.Context, in *InternalReq, opts ...grpc.CallOption) (*RpcResponse, error)
+}
+
+type socialClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewSocialClient(cc grpc.ClientConnInterface) SocialClient {
+	return &socialClient{cc}
+}
+
+func (c *socialClient) SocialHandle(ctx context.Context, in *InternalReq, opts ...grpc.CallOption) (*RpcResponse, error) {
+	out := new(RpcResponse)
+	err := c.cc.Invoke(ctx, "/pb.Social/SocialHandle", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// SocialServer is the server API for Social service.
+// All implementations should embed UnimplementedSocialServer
+// for forward compatibility
+type SocialServer interface {
+	SocialHandle(context.Context, *InternalReq) (*RpcResponse, error)
+}
+
+// UnimplementedSocialServer should be embedded to have forward compatible implementations.
+type UnimplementedSocialServer struct {
+}
+
+func (UnimplementedSocialServer) SocialHandle(context.Context, *InternalReq) (*RpcResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SocialHandle not implemented")
+}
+
+// UnsafeSocialServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SocialServer will
+// result in compilation errors.
+type UnsafeSocialServer interface {
+	mustEmbedUnimplementedSocialServer()
+}
+
+func RegisterSocialServer(s grpc.ServiceRegistrar, srv SocialServer) {
+	s.RegisterService(&Social_ServiceDesc, srv)
+}
+
+func _Social_SocialHandle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InternalReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServer).SocialHandle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Social/SocialHandle",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServer).SocialHandle(ctx, req.(*InternalReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// Social_ServiceDesc is the grpc.ServiceDesc for Social service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var Social_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "pb.Social",
+	HandlerType: (*SocialServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "SocialHandle",
+			Handler:    _Social_SocialHandle_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "snakemini/service.proto",
+}
+
+// SocialMonitorClient is the client API for SocialMonitor service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type SocialMonitorClient interface {
+	Update(ctx context.Context, in *BroadcastConfigs, opts ...grpc.CallOption) (*ReplyEmpty, error)
+}
+
+type socialMonitorClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewSocialMonitorClient(cc grpc.ClientConnInterface) SocialMonitorClient {
+	return &socialMonitorClient{cc}
+}
+
+func (c *socialMonitorClient) Update(ctx context.Context, in *BroadcastConfigs, opts ...grpc.CallOption) (*ReplyEmpty, error) {
+	out := new(ReplyEmpty)
+	err := c.cc.Invoke(ctx, "/pb.SocialMonitor/Update", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// SocialMonitorServer is the server API for SocialMonitor service.
+// All implementations should embed UnimplementedSocialMonitorServer
+// for forward compatibility
+type SocialMonitorServer interface {
+	Update(context.Context, *BroadcastConfigs) (*ReplyEmpty, error)
+}
+
+// UnimplementedSocialMonitorServer should be embedded to have forward compatible implementations.
+type UnimplementedSocialMonitorServer struct {
+}
+
+func (UnimplementedSocialMonitorServer) Update(context.Context, *BroadcastConfigs) (*ReplyEmpty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+}
+
+// UnsafeSocialMonitorServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SocialMonitorServer will
+// result in compilation errors.
+type UnsafeSocialMonitorServer interface {
+	mustEmbedUnimplementedSocialMonitorServer()
+}
+
+func RegisterSocialMonitorServer(s grpc.ServiceRegistrar, srv SocialMonitorServer) {
+	s.RegisterService(&SocialMonitor_ServiceDesc, srv)
+}
+
+func _SocialMonitor_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BroadcastConfigs)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialMonitorServer).Update(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.SocialMonitor/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialMonitorServer).Update(ctx, req.(*BroadcastConfigs))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// SocialMonitor_ServiceDesc is the grpc.ServiceDesc for SocialMonitor service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SocialMonitor_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "pb.SocialMonitor",
+	HandlerType: (*SocialMonitorServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Update",
+			Handler:    _SocialMonitor_Update_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "snakemini/service.proto",
+}
