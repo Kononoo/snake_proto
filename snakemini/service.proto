@@ -64,7 +64,7 @@ service RelayMonitor {
 
 // ------------------------------------- SocialServer service definition --------------------------------------------
 service Social {
-    rpc SocialHandle (InternalReq) returns (RpcResponse) {
+    rpc Handle (InternalReq) returns (RpcResponse) {
     }
     rpc Bind (UidRequest) returns (BindResponse) {
     }
