@@ -48,6 +48,7 @@ message BindMatchInfo {
 message UidRequest {
     int64 uid = 1;
     map<string, int32> cmdMap = 2;
+    int32 user_type=3;
 }
 
 message HeartBeartRequest {
