@@ -146,11 +146,6 @@ message PushCreateRoomChat {
     repeated int64 uid_list=2; // 用户列表
 }
 
-// command_id=deleteroomchat
-message PushDeleteRoomChat {
-    int64 rid =1; // 房间ID
-}
-
 // command_id=groupnotify
 message GroupNotifyReq {
     int64 group_id = 1; // 队伍ID
@@ -160,6 +155,7 @@ message GroupNotifyReq {
     int32 limit =5;// 人数上限
     int32 count =6; // 当前人数
     int64 expire_ts = 7; // 邀请过期时间，unix秒
+    int64 Owner =8; // 房主
 }
 
 message GroupNotifyRsp {
