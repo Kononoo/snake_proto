@@ -479,77 +479,6 @@ func (x *BroadcastConfigs) GetRedisServer() *RedisServer {
 	return nil
 }
 
-type Session struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Uid      int64  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
-	Sid      string `protobuf:"bytes,2,opt,name=sid,proto3" json:"sid,omitempty"`
-	UserType int32  `protobuf:"varint,3,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
-	Platform int32  `protobuf:"varint,4,opt,name=platform,proto3" json:"platform,omitempty"`
-}
-
-func (x *Session) Reset() {
-	*x = Session{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_internal_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *Session) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Session) ProtoMessage() {}
-
-func (x *Session) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_internal_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Session.ProtoReflect.Descriptor instead.
-func (*Session) Descriptor() ([]byte, []int) {
-	return file_snakemini_internal_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *Session) GetUid() int64 {
-	if x != nil {
-		return x.Uid
-	}
-	return 0
-}
-
-func (x *Session) GetSid() string {
-	if x != nil {
-		return x.Sid
-	}
-	return ""
-}
-
-func (x *Session) GetUserType() int32 {
-	if x != nil {
-		return x.UserType
-	}
-	return 0
-}
-
-func (x *Session) GetPlatform() int32 {
-	if x != nil {
-		return x.Platform
-	}
-	return 0
-}
-
 var File_snakemini_internal_proto protoreflect.FileDescriptor
 
 var file_snakemini_internal_proto_rawDesc = []byte{
@@ -615,16 +544,9 @@ var file_snakemini_internal_proto_rawDesc = []byte{
 	0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x12, 0x32, 0x0a, 0x0c, 0x72, 0x65, 0x64, 0x69, 0x73,
 	0x5f, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e,
 	0x70, 0x62, 0x2e, 0x52, 0x65, 0x64, 0x69, 0x73, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52, 0x0b,
-	0x72, 0x65, 0x64, 0x69, 0x73, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x22, 0x66, 0x0a, 0x07, 0x53,
-	0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x03, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x73, 0x69, 0x64, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x73, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x75, 0x73,
-	0x65, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x75,
-	0x73, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x6c, 0x61, 0x74, 0x66,
-	0x6f, 0x72, 0x6d, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x70, 0x6c, 0x61, 0x74, 0x66,
-	0x6f, 0x72, 0x6d, 0x42, 0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d,
-	0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x72, 0x65, 0x64, 0x69, 0x73, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x42, 0x16, 0x5a, 0x0c, 0x2e,
+	0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d, 0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52,
+	0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -639,7 +561,7 @@ func file_snakemini_internal_proto_rawDescGZIP() []byte {
 	return file_snakemini_internal_proto_rawDescData
 }
 
-var file_snakemini_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_snakemini_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_snakemini_internal_proto_goTypes = []interface{}{
 	(*InternalReq)(nil),      // 0: pb.InternalReq
 	(*RegisterRequest)(nil),  // 1: pb.RegisterRequest
@@ -647,7 +569,6 @@ var file_snakemini_internal_proto_goTypes = []interface{}{
 	(*RedisServer)(nil),      // 3: pb.RedisServer
 	(*RedisConfig)(nil),      // 4: pb.RedisConfig
 	(*BroadcastConfigs)(nil), // 5: pb.BroadcastConfigs
-	(*Session)(nil),          // 6: pb.Session
 }
 var file_snakemini_internal_proto_depIdxs = []int32{
 	2, // 0: pb.RegisterRequest.config:type_name -> pb.ServerConfig
@@ -740,18 +661,6 @@ func file_snakemini_internal_proto_init() {
 				return nil
 			}
 		}
-		file_snakemini_internal_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Session); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -759,7 +668,7 @@ func file_snakemini_internal_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakemini_internal_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

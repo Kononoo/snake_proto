@@ -1255,6 +1255,338 @@ func (*LiveRoomChatResp) Descriptor() ([]byte, []int) {
 	return file_snakemini_social_proto_rawDescGZIP(), []int{19}
 }
 
+// command_id=createroomchat
+type CreateRoomChatReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Rid     int64   `protobuf:"varint,1,opt,name=rid,proto3" json:"rid,omitempty"`                               // 房间ID
+	UidList []int64 `protobuf:"varint,2,rep,packed,name=uid_list,json=uidList,proto3" json:"uid_list,omitempty"` // 用户列表
+}
+
+func (x *CreateRoomChatReq) Reset() {
+	*x = CreateRoomChatReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_social_proto_msgTypes[20]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CreateRoomChatReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateRoomChatReq) ProtoMessage() {}
+
+func (x *CreateRoomChatReq) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_social_proto_msgTypes[20]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateRoomChatReq.ProtoReflect.Descriptor instead.
+func (*CreateRoomChatReq) Descriptor() ([]byte, []int) {
+	return file_snakemini_social_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *CreateRoomChatReq) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+func (x *CreateRoomChatReq) GetUidList() []int64 {
+	if x != nil {
+		return x.UidList
+	}
+	return nil
+}
+
+type CreateRoomChatRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *CreateRoomChatRsp) Reset() {
+	*x = CreateRoomChatRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_social_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CreateRoomChatRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateRoomChatRsp) ProtoMessage() {}
+
+func (x *CreateRoomChatRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_social_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateRoomChatRsp.ProtoReflect.Descriptor instead.
+func (*CreateRoomChatRsp) Descriptor() ([]byte, []int) {
+	return file_snakemini_social_proto_rawDescGZIP(), []int{21}
+}
+
+// command_id=createroomchat
+type PushCreateRoomChat struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Rid     int64   `protobuf:"varint,1,opt,name=rid,proto3" json:"rid,omitempty"`                               // 房间ID
+	UidList []int64 `protobuf:"varint,2,rep,packed,name=uid_list,json=uidList,proto3" json:"uid_list,omitempty"` // 用户列表
+}
+
+func (x *PushCreateRoomChat) Reset() {
+	*x = PushCreateRoomChat{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_social_proto_msgTypes[22]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PushCreateRoomChat) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PushCreateRoomChat) ProtoMessage() {}
+
+func (x *PushCreateRoomChat) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_social_proto_msgTypes[22]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PushCreateRoomChat.ProtoReflect.Descriptor instead.
+func (*PushCreateRoomChat) Descriptor() ([]byte, []int) {
+	return file_snakemini_social_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *PushCreateRoomChat) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+func (x *PushCreateRoomChat) GetUidList() []int64 {
+	if x != nil {
+		return x.UidList
+	}
+	return nil
+}
+
+// command_id=deleteroomchat
+type PushDeleteRoomChat struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Rid int64 `protobuf:"varint,1,opt,name=rid,proto3" json:"rid,omitempty"` // 房间ID
+}
+
+func (x *PushDeleteRoomChat) Reset() {
+	*x = PushDeleteRoomChat{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_social_proto_msgTypes[23]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PushDeleteRoomChat) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PushDeleteRoomChat) ProtoMessage() {}
+
+func (x *PushDeleteRoomChat) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_social_proto_msgTypes[23]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PushDeleteRoomChat.ProtoReflect.Descriptor instead.
+func (*PushDeleteRoomChat) Descriptor() ([]byte, []int) {
+	return file_snakemini_social_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *PushDeleteRoomChat) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+// command_id=groupnotify
+type GroupNotifyReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GroupId     int64 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`             // 队伍ID
+	GameMode    int32 `protobuf:"varint,2,opt,name=game_mode,json=gameMode,proto3" json:"game_mode,omitempty"`          // 游戏模式
+	ModeVersion int64 `protobuf:"varint,3,opt,name=mode_version,json=modeVersion,proto3" json:"mode_version,omitempty"` // 游戏版本，不同版本需屏蔽
+	State       int32 `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`                                // 队伍状态 1 组队中 2 匹配中 3 解散(过期)
+	Limit       int32 `protobuf:"varint,5,opt,name=limit,proto3" json:"limit,omitempty"`                                // 人数上限
+	Count       int32 `protobuf:"varint,6,opt,name=count,proto3" json:"count,omitempty"`                                // 当前人数
+	ExpireTs    int64 `protobuf:"varint,7,opt,name=expire_ts,json=expireTs,proto3" json:"expire_ts,omitempty"`          // 邀请过期时间，unix秒
+}
+
+func (x *GroupNotifyReq) Reset() {
+	*x = GroupNotifyReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_social_proto_msgTypes[24]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GroupNotifyReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupNotifyReq) ProtoMessage() {}
+
+func (x *GroupNotifyReq) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_social_proto_msgTypes[24]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupNotifyReq.ProtoReflect.Descriptor instead.
+func (*GroupNotifyReq) Descriptor() ([]byte, []int) {
+	return file_snakemini_social_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *GroupNotifyReq) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *GroupNotifyReq) GetGameMode() int32 {
+	if x != nil {
+		return x.GameMode
+	}
+	return 0
+}
+
+func (x *GroupNotifyReq) GetModeVersion() int64 {
+	if x != nil {
+		return x.ModeVersion
+	}
+	return 0
+}
+
+func (x *GroupNotifyReq) GetState() int32 {
+	if x != nil {
+		return x.State
+	}
+	return 0
+}
+
+func (x *GroupNotifyReq) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *GroupNotifyReq) GetCount() int32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+func (x *GroupNotifyReq) GetExpireTs() int64 {
+	if x != nil {
+		return x.ExpireTs
+	}
+	return 0
+}
+
+type GroupNotifyRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *GroupNotifyRsp) Reset() {
+	*x = GroupNotifyRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_social_proto_msgTypes[25]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GroupNotifyRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GroupNotifyRsp) ProtoMessage() {}
+
+func (x *GroupNotifyRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_social_proto_msgTypes[25]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GroupNotifyRsp.ProtoReflect.Descriptor instead.
+func (*GroupNotifyRsp) Descriptor() ([]byte, []int) {
+	return file_snakemini_social_proto_rawDescGZIP(), []int{25}
+}
+
 var File_snakemini_social_proto protoreflect.FileDescriptor
 
 var file_snakemini_social_proto_rawDesc = []byte{
@@ -1370,19 +1702,45 @@ var file_snakemini_social_proto_rawDesc = []byte{
 	0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x71, 0x12, 0x17, 0x0a, 0x07,
 	0x72, 0x6f, 0x6f, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x72,
 	0x6f, 0x6f, 0x6d, 0x49, 0x64, 0x22, 0x12, 0x0a, 0x10, 0x4c, 0x69, 0x76, 0x65, 0x52, 0x6f, 0x6f,
-	0x6d, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x73, 0x70, 0x2a, 0x2e, 0x0a, 0x0b, 0x43, 0x68, 0x61,
-	0x6e, 0x6e, 0x65, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x12, 0x09, 0x0a, 0x05, 0x57, 0x6f, 0x72, 0x6c,
-	0x64, 0x10, 0x00, 0x12, 0x0a, 0x0a, 0x06, 0x53, 0x69, 0x6e, 0x67, 0x6c, 0x65, 0x10, 0x01, 0x12,
-	0x08, 0x0a, 0x04, 0x52, 0x6f, 0x6f, 0x6d, 0x10, 0x02, 0x2a, 0x67, 0x0a, 0x0b, 0x4d, 0x65, 0x73,
-	0x73, 0x61, 0x67, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x11, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x74,
-	0x65, 0x6d, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x10, 0x00, 0x12, 0x0f, 0x0a, 0x0b, 0x54,
-	0x65, 0x78, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x10, 0x01, 0x12, 0x10, 0x0a, 0x0c,
-	0x45, 0x6d, 0x6f, 0x6a, 0x69, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x10, 0x02, 0x12, 0x11,
-	0x0a, 0x0d, 0x49, 0x6e, 0x76, 0x69, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x10,
-	0x03, 0x12, 0x0f, 0x0a, 0x0b, 0x47, 0x69, 0x66, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x10, 0x04, 0x42, 0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d, 0x69,
-	0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x6d, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x73, 0x70, 0x22, 0x40, 0x0a, 0x11, 0x43, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x71, 0x12, 0x10,
+	0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x72, 0x69, 0x64,
+	0x12, 0x19, 0x0a, 0x08, 0x75, 0x69, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03,
+	0x28, 0x03, 0x52, 0x07, 0x75, 0x69, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x13, 0x0a, 0x11, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x43, 0x68, 0x61, 0x74, 0x52, 0x73, 0x70,
+	0x22, 0x41, 0x0a, 0x12, 0x50, 0x75, 0x73, 0x68, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x6f,
+	0x6f, 0x6d, 0x43, 0x68, 0x61, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x03, 0x72, 0x69, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x75, 0x69, 0x64, 0x5f,
+	0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x03, 0x52, 0x07, 0x75, 0x69, 0x64, 0x4c,
+	0x69, 0x73, 0x74, 0x22, 0x26, 0x0a, 0x12, 0x50, 0x75, 0x73, 0x68, 0x44, 0x65, 0x6c, 0x65, 0x74,
+	0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x43, 0x68, 0x61, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x72, 0x69, 0x64, 0x22, 0xca, 0x01, 0x0a, 0x0e,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x52, 0x65, 0x71, 0x12, 0x19,
+	0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x07, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x67, 0x61, 0x6d,
+	0x65, 0x5f, 0x6d, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x67, 0x61,
+	0x6d, 0x65, 0x4d, 0x6f, 0x64, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x6d, 0x6f, 0x64, 0x65, 0x5f, 0x76,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x6d, 0x6f,
+	0x64, 0x65, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61,
+	0x74, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12,
+	0x14, 0x0a, 0x05, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05,
+	0x6c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x06,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x65,
+	0x78, 0x70, 0x69, 0x72, 0x65, 0x5f, 0x74, 0x73, 0x18, 0x07, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08,
+	0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x54, 0x73, 0x22, 0x10, 0x0a, 0x0e, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x52, 0x73, 0x70, 0x2a, 0x2e, 0x0a, 0x0b, 0x43, 0x68,
+	0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x12, 0x09, 0x0a, 0x05, 0x57, 0x6f, 0x72,
+	0x6c, 0x64, 0x10, 0x00, 0x12, 0x0a, 0x0a, 0x06, 0x53, 0x69, 0x6e, 0x67, 0x6c, 0x65, 0x10, 0x01,
+	0x12, 0x08, 0x0a, 0x04, 0x52, 0x6f, 0x6f, 0x6d, 0x10, 0x02, 0x2a, 0x67, 0x0a, 0x0b, 0x4d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x11, 0x0a, 0x0d, 0x53, 0x79, 0x73,
+	0x74, 0x65, 0x6d, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x10, 0x00, 0x12, 0x0f, 0x0a, 0x0b,
+	0x54, 0x65, 0x78, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x10, 0x01, 0x12, 0x10, 0x0a,
+	0x0c, 0x45, 0x6d, 0x6f, 0x6a, 0x69, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x10, 0x02, 0x12,
+	0x11, 0x0a, 0x0d, 0x49, 0x6e, 0x76, 0x69, 0x74, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x10, 0x03, 0x12, 0x0f, 0x0a, 0x0b, 0x47, 0x69, 0x66, 0x74, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x10, 0x04, 0x42, 0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d,
+	0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1398,7 +1756,7 @@ func file_snakemini_social_proto_rawDescGZIP() []byte {
 }
 
 var file_snakemini_social_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_snakemini_social_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_snakemini_social_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
 var file_snakemini_social_proto_goTypes = []interface{}{
 	(ChannelType)(0),              // 0: pb.ChannelType
 	(MessageType)(0),              // 1: pb.MessageType
@@ -1422,6 +1780,12 @@ var file_snakemini_social_proto_goTypes = []interface{}{
 	(*DeleteSingleChatResp)(nil),  // 19: pb.DeleteSingleChatResp
 	(*LiveRoomChatReq)(nil),       // 20: pb.LiveRoomChatReq
 	(*LiveRoomChatResp)(nil),      // 21: pb.LiveRoomChatResp
+	(*CreateRoomChatReq)(nil),     // 22: pb.CreateRoomChatReq
+	(*CreateRoomChatRsp)(nil),     // 23: pb.CreateRoomChatRsp
+	(*PushCreateRoomChat)(nil),    // 24: pb.PushCreateRoomChat
+	(*PushDeleteRoomChat)(nil),    // 25: pb.PushDeleteRoomChat
+	(*GroupNotifyReq)(nil),        // 26: pb.GroupNotifyReq
+	(*GroupNotifyRsp)(nil),        // 27: pb.GroupNotifyRsp
 }
 var file_snakemini_social_proto_depIdxs = []int32{
 	1,  // 0: pb.Message.message_type:type_name -> pb.MessageType
@@ -1685,6 +2049,78 @@ func file_snakemini_social_proto_init() {
 				return nil
 			}
 		}
+		file_snakemini_social_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CreateRoomChatReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_social_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CreateRoomChatRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_social_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PushCreateRoomChat); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_social_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PushDeleteRoomChat); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_social_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GroupNotifyReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_social_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GroupNotifyRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1692,7 +2128,7 @@ func file_snakemini_social_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakemini_social_proto_rawDesc,
 			NumEnums:      2,
-			NumMessages:   20,
+			NumMessages:   26,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
