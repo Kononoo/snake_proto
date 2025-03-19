@@ -825,6 +825,8 @@ type SocialClient interface {
 	Handle(ctx context.Context, in *InternalReq, opts ...grpc.CallOption) (*RpcResponse, error)
 	Bind(ctx context.Context, in *UidRequest, opts ...grpc.CallOption) (*BindResponse, error)
 	Disconnect(ctx context.Context, in *UidRequest, opts ...grpc.CallOption) (*ReplyEmpty, error)
+	GroupNotify(ctx context.Context, in *GroupNotifyReq, opts ...grpc.CallOption) (*GroupNotifyRsp, error)
+	CreateRoomChat(ctx context.Context, in *CreateRoomChatReq, opts ...grpc.CallOption) (*CreateRoomChatRsp, error)
 }
 
 type socialClient struct {
@@ -862,6 +864,24 @@ func (c *socialClient) Disconnect(ctx context.Context, in *UidRequest, opts ...g
 	return out, nil
 }
 
+func (c *socialClient) GroupNotify(ctx context.Context, in *GroupNotifyReq, opts ...grpc.CallOption) (*GroupNotifyRsp, error) {
+	out := new(GroupNotifyRsp)
+	err := c.cc.Invoke(ctx, "/pb.Social/GroupNotify", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialClient) CreateRoomChat(ctx context.Context, in *CreateRoomChatReq, opts ...grpc.CallOption) (*CreateRoomChatRsp, error) {
+	out := new(CreateRoomChatRsp)
+	err := c.cc.Invoke(ctx, "/pb.Social/CreateRoomChat", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SocialServer is the server API for Social service.
 // All implementations should embed UnimplementedSocialServer
 // for forward compatibility
@@ -869,6 +889,8 @@ type SocialServer interface {
 	Handle(context.Context, *InternalReq) (*RpcResponse, error)
 	Bind(context.Context, *UidRequest) (*BindResponse, error)
 	Disconnect(context.Context, *UidRequest) (*ReplyEmpty, error)
+	GroupNotify(context.Context, *GroupNotifyReq) (*GroupNotifyRsp, error)
+	CreateRoomChat(context.Context, *CreateRoomChatReq) (*CreateRoomChatRsp, error)
 }
 
 // UnimplementedSocialServer should be embedded to have forward compatible implementations.
@@ -883,6 +905,12 @@ func (UnimplementedSocialServer) Bind(context.Context, *UidRequest) (*BindRespon
 }
 func (UnimplementedSocialServer) Disconnect(context.Context, *UidRequest) (*ReplyEmpty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Disconnect not implemented")
+}
+func (UnimplementedSocialServer) GroupNotify(context.Context, *GroupNotifyReq) (*GroupNotifyRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GroupNotify not implemented")
+}
+func (UnimplementedSocialServer) CreateRoomChat(context.Context, *CreateRoomChatReq) (*CreateRoomChatRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRoomChat not implemented")
 }
 
 // UnsafeSocialServer may be embedded to opt out of forward compatibility for this service.
@@ -950,6 +978,42 @@ func _Social_Disconnect_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Social_GroupNotify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GroupNotifyReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServer).GroupNotify(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Social/GroupNotify",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServer).GroupNotify(ctx, req.(*GroupNotifyReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Social_CreateRoomChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRoomChatReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServer).CreateRoomChat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Social/CreateRoomChat",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServer).CreateRoomChat(ctx, req.(*CreateRoomChatReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Social_ServiceDesc is the grpc.ServiceDesc for Social service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -968,6 +1032,14 @@ var Social_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Disconnect",
 			Handler:    _Social_Disconnect_Handler,
+		},
+		{
+			MethodName: "GroupNotify",
+			Handler:    _Social_GroupNotify_Handler,
+		},
+		{
+			MethodName: "CreateRoomChat",
+			Handler:    _Social_CreateRoomChat_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
