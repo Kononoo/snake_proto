@@ -53,10 +53,3 @@ message BroadcastConfigs {
     repeated ServerConfig servers = 1;
     RedisServer redis_server = 2;
 }
-
-message Session {
-    int64 uid =1;
-    string sid=2;
-    int32 user_type=3;
-    int32 platform =4;
-}
