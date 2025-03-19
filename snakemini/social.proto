@@ -69,6 +69,7 @@ message GiftContent {
     string dedication = 8; // 送礼赠言
 }
 
+// command_id=sendmsg
 message SendMessageReq {// 发送消息
     ChannelType channel_type = 1; // 频道类型
     string target = 2; // 发送目标，私聊为目标用户uid，其余不填
@@ -80,6 +81,7 @@ message SendMessageResp {
     string message_id = 1; // 消息ID
 }
 
+// command_id=getmsglist
 message GetMessageListReq {// 拉取消息列表
     ChannelType channel_type = 1; // 频道类型
     string target = 2; // 发送目标，私聊为目标用户uid，其余不填
@@ -104,18 +106,21 @@ message SingleChat {
     int64 last_read_ts = 3; // 上次已读时间，unix秒
 }
 
+// command_id=singlechatlist
 message GetSingleChatListReq {} // 获取全部私聊列表
 
 message GetSingleChatListResp {
     repeated SingleChat single_chat_list = 1;
 }
 
+// command_id=createsinglechat
 message CreateSingleChatReq {// 创建私聊
     int64 target_uid = 1; // 目标用户uid
 }
 
 message CreateSingleChatResp {}
 
+// command_id=createsinglechat
 message DeleteSingleChatReq {// 删除私聊
     int64 target_uid = 1; // 目标用户uid
 }
@@ -123,6 +128,7 @@ message DeleteSingleChatReq {// 删除私聊
 message DeleteSingleChatResp {}
 
 
+// command_id=liveroomchat
 message LiveRoomChatReq { // 退出赛后频道
     int64 room_id = 1; // 房间ID
 }
