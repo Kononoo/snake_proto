@@ -6,6 +6,7 @@ option objc_class_prefix = "PROTO";
 import "snakemini/internal.proto";
 import "snakemini/rpc.proto";
 import "snakemini/push.proto";
+import "snakemini/social.proto";
 
 
 package pb;
@@ -69,6 +70,10 @@ service Social {
     rpc Bind (UidRequest) returns (BindResponse) {
     }
     rpc Disconnect (UidRequest) returns (ReplyEmpty) {
+    }
+    rpc GroupNotify (GroupNotifyReq) returns (GroupNotifyRsp) {
+    }
+    rpc CreateRoomChat (CreateRoomChatReq) returns (CreateRoomChatRsp) {
     }
 }
 
