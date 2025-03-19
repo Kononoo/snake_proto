@@ -3,10 +3,6 @@ syntax = "proto3";
 option go_package="../snakemini";
 option objc_class_prefix = "PROTO";
 
-import "snakemini/internal.proto";
-import "snakemini/rpc.proto";
-import "snakemini/push.proto";
-
 
 package pb;
 
