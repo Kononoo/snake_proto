@@ -93,7 +93,7 @@ message GetMessageListResp {
     repeated Message message_list = 1;
 }
 
-// command_id=new_message
+// command_id=newmessage
 message PushNewMessage {
     Message message = 1; // 消息内容
     ChannelType channel_type = 2; // 频道类型
@@ -120,7 +120,7 @@ message CreateSingleChatReq {// 创建私聊
 
 message CreateSingleChatResp {}
 
-// command_id=createsinglechat
+// command_id=deletesinglechat
 message DeleteSingleChatReq {// 删除私聊
     int64 target_uid = 1; // 目标用户uid
 }
