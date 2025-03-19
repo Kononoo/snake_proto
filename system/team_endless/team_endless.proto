@@ -152,7 +152,9 @@ message EndGameNotify {
   int32 tacit_count = 36; // 本局游戏默契次数
   int64 length_delta_rank_score = 37; // 长度增加的段位分
   int64 tacit_delta_rank_score = 38; // 默契次数增加的段位分
-  repeated snakecommon.BannerInfo game_end_icon = 39; // 结算页 icon
+  repeated string before_banners = 39; // 结算页面前弹出的banner，按数组逆序弹出
+  repeated string after_banners = 40; // 结算页面后弹出的banner，按数组逆序弹出
+  repeated snakecommon.BannerInfo game_end_icon = 41; // 结算页 icon，如果返回，则替换掉 get_banner_list 返回的 game_end_icon
 }
 
 message EndlessTeammate {
