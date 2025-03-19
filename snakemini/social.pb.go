@@ -784,7 +784,7 @@ func (x *GetMessageListResp) GetMessageList() []*Message {
 	return nil
 }
 
-// command_id=new_message
+// command_id=newmessage
 type PushNewMessage struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1083,7 +1083,7 @@ func (*CreateSingleChatResp) Descriptor() ([]byte, []int) {
 	return file_snakemini_social_proto_rawDescGZIP(), []int{15}
 }
 
-// command_id=createsinglechat
+// command_id=deletesinglechat
 type DeleteSingleChatReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
