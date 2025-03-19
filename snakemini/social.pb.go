@@ -546,6 +546,7 @@ func (x *GiftContent) GetDedication() string {
 	return ""
 }
 
+// command_id=sendmsg
 type SendMessageReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -664,6 +665,7 @@ func (x *SendMessageResp) GetMessageId() string {
 	return ""
 }
 
+// command_id=getmsglist
 type GetMessageListReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -909,6 +911,7 @@ func (x *SingleChat) GetLastReadTs() int64 {
 	return 0
 }
 
+// command_id=singlechatlist
 type GetSingleChatListReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -994,6 +997,7 @@ func (x *GetSingleChatListResp) GetSingleChatList() []*SingleChat {
 	return nil
 }
 
+// command_id=createsinglechat
 type CreateSingleChatReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1079,6 +1083,7 @@ func (*CreateSingleChatResp) Descriptor() ([]byte, []int) {
 	return file_snakemini_social_proto_rawDescGZIP(), []int{15}
 }
 
+// command_id=createsinglechat
 type DeleteSingleChatReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1164,6 +1169,7 @@ func (*DeleteSingleChatResp) Descriptor() ([]byte, []int) {
 	return file_snakemini_social_proto_rawDescGZIP(), []int{17}
 }
 
+// command_id=liveroomchat
 type LiveRoomChatReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
