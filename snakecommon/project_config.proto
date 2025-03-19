@@ -2332,3 +2332,48 @@ message NativeQualifyAIPool { // 原生团战 AI 行为配置
   double ai_snake_view_radius_factor = 23;
   double attack_ai_snake_view_radius_factor = 24;
 }
+
+message BannerInfo {
+  int32 banner_id = 1;
+  string btn_type = 2;
+  string btn_link = 3;
+  string btn_link_dev = 4;
+  string btn_text = 5;
+  BannerExtraInfo extra = 6;
+  string imgurl = 7;
+  string imgurl2 = 8;
+  string title = 9;
+  int32 type = 10;
+  int32 show_limitation = 11;
+  int32 show_limit = 12;
+  int32 notify = 13;
+  int32 init_notify = 14;
+  int32 stay_second = 15;
+  int32 total_limit = 16;
+  int32 pure_flag = 17;
+  string carton_bg_url = 18;
+  repeated CartonList carton_list = 19;
+  int32 status = 20;
+  int32 sort = 21;
+  int32 direct_jump = 22;
+  bool is_major_banner = 23;
+  int32 homepage_sort = 24;
+  int32 home_position = 25;
+}
+message CartonList {
+  string imgurl = 1;
+  string btn_type = 2;
+  string btn_link = 3;
+}
+message BannerExtraInfo {
+  string need_login = 1;
+  repeated string able_market = 2;
+  repeated string disable_market = 3;
+  string version_operator = 4;
+  string version = 5;
+  string version_operator2 = 6;
+  string version2 = 7;
+  int32 start = 8;
+  int32 finish = 9;
+  string limit_type = 10;
+}
