@@ -124,12 +124,12 @@ message DeleteSingleChatReq {// 删除私聊
 message DeleteSingleChatResp {}
 
 
-// command_id=liveroomchat
-message LiveRoomChatReq { // 退出赛后频道
+// command_id=leaveroomchat
+message LeaveRoomChatReq { // 退出赛后频道
     int64 room_id = 1; // 房间ID
 }
 
-message LiveRoomChatResp {}
+message LeaveRoomChatResp {}
 
 // command_id=createroomchat
 message CreateRoomChatReq {
