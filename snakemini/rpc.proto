@@ -239,6 +239,7 @@ message GroupInfoRsp {
     int32 limit =5;// 人数上限
     int32 count =6; // 当前人数
     int64 expire_ts = 7; // 邀请过期时间，unix秒
+    int64 Owner =8; // 房主
 }
 
 //-------------------------relay-----------------------------
