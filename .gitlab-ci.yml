@@ -12,7 +12,7 @@ build:
     - export GOPROXY="https://goproxy.cn,direct"
     - go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.27.1
     - go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1.0
-    - wget https://wepie-sre-sh.oss-cn-shanghai.aliyuncs.com/protoc-3.16.1-linux-x86_64
+    - wget https://wepie-sre.oss-cn-shanghai.aliyuncs.com/protoc-3.16.1-linux-x86_64
     - mv protoc-3.16.1-linux-x86_64 /usr/local/bin/protoc
     - chmod +x /usr/local/bin/protoc
     - echo 'export PATH="$PATH:$(go env GOPATH)/bin"' >> $HOME/.bashrc
