@@ -8,18 +8,20 @@ package pb;
 
 // 聊天频道类型
 enum ChannelType {
-    World = 0; // 世界频道
-    Single = 1; // 私聊
-    Room = 2; // 赛后频道
+    UnkownChannelType = 0; // 未知
+    World = 1; // 世界频道
+    Single = 2; // 私聊
+    Room = 3; // 赛后频道
 }
 
 // 消息类型
 enum MessageType {
-    SystemMessage = 0; // 系统消息
-    TextMessage = 1; // 文本消息
-    EmojiMessage = 2; // 表情消息
-    InviteMessage =3; // 组队邀请消息
-    GiftMessage = 4; // 礼物消息
+    UnkownMessageType = 0; // 未知
+    SystemMessage = 1; // 系统消息
+    TextMessage = 2; // 文本消息
+    EmojiMessage = 3; // 表情消息
+    InviteMessage =4; // 组队邀请消息
+    GiftMessage = 5; // 礼物消息
 }
 
 message Message {
