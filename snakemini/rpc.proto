@@ -227,6 +227,20 @@ message GetGameConfigRequest {
     int32 mode_version = 2;
 }
 
+message GroupInfoReq {
+    int64 gid = 1; // 队伍ID
+}
+
+message GroupInfoRsp {
+    int64 group_id = 1; // 队伍ID
+    int32 game_mode = 2; // 游戏模式
+    int64 mode_version = 3; // 游戏版本，不同版本需屏蔽
+    int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
+    int32 limit =5;// 人数上限
+    int32 count =6; // 当前人数
+    int64 expire_ts = 7; // 邀请过期时间，unix秒
+}
+
 //-------------------------relay-----------------------------
 
 message RelayBindUserInfo {

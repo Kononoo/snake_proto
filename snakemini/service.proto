@@ -26,6 +26,8 @@ service Match {
     }
     rpc MatchHandle (InternalReq) returns (RpcResponse) {
     }
+    rpc GroupInfo (GroupInfoReq) returns (GroupInfoRsp) {
+    }
 }
 
 // ------------------------------------- GatewayServer service definition --------------------------------------------
