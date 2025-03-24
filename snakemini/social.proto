@@ -25,10 +25,10 @@ enum MessageType {
 }
 
 message Message {
-    string message_id = 1; // 消息ID，全局唯一
+    string messageId = 1; // 消息ID，全局唯一
     int64 sender = 2; // 发送人uid
-    MessageType message_type = 3; // 消息类型
-    bytes content = 4; // 根据 message_type 确定为不同的 Content 序列化
+    MessageType messageType = 3; // 消息类型
+    bytes content = 4; // 根据 messageType 确定为不同的 Content 序列化
     int64 time = 6; // 消息发送时间，unix微秒时间戳
 }
 
@@ -43,120 +43,120 @@ message TextContent {
 }
 
 message EmojiContent {
-    string emoji_id = 1; // 表情ID
+    string emojiId = 1; // 表情ID
 }
 
 message InviteContent {
-    int64 group_id = 1; // 队伍ID
-    int32 game_mode = 2; // 游戏模式
-    int64 mode_version = 3; // 游戏版本，不同版本需屏蔽
+    int64 groupId = 1; // 队伍ID
+    int32 gameMode = 2; // 游戏模式
+    int64 modeVersion = 3; // 游戏版本，不同版本需屏蔽
     int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
     int32 limit =5;// 人数上限
     int32 count =6; // 当前人数
-    int64 expire_ts = 7; // 邀请过期时间，unix秒
+    int64 expireTs = 7; // 邀请过期时间，unix秒
 }
 
 message GiftContent {
-    int64 send_uid = 1; // 送礼人uid
-    int64 receive_uid = 2; // 收礼人uid
-    string send_nickname = 3; // 送礼人昵称
-    string receive_nickname = 4; // 收礼人昵称
-    int32 gift_id = 5; // 礼物ID
-    string gift_name = 6; // 礼物名称
+    int64 sendUid = 1; // 送礼人uid
+    int64 receiveUid = 2; // 收礼人uid
+    string sendNickname = 3; // 送礼人昵称
+    string receiveNickname = 4; // 收礼人昵称
+    int32 giftId = 5; // 礼物ID
+    string giftName = 6; // 礼物名称
     int32 count = 7; // 送礼个数
     string dedication = 8; // 送礼赠言
 }
 
-// command_id=sendmsg
+// commandId=sendmsg
 message SendMessageReq {// 发送消息
-    ChannelType channel_type = 1; // 频道类型
+    ChannelType channelType = 1; // 频道类型
     string target = 2; // 发送目标，私聊为目标用户uid，其余不填
-    MessageType message_type = 3; // 消息类型
+    MessageType messageType = 3; // 消息类型
     bytes content = 4; // 消息内容，用对应MessageType的Content解析
 }
 
 message SendMessageResp {
-    string message_id = 1; // 消息ID
+    string messageId = 1; // 消息ID
 }
 
-// command_id=getmsglist
+// commandId=getmsglist
 message GetMessageListReq {// 拉取消息列表
-    ChannelType channel_type = 1; // 频道类型
+    ChannelType channelType = 1; // 频道类型
     string target = 2; // 发送目标，私聊为目标用户uid，其余不填
     int64 page = 21;
-    int64 page_size = 22;
+    int64 pageSize = 22;
 }
 
 message GetMessageListResp {
-    repeated Message message_list = 1;
+    repeated Message messageList = 1;
 }
 
-// command_id=newmessage
+// commandId=newmessage
 message PushNewMessage {
     Message message = 1; // 消息内容
-    ChannelType channel_type = 2; // 频道类型
-    string channel_id = 3; // 发送频道ID，私聊为目标用户uid，赛后为房间ID
+    ChannelType channelType = 2; // 频道类型
+    string channelId = 3; // 发送频道ID，私聊为目标用户uid，赛后为房间ID
 }
 
 message SingleChat {
-    int64 target_uid = 1; // 目标用户uid
-    int64 last_chat_ts = 2; // 上次聊天时间，unix秒
-    int64 last_read_ts = 3; // 上次已读时间，unix秒
+    int64 targetUid = 1; // 目标用户uid
+    int64 lastChatTs = 2; // 上次聊天时间，unix秒
+    int64 lastReadTs = 3; // 上次已读时间，unix秒
 }
 
-// command_id=singlechatlist
+// commandId=singlechatlist
 message GetSingleChatListReq {} // 获取全部私聊列表
 
 message GetSingleChatListResp {
-    repeated SingleChat single_chat_list = 1;
+    repeated SingleChat singleChatList = 1;
 }
 
-// command_id=createsinglechat
+// commandId=createsinglechat
 message CreateSingleChatReq {// 创建私聊
-    int64 target_uid = 1; // 目标用户uid
+    int64 targetUid = 1; // 目标用户uid
 }
 
 message CreateSingleChatResp {}
 
-// command_id=deletesinglechat
+// commandId=deletesinglechat
 message DeleteSingleChatReq {// 删除私聊
-    int64 target_uid = 1; // 目标用户uid
+    int64 targetUid = 1; // 目标用户uid
 }
 
 message DeleteSingleChatResp {}
 
 
-// command_id=leaveroomchat
+// commandId=leaveroomchat
 message LeaveRoomChatReq { // 退出赛后频道
-    int64 room_id = 1; // 房间ID
+    int64 roomId = 1; // 房间ID
 }
 
 message LeaveRoomChatResp {}
 
-// command_id=createroomchat
+// commandId=createroomchat
 message CreateRoomChatReq {
     int64 rid =1; // 房间ID
-    repeated int64 uid_list=2; // 用户列表
+    repeated int64 uidList=2; // 用户列表
 }
 
 message CreateRoomChatRsp {}
 
 
-// command_id=createroomchat
+// commandId=createroomchat
 message PushCreateRoomChat {
     int64 rid =1; // 房间ID
-    repeated int64 uid_list=2; // 用户列表
+    repeated int64 uidList=2; // 用户列表
 }
 
-// command_id=groupnotify
+// commandId=groupnotify
 message GroupNotifyReq {
-    int64 group_id = 1; // 队伍ID
-    int32 game_mode = 2; // 游戏模式
-    int64 mode_version = 3; // 游戏版本，不同版本需屏蔽
+    int64 groupId = 1; // 队伍ID
+    int32 gameMode = 2; // 游戏模式
+    int64 modeVersion = 3; // 游戏版本，不同版本需屏蔽
     int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
     int32 limit =5;// 人数上限
     int32 count =6; // 当前人数
-    int64 expire_ts = 7; // 邀请过期时间，unix秒
+    int64 expireTs = 7; // 邀请过期时间，unix秒
     int64 Owner =8; // 房主
 }
 
