@@ -22,7 +22,11 @@ enum MessageType {
     EmojiMessage = 3; // 表情消息
     InviteMessage =4; // 组队邀请消息
     GiftMessage = 5; // 礼物消息
-    QuickMessage = 6; // 快捷语
+}
+
+enum MessageSubType {
+    DefaultSubType = 0; // 默认
+    QuikMessage = 1; // 快捷语
 }
 
 message Message {
@@ -31,6 +35,7 @@ message Message {
     MessageType messageType = 3; // 消息类型
     bytes content = 4; // 根据 messageType 确定为不同的 Content 序列化
     int64 time = 6; // 消息发送时间，unix微秒时间戳
+    MessageSubType subType = 7; // 消息子类型
 }
 
 // 系统消息
