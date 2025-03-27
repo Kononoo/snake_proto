@@ -26,7 +26,7 @@ enum MessageType {
 
 enum MessageSubType {
     DefaultSubType = 0; // 默认
-    QuikMessage = 1; // 快捷语
+    Quik = 1; // 快捷语
 }
 
 message Message {
@@ -35,7 +35,7 @@ message Message {
     MessageType messageType = 3; // 消息类型
     bytes content = 4; // 根据 messageType 确定为不同的 Content 序列化
     int64 time = 6; // 消息发送时间，unix微秒时间戳
-    MessageSubType subType = 7; // 消息子类型
+    MessageSubType messageSubType = 7; // 消息子类型
 }
 
 // 系统消息
@@ -60,7 +60,7 @@ message InviteContent {
     int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
     int32 limit =5;// 人数上限
     int32 count =6; // 当前人数
-    int64 expireTs = 7; // 邀请过期时间，unix秒
+    int64 expireTs = 7; // 邀请过期时间，毫秒
 }
 
 message GiftContent {
@@ -80,6 +80,7 @@ message SendMessageReq {// 发送消息
     string target = 2; // 发送目标，私聊为目标用户uid，其余不填
     MessageType messageType = 3; // 消息类型
     bytes content = 4; // 消息内容，用对应MessageType的Content解析
+    MessageSubType messageSubType = 6; // 消息子类型
 }
 
 message SendMessageResp {
