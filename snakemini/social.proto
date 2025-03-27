@@ -27,6 +27,7 @@ enum MessageType {
 enum MessageSubType {
     DefaultSubType = 0; // 默认
     Quik = 1; // 快捷语
+    Hello=2; // 打招呼,对sender不可见
 }
 
 message Message {
@@ -41,7 +42,6 @@ message Message {
 // 系统消息
 message SystemContent {
     string value = 1; // 文本内容
-    int64 receiver = 2; // 私聊系统消息可人，=0都可见
 }
 
 // 普通文本消息
