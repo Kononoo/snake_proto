@@ -147,8 +147,8 @@ message PushCreateRoomChat {
     repeated int64 uidList=2; // 用户列表
 }
 
-// commandId=pushinvite
-message PushInvite {
+// commandId=updateinvite
+message PushUpdateInvite {
     int64 groupId = 1; // 队伍ID
     int32 gameMode = 2; // 游戏模式
     int64 modeVersion = 3; // 游戏版本，不同版本需屏蔽
