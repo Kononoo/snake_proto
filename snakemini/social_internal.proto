@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option go_package="../snakemini";
+option objc_class_prefix = "PROTO";
+
+
+package pb;
+
+// match通知social创建赛后频道
+message CreateRoomChatReq {
+    int64 rid =1; // 房间ID
+    repeated int64 uidList=2; // 用户列表
+}
+
+message CreateRoomChatRsp {}
+
+
+// match通知social队伍状态
+message GroupNotifyReq {
+    int64 groupId = 1; // 队伍ID
+    int32 gameMode = 2; // 游戏模式
+    int64 modeVersion = 3; // 游戏版本，不同版本需屏蔽
+    int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
+    int32 limit =5;// 人数上限
+    int32 count =6; // 当前人数
+    int64 expireTs = 7; // 邀请过期时间，unix秒
+    int64 Owner =8; // 房主
+}
+
+message GroupNotifyRsp {
+}
+
+
+

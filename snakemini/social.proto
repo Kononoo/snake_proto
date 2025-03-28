@@ -142,32 +142,28 @@ message LeaveRoomChatReq { // 退出赛后频道
 message LeaveRoomChatResp {}
 
 // commandId=createroomchat
-message CreateRoomChatReq {
-    int64 rid =1; // 房间ID
-    repeated int64 uidList=2; // 用户列表
-}
-
-message CreateRoomChatRsp {}
-
-
-// commandId=createroomchat
 message PushCreateRoomChat {
     int64 rid =1; // 房间ID
     repeated int64 uidList=2; // 用户列表
 }
 
-// commandId=groupnotify
-message GroupNotifyReq {
+// commandId=pushinvite
+message PushInvite {
     int64 groupId = 1; // 队伍ID
     int32 gameMode = 2; // 游戏模式
     int64 modeVersion = 3; // 游戏版本，不同版本需屏蔽
     int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
     int32 limit =5;// 人数上限
     int32 count =6; // 当前人数
-    int64 expireTs = 7; // 邀请过期时间，unix秒
-    int64 Owner =8; // 房主
+    int64 expireTs = 7; // 邀请过期时间，毫秒
 }
 
-message GroupNotifyRsp {
+// commandId=invitelist
+message InviteListReq {
 }
+
+message InviteListRsp {
+    repeated int32 groupIdList = 1; // 有效的邀请列表
+}
+
 

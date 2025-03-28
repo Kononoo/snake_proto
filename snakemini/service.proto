@@ -6,7 +6,7 @@ option objc_class_prefix = "PROTO";
 import "snakemini/internal.proto";
 import "snakemini/rpc.proto";
 import "snakemini/push.proto";
-import "snakemini/social.proto";
+import "snakemini/social_internal.proto";
 
 
 package pb;
