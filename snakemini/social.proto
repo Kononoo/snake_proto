@@ -147,6 +147,11 @@ message PushCreateRoomChat {
     repeated int64 uidList=2; // 用户列表
 }
 
+// commandId=deleteroomchat
+message PushDeleteRoomChat {
+    int64 rid =1; // 房间ID
+}
+
 // commandId=updateinvite
 message PushUpdateInvite {
     int64 groupId = 1; // 队伍ID
