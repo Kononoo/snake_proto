@@ -61,6 +61,7 @@ message InviteContent {
     int32 limit =5;// 人数上限
     int32 count =6; // 当前人数
     int64 expireTs = 7; // 邀请过期时间，毫秒
+    int64 owner = 8; // 房主
 }
 
 message GiftContent {
@@ -161,6 +162,7 @@ message PushUpdateInvite {
     int32 limit =5;// 人数上限
     int32 count =6; // 当前人数
     int64 expireTs = 7; // 邀请过期时间，毫秒
+    int64 Owner =8; // 房主
 }
 
 // commandId=invitelist
