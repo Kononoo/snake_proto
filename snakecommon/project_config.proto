@@ -367,6 +367,9 @@ message SocialConfig {
   int32 world_speak_min_star = 12; // 世界发言最低星数
   int32 world_speak_min_star_v2 = 13; // 查看世界发言最低星数
   int32 group_speak_min_star = 14;
+  SocialThreshold unlock_send_gift = 15; // 解锁送礼
+  SocialThreshold unlock_clan = 16; // 解锁战队
+  SocialThreshold unlock_world_chat = 17; // 解锁世界发言
 }
 
 message CharmTopConfig {
@@ -381,6 +384,16 @@ message CharmLevelItem {
   string icon_url_v2 = 3;
   int32 num = 4;
 }
+
+message SocialThreshold {
+  int32 ios_min_star = 1; // ios 最低星数
+  int64 ios_endless_min_length = 2; // ios 无尽模式最低长度
+  string ios_prompt = 3; // ios 提示
+  int32 android_min_star = 4; // android 最低星数
+  int64 android_endless_min_length = 5; // android 无尽模式最低长度
+  string android_prompt = 6; // android 提示
+}
+
 // === social_config end ======================================
 
 // === charm_exp_config begin ======================================
