@@ -163,6 +163,7 @@ message PushUpdateInvite {
     int32 count =6; // 当前人数
     int64 expireTs = 7; // 邀请过期时间，毫秒
     int64 Owner =8; // 房主
+    string messageId=9;// 消息ID
 }
 
 // commandId=invitelist
