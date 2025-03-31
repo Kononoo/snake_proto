@@ -109,8 +109,6 @@ message PushNewMessage {
 
 message SingleChat {
     int64 targetUid = 1; // 目标用户uid
-    int64 lastChatTs = 2; // 上次聊天时间，unix秒
-    int64 lastReadTs = 3; // 上次已读时间，unix秒
 }
 
 // commandId=singlechatlist
