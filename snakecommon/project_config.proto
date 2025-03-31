@@ -386,12 +386,14 @@ message CharmLevelItem {
 }
 
 message SocialThreshold {
-  int32 ios_min_star = 1; // ios 最低星数
-  int64 ios_endless_min_length = 2; // ios 无尽模式最低长度
-  string ios_prompt = 3; // ios 提示
-  int32 android_min_star = 4; // android 最低星数
-  int64 android_endless_min_length = 5; // android 无尽模式最低长度
-  string android_prompt = 6; // android 提示
+  SocialThresholdPlatform ios = 1; // ios 配置
+  SocialThresholdPlatform android = 2; // android 配置
+}
+
+message SocialThresholdPlatform {
+  int32 current_star = 1; // 当前段位需要达到的星数
+  int64 history_max_length = 2; // 历史最高长度需要达到的长度
+  string prompt = 3; // 错误提示
 }
 
 // === social_config end ======================================
