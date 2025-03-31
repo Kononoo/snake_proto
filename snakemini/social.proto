@@ -92,6 +92,7 @@ message SendMessageResp {
 message GetMessageListReq {// 拉取消息列表
     ChannelType channelType = 1; // 频道类型
     string target = 2; // 发送目标，私聊为目标用户uid，其余不填
+    int64 maxMsgTime =3; // 最新一条消息时间戳，默认0，翻看历史记录
     int64 page = 21;
     int64 pageSize = 22;
 }
