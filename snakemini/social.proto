@@ -172,7 +172,7 @@ message InviteListReq {
 
 message InviteListRsp {
     repeated int32 groupIdList = 1; // 有效的邀请列表
-    repeated InviteContent groupInfoList = 2; // 队伍信息列表
+    repeated PushUpdateInvite groupInfoList = 2; // 队伍信息列表
 }
 
 
