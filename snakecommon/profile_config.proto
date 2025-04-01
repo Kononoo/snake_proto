@@ -1282,14 +1282,14 @@ message GiftPKRankConfig {
   string name = 2; // 段位名称
   string icon = 3; // 段位图标
   int64 need_score = 4; // 需要积分
-  repeated GiftPKRankReward rewards = 5; // 奖励配置
-  repeated GiftPKRankReward win_rewards = 6; // 胜利奖励配置
+  GiftPKRankReward rewards = 5; // 奖励配置
+  GiftPKRankReward win_rewards = 6; // 胜利奖励配置
   int64 length_per_score = 7; // 单局长度每多少加1分段位分，向下取整
 }
 
 message GiftPKRankReward {
   int64 need_total_length = 1; // 需要总长度
-  SnakeMain.Config.RewardConfig reward = 2; // 奖励配置
+  repeated SnakeMain.Config.RewardConfig rewards = 2; // 奖励配置
 }
 
 message GiftPKGift {
