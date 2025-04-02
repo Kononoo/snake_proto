@@ -2403,15 +2403,15 @@ message BannerExtraInfo {
 message RateUsPrompt {
 
   message Item_gain {
-    uint32 skin_id = 1;
-    uint32 type = 2;
+    int64 skin_id = 1;
+    int64 type = 2;
     string desc = 3;
   }
 
   message Pay {
-    uint32 goods_id = 1;
-    uint32 buy_limitation = 2;
-    uint32 reward_more_then = 3;
+    int64 goods_id = 1;
+    int64 buy_limitation = 2;
+    int64 reward_more_then = 3;
     string desc = 4;
   }
 
