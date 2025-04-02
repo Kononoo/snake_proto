@@ -12,4 +12,5 @@ message IsToRateReq {
 }
 
 message IsToRateRsp {
+  string desc = 1; // 文案
 }
