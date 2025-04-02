@@ -2316,7 +2316,7 @@ message TeamEndlessConfig {
     string rank_desc = 3; // 段位说明
   }
   Rank rank = 5;
-  string unlock_top = 6; // 解锁提示
+  string unlock_tip = 6; // 解锁提示
 }
 
 //----------------------------------------------------------------------------------------------------------------------
