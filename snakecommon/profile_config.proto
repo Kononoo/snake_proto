@@ -1259,5 +1259,14 @@ message GiftPkConfig {
   string rank_tips = 5; // 系统排行榜提示
   string activity_link = 6; // 活动链接
   string rank_show_reward = 7; // 排行榜展示奖励
+  repeated GiftPkRank rank_config = 8; // 段位配置
 }
+
+message GiftPkRank {
+  int32 id = 1; // 段位ID
+  string name = 2; // 段位标题
+  string icon = 3; // 段位提示
+  int64 need_score = 4; // 段位所需总段位分
+}
+
 // ======== gift pk end ====================================================
