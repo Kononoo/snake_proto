@@ -1255,8 +1255,11 @@ message GiftPkConfig {
   string act_id = 1;
   int64 start_time = 2;
   int64 end_time = 3;
-  repeated GiftPkRank rank_config = 4; // 段位配置
-  GiftPkRankListConfig rank_list_config = 5; // 排行榜配置
+  string rank_title = 4; // 系统排行榜标题
+  string rank_tips = 5; // 系统排行榜提示
+  string activity_link = 6; // 活动链接
+  string rank_show_reward = 7; // 排行榜展示奖励
+  repeated GiftPkRank rank_config = 8; // 段位配置
 }
 
 message GiftPkRank {
@@ -1265,25 +1268,4 @@ message GiftPkRank {
   string icon = 3; // 段位提示
   int64 need_score = 4; // 段位所需总段位分
 }
-
-
-message GiftPkRankListConfig {
-  string intro = 1; // 排行榜说明
-  string system_rank_link = 2; // 系统排行榜跳转链接
-  string rank_show_reward = 3; // 排行榜展示奖励
-  string activity_link = 4; // 活动跳转链接
-  string rank_tips = 5; // 排行榜 tips
-  string rank_title = 6; // 排行榜标题
-  repeated GiftPkRankListSettle daily_settle = 7; // 日榜结算配置
-  repeated GiftPkRankListSettle total_settle = 8; // 总榜结算配置
-}
-
-message GiftPkRankListSettle {
-  int64 min_rank = 1; // 最小排名
-  int64 max_rank = 2; // 最大排名
-  repeated SnakeMain.Config.RewardConfig rewards = 3; // 奖励配置
-  string mail_title = 4; // 邮件标题
-  string mail_content = 5; // 邮件内容
-}
-
 // ======== gift pk end ====================================================
