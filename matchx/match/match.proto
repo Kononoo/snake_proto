@@ -33,6 +33,7 @@ message GroupMember { // 队伍成员
   bytes payload = 3;
   int64 voice_state = 4; // 语音状态
   int64 team_id = 5;
+  bool ready = 6; // 是否可以开始匹配
 }
 
 message SyncGroupMemberNotify { // 队伍成员push
@@ -63,6 +64,8 @@ message InviteFriendNotify { // 邀请好友的push消息
   int64 game_mode = 2;
   int64 mode_version = 3;
   int64 source = 4;
+  int32 group_member_num = 5; // 组队人数
+  int32 group_member_limit = 6; // 组队人数上限
 }
 
 message AcceptInviteReq { // 同意邀请
