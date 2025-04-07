@@ -33,7 +33,6 @@ message GroupMember { // 队伍成员
   bytes payload = 3;
   int64 voice_state = 4; // 语音状态
   int64 team_id = 5;
-  bool ready = 6; // 是否可以开始匹配
 }
 
 message SyncGroupMemberNotify { // 队伍成员push
@@ -261,3 +260,9 @@ message JoinRoomReq { // 加入好友对局
 }
 
 message JoinRoomRsp {}
+
+message QuickJoinGroupReq { // 快速加入组队 ref: https://wepie.feishu.cn/wiki/GvbowqgtTiZKmEkp5isck1rhnJc
+  int64 game_mode = 1;
+}
+
+message QuickJoinGroupRsp {}
