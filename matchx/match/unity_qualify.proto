@@ -28,6 +28,7 @@ message UnityQualifyMatchSuccessNotify { // 团战: 匹配成功 Push 额外信�
   int64 game_config_version = 1; // 游戏配置版本（目前只有原生团战有用）
   double room_rank_score = 2; // 房间段位分（目前只有原生团战有用）
   int64 team_voice = 3; // 组队语音（目前只有原生团战有用）
+  repeated RoomMember actual_members = 4; // 实际成员（目前只有原生团战有用）
 }
 
 message UnityQualifyRoomMember { // Unity 团战：房间内玩家额外信息，存储在RoomMember的payload中
