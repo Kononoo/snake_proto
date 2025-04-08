@@ -139,6 +139,7 @@ message MatchSuccessNotify { // 匹配成功的push
   MatchType match_type = 14; // 匹配类型
   int64 room_type = 15; // 房间类型，迁移老 match 逻辑，默认填充为 1，分享成绩到战队的功能会用到
   string namespace = 16; // 对应配置的命名空间
+  repeated RoomMember original_members = 17; // 初次匹配成功成员（目前只有原生团战有用）
 }
 
 message RoomMember {
