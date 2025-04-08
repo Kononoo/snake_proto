@@ -65,6 +65,7 @@ message InviteFriendNotify { // 邀请好友的push消息
   int64 source = 4;
   int32 group_member_num = 5; // 组队人数
   int32 group_member_limit = 6; // 组队人数上限
+  int64 group_id = 7; // 好友的组队 ID
 }
 
 message AcceptInviteReq { // 同意邀请
@@ -268,3 +269,11 @@ message QuickJoinGroupReq { // 快速加入组队 ref: https://wepie.feishu.cn/w
 }
 
 message QuickJoinGroupRsp {}
+
+message QueryGroupReq { // 查询组队信息
+  int64 group_id = 1; // 组队 ID
+}
+
+message QueryGroupRsp { // 查询组队信息
+  int32 group_member_num = 1; // 实时组队人数
+}
