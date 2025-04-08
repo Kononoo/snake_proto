@@ -264,6 +264,7 @@ message JoinRoomRsp {}
 
 message QuickJoinGroupReq { // 快速加入组队 ref: https://wepie.feishu.cn/wiki/GvbowqgtTiZKmEkp5isck1rhnJc
   int64 game_mode = 1;
+  int64 mode_version = 2;
 }
 
 message QuickJoinGroupRsp {}
