@@ -1320,6 +1320,8 @@ message StoreInfo {
   repeated PriceInfo price_info = 18;
   int32 worth_level = 19;
   string support_version = 20;
+  int64 act_start_time = 21;
+  int64 act_end_time = 22;
 }
 
 message PriceInfo {
