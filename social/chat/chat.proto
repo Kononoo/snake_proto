@@ -3,7 +3,7 @@ syntax = "proto3";
 package chat;
 option go_package = "git.17zjh.com/snake/snake_proto/social/chat";
 
-message QuickInviteReq { // 快速邀请
+message QuickInviteReq {// 快速邀请
   string uid = 1;
   string content = 2;
   string receiver = 3;
@@ -41,4 +41,40 @@ message GetInviteLastTeammateReq {
 message GetInviteLastTeammateRsp {
   string uid = 1; // 为空表示没有需要邀请的玩家
   bool is_mvp = 2; // 是否是上局的mvp
+}
+
+message JoinChannelByTypeReq {// 根据类型加入频道
+  string uid = 1;
+  int64 chat_type = 2;
+  string ext = 3; // {"activity_id": "xxx"}
+}
+
+message JoinChannelByTypeRsp {
+  string channel_id = 1;
+}
+
+message LeaveChannelByTypeReq {// 根据类型退出频道
+  string uid = 1;
+  int64 chat_type = 2;
+  string ext = 3; // {"activity_id": "xxx"}
+}
+
+message LeaveChannelByTypeRsp {
+  string channel_id = 1;
+}
+
+message NewChatMessageNotify { // 新的聊天消息push结构
+  string sender = 1;
+  string content = 2;
+  int64 chat_type = 3;
+  int32 message_type = 4;
+  int32 ultimate = 5;
+  int64 star = 6;
+  string ext = 7;
+  int64 charm = 8;
+  int64 timestamp = 9;
+  string message_id = 10;
+  int32 game_mode = 11;
+  string receiver = 12;
+  string chat_id = 13;
 }
