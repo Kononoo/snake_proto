@@ -156,6 +156,7 @@ message EndGameNotify {
   repeated string after_banners = 40; // 结算页面后弹出的banner，按数组逆序弹出
   repeated snakecommon.BannerInfo game_end_icon = 41; // 结算页 icon，如果返回，则替换掉 get_banner_list 返回的 game_end_icon
   int64 kill_boss_delta_rank_score = 42; // 击杀boss增加的段位分
+  int32 kill_boss_count = 43; // 击杀boss次数
 }
 
 message EndlessTeammate {
