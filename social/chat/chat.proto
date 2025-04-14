@@ -53,7 +53,17 @@ message JoinChannelByTypeRsp {
   string channel_id = 1;
 }
 
-message NewChatMessageNotify { // 新的聊天消息通知结构
+message LeaveChannelByTypeReq {// 根据类型退出频道
+  string uid = 1;
+  int64 chat_type = 2;
+  string ext = 3; // {"activity_id": "xxx"}
+}
+
+message LeaveChannelByTypeRsp {
+  string channel_id = 1;
+}
+
+message NewChatMessageNotify { // 新的聊天消息push结构
   string sender = 1;
   string content = 2;
   int64 chat_type = 3;
