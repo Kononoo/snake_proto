@@ -53,3 +53,13 @@ message BroadcastConfigs {
     repeated ServerConfig servers = 1;
     RedisServer redis_server = 2;
 }
+
+
+message ItemInfo {
+    int64 type =1; // 奖励类型
+    int64 item_id = 2;// 奖励ID
+    string name = 3;
+    string imgurl =4;
+    int64  num =5; // 数量
+    int64 use_limit_time=6;
+}
