@@ -277,3 +277,13 @@ message QueryGroupReq { // 查询组队信息
 message QueryGroupRsp { // 查询组队信息
   int32 group_member_num = 1; // 实时组队人数
 }
+
+message CheckJoinRoomReq { // 检查是否可以加入好友对局
+  int64 game_mode = 1;
+  int64 mode_version = 2;
+  repeated string friend_uids = 3;
+}
+
+message CheckJoinRoomRsp {
+  repeated string can_join_room_uids = 1; // 可以加入的 uid 列表
+}
