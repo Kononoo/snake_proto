@@ -32,6 +32,7 @@ message TeamEndlessEndGame {
   BestTeammate best_teammate = 28;
   bool is_exit_game = 29; // 是否直接退出游戏
   bool is_join_forbidden = 30; // 是否禁止中途加入
+  int32 kill_boss_count = 31; // 和队友一起击杀boss的次数
 }
 
 message TeamEndlessEndGameRsp {
@@ -77,4 +78,5 @@ message BestTeammate{
   int32 partner_share_length=4;
   int32 partner_kill=5;
   int32 partner_length=6;
+  int32 partner_kill_boss_together_count=7;
 }
