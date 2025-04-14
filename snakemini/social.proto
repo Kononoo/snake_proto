@@ -181,7 +181,7 @@ message ChatUserInfo {
     string avatar = 3; // 用户头像
     int32 gender = 4; // 用户性别
     int64 show  = 5; // show值
-    int32 boxId = 6; // 头像框
+    int32 box_id = 6; // 头像框
     string area = 7; // 用户地区
     int64  charm = 8; // 魅力值
     int64  star = 9; // 段位
