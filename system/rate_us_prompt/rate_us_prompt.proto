@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package rate_us_prompt;
+option go_package = "git.17zjh.com/snake/snake_proto/system/rate_us_prompt";
+
+
+message RateNotify {
+  string desc = 1; // 文案
+}
+
+message IsToRateReq {
+  bool is_to_rate = 1; // 是否去评价
+}
+
+message IsToRateRsp {
+}

@@ -106,6 +106,7 @@ message PushNewMessage {
     Message message = 1; // 消息内容
     ChannelType channelType = 2; // 频道类型
     string channelId = 3; // 发送频道ID，私聊为目标用户uid，赛后为房间ID
+    ChatUserInfo senderInfo = 4; // 发送人信息
 }
 
 message SingleChat {
@@ -171,6 +172,19 @@ message InviteListReq {
 
 message InviteListRsp {
     repeated PushUpdateInvite groupInfoList = 2; // 队伍信息列表
+}
+
+// 聊天窗口显示的用户信息
+message ChatUserInfo {
+    int64 uid = 1; // 用户uid
+    string nickname = 2; // 用户昵称
+    string avatar = 3; // 用户头像
+    int32 gender = 4; // 用户性别
+    int64 show  = 5; // show值
+    int32 box_id = 6; // 头像框
+    string area = 7; // 用户地区
+    int64  charm = 8; // 魅力值
+    int64  star = 9; // 段位
 }
 
 

@@ -4,6 +4,8 @@ option go_package="../snakemini";
 option objc_class_prefix = "PROTO";
 
 import "snakemini/export.proto";
+import "snakemini/internal.proto";
+
 
 package pb;
 
@@ -483,5 +485,6 @@ message SendGiftRequest {
 message SendGiftResponse {
     int64 remain_diamond=1; // 剩余苹果
     int64 remain_coin=2; // 剩余金币
+    repeated ItemInfo reward_list=3; // 奖励列表
 }
 
