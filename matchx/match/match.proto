@@ -42,7 +42,6 @@ message SyncGroupMemberNotify { // 队伍成员push
   int64 mode_version = 4;
   repeated GroupMember members = 5;
   bytes payload = 6;
-  int32 boss = 7; // 是否开启boss功能，0: 未开启 1: 开启
  }
 
 message InviteFriendReq { // 邀请好友
@@ -144,7 +143,6 @@ message MatchSuccessNotify { // 匹配成功的push
   int64 room_type = 15; // 房间类型，迁移老 match 逻辑，默认填充为 1，分享成绩到战队的功能会用到
   string namespace = 16; // 对应配置的命名空间
   repeated RoomMember original_members = 17; // 初次匹配成功成员（目前只有原生团战有用）
-  int32 boss = 18; // 是否开启boss功能，0: 未开启 1: 开启
 }
 
 message RoomMember {
