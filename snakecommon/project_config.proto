@@ -2326,6 +2326,7 @@ message CoupleSkinActivity {
   string activity_id = 1;
   int64 start_time = 2;
   int64 end_time = 3;
+  string jump_url = 4;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
