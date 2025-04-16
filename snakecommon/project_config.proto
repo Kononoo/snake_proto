@@ -2318,6 +2318,7 @@ message TeamEndlessConfig {
   Rank rank = 5;
   string android_unlock_tip = 6; // 安卓解锁提示
   string ios_unlock_tip = 7; // ios解锁提示
+  int32 boss = 18; // 是否开启boss功能，0: 未开启 1: 开启
 }
 
 //----------------------------------------------------------------------------------------------------------------------
