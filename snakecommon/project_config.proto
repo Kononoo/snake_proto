@@ -2319,6 +2319,13 @@ message TeamEndlessConfig {
   string android_unlock_tip = 6; // 安卓解锁提示
   string ios_unlock_tip = 7; // ios解锁提示
   int32 boss = 18; // 是否开启boss功能，0: 未开启 1: 开启
+  CoupleSkinActivity couple_skin_activity = 19; // cp皮肤直售活动
+}
+
+message CoupleSkinActivity {
+  string activity_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
