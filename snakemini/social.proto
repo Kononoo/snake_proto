@@ -185,7 +185,7 @@ message ChatUserInfo {
     string area = 7; // 用户地区
     int64  charm = 8; // 魅力值
     int64  star = 9; // 段位
-    int32  chat_bubble = 10; // 聊天气泡
+    int32  chat_bubble_id = 10; // 聊天气泡
 }
 
 
