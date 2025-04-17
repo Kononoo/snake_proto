@@ -343,6 +343,9 @@ message SeasonInfo {
   int32 width = 8;
   int32 season_id = 9;
   int32 skin_id = 10;
+  int64 level_reward_start_time = 11; // 段位奖励开始时间
+  DailyGameRewards daily_game_rewards = 12; // 每日游戏奖励
+  NewerGuide newer_guide = 13; // 新手引导
 }
 // === rank_config end ======================================
 
