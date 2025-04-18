@@ -306,7 +306,6 @@ message DailyGameRewardItem {
 message BoxPool {
   string prob_intro = 1; // 概率说明
   repeated BoxPoolItem pool = 2; // 宝箱奖池
-  string img = 3; // 宝箱图片
 }
 
 message BoxPoolItem {
