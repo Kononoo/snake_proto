@@ -287,7 +287,7 @@ message RankLevel {
   string sprite_name = 7;
   int32 level_id = 8; // 段位的 id
   string reward_preview = 9; // 段位奖励预览
-  repeated RewardConfig reward_list = 10; // 段位奖励列表
+  repeated SnakeMain.Config.RewardConfig reward_list = 10; // 段位奖励列表
 }
 
 message DailyGameRewards {
