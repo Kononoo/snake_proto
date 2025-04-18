@@ -3,7 +3,7 @@ syntax = "proto3";
 package unityctl;
 option go_package = "git.17zjh.com/snake/snake_proto/unityctl";
 
-enum PushType { // push消息类型
+enum PushType {// push消息类型
   SyncGameInfo = 0; //初始化房间
   StartStressTest = 1; // 开始压测
   NotifyExitGame = 2; // 通知unity server玩家退出游戏
@@ -18,27 +18,28 @@ enum PlayerType {
   Ai = 2; // ai
 }
 message PlayerInfo{
-    string uid = 1;  //玩家uid
-    PlayerType playerType = 2; //玩家类型
-    int32 platform = 3; // 平台
-    string market = 4; // 应用市场
-    string version = 5; // 客户端版本
-    int64 show_level = 6; // show等级
-    int64 show_value = 7; // show值
-    string show_skill = 8; // show的属性加成
-    int64 game_count = 9; // 游戏局数
-    string nickname = 10; // 玩家昵称
-    int64 kill_effect = 11; // 击杀效果
-    int64 rank_score = 12; // 段位分
+  string uid = 1;  //玩家uid
+  PlayerType playerType = 2; //玩家类型
+  int32 platform = 3; // 平台
+  string market = 4; // 应用市场
+  string version = 5; // 客户端版本
+  int64 show_level = 6; // show等级
+  int64 show_value = 7; // show值
+  string show_skill = 8; // show的属性加成
+  int64 game_count = 9; // 游戏局数
+  string nickname = 10; // 玩家昵称
+  int64 kill_effect = 11; // 击杀效果
+  int64 rank_score = 12; // 段位分
 }
 
 // 向UnityServer同步房间信息
 message PuSyncGameInfo {
-    sint32 gamMode = 1;  //游戏模式
-    int32 playerCnt = 2;    //玩家数量
-    repeated PlayerInfo players = 3;  //玩家信息
-    int32 rid = 4; // 房间id
-    bool is_stress_test = 5; // 是否是压测
+  sint32 gamMode = 1;  //游戏模式
+  int32 playerCnt = 2;    //玩家数量
+  repeated PlayerInfo players = 3;  //玩家信息
+  int32 rid = 4; // 房间id
+  bool is_stress_test = 5; // 是否是压测
+  int32 boss = 6;
 }
 
 // 通知压测开始
