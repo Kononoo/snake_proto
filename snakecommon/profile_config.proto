@@ -1269,3 +1269,13 @@ message GiftPkRank {
   int64 need_score = 4; // 段位所需总段位分
 }
 // ======== gift pk end ====================================================
+
+
+
+// ====   新首充活动（链式任务） Start =====
+message ChainChargeConfig {
+  string act_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+}
+// ======  新首充活动（链式任务） End ======
