@@ -279,12 +279,13 @@ message RankReward {
 }
 
 message RankRewardV2 {
-  int32 level_id = 1; // 段位 id
-  string reward_preview = 2; // 段位奖励预览
+  int32 rank_id = 1; // 大段位 id
+  string rank_name = 2; // 大段位名称
+  string reward_preview = 3; // 段位奖励预览
   // "star_range": [0, 3],
-  repeated int32 star_range = 3;
+  repeated int32 star_range = 4;
   // "reward_list": [通用奖励数组]
-  repeated SnakeMain.Config.RewardConfig reward_list = 4; // 段位奖励列表
+  repeated SnakeMain.Config.RewardConfig reward_list = 5; // 段位奖励列表
 }
 
 message RankLevel {
