@@ -265,7 +265,7 @@ message RankConfig {
   repeated RankLevel level = 13;
   repeated RankReward rank_reward = 14;
   string prime_king_range_text = 15;
-  int64 level_reward_start_time = 16; // 段位奖励开始时间
+  int64 rank_reward_v2_start_time = 16; // 段位奖励v2开始时间
   DailyGameRewards daily_game_rewards = 17; // 每日游戏奖励
   NewerGuide newer_guide = 18; // 新手引导
   repeated RankRewardV2 rank_reward_v2 = 19; // 段位奖励v2
@@ -354,6 +354,7 @@ message SeasonInfo {
   int32 skin_id = 10;
   int64 level_reward_start_time = 11; // 段位奖励开始时间
   DailyGameRewards daily_game_rewards = 12; // 每日游戏奖励
+  repeated RankRewardV2 rank_reward_v2 = 13; // 段位奖励v2
 }
 // === rank_config end ======================================
 
