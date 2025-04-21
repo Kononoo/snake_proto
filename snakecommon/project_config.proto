@@ -301,7 +301,6 @@ message RankLevel {
 
 message DailyGameRewards {
   int64 start_time = 1; // 每日游戏奖励开始时间
-  string refresh_time = 2; // 每日游戏奖励刷新时间
   repeated DailyGameRewardItem list = 3; // 每日游戏奖励列表
   map<int64, BoxPool> box_pool = 4; // 宝箱 id 对应的奖池
 }
