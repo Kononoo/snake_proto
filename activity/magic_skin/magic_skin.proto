@@ -35,6 +35,7 @@ message GetInfoRsp {
   message DescItem {
     string title = 1; // 标题
     string content = 2; // 内容
+    int32 type = 3; //1 文字 2 图片 3 视频
   }
   message Link {
     string title = 1; // 标题
@@ -64,6 +65,7 @@ message GetInfoRsp {
     string source = 19; // 活动source
     string free_coin_get_link = 20; // 免费代币领取
     string save_desc = 21; // 保存文案
+    repeated int64 display_skin_ids = 22; // 轮播展示的皮肤列表
   }
 
   Config config = 1; // 配置数据
