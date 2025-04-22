@@ -329,9 +329,14 @@ message BoxPoolItem {
   repeated CConvert convert = 10;      // 奖励折算
   int32 is_valuable = 11;              // 是否高价值：0否1是，客户端会显示特殊边框
   int32 quality_level = 12;            // 品质等级
-  int32 reward_type = 13;              // 0: 填充奖励，1：特殊奖励
-  int64 rate = 14;                   // 权重
-  repeated int64 expected_time = 15; // 特殊奖励期望抽数区间，不配则无限制
+  BoxPoolItemType reward_type = 13;      // 奖励类型
+  int64 rate = 14;                     // 权重
+  repeated int64 expected_time = 15;   // 特殊奖励期望抽数区间，不配则无限制
+}
+
+enum BoxPoolItemType {
+  Normal = 0; // 普通填充奖励
+  Special = 1; // 特殊奖励
 }
 
 message NewerGuide {
