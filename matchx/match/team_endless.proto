@@ -26,3 +26,11 @@ message TeamEndlessUploadAttr {// 多人无尽：上传用户额外属性，存�
 message TeamEndlessRoomMember {// 多人无尽：房间内玩家额外信息，存储在RoomMember的payload中
   int64 game_count = 1; // 游戏局数
 }
+
+message TeamEndlessJoinRoom {
+  int64 source = 1;
+  int64 game_mode = 2;
+  int64 mode_version = 3;
+  int64 skin_id = 4; // 当前穿戴的皮肤
+  bytes payload = 5; // 额外的数据
+}
