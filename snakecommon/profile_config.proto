@@ -1279,3 +1279,12 @@ message ChainChargeConfig {
   int64 end_time = 3;
 }
 // ======  新首充活动（链式任务） End ======
+
+
+// ===  异步社交 Start ======
+message AsynSocialConfig {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string jump_url = 3;
+}
+// ==== 异步社交 End ========
