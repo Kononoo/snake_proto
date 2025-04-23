@@ -19,6 +19,7 @@ message Section {
   string style_name = 3; // 样式名
   int64 worth_level = 4;
   int64 is_default = 5;  // 是否为默认样式
+  int64 magic_value = 6; // 幻化值
 }
 
 message GetInfoReq {
