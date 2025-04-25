@@ -55,7 +55,7 @@ message PuAbnormalMsg {
   int32 action_no = 2;
   bool upload_log = 3; //1本场需要上传日志
   string checksum = 4; // 上报的checksum
-  string correct=5; // 正确的checksum
+  string correct = 5; // 正确的checksum
 }
 
 //push:结算成绩不一致
@@ -74,7 +74,7 @@ message PuLoadingMsg {
 
 message numProgress {
   int64 num = 1;
-  int64 progress =2;
+  int64 progress = 2;
 }
 
 message frameItem {
@@ -193,7 +193,7 @@ message BindRsp {
   int32 state = 1; //1未开始；2已开始；3结束
   PuGameStartMsg start_info = 2;
   int32 heartbeat_second = 3; //心跳间隔
-  int32 actionNo =4;// 房间开始了，返回当前帧号
+  int32 actionNo = 4;// 房间开始了，返回当前帧号
 }
 
 //心跳请求
@@ -365,7 +365,17 @@ message ReportUnitygameScoreReq {
 message ReportUnitygameScoreRsp {
 }
 
-message ReplayGameInfo { // 游戏服回放的数据结构
+message ReplayGameInfo {// 游戏服回放的数据结构
   match.MatchSuccessNotify match_info = 1;
-  unitygame.PuFrameMsg frames = 2;
+  unitygame.PuFrameMsg frames = 2; // kcp回放帧数据
+  unitygame.PuAction2 action2 = 3; // udp回放帧数据
+}
+
+message PuAction2 {
+  repeated FrameCommand2 frame_command_list = 1;
+}
+
+message FrameCommand2 {
+  bytes frame = 1;
+  string command = 2;
 }
