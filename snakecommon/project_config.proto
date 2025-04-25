@@ -343,7 +343,6 @@ enum BoxPoolItemType {
 message NewerGuide {
   int32 box_id = 1; // 宝箱 ID
   int64 box_num = 2; // 新手引导数量
-  string box_prompt = 3; // 宝箱提示
 }
 
 
