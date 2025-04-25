@@ -332,6 +332,7 @@ message BoxPoolItem {
   BoxPoolItemType reward_type = 13;      // 奖励类型
   int64 rate = 14;                     // 权重
   repeated int64 expected_time = 15;   // 特殊奖励期望抽数区间，不配则无限制
+  int64 prize_percent = 16;            // 特殊奖励单抽中奖概率(0~100)，不配时默认为 1/x-y
 }
 
 enum BoxPoolItemType {
@@ -342,6 +343,7 @@ enum BoxPoolItemType {
 message NewerGuide {
   int32 box_id = 1; // 宝箱 ID
   int64 box_num = 2; // 新手引导数量
+  string box_prompt = 3; // 宝箱提示
 }
 
 
