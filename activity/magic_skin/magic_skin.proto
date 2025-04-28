@@ -80,6 +80,7 @@ message GetInfoRsp {
   repeated int64 locked_section = 9; // 已锁定的组件类型
   int64 transform_cnt  = 10; //幻化次数
   bool can_restore = 11; // 能否复原
+  int64 total_cost = 12; // 玩家代币花费
 }
 
 message Skin {
@@ -117,6 +118,7 @@ message RefreshSkinRsp {
   Skin skin = 1; //幻化后的皮肤id
   int64 coin = 2; // 更新幻化币数量
   bool can_restore = 3; // 能否复原
+  int64 total_cost = 4; // 玩家代币花费
 }
 
 message SaveSkinReq {
@@ -139,6 +141,7 @@ message RestoreSkinRsp {
   bool can_restore = 2; // 能否复原
   int64 total_score = 3; // 累计幻化值
   Skin pending_skin = 4;  // 待保存的皮肤
+  int64 total_cost = 5; // 玩家代币花费
 }
 
 message GetTopListReq {
