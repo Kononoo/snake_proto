@@ -80,6 +80,7 @@ message GetInfoRsp {
   repeated int64 locked_section = 9; // 已锁定的组件类型
   int64 transform_cnt  = 10; //幻化次数
   bool can_restore = 11; // 能否复原
+  int64 total_cost = 12; // 玩家代币花费
 }
 
 message Skin {
