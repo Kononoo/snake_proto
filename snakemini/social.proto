@@ -126,13 +126,10 @@ message SingleChat {
 
 // commandId=singlechatlist
 message GetSingleChatListReq {
-    int64 cursor =1; // 扫描游标，默认从0开始
-    int32 page_size =2; // 单页返回数量，默认100
 } // 获取全部私聊列表
 
 message GetSingleChatListResp {
     repeated SingleChat singleChatList = 1;
-    int64 cursor =2; // 扫描游标，下次请求时带上此值，如果是0则结束了
 }
 
 // commandId=createsinglechat
