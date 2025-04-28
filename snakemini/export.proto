@@ -81,6 +81,8 @@ message ParamUser {
 enum APICommand {
     APICommandNone=0;
     APICommandNewMessage=1; // 首页-新消息，无需解析payload
+    APICommandNewFriend=2; // 首页-新好友，无需解析payload,刷新好友列表
+    APICommandGiftBarrage=3; // 高级礼物播报
 }
 
 // 服务器Push command_id=apipush

@@ -265,6 +265,10 @@ message RankConfig {
   repeated RankLevel level = 13;
   repeated RankReward rank_reward = 14;
   string prime_king_range_text = 15;
+  int64 rank_reward_v2_start_time = 16; // 段位奖励v2开始时间
+  DailyGameRewards daily_game_rewards = 17; // 每日游戏奖励
+  NewerGuide newer_guide = 18; // 新手引导
+  repeated RankRewardV2 rank_reward_v2 = 19; // 段位奖励v2
 }
 
 message RankReward {
@@ -272,6 +276,16 @@ message RankReward {
   repeated int32 star_range = 1;
   // "reward_list": [通用奖励数组]
   repeated SnakeMain.Config.RewardConfig reward_list = 2;
+}
+
+message RankRewardV2 {
+  int32 rank_id = 1; // 大段位 id
+  string rank_name = 2; // 大段位名称
+  string reward_preview = 3; // 段位奖励预览
+  // "star_range": [0, 3],
+  repeated int32 star_range = 4;
+  // "reward_list": [通用奖励数组]
+  repeated SnakeMain.Config.RewardConfig reward_list = 5; // 段位奖励列表
 }
 
 message RankLevel {
@@ -285,6 +299,53 @@ message RankLevel {
   int32 level_id = 8; // 段位的 id
 }
 
+message DailyGameRewards {
+  int64 start_time = 1; // 每日游戏奖励开始时间
+  repeated DailyGameRewardItem list = 3; // 每日游戏奖励列表
+  map<int64, BoxPool> box_pool = 4; // 宝箱 id 对应的奖池
+}
+
+message DailyGameRewardItem {
+  int64 game_num = 1; // 每日第几局
+  int64 box_num = 2; // 发几个宝箱
+  int64 box_id = 3; // 宝箱 id
+}
+
+message BoxPool {
+  string prob_intro = 1; // 概率说明
+  repeated BoxPoolItem pool = 2; // 宝箱奖池
+}
+
+message BoxPoolItem {
+  int64 id = 1; // 奖励唯一标识
+  int32 type = 2;                     // 奖励类型
+  int32 skin_id = 3;                  // 奖励 id
+  int64 num = 4;                      // 奖励数量
+  optional string big_num = 5;        // 奖励数量，大数
+  string name = 6;                    // 奖励名称
+  string imgurl = 7;                  // 奖励图片
+  optional string use_info = 8;       // 有效期，单位秒
+  int32 worth_level = 9;              // 稀有度
+  repeated CConvert convert = 10;      // 奖励折算
+  int32 is_valuable = 11;              // 是否高价值：0否1是，客户端会显示特殊边框
+  int32 quality_level = 12;            // 品质等级
+  BoxPoolItemType reward_type = 13;      // 奖励类型
+  int64 rate = 14;                     // 权重
+  repeated int64 expected_time = 15;   // 特殊奖励期望抽数区间，不配则无限制
+  int64 prize_percent = 16;            // 特殊奖励单抽中奖概率(0~100)，不配时默认为 1/x-y
+}
+
+enum BoxPoolItemType {
+  Normal = 0; // 普通填充奖励
+  Special = 1; // 特殊奖励
+}
+
+message NewerGuide {
+  int32 box_id = 1; // 宝箱 ID
+  int64 box_num = 2; // 新手引导数量
+}
+
+
 message SeasonInfo {
   int64 start_time = 1;
   int64 end_time = 2;
@@ -296,6 +357,8 @@ message SeasonInfo {
   int32 width = 8;
   int32 season_id = 9;
   int32 skin_id = 10;
+  DailyGameRewards daily_game_rewards = 12; // 每日游戏奖励
+  repeated RankRewardV2 rank_reward_v2 = 13; // 段位奖励v2
 }
 // === rank_config end ======================================
 
@@ -2318,6 +2381,15 @@ message TeamEndlessConfig {
   Rank rank = 5;
   string android_unlock_tip = 6; // 安卓解锁提示
   string ios_unlock_tip = 7; // ios解锁提示
+  int32 boss = 18; // 是否开启boss功能，0: 未开启 1: 开启
+  CoupleSkinActivity couple_skin_activity = 19; // cp皮肤直售活动
+}
+
+message CoupleSkinActivity {
+  string activity_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+  string jump_url = 4;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2346,7 +2418,7 @@ message NativeQualifyAIPool { // 原生团战 AI 行为配置
   repeated int64 attack_times = 19;
   repeated int64 attack_weights = 20;
   double speedup_rate = 21;
-  double speedup_time = 22;
+  int64 speedup_time = 22;
   double ai_snake_view_radius_factor = 23;
   double attack_ai_snake_view_radius_factor = 24;
 }

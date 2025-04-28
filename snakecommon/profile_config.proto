@@ -1259,5 +1259,39 @@ message GiftPkConfig {
   string rank_tips = 5; // 系统排行榜提示
   string activity_link = 6; // 活动链接
   string rank_show_reward = 7; // 排行榜展示奖励
+  repeated GiftPkRank rank_config = 8; // 段位配置
+}
+
+message GiftPkRank {
+  int32 id = 1; // 段位ID
+  string name = 2; // 段位标题
+  string icon = 3; // 段位提示
+  int64 need_score = 4; // 段位所需总段位分
 }
 // ======== gift pk end ====================================================
+
+
+
+// ====   新首充活动（链式任务） Start =====
+message ChainChargeConfig {
+  string act_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+}
+// ======  新首充活动（链式任务） End ======
+
+
+
+// === 跳转规则配置集合  Start =====
+message ClipBoardLinkConfig {
+  LittleTeamClipBoardLink team_link = 1; // 蛇蛇小队口令跳转
+}
+
+message LittleTeamClipBoardLink {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string jump_url = 3;
+  string key_word = 4;
+}
+
+// == 跳转规则配置集合 End =====

@@ -5,22 +5,32 @@ option go_package = "git.17zjh.com/snake/snake_proto/matchx/match";
 
 // 多人无尽玩法额外信息定义
 
-message TeamEndlessGroupMember { // 多人无尽：队伍成员额外信息，存储在GroupMember的payload中
+message TeamEndlessGroupMember {// 多人无尽：队伍成员额外信息，存储在GroupMember的payload中
 
 }
 
 message TeamEndlessSyncGroupMemberNotify {
   int64 max_star = 1; // 组队中的最大历史最大星星数 (HistoryMaxStar)
+  int32 boss = 2; // 是否开启boss功能，0: 未开启 1: 开启
 }
 
-message TeamEndlessMatchSuccess { // 多人无尽：匹配成功额外数据，存储在payload中
+message TeamEndlessMatchSuccess {// 多人无尽：匹配成功额外数据，存储在payload中
   string host = 1; // unityserver房间ip地址和端口信息
+  int32 boss = 2;  // 是否开启boss功能，0: 未开启 1: 开启
 }
 
-message TeamEndlessUploadAttr { // 多人无尽：上传用户额外属性，存储在payload中
+message TeamEndlessUploadAttr {// 多人无尽：上传用户额外属性，存储在payload中
   // 根据实际需要来添加字段
 }
 
-message TeamEndlessRoomMember { // 多人无尽：房间内玩家额外信息，存储在RoomMember的payload中
+message TeamEndlessRoomMember {// 多人无尽：房间内玩家额外信息，存储在RoomMember的payload中
   int64 game_count = 1; // 游戏局数
+}
+
+message TeamEndlessJoinRoom {
+  int64 source = 1; // 枚举：1(世界频道邀请加入)
+  int64 game_mode = 2;
+  int64 mode_version = 3;
+  int64 skin_id = 4; // 当前穿戴的皮肤
+  bytes payload = 5; // 额外的数据
 }

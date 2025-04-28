@@ -21,6 +21,52 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type BoxPoolItemType int32
+
+const (
+	BoxPoolItemType_Normal  BoxPoolItemType = 0 // 普通填充奖励
+	BoxPoolItemType_Special BoxPoolItemType = 1 // 特殊奖励
+)
+
+// Enum value maps for BoxPoolItemType.
+var (
+	BoxPoolItemType_name = map[int32]string{
+		0: "Normal",
+		1: "Special",
+	}
+	BoxPoolItemType_value = map[string]int32{
+		"Normal":  0,
+		"Special": 1,
+	}
+)
+
+func (x BoxPoolItemType) Enum() *BoxPoolItemType {
+	p := new(BoxPoolItemType)
+	*p = x
+	return p
+}
+
+func (x BoxPoolItemType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (BoxPoolItemType) Descriptor() protoreflect.EnumDescriptor {
+	return file_snakecommon_project_config_proto_enumTypes[0].Descriptor()
+}
+
+func (BoxPoolItemType) Type() protoreflect.EnumType {
+	return &file_snakecommon_project_config_proto_enumTypes[0]
+}
+
+func (x BoxPoolItemType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use BoxPoolItemType.Descriptor instead.
+func (BoxPoolItemType) EnumDescriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{0}
+}
+
 type ShortCutConfig_SceneType int32
 
 const (
@@ -69,11 +115,11 @@ func (x ShortCutConfig_SceneType) String() string {
 }
 
 func (ShortCutConfig_SceneType) Descriptor() protoreflect.EnumDescriptor {
-	return file_snakecommon_project_config_proto_enumTypes[0].Descriptor()
+	return file_snakecommon_project_config_proto_enumTypes[1].Descriptor()
 }
 
 func (ShortCutConfig_SceneType) Type() protoreflect.EnumType {
-	return &file_snakecommon_project_config_proto_enumTypes[0]
+	return &file_snakecommon_project_config_proto_enumTypes[1]
 }
 
 func (x ShortCutConfig_SceneType) Number() protoreflect.EnumNumber {
@@ -82,7 +128,7 @@ func (x ShortCutConfig_SceneType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ShortCutConfig_SceneType.Descriptor instead.
 func (ShortCutConfig_SceneType) EnumDescriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{46, 0}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{52, 0}
 }
 
 type ConfigVersionInfo struct {
@@ -2406,21 +2452,25 @@ type RankConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StartTime          int64         `protobuf:"varint,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime            int64         `protobuf:"varint,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	SeasonName         string        `protobuf:"bytes,3,opt,name=season_name,json=seasonName,proto3" json:"season_name,omitempty"`
-	SeasonIntroduceUrl string        `protobuf:"bytes,4,opt,name=season_introduce_url,json=seasonIntroduceUrl,proto3" json:"season_introduce_url,omitempty"`
-	Title              string        `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
-	Imgurl             string        `protobuf:"bytes,6,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
-	Height             int32         `protobuf:"varint,7,opt,name=height,proto3" json:"height,omitempty"`
-	Width              int32         `protobuf:"varint,8,opt,name=width,proto3" json:"width,omitempty"`
-	SeasonId           int32         `protobuf:"varint,9,opt,name=season_id,json=seasonId,proto3" json:"season_id,omitempty"`
-	SkinId             int32         `protobuf:"varint,10,opt,name=skin_id,json=skinId,proto3" json:"skin_id,omitempty"`
-	PrimeKingRange     int32         `protobuf:"varint,11,opt,name=prime_king_range,json=primeKingRange,proto3" json:"prime_king_range,omitempty"` //最强王者数目
-	PrimeTopUrls       []string      `protobuf:"bytes,12,rep,name=prime_top_urls,json=primeTopUrls,proto3" json:"prime_top_urls,omitempty"`
-	Level              []*RankLevel  `protobuf:"bytes,13,rep,name=level,proto3" json:"level,omitempty"`
-	RankReward         []*RankReward `protobuf:"bytes,14,rep,name=rank_reward,json=rankReward,proto3" json:"rank_reward,omitempty"`
-	PrimeKingRangeText string        `protobuf:"bytes,15,opt,name=prime_king_range_text,json=primeKingRangeText,proto3" json:"prime_king_range_text,omitempty"`
+	StartTime             int64             `protobuf:"varint,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime               int64             `protobuf:"varint,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	SeasonName            string            `protobuf:"bytes,3,opt,name=season_name,json=seasonName,proto3" json:"season_name,omitempty"`
+	SeasonIntroduceUrl    string            `protobuf:"bytes,4,opt,name=season_introduce_url,json=seasonIntroduceUrl,proto3" json:"season_introduce_url,omitempty"`
+	Title                 string            `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
+	Imgurl                string            `protobuf:"bytes,6,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
+	Height                int32             `protobuf:"varint,7,opt,name=height,proto3" json:"height,omitempty"`
+	Width                 int32             `protobuf:"varint,8,opt,name=width,proto3" json:"width,omitempty"`
+	SeasonId              int32             `protobuf:"varint,9,opt,name=season_id,json=seasonId,proto3" json:"season_id,omitempty"`
+	SkinId                int32             `protobuf:"varint,10,opt,name=skin_id,json=skinId,proto3" json:"skin_id,omitempty"`
+	PrimeKingRange        int32             `protobuf:"varint,11,opt,name=prime_king_range,json=primeKingRange,proto3" json:"prime_king_range,omitempty"` //最强王者数目
+	PrimeTopUrls          []string          `protobuf:"bytes,12,rep,name=prime_top_urls,json=primeTopUrls,proto3" json:"prime_top_urls,omitempty"`
+	Level                 []*RankLevel      `protobuf:"bytes,13,rep,name=level,proto3" json:"level,omitempty"`
+	RankReward            []*RankReward     `protobuf:"bytes,14,rep,name=rank_reward,json=rankReward,proto3" json:"rank_reward,omitempty"`
+	PrimeKingRangeText    string            `protobuf:"bytes,15,opt,name=prime_king_range_text,json=primeKingRangeText,proto3" json:"prime_king_range_text,omitempty"`
+	RankRewardV2StartTime int64             `protobuf:"varint,16,opt,name=rank_reward_v2_start_time,json=rankRewardV2StartTime,proto3" json:"rank_reward_v2_start_time,omitempty"` // 段位奖励v2开始时间
+	DailyGameRewards      *DailyGameRewards `protobuf:"bytes,17,opt,name=daily_game_rewards,json=dailyGameRewards,proto3" json:"daily_game_rewards,omitempty"`                     // 每日游戏奖励
+	NewerGuide            *NewerGuide       `protobuf:"bytes,18,opt,name=newer_guide,json=newerGuide,proto3" json:"newer_guide,omitempty"`                                         // 新手引导
+	RankRewardV2          []*RankRewardV2   `protobuf:"bytes,19,rep,name=rank_reward_v2,json=rankRewardV2,proto3" json:"rank_reward_v2,omitempty"`                                 // 段位奖励v2
 }
 
 func (x *RankConfig) Reset() {
@@ -2560,6 +2610,34 @@ func (x *RankConfig) GetPrimeKingRangeText() string {
 	return ""
 }
 
+func (x *RankConfig) GetRankRewardV2StartTime() int64 {
+	if x != nil {
+		return x.RankRewardV2StartTime
+	}
+	return 0
+}
+
+func (x *RankConfig) GetDailyGameRewards() *DailyGameRewards {
+	if x != nil {
+		return x.DailyGameRewards
+	}
+	return nil
+}
+
+func (x *RankConfig) GetNewerGuide() *NewerGuide {
+	if x != nil {
+		return x.NewerGuide
+	}
+	return nil
+}
+
+func (x *RankConfig) GetRankRewardV2() []*RankRewardV2 {
+	if x != nil {
+		return x.RankRewardV2
+	}
+	return nil
+}
+
 type RankReward struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2617,6 +2695,87 @@ func (x *RankReward) GetRewardList() []*config.RewardConfig {
 	return nil
 }
 
+type RankRewardV2 struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	RankId        int32  `protobuf:"varint,1,opt,name=rank_id,json=rankId,proto3" json:"rank_id,omitempty"`                     // 大段位 id
+	RankName      string `protobuf:"bytes,2,opt,name=rank_name,json=rankName,proto3" json:"rank_name,omitempty"`                // 大段位名称
+	RewardPreview string `protobuf:"bytes,3,opt,name=reward_preview,json=rewardPreview,proto3" json:"reward_preview,omitempty"` // 段位奖励预览
+	// "star_range": [0, 3],
+	StarRange []int32 `protobuf:"varint,4,rep,packed,name=star_range,json=starRange,proto3" json:"star_range,omitempty"`
+	// "reward_list": [通用奖励数组]
+	RewardList []*config.RewardConfig `protobuf:"bytes,5,rep,name=reward_list,json=rewardList,proto3" json:"reward_list,omitempty"` // 段位奖励列表
+}
+
+func (x *RankRewardV2) Reset() {
+	*x = RankRewardV2{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[28]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RankRewardV2) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RankRewardV2) ProtoMessage() {}
+
+func (x *RankRewardV2) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[28]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RankRewardV2.ProtoReflect.Descriptor instead.
+func (*RankRewardV2) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *RankRewardV2) GetRankId() int32 {
+	if x != nil {
+		return x.RankId
+	}
+	return 0
+}
+
+func (x *RankRewardV2) GetRankName() string {
+	if x != nil {
+		return x.RankName
+	}
+	return ""
+}
+
+func (x *RankRewardV2) GetRewardPreview() string {
+	if x != nil {
+		return x.RewardPreview
+	}
+	return ""
+}
+
+func (x *RankRewardV2) GetStarRange() []int32 {
+	if x != nil {
+		return x.StarRange
+	}
+	return nil
+}
+
+func (x *RankRewardV2) GetRewardList() []*config.RewardConfig {
+	if x != nil {
+		return x.RewardList
+	}
+	return nil
+}
+
 type RankLevel struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2635,7 +2794,7 @@ type RankLevel struct {
 func (x *RankLevel) Reset() {
 	*x = RankLevel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[28]
+		mi := &file_snakecommon_project_config_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2648,7 +2807,7 @@ func (x *RankLevel) String() string {
 func (*RankLevel) ProtoMessage() {}
 
 func (x *RankLevel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[28]
+	mi := &file_snakecommon_project_config_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2661,7 +2820,7 @@ func (x *RankLevel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RankLevel.ProtoReflect.Descriptor instead.
 func (*RankLevel) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{28}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *RankLevel) GetStarStartNum() int32 {
@@ -2720,27 +2879,432 @@ func (x *RankLevel) GetLevelId() int32 {
 	return 0
 }
 
+type DailyGameRewards struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StartTime int64                  `protobuf:"varint,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`                                                                                   // 每日游戏奖励开始时间
+	List      []*DailyGameRewardItem `protobuf:"bytes,3,rep,name=list,proto3" json:"list,omitempty"`                                                                                                               // 每日游戏奖励列表
+	BoxPool   map[int64]*BoxPool     `protobuf:"bytes,4,rep,name=box_pool,json=boxPool,proto3" json:"box_pool,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"` // 宝箱 id 对应的奖池
+}
+
+func (x *DailyGameRewards) Reset() {
+	*x = DailyGameRewards{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[30]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DailyGameRewards) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DailyGameRewards) ProtoMessage() {}
+
+func (x *DailyGameRewards) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[30]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DailyGameRewards.ProtoReflect.Descriptor instead.
+func (*DailyGameRewards) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *DailyGameRewards) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *DailyGameRewards) GetList() []*DailyGameRewardItem {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+func (x *DailyGameRewards) GetBoxPool() map[int64]*BoxPool {
+	if x != nil {
+		return x.BoxPool
+	}
+	return nil
+}
+
+type DailyGameRewardItem struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	GameNum int64 `protobuf:"varint,1,opt,name=game_num,json=gameNum,proto3" json:"game_num,omitempty"` // 每日第几局
+	BoxNum  int64 `protobuf:"varint,2,opt,name=box_num,json=boxNum,proto3" json:"box_num,omitempty"`    // 发几个宝箱
+	BoxId   int64 `protobuf:"varint,3,opt,name=box_id,json=boxId,proto3" json:"box_id,omitempty"`       // 宝箱 id
+}
+
+func (x *DailyGameRewardItem) Reset() {
+	*x = DailyGameRewardItem{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[31]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DailyGameRewardItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DailyGameRewardItem) ProtoMessage() {}
+
+func (x *DailyGameRewardItem) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[31]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DailyGameRewardItem.ProtoReflect.Descriptor instead.
+func (*DailyGameRewardItem) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *DailyGameRewardItem) GetGameNum() int64 {
+	if x != nil {
+		return x.GameNum
+	}
+	return 0
+}
+
+func (x *DailyGameRewardItem) GetBoxNum() int64 {
+	if x != nil {
+		return x.BoxNum
+	}
+	return 0
+}
+
+func (x *DailyGameRewardItem) GetBoxId() int64 {
+	if x != nil {
+		return x.BoxId
+	}
+	return 0
+}
+
+type BoxPool struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ProbIntro string         `protobuf:"bytes,1,opt,name=prob_intro,json=probIntro,proto3" json:"prob_intro,omitempty"` // 概率说明
+	Pool      []*BoxPoolItem `protobuf:"bytes,2,rep,name=pool,proto3" json:"pool,omitempty"`                            // 宝箱奖池
+}
+
+func (x *BoxPool) Reset() {
+	*x = BoxPool{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[32]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BoxPool) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BoxPool) ProtoMessage() {}
+
+func (x *BoxPool) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[32]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BoxPool.ProtoReflect.Descriptor instead.
+func (*BoxPool) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *BoxPool) GetProbIntro() string {
+	if x != nil {
+		return x.ProbIntro
+	}
+	return ""
+}
+
+func (x *BoxPool) GetPool() []*BoxPoolItem {
+	if x != nil {
+		return x.Pool
+	}
+	return nil
+}
+
+type BoxPoolItem struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id           int64           `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                                     // 奖励唯一标识
+	Type         int32           `protobuf:"varint,2,opt,name=type,proto3" json:"type,omitempty"`                                                                 // 奖励类型
+	SkinId       int32           `protobuf:"varint,3,opt,name=skin_id,json=skinId,proto3" json:"skin_id,omitempty"`                                               // 奖励 id
+	Num          int64           `protobuf:"varint,4,opt,name=num,proto3" json:"num,omitempty"`                                                                   // 奖励数量
+	BigNum       *string         `protobuf:"bytes,5,opt,name=big_num,json=bigNum,proto3,oneof" json:"big_num,omitempty"`                                          // 奖励数量，大数
+	Name         string          `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`                                                                  // 奖励名称
+	Imgurl       string          `protobuf:"bytes,7,opt,name=imgurl,proto3" json:"imgurl,omitempty"`                                                              // 奖励图片
+	UseInfo      *string         `protobuf:"bytes,8,opt,name=use_info,json=useInfo,proto3,oneof" json:"use_info,omitempty"`                                       // 有效期，单位秒
+	WorthLevel   int32           `protobuf:"varint,9,opt,name=worth_level,json=worthLevel,proto3" json:"worth_level,omitempty"`                                   // 稀有度
+	Convert      []*CConvert     `protobuf:"bytes,10,rep,name=convert,proto3" json:"convert,omitempty"`                                                           // 奖励折算
+	IsValuable   int32           `protobuf:"varint,11,opt,name=is_valuable,json=isValuable,proto3" json:"is_valuable,omitempty"`                                  // 是否高价值：0否1是，客户端会显示特殊边框
+	QualityLevel int32           `protobuf:"varint,12,opt,name=quality_level,json=qualityLevel,proto3" json:"quality_level,omitempty"`                            // 品质等级
+	RewardType   BoxPoolItemType `protobuf:"varint,13,opt,name=reward_type,json=rewardType,proto3,enum=snakecommon.BoxPoolItemType" json:"reward_type,omitempty"` // 奖励类型
+	Rate         int64           `protobuf:"varint,14,opt,name=rate,proto3" json:"rate,omitempty"`                                                                // 权重
+	ExpectedTime []int64         `protobuf:"varint,15,rep,packed,name=expected_time,json=expectedTime,proto3" json:"expected_time,omitempty"`                     // 特殊奖励期望抽数区间，不配则无限制
+	PrizePercent int64           `protobuf:"varint,16,opt,name=prize_percent,json=prizePercent,proto3" json:"prize_percent,omitempty"`                            // 特殊奖励单抽中奖概率(0~100)，不配时默认为 1/x-y
+}
+
+func (x *BoxPoolItem) Reset() {
+	*x = BoxPoolItem{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[33]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BoxPoolItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BoxPoolItem) ProtoMessage() {}
+
+func (x *BoxPoolItem) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[33]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BoxPoolItem.ProtoReflect.Descriptor instead.
+func (*BoxPoolItem) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *BoxPoolItem) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *BoxPoolItem) GetType() int32 {
+	if x != nil {
+		return x.Type
+	}
+	return 0
+}
+
+func (x *BoxPoolItem) GetSkinId() int32 {
+	if x != nil {
+		return x.SkinId
+	}
+	return 0
+}
+
+func (x *BoxPoolItem) GetNum() int64 {
+	if x != nil {
+		return x.Num
+	}
+	return 0
+}
+
+func (x *BoxPoolItem) GetBigNum() string {
+	if x != nil && x.BigNum != nil {
+		return *x.BigNum
+	}
+	return ""
+}
+
+func (x *BoxPoolItem) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *BoxPoolItem) GetImgurl() string {
+	if x != nil {
+		return x.Imgurl
+	}
+	return ""
+}
+
+func (x *BoxPoolItem) GetUseInfo() string {
+	if x != nil && x.UseInfo != nil {
+		return *x.UseInfo
+	}
+	return ""
+}
+
+func (x *BoxPoolItem) GetWorthLevel() int32 {
+	if x != nil {
+		return x.WorthLevel
+	}
+	return 0
+}
+
+func (x *BoxPoolItem) GetConvert() []*CConvert {
+	if x != nil {
+		return x.Convert
+	}
+	return nil
+}
+
+func (x *BoxPoolItem) GetIsValuable() int32 {
+	if x != nil {
+		return x.IsValuable
+	}
+	return 0
+}
+
+func (x *BoxPoolItem) GetQualityLevel() int32 {
+	if x != nil {
+		return x.QualityLevel
+	}
+	return 0
+}
+
+func (x *BoxPoolItem) GetRewardType() BoxPoolItemType {
+	if x != nil {
+		return x.RewardType
+	}
+	return BoxPoolItemType_Normal
+}
+
+func (x *BoxPoolItem) GetRate() int64 {
+	if x != nil {
+		return x.Rate
+	}
+	return 0
+}
+
+func (x *BoxPoolItem) GetExpectedTime() []int64 {
+	if x != nil {
+		return x.ExpectedTime
+	}
+	return nil
+}
+
+func (x *BoxPoolItem) GetPrizePercent() int64 {
+	if x != nil {
+		return x.PrizePercent
+	}
+	return 0
+}
+
+type NewerGuide struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	BoxId  int32 `protobuf:"varint,1,opt,name=box_id,json=boxId,proto3" json:"box_id,omitempty"`    // 宝箱 ID
+	BoxNum int64 `protobuf:"varint,2,opt,name=box_num,json=boxNum,proto3" json:"box_num,omitempty"` // 新手引导数量
+}
+
+func (x *NewerGuide) Reset() {
+	*x = NewerGuide{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[34]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *NewerGuide) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NewerGuide) ProtoMessage() {}
+
+func (x *NewerGuide) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[34]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NewerGuide.ProtoReflect.Descriptor instead.
+func (*NewerGuide) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *NewerGuide) GetBoxId() int32 {
+	if x != nil {
+		return x.BoxId
+	}
+	return 0
+}
+
+func (x *NewerGuide) GetBoxNum() int64 {
+	if x != nil {
+		return x.BoxNum
+	}
+	return 0
+}
+
 type SeasonInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StartTime          int64  `protobuf:"varint,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	EndTime            int64  `protobuf:"varint,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
-	SeasonName         string `protobuf:"bytes,3,opt,name=season_name,json=seasonName,proto3" json:"season_name,omitempty"`
-	SeasonIntroduceUrl string `protobuf:"bytes,4,opt,name=season_introduce_url,json=seasonIntroduceUrl,proto3" json:"season_introduce_url,omitempty"`
-	Title              string `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
-	Imgurl             string `protobuf:"bytes,6,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
-	Height             int32  `protobuf:"varint,7,opt,name=height,proto3" json:"height,omitempty"`
-	Width              int32  `protobuf:"varint,8,opt,name=width,proto3" json:"width,omitempty"`
-	SeasonId           int32  `protobuf:"varint,9,opt,name=season_id,json=seasonId,proto3" json:"season_id,omitempty"`
-	SkinId             int32  `protobuf:"varint,10,opt,name=skin_id,json=skinId,proto3" json:"skin_id,omitempty"`
+	StartTime          int64             `protobuf:"varint,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime            int64             `protobuf:"varint,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	SeasonName         string            `protobuf:"bytes,3,opt,name=season_name,json=seasonName,proto3" json:"season_name,omitempty"`
+	SeasonIntroduceUrl string            `protobuf:"bytes,4,opt,name=season_introduce_url,json=seasonIntroduceUrl,proto3" json:"season_introduce_url,omitempty"`
+	Title              string            `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
+	Imgurl             string            `protobuf:"bytes,6,opt,name=imgurl,proto3" json:"imgurl,omitempty"`
+	Height             int32             `protobuf:"varint,7,opt,name=height,proto3" json:"height,omitempty"`
+	Width              int32             `protobuf:"varint,8,opt,name=width,proto3" json:"width,omitempty"`
+	SeasonId           int32             `protobuf:"varint,9,opt,name=season_id,json=seasonId,proto3" json:"season_id,omitempty"`
+	SkinId             int32             `protobuf:"varint,10,opt,name=skin_id,json=skinId,proto3" json:"skin_id,omitempty"`
+	DailyGameRewards   *DailyGameRewards `protobuf:"bytes,12,opt,name=daily_game_rewards,json=dailyGameRewards,proto3" json:"daily_game_rewards,omitempty"` // 每日游戏奖励
+	RankRewardV2       []*RankRewardV2   `protobuf:"bytes,13,rep,name=rank_reward_v2,json=rankRewardV2,proto3" json:"rank_reward_v2,omitempty"`             // 段位奖励v2
 }
 
 func (x *SeasonInfo) Reset() {
 	*x = SeasonInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[29]
+		mi := &file_snakecommon_project_config_proto_msgTypes[35]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2753,7 +3317,7 @@ func (x *SeasonInfo) String() string {
 func (*SeasonInfo) ProtoMessage() {}
 
 func (x *SeasonInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[29]
+	mi := &file_snakecommon_project_config_proto_msgTypes[35]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2766,7 +3330,7 @@ func (x *SeasonInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SeasonInfo.ProtoReflect.Descriptor instead.
 func (*SeasonInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{29}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *SeasonInfo) GetStartTime() int64 {
@@ -2839,6 +3403,20 @@ func (x *SeasonInfo) GetSkinId() int32 {
 	return 0
 }
 
+func (x *SeasonInfo) GetDailyGameRewards() *DailyGameRewards {
+	if x != nil {
+		return x.DailyGameRewards
+	}
+	return nil
+}
+
+func (x *SeasonInfo) GetRankRewardV2() []*RankRewardV2 {
+	if x != nil {
+		return x.RankRewardV2
+	}
+	return nil
+}
+
 // === share_config begin ======================================
 type ShareConfig struct {
 	state         protoimpl.MessageState
@@ -2860,7 +3438,7 @@ type ShareConfig struct {
 func (x *ShareConfig) Reset() {
 	*x = ShareConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[30]
+		mi := &file_snakecommon_project_config_proto_msgTypes[36]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2873,7 +3451,7 @@ func (x *ShareConfig) String() string {
 func (*ShareConfig) ProtoMessage() {}
 
 func (x *ShareConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[30]
+	mi := &file_snakecommon_project_config_proto_msgTypes[36]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2886,7 +3464,7 @@ func (x *ShareConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShareConfig.ProtoReflect.Descriptor instead.
 func (*ShareConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{30}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *ShareConfig) GetShareUrl() string {
@@ -2972,7 +3550,7 @@ type ShareTag struct {
 func (x *ShareTag) Reset() {
 	*x = ShareTag{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[31]
+		mi := &file_snakecommon_project_config_proto_msgTypes[37]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2985,7 +3563,7 @@ func (x *ShareTag) String() string {
 func (*ShareTag) ProtoMessage() {}
 
 func (x *ShareTag) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[31]
+	mi := &file_snakecommon_project_config_proto_msgTypes[37]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2998,7 +3576,7 @@ func (x *ShareTag) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShareTag.ProtoReflect.Descriptor instead.
 func (*ShareTag) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{31}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *ShareTag) GetKuaishou() string {
@@ -3036,7 +3614,7 @@ type ClipBoardCheck struct {
 func (x *ClipBoardCheck) Reset() {
 	*x = ClipBoardCheck{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[32]
+		mi := &file_snakecommon_project_config_proto_msgTypes[38]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3049,7 +3627,7 @@ func (x *ClipBoardCheck) String() string {
 func (*ClipBoardCheck) ProtoMessage() {}
 
 func (x *ClipBoardCheck) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[32]
+	mi := &file_snakecommon_project_config_proto_msgTypes[38]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3062,7 +3640,7 @@ func (x *ClipBoardCheck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClipBoardCheck.ProtoReflect.Descriptor instead.
 func (*ClipBoardCheck) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{32}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *ClipBoardCheck) GetStartTime() int64 {
@@ -3108,7 +3686,7 @@ type VideoShareIcon struct {
 func (x *VideoShareIcon) Reset() {
 	*x = VideoShareIcon{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[33]
+		mi := &file_snakecommon_project_config_proto_msgTypes[39]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3121,7 +3699,7 @@ func (x *VideoShareIcon) String() string {
 func (*VideoShareIcon) ProtoMessage() {}
 
 func (x *VideoShareIcon) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[33]
+	mi := &file_snakecommon_project_config_proto_msgTypes[39]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3134,7 +3712,7 @@ func (x *VideoShareIcon) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VideoShareIcon.ProtoReflect.Descriptor instead.
 func (*VideoShareIcon) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{33}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *VideoShareIcon) GetKey() string {
@@ -3187,7 +3765,7 @@ type ChannelConfig struct {
 func (x *ChannelConfig) Reset() {
 	*x = ChannelConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[34]
+		mi := &file_snakecommon_project_config_proto_msgTypes[40]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3200,7 +3778,7 @@ func (x *ChannelConfig) String() string {
 func (*ChannelConfig) ProtoMessage() {}
 
 func (x *ChannelConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[34]
+	mi := &file_snakecommon_project_config_proto_msgTypes[40]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3213,7 +3791,7 @@ func (x *ChannelConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChannelConfig.ProtoReflect.Descriptor instead.
 func (*ChannelConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{34}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *ChannelConfig) GetWechatFriend() int32 {
@@ -3265,7 +3843,7 @@ type GameInvite struct {
 func (x *GameInvite) Reset() {
 	*x = GameInvite{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[35]
+		mi := &file_snakecommon_project_config_proto_msgTypes[41]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3278,7 +3856,7 @@ func (x *GameInvite) String() string {
 func (*GameInvite) ProtoMessage() {}
 
 func (x *GameInvite) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[35]
+	mi := &file_snakecommon_project_config_proto_msgTypes[41]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3291,7 +3869,7 @@ func (x *GameInvite) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameInvite.ProtoReflect.Descriptor instead.
 func (*GameInvite) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{35}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *GameInvite) GetTitle() string {
@@ -3350,7 +3928,7 @@ type SocialConfig struct {
 func (x *SocialConfig) Reset() {
 	*x = SocialConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[36]
+		mi := &file_snakecommon_project_config_proto_msgTypes[42]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3363,7 +3941,7 @@ func (x *SocialConfig) String() string {
 func (*SocialConfig) ProtoMessage() {}
 
 func (x *SocialConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[36]
+	mi := &file_snakecommon_project_config_proto_msgTypes[42]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3376,7 +3954,7 @@ func (x *SocialConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialConfig.ProtoReflect.Descriptor instead.
 func (*SocialConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{36}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *SocialConfig) GetBroadcastIntervalTime() int32 {
@@ -3511,7 +4089,7 @@ type CharmTopConfig struct {
 func (x *CharmTopConfig) Reset() {
 	*x = CharmTopConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[37]
+		mi := &file_snakecommon_project_config_proto_msgTypes[43]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3524,7 +4102,7 @@ func (x *CharmTopConfig) String() string {
 func (*CharmTopConfig) ProtoMessage() {}
 
 func (x *CharmTopConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[37]
+	mi := &file_snakecommon_project_config_proto_msgTypes[43]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3537,7 +4115,7 @@ func (x *CharmTopConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CharmTopConfig.ProtoReflect.Descriptor instead.
 func (*CharmTopConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{37}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *CharmTopConfig) GetIncreaseDesc() string {
@@ -3575,7 +4153,7 @@ type CharmLevelItem struct {
 func (x *CharmLevelItem) Reset() {
 	*x = CharmLevelItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[38]
+		mi := &file_snakecommon_project_config_proto_msgTypes[44]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3588,7 +4166,7 @@ func (x *CharmLevelItem) String() string {
 func (*CharmLevelItem) ProtoMessage() {}
 
 func (x *CharmLevelItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[38]
+	mi := &file_snakecommon_project_config_proto_msgTypes[44]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3601,7 +4179,7 @@ func (x *CharmLevelItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CharmLevelItem.ProtoReflect.Descriptor instead.
 func (*CharmLevelItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{38}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *CharmLevelItem) GetCharmStart() int32 {
@@ -3644,7 +4222,7 @@ type SocialThreshold struct {
 func (x *SocialThreshold) Reset() {
 	*x = SocialThreshold{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[39]
+		mi := &file_snakecommon_project_config_proto_msgTypes[45]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3657,7 +4235,7 @@ func (x *SocialThreshold) String() string {
 func (*SocialThreshold) ProtoMessage() {}
 
 func (x *SocialThreshold) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[39]
+	mi := &file_snakecommon_project_config_proto_msgTypes[45]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3670,7 +4248,7 @@ func (x *SocialThreshold) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialThreshold.ProtoReflect.Descriptor instead.
 func (*SocialThreshold) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{39}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *SocialThreshold) GetIos() *SocialThresholdPlatform {
@@ -3700,7 +4278,7 @@ type SocialThresholdPlatform struct {
 func (x *SocialThresholdPlatform) Reset() {
 	*x = SocialThresholdPlatform{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[40]
+		mi := &file_snakecommon_project_config_proto_msgTypes[46]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3713,7 +4291,7 @@ func (x *SocialThresholdPlatform) String() string {
 func (*SocialThresholdPlatform) ProtoMessage() {}
 
 func (x *SocialThresholdPlatform) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[40]
+	mi := &file_snakecommon_project_config_proto_msgTypes[46]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3726,7 +4304,7 @@ func (x *SocialThresholdPlatform) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialThresholdPlatform.ProtoReflect.Descriptor instead.
 func (*SocialThresholdPlatform) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{40}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *SocialThresholdPlatform) GetCurrentStar() int32 {
@@ -3766,7 +4344,7 @@ type CharmExpConfig struct {
 func (x *CharmExpConfig) Reset() {
 	*x = CharmExpConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[41]
+		mi := &file_snakecommon_project_config_proto_msgTypes[47]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3779,7 +4357,7 @@ func (x *CharmExpConfig) String() string {
 func (*CharmExpConfig) ProtoMessage() {}
 
 func (x *CharmExpConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[41]
+	mi := &file_snakecommon_project_config_proto_msgTypes[47]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3792,7 +4370,7 @@ func (x *CharmExpConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CharmExpConfig.ProtoReflect.Descriptor instead.
 func (*CharmExpConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{41}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *CharmExpConfig) GetCharmExpRanks() []*CharmExpRank {
@@ -3847,7 +4425,7 @@ type CharmExpRank struct {
 func (x *CharmExpRank) Reset() {
 	*x = CharmExpRank{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[42]
+		mi := &file_snakecommon_project_config_proto_msgTypes[48]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3860,7 +4438,7 @@ func (x *CharmExpRank) String() string {
 func (*CharmExpRank) ProtoMessage() {}
 
 func (x *CharmExpRank) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[42]
+	mi := &file_snakecommon_project_config_proto_msgTypes[48]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3873,7 +4451,7 @@ func (x *CharmExpRank) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CharmExpRank.ProtoReflect.Descriptor instead.
 func (*CharmExpRank) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{42}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *CharmExpRank) GetLevel() int32 {
@@ -3940,7 +4518,7 @@ type CharmPrivilegeItem struct {
 func (x *CharmPrivilegeItem) Reset() {
 	*x = CharmPrivilegeItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[43]
+		mi := &file_snakecommon_project_config_proto_msgTypes[49]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3953,7 +4531,7 @@ func (x *CharmPrivilegeItem) String() string {
 func (*CharmPrivilegeItem) ProtoMessage() {}
 
 func (x *CharmPrivilegeItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[43]
+	mi := &file_snakecommon_project_config_proto_msgTypes[49]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3966,7 +4544,7 @@ func (x *CharmPrivilegeItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CharmPrivilegeItem.ProtoReflect.Descriptor instead.
 func (*CharmPrivilegeItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{43}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *CharmPrivilegeItem) GetId() int32 {
@@ -4029,7 +4607,7 @@ type TextConfig struct {
 func (x *TextConfig) Reset() {
 	*x = TextConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[44]
+		mi := &file_snakecommon_project_config_proto_msgTypes[50]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4042,7 +4620,7 @@ func (x *TextConfig) String() string {
 func (*TextConfig) ProtoMessage() {}
 
 func (x *TextConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[44]
+	mi := &file_snakecommon_project_config_proto_msgTypes[50]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4055,7 +4633,7 @@ func (x *TextConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TextConfig.ProtoReflect.Descriptor instead.
 func (*TextConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{44}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *TextConfig) GetCharmStar() string {
@@ -4168,7 +4746,7 @@ type GiftLikeTextList struct {
 func (x *GiftLikeTextList) Reset() {
 	*x = GiftLikeTextList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[45]
+		mi := &file_snakecommon_project_config_proto_msgTypes[51]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4181,7 +4759,7 @@ func (x *GiftLikeTextList) String() string {
 func (*GiftLikeTextList) ProtoMessage() {}
 
 func (x *GiftLikeTextList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[45]
+	mi := &file_snakecommon_project_config_proto_msgTypes[51]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4194,7 +4772,7 @@ func (x *GiftLikeTextList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GiftLikeTextList.ProtoReflect.Descriptor instead.
 func (*GiftLikeTextList) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{45}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *GiftLikeTextList) GetEnemy() []string {
@@ -4224,7 +4802,7 @@ type ShortCutConfig struct {
 func (x *ShortCutConfig) Reset() {
 	*x = ShortCutConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[46]
+		mi := &file_snakecommon_project_config_proto_msgTypes[52]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4237,7 +4815,7 @@ func (x *ShortCutConfig) String() string {
 func (*ShortCutConfig) ProtoMessage() {}
 
 func (x *ShortCutConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[46]
+	mi := &file_snakecommon_project_config_proto_msgTypes[52]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4250,7 +4828,7 @@ func (x *ShortCutConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShortCutConfig.ProtoReflect.Descriptor instead.
 func (*ShortCutConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{46}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *ShortCutConfig) GetType() int32 {
@@ -4286,7 +4864,7 @@ type ReportBehavior struct {
 func (x *ReportBehavior) Reset() {
 	*x = ReportBehavior{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[47]
+		mi := &file_snakecommon_project_config_proto_msgTypes[53]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4299,7 +4877,7 @@ func (x *ReportBehavior) String() string {
 func (*ReportBehavior) ProtoMessage() {}
 
 func (x *ReportBehavior) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[47]
+	mi := &file_snakecommon_project_config_proto_msgTypes[53]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4312,7 +4890,7 @@ func (x *ReportBehavior) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReportBehavior.ProtoReflect.Descriptor instead.
 func (*ReportBehavior) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{47}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *ReportBehavior) GetId() int32 {
@@ -4362,7 +4940,7 @@ type UiConfigV3 struct {
 func (x *UiConfigV3) Reset() {
 	*x = UiConfigV3{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[48]
+		mi := &file_snakecommon_project_config_proto_msgTypes[54]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4375,7 +4953,7 @@ func (x *UiConfigV3) String() string {
 func (*UiConfigV3) ProtoMessage() {}
 
 func (x *UiConfigV3) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[48]
+	mi := &file_snakecommon_project_config_proto_msgTypes[54]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4388,7 +4966,7 @@ func (x *UiConfigV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UiConfigV3.ProtoReflect.Descriptor instead.
 func (*UiConfigV3) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{48}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *UiConfigV3) GetEndlessIconV2() *GameIcon {
@@ -4573,7 +5151,7 @@ type GameIcon struct {
 func (x *GameIcon) Reset() {
 	*x = GameIcon{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[49]
+		mi := &file_snakecommon_project_config_proto_msgTypes[55]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4586,7 +5164,7 @@ func (x *GameIcon) String() string {
 func (*GameIcon) ProtoMessage() {}
 
 func (x *GameIcon) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[49]
+	mi := &file_snakecommon_project_config_proto_msgTypes[55]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4599,7 +5177,7 @@ func (x *GameIcon) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameIcon.ProtoReflect.Descriptor instead.
 func (*GameIcon) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{49}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *GameIcon) GetUrl() string {
@@ -4742,7 +5320,7 @@ type LittleGameIcon struct {
 func (x *LittleGameIcon) Reset() {
 	*x = LittleGameIcon{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[50]
+		mi := &file_snakecommon_project_config_proto_msgTypes[56]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4755,7 +5333,7 @@ func (x *LittleGameIcon) String() string {
 func (*LittleGameIcon) ProtoMessage() {}
 
 func (x *LittleGameIcon) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[50]
+	mi := &file_snakecommon_project_config_proto_msgTypes[56]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4768,7 +5346,7 @@ func (x *LittleGameIcon) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LittleGameIcon.ProtoReflect.Descriptor instead.
 func (*LittleGameIcon) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{50}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *LittleGameIcon) GetGameIcon() *GameIcon {
@@ -4813,7 +5391,7 @@ type Bubble struct {
 func (x *Bubble) Reset() {
 	*x = Bubble{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[51]
+		mi := &file_snakecommon_project_config_proto_msgTypes[57]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4826,7 +5404,7 @@ func (x *Bubble) String() string {
 func (*Bubble) ProtoMessage() {}
 
 func (x *Bubble) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[51]
+	mi := &file_snakecommon_project_config_proto_msgTypes[57]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4839,7 +5417,7 @@ func (x *Bubble) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Bubble.ProtoReflect.Descriptor instead.
 func (*Bubble) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{51}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *Bubble) GetUrl() string {
@@ -4882,7 +5460,7 @@ type NewbieCondition struct {
 func (x *NewbieCondition) Reset() {
 	*x = NewbieCondition{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[52]
+		mi := &file_snakecommon_project_config_proto_msgTypes[58]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4895,7 +5473,7 @@ func (x *NewbieCondition) String() string {
 func (*NewbieCondition) ProtoMessage() {}
 
 func (x *NewbieCondition) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[52]
+	mi := &file_snakecommon_project_config_proto_msgTypes[58]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4908,7 +5486,7 @@ func (x *NewbieCondition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewbieCondition.ProtoReflect.Descriptor instead.
 func (*NewbieCondition) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{52}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *NewbieCondition) GetRegisterDay() int32 {
@@ -4944,7 +5522,7 @@ type HomeBackground struct {
 func (x *HomeBackground) Reset() {
 	*x = HomeBackground{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[53]
+		mi := &file_snakecommon_project_config_proto_msgTypes[59]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4957,7 +5535,7 @@ func (x *HomeBackground) String() string {
 func (*HomeBackground) ProtoMessage() {}
 
 func (x *HomeBackground) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[53]
+	mi := &file_snakecommon_project_config_proto_msgTypes[59]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4970,7 +5548,7 @@ func (x *HomeBackground) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HomeBackground.ProtoReflect.Descriptor instead.
 func (*HomeBackground) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{53}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *HomeBackground) GetAnimType() int32 {
@@ -5055,7 +5633,7 @@ type PingConfig struct {
 func (x *PingConfig) Reset() {
 	*x = PingConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[54]
+		mi := &file_snakecommon_project_config_proto_msgTypes[60]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5068,7 +5646,7 @@ func (x *PingConfig) String() string {
 func (*PingConfig) ProtoMessage() {}
 
 func (x *PingConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[54]
+	mi := &file_snakecommon_project_config_proto_msgTypes[60]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5081,7 +5659,7 @@ func (x *PingConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PingConfig.ProtoReflect.Descriptor instead.
 func (*PingConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{54}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *PingConfig) GetPingStrategy() int32 {
@@ -5152,7 +5730,7 @@ type RewardMarkConfig struct {
 func (x *RewardMarkConfig) Reset() {
 	*x = RewardMarkConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[55]
+		mi := &file_snakecommon_project_config_proto_msgTypes[61]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5165,7 +5743,7 @@ func (x *RewardMarkConfig) String() string {
 func (*RewardMarkConfig) ProtoMessage() {}
 
 func (x *RewardMarkConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[55]
+	mi := &file_snakecommon_project_config_proto_msgTypes[61]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5178,7 +5756,7 @@ func (x *RewardMarkConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RewardMarkConfig.ProtoReflect.Descriptor instead.
 func (*RewardMarkConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{55}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *RewardMarkConfig) GetRewardMarks() []*RewardMark {
@@ -5200,7 +5778,7 @@ type RewardMark struct {
 func (x *RewardMark) Reset() {
 	*x = RewardMark{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[56]
+		mi := &file_snakecommon_project_config_proto_msgTypes[62]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5213,7 +5791,7 @@ func (x *RewardMark) String() string {
 func (*RewardMark) ProtoMessage() {}
 
 func (x *RewardMark) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[56]
+	mi := &file_snakecommon_project_config_proto_msgTypes[62]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5226,7 +5804,7 @@ func (x *RewardMark) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RewardMark.ProtoReflect.Descriptor instead.
 func (*RewardMark) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{56}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *RewardMark) GetId() int32 {
@@ -5285,7 +5863,7 @@ type ShowAdConfig struct {
 func (x *ShowAdConfig) Reset() {
 	*x = ShowAdConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[57]
+		mi := &file_snakecommon_project_config_proto_msgTypes[63]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5298,7 +5876,7 @@ func (x *ShowAdConfig) String() string {
 func (*ShowAdConfig) ProtoMessage() {}
 
 func (x *ShowAdConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[57]
+	mi := &file_snakecommon_project_config_proto_msgTypes[63]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5311,7 +5889,7 @@ func (x *ShowAdConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShowAdConfig.ProtoReflect.Descriptor instead.
 func (*ShowAdConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{57}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *ShowAdConfig) GetSnakeCoinAdConfig() []*AdRewardModel {
@@ -5543,7 +6121,7 @@ type CrossPromotions struct {
 func (x *CrossPromotions) Reset() {
 	*x = CrossPromotions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[58]
+		mi := &file_snakecommon_project_config_proto_msgTypes[64]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5556,7 +6134,7 @@ func (x *CrossPromotions) String() string {
 func (*CrossPromotions) ProtoMessage() {}
 
 func (x *CrossPromotions) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[58]
+	mi := &file_snakecommon_project_config_proto_msgTypes[64]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5569,7 +6147,7 @@ func (x *CrossPromotions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CrossPromotions.ProtoReflect.Descriptor instead.
 func (*CrossPromotions) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{58}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *CrossPromotions) GetStrategy() []int32 {
@@ -5603,7 +6181,7 @@ type CrossPromotionsSource struct {
 func (x *CrossPromotionsSource) Reset() {
 	*x = CrossPromotionsSource{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[59]
+		mi := &file_snakecommon_project_config_proto_msgTypes[65]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5616,7 +6194,7 @@ func (x *CrossPromotionsSource) String() string {
 func (*CrossPromotionsSource) ProtoMessage() {}
 
 func (x *CrossPromotionsSource) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[59]
+	mi := &file_snakecommon_project_config_proto_msgTypes[65]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5629,7 +6207,7 @@ func (x *CrossPromotionsSource) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CrossPromotionsSource.ProtoReflect.Descriptor instead.
 func (*CrossPromotionsSource) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{59}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *CrossPromotionsSource) GetAppId() string {
@@ -5694,7 +6272,7 @@ type EndlessBuff struct {
 func (x *EndlessBuff) Reset() {
 	*x = EndlessBuff{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[60]
+		mi := &file_snakecommon_project_config_proto_msgTypes[66]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5707,7 +6285,7 @@ func (x *EndlessBuff) String() string {
 func (*EndlessBuff) ProtoMessage() {}
 
 func (x *EndlessBuff) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[60]
+	mi := &file_snakecommon_project_config_proto_msgTypes[66]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5720,7 +6298,7 @@ func (x *EndlessBuff) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessBuff.ProtoReflect.Descriptor instead.
 func (*EndlessBuff) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{60}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *EndlessBuff) GetTimes() int32 {
@@ -5759,7 +6337,7 @@ type PopupPosition struct {
 func (x *PopupPosition) Reset() {
 	*x = PopupPosition{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[61]
+		mi := &file_snakecommon_project_config_proto_msgTypes[67]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5772,7 +6350,7 @@ func (x *PopupPosition) String() string {
 func (*PopupPosition) ProtoMessage() {}
 
 func (x *PopupPosition) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[61]
+	mi := &file_snakecommon_project_config_proto_msgTypes[67]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5785,7 +6363,7 @@ func (x *PopupPosition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PopupPosition.ProtoReflect.Descriptor instead.
 func (*PopupPosition) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{61}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *PopupPosition) GetTimes() int32 {
@@ -5842,7 +6420,7 @@ type AdPopupsConfig struct {
 func (x *AdPopupsConfig) Reset() {
 	*x = AdPopupsConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[62]
+		mi := &file_snakecommon_project_config_proto_msgTypes[68]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5855,7 +6433,7 @@ func (x *AdPopupsConfig) String() string {
 func (*AdPopupsConfig) ProtoMessage() {}
 
 func (x *AdPopupsConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[62]
+	mi := &file_snakecommon_project_config_proto_msgTypes[68]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5868,7 +6446,7 @@ func (x *AdPopupsConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdPopupsConfig.ProtoReflect.Descriptor instead.
 func (*AdPopupsConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{62}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *AdPopupsConfig) GetPopupsTotalLimit() int32 {
@@ -5949,7 +6527,7 @@ type EndlessAdRecommend struct {
 func (x *EndlessAdRecommend) Reset() {
 	*x = EndlessAdRecommend{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[63]
+		mi := &file_snakecommon_project_config_proto_msgTypes[69]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5962,7 +6540,7 @@ func (x *EndlessAdRecommend) String() string {
 func (*EndlessAdRecommend) ProtoMessage() {}
 
 func (x *EndlessAdRecommend) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[63]
+	mi := &file_snakecommon_project_config_proto_msgTypes[69]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5975,7 +6553,7 @@ func (x *EndlessAdRecommend) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessAdRecommend.ProtoReflect.Descriptor instead.
 func (*EndlessAdRecommend) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{63}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *EndlessAdRecommend) GetItemId() int32 {
@@ -6028,7 +6606,7 @@ type AdRewardModel struct {
 func (x *AdRewardModel) Reset() {
 	*x = AdRewardModel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[64]
+		mi := &file_snakecommon_project_config_proto_msgTypes[70]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6041,7 +6619,7 @@ func (x *AdRewardModel) String() string {
 func (*AdRewardModel) ProtoMessage() {}
 
 func (x *AdRewardModel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[64]
+	mi := &file_snakecommon_project_config_proto_msgTypes[70]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6054,7 +6632,7 @@ func (x *AdRewardModel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdRewardModel.ProtoReflect.Descriptor instead.
 func (*AdRewardModel) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{64}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *AdRewardModel) GetColdTime() int32 {
@@ -6107,7 +6685,7 @@ type AdGoodsItem struct {
 func (x *AdGoodsItem) Reset() {
 	*x = AdGoodsItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[65]
+		mi := &file_snakecommon_project_config_proto_msgTypes[71]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6120,7 +6698,7 @@ func (x *AdGoodsItem) String() string {
 func (*AdGoodsItem) ProtoMessage() {}
 
 func (x *AdGoodsItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[65]
+	mi := &file_snakecommon_project_config_proto_msgTypes[71]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6133,7 +6711,7 @@ func (x *AdGoodsItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AdGoodsItem.ProtoReflect.Descriptor instead.
 func (*AdGoodsItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{65}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *AdGoodsItem) GetDiamond() int32 {
@@ -6194,7 +6772,7 @@ type OrderConfig struct {
 func (x *OrderConfig) Reset() {
 	*x = OrderConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[66]
+		mi := &file_snakecommon_project_config_proto_msgTypes[72]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6207,7 +6785,7 @@ func (x *OrderConfig) String() string {
 func (*OrderConfig) ProtoMessage() {}
 
 func (x *OrderConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[66]
+	mi := &file_snakecommon_project_config_proto_msgTypes[72]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6220,7 +6798,7 @@ func (x *OrderConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderConfig.ProtoReflect.Descriptor instead.
 func (*OrderConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{66}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *OrderConfig) GetAlivePopupOrder() []int32 {
@@ -6320,7 +6898,7 @@ type AlipayDiscount struct {
 func (x *AlipayDiscount) Reset() {
 	*x = AlipayDiscount{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[67]
+		mi := &file_snakecommon_project_config_proto_msgTypes[73]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6333,7 +6911,7 @@ func (x *AlipayDiscount) String() string {
 func (*AlipayDiscount) ProtoMessage() {}
 
 func (x *AlipayDiscount) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[67]
+	mi := &file_snakecommon_project_config_proto_msgTypes[73]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6346,7 +6924,7 @@ func (x *AlipayDiscount) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlipayDiscount.ProtoReflect.Descriptor instead.
 func (*AlipayDiscount) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{67}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *AlipayDiscount) GetStartTime() int64 {
@@ -6382,7 +6960,7 @@ type FirstChargePopup struct {
 func (x *FirstChargePopup) Reset() {
 	*x = FirstChargePopup{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[68]
+		mi := &file_snakecommon_project_config_proto_msgTypes[74]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6395,7 +6973,7 @@ func (x *FirstChargePopup) String() string {
 func (*FirstChargePopup) ProtoMessage() {}
 
 func (x *FirstChargePopup) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[68]
+	mi := &file_snakecommon_project_config_proto_msgTypes[74]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6408,7 +6986,7 @@ func (x *FirstChargePopup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FirstChargePopup.ProtoReflect.Descriptor instead.
 func (*FirstChargePopup) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{68}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *FirstChargePopup) GetRange() int32 {
@@ -6436,7 +7014,7 @@ type RandomDoubleClientInfo struct {
 func (x *RandomDoubleClientInfo) Reset() {
 	*x = RandomDoubleClientInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[69]
+		mi := &file_snakecommon_project_config_proto_msgTypes[75]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6449,7 +7027,7 @@ func (x *RandomDoubleClientInfo) String() string {
 func (*RandomDoubleClientInfo) ProtoMessage() {}
 
 func (x *RandomDoubleClientInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[69]
+	mi := &file_snakecommon_project_config_proto_msgTypes[75]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6462,7 +7040,7 @@ func (x *RandomDoubleClientInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RandomDoubleClientInfo.ProtoReflect.Descriptor instead.
 func (*RandomDoubleClientInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{69}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *RandomDoubleClientInfo) GetTitleImgurl() string {
@@ -6489,7 +7067,7 @@ type UnityQualifyingOpenConfig struct {
 func (x *UnityQualifyingOpenConfig) Reset() {
 	*x = UnityQualifyingOpenConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[70]
+		mi := &file_snakecommon_project_config_proto_msgTypes[76]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6502,7 +7080,7 @@ func (x *UnityQualifyingOpenConfig) String() string {
 func (*UnityQualifyingOpenConfig) ProtoMessage() {}
 
 func (x *UnityQualifyingOpenConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[70]
+	mi := &file_snakecommon_project_config_proto_msgTypes[76]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6515,7 +7093,7 @@ func (x *UnityQualifyingOpenConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnityQualifyingOpenConfig.ProtoReflect.Descriptor instead.
 func (*UnityQualifyingOpenConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{70}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *UnityQualifyingOpenConfig) GetWeekdays() []int32 {
@@ -6575,7 +7153,7 @@ type TopListConfig struct {
 func (x *TopListConfig) Reset() {
 	*x = TopListConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[71]
+		mi := &file_snakecommon_project_config_proto_msgTypes[77]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6588,7 +7166,7 @@ func (x *TopListConfig) String() string {
 func (*TopListConfig) ProtoMessage() {}
 
 func (x *TopListConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[71]
+	mi := &file_snakecommon_project_config_proto_msgTypes[77]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6601,7 +7179,7 @@ func (x *TopListConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TopListConfig.ProtoReflect.Descriptor instead.
 func (*TopListConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{71}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{77}
 }
 
 func (x *TopListConfig) GetProvinceList() []string {
@@ -6651,7 +7229,7 @@ type ShowConfig struct {
 func (x *ShowConfig) Reset() {
 	*x = ShowConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[72]
+		mi := &file_snakecommon_project_config_proto_msgTypes[78]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6664,7 +7242,7 @@ func (x *ShowConfig) String() string {
 func (*ShowConfig) ProtoMessage() {}
 
 func (x *ShowConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[72]
+	mi := &file_snakecommon_project_config_proto_msgTypes[78]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6677,7 +7255,7 @@ func (x *ShowConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShowConfig.ProtoReflect.Descriptor instead.
 func (*ShowConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{72}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{78}
 }
 
 func (x *ShowConfig) GetLevelConfig() []*ShowLevelConfig {
@@ -6749,7 +7327,7 @@ type ShowPackItem struct {
 func (x *ShowPackItem) Reset() {
 	*x = ShowPackItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[73]
+		mi := &file_snakecommon_project_config_proto_msgTypes[79]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6762,7 +7340,7 @@ func (x *ShowPackItem) String() string {
 func (*ShowPackItem) ProtoMessage() {}
 
 func (x *ShowPackItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[73]
+	mi := &file_snakecommon_project_config_proto_msgTypes[79]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6775,7 +7353,7 @@ func (x *ShowPackItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShowPackItem.ProtoReflect.Descriptor instead.
 func (*ShowPackItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{73}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{79}
 }
 
 func (x *ShowPackItem) GetShowLevel() int32 {
@@ -6811,7 +7389,7 @@ type ShowIconStyle struct {
 func (x *ShowIconStyle) Reset() {
 	*x = ShowIconStyle{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[74]
+		mi := &file_snakecommon_project_config_proto_msgTypes[80]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6824,7 +7402,7 @@ func (x *ShowIconStyle) String() string {
 func (*ShowIconStyle) ProtoMessage() {}
 
 func (x *ShowIconStyle) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[74]
+	mi := &file_snakecommon_project_config_proto_msgTypes[80]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6837,7 +7415,7 @@ func (x *ShowIconStyle) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShowIconStyle.ProtoReflect.Descriptor instead.
 func (*ShowIconStyle) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{74}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{80}
 }
 
 func (x *ShowIconStyle) GetNum() int32 {
@@ -6874,7 +7452,7 @@ type ShowLevelConfig struct {
 func (x *ShowLevelConfig) Reset() {
 	*x = ShowLevelConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[75]
+		mi := &file_snakecommon_project_config_proto_msgTypes[81]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6887,7 +7465,7 @@ func (x *ShowLevelConfig) String() string {
 func (*ShowLevelConfig) ProtoMessage() {}
 
 func (x *ShowLevelConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[75]
+	mi := &file_snakecommon_project_config_proto_msgTypes[81]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6900,7 +7478,7 @@ func (x *ShowLevelConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShowLevelConfig.ProtoReflect.Descriptor instead.
 func (*ShowLevelConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{75}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{81}
 }
 
 func (x *ShowLevelConfig) GetGameSkill() string {
@@ -6985,7 +7563,7 @@ type ShowSkillName struct {
 func (x *ShowSkillName) Reset() {
 	*x = ShowSkillName{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[76]
+		mi := &file_snakecommon_project_config_proto_msgTypes[82]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6998,7 +7576,7 @@ func (x *ShowSkillName) String() string {
 func (*ShowSkillName) ProtoMessage() {}
 
 func (x *ShowSkillName) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[76]
+	mi := &file_snakecommon_project_config_proto_msgTypes[82]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7011,7 +7589,7 @@ func (x *ShowSkillName) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShowSkillName.ProtoReflect.Descriptor instead.
 func (*ShowSkillName) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{76}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{82}
 }
 
 func (x *ShowSkillName) GetSkillType() int32 {
@@ -7041,7 +7619,7 @@ type ShowSkillBuff struct {
 func (x *ShowSkillBuff) Reset() {
 	*x = ShowSkillBuff{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[77]
+		mi := &file_snakecommon_project_config_proto_msgTypes[83]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7054,7 +7632,7 @@ func (x *ShowSkillBuff) String() string {
 func (*ShowSkillBuff) ProtoMessage() {}
 
 func (x *ShowSkillBuff) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[77]
+	mi := &file_snakecommon_project_config_proto_msgTypes[83]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7067,7 +7645,7 @@ func (x *ShowSkillBuff) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShowSkillBuff.ProtoReflect.Descriptor instead.
 func (*ShowSkillBuff) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{77}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{83}
 }
 
 func (x *ShowSkillBuff) GetSkillType() int32 {
@@ -7151,7 +7729,7 @@ type UserConfig struct {
 func (x *UserConfig) Reset() {
 	*x = UserConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[78]
+		mi := &file_snakecommon_project_config_proto_msgTypes[84]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7164,7 +7742,7 @@ func (x *UserConfig) String() string {
 func (*UserConfig) ProtoMessage() {}
 
 func (x *UserConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[78]
+	mi := &file_snakecommon_project_config_proto_msgTypes[84]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7177,7 +7755,7 @@ func (x *UserConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserConfig.ProtoReflect.Descriptor instead.
 func (*UserConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{78}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{84}
 }
 
 func (x *UserConfig) GetGenderCost() int32 {
@@ -7532,7 +8110,7 @@ type UnityFlags struct {
 func (x *UnityFlags) Reset() {
 	*x = UnityFlags{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[79]
+		mi := &file_snakecommon_project_config_proto_msgTypes[85]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7545,7 +8123,7 @@ func (x *UnityFlags) String() string {
 func (*UnityFlags) ProtoMessage() {}
 
 func (x *UnityFlags) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[79]
+	mi := &file_snakecommon_project_config_proto_msgTypes[85]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7558,7 +8136,7 @@ func (x *UnityFlags) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnityFlags.ProtoReflect.Descriptor instead.
 func (*UnityFlags) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{79}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{85}
 }
 
 type MinorLimit struct {
@@ -7575,7 +8153,7 @@ type MinorLimit struct {
 func (x *MinorLimit) Reset() {
 	*x = MinorLimit{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[80]
+		mi := &file_snakecommon_project_config_proto_msgTypes[86]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7588,7 +8166,7 @@ func (x *MinorLimit) String() string {
 func (*MinorLimit) ProtoMessage() {}
 
 func (x *MinorLimit) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[80]
+	mi := &file_snakecommon_project_config_proto_msgTypes[86]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7601,7 +8179,7 @@ func (x *MinorLimit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MinorLimit.ProtoReflect.Descriptor instead.
 func (*MinorLimit) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{80}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{86}
 }
 
 func (x *MinorLimit) GetMaxAge() int32 {
@@ -7644,7 +8222,7 @@ type OrderCurator struct {
 func (x *OrderCurator) Reset() {
 	*x = OrderCurator{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[81]
+		mi := &file_snakecommon_project_config_proto_msgTypes[87]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7657,7 +8235,7 @@ func (x *OrderCurator) String() string {
 func (*OrderCurator) ProtoMessage() {}
 
 func (x *OrderCurator) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[81]
+	mi := &file_snakecommon_project_config_proto_msgTypes[87]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7670,7 +8248,7 @@ func (x *OrderCurator) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderCurator.ProtoReflect.Descriptor instead.
 func (*OrderCurator) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{81}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{87}
 }
 
 func (x *OrderCurator) GetLink() string {
@@ -7741,7 +8319,7 @@ type FlagsConfig struct {
 func (x *FlagsConfig) Reset() {
 	*x = FlagsConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[82]
+		mi := &file_snakecommon_project_config_proto_msgTypes[88]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7754,7 +8332,7 @@ func (x *FlagsConfig) String() string {
 func (*FlagsConfig) ProtoMessage() {}
 
 func (x *FlagsConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[82]
+	mi := &file_snakecommon_project_config_proto_msgTypes[88]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7767,7 +8345,7 @@ func (x *FlagsConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FlagsConfig.ProtoReflect.Descriptor instead.
 func (*FlagsConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{82}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{88}
 }
 
 func (x *FlagsConfig) GetVisitorFlag() int32 {
@@ -8094,7 +8672,7 @@ type FeedbackConfig struct {
 func (x *FeedbackConfig) Reset() {
 	*x = FeedbackConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[83]
+		mi := &file_snakecommon_project_config_proto_msgTypes[89]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8107,7 +8685,7 @@ func (x *FeedbackConfig) String() string {
 func (*FeedbackConfig) ProtoMessage() {}
 
 func (x *FeedbackConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[83]
+	mi := &file_snakecommon_project_config_proto_msgTypes[89]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8120,7 +8698,7 @@ func (x *FeedbackConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FeedbackConfig.ProtoReflect.Descriptor instead.
 func (*FeedbackConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{83}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{89}
 }
 
 func (x *FeedbackConfig) GetSwitch() int32 {
@@ -8184,7 +8762,7 @@ type SettingConfig struct {
 func (x *SettingConfig) Reset() {
 	*x = SettingConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[84]
+		mi := &file_snakecommon_project_config_proto_msgTypes[90]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8197,7 +8775,7 @@ func (x *SettingConfig) String() string {
 func (*SettingConfig) ProtoMessage() {}
 
 func (x *SettingConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[84]
+	mi := &file_snakecommon_project_config_proto_msgTypes[90]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8210,7 +8788,7 @@ func (x *SettingConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SettingConfig.ProtoReflect.Descriptor instead.
 func (*SettingConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{84}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{90}
 }
 
 func (x *SettingConfig) GetGameMultiTrans() int32 {
@@ -8292,7 +8870,7 @@ type DocVersion struct {
 func (x *DocVersion) Reset() {
 	*x = DocVersion{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[85]
+		mi := &file_snakecommon_project_config_proto_msgTypes[91]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8305,7 +8883,7 @@ func (x *DocVersion) String() string {
 func (*DocVersion) ProtoMessage() {}
 
 func (x *DocVersion) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[85]
+	mi := &file_snakecommon_project_config_proto_msgTypes[91]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8318,7 +8896,7 @@ func (x *DocVersion) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DocVersion.ProtoReflect.Descriptor instead.
 func (*DocVersion) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{85}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{91}
 }
 
 func (x *DocVersion) GetAgreement() string {
@@ -8369,7 +8947,7 @@ type NetworkCheck struct {
 func (x *NetworkCheck) Reset() {
 	*x = NetworkCheck{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[86]
+		mi := &file_snakecommon_project_config_proto_msgTypes[92]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8382,7 +8960,7 @@ func (x *NetworkCheck) String() string {
 func (*NetworkCheck) ProtoMessage() {}
 
 func (x *NetworkCheck) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[86]
+	mi := &file_snakecommon_project_config_proto_msgTypes[92]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8395,7 +8973,7 @@ func (x *NetworkCheck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkCheck.ProtoReflect.Descriptor instead.
 func (*NetworkCheck) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{86}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{92}
 }
 
 func (x *NetworkCheck) GetResource() string {
@@ -8432,7 +9010,7 @@ type Prometheus struct {
 func (x *Prometheus) Reset() {
 	*x = Prometheus{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[87]
+		mi := &file_snakecommon_project_config_proto_msgTypes[93]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8445,7 +9023,7 @@ func (x *Prometheus) String() string {
 func (*Prometheus) ProtoMessage() {}
 
 func (x *Prometheus) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[87]
+	mi := &file_snakecommon_project_config_proto_msgTypes[93]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8458,7 +9036,7 @@ func (x *Prometheus) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Prometheus.ProtoReflect.Descriptor instead.
 func (*Prometheus) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{87}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{93}
 }
 
 func (x *Prometheus) GetBatch() int32 {
@@ -8494,7 +9072,7 @@ type OkhttpDispatcher struct {
 func (x *OkhttpDispatcher) Reset() {
 	*x = OkhttpDispatcher{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[88]
+		mi := &file_snakecommon_project_config_proto_msgTypes[94]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8507,7 +9085,7 @@ func (x *OkhttpDispatcher) String() string {
 func (*OkhttpDispatcher) ProtoMessage() {}
 
 func (x *OkhttpDispatcher) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[88]
+	mi := &file_snakecommon_project_config_proto_msgTypes[94]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8520,7 +9098,7 @@ func (x *OkhttpDispatcher) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OkhttpDispatcher.ProtoReflect.Descriptor instead.
 func (*OkhttpDispatcher) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{88}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{94}
 }
 
 func (x *OkhttpDispatcher) GetQueueCapacity() int32 {
@@ -8553,7 +9131,7 @@ type MemSwitch struct {
 func (x *MemSwitch) Reset() {
 	*x = MemSwitch{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[89]
+		mi := &file_snakecommon_project_config_proto_msgTypes[95]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8566,7 +9144,7 @@ func (x *MemSwitch) String() string {
 func (*MemSwitch) ProtoMessage() {}
 
 func (x *MemSwitch) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[89]
+	mi := &file_snakecommon_project_config_proto_msgTypes[95]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8579,7 +9157,7 @@ func (x *MemSwitch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MemSwitch.ProtoReflect.Descriptor instead.
 func (*MemSwitch) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{89}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{95}
 }
 
 func (x *MemSwitch) GetRgb565Enabled() bool {
@@ -8636,7 +9214,7 @@ type BindConfig struct {
 func (x *BindConfig) Reset() {
 	*x = BindConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[90]
+		mi := &file_snakecommon_project_config_proto_msgTypes[96]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8649,7 +9227,7 @@ func (x *BindConfig) String() string {
 func (*BindConfig) ProtoMessage() {}
 
 func (x *BindConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[90]
+	mi := &file_snakecommon_project_config_proto_msgTypes[96]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8662,7 +9240,7 @@ func (x *BindConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BindConfig.ProtoReflect.Descriptor instead.
 func (*BindConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{90}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{96}
 }
 
 func (x *BindConfig) GetBgUrl() string {
@@ -8691,7 +9269,7 @@ type RenamePopupRule struct {
 func (x *RenamePopupRule) Reset() {
 	*x = RenamePopupRule{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[91]
+		mi := &file_snakecommon_project_config_proto_msgTypes[97]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8704,7 +9282,7 @@ func (x *RenamePopupRule) String() string {
 func (*RenamePopupRule) ProtoMessage() {}
 
 func (x *RenamePopupRule) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[91]
+	mi := &file_snakecommon_project_config_proto_msgTypes[97]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8717,7 +9295,7 @@ func (x *RenamePopupRule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RenamePopupRule.ProtoReflect.Descriptor instead.
 func (*RenamePopupRule) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{91}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{97}
 }
 
 func (x *RenamePopupRule) GetNewbieClub() *NewbieClub {
@@ -8745,7 +9323,7 @@ type QualifyingMatch struct {
 func (x *QualifyingMatch) Reset() {
 	*x = QualifyingMatch{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[92]
+		mi := &file_snakecommon_project_config_proto_msgTypes[98]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8758,7 +9336,7 @@ func (x *QualifyingMatch) String() string {
 func (*QualifyingMatch) ProtoMessage() {}
 
 func (x *QualifyingMatch) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[92]
+	mi := &file_snakecommon_project_config_proto_msgTypes[98]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8771,7 +9349,7 @@ func (x *QualifyingMatch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QualifyingMatch.ProtoReflect.Descriptor instead.
 func (*QualifyingMatch) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{92}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{98}
 }
 
 func (x *QualifyingMatch) GetLimit() int32 {
@@ -8793,7 +9371,7 @@ type NewbieClub struct {
 func (x *NewbieClub) Reset() {
 	*x = NewbieClub{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[93]
+		mi := &file_snakecommon_project_config_proto_msgTypes[99]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8806,7 +9384,7 @@ func (x *NewbieClub) String() string {
 func (*NewbieClub) ProtoMessage() {}
 
 func (x *NewbieClub) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[93]
+	mi := &file_snakecommon_project_config_proto_msgTypes[99]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8819,7 +9397,7 @@ func (x *NewbieClub) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewbieClub.ProtoReflect.Descriptor instead.
 func (*NewbieClub) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{93}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{99}
 }
 
 func (x *NewbieClub) GetInterval() int64 {
@@ -8848,7 +9426,7 @@ type GameEndSkin struct {
 func (x *GameEndSkin) Reset() {
 	*x = GameEndSkin{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[94]
+		mi := &file_snakecommon_project_config_proto_msgTypes[100]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8861,7 +9439,7 @@ func (x *GameEndSkin) String() string {
 func (*GameEndSkin) ProtoMessage() {}
 
 func (x *GameEndSkin) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[94]
+	mi := &file_snakecommon_project_config_proto_msgTypes[100]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8874,7 +9452,7 @@ func (x *GameEndSkin) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameEndSkin.ProtoReflect.Descriptor instead.
 func (*GameEndSkin) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{94}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{100}
 }
 
 func (x *GameEndSkin) GetNoticeUrl() string {
@@ -8905,7 +9483,7 @@ type DeviceConfig struct {
 func (x *DeviceConfig) Reset() {
 	*x = DeviceConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[95]
+		mi := &file_snakecommon_project_config_proto_msgTypes[101]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8918,7 +9496,7 @@ func (x *DeviceConfig) String() string {
 func (*DeviceConfig) ProtoMessage() {}
 
 func (x *DeviceConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[95]
+	mi := &file_snakecommon_project_config_proto_msgTypes[101]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8931,7 +9509,7 @@ func (x *DeviceConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeviceConfig.ProtoReflect.Descriptor instead.
 func (*DeviceConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{95}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{101}
 }
 
 func (x *DeviceConfig) GetModel() string {
@@ -8982,7 +9560,7 @@ type AntiAddiction struct {
 func (x *AntiAddiction) Reset() {
 	*x = AntiAddiction{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[96]
+		mi := &file_snakecommon_project_config_proto_msgTypes[102]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8995,7 +9573,7 @@ func (x *AntiAddiction) String() string {
 func (*AntiAddiction) ProtoMessage() {}
 
 func (x *AntiAddiction) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[96]
+	mi := &file_snakecommon_project_config_proto_msgTypes[102]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9008,7 +9586,7 @@ func (x *AntiAddiction) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AntiAddiction.ProtoReflect.Descriptor instead.
 func (*AntiAddiction) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{96}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{102}
 }
 
 func (x *AntiAddiction) GetNotify() *Notify {
@@ -9093,7 +9671,7 @@ type Notify struct {
 func (x *Notify) Reset() {
 	*x = Notify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[97]
+		mi := &file_snakecommon_project_config_proto_msgTypes[103]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9106,7 +9684,7 @@ func (x *Notify) String() string {
 func (*Notify) ProtoMessage() {}
 
 func (x *Notify) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[97]
+	mi := &file_snakecommon_project_config_proto_msgTypes[103]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9119,7 +9697,7 @@ func (x *Notify) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Notify.ProtoReflect.Descriptor instead.
 func (*Notify) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{97}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{103}
 }
 
 func (x *Notify) GetUncertified() []*CertifyGameConfig {
@@ -9152,7 +9730,7 @@ type CertifyGameConfig struct {
 func (x *CertifyGameConfig) Reset() {
 	*x = CertifyGameConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[98]
+		mi := &file_snakecommon_project_config_proto_msgTypes[104]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9165,7 +9743,7 @@ func (x *CertifyGameConfig) String() string {
 func (*CertifyGameConfig) ProtoMessage() {}
 
 func (x *CertifyGameConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[98]
+	mi := &file_snakecommon_project_config_proto_msgTypes[104]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9178,7 +9756,7 @@ func (x *CertifyGameConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CertifyGameConfig.ProtoReflect.Descriptor instead.
 func (*CertifyGameConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{98}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{104}
 }
 
 func (x *CertifyGameConfig) GetGameTime() int32 {
@@ -9228,7 +9806,7 @@ type MinorNotify struct {
 func (x *MinorNotify) Reset() {
 	*x = MinorNotify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[99]
+		mi := &file_snakecommon_project_config_proto_msgTypes[105]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9241,7 +9819,7 @@ func (x *MinorNotify) String() string {
 func (*MinorNotify) ProtoMessage() {}
 
 func (x *MinorNotify) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[99]
+	mi := &file_snakecommon_project_config_proto_msgTypes[105]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9254,7 +9832,7 @@ func (x *MinorNotify) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MinorNotify.ProtoReflect.Descriptor instead.
 func (*MinorNotify) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{99}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{105}
 }
 
 func (x *MinorNotify) GetLoginText() string {
@@ -9346,7 +9924,7 @@ type PayNotify struct {
 func (x *PayNotify) Reset() {
 	*x = PayNotify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[100]
+		mi := &file_snakecommon_project_config_proto_msgTypes[106]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9359,7 +9937,7 @@ func (x *PayNotify) String() string {
 func (*PayNotify) ProtoMessage() {}
 
 func (x *PayNotify) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[100]
+	mi := &file_snakecommon_project_config_proto_msgTypes[106]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9372,7 +9950,7 @@ func (x *PayNotify) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PayNotify.ProtoReflect.Descriptor instead.
 func (*PayNotify) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{100}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{106}
 }
 
 func (x *PayNotify) GetMinor() string {
@@ -9403,7 +9981,7 @@ type SocialDesc struct {
 func (x *SocialDesc) Reset() {
 	*x = SocialDesc{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[101]
+		mi := &file_snakecommon_project_config_proto_msgTypes[107]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9416,7 +9994,7 @@ func (x *SocialDesc) String() string {
 func (*SocialDesc) ProtoMessage() {}
 
 func (x *SocialDesc) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[101]
+	mi := &file_snakecommon_project_config_proto_msgTypes[107]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9429,7 +10007,7 @@ func (x *SocialDesc) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SocialDesc.ProtoReflect.Descriptor instead.
 func (*SocialDesc) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{101}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{107}
 }
 
 func (x *SocialDesc) GetBroadcast() string {
@@ -9472,7 +10050,7 @@ type IdentityAge struct {
 func (x *IdentityAge) Reset() {
 	*x = IdentityAge{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[102]
+		mi := &file_snakecommon_project_config_proto_msgTypes[108]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9485,7 +10063,7 @@ func (x *IdentityAge) String() string {
 func (*IdentityAge) ProtoMessage() {}
 
 func (x *IdentityAge) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[102]
+	mi := &file_snakecommon_project_config_proto_msgTypes[108]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9498,7 +10076,7 @@ func (x *IdentityAge) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IdentityAge.ProtoReflect.Descriptor instead.
 func (*IdentityAge) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{102}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{108}
 }
 
 func (x *IdentityAge) GetMinor() int32 {
@@ -9531,7 +10109,7 @@ type CertifyNotify struct {
 func (x *CertifyNotify) Reset() {
 	*x = CertifyNotify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[103]
+		mi := &file_snakecommon_project_config_proto_msgTypes[109]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9544,7 +10122,7 @@ func (x *CertifyNotify) String() string {
 func (*CertifyNotify) ProtoMessage() {}
 
 func (x *CertifyNotify) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[103]
+	mi := &file_snakecommon_project_config_proto_msgTypes[109]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9557,7 +10135,7 @@ func (x *CertifyNotify) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CertifyNotify.ProtoReflect.Descriptor instead.
 func (*CertifyNotify) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{103}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{109}
 }
 
 func (x *CertifyNotify) GetActiveLimit() int32 {
@@ -9618,7 +10196,7 @@ type IdfaConfig struct {
 func (x *IdfaConfig) Reset() {
 	*x = IdfaConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[104]
+		mi := &file_snakecommon_project_config_proto_msgTypes[110]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9631,7 +10209,7 @@ func (x *IdfaConfig) String() string {
 func (*IdfaConfig) ProtoMessage() {}
 
 func (x *IdfaConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[104]
+	mi := &file_snakecommon_project_config_proto_msgTypes[110]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9644,7 +10222,7 @@ func (x *IdfaConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IdfaConfig.ProtoReflect.Descriptor instead.
 func (*IdfaConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{104}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{110}
 }
 
 func (x *IdfaConfig) GetReward() []*config.RewardConfig {
@@ -9701,7 +10279,7 @@ type CommentConfig struct {
 func (x *CommentConfig) Reset() {
 	*x = CommentConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[105]
+		mi := &file_snakecommon_project_config_proto_msgTypes[111]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9714,7 +10292,7 @@ func (x *CommentConfig) String() string {
 func (*CommentConfig) ProtoMessage() {}
 
 func (x *CommentConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[105]
+	mi := &file_snakecommon_project_config_proto_msgTypes[111]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9727,7 +10305,7 @@ func (x *CommentConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommentConfig.ProtoReflect.Descriptor instead.
 func (*CommentConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{105}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{111}
 }
 
 func (x *CommentConfig) GetScore() int32 {
@@ -9763,7 +10341,7 @@ type RegisterSurvey struct {
 func (x *RegisterSurvey) Reset() {
 	*x = RegisterSurvey{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[106]
+		mi := &file_snakecommon_project_config_proto_msgTypes[112]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9776,7 +10354,7 @@ func (x *RegisterSurvey) String() string {
 func (*RegisterSurvey) ProtoMessage() {}
 
 func (x *RegisterSurvey) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[106]
+	mi := &file_snakecommon_project_config_proto_msgTypes[112]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9789,7 +10367,7 @@ func (x *RegisterSurvey) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterSurvey.ProtoReflect.Descriptor instead.
 func (*RegisterSurvey) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{106}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{112}
 }
 
 func (x *RegisterSurvey) GetSwitch() int32 {
@@ -9874,7 +10452,7 @@ type RecruitPopup struct {
 func (x *RecruitPopup) Reset() {
 	*x = RecruitPopup{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[107]
+		mi := &file_snakecommon_project_config_proto_msgTypes[113]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9887,7 +10465,7 @@ func (x *RecruitPopup) String() string {
 func (*RecruitPopup) ProtoMessage() {}
 
 func (x *RecruitPopup) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[107]
+	mi := &file_snakecommon_project_config_proto_msgTypes[113]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9900,7 +10478,7 @@ func (x *RecruitPopup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecruitPopup.ProtoReflect.Descriptor instead.
 func (*RecruitPopup) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{107}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{113}
 }
 
 func (x *RecruitPopup) GetSwitch() int32 {
@@ -10002,7 +10580,7 @@ type NewUserConfig struct {
 func (x *NewUserConfig) Reset() {
 	*x = NewUserConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[108]
+		mi := &file_snakecommon_project_config_proto_msgTypes[114]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10015,7 +10593,7 @@ func (x *NewUserConfig) String() string {
 func (*NewUserConfig) ProtoMessage() {}
 
 func (x *NewUserConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[108]
+	mi := &file_snakecommon_project_config_proto_msgTypes[114]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10028,7 +10606,7 @@ func (x *NewUserConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewUserConfig.ProtoReflect.Descriptor instead.
 func (*NewUserConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{108}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{114}
 }
 
 func (x *NewUserConfig) GetPlayerEatFoodRateChangeScope() int32 {
@@ -10150,7 +10728,7 @@ type ReviveConfigItem struct {
 func (x *ReviveConfigItem) Reset() {
 	*x = ReviveConfigItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[109]
+		mi := &file_snakecommon_project_config_proto_msgTypes[115]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10163,7 +10741,7 @@ func (x *ReviveConfigItem) String() string {
 func (*ReviveConfigItem) ProtoMessage() {}
 
 func (x *ReviveConfigItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[109]
+	mi := &file_snakecommon_project_config_proto_msgTypes[115]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10176,7 +10754,7 @@ func (x *ReviveConfigItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReviveConfigItem.ProtoReflect.Descriptor instead.
 func (*ReviveConfigItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{109}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{115}
 }
 
 func (x *ReviveConfigItem) GetAdRevive() int32 {
@@ -10215,7 +10793,7 @@ type SingleGameAiConfigItem struct {
 func (x *SingleGameAiConfigItem) Reset() {
 	*x = SingleGameAiConfigItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[110]
+		mi := &file_snakecommon_project_config_proto_msgTypes[116]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10228,7 +10806,7 @@ func (x *SingleGameAiConfigItem) String() string {
 func (*SingleGameAiConfigItem) ProtoMessage() {}
 
 func (x *SingleGameAiConfigItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[110]
+	mi := &file_snakecommon_project_config_proto_msgTypes[116]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10241,7 +10819,7 @@ func (x *SingleGameAiConfigItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SingleGameAiConfigItem.ProtoReflect.Descriptor instead.
 func (*SingleGameAiConfigItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{110}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{116}
 }
 
 func (x *SingleGameAiConfigItem) GetStartLength() int64 {
@@ -10302,7 +10880,7 @@ type FloaterConfigOld struct {
 func (x *FloaterConfigOld) Reset() {
 	*x = FloaterConfigOld{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[111]
+		mi := &file_snakecommon_project_config_proto_msgTypes[117]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10315,7 +10893,7 @@ func (x *FloaterConfigOld) String() string {
 func (*FloaterConfigOld) ProtoMessage() {}
 
 func (x *FloaterConfigOld) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[111]
+	mi := &file_snakecommon_project_config_proto_msgTypes[117]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10328,7 +10906,7 @@ func (x *FloaterConfigOld) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FloaterConfigOld.ProtoReflect.Descriptor instead.
 func (*FloaterConfigOld) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{111}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{117}
 }
 
 func (x *FloaterConfigOld) GetBornLen() []int32 {
@@ -10435,7 +11013,7 @@ type ActivityMapConfig struct {
 func (x *ActivityMapConfig) Reset() {
 	*x = ActivityMapConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[112]
+		mi := &file_snakecommon_project_config_proto_msgTypes[118]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10448,7 +11026,7 @@ func (x *ActivityMapConfig) String() string {
 func (*ActivityMapConfig) ProtoMessage() {}
 
 func (x *ActivityMapConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[112]
+	mi := &file_snakecommon_project_config_proto_msgTypes[118]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10461,7 +11039,7 @@ func (x *ActivityMapConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActivityMapConfig.ProtoReflect.Descriptor instead.
 func (*ActivityMapConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{112}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{118}
 }
 
 func (x *ActivityMapConfig) GetStartTime() int64 {
@@ -10511,7 +11089,7 @@ type EndlessLimitConfig struct {
 func (x *EndlessLimitConfig) Reset() {
 	*x = EndlessLimitConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[113]
+		mi := &file_snakecommon_project_config_proto_msgTypes[119]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10524,7 +11102,7 @@ func (x *EndlessLimitConfig) String() string {
 func (*EndlessLimitConfig) ProtoMessage() {}
 
 func (x *EndlessLimitConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[113]
+	mi := &file_snakecommon_project_config_proto_msgTypes[119]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10537,7 +11115,7 @@ func (x *EndlessLimitConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessLimitConfig.ProtoReflect.Descriptor instead.
 func (*EndlessLimitConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{113}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{119}
 }
 
 func (x *EndlessLimitConfig) GetIosLengthEndlessLimit_1() int64 {
@@ -10665,7 +11243,7 @@ type EndlessBubbleConfig struct {
 func (x *EndlessBubbleConfig) Reset() {
 	*x = EndlessBubbleConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[114]
+		mi := &file_snakecommon_project_config_proto_msgTypes[120]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10678,7 +11256,7 @@ func (x *EndlessBubbleConfig) String() string {
 func (*EndlessBubbleConfig) ProtoMessage() {}
 
 func (x *EndlessBubbleConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[114]
+	mi := &file_snakecommon_project_config_proto_msgTypes[120]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10691,7 +11269,7 @@ func (x *EndlessBubbleConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessBubbleConfig.ProtoReflect.Descriptor instead.
 func (*EndlessBubbleConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{114}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{120}
 }
 
 func (x *EndlessBubbleConfig) GetStartTime() int64 {
@@ -10728,7 +11306,7 @@ type EndlessTrackConfig struct {
 func (x *EndlessTrackConfig) Reset() {
 	*x = EndlessTrackConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[115]
+		mi := &file_snakecommon_project_config_proto_msgTypes[121]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10741,7 +11319,7 @@ func (x *EndlessTrackConfig) String() string {
 func (*EndlessTrackConfig) ProtoMessage() {}
 
 func (x *EndlessTrackConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[115]
+	mi := &file_snakecommon_project_config_proto_msgTypes[121]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10754,7 +11332,7 @@ func (x *EndlessTrackConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessTrackConfig.ProtoReflect.Descriptor instead.
 func (*EndlessTrackConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{115}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{121}
 }
 
 func (x *EndlessTrackConfig) GetStartLen() int32 {
@@ -10790,7 +11368,7 @@ type WildStormListItem struct {
 func (x *WildStormListItem) Reset() {
 	*x = WildStormListItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[116]
+		mi := &file_snakecommon_project_config_proto_msgTypes[122]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10803,7 +11381,7 @@ func (x *WildStormListItem) String() string {
 func (*WildStormListItem) ProtoMessage() {}
 
 func (x *WildStormListItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[116]
+	mi := &file_snakecommon_project_config_proto_msgTypes[122]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10816,7 +11394,7 @@ func (x *WildStormListItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WildStormListItem.ProtoReflect.Descriptor instead.
 func (*WildStormListItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{116}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{122}
 }
 
 func (x *WildStormListItem) GetDuration() int32 {
@@ -10845,7 +11423,7 @@ type WildStormConfig struct {
 func (x *WildStormConfig) Reset() {
 	*x = WildStormConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[117]
+		mi := &file_snakecommon_project_config_proto_msgTypes[123]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10858,7 +11436,7 @@ func (x *WildStormConfig) String() string {
 func (*WildStormConfig) ProtoMessage() {}
 
 func (x *WildStormConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[117]
+	mi := &file_snakecommon_project_config_proto_msgTypes[123]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10871,7 +11449,7 @@ func (x *WildStormConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WildStormConfig.ProtoReflect.Descriptor instead.
 func (*WildStormConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{117}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{123}
 }
 
 func (x *WildStormConfig) GetMaxSpeedRate() float64 {
@@ -10924,7 +11502,7 @@ type OfflineGameConfig struct {
 func (x *OfflineGameConfig) Reset() {
 	*x = OfflineGameConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[118]
+		mi := &file_snakecommon_project_config_proto_msgTypes[124]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -10937,7 +11515,7 @@ func (x *OfflineGameConfig) String() string {
 func (*OfflineGameConfig) ProtoMessage() {}
 
 func (x *OfflineGameConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[118]
+	mi := &file_snakecommon_project_config_proto_msgTypes[124]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -10950,7 +11528,7 @@ func (x *OfflineGameConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OfflineGameConfig.ProtoReflect.Descriptor instead.
 func (*OfflineGameConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{118}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{124}
 }
 
 func (x *OfflineGameConfig) GetBigSnakeRate() int32 {
@@ -11153,7 +11731,7 @@ type MentorshipConfig struct {
 func (x *MentorshipConfig) Reset() {
 	*x = MentorshipConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[119]
+		mi := &file_snakecommon_project_config_proto_msgTypes[125]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11166,7 +11744,7 @@ func (x *MentorshipConfig) String() string {
 func (*MentorshipConfig) ProtoMessage() {}
 
 func (x *MentorshipConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[119]
+	mi := &file_snakecommon_project_config_proto_msgTypes[125]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11179,7 +11757,7 @@ func (x *MentorshipConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MentorshipConfig.ProtoReflect.Descriptor instead.
 func (*MentorshipConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{119}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{125}
 }
 
 func (x *MentorshipConfig) GetMasterPrivilegeConfig() []*MentorPrivilegeInfo {
@@ -11249,7 +11827,7 @@ type MentorPrivilegeInfo struct {
 func (x *MentorPrivilegeInfo) Reset() {
 	*x = MentorPrivilegeInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[120]
+		mi := &file_snakecommon_project_config_proto_msgTypes[126]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11262,7 +11840,7 @@ func (x *MentorPrivilegeInfo) String() string {
 func (*MentorPrivilegeInfo) ProtoMessage() {}
 
 func (x *MentorPrivilegeInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[120]
+	mi := &file_snakecommon_project_config_proto_msgTypes[126]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11275,7 +11853,7 @@ func (x *MentorPrivilegeInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MentorPrivilegeInfo.ProtoReflect.Descriptor instead.
 func (*MentorPrivilegeInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{120}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{126}
 }
 
 func (x *MentorPrivilegeInfo) GetTitle() string {
@@ -11346,7 +11924,7 @@ type PrivilegeDetailInfo struct {
 func (x *PrivilegeDetailInfo) Reset() {
 	*x = PrivilegeDetailInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[121]
+		mi := &file_snakecommon_project_config_proto_msgTypes[127]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11359,7 +11937,7 @@ func (x *PrivilegeDetailInfo) String() string {
 func (*PrivilegeDetailInfo) ProtoMessage() {}
 
 func (x *PrivilegeDetailInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[121]
+	mi := &file_snakecommon_project_config_proto_msgTypes[127]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11372,7 +11950,7 @@ func (x *PrivilegeDetailInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PrivilegeDetailInfo.ProtoReflect.Descriptor instead.
 func (*PrivilegeDetailInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{121}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{127}
 }
 
 func (x *PrivilegeDetailInfo) GetImgUrl() string {
@@ -11402,7 +11980,7 @@ type MentorshipBondTitleItem struct {
 func (x *MentorshipBondTitleItem) Reset() {
 	*x = MentorshipBondTitleItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[122]
+		mi := &file_snakecommon_project_config_proto_msgTypes[128]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11415,7 +11993,7 @@ func (x *MentorshipBondTitleItem) String() string {
 func (*MentorshipBondTitleItem) ProtoMessage() {}
 
 func (x *MentorshipBondTitleItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[122]
+	mi := &file_snakecommon_project_config_proto_msgTypes[128]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11428,7 +12006,7 @@ func (x *MentorshipBondTitleItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MentorshipBondTitleItem.ProtoReflect.Descriptor instead.
 func (*MentorshipBondTitleItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{122}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{128}
 }
 
 func (x *MentorshipBondTitleItem) GetFadeTime() int64 {
@@ -11464,7 +12042,7 @@ type MentorFinishReward struct {
 func (x *MentorFinishReward) Reset() {
 	*x = MentorFinishReward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[123]
+		mi := &file_snakecommon_project_config_proto_msgTypes[129]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11477,7 +12055,7 @@ func (x *MentorFinishReward) String() string {
 func (*MentorFinishReward) ProtoMessage() {}
 
 func (x *MentorFinishReward) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[123]
+	mi := &file_snakecommon_project_config_proto_msgTypes[129]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11490,7 +12068,7 @@ func (x *MentorFinishReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MentorFinishReward.ProtoReflect.Descriptor instead.
 func (*MentorFinishReward) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{123}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{129}
 }
 
 func (x *MentorFinishReward) GetMasterReward() []*config.RewardConfig {
@@ -11519,7 +12097,7 @@ type MasterPrenticeStrategyItem struct {
 func (x *MasterPrenticeStrategyItem) Reset() {
 	*x = MasterPrenticeStrategyItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[124]
+		mi := &file_snakecommon_project_config_proto_msgTypes[130]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11532,7 +12110,7 @@ func (x *MasterPrenticeStrategyItem) String() string {
 func (*MasterPrenticeStrategyItem) ProtoMessage() {}
 
 func (x *MasterPrenticeStrategyItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[124]
+	mi := &file_snakecommon_project_config_proto_msgTypes[130]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11545,7 +12123,7 @@ func (x *MasterPrenticeStrategyItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MasterPrenticeStrategyItem.ProtoReflect.Descriptor instead.
 func (*MasterPrenticeStrategyItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{124}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{130}
 }
 
 func (x *MasterPrenticeStrategyItem) GetTitle() string {
@@ -11576,7 +12154,7 @@ type HotConfig struct {
 func (x *HotConfig) Reset() {
 	*x = HotConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[125]
+		mi := &file_snakecommon_project_config_proto_msgTypes[131]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11589,7 +12167,7 @@ func (x *HotConfig) String() string {
 func (*HotConfig) ProtoMessage() {}
 
 func (x *HotConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[125]
+	mi := &file_snakecommon_project_config_proto_msgTypes[131]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11602,7 +12180,7 @@ func (x *HotConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HotConfig.ProtoReflect.Descriptor instead.
 func (*HotConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{125}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{131}
 }
 
 func (x *HotConfig) GetMarketState() int32 {
@@ -11642,7 +12220,7 @@ type ProductConfig struct {
 func (x *ProductConfig) Reset() {
 	*x = ProductConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[126]
+		mi := &file_snakecommon_project_config_proto_msgTypes[132]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11655,7 +12233,7 @@ func (x *ProductConfig) String() string {
 func (*ProductConfig) ProtoMessage() {}
 
 func (x *ProductConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[126]
+	mi := &file_snakecommon_project_config_proto_msgTypes[132]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11668,7 +12246,7 @@ func (x *ProductConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProductConfig.ProtoReflect.Descriptor instead.
 func (*ProductConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{126}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{132}
 }
 
 func (x *ProductConfig) GetProperty() *config.Property {
@@ -11725,7 +12303,7 @@ type WeddingConfig struct {
 func (x *WeddingConfig) Reset() {
 	*x = WeddingConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[127]
+		mi := &file_snakecommon_project_config_proto_msgTypes[133]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11738,7 +12316,7 @@ func (x *WeddingConfig) String() string {
 func (*WeddingConfig) ProtoMessage() {}
 
 func (x *WeddingConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[127]
+	mi := &file_snakecommon_project_config_proto_msgTypes[133]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11751,7 +12329,7 @@ func (x *WeddingConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WeddingConfig.ProtoReflect.Descriptor instead.
 func (*WeddingConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{127}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{133}
 }
 
 func (x *WeddingConfig) GetForceDivorceNeedDiamond() int64 {
@@ -11824,7 +12402,7 @@ type WeddingTemplate struct {
 func (x *WeddingTemplate) Reset() {
 	*x = WeddingTemplate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[128]
+		mi := &file_snakecommon_project_config_proto_msgTypes[134]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11837,7 +12415,7 @@ func (x *WeddingTemplate) String() string {
 func (*WeddingTemplate) ProtoMessage() {}
 
 func (x *WeddingTemplate) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[128]
+	mi := &file_snakecommon_project_config_proto_msgTypes[134]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11850,7 +12428,7 @@ func (x *WeddingTemplate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WeddingTemplate.ProtoReflect.Descriptor instead.
 func (*WeddingTemplate) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{128}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{134}
 }
 
 func (x *WeddingTemplate) GetImgurl() string {
@@ -11893,7 +12471,7 @@ type WeddingMusic struct {
 func (x *WeddingMusic) Reset() {
 	*x = WeddingMusic{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[129]
+		mi := &file_snakecommon_project_config_proto_msgTypes[135]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11906,7 +12484,7 @@ func (x *WeddingMusic) String() string {
 func (*WeddingMusic) ProtoMessage() {}
 
 func (x *WeddingMusic) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[129]
+	mi := &file_snakecommon_project_config_proto_msgTypes[135]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11919,7 +12497,7 @@ func (x *WeddingMusic) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WeddingMusic.ProtoReflect.Descriptor instead.
 func (*WeddingMusic) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{129}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{135}
 }
 
 func (x *WeddingMusic) GetName() string {
@@ -11953,7 +12531,7 @@ type HappycoinConfig struct {
 func (x *HappycoinConfig) Reset() {
 	*x = HappycoinConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[130]
+		mi := &file_snakecommon_project_config_proto_msgTypes[136]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11966,7 +12544,7 @@ func (x *HappycoinConfig) String() string {
 func (*HappycoinConfig) ProtoMessage() {}
 
 func (x *HappycoinConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[130]
+	mi := &file_snakecommon_project_config_proto_msgTypes[136]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11979,7 +12557,7 @@ func (x *HappycoinConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HappycoinConfig.ProtoReflect.Descriptor instead.
 func (*HappycoinConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{130}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{136}
 }
 
 func (x *HappycoinConfig) GetHappycoinId() int64 {
@@ -12036,7 +12614,7 @@ type LengthFee struct {
 func (x *LengthFee) Reset() {
 	*x = LengthFee{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[131]
+		mi := &file_snakecommon_project_config_proto_msgTypes[137]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12049,7 +12627,7 @@ func (x *LengthFee) String() string {
 func (*LengthFee) ProtoMessage() {}
 
 func (x *LengthFee) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[131]
+	mi := &file_snakecommon_project_config_proto_msgTypes[137]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12062,7 +12640,7 @@ func (x *LengthFee) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LengthFee.ProtoReflect.Descriptor instead.
 func (*LengthFee) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{131}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{137}
 }
 
 func (x *LengthFee) GetLength() int64 {
@@ -12097,7 +12675,7 @@ type HappyModeRace struct {
 func (x *HappyModeRace) Reset() {
 	*x = HappyModeRace{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[132]
+		mi := &file_snakecommon_project_config_proto_msgTypes[138]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12110,7 +12688,7 @@ func (x *HappyModeRace) String() string {
 func (*HappyModeRace) ProtoMessage() {}
 
 func (x *HappyModeRace) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[132]
+	mi := &file_snakecommon_project_config_proto_msgTypes[138]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12123,7 +12701,7 @@ func (x *HappyModeRace) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HappyModeRace.ProtoReflect.Descriptor instead.
 func (*HappyModeRace) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{132}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{138}
 }
 
 func (x *HappyModeRace) GetRaceId() int64 {
@@ -12194,7 +12772,7 @@ type LowIncomeConfig struct {
 func (x *LowIncomeConfig) Reset() {
 	*x = LowIncomeConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[133]
+		mi := &file_snakecommon_project_config_proto_msgTypes[139]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12207,7 +12785,7 @@ func (x *LowIncomeConfig) String() string {
 func (*LowIncomeConfig) ProtoMessage() {}
 
 func (x *LowIncomeConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[133]
+	mi := &file_snakecommon_project_config_proto_msgTypes[139]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12220,7 +12798,7 @@ func (x *LowIncomeConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LowIncomeConfig.ProtoReflect.Descriptor instead.
 func (*LowIncomeConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{133}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{139}
 }
 
 func (x *LowIncomeConfig) GetNum() int64 {
@@ -12251,7 +12829,7 @@ type HappyModeTitleConfig struct {
 func (x *HappyModeTitleConfig) Reset() {
 	*x = HappyModeTitleConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[134]
+		mi := &file_snakecommon_project_config_proto_msgTypes[140]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12264,7 +12842,7 @@ func (x *HappyModeTitleConfig) String() string {
 func (*HappyModeTitleConfig) ProtoMessage() {}
 
 func (x *HappyModeTitleConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[134]
+	mi := &file_snakecommon_project_config_proto_msgTypes[140]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12277,7 +12855,7 @@ func (x *HappyModeTitleConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HappyModeTitleConfig.ProtoReflect.Descriptor instead.
 func (*HappyModeTitleConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{134}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{140}
 }
 
 func (x *HappyModeTitleConfig) GetStartNum() int64 {
@@ -12323,7 +12901,7 @@ type HappyModeConfig struct {
 func (x *HappyModeConfig) Reset() {
 	*x = HappyModeConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[135]
+		mi := &file_snakecommon_project_config_proto_msgTypes[141]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12336,7 +12914,7 @@ func (x *HappyModeConfig) String() string {
 func (*HappyModeConfig) ProtoMessage() {}
 
 func (x *HappyModeConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[135]
+	mi := &file_snakecommon_project_config_proto_msgTypes[141]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12349,7 +12927,7 @@ func (x *HappyModeConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HappyModeConfig.ProtoReflect.Descriptor instead.
 func (*HappyModeConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{135}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{141}
 }
 
 func (x *HappyModeConfig) GetHappycoinList() []*HappycoinConfig {
@@ -12405,7 +12983,7 @@ type StarSnakeItem struct {
 func (x *StarSnakeItem) Reset() {
 	*x = StarSnakeItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[136]
+		mi := &file_snakecommon_project_config_proto_msgTypes[142]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12418,7 +12996,7 @@ func (x *StarSnakeItem) String() string {
 func (*StarSnakeItem) ProtoMessage() {}
 
 func (x *StarSnakeItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[136]
+	mi := &file_snakecommon_project_config_proto_msgTypes[142]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12431,7 +13009,7 @@ func (x *StarSnakeItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StarSnakeItem.ProtoReflect.Descriptor instead.
 func (*StarSnakeItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{136}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{142}
 }
 
 func (x *StarSnakeItem) GetStartTime() int64 {
@@ -12498,7 +13076,7 @@ type StarSnake struct {
 func (x *StarSnake) Reset() {
 	*x = StarSnake{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[137]
+		mi := &file_snakecommon_project_config_proto_msgTypes[143]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12511,7 +13089,7 @@ func (x *StarSnake) String() string {
 func (*StarSnake) ProtoMessage() {}
 
 func (x *StarSnake) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[137]
+	mi := &file_snakecommon_project_config_proto_msgTypes[143]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12524,7 +13102,7 @@ func (x *StarSnake) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StarSnake.ProtoReflect.Descriptor instead.
 func (*StarSnake) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{137}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{143}
 }
 
 func (x *StarSnake) GetMaxRank() int32 {
@@ -12574,7 +13152,7 @@ type AiWreckNodeScoreRange struct {
 func (x *AiWreckNodeScoreRange) Reset() {
 	*x = AiWreckNodeScoreRange{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[138]
+		mi := &file_snakecommon_project_config_proto_msgTypes[144]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12587,7 +13165,7 @@ func (x *AiWreckNodeScoreRange) String() string {
 func (*AiWreckNodeScoreRange) ProtoMessage() {}
 
 func (x *AiWreckNodeScoreRange) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[138]
+	mi := &file_snakecommon_project_config_proto_msgTypes[144]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12600,7 +13178,7 @@ func (x *AiWreckNodeScoreRange) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiWreckNodeScoreRange.ProtoReflect.Descriptor instead.
 func (*AiWreckNodeScoreRange) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{138}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{144}
 }
 
 func (x *AiWreckNodeScoreRange) GetAiBodyNode() int32 {
@@ -12649,7 +13227,7 @@ type AiLevel struct {
 func (x *AiLevel) Reset() {
 	*x = AiLevel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[139]
+		mi := &file_snakecommon_project_config_proto_msgTypes[145]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12662,7 +13240,7 @@ func (x *AiLevel) String() string {
 func (*AiLevel) ProtoMessage() {}
 
 func (x *AiLevel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[139]
+	mi := &file_snakecommon_project_config_proto_msgTypes[145]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12675,7 +13253,7 @@ func (x *AiLevel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiLevel.ProtoReflect.Descriptor instead.
 func (*AiLevel) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{139}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{145}
 }
 
 func (x *AiLevel) GetLevel() int32 {
@@ -12844,7 +13422,7 @@ type AttackTime struct {
 func (x *AttackTime) Reset() {
 	*x = AttackTime{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[140]
+		mi := &file_snakecommon_project_config_proto_msgTypes[146]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12857,7 +13435,7 @@ func (x *AttackTime) String() string {
 func (*AttackTime) ProtoMessage() {}
 
 func (x *AttackTime) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[140]
+	mi := &file_snakecommon_project_config_proto_msgTypes[146]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12870,7 +13448,7 @@ func (x *AttackTime) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AttackTime.ProtoReflect.Descriptor instead.
 func (*AttackTime) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{140}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{146}
 }
 
 func (x *AttackTime) GetTime() int32 {
@@ -12899,7 +13477,7 @@ type AiLevelWeight struct {
 func (x *AiLevelWeight) Reset() {
 	*x = AiLevelWeight{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[141]
+		mi := &file_snakecommon_project_config_proto_msgTypes[147]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12912,7 +13490,7 @@ func (x *AiLevelWeight) String() string {
 func (*AiLevelWeight) ProtoMessage() {}
 
 func (x *AiLevelWeight) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[141]
+	mi := &file_snakecommon_project_config_proto_msgTypes[147]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12925,7 +13503,7 @@ func (x *AiLevelWeight) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiLevelWeight.ProtoReflect.Descriptor instead.
 func (*AiLevelWeight) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{141}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{147}
 }
 
 func (x *AiLevelWeight) GetLevel() int32 {
@@ -12958,7 +13536,7 @@ type AiLengthRange struct {
 func (x *AiLengthRange) Reset() {
 	*x = AiLengthRange{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[142]
+		mi := &file_snakecommon_project_config_proto_msgTypes[148]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -12971,7 +13549,7 @@ func (x *AiLengthRange) String() string {
 func (*AiLengthRange) ProtoMessage() {}
 
 func (x *AiLengthRange) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[142]
+	mi := &file_snakecommon_project_config_proto_msgTypes[148]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -12984,7 +13562,7 @@ func (x *AiLengthRange) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiLengthRange.ProtoReflect.Descriptor instead.
 func (*AiLengthRange) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{142}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{148}
 }
 
 func (x *AiLengthRange) GetMinLength() int64 {
@@ -13052,7 +13630,7 @@ type FloaterConfig struct {
 func (x *FloaterConfig) Reset() {
 	*x = FloaterConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[143]
+		mi := &file_snakecommon_project_config_proto_msgTypes[149]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13065,7 +13643,7 @@ func (x *FloaterConfig) String() string {
 func (*FloaterConfig) ProtoMessage() {}
 
 func (x *FloaterConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[143]
+	mi := &file_snakecommon_project_config_proto_msgTypes[149]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13078,7 +13656,7 @@ func (x *FloaterConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FloaterConfig.ProtoReflect.Descriptor instead.
 func (*FloaterConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{143}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{149}
 }
 
 func (x *FloaterConfig) GetBornLen() []int32 {
@@ -13188,7 +13766,7 @@ type AiDifficultyConfig struct {
 func (x *AiDifficultyConfig) Reset() {
 	*x = AiDifficultyConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[144]
+		mi := &file_snakecommon_project_config_proto_msgTypes[150]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13201,7 +13779,7 @@ func (x *AiDifficultyConfig) String() string {
 func (*AiDifficultyConfig) ProtoMessage() {}
 
 func (x *AiDifficultyConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[144]
+	mi := &file_snakecommon_project_config_proto_msgTypes[150]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13214,7 +13792,7 @@ func (x *AiDifficultyConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiDifficultyConfig.ProtoReflect.Descriptor instead.
 func (*AiDifficultyConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{144}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{150}
 }
 
 func (x *AiDifficultyConfig) GetLevel() int32 {
@@ -13274,7 +13852,7 @@ type AiBornPool struct {
 func (x *AiBornPool) Reset() {
 	*x = AiBornPool{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[145]
+		mi := &file_snakecommon_project_config_proto_msgTypes[151]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13287,7 +13865,7 @@ func (x *AiBornPool) String() string {
 func (*AiBornPool) ProtoMessage() {}
 
 func (x *AiBornPool) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[145]
+	mi := &file_snakecommon_project_config_proto_msgTypes[151]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13300,7 +13878,7 @@ func (x *AiBornPool) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiBornPool.ProtoReflect.Descriptor instead.
 func (*AiBornPool) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{145}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{151}
 }
 
 func (x *AiBornPool) GetId() int32 {
@@ -13352,7 +13930,7 @@ type ScorePool struct {
 func (x *ScorePool) Reset() {
 	*x = ScorePool{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[146]
+		mi := &file_snakecommon_project_config_proto_msgTypes[152]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13365,7 +13943,7 @@ func (x *ScorePool) String() string {
 func (*ScorePool) ProtoMessage() {}
 
 func (x *ScorePool) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[146]
+	mi := &file_snakecommon_project_config_proto_msgTypes[152]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13378,7 +13956,7 @@ func (x *ScorePool) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScorePool.ProtoReflect.Descriptor instead.
 func (*ScorePool) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{146}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{152}
 }
 
 func (x *ScorePool) GetMinScore() int64 {
@@ -13421,7 +13999,7 @@ type ScorePoolItem struct {
 func (x *ScorePoolItem) Reset() {
 	*x = ScorePoolItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[147]
+		mi := &file_snakecommon_project_config_proto_msgTypes[153]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13434,7 +14012,7 @@ func (x *ScorePoolItem) String() string {
 func (*ScorePoolItem) ProtoMessage() {}
 
 func (x *ScorePoolItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[147]
+	mi := &file_snakecommon_project_config_proto_msgTypes[153]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13447,7 +14025,7 @@ func (x *ScorePoolItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScorePoolItem.ProtoReflect.Descriptor instead.
 func (*ScorePoolItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{147}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{153}
 }
 
 func (x *ScorePoolItem) GetId() int32 {
@@ -13484,7 +14062,7 @@ type AiBorn struct {
 func (x *AiBorn) Reset() {
 	*x = AiBorn{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[148]
+		mi := &file_snakecommon_project_config_proto_msgTypes[154]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13497,7 +14075,7 @@ func (x *AiBorn) String() string {
 func (*AiBorn) ProtoMessage() {}
 
 func (x *AiBorn) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[148]
+	mi := &file_snakecommon_project_config_proto_msgTypes[154]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13510,7 +14088,7 @@ func (x *AiBorn) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiBorn.ProtoReflect.Descriptor instead.
 func (*AiBorn) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{148}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{154}
 }
 
 func (x *AiBorn) GetAiBornPools() []*AiBornPool {
@@ -13598,7 +14176,7 @@ type BonusTriggerCondition struct {
 func (x *BonusTriggerCondition) Reset() {
 	*x = BonusTriggerCondition{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[149]
+		mi := &file_snakecommon_project_config_proto_msgTypes[155]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13611,7 +14189,7 @@ func (x *BonusTriggerCondition) String() string {
 func (*BonusTriggerCondition) ProtoMessage() {}
 
 func (x *BonusTriggerCondition) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[149]
+	mi := &file_snakecommon_project_config_proto_msgTypes[155]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13624,7 +14202,7 @@ func (x *BonusTriggerCondition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusTriggerCondition.ProtoReflect.Descriptor instead.
 func (*BonusTriggerCondition) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{149}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{155}
 }
 
 func (x *BonusTriggerCondition) GetScoreShowProgress() int32 {
@@ -13676,7 +14254,7 @@ type BonusFood struct {
 func (x *BonusFood) Reset() {
 	*x = BonusFood{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[150]
+		mi := &file_snakecommon_project_config_proto_msgTypes[156]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13689,7 +14267,7 @@ func (x *BonusFood) String() string {
 func (*BonusFood) ProtoMessage() {}
 
 func (x *BonusFood) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[150]
+	mi := &file_snakecommon_project_config_proto_msgTypes[156]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13702,7 +14280,7 @@ func (x *BonusFood) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusFood.ProtoReflect.Descriptor instead.
 func (*BonusFood) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{150}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{156}
 }
 
 func (x *BonusFood) GetFoodType() int32 {
@@ -13748,7 +14326,7 @@ type HoleFood struct {
 func (x *HoleFood) Reset() {
 	*x = HoleFood{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[151]
+		mi := &file_snakecommon_project_config_proto_msgTypes[157]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13761,7 +14339,7 @@ func (x *HoleFood) String() string {
 func (*HoleFood) ProtoMessage() {}
 
 func (x *HoleFood) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[151]
+	mi := &file_snakecommon_project_config_proto_msgTypes[157]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13774,7 +14352,7 @@ func (x *HoleFood) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HoleFood.ProtoReflect.Descriptor instead.
 func (*HoleFood) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{151}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{157}
 }
 
 func (x *HoleFood) GetFoodList() []*BonusFood {
@@ -13824,7 +14402,7 @@ type DotFood struct {
 func (x *DotFood) Reset() {
 	*x = DotFood{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[152]
+		mi := &file_snakecommon_project_config_proto_msgTypes[158]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13837,7 +14415,7 @@ func (x *DotFood) String() string {
 func (*DotFood) ProtoMessage() {}
 
 func (x *DotFood) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[152]
+	mi := &file_snakecommon_project_config_proto_msgTypes[158]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13850,7 +14428,7 @@ func (x *DotFood) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DotFood.ProtoReflect.Descriptor instead.
 func (*DotFood) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{152}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{158}
 }
 
 func (x *DotFood) GetCount() int32 {
@@ -13880,7 +14458,7 @@ type BonusFoodLevel struct {
 func (x *BonusFoodLevel) Reset() {
 	*x = BonusFoodLevel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[153]
+		mi := &file_snakecommon_project_config_proto_msgTypes[159]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13893,7 +14471,7 @@ func (x *BonusFoodLevel) String() string {
 func (*BonusFoodLevel) ProtoMessage() {}
 
 func (x *BonusFoodLevel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[153]
+	mi := &file_snakecommon_project_config_proto_msgTypes[159]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13906,7 +14484,7 @@ func (x *BonusFoodLevel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusFoodLevel.ProtoReflect.Descriptor instead.
 func (*BonusFoodLevel) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{153}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{159}
 }
 
 func (x *BonusFoodLevel) GetLevel() int32 {
@@ -13942,7 +14520,7 @@ type BonusLevel struct {
 func (x *BonusLevel) Reset() {
 	*x = BonusLevel{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[154]
+		mi := &file_snakecommon_project_config_proto_msgTypes[160]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -13955,7 +14533,7 @@ func (x *BonusLevel) String() string {
 func (*BonusLevel) ProtoMessage() {}
 
 func (x *BonusLevel) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[154]
+	mi := &file_snakecommon_project_config_proto_msgTypes[160]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13968,7 +14546,7 @@ func (x *BonusLevel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusLevel.ProtoReflect.Descriptor instead.
 func (*BonusLevel) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{154}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{160}
 }
 
 func (x *BonusLevel) GetBonusLevel() int32 {
@@ -13998,7 +14576,7 @@ type BonusLevelSettings struct {
 func (x *BonusLevelSettings) Reset() {
 	*x = BonusLevelSettings{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[155]
+		mi := &file_snakecommon_project_config_proto_msgTypes[161]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14011,7 +14589,7 @@ func (x *BonusLevelSettings) String() string {
 func (*BonusLevelSettings) ProtoMessage() {}
 
 func (x *BonusLevelSettings) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[155]
+	mi := &file_snakecommon_project_config_proto_msgTypes[161]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14024,7 +14602,7 @@ func (x *BonusLevelSettings) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BonusLevelSettings.ProtoReflect.Descriptor instead.
 func (*BonusLevelSettings) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{155}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{161}
 }
 
 func (x *BonusLevelSettings) GetUseBonusAi() int32 {
@@ -14069,7 +14647,7 @@ type EndlessBonusNew struct {
 func (x *EndlessBonusNew) Reset() {
 	*x = EndlessBonusNew{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[156]
+		mi := &file_snakecommon_project_config_proto_msgTypes[162]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14082,7 +14660,7 @@ func (x *EndlessBonusNew) String() string {
 func (*EndlessBonusNew) ProtoMessage() {}
 
 func (x *EndlessBonusNew) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[156]
+	mi := &file_snakecommon_project_config_proto_msgTypes[162]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14095,7 +14673,7 @@ func (x *EndlessBonusNew) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EndlessBonusNew.ProtoReflect.Descriptor instead.
 func (*EndlessBonusNew) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{156}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{162}
 }
 
 func (x *EndlessBonusNew) GetOpenBonus() int32 {
@@ -14188,7 +14766,7 @@ type SpringSugarInfo struct {
 func (x *SpringSugarInfo) Reset() {
 	*x = SpringSugarInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[157]
+		mi := &file_snakecommon_project_config_proto_msgTypes[163]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14201,7 +14779,7 @@ func (x *SpringSugarInfo) String() string {
 func (*SpringSugarInfo) ProtoMessage() {}
 
 func (x *SpringSugarInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[157]
+	mi := &file_snakecommon_project_config_proto_msgTypes[163]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14214,7 +14792,7 @@ func (x *SpringSugarInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpringSugarInfo.ProtoReflect.Descriptor instead.
 func (*SpringSugarInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{157}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{163}
 }
 
 func (x *SpringSugarInfo) GetStartTime() int64 {
@@ -14254,7 +14832,7 @@ type MapBorder struct {
 func (x *MapBorder) Reset() {
 	*x = MapBorder{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[158]
+		mi := &file_snakecommon_project_config_proto_msgTypes[164]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14267,7 +14845,7 @@ func (x *MapBorder) String() string {
 func (*MapBorder) ProtoMessage() {}
 
 func (x *MapBorder) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[158]
+	mi := &file_snakecommon_project_config_proto_msgTypes[164]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14280,7 +14858,7 @@ func (x *MapBorder) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MapBorder.ProtoReflect.Descriptor instead.
 func (*MapBorder) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{158}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{164}
 }
 
 func (x *MapBorder) GetDoorOpenAnimationDuration() int32 {
@@ -14337,7 +14915,7 @@ type AiNickListItem struct {
 func (x *AiNickListItem) Reset() {
 	*x = AiNickListItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[159]
+		mi := &file_snakecommon_project_config_proto_msgTypes[165]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14350,7 +14928,7 @@ func (x *AiNickListItem) String() string {
 func (*AiNickListItem) ProtoMessage() {}
 
 func (x *AiNickListItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[159]
+	mi := &file_snakecommon_project_config_proto_msgTypes[165]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14363,7 +14941,7 @@ func (x *AiNickListItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiNickListItem.ProtoReflect.Descriptor instead.
 func (*AiNickListItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{159}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{165}
 }
 
 func (x *AiNickListItem) GetId() string {
@@ -14392,7 +14970,7 @@ type AiSkinListItem struct {
 func (x *AiSkinListItem) Reset() {
 	*x = AiSkinListItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[160]
+		mi := &file_snakecommon_project_config_proto_msgTypes[166]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14405,7 +14983,7 @@ func (x *AiSkinListItem) String() string {
 func (*AiSkinListItem) ProtoMessage() {}
 
 func (x *AiSkinListItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[160]
+	mi := &file_snakecommon_project_config_proto_msgTypes[166]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14418,7 +14996,7 @@ func (x *AiSkinListItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiSkinListItem.ProtoReflect.Descriptor instead.
 func (*AiSkinListItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{160}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{166}
 }
 
 func (x *AiSkinListItem) GetId() string {
@@ -14480,7 +15058,7 @@ type AiConfigV3 struct {
 func (x *AiConfigV3) Reset() {
 	*x = AiConfigV3{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[161]
+		mi := &file_snakecommon_project_config_proto_msgTypes[167]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14493,7 +15071,7 @@ func (x *AiConfigV3) String() string {
 func (*AiConfigV3) ProtoMessage() {}
 
 func (x *AiConfigV3) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[161]
+	mi := &file_snakecommon_project_config_proto_msgTypes[167]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14506,7 +15084,7 @@ func (x *AiConfigV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiConfigV3.ProtoReflect.Descriptor instead.
 func (*AiConfigV3) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{161}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{167}
 }
 
 func (x *AiConfigV3) GetStarSnake() *StarSnake {
@@ -14766,7 +15344,7 @@ type LimitAiConfigV3 struct {
 func (x *LimitAiConfigV3) Reset() {
 	*x = LimitAiConfigV3{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[162]
+		mi := &file_snakecommon_project_config_proto_msgTypes[168]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14779,7 +15357,7 @@ func (x *LimitAiConfigV3) String() string {
 func (*LimitAiConfigV3) ProtoMessage() {}
 
 func (x *LimitAiConfigV3) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[162]
+	mi := &file_snakecommon_project_config_proto_msgTypes[168]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14792,7 +15370,7 @@ func (x *LimitAiConfigV3) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LimitAiConfigV3.ProtoReflect.Descriptor instead.
 func (*LimitAiConfigV3) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{162}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{168}
 }
 
 func (x *LimitAiConfigV3) GetBase() *AiConfigV3 {
@@ -14827,7 +15405,7 @@ type GameConfig struct {
 func (x *GameConfig) Reset() {
 	*x = GameConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[163]
+		mi := &file_snakecommon_project_config_proto_msgTypes[169]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14840,7 +15418,7 @@ func (x *GameConfig) String() string {
 func (*GameConfig) ProtoMessage() {}
 
 func (x *GameConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[163]
+	mi := &file_snakecommon_project_config_proto_msgTypes[169]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14853,7 +15431,7 @@ func (x *GameConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameConfig.ProtoReflect.Descriptor instead.
 func (*GameConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{163}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{169}
 }
 
 func (x *GameConfig) GetBetaFlag() int64 {
@@ -14924,7 +15502,7 @@ type SystemConfig struct {
 func (x *SystemConfig) Reset() {
 	*x = SystemConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[164]
+		mi := &file_snakecommon_project_config_proto_msgTypes[170]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -14937,7 +15515,7 @@ func (x *SystemConfig) String() string {
 func (*SystemConfig) ProtoMessage() {}
 
 func (x *SystemConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[164]
+	mi := &file_snakecommon_project_config_proto_msgTypes[170]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -14950,7 +15528,7 @@ func (x *SystemConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SystemConfig.ProtoReflect.Descriptor instead.
 func (*SystemConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{164}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{170}
 }
 
 func (x *SystemConfig) GetGameConfigs() map[string]*GameConfig {
@@ -15039,7 +15617,7 @@ type RewardConfig struct {
 func (x *RewardConfig) Reset() {
 	*x = RewardConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[165]
+		mi := &file_snakecommon_project_config_proto_msgTypes[171]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15052,7 +15630,7 @@ func (x *RewardConfig) String() string {
 func (*RewardConfig) ProtoMessage() {}
 
 func (x *RewardConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[165]
+	mi := &file_snakecommon_project_config_proto_msgTypes[171]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15065,7 +15643,7 @@ func (x *RewardConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RewardConfig.ProtoReflect.Descriptor instead.
 func (*RewardConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{165}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{171}
 }
 
 func (x *RewardConfig) GetDirectlyShareSwitch() int64 {
@@ -15165,7 +15743,7 @@ type RegisterReward struct {
 func (x *RegisterReward) Reset() {
 	*x = RegisterReward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[166]
+		mi := &file_snakecommon_project_config_proto_msgTypes[172]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15178,7 +15756,7 @@ func (x *RegisterReward) String() string {
 func (*RegisterReward) ProtoMessage() {}
 
 func (x *RegisterReward) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[166]
+	mi := &file_snakecommon_project_config_proto_msgTypes[172]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15191,7 +15769,7 @@ func (x *RegisterReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterReward.ProtoReflect.Descriptor instead.
 func (*RegisterReward) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{166}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{172}
 }
 
 func (x *RegisterReward) GetBgImg() string {
@@ -15237,7 +15815,7 @@ type InterfaceExpire struct {
 func (x *InterfaceExpire) Reset() {
 	*x = InterfaceExpire{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[167]
+		mi := &file_snakecommon_project_config_proto_msgTypes[173]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15250,7 +15828,7 @@ func (x *InterfaceExpire) String() string {
 func (*InterfaceExpire) ProtoMessage() {}
 
 func (x *InterfaceExpire) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[167]
+	mi := &file_snakecommon_project_config_proto_msgTypes[173]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15263,7 +15841,7 @@ func (x *InterfaceExpire) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InterfaceExpire.ProtoReflect.Descriptor instead.
 func (*InterfaceExpire) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{167}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{173}
 }
 
 func (x *InterfaceExpire) GetActivityApi() *ActivityAPI {
@@ -15355,7 +15933,7 @@ type ActivityAPI struct {
 func (x *ActivityAPI) Reset() {
 	*x = ActivityAPI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[168]
+		mi := &file_snakecommon_project_config_proto_msgTypes[174]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15368,7 +15946,7 @@ func (x *ActivityAPI) String() string {
 func (*ActivityAPI) ProtoMessage() {}
 
 func (x *ActivityAPI) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[168]
+	mi := &file_snakecommon_project_config_proto_msgTypes[174]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15381,7 +15959,7 @@ func (x *ActivityAPI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActivityAPI.ProtoReflect.Descriptor instead.
 func (*ActivityAPI) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{168}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{174}
 }
 
 func (x *ActivityAPI) GetGetActivityList() int64 {
@@ -15410,7 +15988,7 @@ type ClanAPI struct {
 func (x *ClanAPI) Reset() {
 	*x = ClanAPI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[169]
+		mi := &file_snakecommon_project_config_proto_msgTypes[175]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15423,7 +16001,7 @@ func (x *ClanAPI) String() string {
 func (*ClanAPI) ProtoMessage() {}
 
 func (x *ClanAPI) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[169]
+	mi := &file_snakecommon_project_config_proto_msgTypes[175]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15436,7 +16014,7 @@ func (x *ClanAPI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClanAPI.ProtoReflect.Descriptor instead.
 func (*ClanAPI) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{169}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{175}
 }
 
 func (x *ClanAPI) GetGetClanInfo() int64 {
@@ -15464,7 +16042,7 @@ type ExpireConfig struct {
 func (x *ExpireConfig) Reset() {
 	*x = ExpireConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[170]
+		mi := &file_snakecommon_project_config_proto_msgTypes[176]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15477,7 +16055,7 @@ func (x *ExpireConfig) String() string {
 func (*ExpireConfig) ProtoMessage() {}
 
 func (x *ExpireConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[170]
+	mi := &file_snakecommon_project_config_proto_msgTypes[176]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15490,7 +16068,7 @@ func (x *ExpireConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExpireConfig.ProtoReflect.Descriptor instead.
 func (*ExpireConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{170}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{176}
 }
 
 func (x *ExpireConfig) GetGetBetaState() int64 {
@@ -15512,7 +16090,7 @@ type EventAPI struct {
 func (x *EventAPI) Reset() {
 	*x = EventAPI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[171]
+		mi := &file_snakecommon_project_config_proto_msgTypes[177]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15525,7 +16103,7 @@ func (x *EventAPI) String() string {
 func (*EventAPI) ProtoMessage() {}
 
 func (x *EventAPI) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[171]
+	mi := &file_snakecommon_project_config_proto_msgTypes[177]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15538,7 +16116,7 @@ func (x *EventAPI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EventAPI.ProtoReflect.Descriptor instead.
 func (*EventAPI) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{171}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{177}
 }
 
 func (x *EventAPI) GetGetEventList() int64 {
@@ -15566,7 +16144,7 @@ type FriendAPI struct {
 func (x *FriendAPI) Reset() {
 	*x = FriendAPI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[172]
+		mi := &file_snakecommon_project_config_proto_msgTypes[178]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15579,7 +16157,7 @@ func (x *FriendAPI) String() string {
 func (*FriendAPI) ProtoMessage() {}
 
 func (x *FriendAPI) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[172]
+	mi := &file_snakecommon_project_config_proto_msgTypes[178]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15592,7 +16170,7 @@ func (x *FriendAPI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FriendAPI.ProtoReflect.Descriptor instead.
 func (*FriendAPI) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{172}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{178}
 }
 
 func (x *FriendAPI) GetGetFriendList() int64 {
@@ -15613,7 +16191,7 @@ type InboxAPI struct {
 func (x *InboxAPI) Reset() {
 	*x = InboxAPI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[173]
+		mi := &file_snakecommon_project_config_proto_msgTypes[179]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15626,7 +16204,7 @@ func (x *InboxAPI) String() string {
 func (*InboxAPI) ProtoMessage() {}
 
 func (x *InboxAPI) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[173]
+	mi := &file_snakecommon_project_config_proto_msgTypes[179]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15639,7 +16217,7 @@ func (x *InboxAPI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InboxAPI.ProtoReflect.Descriptor instead.
 func (*InboxAPI) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{173}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{179}
 }
 
 func (x *InboxAPI) GetGetMailList() int64 {
@@ -15660,7 +16238,7 @@ type NearbyAPI struct {
 func (x *NearbyAPI) Reset() {
 	*x = NearbyAPI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[174]
+		mi := &file_snakecommon_project_config_proto_msgTypes[180]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15673,7 +16251,7 @@ func (x *NearbyAPI) String() string {
 func (*NearbyAPI) ProtoMessage() {}
 
 func (x *NearbyAPI) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[174]
+	mi := &file_snakecommon_project_config_proto_msgTypes[180]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15686,7 +16264,7 @@ func (x *NearbyAPI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NearbyAPI.ProtoReflect.Descriptor instead.
 func (*NearbyAPI) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{174}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{180}
 }
 
 func (x *NearbyAPI) GetGetNearby() int64 {
@@ -15709,7 +16287,7 @@ type ScoreAPI struct {
 func (x *ScoreAPI) Reset() {
 	*x = ScoreAPI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[175]
+		mi := &file_snakecommon_project_config_proto_msgTypes[181]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15722,7 +16300,7 @@ func (x *ScoreAPI) String() string {
 func (*ScoreAPI) ProtoMessage() {}
 
 func (x *ScoreAPI) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[175]
+	mi := &file_snakecommon_project_config_proto_msgTypes[181]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15735,7 +16313,7 @@ func (x *ScoreAPI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScoreAPI.ProtoReflect.Descriptor instead.
 func (*ScoreAPI) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{175}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{181}
 }
 
 func (x *ScoreAPI) GetGetPrimeInfo() int64 {
@@ -15770,7 +16348,7 @@ type ShareAPI struct {
 func (x *ShareAPI) Reset() {
 	*x = ShareAPI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[176]
+		mi := &file_snakecommon_project_config_proto_msgTypes[182]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15783,7 +16361,7 @@ func (x *ShareAPI) String() string {
 func (*ShareAPI) ProtoMessage() {}
 
 func (x *ShareAPI) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[176]
+	mi := &file_snakecommon_project_config_proto_msgTypes[182]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15796,7 +16374,7 @@ func (x *ShareAPI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShareAPI.ProtoReflect.Descriptor instead.
 func (*ShareAPI) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{176}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{182}
 }
 
 func (x *ShareAPI) GetGetShareInfo() int64 {
@@ -15823,7 +16401,7 @@ type TopListV2 struct {
 func (x *TopListV2) Reset() {
 	*x = TopListV2{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[177]
+		mi := &file_snakecommon_project_config_proto_msgTypes[183]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15836,7 +16414,7 @@ func (x *TopListV2) String() string {
 func (*TopListV2) ProtoMessage() {}
 
 func (x *TopListV2) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[177]
+	mi := &file_snakecommon_project_config_proto_msgTypes[183]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15849,7 +16427,7 @@ func (x *TopListV2) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TopListV2.ProtoReflect.Descriptor instead.
 func (*TopListV2) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{177}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{183}
 }
 
 func (x *TopListV2) GetGetClanTopList() int64 {
@@ -15912,7 +16490,7 @@ type VoiceRoomAPI struct {
 func (x *VoiceRoomAPI) Reset() {
 	*x = VoiceRoomAPI{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[178]
+		mi := &file_snakecommon_project_config_proto_msgTypes[184]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15925,7 +16503,7 @@ func (x *VoiceRoomAPI) String() string {
 func (*VoiceRoomAPI) ProtoMessage() {}
 
 func (x *VoiceRoomAPI) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[178]
+	mi := &file_snakecommon_project_config_proto_msgTypes[184]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15938,7 +16516,7 @@ func (x *VoiceRoomAPI) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VoiceRoomAPI.ProtoReflect.Descriptor instead.
 func (*VoiceRoomAPI) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{178}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{184}
 }
 
 func (x *VoiceRoomAPI) GetGetConfig() int64 {
@@ -15964,7 +16542,7 @@ type MsConfig struct {
 func (x *MsConfig) Reset() {
 	*x = MsConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[179]
+		mi := &file_snakecommon_project_config_proto_msgTypes[185]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -15977,7 +16555,7 @@ func (x *MsConfig) String() string {
 func (*MsConfig) ProtoMessage() {}
 
 func (x *MsConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[179]
+	mi := &file_snakecommon_project_config_proto_msgTypes[185]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -15990,7 +16568,7 @@ func (x *MsConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MsConfig.ProtoReflect.Descriptor instead.
 func (*MsConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{179}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{185}
 }
 
 func (x *MsConfig) GetHbRate() int64 {
@@ -16041,7 +16619,7 @@ type MsAddr struct {
 func (x *MsAddr) Reset() {
 	*x = MsAddr{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[180]
+		mi := &file_snakecommon_project_config_proto_msgTypes[186]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16054,7 +16632,7 @@ func (x *MsAddr) String() string {
 func (*MsAddr) ProtoMessage() {}
 
 func (x *MsAddr) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[180]
+	mi := &file_snakecommon_project_config_proto_msgTypes[186]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16067,7 +16645,7 @@ func (x *MsAddr) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MsAddr.ProtoReflect.Descriptor instead.
 func (*MsAddr) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{180}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{186}
 }
 
 func (x *MsAddr) GetHost() string {
@@ -16104,7 +16682,7 @@ type ProvinceConfig struct {
 func (x *ProvinceConfig) Reset() {
 	*x = ProvinceConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[181]
+		mi := &file_snakecommon_project_config_proto_msgTypes[187]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16117,7 +16695,7 @@ func (x *ProvinceConfig) String() string {
 func (*ProvinceConfig) ProtoMessage() {}
 
 func (x *ProvinceConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[181]
+	mi := &file_snakecommon_project_config_proto_msgTypes[187]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16130,7 +16708,7 @@ func (x *ProvinceConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProvinceConfig.ProtoReflect.Descriptor instead.
 func (*ProvinceConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{181}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{187}
 }
 
 func (x *ProvinceConfig) GetProvinceList() []string {
@@ -16165,7 +16743,7 @@ type ExciteModeConfig struct {
 func (x *ExciteModeConfig) Reset() {
 	*x = ExciteModeConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[182]
+		mi := &file_snakecommon_project_config_proto_msgTypes[188]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16178,7 +16756,7 @@ func (x *ExciteModeConfig) String() string {
 func (*ExciteModeConfig) ProtoMessage() {}
 
 func (x *ExciteModeConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[182]
+	mi := &file_snakecommon_project_config_proto_msgTypes[188]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16191,7 +16769,7 @@ func (x *ExciteModeConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExciteModeConfig.ProtoReflect.Descriptor instead.
 func (*ExciteModeConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{182}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{188}
 }
 
 func (x *ExciteModeConfig) GetAdHatPopup() []int64 {
@@ -16259,7 +16837,7 @@ type GamePropList struct {
 func (x *GamePropList) Reset() {
 	*x = GamePropList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[183]
+		mi := &file_snakecommon_project_config_proto_msgTypes[189]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16272,7 +16850,7 @@ func (x *GamePropList) String() string {
 func (*GamePropList) ProtoMessage() {}
 
 func (x *GamePropList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[183]
+	mi := &file_snakecommon_project_config_proto_msgTypes[189]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16285,7 +16863,7 @@ func (x *GamePropList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GamePropList.ProtoReflect.Descriptor instead.
 func (*GamePropList) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{183}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{189}
 }
 
 func (x *GamePropList) GetDesc() string {
@@ -16343,7 +16921,7 @@ type ModeLevelInfo struct {
 func (x *ModeLevelInfo) Reset() {
 	*x = ModeLevelInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[184]
+		mi := &file_snakecommon_project_config_proto_msgTypes[190]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16356,7 +16934,7 @@ func (x *ModeLevelInfo) String() string {
 func (*ModeLevelInfo) ProtoMessage() {}
 
 func (x *ModeLevelInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[184]
+	mi := &file_snakecommon_project_config_proto_msgTypes[190]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16369,7 +16947,7 @@ func (x *ModeLevelInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModeLevelInfo.ProtoReflect.Descriptor instead.
 func (*ModeLevelInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{184}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{190}
 }
 
 func (x *ModeLevelInfo) GetCostGoldcoin() int64 {
@@ -16407,7 +16985,7 @@ type ParamConfig struct {
 func (x *ParamConfig) Reset() {
 	*x = ParamConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[185]
+		mi := &file_snakecommon_project_config_proto_msgTypes[191]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16420,7 +16998,7 @@ func (x *ParamConfig) String() string {
 func (*ParamConfig) ProtoMessage() {}
 
 func (x *ParamConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[185]
+	mi := &file_snakecommon_project_config_proto_msgTypes[191]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16433,7 +17011,7 @@ func (x *ParamConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ParamConfig.ProtoReflect.Descriptor instead.
 func (*ParamConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{185}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{191}
 }
 
 func (x *ParamConfig) GetInGame() *InGame {
@@ -16478,7 +17056,7 @@ type InGame struct {
 func (x *InGame) Reset() {
 	*x = InGame{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[186]
+		mi := &file_snakecommon_project_config_proto_msgTypes[192]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16491,7 +17069,7 @@ func (x *InGame) String() string {
 func (*InGame) ProtoMessage() {}
 
 func (x *InGame) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[186]
+	mi := &file_snakecommon_project_config_proto_msgTypes[192]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16504,7 +17082,7 @@ func (x *InGame) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InGame.ProtoReflect.Descriptor instead.
 func (*InGame) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{186}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{192}
 }
 
 func (x *InGame) GetComboInterval() int64 {
@@ -16549,7 +17127,7 @@ type PropRate struct {
 func (x *PropRate) Reset() {
 	*x = PropRate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[187]
+		mi := &file_snakecommon_project_config_proto_msgTypes[193]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16562,7 +17140,7 @@ func (x *PropRate) String() string {
 func (*PropRate) ProtoMessage() {}
 
 func (x *PropRate) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[187]
+	mi := &file_snakecommon_project_config_proto_msgTypes[193]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16575,7 +17153,7 @@ func (x *PropRate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropRate.ProtoReflect.Descriptor instead.
 func (*PropRate) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{187}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{193}
 }
 
 func (x *PropRate) GetAI() int64 {
@@ -16620,7 +17198,7 @@ type Ai struct {
 func (x *Ai) Reset() {
 	*x = Ai{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[188]
+		mi := &file_snakecommon_project_config_proto_msgTypes[194]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16633,7 +17211,7 @@ func (x *Ai) String() string {
 func (*Ai) ProtoMessage() {}
 
 func (x *Ai) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[188]
+	mi := &file_snakecommon_project_config_proto_msgTypes[194]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16646,7 +17224,7 @@ func (x *Ai) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Ai.ProtoReflect.Descriptor instead.
 func (*Ai) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{188}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{194}
 }
 
 func (x *Ai) GetK() float64 {
@@ -16689,7 +17267,7 @@ type Map struct {
 func (x *Map) Reset() {
 	*x = Map{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[189]
+		mi := &file_snakecommon_project_config_proto_msgTypes[195]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16702,7 +17280,7 @@ func (x *Map) String() string {
 func (*Map) ProtoMessage() {}
 
 func (x *Map) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[189]
+	mi := &file_snakecommon_project_config_proto_msgTypes[195]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16715,7 +17293,7 @@ func (x *Map) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Map.ProtoReflect.Descriptor instead.
 func (*Map) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{189}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{195}
 }
 
 func (x *Map) GetCycleTime() int64 {
@@ -16743,7 +17321,7 @@ type Stone struct {
 func (x *Stone) Reset() {
 	*x = Stone{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[190]
+		mi := &file_snakecommon_project_config_proto_msgTypes[196]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16756,7 +17334,7 @@ func (x *Stone) String() string {
 func (*Stone) ProtoMessage() {}
 
 func (x *Stone) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[190]
+	mi := &file_snakecommon_project_config_proto_msgTypes[196]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16769,7 +17347,7 @@ func (x *Stone) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Stone.ProtoReflect.Descriptor instead.
 func (*Stone) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{190}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{196}
 }
 
 func (x *Stone) GetRate() float64 {
@@ -16792,7 +17370,7 @@ type RateConfig struct {
 func (x *RateConfig) Reset() {
 	*x = RateConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[191]
+		mi := &file_snakecommon_project_config_proto_msgTypes[197]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16805,7 +17383,7 @@ func (x *RateConfig) String() string {
 func (*RateConfig) ProtoMessage() {}
 
 func (x *RateConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[191]
+	mi := &file_snakecommon_project_config_proto_msgTypes[197]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16818,7 +17396,7 @@ func (x *RateConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RateConfig.ProtoReflect.Descriptor instead.
 func (*RateConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{191}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{197}
 }
 
 func (x *RateConfig) GetAI() *Ai {
@@ -16867,7 +17445,7 @@ type ModeGameConfig struct {
 func (x *ModeGameConfig) Reset() {
 	*x = ModeGameConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[192]
+		mi := &file_snakecommon_project_config_proto_msgTypes[198]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -16880,7 +17458,7 @@ func (x *ModeGameConfig) String() string {
 func (*ModeGameConfig) ProtoMessage() {}
 
 func (x *ModeGameConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[192]
+	mi := &file_snakecommon_project_config_proto_msgTypes[198]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -16893,7 +17471,7 @@ func (x *ModeGameConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ModeGameConfig.ProtoReflect.Descriptor instead.
 func (*ModeGameConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{192}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{198}
 }
 
 func (x *ModeGameConfig) GetAiLevelList() []*AiLevelList {
@@ -17021,7 +17599,7 @@ type AiLevelList struct {
 func (x *AiLevelList) Reset() {
 	*x = AiLevelList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[193]
+		mi := &file_snakecommon_project_config_proto_msgTypes[199]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17034,7 +17612,7 @@ func (x *AiLevelList) String() string {
 func (*AiLevelList) ProtoMessage() {}
 
 func (x *AiLevelList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[193]
+	mi := &file_snakecommon_project_config_proto_msgTypes[199]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17047,7 +17625,7 @@ func (x *AiLevelList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiLevelList.ProtoReflect.Descriptor instead.
 func (*AiLevelList) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{193}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{199}
 }
 
 func (x *AiLevelList) GetBrainAttackChosenPerFrameRate() float64 {
@@ -17132,7 +17710,7 @@ type BrainAttackTime struct {
 func (x *BrainAttackTime) Reset() {
 	*x = BrainAttackTime{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[194]
+		mi := &file_snakecommon_project_config_proto_msgTypes[200]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17145,7 +17723,7 @@ func (x *BrainAttackTime) String() string {
 func (*BrainAttackTime) ProtoMessage() {}
 
 func (x *BrainAttackTime) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[194]
+	mi := &file_snakecommon_project_config_proto_msgTypes[200]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17158,7 +17736,7 @@ func (x *BrainAttackTime) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BrainAttackTime.ProtoReflect.Descriptor instead.
 func (*BrainAttackTime) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{194}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{200}
 }
 
 func (x *BrainAttackTime) GetTime() int64 {
@@ -17190,7 +17768,7 @@ type SelfElectricityConfig struct {
 func (x *SelfElectricityConfig) Reset() {
 	*x = SelfElectricityConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[195]
+		mi := &file_snakecommon_project_config_proto_msgTypes[201]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17203,7 +17781,7 @@ func (x *SelfElectricityConfig) String() string {
 func (*SelfElectricityConfig) ProtoMessage() {}
 
 func (x *SelfElectricityConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[195]
+	mi := &file_snakecommon_project_config_proto_msgTypes[201]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17216,7 +17794,7 @@ func (x *SelfElectricityConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelfElectricityConfig.ProtoReflect.Descriptor instead.
 func (*SelfElectricityConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{195}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{201}
 }
 
 func (x *SelfElectricityConfig) GetElectricityCdTime() int64 {
@@ -17266,7 +17844,7 @@ type ShockConfig struct {
 func (x *ShockConfig) Reset() {
 	*x = ShockConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[196]
+		mi := &file_snakecommon_project_config_proto_msgTypes[202]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17279,7 +17857,7 @@ func (x *ShockConfig) String() string {
 func (*ShockConfig) ProtoMessage() {}
 
 func (x *ShockConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[196]
+	mi := &file_snakecommon_project_config_proto_msgTypes[202]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17292,7 +17870,7 @@ func (x *ShockConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShockConfig.ProtoReflect.Descriptor instead.
 func (*ShockConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{196}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{202}
 }
 
 func (x *ShockConfig) GetShockExploreMaxRadius() float64 {
@@ -17326,7 +17904,7 @@ type AiTypeList struct {
 func (x *AiTypeList) Reset() {
 	*x = AiTypeList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[197]
+		mi := &file_snakecommon_project_config_proto_msgTypes[203]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17339,7 +17917,7 @@ func (x *AiTypeList) String() string {
 func (*AiTypeList) ProtoMessage() {}
 
 func (x *AiTypeList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[197]
+	mi := &file_snakecommon_project_config_proto_msgTypes[203]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17352,7 +17930,7 @@ func (x *AiTypeList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiTypeList.ProtoReflect.Descriptor instead.
 func (*AiTypeList) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{197}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{203}
 }
 
 func (x *AiTypeList) GetAiCount() int64 {
@@ -17419,7 +17997,7 @@ type ElectricityConfig struct {
 func (x *ElectricityConfig) Reset() {
 	*x = ElectricityConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[198]
+		mi := &file_snakecommon_project_config_proto_msgTypes[204]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17432,7 +18010,7 @@ func (x *ElectricityConfig) String() string {
 func (*ElectricityConfig) ProtoMessage() {}
 
 func (x *ElectricityConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[198]
+	mi := &file_snakecommon_project_config_proto_msgTypes[204]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17445,7 +18023,7 @@ func (x *ElectricityConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ElectricityConfig.ProtoReflect.Descriptor instead.
 func (*ElectricityConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{198}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{204}
 }
 
 func (x *ElectricityConfig) GetElectricityCdTime() int64 {
@@ -17502,7 +18080,7 @@ type MissileConfig struct {
 func (x *MissileConfig) Reset() {
 	*x = MissileConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[199]
+		mi := &file_snakecommon_project_config_proto_msgTypes[205]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17515,7 +18093,7 @@ func (x *MissileConfig) String() string {
 func (*MissileConfig) ProtoMessage() {}
 
 func (x *MissileConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[199]
+	mi := &file_snakecommon_project_config_proto_msgTypes[205]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17528,7 +18106,7 @@ func (x *MissileConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MissileConfig.ProtoReflect.Descriptor instead.
 func (*MissileConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{199}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{205}
 }
 
 func (x *MissileConfig) GetMissileAiDetectDistance() float64 {
@@ -17607,7 +18185,7 @@ type AiConfig struct {
 func (x *AiConfig) Reset() {
 	*x = AiConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[200]
+		mi := &file_snakecommon_project_config_proto_msgTypes[206]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17620,7 +18198,7 @@ func (x *AiConfig) String() string {
 func (*AiConfig) ProtoMessage() {}
 
 func (x *AiConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[200]
+	mi := &file_snakecommon_project_config_proto_msgTypes[206]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17633,7 +18211,7 @@ func (x *AiConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AiConfig.ProtoReflect.Descriptor instead.
 func (*AiConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{200}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{206}
 }
 
 func (x *AiConfig) GetAiTypeList() []*AiTypeList {
@@ -17671,7 +18249,7 @@ type PropBornInfos struct {
 func (x *PropBornInfos) Reset() {
 	*x = PropBornInfos{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[201]
+		mi := &file_snakecommon_project_config_proto_msgTypes[207]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17684,7 +18262,7 @@ func (x *PropBornInfos) String() string {
 func (*PropBornInfos) ProtoMessage() {}
 
 func (x *PropBornInfos) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[201]
+	mi := &file_snakecommon_project_config_proto_msgTypes[207]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17697,7 +18275,7 @@ func (x *PropBornInfos) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropBornInfos.ProtoReflect.Descriptor instead.
 func (*PropBornInfos) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{201}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{207}
 }
 
 func (x *PropBornInfos) GetPropBornTime() int64 {
@@ -17748,7 +18326,7 @@ type PropWeightList struct {
 func (x *PropWeightList) Reset() {
 	*x = PropWeightList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[202]
+		mi := &file_snakecommon_project_config_proto_msgTypes[208]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17761,7 +18339,7 @@ func (x *PropWeightList) String() string {
 func (*PropWeightList) ProtoMessage() {}
 
 func (x *PropWeightList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[202]
+	mi := &file_snakecommon_project_config_proto_msgTypes[208]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17774,7 +18352,7 @@ func (x *PropWeightList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropWeightList.ProtoReflect.Descriptor instead.
 func (*PropWeightList) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{202}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{208}
 }
 
 func (x *PropWeightList) GetPropWeightBattery() int64 {
@@ -17860,7 +18438,7 @@ type PropConfig struct {
 func (x *PropConfig) Reset() {
 	*x = PropConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[203]
+		mi := &file_snakecommon_project_config_proto_msgTypes[209]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17873,7 +18451,7 @@ func (x *PropConfig) String() string {
 func (*PropConfig) ProtoMessage() {}
 
 func (x *PropConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[203]
+	mi := &file_snakecommon_project_config_proto_msgTypes[209]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17886,7 +18464,7 @@ func (x *PropConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PropConfig.ProtoReflect.Descriptor instead.
 func (*PropConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{203}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{209}
 }
 
 func (x *PropConfig) GetPropBornInfos() []*PropBornInfos {
@@ -17926,7 +18504,7 @@ type StageConfigs struct {
 func (x *StageConfigs) Reset() {
 	*x = StageConfigs{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[204]
+		mi := &file_snakecommon_project_config_proto_msgTypes[210]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -17939,7 +18517,7 @@ func (x *StageConfigs) String() string {
 func (*StageConfigs) ProtoMessage() {}
 
 func (x *StageConfigs) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[204]
+	mi := &file_snakecommon_project_config_proto_msgTypes[210]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -17952,7 +18530,7 @@ func (x *StageConfigs) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StageConfigs.ProtoReflect.Descriptor instead.
 func (*StageConfigs) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{204}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{210}
 }
 
 func (x *StageConfigs) GetAiConfig() *AiConfig {
@@ -18012,7 +18590,7 @@ type Emulator struct {
 func (x *Emulator) Reset() {
 	*x = Emulator{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[205]
+		mi := &file_snakecommon_project_config_proto_msgTypes[211]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18025,7 +18603,7 @@ func (x *Emulator) String() string {
 func (*Emulator) ProtoMessage() {}
 
 func (x *Emulator) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[205]
+	mi := &file_snakecommon_project_config_proto_msgTypes[211]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18038,7 +18616,7 @@ func (x *Emulator) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Emulator.ProtoReflect.Descriptor instead.
 func (*Emulator) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{205}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{211}
 }
 
 func (x *Emulator) GetAppCheck() []*AppCheck {
@@ -18081,7 +18659,7 @@ type AppCheck struct {
 func (x *AppCheck) Reset() {
 	*x = AppCheck{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[206]
+		mi := &file_snakecommon_project_config_proto_msgTypes[212]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18094,7 +18672,7 @@ func (x *AppCheck) String() string {
 func (*AppCheck) ProtoMessage() {}
 
 func (x *AppCheck) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[206]
+	mi := &file_snakecommon_project_config_proto_msgTypes[212]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18107,7 +18685,7 @@ func (x *AppCheck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AppCheck.ProtoReflect.Descriptor instead.
 func (*AppCheck) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{206}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{212}
 }
 
 func (x *AppCheck) GetEmulatorType() string {
@@ -18136,7 +18714,7 @@ type CheatAppCheck struct {
 func (x *CheatAppCheck) Reset() {
 	*x = CheatAppCheck{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[207]
+		mi := &file_snakecommon_project_config_proto_msgTypes[213]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18149,7 +18727,7 @@ func (x *CheatAppCheck) String() string {
 func (*CheatAppCheck) ProtoMessage() {}
 
 func (x *CheatAppCheck) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[207]
+	mi := &file_snakecommon_project_config_proto_msgTypes[213]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18162,7 +18740,7 @@ func (x *CheatAppCheck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheatAppCheck.ProtoReflect.Descriptor instead.
 func (*CheatAppCheck) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{207}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{213}
 }
 
 func (x *CheatAppCheck) GetCheatType() string {
@@ -18192,7 +18770,7 @@ type ShellCheck struct {
 func (x *ShellCheck) Reset() {
 	*x = ShellCheck{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[208]
+		mi := &file_snakecommon_project_config_proto_msgTypes[214]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18205,7 +18783,7 @@ func (x *ShellCheck) String() string {
 func (*ShellCheck) ProtoMessage() {}
 
 func (x *ShellCheck) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[208]
+	mi := &file_snakecommon_project_config_proto_msgTypes[214]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18218,7 +18796,7 @@ func (x *ShellCheck) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShellCheck.ProtoReflect.Descriptor instead.
 func (*ShellCheck) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{208}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{214}
 }
 
 func (x *ShellCheck) GetCmd() string {
@@ -18254,7 +18832,7 @@ type LittleGame struct {
 func (x *LittleGame) Reset() {
 	*x = LittleGame{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[209]
+		mi := &file_snakecommon_project_config_proto_msgTypes[215]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18267,7 +18845,7 @@ func (x *LittleGame) String() string {
 func (*LittleGame) ProtoMessage() {}
 
 func (x *LittleGame) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[209]
+	mi := &file_snakecommon_project_config_proto_msgTypes[215]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18280,7 +18858,7 @@ func (x *LittleGame) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LittleGame.ProtoReflect.Descriptor instead.
 func (*LittleGame) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{209}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{215}
 }
 
 func (x *LittleGame) GetLittleGames() map[string]*LittleGameSrc {
@@ -18301,7 +18879,7 @@ type LittleGameSrc struct {
 func (x *LittleGameSrc) Reset() {
 	*x = LittleGameSrc{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[210]
+		mi := &file_snakecommon_project_config_proto_msgTypes[216]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18314,7 +18892,7 @@ func (x *LittleGameSrc) String() string {
 func (*LittleGameSrc) ProtoMessage() {}
 
 func (x *LittleGameSrc) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[210]
+	mi := &file_snakecommon_project_config_proto_msgTypes[216]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18327,7 +18905,7 @@ func (x *LittleGameSrc) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LittleGameSrc.ProtoReflect.Descriptor instead.
 func (*LittleGameSrc) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{210}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{216}
 }
 
 func (x *LittleGameSrc) GetItems() []*LittleGameSrcItem {
@@ -18354,7 +18932,7 @@ type LittleGameSrcItem struct {
 func (x *LittleGameSrcItem) Reset() {
 	*x = LittleGameSrcItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[211]
+		mi := &file_snakecommon_project_config_proto_msgTypes[217]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18367,7 +18945,7 @@ func (x *LittleGameSrcItem) String() string {
 func (*LittleGameSrcItem) ProtoMessage() {}
 
 func (x *LittleGameSrcItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[211]
+	mi := &file_snakecommon_project_config_proto_msgTypes[217]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18380,7 +18958,7 @@ func (x *LittleGameSrcItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LittleGameSrcItem.ProtoReflect.Descriptor instead.
 func (*LittleGameSrcItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{211}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{217}
 }
 
 func (x *LittleGameSrcItem) GetGameId() int64 {
@@ -18444,7 +19022,7 @@ type ReviewMarket struct {
 func (x *ReviewMarket) Reset() {
 	*x = ReviewMarket{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[212]
+		mi := &file_snakecommon_project_config_proto_msgTypes[218]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18457,7 +19035,7 @@ func (x *ReviewMarket) String() string {
 func (*ReviewMarket) ProtoMessage() {}
 
 func (x *ReviewMarket) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[212]
+	mi := &file_snakecommon_project_config_proto_msgTypes[218]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18470,7 +19048,7 @@ func (x *ReviewMarket) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReviewMarket.ProtoReflect.Descriptor instead.
 func (*ReviewMarket) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{212}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{218}
 }
 
 func (x *ReviewMarket) GetReviewMarket() map[string]string {
@@ -18492,7 +19070,7 @@ type LittleGameUiConf struct {
 func (x *LittleGameUiConf) Reset() {
 	*x = LittleGameUiConf{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[213]
+		mi := &file_snakecommon_project_config_proto_msgTypes[219]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18505,7 +19083,7 @@ func (x *LittleGameUiConf) String() string {
 func (*LittleGameUiConf) ProtoMessage() {}
 
 func (x *LittleGameUiConf) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[213]
+	mi := &file_snakecommon_project_config_proto_msgTypes[219]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18518,7 +19096,7 @@ func (x *LittleGameUiConf) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LittleGameUiConf.ProtoReflect.Descriptor instead.
 func (*LittleGameUiConf) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{213}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{219}
 }
 
 func (x *LittleGameUiConf) GetConfig() map[string]*LittleGameUi {
@@ -18542,7 +19120,7 @@ type LittleGameUi struct {
 func (x *LittleGameUi) Reset() {
 	*x = LittleGameUi{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[214]
+		mi := &file_snakecommon_project_config_proto_msgTypes[220]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18555,7 +19133,7 @@ func (x *LittleGameUi) String() string {
 func (*LittleGameUi) ProtoMessage() {}
 
 func (x *LittleGameUi) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[214]
+	mi := &file_snakecommon_project_config_proto_msgTypes[220]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18568,7 +19146,7 @@ func (x *LittleGameUi) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LittleGameUi.ProtoReflect.Descriptor instead.
 func (*LittleGameUi) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{214}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{220}
 }
 
 func (x *LittleGameUi) GetGameList() []*GameList {
@@ -18615,7 +19193,7 @@ type GameList struct {
 func (x *GameList) Reset() {
 	*x = GameList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[215]
+		mi := &file_snakecommon_project_config_proto_msgTypes[221]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18628,7 +19206,7 @@ func (x *GameList) String() string {
 func (*GameList) ProtoMessage() {}
 
 func (x *GameList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[215]
+	mi := &file_snakecommon_project_config_proto_msgTypes[221]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18641,7 +19219,7 @@ func (x *GameList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GameList.ProtoReflect.Descriptor instead.
 func (*GameList) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{215}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{221}
 }
 
 func (x *GameList) GetGameCornerUrl() string {
@@ -18706,7 +19284,7 @@ type ScoreInfoConfig struct {
 func (x *ScoreInfoConfig) Reset() {
 	*x = ScoreInfoConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[216]
+		mi := &file_snakecommon_project_config_proto_msgTypes[222]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18719,7 +19297,7 @@ func (x *ScoreInfoConfig) String() string {
 func (*ScoreInfoConfig) ProtoMessage() {}
 
 func (x *ScoreInfoConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[216]
+	mi := &file_snakecommon_project_config_proto_msgTypes[222]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18732,7 +19310,7 @@ func (x *ScoreInfoConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ScoreInfoConfig.ProtoReflect.Descriptor instead.
 func (*ScoreInfoConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{216}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{222}
 }
 
 func (x *ScoreInfoConfig) GetQualifyingDisplayScoreRule() *QualifyingDisplayScoreConfig {
@@ -18814,7 +19392,7 @@ type QualifyingDisplayScoreConfig struct {
 func (x *QualifyingDisplayScoreConfig) Reset() {
 	*x = QualifyingDisplayScoreConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[217]
+		mi := &file_snakecommon_project_config_proto_msgTypes[223]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18827,7 +19405,7 @@ func (x *QualifyingDisplayScoreConfig) String() string {
 func (*QualifyingDisplayScoreConfig) ProtoMessage() {}
 
 func (x *QualifyingDisplayScoreConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[217]
+	mi := &file_snakecommon_project_config_proto_msgTypes[223]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18840,7 +19418,7 @@ func (x *QualifyingDisplayScoreConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use QualifyingDisplayScoreConfig.ProtoReflect.Descriptor instead.
 func (*QualifyingDisplayScoreConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{217}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{223}
 }
 
 func (x *QualifyingDisplayScoreConfig) GetLengthConfig() []*DisplayScoreCalcConfig {
@@ -18898,7 +19476,7 @@ type SnakeCoinConfig struct {
 func (x *SnakeCoinConfig) Reset() {
 	*x = SnakeCoinConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[218]
+		mi := &file_snakecommon_project_config_proto_msgTypes[224]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18911,7 +19489,7 @@ func (x *SnakeCoinConfig) String() string {
 func (*SnakeCoinConfig) ProtoMessage() {}
 
 func (x *SnakeCoinConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[218]
+	mi := &file_snakecommon_project_config_proto_msgTypes[224]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18924,7 +19502,7 @@ func (x *SnakeCoinConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SnakeCoinConfig.ProtoReflect.Descriptor instead.
 func (*SnakeCoinConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{218}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{224}
 }
 
 func (x *SnakeCoinConfig) GetTeamRank() int64 {
@@ -18961,7 +19539,7 @@ type EscapePointRule struct {
 func (x *EscapePointRule) Reset() {
 	*x = EscapePointRule{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[219]
+		mi := &file_snakecommon_project_config_proto_msgTypes[225]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -18974,7 +19552,7 @@ func (x *EscapePointRule) String() string {
 func (*EscapePointRule) ProtoMessage() {}
 
 func (x *EscapePointRule) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[219]
+	mi := &file_snakecommon_project_config_proto_msgTypes[225]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -18987,7 +19565,7 @@ func (x *EscapePointRule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EscapePointRule.ProtoReflect.Descriptor instead.
 func (*EscapePointRule) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{219}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{225}
 }
 
 func (x *EscapePointRule) GetRankPoint() []*KVInt {
@@ -19023,7 +19601,7 @@ type KVInt struct {
 func (x *KVInt) Reset() {
 	*x = KVInt{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[220]
+		mi := &file_snakecommon_project_config_proto_msgTypes[226]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19036,7 +19614,7 @@ func (x *KVInt) String() string {
 func (*KVInt) ProtoMessage() {}
 
 func (x *KVInt) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[220]
+	mi := &file_snakecommon_project_config_proto_msgTypes[226]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19049,7 +19627,7 @@ func (x *KVInt) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KVInt.ProtoReflect.Descriptor instead.
 func (*KVInt) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{220}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{226}
 }
 
 func (x *KVInt) GetKey() int64 {
@@ -19079,7 +19657,7 @@ type DisplayScoreCalcConfig struct {
 func (x *DisplayScoreCalcConfig) Reset() {
 	*x = DisplayScoreCalcConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[221]
+		mi := &file_snakecommon_project_config_proto_msgTypes[227]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19092,7 +19670,7 @@ func (x *DisplayScoreCalcConfig) String() string {
 func (*DisplayScoreCalcConfig) ProtoMessage() {}
 
 func (x *DisplayScoreCalcConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[221]
+	mi := &file_snakecommon_project_config_proto_msgTypes[227]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19105,7 +19683,7 @@ func (x *DisplayScoreCalcConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DisplayScoreCalcConfig.ProtoReflect.Descriptor instead.
 func (*DisplayScoreCalcConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{221}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{227}
 }
 
 func (x *DisplayScoreCalcConfig) GetLengthStart() int64 {
@@ -19142,7 +19720,7 @@ type SeasonNotifyConfig struct {
 func (x *SeasonNotifyConfig) Reset() {
 	*x = SeasonNotifyConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[222]
+		mi := &file_snakecommon_project_config_proto_msgTypes[228]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19155,7 +19733,7 @@ func (x *SeasonNotifyConfig) String() string {
 func (*SeasonNotifyConfig) ProtoMessage() {}
 
 func (x *SeasonNotifyConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[222]
+	mi := &file_snakecommon_project_config_proto_msgTypes[228]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19168,7 +19746,7 @@ func (x *SeasonNotifyConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SeasonNotifyConfig.ProtoReflect.Descriptor instead.
 func (*SeasonNotifyConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{222}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{228}
 }
 
 func (x *SeasonNotifyConfig) GetBottom() string {
@@ -19206,7 +19784,7 @@ type SingleDoubleSnakeCoin struct {
 func (x *SingleDoubleSnakeCoin) Reset() {
 	*x = SingleDoubleSnakeCoin{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[223]
+		mi := &file_snakecommon_project_config_proto_msgTypes[229]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19219,7 +19797,7 @@ func (x *SingleDoubleSnakeCoin) String() string {
 func (*SingleDoubleSnakeCoin) ProtoMessage() {}
 
 func (x *SingleDoubleSnakeCoin) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[223]
+	mi := &file_snakecommon_project_config_proto_msgTypes[229]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19232,7 +19810,7 @@ func (x *SingleDoubleSnakeCoin) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SingleDoubleSnakeCoin.ProtoReflect.Descriptor instead.
 func (*SingleDoubleSnakeCoin) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{223}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{229}
 }
 
 func (x *SingleDoubleSnakeCoin) GetLengthStart() int64 {
@@ -19275,7 +19853,7 @@ type SnakeCoinAdCalcConfig struct {
 func (x *SnakeCoinAdCalcConfig) Reset() {
 	*x = SnakeCoinAdCalcConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[224]
+		mi := &file_snakecommon_project_config_proto_msgTypes[230]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19288,7 +19866,7 @@ func (x *SnakeCoinAdCalcConfig) String() string {
 func (*SnakeCoinAdCalcConfig) ProtoMessage() {}
 
 func (x *SnakeCoinAdCalcConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[224]
+	mi := &file_snakecommon_project_config_proto_msgTypes[230]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19301,7 +19879,7 @@ func (x *SnakeCoinAdCalcConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SnakeCoinAdCalcConfig.ProtoReflect.Descriptor instead.
 func (*SnakeCoinAdCalcConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{224}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{230}
 }
 
 func (x *SnakeCoinAdCalcConfig) GetRate() float64 {
@@ -19332,7 +19910,7 @@ type SnakeCoinCalcConfig struct {
 func (x *SnakeCoinCalcConfig) Reset() {
 	*x = SnakeCoinCalcConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[225]
+		mi := &file_snakecommon_project_config_proto_msgTypes[231]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19345,7 +19923,7 @@ func (x *SnakeCoinCalcConfig) String() string {
 func (*SnakeCoinCalcConfig) ProtoMessage() {}
 
 func (x *SnakeCoinCalcConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[225]
+	mi := &file_snakecommon_project_config_proto_msgTypes[231]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19358,7 +19936,7 @@ func (x *SnakeCoinCalcConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SnakeCoinCalcConfig.ProtoReflect.Descriptor instead.
 func (*SnakeCoinCalcConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{225}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{231}
 }
 
 func (x *SnakeCoinCalcConfig) GetLengthStart() int64 {
@@ -19403,7 +19981,7 @@ type AndroidMarket struct {
 func (x *AndroidMarket) Reset() {
 	*x = AndroidMarket{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[226]
+		mi := &file_snakecommon_project_config_proto_msgTypes[232]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19416,7 +19994,7 @@ func (x *AndroidMarket) String() string {
 func (*AndroidMarket) ProtoMessage() {}
 
 func (x *AndroidMarket) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[226]
+	mi := &file_snakecommon_project_config_proto_msgTypes[232]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19429,7 +20007,7 @@ func (x *AndroidMarket) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AndroidMarket.ProtoReflect.Descriptor instead.
 func (*AndroidMarket) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{226}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{232}
 }
 
 func (x *AndroidMarket) GetOfficialMarket() []string {
@@ -19476,7 +20054,7 @@ type SimulConfig struct {
 func (x *SimulConfig) Reset() {
 	*x = SimulConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[227]
+		mi := &file_snakecommon_project_config_proto_msgTypes[233]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19489,7 +20067,7 @@ func (x *SimulConfig) String() string {
 func (*SimulConfig) ProtoMessage() {}
 
 func (x *SimulConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[227]
+	mi := &file_snakecommon_project_config_proto_msgTypes[233]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19502,7 +20080,7 @@ func (x *SimulConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SimulConfig.ProtoReflect.Descriptor instead.
 func (*SimulConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{227}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{233}
 }
 
 func (x *SimulConfig) GetDefaultBuildingList() []string {
@@ -19601,7 +20179,7 @@ type SimulRewardConfig struct {
 func (x *SimulRewardConfig) Reset() {
 	*x = SimulRewardConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[228]
+		mi := &file_snakecommon_project_config_proto_msgTypes[234]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19614,7 +20192,7 @@ func (x *SimulRewardConfig) String() string {
 func (*SimulRewardConfig) ProtoMessage() {}
 
 func (x *SimulRewardConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[228]
+	mi := &file_snakecommon_project_config_proto_msgTypes[234]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19627,7 +20205,7 @@ func (x *SimulRewardConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SimulRewardConfig.ProtoReflect.Descriptor instead.
 func (*SimulRewardConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{228}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{234}
 }
 
 func (x *SimulRewardConfig) GetRewardCondition() *SimulRewardCondition {
@@ -19655,7 +20233,7 @@ type SimulRewardCondition struct {
 func (x *SimulRewardCondition) Reset() {
 	*x = SimulRewardCondition{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[229]
+		mi := &file_snakecommon_project_config_proto_msgTypes[235]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19668,7 +20246,7 @@ func (x *SimulRewardCondition) String() string {
 func (*SimulRewardCondition) ProtoMessage() {}
 
 func (x *SimulRewardCondition) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[229]
+	mi := &file_snakecommon_project_config_proto_msgTypes[235]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19681,7 +20259,7 @@ func (x *SimulRewardCondition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SimulRewardCondition.ProtoReflect.Descriptor instead.
 func (*SimulRewardCondition) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{229}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{235}
 }
 
 func (x *SimulRewardCondition) GetLikes() int64 {
@@ -19704,7 +20282,7 @@ type SimulRewardMail struct {
 func (x *SimulRewardMail) Reset() {
 	*x = SimulRewardMail{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[230]
+		mi := &file_snakecommon_project_config_proto_msgTypes[236]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19717,7 +20295,7 @@ func (x *SimulRewardMail) String() string {
 func (*SimulRewardMail) ProtoMessage() {}
 
 func (x *SimulRewardMail) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[230]
+	mi := &file_snakecommon_project_config_proto_msgTypes[236]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19730,7 +20308,7 @@ func (x *SimulRewardMail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SimulRewardMail.ProtoReflect.Descriptor instead.
 func (*SimulRewardMail) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{230}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{236}
 }
 
 func (x *SimulRewardMail) GetTitle() string {
@@ -19772,7 +20350,7 @@ type SimulTaskItem struct {
 func (x *SimulTaskItem) Reset() {
 	*x = SimulTaskItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[231]
+		mi := &file_snakecommon_project_config_proto_msgTypes[237]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19785,7 +20363,7 @@ func (x *SimulTaskItem) String() string {
 func (*SimulTaskItem) ProtoMessage() {}
 
 func (x *SimulTaskItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[231]
+	mi := &file_snakecommon_project_config_proto_msgTypes[237]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19798,7 +20376,7 @@ func (x *SimulTaskItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SimulTaskItem.ProtoReflect.Descriptor instead.
 func (*SimulTaskItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{231}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{237}
 }
 
 func (x *SimulTaskItem) GetTitle() string {
@@ -19869,7 +20447,7 @@ type SimulReward struct {
 func (x *SimulReward) Reset() {
 	*x = SimulReward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[232]
+		mi := &file_snakecommon_project_config_proto_msgTypes[238]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19882,7 +20460,7 @@ func (x *SimulReward) String() string {
 func (*SimulReward) ProtoMessage() {}
 
 func (x *SimulReward) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[232]
+	mi := &file_snakecommon_project_config_proto_msgTypes[238]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19895,7 +20473,7 @@ func (x *SimulReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SimulReward.ProtoReflect.Descriptor instead.
 func (*SimulReward) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{232}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{238}
 }
 
 func (x *SimulReward) GetType() int64 {
@@ -19924,7 +20502,7 @@ type BuildingSet struct {
 func (x *BuildingSet) Reset() {
 	*x = BuildingSet{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[233]
+		mi := &file_snakecommon_project_config_proto_msgTypes[239]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19937,7 +20515,7 @@ func (x *BuildingSet) String() string {
 func (*BuildingSet) ProtoMessage() {}
 
 func (x *BuildingSet) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[233]
+	mi := &file_snakecommon_project_config_proto_msgTypes[239]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -19950,7 +20528,7 @@ func (x *BuildingSet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BuildingSet.ProtoReflect.Descriptor instead.
 func (*BuildingSet) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{233}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{239}
 }
 
 func (x *BuildingSet) GetMaxLevel() int64 {
@@ -19978,7 +20556,7 @@ type Detail struct {
 func (x *Detail) Reset() {
 	*x = Detail{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[234]
+		mi := &file_snakecommon_project_config_proto_msgTypes[240]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -19991,7 +20569,7 @@ func (x *Detail) String() string {
 func (*Detail) ProtoMessage() {}
 
 func (x *Detail) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[234]
+	mi := &file_snakecommon_project_config_proto_msgTypes[240]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20004,7 +20582,7 @@ func (x *Detail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Detail.ProtoReflect.Descriptor instead.
 func (*Detail) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{234}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{240}
 }
 
 func (x *Detail) GetLikes() int64 {
@@ -20026,7 +20604,7 @@ type StaffSet struct {
 func (x *StaffSet) Reset() {
 	*x = StaffSet{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[235]
+		mi := &file_snakecommon_project_config_proto_msgTypes[241]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20039,7 +20617,7 @@ func (x *StaffSet) String() string {
 func (*StaffSet) ProtoMessage() {}
 
 func (x *StaffSet) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[235]
+	mi := &file_snakecommon_project_config_proto_msgTypes[241]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20052,7 +20630,7 @@ func (x *StaffSet) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StaffSet.ProtoReflect.Descriptor instead.
 func (*StaffSet) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{235}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{241}
 }
 
 func (x *StaffSet) GetMaxLevel() int64 {
@@ -20091,7 +20669,7 @@ type TimedTaskInfo struct {
 func (x *TimedTaskInfo) Reset() {
 	*x = TimedTaskInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[236]
+		mi := &file_snakecommon_project_config_proto_msgTypes[242]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20104,7 +20682,7 @@ func (x *TimedTaskInfo) String() string {
 func (*TimedTaskInfo) ProtoMessage() {}
 
 func (x *TimedTaskInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[236]
+	mi := &file_snakecommon_project_config_proto_msgTypes[242]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20117,7 +20695,7 @@ func (x *TimedTaskInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TimedTaskInfo.ProtoReflect.Descriptor instead.
 func (*TimedTaskInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{236}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{242}
 }
 
 func (x *TimedTaskInfo) GetTitle() string {
@@ -20216,7 +20794,7 @@ type TimedTaskCoinConfig struct {
 func (x *TimedTaskCoinConfig) Reset() {
 	*x = TimedTaskCoinConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[237]
+		mi := &file_snakecommon_project_config_proto_msgTypes[243]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20229,7 +20807,7 @@ func (x *TimedTaskCoinConfig) String() string {
 func (*TimedTaskCoinConfig) ProtoMessage() {}
 
 func (x *TimedTaskCoinConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[237]
+	mi := &file_snakecommon_project_config_proto_msgTypes[243]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20242,7 +20820,7 @@ func (x *TimedTaskCoinConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TimedTaskCoinConfig.ProtoReflect.Descriptor instead.
 func (*TimedTaskCoinConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{237}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{243}
 }
 
 func (x *TimedTaskCoinConfig) GetLikes() int64 {
@@ -20273,7 +20851,7 @@ type SummonConfig struct {
 func (x *SummonConfig) Reset() {
 	*x = SummonConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[238]
+		mi := &file_snakecommon_project_config_proto_msgTypes[244]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20286,7 +20864,7 @@ func (x *SummonConfig) String() string {
 func (*SummonConfig) ProtoMessage() {}
 
 func (x *SummonConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[238]
+	mi := &file_snakecommon_project_config_proto_msgTypes[244]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20299,7 +20877,7 @@ func (x *SummonConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SummonConfig.ProtoReflect.Descriptor instead.
 func (*SummonConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{238}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{244}
 }
 
 func (x *SummonConfig) GetAiConfig() []*SummonAiConfig {
@@ -20334,7 +20912,7 @@ type SummonAiConfig struct {
 func (x *SummonAiConfig) Reset() {
 	*x = SummonAiConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[239]
+		mi := &file_snakecommon_project_config_proto_msgTypes[245]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20347,7 +20925,7 @@ func (x *SummonAiConfig) String() string {
 func (*SummonAiConfig) ProtoMessage() {}
 
 func (x *SummonAiConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[239]
+	mi := &file_snakecommon_project_config_proto_msgTypes[245]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20360,7 +20938,7 @@ func (x *SummonAiConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SummonAiConfig.ProtoReflect.Descriptor instead.
 func (*SummonAiConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{239}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{245}
 }
 
 func (x *SummonAiConfig) GetConfig() []*SummonConfigItem {
@@ -20382,7 +20960,7 @@ type SummonConfigItem struct {
 func (x *SummonConfigItem) Reset() {
 	*x = SummonConfigItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[240]
+		mi := &file_snakecommon_project_config_proto_msgTypes[246]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20395,7 +20973,7 @@ func (x *SummonConfigItem) String() string {
 func (*SummonConfigItem) ProtoMessage() {}
 
 func (x *SummonConfigItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[240]
+	mi := &file_snakecommon_project_config_proto_msgTypes[246]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20408,7 +20986,7 @@ func (x *SummonConfigItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SummonConfigItem.ProtoReflect.Descriptor instead.
 func (*SummonConfigItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{240}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{246}
 }
 
 func (x *SummonConfigItem) GetLevel() int64 {
@@ -20437,7 +21015,7 @@ type MapConfig struct {
 func (x *MapConfig) Reset() {
 	*x = MapConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[241]
+		mi := &file_snakecommon_project_config_proto_msgTypes[247]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20450,7 +21028,7 @@ func (x *MapConfig) String() string {
 func (*MapConfig) ProtoMessage() {}
 
 func (x *MapConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[241]
+	mi := &file_snakecommon_project_config_proto_msgTypes[247]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20463,7 +21041,7 @@ func (x *MapConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MapConfig.ProtoReflect.Descriptor instead.
 func (*MapConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{241}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{247}
 }
 
 func (x *MapConfig) GetHeight() int64 {
@@ -20492,7 +21070,7 @@ type IosPatch struct {
 func (x *IosPatch) Reset() {
 	*x = IosPatch{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[242]
+		mi := &file_snakecommon_project_config_proto_msgTypes[248]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20505,7 +21083,7 @@ func (x *IosPatch) String() string {
 func (*IosPatch) ProtoMessage() {}
 
 func (x *IosPatch) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[242]
+	mi := &file_snakecommon_project_config_proto_msgTypes[248]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20518,7 +21096,7 @@ func (x *IosPatch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IosPatch.ProtoReflect.Descriptor instead.
 func (*IosPatch) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{242}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{248}
 }
 
 func (x *IosPatch) GetPath() map[string]*IosPatchList {
@@ -20539,7 +21117,7 @@ type IosPatchList struct {
 func (x *IosPatchList) Reset() {
 	*x = IosPatchList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[243]
+		mi := &file_snakecommon_project_config_proto_msgTypes[249]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20552,7 +21130,7 @@ func (x *IosPatchList) String() string {
 func (*IosPatchList) ProtoMessage() {}
 
 func (x *IosPatchList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[243]
+	mi := &file_snakecommon_project_config_proto_msgTypes[249]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20565,7 +21143,7 @@ func (x *IosPatchList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IosPatchList.ProtoReflect.Descriptor instead.
 func (*IosPatchList) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{243}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{249}
 }
 
 func (x *IosPatchList) GetIosPatch() []*IosPatchItem {
@@ -20591,7 +21169,7 @@ type IosPatchItem struct {
 func (x *IosPatchItem) Reset() {
 	*x = IosPatchItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[244]
+		mi := &file_snakecommon_project_config_proto_msgTypes[250]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20604,7 +21182,7 @@ func (x *IosPatchItem) String() string {
 func (*IosPatchItem) ProtoMessage() {}
 
 func (x *IosPatchItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[244]
+	mi := &file_snakecommon_project_config_proto_msgTypes[250]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20617,7 +21195,7 @@ func (x *IosPatchItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IosPatchItem.ProtoReflect.Descriptor instead.
 func (*IosPatchItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{244}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{250}
 }
 
 func (x *IosPatchItem) GetOsVersion() []string {
@@ -20674,7 +21252,7 @@ type UnityAssets struct {
 func (x *UnityAssets) Reset() {
 	*x = UnityAssets{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[245]
+		mi := &file_snakecommon_project_config_proto_msgTypes[251]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20687,7 +21265,7 @@ func (x *UnityAssets) String() string {
 func (*UnityAssets) ProtoMessage() {}
 
 func (x *UnityAssets) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[245]
+	mi := &file_snakecommon_project_config_proto_msgTypes[251]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20700,7 +21278,7 @@ func (x *UnityAssets) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnityAssets.ProtoReflect.Descriptor instead.
 func (*UnityAssets) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{245}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{251}
 }
 
 func (x *UnityAssets) GetVersions() map[string]*AssetMap {
@@ -20721,7 +21299,7 @@ type AssetMap struct {
 func (x *AssetMap) Reset() {
 	*x = AssetMap{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[246]
+		mi := &file_snakecommon_project_config_proto_msgTypes[252]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20734,7 +21312,7 @@ func (x *AssetMap) String() string {
 func (*AssetMap) ProtoMessage() {}
 
 func (x *AssetMap) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[246]
+	mi := &file_snakecommon_project_config_proto_msgTypes[252]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20747,7 +21325,7 @@ func (x *AssetMap) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssetMap.ProtoReflect.Descriptor instead.
 func (*AssetMap) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{246}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{252}
 }
 
 func (x *AssetMap) GetPlatforms() map[string]*Asset {
@@ -20768,7 +21346,7 @@ type Asset struct {
 func (x *Asset) Reset() {
 	*x = Asset{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[247]
+		mi := &file_snakecommon_project_config_proto_msgTypes[253]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20781,7 +21359,7 @@ func (x *Asset) String() string {
 func (*Asset) ProtoMessage() {}
 
 func (x *Asset) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[247]
+	mi := &file_snakecommon_project_config_proto_msgTypes[253]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20794,7 +21372,7 @@ func (x *Asset) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Asset.ProtoReflect.Descriptor instead.
 func (*Asset) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{247}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{253}
 }
 
 func (x *Asset) GetAssets() []*AssetItem {
@@ -20818,7 +21396,7 @@ type AssetItem struct {
 func (x *AssetItem) Reset() {
 	*x = AssetItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[248]
+		mi := &file_snakecommon_project_config_proto_msgTypes[254]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20831,7 +21409,7 @@ func (x *AssetItem) String() string {
 func (*AssetItem) ProtoMessage() {}
 
 func (x *AssetItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[248]
+	mi := &file_snakecommon_project_config_proto_msgTypes[254]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20844,7 +21422,7 @@ func (x *AssetItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssetItem.ProtoReflect.Descriptor instead.
 func (*AssetItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{248}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{254}
 }
 
 func (x *AssetItem) GetName() string {
@@ -20880,19 +21458,21 @@ type TeamEndlessConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Switch           bool                        `protobuf:"varint,1,opt,name=switch,proto3" json:"switch,omitempty"`
-	Desc             string                      `protobuf:"bytes,2,opt,name=desc,proto3" json:"desc,omitempty"`
-	Guide            *TeamEndlessConfig_Guide    `protobuf:"bytes,3,opt,name=guide,proto3" json:"guide,omitempty"`
-	Seasons          []*TeamEndlessConfig_Season `protobuf:"bytes,4,rep,name=seasons,proto3" json:"seasons,omitempty"` // 赛季配置
-	Rank             *TeamEndlessConfig_Rank     `protobuf:"bytes,5,opt,name=rank,proto3" json:"rank,omitempty"`
-	AndroidUnlockTip string                      `protobuf:"bytes,6,opt,name=android_unlock_tip,json=androidUnlockTip,proto3" json:"android_unlock_tip,omitempty"` // 安卓解锁提示
-	IosUnlockTip     string                      `protobuf:"bytes,7,opt,name=ios_unlock_tip,json=iosUnlockTip,proto3" json:"ios_unlock_tip,omitempty"`             // ios解锁提示
+	Switch             bool                        `protobuf:"varint,1,opt,name=switch,proto3" json:"switch,omitempty"`
+	Desc               string                      `protobuf:"bytes,2,opt,name=desc,proto3" json:"desc,omitempty"`
+	Guide              *TeamEndlessConfig_Guide    `protobuf:"bytes,3,opt,name=guide,proto3" json:"guide,omitempty"`
+	Seasons            []*TeamEndlessConfig_Season `protobuf:"bytes,4,rep,name=seasons,proto3" json:"seasons,omitempty"` // 赛季配置
+	Rank               *TeamEndlessConfig_Rank     `protobuf:"bytes,5,opt,name=rank,proto3" json:"rank,omitempty"`
+	AndroidUnlockTip   string                      `protobuf:"bytes,6,opt,name=android_unlock_tip,json=androidUnlockTip,proto3" json:"android_unlock_tip,omitempty"`        // 安卓解锁提示
+	IosUnlockTip       string                      `protobuf:"bytes,7,opt,name=ios_unlock_tip,json=iosUnlockTip,proto3" json:"ios_unlock_tip,omitempty"`                    // ios解锁提示
+	Boss               int32                       `protobuf:"varint,18,opt,name=boss,proto3" json:"boss,omitempty"`                                                        // 是否开启boss功能，0: 未开启 1: 开启
+	CoupleSkinActivity *CoupleSkinActivity         `protobuf:"bytes,19,opt,name=couple_skin_activity,json=coupleSkinActivity,proto3" json:"couple_skin_activity,omitempty"` // cp皮肤直售活动
 }
 
 func (x *TeamEndlessConfig) Reset() {
 	*x = TeamEndlessConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[249]
+		mi := &file_snakecommon_project_config_proto_msgTypes[255]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -20905,7 +21485,7 @@ func (x *TeamEndlessConfig) String() string {
 func (*TeamEndlessConfig) ProtoMessage() {}
 
 func (x *TeamEndlessConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[249]
+	mi := &file_snakecommon_project_config_proto_msgTypes[255]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -20918,7 +21498,7 @@ func (x *TeamEndlessConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TeamEndlessConfig.ProtoReflect.Descriptor instead.
 func (*TeamEndlessConfig) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{249}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{255}
 }
 
 func (x *TeamEndlessConfig) GetSwitch() bool {
@@ -20970,6 +21550,91 @@ func (x *TeamEndlessConfig) GetIosUnlockTip() string {
 	return ""
 }
 
+func (x *TeamEndlessConfig) GetBoss() int32 {
+	if x != nil {
+		return x.Boss
+	}
+	return 0
+}
+
+func (x *TeamEndlessConfig) GetCoupleSkinActivity() *CoupleSkinActivity {
+	if x != nil {
+		return x.CoupleSkinActivity
+	}
+	return nil
+}
+
+type CoupleSkinActivity struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ActivityId string `protobuf:"bytes,1,opt,name=activity_id,json=activityId,proto3" json:"activity_id,omitempty"`
+	StartTime  int64  `protobuf:"varint,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime    int64  `protobuf:"varint,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	JumpUrl    string `protobuf:"bytes,4,opt,name=jump_url,json=jumpUrl,proto3" json:"jump_url,omitempty"`
+}
+
+func (x *CoupleSkinActivity) Reset() {
+	*x = CoupleSkinActivity{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_project_config_proto_msgTypes[256]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CoupleSkinActivity) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CoupleSkinActivity) ProtoMessage() {}
+
+func (x *CoupleSkinActivity) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_project_config_proto_msgTypes[256]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CoupleSkinActivity.ProtoReflect.Descriptor instead.
+func (*CoupleSkinActivity) Descriptor() ([]byte, []int) {
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{256}
+}
+
+func (x *CoupleSkinActivity) GetActivityId() string {
+	if x != nil {
+		return x.ActivityId
+	}
+	return ""
+}
+
+func (x *CoupleSkinActivity) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *CoupleSkinActivity) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *CoupleSkinActivity) GetJumpUrl() string {
+	if x != nil {
+		return x.JumpUrl
+	}
+	return ""
+}
+
 type NativeQualifyAIPool struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -20996,7 +21661,7 @@ type NativeQualifyAIPool struct {
 	AttackTimes                   []int64 `protobuf:"varint,19,rep,packed,name=attack_times,json=attackTimes,proto3" json:"attack_times,omitempty"`
 	AttackWeights                 []int64 `protobuf:"varint,20,rep,packed,name=attack_weights,json=attackWeights,proto3" json:"attack_weights,omitempty"`
 	SpeedupRate                   float64 `protobuf:"fixed64,21,opt,name=speedup_rate,json=speedupRate,proto3" json:"speedup_rate,omitempty"`
-	SpeedupTime                   float64 `protobuf:"fixed64,22,opt,name=speedup_time,json=speedupTime,proto3" json:"speedup_time,omitempty"`
+	SpeedupTime                   int64   `protobuf:"varint,22,opt,name=speedup_time,json=speedupTime,proto3" json:"speedup_time,omitempty"`
 	AiSnakeViewRadiusFactor       float64 `protobuf:"fixed64,23,opt,name=ai_snake_view_radius_factor,json=aiSnakeViewRadiusFactor,proto3" json:"ai_snake_view_radius_factor,omitempty"`
 	AttackAiSnakeViewRadiusFactor float64 `protobuf:"fixed64,24,opt,name=attack_ai_snake_view_radius_factor,json=attackAiSnakeViewRadiusFactor,proto3" json:"attack_ai_snake_view_radius_factor,omitempty"`
 }
@@ -21004,7 +21669,7 @@ type NativeQualifyAIPool struct {
 func (x *NativeQualifyAIPool) Reset() {
 	*x = NativeQualifyAIPool{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[250]
+		mi := &file_snakecommon_project_config_proto_msgTypes[257]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21017,7 +21682,7 @@ func (x *NativeQualifyAIPool) String() string {
 func (*NativeQualifyAIPool) ProtoMessage() {}
 
 func (x *NativeQualifyAIPool) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[250]
+	mi := &file_snakecommon_project_config_proto_msgTypes[257]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -21030,7 +21695,7 @@ func (x *NativeQualifyAIPool) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NativeQualifyAIPool.ProtoReflect.Descriptor instead.
 func (*NativeQualifyAIPool) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{250}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{257}
 }
 
 func (x *NativeQualifyAIPool) GetLevel() int32 {
@@ -21180,7 +21845,7 @@ func (x *NativeQualifyAIPool) GetSpeedupRate() float64 {
 	return 0
 }
 
-func (x *NativeQualifyAIPool) GetSpeedupTime() float64 {
+func (x *NativeQualifyAIPool) GetSpeedupTime() int64 {
 	if x != nil {
 		return x.SpeedupTime
 	}
@@ -21236,7 +21901,7 @@ type BannerInfo struct {
 func (x *BannerInfo) Reset() {
 	*x = BannerInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[251]
+		mi := &file_snakecommon_project_config_proto_msgTypes[258]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21249,7 +21914,7 @@ func (x *BannerInfo) String() string {
 func (*BannerInfo) ProtoMessage() {}
 
 func (x *BannerInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[251]
+	mi := &file_snakecommon_project_config_proto_msgTypes[258]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -21262,7 +21927,7 @@ func (x *BannerInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BannerInfo.ProtoReflect.Descriptor instead.
 func (*BannerInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{251}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{258}
 }
 
 func (x *BannerInfo) GetBannerId() int32 {
@@ -21453,7 +22118,7 @@ type CartonList struct {
 func (x *CartonList) Reset() {
 	*x = CartonList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[252]
+		mi := &file_snakecommon_project_config_proto_msgTypes[259]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21466,7 +22131,7 @@ func (x *CartonList) String() string {
 func (*CartonList) ProtoMessage() {}
 
 func (x *CartonList) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[252]
+	mi := &file_snakecommon_project_config_proto_msgTypes[259]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -21479,7 +22144,7 @@ func (x *CartonList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CartonList.ProtoReflect.Descriptor instead.
 func (*CartonList) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{252}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{259}
 }
 
 func (x *CartonList) GetImgurl() string {
@@ -21523,7 +22188,7 @@ type BannerExtraInfo struct {
 func (x *BannerExtraInfo) Reset() {
 	*x = BannerExtraInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[253]
+		mi := &file_snakecommon_project_config_proto_msgTypes[260]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21536,7 +22201,7 @@ func (x *BannerExtraInfo) String() string {
 func (*BannerExtraInfo) ProtoMessage() {}
 
 func (x *BannerExtraInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[253]
+	mi := &file_snakecommon_project_config_proto_msgTypes[260]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -21549,7 +22214,7 @@ func (x *BannerExtraInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BannerExtraInfo.ProtoReflect.Descriptor instead.
 func (*BannerExtraInfo) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{253}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{260}
 }
 
 func (x *BannerExtraInfo) GetNeedLogin() string {
@@ -21638,7 +22303,7 @@ type TeamEndlessConfig_Guide struct {
 func (x *TeamEndlessConfig_Guide) Reset() {
 	*x = TeamEndlessConfig_Guide{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[277]
+		mi := &file_snakecommon_project_config_proto_msgTypes[285]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21651,7 +22316,7 @@ func (x *TeamEndlessConfig_Guide) String() string {
 func (*TeamEndlessConfig_Guide) ProtoMessage() {}
 
 func (x *TeamEndlessConfig_Guide) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[277]
+	mi := &file_snakecommon_project_config_proto_msgTypes[285]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -21664,7 +22329,7 @@ func (x *TeamEndlessConfig_Guide) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TeamEndlessConfig_Guide.ProtoReflect.Descriptor instead.
 func (*TeamEndlessConfig_Guide) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{249, 0}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{255, 0}
 }
 
 func (x *TeamEndlessConfig_Guide) GetGameCount() int64 {
@@ -21722,7 +22387,7 @@ type TeamEndlessConfig_SeasonRewardItem struct {
 func (x *TeamEndlessConfig_SeasonRewardItem) Reset() {
 	*x = TeamEndlessConfig_SeasonRewardItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[278]
+		mi := &file_snakecommon_project_config_proto_msgTypes[286]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21735,7 +22400,7 @@ func (x *TeamEndlessConfig_SeasonRewardItem) String() string {
 func (*TeamEndlessConfig_SeasonRewardItem) ProtoMessage() {}
 
 func (x *TeamEndlessConfig_SeasonRewardItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[278]
+	mi := &file_snakecommon_project_config_proto_msgTypes[286]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -21748,7 +22413,7 @@ func (x *TeamEndlessConfig_SeasonRewardItem) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use TeamEndlessConfig_SeasonRewardItem.ProtoReflect.Descriptor instead.
 func (*TeamEndlessConfig_SeasonRewardItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{249, 1}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{255, 1}
 }
 
 func (x *TeamEndlessConfig_SeasonRewardItem) GetRankId() int32 {
@@ -21779,7 +22444,7 @@ type TeamEndlessConfig_Season struct {
 func (x *TeamEndlessConfig_Season) Reset() {
 	*x = TeamEndlessConfig_Season{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[279]
+		mi := &file_snakecommon_project_config_proto_msgTypes[287]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21792,7 +22457,7 @@ func (x *TeamEndlessConfig_Season) String() string {
 func (*TeamEndlessConfig_Season) ProtoMessage() {}
 
 func (x *TeamEndlessConfig_Season) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[279]
+	mi := &file_snakecommon_project_config_proto_msgTypes[287]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -21805,7 +22470,7 @@ func (x *TeamEndlessConfig_Season) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TeamEndlessConfig_Season.ProtoReflect.Descriptor instead.
 func (*TeamEndlessConfig_Season) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{249, 2}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{255, 2}
 }
 
 func (x *TeamEndlessConfig_Season) GetId() int32 {
@@ -21849,7 +22514,7 @@ type TeamEndlessConfig_BigRankItem struct {
 func (x *TeamEndlessConfig_BigRankItem) Reset() {
 	*x = TeamEndlessConfig_BigRankItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[280]
+		mi := &file_snakecommon_project_config_proto_msgTypes[288]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21862,7 +22527,7 @@ func (x *TeamEndlessConfig_BigRankItem) String() string {
 func (*TeamEndlessConfig_BigRankItem) ProtoMessage() {}
 
 func (x *TeamEndlessConfig_BigRankItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[280]
+	mi := &file_snakecommon_project_config_proto_msgTypes[288]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -21875,7 +22540,7 @@ func (x *TeamEndlessConfig_BigRankItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TeamEndlessConfig_BigRankItem.ProtoReflect.Descriptor instead.
 func (*TeamEndlessConfig_BigRankItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{249, 3}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{255, 3}
 }
 
 func (x *TeamEndlessConfig_BigRankItem) GetId() int32 {
@@ -21906,7 +22571,7 @@ type TeamEndlessConfig_SmallRankItem struct {
 func (x *TeamEndlessConfig_SmallRankItem) Reset() {
 	*x = TeamEndlessConfig_SmallRankItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[281]
+		mi := &file_snakecommon_project_config_proto_msgTypes[289]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21919,7 +22584,7 @@ func (x *TeamEndlessConfig_SmallRankItem) String() string {
 func (*TeamEndlessConfig_SmallRankItem) ProtoMessage() {}
 
 func (x *TeamEndlessConfig_SmallRankItem) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[281]
+	mi := &file_snakecommon_project_config_proto_msgTypes[289]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -21932,7 +22597,7 @@ func (x *TeamEndlessConfig_SmallRankItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TeamEndlessConfig_SmallRankItem.ProtoReflect.Descriptor instead.
 func (*TeamEndlessConfig_SmallRankItem) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{249, 4}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{255, 4}
 }
 
 func (x *TeamEndlessConfig_SmallRankItem) GetId() int32 {
@@ -21976,7 +22641,7 @@ type TeamEndlessConfig_Rank struct {
 func (x *TeamEndlessConfig_Rank) Reset() {
 	*x = TeamEndlessConfig_Rank{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_project_config_proto_msgTypes[282]
+		mi := &file_snakecommon_project_config_proto_msgTypes[290]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -21989,7 +22654,7 @@ func (x *TeamEndlessConfig_Rank) String() string {
 func (*TeamEndlessConfig_Rank) ProtoMessage() {}
 
 func (x *TeamEndlessConfig_Rank) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_project_config_proto_msgTypes[282]
+	mi := &file_snakecommon_project_config_proto_msgTypes[290]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -22002,7 +22667,7 @@ func (x *TeamEndlessConfig_Rank) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TeamEndlessConfig_Rank.ProtoReflect.Descriptor instead.
 func (*TeamEndlessConfig_Rank) Descriptor() ([]byte, []int) {
-	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{249, 5}
+	return file_snakecommon_project_config_proto_rawDescGZIP(), []int{255, 5}
 }
 
 func (x *TeamEndlessConfig_Rank) GetBigRank() []*TeamEndlessConfig_BigRankItem {
@@ -22470,7 +23135,7 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x6e, 0x65, 0x78, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08,
 	0x6e, 0x65, 0x78, 0x74, 0x52, 0x61, 0x6e, 0x6b, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x65, 0x67, 0x72,
 	0x65, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x64, 0x65, 0x67, 0x72, 0x65, 0x65,
-	0x22, 0x96, 0x04, 0x0a, 0x0a, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12,
+	0x22, 0x98, 0x06, 0x0a, 0x0a, 0x52, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12,
 	0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19,
 	0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
@@ -22503,11 +23168,40 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x31, 0x0a, 0x15, 0x70, 0x72, 0x69, 0x6d, 0x65, 0x5f,
 	0x6b, 0x69, 0x6e, 0x67, 0x5f, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x5f, 0x74, 0x65, 0x78, 0x74, 0x18,
 	0x0f, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x70, 0x72, 0x69, 0x6d, 0x65, 0x4b, 0x69, 0x6e, 0x67,
-	0x52, 0x61, 0x6e, 0x67, 0x65, 0x54, 0x65, 0x78, 0x74, 0x22, 0x6c, 0x0a, 0x0a, 0x52, 0x61, 0x6e,
-	0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x5f,
-	0x72, 0x61, 0x6e, 0x67, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x05, 0x52, 0x09, 0x73, 0x74, 0x61,
+	0x52, 0x61, 0x6e, 0x67, 0x65, 0x54, 0x65, 0x78, 0x74, 0x12, 0x38, 0x0a, 0x19, 0x72, 0x61, 0x6e,
+	0x6b, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x76, 0x32, 0x5f, 0x73, 0x74, 0x61, 0x72,
+	0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x10, 0x20, 0x01, 0x28, 0x03, 0x52, 0x15, 0x72, 0x61,
+	0x6e, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x56, 0x32, 0x53, 0x74, 0x61, 0x72, 0x74, 0x54,
+	0x69, 0x6d, 0x65, 0x12, 0x4b, 0x0a, 0x12, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x5f, 0x67, 0x61, 0x6d,
+	0x65, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x18, 0x11, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x1d, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x61,
+	0x69, 0x6c, 0x79, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x52, 0x10,
+	0x64, 0x61, 0x69, 0x6c, 0x79, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73,
+	0x12, 0x38, 0x0a, 0x0b, 0x6e, 0x65, 0x77, 0x65, 0x72, 0x5f, 0x67, 0x75, 0x69, 0x64, 0x65, 0x18,
+	0x12, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d,
+	0x6d, 0x6f, 0x6e, 0x2e, 0x4e, 0x65, 0x77, 0x65, 0x72, 0x47, 0x75, 0x69, 0x64, 0x65, 0x52, 0x0a,
+	0x6e, 0x65, 0x77, 0x65, 0x72, 0x47, 0x75, 0x69, 0x64, 0x65, 0x12, 0x3f, 0x0a, 0x0e, 0x72, 0x61,
+	0x6e, 0x6b, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x76, 0x32, 0x18, 0x13, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x19, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x2e, 0x52, 0x61, 0x6e, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x56, 0x32, 0x52, 0x0c, 0x72,
+	0x61, 0x6e, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x56, 0x32, 0x22, 0x6c, 0x0a, 0x0a, 0x52,
+	0x61, 0x6e, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61,
+	0x72, 0x5f, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x05, 0x52, 0x09, 0x73,
+	0x74, 0x61, 0x72, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x3f, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61,
+	0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e,
+	0x53, 0x6e, 0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x2e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x0a, 0x72,
+	0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x22, 0xcb, 0x01, 0x0a, 0x0c, 0x52, 0x61,
+	0x6e, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x56, 0x32, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x61,
+	0x6e, 0x6b, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x61, 0x6e,
+	0x6b, 0x49, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x72, 0x61, 0x6e, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x72, 0x61, 0x6e, 0x6b, 0x4e, 0x61, 0x6d, 0x65,
+	0x12, 0x25, 0x0a, 0x0e, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x70, 0x72, 0x65, 0x76, 0x69,
+	0x65, 0x77, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64,
+	0x50, 0x72, 0x65, 0x76, 0x69, 0x65, 0x77, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x5f,
+	0x72, 0x61, 0x6e, 0x67, 0x65, 0x18, 0x04, 0x20, 0x03, 0x28, 0x05, 0x52, 0x09, 0x73, 0x74, 0x61,
 	0x72, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x3f, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64,
-	0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x53, 0x6e,
+	0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x53, 0x6e,
 	0x61, 0x6b, 0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x52,
 	0x65, 0x77, 0x61, 0x72, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x0a, 0x72, 0x65, 0x77,
 	0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x22, 0xdb, 0x01, 0x0a, 0x09, 0x52, 0x61, 0x6e, 0x6b,
@@ -22524,26 +23218,100 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x69, 0x74, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
 	0x73, 0x70, 0x72, 0x69, 0x74, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x6c, 0x65,
 	0x76, 0x65, 0x6c, 0x5f, 0x69, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x6c, 0x65,
-	0x76, 0x65, 0x6c, 0x49, 0x64, 0x22, 0xab, 0x02, 0x0a, 0x0a, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e,
-	0x49, 0x6e, 0x66, 0x6f, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69,
-	0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54,
-	0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x1f,
-	0x0a, 0x0b, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x4e, 0x61, 0x6d, 0x65, 0x12,
-	0x30, 0x0a, 0x14, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x5f, 0x69, 0x6e, 0x74, 0x72, 0x6f, 0x64,
-	0x75, 0x63, 0x65, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x73,
-	0x65, 0x61, 0x73, 0x6f, 0x6e, 0x49, 0x6e, 0x74, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x65, 0x55, 0x72,
-	0x6c, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72,
-	0x6c, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12,
-	0x16, 0x0a, 0x06, 0x68, 0x65, 0x69, 0x67, 0x68, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x06, 0x68, 0x65, 0x69, 0x67, 0x68, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x77, 0x69, 0x64, 0x74, 0x68,
-	0x18, 0x08, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x77, 0x69, 0x64, 0x74, 0x68, 0x12, 0x1b, 0x0a,
-	0x09, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x09, 0x20, 0x01, 0x28, 0x05,
-	0x52, 0x08, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6b,
-	0x69, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73, 0x6b, 0x69,
-	0x6e, 0x49, 0x64, 0x22, 0xf7, 0x03, 0x0a, 0x0b, 0x53, 0x68, 0x61, 0x72, 0x65, 0x43, 0x6f, 0x6e,
+	0x76, 0x65, 0x6c, 0x49, 0x64, 0x22, 0x80, 0x02, 0x0a, 0x10, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x47,
+	0x61, 0x6d, 0x65, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74,
+	0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09,
+	0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x34, 0x0a, 0x04, 0x6c, 0x69, 0x73,
+	0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x44, 0x61, 0x69, 0x6c, 0x79, 0x47, 0x61, 0x6d, 0x65, 0x52,
+	0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x12,
+	0x45, 0x0a, 0x08, 0x62, 0x6f, 0x78, 0x5f, 0x70, 0x6f, 0x6f, 0x6c, 0x18, 0x04, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x2a, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
+	0x44, 0x61, 0x69, 0x6c, 0x79, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73,
+	0x2e, 0x42, 0x6f, 0x78, 0x50, 0x6f, 0x6f, 0x6c, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x07, 0x62,
+	0x6f, 0x78, 0x50, 0x6f, 0x6f, 0x6c, 0x1a, 0x50, 0x0a, 0x0c, 0x42, 0x6f, 0x78, 0x50, 0x6f, 0x6f,
+	0x6c, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x2a, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x42, 0x6f, 0x78, 0x50, 0x6f, 0x6f, 0x6c, 0x52, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x60, 0x0a, 0x13, 0x44, 0x61, 0x69, 0x6c,
+	0x79, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x12,
+	0x19, 0x0a, 0x08, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x07, 0x67, 0x61, 0x6d, 0x65, 0x4e, 0x75, 0x6d, 0x12, 0x17, 0x0a, 0x07, 0x62, 0x6f,
+	0x78, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x62, 0x6f, 0x78,
+	0x4e, 0x75, 0x6d, 0x12, 0x15, 0x0a, 0x06, 0x62, 0x6f, 0x78, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x05, 0x62, 0x6f, 0x78, 0x49, 0x64, 0x22, 0x56, 0x0a, 0x07, 0x42, 0x6f,
+	0x78, 0x50, 0x6f, 0x6f, 0x6c, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x72, 0x6f, 0x62, 0x5f, 0x69, 0x6e,
+	0x74, 0x72, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x70, 0x72, 0x6f, 0x62, 0x49,
+	0x6e, 0x74, 0x72, 0x6f, 0x12, 0x2c, 0x0a, 0x04, 0x70, 0x6f, 0x6f, 0x6c, 0x18, 0x02, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x18, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x2e, 0x42, 0x6f, 0x78, 0x50, 0x6f, 0x6f, 0x6c, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x04, 0x70, 0x6f,
+	0x6f, 0x6c, 0x22, 0x94, 0x04, 0x0a, 0x0b, 0x42, 0x6f, 0x78, 0x50, 0x6f, 0x6f, 0x6c, 0x49, 0x74,
+	0x65, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02,
+	0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x6b, 0x69, 0x6e, 0x5f, 0x69,
+	0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73, 0x6b, 0x69, 0x6e, 0x49, 0x64, 0x12,
+	0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6e, 0x75,
+	0x6d, 0x12, 0x1c, 0x0a, 0x07, 0x62, 0x69, 0x67, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x05, 0x20, 0x01,
+	0x28, 0x09, 0x48, 0x00, 0x52, 0x06, 0x62, 0x69, 0x67, 0x4e, 0x75, 0x6d, 0x88, 0x01, 0x01, 0x12,
+	0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x07, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12, 0x1e, 0x0a, 0x08, 0x75,
+	0x73, 0x65, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x48, 0x01, 0x52,
+	0x07, 0x75, 0x73, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x88, 0x01, 0x01, 0x12, 0x1f, 0x0a, 0x0b, 0x77,
+	0x6f, 0x72, 0x74, 0x68, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x09, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x0a, 0x77, 0x6f, 0x72, 0x74, 0x68, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x2f, 0x0a, 0x07,
+	0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x74, 0x18, 0x0a, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x15, 0x2e,
+	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x43, 0x6f, 0x6e,
+	0x76, 0x65, 0x72, 0x74, 0x52, 0x07, 0x63, 0x6f, 0x6e, 0x76, 0x65, 0x72, 0x74, 0x12, 0x1f, 0x0a,
+	0x0b, 0x69, 0x73, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x62, 0x6c, 0x65, 0x18, 0x0b, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x0a, 0x69, 0x73, 0x56, 0x61, 0x6c, 0x75, 0x61, 0x62, 0x6c, 0x65, 0x12, 0x23,
+	0x0a, 0x0d, 0x71, 0x75, 0x61, 0x6c, 0x69, 0x74, 0x79, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18,
+	0x0c, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x71, 0x75, 0x61, 0x6c, 0x69, 0x74, 0x79, 0x4c, 0x65,
+	0x76, 0x65, 0x6c, 0x12, 0x3d, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x74, 0x79,
+	0x70, 0x65, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x1c, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x42, 0x6f, 0x78, 0x50, 0x6f, 0x6f, 0x6c, 0x49, 0x74,
+	0x65, 0x6d, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x54, 0x79,
+	0x70, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x72, 0x61, 0x74, 0x65, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x04, 0x72, 0x61, 0x74, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x65, 0x78, 0x70, 0x65, 0x63, 0x74,
+	0x65, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x0f, 0x20, 0x03, 0x28, 0x03, 0x52, 0x0c, 0x65,
+	0x78, 0x70, 0x65, 0x63, 0x74, 0x65, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x70,
+	0x72, 0x69, 0x7a, 0x65, 0x5f, 0x70, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x18, 0x10, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x0c, 0x70, 0x72, 0x69, 0x7a, 0x65, 0x50, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74,
+	0x42, 0x0a, 0x0a, 0x08, 0x5f, 0x62, 0x69, 0x67, 0x5f, 0x6e, 0x75, 0x6d, 0x42, 0x0b, 0x0a, 0x09,
+	0x5f, 0x75, 0x73, 0x65, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x22, 0x3c, 0x0a, 0x0a, 0x4e, 0x65, 0x77,
+	0x65, 0x72, 0x47, 0x75, 0x69, 0x64, 0x65, 0x12, 0x15, 0x0a, 0x06, 0x62, 0x6f, 0x78, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x62, 0x6f, 0x78, 0x49, 0x64, 0x12, 0x17,
+	0x0a, 0x07, 0x62, 0x6f, 0x78, 0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x06, 0x62, 0x6f, 0x78, 0x4e, 0x75, 0x6d, 0x22, 0xb9, 0x03, 0x0a, 0x0a, 0x53, 0x65, 0x61, 0x73,
+	0x6f, 0x6e, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f,
+	0x74, 0x69, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72,
+	0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65,
+	0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x4e, 0x61, 0x6d,
+	0x65, 0x12, 0x30, 0x0a, 0x14, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x5f, 0x69, 0x6e, 0x74, 0x72,
+	0x6f, 0x64, 0x75, 0x63, 0x65, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x12, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x49, 0x6e, 0x74, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x65,
+	0x55, 0x72, 0x6c, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x05, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d, 0x67,
+	0x75, 0x72, 0x6c, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72,
+	0x6c, 0x12, 0x16, 0x0a, 0x06, 0x68, 0x65, 0x69, 0x67, 0x68, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x06, 0x68, 0x65, 0x69, 0x67, 0x68, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x77, 0x69, 0x64,
+	0x74, 0x68, 0x18, 0x08, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x77, 0x69, 0x64, 0x74, 0x68, 0x12,
+	0x1b, 0x0a, 0x09, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x09, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x08, 0x73, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07,
+	0x73, 0x6b, 0x69, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73,
+	0x6b, 0x69, 0x6e, 0x49, 0x64, 0x12, 0x4b, 0x0a, 0x12, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x5f, 0x67,
+	0x61, 0x6d, 0x65, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x18, 0x0c, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x1d, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
+	0x44, 0x61, 0x69, 0x6c, 0x79, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73,
+	0x52, 0x10, 0x64, 0x61, 0x69, 0x6c, 0x79, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x65, 0x77, 0x61, 0x72,
+	0x64, 0x73, 0x12, 0x3f, 0x0a, 0x0e, 0x72, 0x61, 0x6e, 0x6b, 0x5f, 0x72, 0x65, 0x77, 0x61, 0x72,
+	0x64, 0x5f, 0x76, 0x32, 0x18, 0x0d, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x73, 0x6e, 0x61,
+	0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x52, 0x61, 0x6e, 0x6b, 0x52, 0x65, 0x77,
+	0x61, 0x72, 0x64, 0x56, 0x32, 0x52, 0x0c, 0x72, 0x61, 0x6e, 0x6b, 0x52, 0x65, 0x77, 0x61, 0x72,
+	0x64, 0x56, 0x32, 0x22, 0xf7, 0x03, 0x0a, 0x0b, 0x53, 0x68, 0x61, 0x72, 0x65, 0x43, 0x6f, 0x6e,
 	0x66, 0x69, 0x67, 0x12, 0x1b, 0x0a, 0x09, 0x73, 0x68, 0x61, 0x72, 0x65, 0x5f, 0x75, 0x72, 0x6c,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x68, 0x61, 0x72, 0x65, 0x55, 0x72, 0x6c,
 	0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x68, 0x61, 0x72, 0x65, 0x5f, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18,
@@ -26083,7 +26851,7 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x73, 0x72, 0x63, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x03, 0x73, 0x72, 0x63, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x64, 0x35, 0x18, 0x03, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x03, 0x6d, 0x64, 0x35, 0x12, 0x12, 0x0a, 0x04, 0x68, 0x6d, 0x61, 0x63, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x68, 0x6d, 0x61, 0x63, 0x22, 0x96, 0x09, 0x0a, 0x11, 0x54,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x68, 0x6d, 0x61, 0x63, 0x22, 0xfd, 0x09, 0x0a, 0x11, 0x54,
 	0x65, 0x61, 0x6d, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
 	0x12, 0x16, 0x0a, 0x06, 0x73, 0x77, 0x69, 0x74, 0x63, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08,
 	0x52, 0x06, 0x73, 0x77, 0x69, 0x74, 0x63, 0x68, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65, 0x73, 0x63,
@@ -26104,209 +26872,227 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x61, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x55, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x54, 0x69, 0x70,
 	0x12, 0x24, 0x0a, 0x0e, 0x69, 0x6f, 0x73, 0x5f, 0x75, 0x6e, 0x6c, 0x6f, 0x63, 0x6b, 0x5f, 0x74,
 	0x69, 0x70, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x69, 0x6f, 0x73, 0x55, 0x6e, 0x6c,
-	0x6f, 0x63, 0x6b, 0x54, 0x69, 0x70, 0x1a, 0xf5, 0x01, 0x0a, 0x05, 0x47, 0x75, 0x69, 0x64, 0x65,
-	0x12, 0x1d, 0x0a, 0x0a, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x67, 0x61, 0x6d, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12,
-	0x23, 0x0a, 0x0d, 0x68, 0x69, 0x67, 0x68, 0x65, 0x73, 0x74, 0x5f, 0x73, 0x63, 0x6f, 0x72, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0c, 0x68, 0x69, 0x67, 0x68, 0x65, 0x73, 0x74, 0x53,
-	0x63, 0x6f, 0x72, 0x65, 0x12, 0x2b, 0x0a, 0x11, 0x69, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74,
-	0x69, 0x6f, 0x6e, 0x5f, 0x74, 0x65, 0x78, 0x74, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52,
-	0x10, 0x69, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x65, 0x78, 0x74,
-	0x73, 0x12, 0x26, 0x0a, 0x0f, 0x62, 0x61, 0x63, 0x6b, 0x5f, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x63,
-	0x6f, 0x75, 0x6e, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x62, 0x61, 0x63, 0x6b,
-	0x47, 0x61, 0x6d, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x72, 0x65, 0x67,
-	0x69, 0x73, 0x74, 0x65, 0x72, 0x5f, 0x64, 0x61, 0x79, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x0b, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x44, 0x61, 0x79, 0x12, 0x30, 0x0a, 0x14,
-	0x62, 0x65, 0x66, 0x6f, 0x72, 0x65, 0x5f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x5f,
-	0x74, 0x69, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x12, 0x62, 0x65, 0x66, 0x6f,
-	0x72, 0x65, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x54, 0x69, 0x6d, 0x65, 0x1a, 0x66,
-	0x0a, 0x10, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74,
-	0x65, 0x6d, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x61, 0x6e, 0x6b, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x61, 0x6e, 0x6b, 0x49, 0x64, 0x12, 0x39, 0x0a, 0x0b, 0x72,
-	0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b,
-	0x32, 0x18, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43,
-	0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61,
-	0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x1a, 0xa4, 0x01, 0x0a, 0x06, 0x53, 0x65, 0x61, 0x73, 0x6f,
-	0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69,
-	0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65,
-	0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x50, 0x0a, 0x0b, 0x72,
-	0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b,
-	0x32, 0x2f, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x54,
-	0x65, 0x61, 0x6d, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
-	0x2e, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65,
-	0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x1a, 0x31, 0x0a,
-	0x0b, 0x42, 0x69, 0x67, 0x52, 0x61, 0x6e, 0x6b, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x0e, 0x0a, 0x02,
-	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04,
-	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65,
-	0x1a, 0x57, 0x0a, 0x0d, 0x53, 0x6d, 0x61, 0x6c, 0x6c, 0x52, 0x61, 0x6e, 0x6b, 0x49, 0x74, 0x65,
-	0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69,
-	0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x69, 0x6e, 0x18, 0x03, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x03, 0x6d, 0x69, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x6d, 0x61, 0x78, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6d, 0x61, 0x78, 0x1a, 0xb7, 0x01, 0x0a, 0x04, 0x52, 0x61,
-	0x6e, 0x6b, 0x12, 0x45, 0x0a, 0x08, 0x62, 0x69, 0x67, 0x5f, 0x72, 0x61, 0x6e, 0x6b, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
+	0x6f, 0x63, 0x6b, 0x54, 0x69, 0x70, 0x12, 0x12, 0x0a, 0x04, 0x62, 0x6f, 0x73, 0x73, 0x18, 0x12,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x62, 0x6f, 0x73, 0x73, 0x12, 0x51, 0x0a, 0x14, 0x63, 0x6f,
+	0x75, 0x70, 0x6c, 0x65, 0x5f, 0x73, 0x6b, 0x69, 0x6e, 0x5f, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69,
+	0x74, 0x79, 0x18, 0x13, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x6f, 0x75, 0x70, 0x6c, 0x65, 0x53, 0x6b, 0x69,
+	0x6e, 0x41, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x52, 0x12, 0x63, 0x6f, 0x75, 0x70, 0x6c,
+	0x65, 0x53, 0x6b, 0x69, 0x6e, 0x41, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x1a, 0xf5, 0x01,
+	0x0a, 0x05, 0x47, 0x75, 0x69, 0x64, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x67, 0x61, 0x6d, 0x65, 0x5f,
+	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x67, 0x61, 0x6d,
+	0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x23, 0x0a, 0x0d, 0x68, 0x69, 0x67, 0x68, 0x65, 0x73,
+	0x74, 0x5f, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0c, 0x68,
+	0x69, 0x67, 0x68, 0x65, 0x73, 0x74, 0x53, 0x63, 0x6f, 0x72, 0x65, 0x12, 0x2b, 0x0a, 0x11, 0x69,
+	0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x74, 0x65, 0x78, 0x74, 0x73,
+	0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x10, 0x69, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x54, 0x65, 0x78, 0x74, 0x73, 0x12, 0x26, 0x0a, 0x0f, 0x62, 0x61, 0x63, 0x6b,
+	0x5f, 0x67, 0x61, 0x6d, 0x65, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x0d, 0x62, 0x61, 0x63, 0x6b, 0x47, 0x61, 0x6d, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74,
+	0x12, 0x21, 0x0a, 0x0c, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x5f, 0x64, 0x61, 0x79,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72,
+	0x44, 0x61, 0x79, 0x12, 0x30, 0x0a, 0x14, 0x62, 0x65, 0x66, 0x6f, 0x72, 0x65, 0x5f, 0x72, 0x65,
+	0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x12, 0x62, 0x65, 0x66, 0x6f, 0x72, 0x65, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65,
+	0x72, 0x54, 0x69, 0x6d, 0x65, 0x1a, 0x66, 0x0a, 0x10, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x52,
+	0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x61, 0x6e,
+	0x6b, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x61, 0x6e, 0x6b,
+	0x49, 0x64, 0x12, 0x39, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73,
+	0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65,
+	0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x73, 0x74, 0x1a, 0xa4, 0x01,
+	0x0a, 0x06, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72,
+	0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74,
+	0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74,
+	0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69,
+	0x6d, 0x65, 0x12, 0x50, 0x0a, 0x0b, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x6c, 0x69, 0x73,
+	0x74, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2f, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73,
+	0x73, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x53, 0x65, 0x61, 0x73, 0x6f, 0x6e, 0x52, 0x65,
+	0x77, 0x61, 0x72, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64,
+	0x4c, 0x69, 0x73, 0x74, 0x1a, 0x31, 0x0a, 0x0b, 0x42, 0x69, 0x67, 0x52, 0x61, 0x6e, 0x6b, 0x49,
+	0x74, 0x65, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x1a, 0x57, 0x0a, 0x0d, 0x53, 0x6d, 0x61, 0x6c, 0x6c,
+	0x52, 0x61, 0x6e, 0x6b, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03,
+	0x6d, 0x69, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6d, 0x69, 0x6e, 0x12, 0x10,
+	0x0a, 0x03, 0x6d, 0x61, 0x78, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6d, 0x61, 0x78,
+	0x1a, 0xb7, 0x01, 0x0a, 0x04, 0x52, 0x61, 0x6e, 0x6b, 0x12, 0x45, 0x0a, 0x08, 0x62, 0x69, 0x67,
+	0x5f, 0x72, 0x61, 0x6e, 0x6b, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x45, 0x6e,
+	0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x42, 0x69, 0x67, 0x52,
+	0x61, 0x6e, 0x6b, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x07, 0x62, 0x69, 0x67, 0x52, 0x61, 0x6e, 0x6b,
+	0x12, 0x4b, 0x0a, 0x0a, 0x73, 0x6d, 0x61, 0x6c, 0x6c, 0x5f, 0x72, 0x61, 0x6e, 0x6b, 0x18, 0x02,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
 	0x6f, 0x6e, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x6f,
-	0x6e, 0x66, 0x69, 0x67, 0x2e, 0x42, 0x69, 0x67, 0x52, 0x61, 0x6e, 0x6b, 0x49, 0x74, 0x65, 0x6d,
-	0x52, 0x07, 0x62, 0x69, 0x67, 0x52, 0x61, 0x6e, 0x6b, 0x12, 0x4b, 0x0a, 0x0a, 0x73, 0x6d, 0x61,
-	0x6c, 0x6c, 0x5f, 0x72, 0x61, 0x6e, 0x6b, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2c, 0x2e,
-	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x54, 0x65, 0x61, 0x6d,
-	0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x53, 0x6d,
-	0x61, 0x6c, 0x6c, 0x52, 0x61, 0x6e, 0x6b, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x09, 0x73, 0x6d, 0x61,
-	0x6c, 0x6c, 0x52, 0x61, 0x6e, 0x6b, 0x12, 0x1b, 0x0a, 0x09, 0x72, 0x61, 0x6e, 0x6b, 0x5f, 0x64,
-	0x65, 0x73, 0x63, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x72, 0x61, 0x6e, 0x6b, 0x44,
-	0x65, 0x73, 0x63, 0x22, 0xfa, 0x08, 0x0a, 0x13, 0x4e, 0x61, 0x74, 0x69, 0x76, 0x65, 0x51, 0x75,
-	0x61, 0x6c, 0x69, 0x66, 0x79, 0x41, 0x49, 0x50, 0x6f, 0x6f, 0x6c, 0x12, 0x14, 0x0a, 0x05, 0x6c,
-	0x65, 0x76, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x6c, 0x65, 0x76, 0x65,
-	0x6c, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x2a, 0x0a, 0x11, 0x62,
-	0x6f, 0x72, 0x64, 0x65, 0x72, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72,
-	0x18, 0x03, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0f, 0x62, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x44, 0x69,
-	0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x28, 0x0a, 0x10, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28,
-	0x01, 0x52, 0x0e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f,
-	0x72, 0x12, 0x28, 0x0a, 0x10, 0x77, 0x72, 0x65, 0x63, 0x6b, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66,
-	0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x05, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0e, 0x77, 0x72, 0x65,
-	0x63, 0x6b, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x2c, 0x0a, 0x12, 0x66,
-	0x6c, 0x6f, 0x61, 0x74, 0x65, 0x72, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f,
-	0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x01, 0x52, 0x10, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x65, 0x72,
-	0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x28, 0x0a, 0x10, 0x70, 0x72, 0x6f,
-	0x70, 0x73, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x07, 0x20,
-	0x01, 0x28, 0x01, 0x52, 0x0e, 0x70, 0x72, 0x6f, 0x70, 0x73, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63,
-	0x74, 0x6f, 0x72, 0x12, 0x2d, 0x0a, 0x13, 0x61, 0x69, 0x5f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f,
-	0x76, 0x69, 0x65, 0x77, 0x5f, 0x61, 0x6e, 0x67, 0x6c, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x01,
-	0x52, 0x10, 0x61, 0x69, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x56, 0x69, 0x65, 0x77, 0x41, 0x6e, 0x67,
-	0x6c, 0x65, 0x12, 0x37, 0x0a, 0x18, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x62, 0x6f, 0x72,
-	0x64, 0x65, 0x72, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x09,
-	0x20, 0x01, 0x28, 0x01, 0x52, 0x15, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x42, 0x6f, 0x72, 0x64,
-	0x65, 0x72, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x35, 0x0a, 0x17, 0x61,
-	0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x64, 0x69, 0x73, 0x5f,
-	0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x01, 0x52, 0x14, 0x61, 0x74,
-	0x74, 0x61, 0x63, 0x6b, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74,
-	0x6f, 0x72, 0x12, 0x35, 0x0a, 0x17, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x77, 0x72, 0x65,
-	0x63, 0x6b, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x0b, 0x20,
-	0x01, 0x28, 0x01, 0x52, 0x14, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x57, 0x72, 0x65, 0x63, 0x6b,
-	0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x3a, 0x0a, 0x1a, 0x61, 0x74, 0x74,
+	0x6e, 0x66, 0x69, 0x67, 0x2e, 0x53, 0x6d, 0x61, 0x6c, 0x6c, 0x52, 0x61, 0x6e, 0x6b, 0x49, 0x74,
+	0x65, 0x6d, 0x52, 0x09, 0x73, 0x6d, 0x61, 0x6c, 0x6c, 0x52, 0x61, 0x6e, 0x6b, 0x12, 0x1b, 0x0a,
+	0x09, 0x72, 0x61, 0x6e, 0x6b, 0x5f, 0x64, 0x65, 0x73, 0x63, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x08, 0x72, 0x61, 0x6e, 0x6b, 0x44, 0x65, 0x73, 0x63, 0x22, 0x8a, 0x01, 0x0a, 0x12, 0x43,
+	0x6f, 0x75, 0x70, 0x6c, 0x65, 0x53, 0x6b, 0x69, 0x6e, 0x41, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74,
+	0x79, 0x12, 0x1f, 0x0a, 0x0b, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x61, 0x63, 0x74, 0x69, 0x76, 0x69, 0x74, 0x79,
+	0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d,
+	0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08,
+	0x6a, 0x75, 0x6d, 0x70, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x6a, 0x75, 0x6d, 0x70, 0x55, 0x72, 0x6c, 0x22, 0xfa, 0x08, 0x0a, 0x13, 0x4e, 0x61, 0x74, 0x69,
+	0x76, 0x65, 0x51, 0x75, 0x61, 0x6c, 0x69, 0x66, 0x79, 0x41, 0x49, 0x50, 0x6f, 0x6f, 0x6c, 0x12,
+	0x14, 0x0a, 0x05, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05,
+	0x6c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6d, 0x6d, 0x65, 0x6e, 0x74, 0x12,
+	0x2a, 0x0a, 0x11, 0x62, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61,
+	0x63, 0x74, 0x6f, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0f, 0x62, 0x6f, 0x72, 0x64,
+	0x65, 0x72, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x28, 0x0a, 0x10, 0x73,
+	0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18,
+	0x04, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x44, 0x69, 0x73, 0x46,
+	0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x28, 0x0a, 0x10, 0x77, 0x72, 0x65, 0x63, 0x6b, 0x5f, 0x64,
+	0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x05, 0x20, 0x01, 0x28, 0x01, 0x52,
+	0x0e, 0x77, 0x72, 0x65, 0x63, 0x6b, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12,
+	0x2c, 0x0a, 0x12, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x65, 0x72, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66,
+	0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x01, 0x52, 0x10, 0x66, 0x6c, 0x6f,
+	0x61, 0x74, 0x65, 0x72, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x28, 0x0a,
+	0x10, 0x70, 0x72, 0x6f, 0x70, 0x73, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f,
+	0x72, 0x18, 0x07, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0e, 0x70, 0x72, 0x6f, 0x70, 0x73, 0x44, 0x69,
+	0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x2d, 0x0a, 0x13, 0x61, 0x69, 0x5f, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x5f, 0x76, 0x69, 0x65, 0x77, 0x5f, 0x61, 0x6e, 0x67, 0x6c, 0x65, 0x18, 0x08,
+	0x20, 0x01, 0x28, 0x01, 0x52, 0x10, 0x61, 0x69, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x56, 0x69, 0x65,
+	0x77, 0x41, 0x6e, 0x67, 0x6c, 0x65, 0x12, 0x37, 0x0a, 0x18, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b,
+	0x5f, 0x62, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74,
+	0x6f, 0x72, 0x18, 0x09, 0x20, 0x01, 0x28, 0x01, 0x52, 0x15, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b,
+	0x42, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12,
+	0x35, 0x0a, 0x17, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f,
+	0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x01,
+	0x52, 0x14, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x44, 0x69, 0x73,
+	0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x35, 0x0a, 0x17, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b,
+	0x5f, 0x77, 0x72, 0x65, 0x63, 0x6b, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f,
+	0x72, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x01, 0x52, 0x14, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x57,
+	0x72, 0x65, 0x63, 0x6b, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x3a, 0x0a,
+	0x1a, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x61, 0x69, 0x5f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
+	0x5f, 0x76, 0x69, 0x65, 0x77, 0x5f, 0x61, 0x6e, 0x67, 0x6c, 0x65, 0x18, 0x0c, 0x20, 0x01, 0x28,
+	0x01, 0x52, 0x16, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x41, 0x69, 0x53, 0x6e, 0x61, 0x6b, 0x65,
+	0x56, 0x69, 0x65, 0x77, 0x41, 0x6e, 0x67, 0x6c, 0x65, 0x12, 0x39, 0x0a, 0x19, 0x61, 0x74, 0x74,
+	0x61, 0x63, 0x6b, 0x5f, 0x66, 0x6c, 0x6f, 0x61, 0x74, 0x65, 0x72, 0x5f, 0x64, 0x69, 0x73, 0x5f,
+	0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x01, 0x52, 0x16, 0x61, 0x74,
+	0x74, 0x61, 0x63, 0x6b, 0x46, 0x6c, 0x6f, 0x61, 0x74, 0x65, 0x72, 0x44, 0x69, 0x73, 0x46, 0x61,
+	0x63, 0x74, 0x6f, 0x72, 0x12, 0x35, 0x0a, 0x17, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x70,
+	0x72, 0x6f, 0x70, 0x73, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18,
+	0x0e, 0x20, 0x01, 0x28, 0x01, 0x52, 0x14, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x50, 0x72, 0x6f,
+	0x70, 0x73, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x37, 0x0a, 0x18, 0x61,
+	0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x63, 0x69, 0x72, 0x63, 0x6c, 0x65, 0x5f, 0x64, 0x69, 0x73,
+	0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x01, 0x52, 0x15, 0x61,
+	0x74, 0x74, 0x61, 0x63, 0x6b, 0x43, 0x69, 0x72, 0x63, 0x6c, 0x65, 0x44, 0x69, 0x73, 0x46, 0x61,
+	0x63, 0x74, 0x6f, 0x72, 0x12, 0x1f, 0x0a, 0x0b, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x72,
+	0x61, 0x74, 0x65, 0x18, 0x10, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0a, 0x61, 0x74, 0x74, 0x61, 0x63,
+	0x6b, 0x52, 0x61, 0x74, 0x65, 0x12, 0x32, 0x0a, 0x15, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x5f,
+	0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x11,
+	0x20, 0x01, 0x28, 0x01, 0x52, 0x13, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x44, 0x69, 0x72, 0x65,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x61, 0x74, 0x65, 0x12, 0x30, 0x0a, 0x14, 0x64, 0x65, 0x6c,
+	0x61, 0x79, 0x5f, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x72, 0x61, 0x74,
+	0x65, 0x18, 0x12, 0x20, 0x01, 0x28, 0x01, 0x52, 0x12, 0x64, 0x65, 0x6c, 0x61, 0x79, 0x44, 0x69,
+	0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x61, 0x74, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x61,
+	0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x18, 0x13, 0x20, 0x03, 0x28,
+	0x03, 0x52, 0x0b, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x12, 0x25,
+	0x0a, 0x0e, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x77, 0x65, 0x69, 0x67, 0x68, 0x74, 0x73,
+	0x18, 0x14, 0x20, 0x03, 0x28, 0x03, 0x52, 0x0d, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x57, 0x65,
+	0x69, 0x67, 0x68, 0x74, 0x73, 0x12, 0x21, 0x0a, 0x0c, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70,
+	0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x15, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0b, 0x73, 0x70, 0x65,
+	0x65, 0x64, 0x75, 0x70, 0x52, 0x61, 0x74, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x73, 0x70, 0x65, 0x65,
+	0x64, 0x75, 0x70, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x16, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b,
+	0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x3c, 0x0a, 0x1b, 0x61,
+	0x69, 0x5f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x76, 0x69, 0x65, 0x77, 0x5f, 0x72, 0x61, 0x64,
+	0x69, 0x75, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x17, 0x20, 0x01, 0x28, 0x01,
+	0x52, 0x17, 0x61, 0x69, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x56, 0x69, 0x65, 0x77, 0x52, 0x61, 0x64,
+	0x69, 0x75, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x49, 0x0a, 0x22, 0x61, 0x74, 0x74,
 	0x61, 0x63, 0x6b, 0x5f, 0x61, 0x69, 0x5f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x76, 0x69, 0x65,
-	0x77, 0x5f, 0x61, 0x6e, 0x67, 0x6c, 0x65, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x01, 0x52, 0x16, 0x61,
-	0x74, 0x74, 0x61, 0x63, 0x6b, 0x41, 0x69, 0x53, 0x6e, 0x61, 0x6b, 0x65, 0x56, 0x69, 0x65, 0x77,
-	0x41, 0x6e, 0x67, 0x6c, 0x65, 0x12, 0x39, 0x0a, 0x19, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f,
-	0x66, 0x6c, 0x6f, 0x61, 0x74, 0x65, 0x72, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74,
-	0x6f, 0x72, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x01, 0x52, 0x16, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b,
-	0x46, 0x6c, 0x6f, 0x61, 0x74, 0x65, 0x72, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72,
-	0x12, 0x35, 0x0a, 0x17, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x70, 0x72, 0x6f, 0x70, 0x73,
-	0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x0e, 0x20, 0x01, 0x28,
-	0x01, 0x52, 0x14, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x50, 0x72, 0x6f, 0x70, 0x73, 0x44, 0x69,
-	0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x37, 0x0a, 0x18, 0x61, 0x74, 0x74, 0x61, 0x63,
-	0x6b, 0x5f, 0x63, 0x69, 0x72, 0x63, 0x6c, 0x65, 0x5f, 0x64, 0x69, 0x73, 0x5f, 0x66, 0x61, 0x63,
-	0x74, 0x6f, 0x72, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x01, 0x52, 0x15, 0x61, 0x74, 0x74, 0x61, 0x63,
-	0x6b, 0x43, 0x69, 0x72, 0x63, 0x6c, 0x65, 0x44, 0x69, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72,
-	0x12, 0x1f, 0x0a, 0x0b, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18,
-	0x10, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0a, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x52, 0x61, 0x74,
-	0x65, 0x12, 0x32, 0x0a, 0x15, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x5f, 0x64, 0x69, 0x72, 0x65,
-	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x11, 0x20, 0x01, 0x28, 0x01,
-	0x52, 0x13, 0x63, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x44, 0x69, 0x72, 0x65, 0x63, 0x74, 0x69, 0x6f,
-	0x6e, 0x52, 0x61, 0x74, 0x65, 0x12, 0x30, 0x0a, 0x14, 0x64, 0x65, 0x6c, 0x61, 0x79, 0x5f, 0x64,
-	0x69, 0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x72, 0x61, 0x74, 0x65, 0x18, 0x12, 0x20,
-	0x01, 0x28, 0x01, 0x52, 0x12, 0x64, 0x65, 0x6c, 0x61, 0x79, 0x44, 0x69, 0x72, 0x65, 0x63, 0x74,
-	0x69, 0x6f, 0x6e, 0x52, 0x61, 0x74, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x61, 0x74, 0x74, 0x61, 0x63,
-	0x6b, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x18, 0x13, 0x20, 0x03, 0x28, 0x03, 0x52, 0x0b, 0x61,
-	0x74, 0x74, 0x61, 0x63, 0x6b, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x12, 0x25, 0x0a, 0x0e, 0x61, 0x74,
-	0x74, 0x61, 0x63, 0x6b, 0x5f, 0x77, 0x65, 0x69, 0x67, 0x68, 0x74, 0x73, 0x18, 0x14, 0x20, 0x03,
-	0x28, 0x03, 0x52, 0x0d, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x57, 0x65, 0x69, 0x67, 0x68, 0x74,
-	0x73, 0x12, 0x21, 0x0a, 0x0c, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x5f, 0x72, 0x61, 0x74,
-	0x65, 0x18, 0x15, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0b, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70,
-	0x52, 0x61, 0x74, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x73, 0x70, 0x65, 0x65, 0x64, 0x75, 0x70, 0x5f,
-	0x74, 0x69, 0x6d, 0x65, 0x18, 0x16, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0b, 0x73, 0x70, 0x65, 0x65,
-	0x64, 0x75, 0x70, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x3c, 0x0a, 0x1b, 0x61, 0x69, 0x5f, 0x73, 0x6e,
-	0x61, 0x6b, 0x65, 0x5f, 0x76, 0x69, 0x65, 0x77, 0x5f, 0x72, 0x61, 0x64, 0x69, 0x75, 0x73, 0x5f,
-	0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x17, 0x20, 0x01, 0x28, 0x01, 0x52, 0x17, 0x61, 0x69,
-	0x53, 0x6e, 0x61, 0x6b, 0x65, 0x56, 0x69, 0x65, 0x77, 0x52, 0x61, 0x64, 0x69, 0x75, 0x73, 0x46,
-	0x61, 0x63, 0x74, 0x6f, 0x72, 0x12, 0x49, 0x0a, 0x22, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x5f,
-	0x61, 0x69, 0x5f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x76, 0x69, 0x65, 0x77, 0x5f, 0x72, 0x61,
-	0x64, 0x69, 0x75, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x18, 0x20, 0x01, 0x28,
-	0x01, 0x52, 0x1d, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x41, 0x69, 0x53, 0x6e, 0x61, 0x6b, 0x65,
-	0x56, 0x69, 0x65, 0x77, 0x52, 0x61, 0x64, 0x69, 0x75, 0x73, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72,
-	0x22, 0xa9, 0x06, 0x0a, 0x0a, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12,
-	0x1b, 0x0a, 0x09, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x05, 0x52, 0x08, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08,
-	0x62, 0x74, 0x6e, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
-	0x62, 0x74, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x62, 0x74, 0x6e, 0x5f, 0x6c,
-	0x69, 0x6e, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x62, 0x74, 0x6e, 0x4c, 0x69,
-	0x6e, 0x6b, 0x12, 0x20, 0x0a, 0x0c, 0x62, 0x74, 0x6e, 0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x5f, 0x64,
-	0x65, 0x76, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x62, 0x74, 0x6e, 0x4c, 0x69, 0x6e,
-	0x6b, 0x44, 0x65, 0x76, 0x12, 0x19, 0x0a, 0x08, 0x62, 0x74, 0x6e, 0x5f, 0x74, 0x65, 0x78, 0x74,
-	0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x62, 0x74, 0x6e, 0x54, 0x65, 0x78, 0x74, 0x12,
-	0x32, 0x0a, 0x05, 0x65, 0x78, 0x74, 0x72, 0x61, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c,
-	0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x42, 0x61, 0x6e,
-	0x6e, 0x65, 0x72, 0x45, 0x78, 0x74, 0x72, 0x61, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x05, 0x65, 0x78,
-	0x74, 0x72, 0x61, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x07, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12, 0x18, 0x0a, 0x07, 0x69,
-	0x6d, 0x67, 0x75, 0x72, 0x6c, 0x32, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x69, 0x6d,
-	0x67, 0x75, 0x72, 0x6c, 0x32, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x09,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x74,
-	0x79, 0x70, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12,
-	0x27, 0x0a, 0x0f, 0x73, 0x68, 0x6f, 0x77, 0x5f, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0e, 0x73, 0x68, 0x6f, 0x77, 0x4c, 0x69,
-	0x6d, 0x69, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x68, 0x6f, 0x77,
-	0x5f, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09, 0x73, 0x68,
-	0x6f, 0x77, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x6e, 0x6f, 0x74, 0x69, 0x66,
-	0x79, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x12,
-	0x1f, 0x0a, 0x0b, 0x69, 0x6e, 0x69, 0x74, 0x5f, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x18, 0x0e,
-	0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x69, 0x6e, 0x69, 0x74, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79,
-	0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x74, 0x61, 0x79, 0x5f, 0x73, 0x65, 0x63, 0x6f, 0x6e, 0x64, 0x18,
-	0x0f, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x73, 0x74, 0x61, 0x79, 0x53, 0x65, 0x63, 0x6f, 0x6e,
-	0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x5f, 0x6c, 0x69, 0x6d, 0x69, 0x74,
-	0x18, 0x10, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x4c, 0x69, 0x6d,
-	0x69, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x75, 0x72, 0x65, 0x5f, 0x66, 0x6c, 0x61, 0x67, 0x18,
-	0x11, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x70, 0x75, 0x72, 0x65, 0x46, 0x6c, 0x61, 0x67, 0x12,
-	0x22, 0x0a, 0x0d, 0x63, 0x61, 0x72, 0x74, 0x6f, 0x6e, 0x5f, 0x62, 0x67, 0x5f, 0x75, 0x72, 0x6c,
-	0x18, 0x12, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x61, 0x72, 0x74, 0x6f, 0x6e, 0x42, 0x67,
-	0x55, 0x72, 0x6c, 0x12, 0x38, 0x0a, 0x0b, 0x63, 0x61, 0x72, 0x74, 0x6f, 0x6e, 0x5f, 0x6c, 0x69,
-	0x73, 0x74, 0x18, 0x13, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x61, 0x72, 0x74, 0x6f, 0x6e, 0x4c, 0x69, 0x73,
-	0x74, 0x52, 0x0a, 0x63, 0x61, 0x72, 0x74, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x16, 0x0a,
-	0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x14, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73,
-	0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x15, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x12, 0x1f, 0x0a, 0x0b, 0x64, 0x69, 0x72,
-	0x65, 0x63, 0x74, 0x5f, 0x6a, 0x75, 0x6d, 0x70, 0x18, 0x16, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a,
-	0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x4a, 0x75, 0x6d, 0x70, 0x12, 0x26, 0x0a, 0x0f, 0x69, 0x73,
-	0x5f, 0x6d, 0x61, 0x6a, 0x6f, 0x72, 0x5f, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x18, 0x17, 0x20,
-	0x01, 0x28, 0x08, 0x52, 0x0d, 0x69, 0x73, 0x4d, 0x61, 0x6a, 0x6f, 0x72, 0x42, 0x61, 0x6e, 0x6e,
-	0x65, 0x72, 0x12, 0x23, 0x0a, 0x0d, 0x68, 0x6f, 0x6d, 0x65, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x73,
-	0x6f, 0x72, 0x74, 0x18, 0x18, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x68, 0x6f, 0x6d, 0x65, 0x70,
-	0x61, 0x67, 0x65, 0x53, 0x6f, 0x72, 0x74, 0x12, 0x23, 0x0a, 0x0d, 0x68, 0x6f, 0x6d, 0x65, 0x5f,
-	0x70, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x19, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c,
-	0x68, 0x6f, 0x6d, 0x65, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x5a, 0x0a, 0x0a,
-	0x43, 0x61, 0x72, 0x74, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d,
-	0x67, 0x75, 0x72, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75,
-	0x72, 0x6c, 0x12, 0x19, 0x0a, 0x08, 0x62, 0x74, 0x6e, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x62, 0x74, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x19, 0x0a,
-	0x08, 0x62, 0x74, 0x6e, 0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x07, 0x62, 0x74, 0x6e, 0x4c, 0x69, 0x6e, 0x6b, 0x22, 0xd3, 0x02, 0x0a, 0x0f, 0x42, 0x61, 0x6e,
-	0x6e, 0x65, 0x72, 0x45, 0x78, 0x74, 0x72, 0x61, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x1d, 0x0a, 0x0a,
-	0x6e, 0x65, 0x65, 0x64, 0x5f, 0x6c, 0x6f, 0x67, 0x69, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x09, 0x6e, 0x65, 0x65, 0x64, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x1f, 0x0a, 0x0b, 0x61,
-	0x62, 0x6c, 0x65, 0x5f, 0x6d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09,
-	0x52, 0x0a, 0x61, 0x62, 0x6c, 0x65, 0x4d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x12, 0x25, 0x0a, 0x0e,
-	0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x6d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x18, 0x03,
-	0x20, 0x03, 0x28, 0x09, 0x52, 0x0d, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x4d, 0x61, 0x72,
-	0x6b, 0x65, 0x74, 0x12, 0x29, 0x0a, 0x10, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x6f,
-	0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x76,
-	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x18,
-	0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2b, 0x0a, 0x11, 0x76, 0x65, 0x72, 0x73,
-	0x69, 0x6f, 0x6e, 0x5f, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x32, 0x18, 0x06, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x10, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x4f, 0x70, 0x65, 0x72,
-	0x61, 0x74, 0x6f, 0x72, 0x32, 0x12, 0x1a, 0x0a, 0x08, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
-	0x32, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
-	0x32, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x72, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x05,
-	0x52, 0x05, 0x73, 0x74, 0x61, 0x72, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x66, 0x69, 0x6e, 0x69, 0x73,
-	0x68, 0x18, 0x09, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x66, 0x69, 0x6e, 0x69, 0x73, 0x68, 0x12,
-	0x1d, 0x0a, 0x0a, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0a, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x09, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x54, 0x79, 0x70, 0x65, 0x42, 0x2d,
+	0x77, 0x5f, 0x72, 0x61, 0x64, 0x69, 0x75, 0x73, 0x5f, 0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18,
+	0x18, 0x20, 0x01, 0x28, 0x01, 0x52, 0x1d, 0x61, 0x74, 0x74, 0x61, 0x63, 0x6b, 0x41, 0x69, 0x53,
+	0x6e, 0x61, 0x6b, 0x65, 0x56, 0x69, 0x65, 0x77, 0x52, 0x61, 0x64, 0x69, 0x75, 0x73, 0x46, 0x61,
+	0x63, 0x74, 0x6f, 0x72, 0x22, 0xa9, 0x06, 0x0a, 0x0a, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49,
+	0x6e, 0x66, 0x6f, 0x12, 0x1b, 0x0a, 0x09, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x49, 0x64,
+	0x12, 0x19, 0x0a, 0x08, 0x62, 0x74, 0x6e, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x07, 0x62, 0x74, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x62,
+	0x74, 0x6e, 0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x62,
+	0x74, 0x6e, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x20, 0x0a, 0x0c, 0x62, 0x74, 0x6e, 0x5f, 0x6c, 0x69,
+	0x6e, 0x6b, 0x5f, 0x64, 0x65, 0x76, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x62, 0x74,
+	0x6e, 0x4c, 0x69, 0x6e, 0x6b, 0x44, 0x65, 0x76, 0x12, 0x19, 0x0a, 0x08, 0x62, 0x74, 0x6e, 0x5f,
+	0x74, 0x65, 0x78, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x62, 0x74, 0x6e, 0x54,
+	0x65, 0x78, 0x74, 0x12, 0x32, 0x0a, 0x05, 0x65, 0x78, 0x74, 0x72, 0x61, 0x18, 0x06, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x2e, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x45, 0x78, 0x74, 0x72, 0x61, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x05, 0x65, 0x78, 0x74, 0x72, 0x61, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72,
+	0x6c, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12,
+	0x18, 0x0a, 0x07, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x32, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x07, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x32, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74,
+	0x6c, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12,
+	0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x74,
+	0x79, 0x70, 0x65, 0x12, 0x27, 0x0a, 0x0f, 0x73, 0x68, 0x6f, 0x77, 0x5f, 0x6c, 0x69, 0x6d, 0x69,
+	0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0e, 0x73, 0x68,
+	0x6f, 0x77, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1d, 0x0a, 0x0a,
+	0x73, 0x68, 0x6f, 0x77, 0x5f, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x09, 0x73, 0x68, 0x6f, 0x77, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x6e,
+	0x6f, 0x74, 0x69, 0x66, 0x79, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x6e, 0x6f, 0x74,
+	0x69, 0x66, 0x79, 0x12, 0x1f, 0x0a, 0x0b, 0x69, 0x6e, 0x69, 0x74, 0x5f, 0x6e, 0x6f, 0x74, 0x69,
+	0x66, 0x79, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x69, 0x6e, 0x69, 0x74, 0x4e, 0x6f,
+	0x74, 0x69, 0x66, 0x79, 0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x74, 0x61, 0x79, 0x5f, 0x73, 0x65, 0x63,
+	0x6f, 0x6e, 0x64, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x73, 0x74, 0x61, 0x79, 0x53,
+	0x65, 0x63, 0x6f, 0x6e, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x5f, 0x6c,
+	0x69, 0x6d, 0x69, 0x74, 0x18, 0x10, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x74, 0x6f, 0x74, 0x61,
+	0x6c, 0x4c, 0x69, 0x6d, 0x69, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x75, 0x72, 0x65, 0x5f, 0x66,
+	0x6c, 0x61, 0x67, 0x18, 0x11, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x70, 0x75, 0x72, 0x65, 0x46,
+	0x6c, 0x61, 0x67, 0x12, 0x22, 0x0a, 0x0d, 0x63, 0x61, 0x72, 0x74, 0x6f, 0x6e, 0x5f, 0x62, 0x67,
+	0x5f, 0x75, 0x72, 0x6c, 0x18, 0x12, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x61, 0x72, 0x74,
+	0x6f, 0x6e, 0x42, 0x67, 0x55, 0x72, 0x6c, 0x12, 0x38, 0x0a, 0x0b, 0x63, 0x61, 0x72, 0x74, 0x6f,
+	0x6e, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x13, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73,
+	0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x61, 0x72, 0x74, 0x6f,
+	0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x0a, 0x63, 0x61, 0x72, 0x74, 0x6f, 0x6e, 0x4c, 0x69, 0x73,
+	0x74, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x14, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72,
+	0x74, 0x18, 0x15, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x12, 0x1f, 0x0a,
+	0x0b, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x5f, 0x6a, 0x75, 0x6d, 0x70, 0x18, 0x16, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x0a, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x4a, 0x75, 0x6d, 0x70, 0x12, 0x26,
+	0x0a, 0x0f, 0x69, 0x73, 0x5f, 0x6d, 0x61, 0x6a, 0x6f, 0x72, 0x5f, 0x62, 0x61, 0x6e, 0x6e, 0x65,
+	0x72, 0x18, 0x17, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0d, 0x69, 0x73, 0x4d, 0x61, 0x6a, 0x6f, 0x72,
+	0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x12, 0x23, 0x0a, 0x0d, 0x68, 0x6f, 0x6d, 0x65, 0x70, 0x61,
+	0x67, 0x65, 0x5f, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x18, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0c, 0x68,
+	0x6f, 0x6d, 0x65, 0x70, 0x61, 0x67, 0x65, 0x53, 0x6f, 0x72, 0x74, 0x12, 0x23, 0x0a, 0x0d, 0x68,
+	0x6f, 0x6d, 0x65, 0x5f, 0x70, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x19, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x0c, 0x68, 0x6f, 0x6d, 0x65, 0x50, 0x6f, 0x73, 0x69, 0x74, 0x69, 0x6f, 0x6e,
+	0x22, 0x5a, 0x0a, 0x0a, 0x43, 0x61, 0x72, 0x74, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x16,
+	0x0a, 0x06, 0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
+	0x69, 0x6d, 0x67, 0x75, 0x72, 0x6c, 0x12, 0x19, 0x0a, 0x08, 0x62, 0x74, 0x6e, 0x5f, 0x74, 0x79,
+	0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x62, 0x74, 0x6e, 0x54, 0x79, 0x70,
+	0x65, 0x12, 0x19, 0x0a, 0x08, 0x62, 0x74, 0x6e, 0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x07, 0x62, 0x74, 0x6e, 0x4c, 0x69, 0x6e, 0x6b, 0x22, 0xd3, 0x02, 0x0a,
+	0x0f, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x45, 0x78, 0x74, 0x72, 0x61, 0x49, 0x6e, 0x66, 0x6f,
+	0x12, 0x1d, 0x0a, 0x0a, 0x6e, 0x65, 0x65, 0x64, 0x5f, 0x6c, 0x6f, 0x67, 0x69, 0x6e, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6e, 0x65, 0x65, 0x64, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12,
+	0x1f, 0x0a, 0x0b, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x6d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x18, 0x02,
+	0x20, 0x03, 0x28, 0x09, 0x52, 0x0a, 0x61, 0x62, 0x6c, 0x65, 0x4d, 0x61, 0x72, 0x6b, 0x65, 0x74,
+	0x12, 0x25, 0x0a, 0x0e, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x6d, 0x61, 0x72, 0x6b,
+	0x65, 0x74, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0d, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c,
+	0x65, 0x4d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x12, 0x29, 0x0a, 0x10, 0x76, 0x65, 0x72, 0x73, 0x69,
+	0x6f, 0x6e, 0x5f, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74,
+	0x6f, 0x72, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2b, 0x0a, 0x11,
+	0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72,
+	0x32, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x10, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
+	0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x6f, 0x72, 0x32, 0x12, 0x1a, 0x0a, 0x08, 0x76, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x32, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x76, 0x65, 0x72,
+	0x73, 0x69, 0x6f, 0x6e, 0x32, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x72, 0x74, 0x18, 0x08,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x73, 0x74, 0x61, 0x72, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x66,
+	0x69, 0x6e, 0x69, 0x73, 0x68, 0x18, 0x09, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x66, 0x69, 0x6e,
+	0x69, 0x73, 0x68, 0x12, 0x1d, 0x0a, 0x0a, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x5f, 0x74, 0x79, 0x70,
+	0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x54, 0x79,
+	0x70, 0x65, 0x2a, 0x2a, 0x0a, 0x0f, 0x42, 0x6f, 0x78, 0x50, 0x6f, 0x6f, 0x6c, 0x49, 0x74, 0x65,
+	0x6d, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0a, 0x0a, 0x06, 0x4e, 0x6f, 0x72, 0x6d, 0x61, 0x6c, 0x10,
+	0x00, 0x12, 0x0b, 0x0a, 0x07, 0x53, 0x70, 0x65, 0x63, 0x69, 0x61, 0x6c, 0x10, 0x01, 0x42, 0x2d,
 	0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
 	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70,
@@ -26325,626 +27111,649 @@ func file_snakecommon_project_config_proto_rawDescGZIP() []byte {
 	return file_snakecommon_project_config_proto_rawDescData
 }
 
-var file_snakecommon_project_config_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_snakecommon_project_config_proto_msgTypes = make([]protoimpl.MessageInfo, 283)
+var file_snakecommon_project_config_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_snakecommon_project_config_proto_msgTypes = make([]protoimpl.MessageInfo, 291)
 var file_snakecommon_project_config_proto_goTypes = []interface{}{
-	(ShortCutConfig_SceneType)(0),              // 0: snakecommon.ShortCutConfig.SceneType
-	(*ConfigVersionInfo)(nil),                  // 1: snakecommon.ConfigVersionInfo
-	(*EndLessBuffPropConfigV2)(nil),            // 2: snakecommon.EndLessBuffPropConfigV2
-	(*EndLessBuffPropInfo)(nil),                // 3: snakecommon.EndLessBuffPropInfo
-	(*RandomPropInfo)(nil),                     // 4: snakecommon.RandomPropInfo
-	(*HuaweiHighlight)(nil),                    // 5: snakecommon.HuaweiHighlight
-	(*HighLightInfo)(nil),                      // 6: snakecommon.HighLightInfo
-	(*OlGameConfig)(nil),                       // 7: snakecommon.OlGameConfig
-	(*JumpIcon)(nil),                           // 8: snakecommon.JumpIcon
-	(*MatchBackgroundConfig)(nil),              // 9: snakecommon.MatchBackgroundConfig
-	(*GameStatusTrack)(nil),                    // 10: snakecommon.GameStatusTrack
-	(*GrassConfig)(nil),                        // 11: snakecommon.GrassConfig
-	(*GrassInfo)(nil),                          // 12: snakecommon.GrassInfo
-	(*TeamSuit)(nil),                           // 13: snakecommon.TeamSuit
-	(*TeamSuitNewSuitInfo)(nil),                // 14: snakecommon.TeamSuitNewSuitInfo
-	(*TeamKillConfig)(nil),                     // 15: snakecommon.TeamKillConfig
-	(*TeamMeleeConfig)(nil),                    // 16: snakecommon.TeamMeleeConfig
-	(*QualifyingConfig)(nil),                   // 17: snakecommon.QualifyingConfig
-	(*RaceNormalConfig)(nil),                   // 18: snakecommon.RaceNormalConfig
-	(*TeamKillProp)(nil),                       // 19: snakecommon.TeamKillProp
-	(*ClanConfig)(nil),                         // 20: snakecommon.ClanConfig
-	(*RuleDesc)(nil),                           // 21: snakecommon.RuleDesc
-	(*ActivePointAddition)(nil),                // 22: snakecommon.ActivePointAddition
-	(*RaceTimeConfig)(nil),                     // 23: snakecommon.RaceTimeConfig
-	(*ClanRaceReward)(nil),                     // 24: snakecommon.ClanRaceReward
-	(*ClanLevelInfo)(nil),                      // 25: snakecommon.ClanLevelInfo
-	(*NewClanRewardItem)(nil),                  // 26: snakecommon.NewClanRewardItem
-	(*RankConfig)(nil),                         // 27: snakecommon.RankConfig
-	(*RankReward)(nil),                         // 28: snakecommon.RankReward
-	(*RankLevel)(nil),                          // 29: snakecommon.RankLevel
-	(*SeasonInfo)(nil),                         // 30: snakecommon.SeasonInfo
-	(*ShareConfig)(nil),                        // 31: snakecommon.ShareConfig
-	(*ShareTag)(nil),                           // 32: snakecommon.ShareTag
-	(*ClipBoardCheck)(nil),                     // 33: snakecommon.ClipBoardCheck
-	(*VideoShareIcon)(nil),                     // 34: snakecommon.VideoShareIcon
-	(*ChannelConfig)(nil),                      // 35: snakecommon.ChannelConfig
-	(*GameInvite)(nil),                         // 36: snakecommon.GameInvite
-	(*SocialConfig)(nil),                       // 37: snakecommon.SocialConfig
-	(*CharmTopConfig)(nil),                     // 38: snakecommon.CharmTopConfig
-	(*CharmLevelItem)(nil),                     // 39: snakecommon.CharmLevelItem
-	(*SocialThreshold)(nil),                    // 40: snakecommon.SocialThreshold
-	(*SocialThresholdPlatform)(nil),            // 41: snakecommon.SocialThresholdPlatform
-	(*CharmExpConfig)(nil),                     // 42: snakecommon.CharmExpConfig
-	(*CharmExpRank)(nil),                       // 43: snakecommon.CharmExpRank
-	(*CharmPrivilegeItem)(nil),                 // 44: snakecommon.CharmPrivilegeItem
-	(*TextConfig)(nil),                         // 45: snakecommon.TextConfig
-	(*GiftLikeTextList)(nil),                   // 46: snakecommon.GiftLikeTextList
-	(*ShortCutConfig)(nil),                     // 47: snakecommon.ShortCutConfig
-	(*ReportBehavior)(nil),                     // 48: snakecommon.ReportBehavior
-	(*UiConfigV3)(nil),                         // 49: snakecommon.UiConfigV3
-	(*GameIcon)(nil),                           // 50: snakecommon.GameIcon
-	(*LittleGameIcon)(nil),                     // 51: snakecommon.LittleGameIcon
-	(*Bubble)(nil),                             // 52: snakecommon.Bubble
-	(*NewbieCondition)(nil),                    // 53: snakecommon.NewbieCondition
-	(*HomeBackground)(nil),                     // 54: snakecommon.HomeBackground
-	(*PingConfig)(nil),                         // 55: snakecommon.PingConfig
-	(*RewardMarkConfig)(nil),                   // 56: snakecommon.RewardMarkConfig
-	(*RewardMark)(nil),                         // 57: snakecommon.RewardMark
-	(*ShowAdConfig)(nil),                       // 58: snakecommon.ShowAdConfig
-	(*CrossPromotions)(nil),                    // 59: snakecommon.CrossPromotions
-	(*CrossPromotionsSource)(nil),              // 60: snakecommon.CrossPromotionsSource
-	(*EndlessBuff)(nil),                        // 61: snakecommon.EndlessBuff
-	(*PopupPosition)(nil),                      // 62: snakecommon.PopupPosition
-	(*AdPopupsConfig)(nil),                     // 63: snakecommon.AdPopupsConfig
-	(*EndlessAdRecommend)(nil),                 // 64: snakecommon.EndlessAdRecommend
-	(*AdRewardModel)(nil),                      // 65: snakecommon.AdRewardModel
-	(*AdGoodsItem)(nil),                        // 66: snakecommon.AdGoodsItem
-	(*OrderConfig)(nil),                        // 67: snakecommon.OrderConfig
-	(*AlipayDiscount)(nil),                     // 68: snakecommon.AlipayDiscount
-	(*FirstChargePopup)(nil),                   // 69: snakecommon.FirstChargePopup
-	(*RandomDoubleClientInfo)(nil),             // 70: snakecommon.RandomDoubleClientInfo
-	(*UnityQualifyingOpenConfig)(nil),          // 71: snakecommon.UnityQualifyingOpenConfig
-	(*TopListConfig)(nil),                      // 72: snakecommon.TopListConfig
-	(*ShowConfig)(nil),                         // 73: snakecommon.ShowConfig
-	(*ShowPackItem)(nil),                       // 74: snakecommon.ShowPackItem
-	(*ShowIconStyle)(nil),                      // 75: snakecommon.ShowIconStyle
-	(*ShowLevelConfig)(nil),                    // 76: snakecommon.ShowLevelConfig
-	(*ShowSkillName)(nil),                      // 77: snakecommon.ShowSkillName
-	(*ShowSkillBuff)(nil),                      // 78: snakecommon.ShowSkillBuff
-	(*UserConfig)(nil),                         // 79: snakecommon.UserConfig
-	(*UnityFlags)(nil),                         // 80: snakecommon.UnityFlags
-	(*MinorLimit)(nil),                         // 81: snakecommon.MinorLimit
-	(*OrderCurator)(nil),                       // 82: snakecommon.OrderCurator
-	(*FlagsConfig)(nil),                        // 83: snakecommon.FlagsConfig
-	(*FeedbackConfig)(nil),                     // 84: snakecommon.FeedbackConfig
-	(*SettingConfig)(nil),                      // 85: snakecommon.SettingConfig
-	(*DocVersion)(nil),                         // 86: snakecommon.DocVersion
-	(*NetworkCheck)(nil),                       // 87: snakecommon.NetworkCheck
-	(*Prometheus)(nil),                         // 88: snakecommon.Prometheus
-	(*OkhttpDispatcher)(nil),                   // 89: snakecommon.OkhttpDispatcher
-	(*MemSwitch)(nil),                          // 90: snakecommon.MemSwitch
-	(*BindConfig)(nil),                         // 91: snakecommon.BindConfig
-	(*RenamePopupRule)(nil),                    // 92: snakecommon.RenamePopupRule
-	(*QualifyingMatch)(nil),                    // 93: snakecommon.QualifyingMatch
-	(*NewbieClub)(nil),                         // 94: snakecommon.NewbieClub
-	(*GameEndSkin)(nil),                        // 95: snakecommon.GameEndSkin
-	(*DeviceConfig)(nil),                       // 96: snakecommon.DeviceConfig
-	(*AntiAddiction)(nil),                      // 97: snakecommon.AntiAddiction
-	(*Notify)(nil),                             // 98: snakecommon.Notify
-	(*CertifyGameConfig)(nil),                  // 99: snakecommon.CertifyGameConfig
-	(*MinorNotify)(nil),                        // 100: snakecommon.MinorNotify
-	(*PayNotify)(nil),                          // 101: snakecommon.PayNotify
-	(*SocialDesc)(nil),                         // 102: snakecommon.SocialDesc
-	(*IdentityAge)(nil),                        // 103: snakecommon.IdentityAge
-	(*CertifyNotify)(nil),                      // 104: snakecommon.CertifyNotify
-	(*IdfaConfig)(nil),                         // 105: snakecommon.IdfaConfig
-	(*CommentConfig)(nil),                      // 106: snakecommon.CommentConfig
-	(*RegisterSurvey)(nil),                     // 107: snakecommon.RegisterSurvey
-	(*RecruitPopup)(nil),                       // 108: snakecommon.RecruitPopup
-	(*NewUserConfig)(nil),                      // 109: snakecommon.NewUserConfig
-	(*ReviveConfigItem)(nil),                   // 110: snakecommon.ReviveConfigItem
-	(*SingleGameAiConfigItem)(nil),             // 111: snakecommon.SingleGameAiConfigItem
-	(*FloaterConfigOld)(nil),                   // 112: snakecommon.FloaterConfigOld
-	(*ActivityMapConfig)(nil),                  // 113: snakecommon.ActivityMapConfig
-	(*EndlessLimitConfig)(nil),                 // 114: snakecommon.EndlessLimitConfig
-	(*EndlessBubbleConfig)(nil),                // 115: snakecommon.EndlessBubbleConfig
-	(*EndlessTrackConfig)(nil),                 // 116: snakecommon.EndlessTrackConfig
-	(*WildStormListItem)(nil),                  // 117: snakecommon.WildStormListItem
-	(*WildStormConfig)(nil),                    // 118: snakecommon.WildStormConfig
-	(*OfflineGameConfig)(nil),                  // 119: snakecommon.OfflineGameConfig
-	(*MentorshipConfig)(nil),                   // 120: snakecommon.MentorshipConfig
-	(*MentorPrivilegeInfo)(nil),                // 121: snakecommon.MentorPrivilegeInfo
-	(*PrivilegeDetailInfo)(nil),                // 122: snakecommon.PrivilegeDetailInfo
-	(*MentorshipBondTitleItem)(nil),            // 123: snakecommon.MentorshipBondTitleItem
-	(*MentorFinishReward)(nil),                 // 124: snakecommon.MentorFinishReward
-	(*MasterPrenticeStrategyItem)(nil),         // 125: snakecommon.MasterPrenticeStrategyItem
-	(*HotConfig)(nil),                          // 126: snakecommon.HotConfig
-	(*ProductConfig)(nil),                      // 127: snakecommon.ProductConfig
-	(*WeddingConfig)(nil),                      // 128: snakecommon.WeddingConfig
-	(*WeddingTemplate)(nil),                    // 129: snakecommon.WeddingTemplate
-	(*WeddingMusic)(nil),                       // 130: snakecommon.WeddingMusic
-	(*HappycoinConfig)(nil),                    // 131: snakecommon.HappycoinConfig
-	(*LengthFee)(nil),                          // 132: snakecommon.LengthFee
-	(*HappyModeRace)(nil),                      // 133: snakecommon.HappyModeRace
-	(*LowIncomeConfig)(nil),                    // 134: snakecommon.LowIncomeConfig
-	(*HappyModeTitleConfig)(nil),               // 135: snakecommon.HappyModeTitleConfig
-	(*HappyModeConfig)(nil),                    // 136: snakecommon.HappyModeConfig
-	(*StarSnakeItem)(nil),                      // 137: snakecommon.StarSnakeItem
-	(*StarSnake)(nil),                          // 138: snakecommon.StarSnake
-	(*AiWreckNodeScoreRange)(nil),              // 139: snakecommon.AiWreckNodeScoreRange
-	(*AiLevel)(nil),                            // 140: snakecommon.AiLevel
-	(*AttackTime)(nil),                         // 141: snakecommon.AttackTime
-	(*AiLevelWeight)(nil),                      // 142: snakecommon.AiLevelWeight
-	(*AiLengthRange)(nil),                      // 143: snakecommon.AiLengthRange
-	(*FloaterConfig)(nil),                      // 144: snakecommon.FloaterConfig
-	(*AiDifficultyConfig)(nil),                 // 145: snakecommon.AiDifficultyConfig
-	(*AiBornPool)(nil),                         // 146: snakecommon.AiBornPool
-	(*ScorePool)(nil),                          // 147: snakecommon.ScorePool
-	(*ScorePoolItem)(nil),                      // 148: snakecommon.ScorePoolItem
-	(*AiBorn)(nil),                             // 149: snakecommon.AiBorn
-	(*BonusTriggerCondition)(nil),              // 150: snakecommon.BonusTriggerCondition
-	(*BonusFood)(nil),                          // 151: snakecommon.BonusFood
-	(*HoleFood)(nil),                           // 152: snakecommon.HoleFood
-	(*DotFood)(nil),                            // 153: snakecommon.DotFood
-	(*BonusFoodLevel)(nil),                     // 154: snakecommon.BonusFoodLevel
-	(*BonusLevel)(nil),                         // 155: snakecommon.BonusLevel
-	(*BonusLevelSettings)(nil),                 // 156: snakecommon.BonusLevelSettings
-	(*EndlessBonusNew)(nil),                    // 157: snakecommon.EndlessBonusNew
-	(*SpringSugarInfo)(nil),                    // 158: snakecommon.SpringSugarInfo
-	(*MapBorder)(nil),                          // 159: snakecommon.MapBorder
-	(*AiNickListItem)(nil),                     // 160: snakecommon.AiNickListItem
-	(*AiSkinListItem)(nil),                     // 161: snakecommon.AiSkinListItem
-	(*AiConfigV3)(nil),                         // 162: snakecommon.AiConfigV3
-	(*LimitAiConfigV3)(nil),                    // 163: snakecommon.LimitAiConfigV3
-	(*GameConfig)(nil),                         // 164: snakecommon.GameConfig
-	(*SystemConfig)(nil),                       // 165: snakecommon.SystemConfig
-	(*RewardConfig)(nil),                       // 166: snakecommon.RewardConfig
-	(*RegisterReward)(nil),                     // 167: snakecommon.RegisterReward
-	(*InterfaceExpire)(nil),                    // 168: snakecommon.InterfaceExpire
-	(*ActivityAPI)(nil),                        // 169: snakecommon.ActivityAPI
-	(*ClanAPI)(nil),                            // 170: snakecommon.ClanAPI
-	(*ExpireConfig)(nil),                       // 171: snakecommon.ExpireConfig
-	(*EventAPI)(nil),                           // 172: snakecommon.EventAPI
-	(*FriendAPI)(nil),                          // 173: snakecommon.FriendAPI
-	(*InboxAPI)(nil),                           // 174: snakecommon.InboxAPI
-	(*NearbyAPI)(nil),                          // 175: snakecommon.NearbyAPI
-	(*ScoreAPI)(nil),                           // 176: snakecommon.ScoreAPI
-	(*ShareAPI)(nil),                           // 177: snakecommon.ShareAPI
-	(*TopListV2)(nil),                          // 178: snakecommon.TopListV2
-	(*VoiceRoomAPI)(nil),                       // 179: snakecommon.VoiceRoomAPI
-	(*MsConfig)(nil),                           // 180: snakecommon.MsConfig
-	(*MsAddr)(nil),                             // 181: snakecommon.MsAddr
-	(*ProvinceConfig)(nil),                     // 182: snakecommon.ProvinceConfig
-	(*ExciteModeConfig)(nil),                   // 183: snakecommon.ExciteModeConfig
-	(*GamePropList)(nil),                       // 184: snakecommon.GamePropList
-	(*ModeLevelInfo)(nil),                      // 185: snakecommon.ModeLevelInfo
-	(*ParamConfig)(nil),                        // 186: snakecommon.ParamConfig
-	(*InGame)(nil),                             // 187: snakecommon.InGame
-	(*PropRate)(nil),                           // 188: snakecommon.PropRate
-	(*Ai)(nil),                                 // 189: snakecommon.Ai
-	(*Map)(nil),                                // 190: snakecommon.Map
-	(*Stone)(nil),                              // 191: snakecommon.Stone
-	(*RateConfig)(nil),                         // 192: snakecommon.RateConfig
-	(*ModeGameConfig)(nil),                     // 193: snakecommon.ModeGameConfig
-	(*AiLevelList)(nil),                        // 194: snakecommon.AiLevelList
-	(*BrainAttackTime)(nil),                    // 195: snakecommon.BrainAttackTime
-	(*SelfElectricityConfig)(nil),              // 196: snakecommon.SelfElectricityConfig
-	(*ShockConfig)(nil),                        // 197: snakecommon.ShockConfig
-	(*AiTypeList)(nil),                         // 198: snakecommon.AiTypeList
-	(*ElectricityConfig)(nil),                  // 199: snakecommon.ElectricityConfig
-	(*MissileConfig)(nil),                      // 200: snakecommon.MissileConfig
-	(*AiConfig)(nil),                           // 201: snakecommon.AiConfig
-	(*PropBornInfos)(nil),                      // 202: snakecommon.PropBornInfos
-	(*PropWeightList)(nil),                     // 203: snakecommon.PropWeightList
-	(*PropConfig)(nil),                         // 204: snakecommon.PropConfig
-	(*StageConfigs)(nil),                       // 205: snakecommon.StageConfigs
-	(*Emulator)(nil),                           // 206: snakecommon.Emulator
-	(*AppCheck)(nil),                           // 207: snakecommon.AppCheck
-	(*CheatAppCheck)(nil),                      // 208: snakecommon.CheatAppCheck
-	(*ShellCheck)(nil),                         // 209: snakecommon.ShellCheck
-	(*LittleGame)(nil),                         // 210: snakecommon.LittleGame
-	(*LittleGameSrc)(nil),                      // 211: snakecommon.LittleGameSrc
-	(*LittleGameSrcItem)(nil),                  // 212: snakecommon.LittleGameSrcItem
-	(*ReviewMarket)(nil),                       // 213: snakecommon.ReviewMarket
-	(*LittleGameUiConf)(nil),                   // 214: snakecommon.LittleGameUiConf
-	(*LittleGameUi)(nil),                       // 215: snakecommon.LittleGameUi
-	(*GameList)(nil),                           // 216: snakecommon.GameList
-	(*ScoreInfoConfig)(nil),                    // 217: snakecommon.ScoreInfoConfig
-	(*QualifyingDisplayScoreConfig)(nil),       // 218: snakecommon.QualifyingDisplayScoreConfig
-	(*SnakeCoinConfig)(nil),                    // 219: snakecommon.SnakeCoinConfig
-	(*EscapePointRule)(nil),                    // 220: snakecommon.EscapePointRule
-	(*KVInt)(nil),                              // 221: snakecommon.KVInt
-	(*DisplayScoreCalcConfig)(nil),             // 222: snakecommon.DisplayScoreCalcConfig
-	(*SeasonNotifyConfig)(nil),                 // 223: snakecommon.SeasonNotifyConfig
-	(*SingleDoubleSnakeCoin)(nil),              // 224: snakecommon.SingleDoubleSnakeCoin
-	(*SnakeCoinAdCalcConfig)(nil),              // 225: snakecommon.SnakeCoinAdCalcConfig
-	(*SnakeCoinCalcConfig)(nil),                // 226: snakecommon.SnakeCoinCalcConfig
-	(*AndroidMarket)(nil),                      // 227: snakecommon.AndroidMarket
-	(*SimulConfig)(nil),                        // 228: snakecommon.SimulConfig
-	(*SimulRewardConfig)(nil),                  // 229: snakecommon.SimulRewardConfig
-	(*SimulRewardCondition)(nil),               // 230: snakecommon.SimulRewardCondition
-	(*SimulRewardMail)(nil),                    // 231: snakecommon.SimulRewardMail
-	(*SimulTaskItem)(nil),                      // 232: snakecommon.SimulTaskItem
-	(*SimulReward)(nil),                        // 233: snakecommon.SimulReward
-	(*BuildingSet)(nil),                        // 234: snakecommon.BuildingSet
-	(*Detail)(nil),                             // 235: snakecommon.Detail
-	(*StaffSet)(nil),                           // 236: snakecommon.StaffSet
-	(*TimedTaskInfo)(nil),                      // 237: snakecommon.TimedTaskInfo
-	(*TimedTaskCoinConfig)(nil),                // 238: snakecommon.TimedTaskCoinConfig
-	(*SummonConfig)(nil),                       // 239: snakecommon.SummonConfig
-	(*SummonAiConfig)(nil),                     // 240: snakecommon.SummonAiConfig
-	(*SummonConfigItem)(nil),                   // 241: snakecommon.SummonConfigItem
-	(*MapConfig)(nil),                          // 242: snakecommon.MapConfig
-	(*IosPatch)(nil),                           // 243: snakecommon.IosPatch
-	(*IosPatchList)(nil),                       // 244: snakecommon.IosPatchList
-	(*IosPatchItem)(nil),                       // 245: snakecommon.IosPatchItem
-	(*UnityAssets)(nil),                        // 246: snakecommon.UnityAssets
-	(*AssetMap)(nil),                           // 247: snakecommon.AssetMap
-	(*Asset)(nil),                              // 248: snakecommon.Asset
-	(*AssetItem)(nil),                          // 249: snakecommon.AssetItem
-	(*TeamEndlessConfig)(nil),                  // 250: snakecommon.TeamEndlessConfig
-	(*NativeQualifyAIPool)(nil),                // 251: snakecommon.NativeQualifyAIPool
-	(*BannerInfo)(nil),                         // 252: snakecommon.BannerInfo
-	(*CartonList)(nil),                         // 253: snakecommon.CartonList
-	(*BannerExtraInfo)(nil),                    // 254: snakecommon.BannerExtraInfo
-	nil,                                        // 255: snakecommon.ConfigVersionInfo.FlagsEntry
-	nil,                                        // 256: snakecommon.ClanConfig.ClanRaceRewardEntry
-	nil,                                        // 257: snakecommon.PingConfig.PingIpListEntry
-	nil,                                        // 258: snakecommon.ShowAdConfig.AdPercentEntry
-	nil,                                        // 259: snakecommon.ShowAdConfig.AbAdPopupsConfigsEntry
-	nil,                                        // 260: snakecommon.AdPopupsConfig.PopupPositionConfigEntry
-	nil,                                        // 261: snakecommon.SystemConfig.GameConfigsEntry
-	nil,                                        // 262: snakecommon.SystemConfig.EndlessExpEntry
-	nil,                                        // 263: snakecommon.SystemConfig.OlEndlessPkEntry
-	nil,                                        // 264: snakecommon.SystemConfig.VoiceRoomUidsEntry
-	nil,                                        // 265: snakecommon.SystemConfig.TelephoneBlackListEntry
-	nil,                                        // 266: snakecommon.SystemConfig.IdcardBlackListEntry
-	nil,                                        // 267: snakecommon.SystemConfig.VoiceWhiteOwnerListEntry
-	nil,                                        // 268: snakecommon.SystemConfig.OlEndlessEntranceEntry
-	nil,                                        // 269: snakecommon.SystemConfig.IosShakeEntry
-	nil,                                        // 270: snakecommon.LittleGame.LittleGamesEntry
-	nil,                                        // 271: snakecommon.ReviewMarket.ReviewMarketEntry
-	nil,                                        // 272: snakecommon.LittleGameUiConf.ConfigEntry
-	nil,                                        // 273: snakecommon.SimulConfig.BuildingSetEntry
-	nil,                                        // 274: snakecommon.SimulConfig.StaffSetEntry
-	nil,                                        // 275: snakecommon.IosPatch.PathEntry
-	nil,                                        // 276: snakecommon.UnityAssets.VersionsEntry
-	nil,                                        // 277: snakecommon.AssetMap.PlatformsEntry
-	(*TeamEndlessConfig_Guide)(nil),            // 278: snakecommon.TeamEndlessConfig.Guide
-	(*TeamEndlessConfig_SeasonRewardItem)(nil), // 279: snakecommon.TeamEndlessConfig.SeasonRewardItem
-	(*TeamEndlessConfig_Season)(nil),           // 280: snakecommon.TeamEndlessConfig.Season
-	(*TeamEndlessConfig_BigRankItem)(nil),      // 281: snakecommon.TeamEndlessConfig.BigRankItem
-	(*TeamEndlessConfig_SmallRankItem)(nil),    // 282: snakecommon.TeamEndlessConfig.SmallRankItem
-	(*TeamEndlessConfig_Rank)(nil),             // 283: snakecommon.TeamEndlessConfig.Rank
-	(*CPriceInfo)(nil),                         // 284: snakecommon.CPriceInfo
-	(*config.RewardConfig)(nil),                // 285: SnakeMain.Config.RewardConfig
-	(*RMBPackGoodsInfo)(nil),                   // 286: snakecommon.RMBPackGoodsInfo
-	(*config.PackModel)(nil),                   // 287: SnakeMain.Config.PackModel
-	(*config.Property)(nil),                    // 288: SnakeMain.Config.Property
-	(*config.CurrencyStore)(nil),               // 289: SnakeMain.Config.CurrencyStore
-	(*config.MiddleItem)(nil),                  // 290: SnakeMain.Config.MiddleItem
-	(*config.DrawCardGuideConfig)(nil),         // 291: SnakeMain.Config.DrawCardGuideConfig
-	(*config.StoreConfig)(nil),                 // 292: SnakeMain.Config.StoreConfig
-	(*CRewardItem)(nil),                        // 293: snakecommon.CRewardItem
+	(BoxPoolItemType)(0),                       // 0: snakecommon.BoxPoolItemType
+	(ShortCutConfig_SceneType)(0),              // 1: snakecommon.ShortCutConfig.SceneType
+	(*ConfigVersionInfo)(nil),                  // 2: snakecommon.ConfigVersionInfo
+	(*EndLessBuffPropConfigV2)(nil),            // 3: snakecommon.EndLessBuffPropConfigV2
+	(*EndLessBuffPropInfo)(nil),                // 4: snakecommon.EndLessBuffPropInfo
+	(*RandomPropInfo)(nil),                     // 5: snakecommon.RandomPropInfo
+	(*HuaweiHighlight)(nil),                    // 6: snakecommon.HuaweiHighlight
+	(*HighLightInfo)(nil),                      // 7: snakecommon.HighLightInfo
+	(*OlGameConfig)(nil),                       // 8: snakecommon.OlGameConfig
+	(*JumpIcon)(nil),                           // 9: snakecommon.JumpIcon
+	(*MatchBackgroundConfig)(nil),              // 10: snakecommon.MatchBackgroundConfig
+	(*GameStatusTrack)(nil),                    // 11: snakecommon.GameStatusTrack
+	(*GrassConfig)(nil),                        // 12: snakecommon.GrassConfig
+	(*GrassInfo)(nil),                          // 13: snakecommon.GrassInfo
+	(*TeamSuit)(nil),                           // 14: snakecommon.TeamSuit
+	(*TeamSuitNewSuitInfo)(nil),                // 15: snakecommon.TeamSuitNewSuitInfo
+	(*TeamKillConfig)(nil),                     // 16: snakecommon.TeamKillConfig
+	(*TeamMeleeConfig)(nil),                    // 17: snakecommon.TeamMeleeConfig
+	(*QualifyingConfig)(nil),                   // 18: snakecommon.QualifyingConfig
+	(*RaceNormalConfig)(nil),                   // 19: snakecommon.RaceNormalConfig
+	(*TeamKillProp)(nil),                       // 20: snakecommon.TeamKillProp
+	(*ClanConfig)(nil),                         // 21: snakecommon.ClanConfig
+	(*RuleDesc)(nil),                           // 22: snakecommon.RuleDesc
+	(*ActivePointAddition)(nil),                // 23: snakecommon.ActivePointAddition
+	(*RaceTimeConfig)(nil),                     // 24: snakecommon.RaceTimeConfig
+	(*ClanRaceReward)(nil),                     // 25: snakecommon.ClanRaceReward
+	(*ClanLevelInfo)(nil),                      // 26: snakecommon.ClanLevelInfo
+	(*NewClanRewardItem)(nil),                  // 27: snakecommon.NewClanRewardItem
+	(*RankConfig)(nil),                         // 28: snakecommon.RankConfig
+	(*RankReward)(nil),                         // 29: snakecommon.RankReward
+	(*RankRewardV2)(nil),                       // 30: snakecommon.RankRewardV2
+	(*RankLevel)(nil),                          // 31: snakecommon.RankLevel
+	(*DailyGameRewards)(nil),                   // 32: snakecommon.DailyGameRewards
+	(*DailyGameRewardItem)(nil),                // 33: snakecommon.DailyGameRewardItem
+	(*BoxPool)(nil),                            // 34: snakecommon.BoxPool
+	(*BoxPoolItem)(nil),                        // 35: snakecommon.BoxPoolItem
+	(*NewerGuide)(nil),                         // 36: snakecommon.NewerGuide
+	(*SeasonInfo)(nil),                         // 37: snakecommon.SeasonInfo
+	(*ShareConfig)(nil),                        // 38: snakecommon.ShareConfig
+	(*ShareTag)(nil),                           // 39: snakecommon.ShareTag
+	(*ClipBoardCheck)(nil),                     // 40: snakecommon.ClipBoardCheck
+	(*VideoShareIcon)(nil),                     // 41: snakecommon.VideoShareIcon
+	(*ChannelConfig)(nil),                      // 42: snakecommon.ChannelConfig
+	(*GameInvite)(nil),                         // 43: snakecommon.GameInvite
+	(*SocialConfig)(nil),                       // 44: snakecommon.SocialConfig
+	(*CharmTopConfig)(nil),                     // 45: snakecommon.CharmTopConfig
+	(*CharmLevelItem)(nil),                     // 46: snakecommon.CharmLevelItem
+	(*SocialThreshold)(nil),                    // 47: snakecommon.SocialThreshold
+	(*SocialThresholdPlatform)(nil),            // 48: snakecommon.SocialThresholdPlatform
+	(*CharmExpConfig)(nil),                     // 49: snakecommon.CharmExpConfig
+	(*CharmExpRank)(nil),                       // 50: snakecommon.CharmExpRank
+	(*CharmPrivilegeItem)(nil),                 // 51: snakecommon.CharmPrivilegeItem
+	(*TextConfig)(nil),                         // 52: snakecommon.TextConfig
+	(*GiftLikeTextList)(nil),                   // 53: snakecommon.GiftLikeTextList
+	(*ShortCutConfig)(nil),                     // 54: snakecommon.ShortCutConfig
+	(*ReportBehavior)(nil),                     // 55: snakecommon.ReportBehavior
+	(*UiConfigV3)(nil),                         // 56: snakecommon.UiConfigV3
+	(*GameIcon)(nil),                           // 57: snakecommon.GameIcon
+	(*LittleGameIcon)(nil),                     // 58: snakecommon.LittleGameIcon
+	(*Bubble)(nil),                             // 59: snakecommon.Bubble
+	(*NewbieCondition)(nil),                    // 60: snakecommon.NewbieCondition
+	(*HomeBackground)(nil),                     // 61: snakecommon.HomeBackground
+	(*PingConfig)(nil),                         // 62: snakecommon.PingConfig
+	(*RewardMarkConfig)(nil),                   // 63: snakecommon.RewardMarkConfig
+	(*RewardMark)(nil),                         // 64: snakecommon.RewardMark
+	(*ShowAdConfig)(nil),                       // 65: snakecommon.ShowAdConfig
+	(*CrossPromotions)(nil),                    // 66: snakecommon.CrossPromotions
+	(*CrossPromotionsSource)(nil),              // 67: snakecommon.CrossPromotionsSource
+	(*EndlessBuff)(nil),                        // 68: snakecommon.EndlessBuff
+	(*PopupPosition)(nil),                      // 69: snakecommon.PopupPosition
+	(*AdPopupsConfig)(nil),                     // 70: snakecommon.AdPopupsConfig
+	(*EndlessAdRecommend)(nil),                 // 71: snakecommon.EndlessAdRecommend
+	(*AdRewardModel)(nil),                      // 72: snakecommon.AdRewardModel
+	(*AdGoodsItem)(nil),                        // 73: snakecommon.AdGoodsItem
+	(*OrderConfig)(nil),                        // 74: snakecommon.OrderConfig
+	(*AlipayDiscount)(nil),                     // 75: snakecommon.AlipayDiscount
+	(*FirstChargePopup)(nil),                   // 76: snakecommon.FirstChargePopup
+	(*RandomDoubleClientInfo)(nil),             // 77: snakecommon.RandomDoubleClientInfo
+	(*UnityQualifyingOpenConfig)(nil),          // 78: snakecommon.UnityQualifyingOpenConfig
+	(*TopListConfig)(nil),                      // 79: snakecommon.TopListConfig
+	(*ShowConfig)(nil),                         // 80: snakecommon.ShowConfig
+	(*ShowPackItem)(nil),                       // 81: snakecommon.ShowPackItem
+	(*ShowIconStyle)(nil),                      // 82: snakecommon.ShowIconStyle
+	(*ShowLevelConfig)(nil),                    // 83: snakecommon.ShowLevelConfig
+	(*ShowSkillName)(nil),                      // 84: snakecommon.ShowSkillName
+	(*ShowSkillBuff)(nil),                      // 85: snakecommon.ShowSkillBuff
+	(*UserConfig)(nil),                         // 86: snakecommon.UserConfig
+	(*UnityFlags)(nil),                         // 87: snakecommon.UnityFlags
+	(*MinorLimit)(nil),                         // 88: snakecommon.MinorLimit
+	(*OrderCurator)(nil),                       // 89: snakecommon.OrderCurator
+	(*FlagsConfig)(nil),                        // 90: snakecommon.FlagsConfig
+	(*FeedbackConfig)(nil),                     // 91: snakecommon.FeedbackConfig
+	(*SettingConfig)(nil),                      // 92: snakecommon.SettingConfig
+	(*DocVersion)(nil),                         // 93: snakecommon.DocVersion
+	(*NetworkCheck)(nil),                       // 94: snakecommon.NetworkCheck
+	(*Prometheus)(nil),                         // 95: snakecommon.Prometheus
+	(*OkhttpDispatcher)(nil),                   // 96: snakecommon.OkhttpDispatcher
+	(*MemSwitch)(nil),                          // 97: snakecommon.MemSwitch
+	(*BindConfig)(nil),                         // 98: snakecommon.BindConfig
+	(*RenamePopupRule)(nil),                    // 99: snakecommon.RenamePopupRule
+	(*QualifyingMatch)(nil),                    // 100: snakecommon.QualifyingMatch
+	(*NewbieClub)(nil),                         // 101: snakecommon.NewbieClub
+	(*GameEndSkin)(nil),                        // 102: snakecommon.GameEndSkin
+	(*DeviceConfig)(nil),                       // 103: snakecommon.DeviceConfig
+	(*AntiAddiction)(nil),                      // 104: snakecommon.AntiAddiction
+	(*Notify)(nil),                             // 105: snakecommon.Notify
+	(*CertifyGameConfig)(nil),                  // 106: snakecommon.CertifyGameConfig
+	(*MinorNotify)(nil),                        // 107: snakecommon.MinorNotify
+	(*PayNotify)(nil),                          // 108: snakecommon.PayNotify
+	(*SocialDesc)(nil),                         // 109: snakecommon.SocialDesc
+	(*IdentityAge)(nil),                        // 110: snakecommon.IdentityAge
+	(*CertifyNotify)(nil),                      // 111: snakecommon.CertifyNotify
+	(*IdfaConfig)(nil),                         // 112: snakecommon.IdfaConfig
+	(*CommentConfig)(nil),                      // 113: snakecommon.CommentConfig
+	(*RegisterSurvey)(nil),                     // 114: snakecommon.RegisterSurvey
+	(*RecruitPopup)(nil),                       // 115: snakecommon.RecruitPopup
+	(*NewUserConfig)(nil),                      // 116: snakecommon.NewUserConfig
+	(*ReviveConfigItem)(nil),                   // 117: snakecommon.ReviveConfigItem
+	(*SingleGameAiConfigItem)(nil),             // 118: snakecommon.SingleGameAiConfigItem
+	(*FloaterConfigOld)(nil),                   // 119: snakecommon.FloaterConfigOld
+	(*ActivityMapConfig)(nil),                  // 120: snakecommon.ActivityMapConfig
+	(*EndlessLimitConfig)(nil),                 // 121: snakecommon.EndlessLimitConfig
+	(*EndlessBubbleConfig)(nil),                // 122: snakecommon.EndlessBubbleConfig
+	(*EndlessTrackConfig)(nil),                 // 123: snakecommon.EndlessTrackConfig
+	(*WildStormListItem)(nil),                  // 124: snakecommon.WildStormListItem
+	(*WildStormConfig)(nil),                    // 125: snakecommon.WildStormConfig
+	(*OfflineGameConfig)(nil),                  // 126: snakecommon.OfflineGameConfig
+	(*MentorshipConfig)(nil),                   // 127: snakecommon.MentorshipConfig
+	(*MentorPrivilegeInfo)(nil),                // 128: snakecommon.MentorPrivilegeInfo
+	(*PrivilegeDetailInfo)(nil),                // 129: snakecommon.PrivilegeDetailInfo
+	(*MentorshipBondTitleItem)(nil),            // 130: snakecommon.MentorshipBondTitleItem
+	(*MentorFinishReward)(nil),                 // 131: snakecommon.MentorFinishReward
+	(*MasterPrenticeStrategyItem)(nil),         // 132: snakecommon.MasterPrenticeStrategyItem
+	(*HotConfig)(nil),                          // 133: snakecommon.HotConfig
+	(*ProductConfig)(nil),                      // 134: snakecommon.ProductConfig
+	(*WeddingConfig)(nil),                      // 135: snakecommon.WeddingConfig
+	(*WeddingTemplate)(nil),                    // 136: snakecommon.WeddingTemplate
+	(*WeddingMusic)(nil),                       // 137: snakecommon.WeddingMusic
+	(*HappycoinConfig)(nil),                    // 138: snakecommon.HappycoinConfig
+	(*LengthFee)(nil),                          // 139: snakecommon.LengthFee
+	(*HappyModeRace)(nil),                      // 140: snakecommon.HappyModeRace
+	(*LowIncomeConfig)(nil),                    // 141: snakecommon.LowIncomeConfig
+	(*HappyModeTitleConfig)(nil),               // 142: snakecommon.HappyModeTitleConfig
+	(*HappyModeConfig)(nil),                    // 143: snakecommon.HappyModeConfig
+	(*StarSnakeItem)(nil),                      // 144: snakecommon.StarSnakeItem
+	(*StarSnake)(nil),                          // 145: snakecommon.StarSnake
+	(*AiWreckNodeScoreRange)(nil),              // 146: snakecommon.AiWreckNodeScoreRange
+	(*AiLevel)(nil),                            // 147: snakecommon.AiLevel
+	(*AttackTime)(nil),                         // 148: snakecommon.AttackTime
+	(*AiLevelWeight)(nil),                      // 149: snakecommon.AiLevelWeight
+	(*AiLengthRange)(nil),                      // 150: snakecommon.AiLengthRange
+	(*FloaterConfig)(nil),                      // 151: snakecommon.FloaterConfig
+	(*AiDifficultyConfig)(nil),                 // 152: snakecommon.AiDifficultyConfig
+	(*AiBornPool)(nil),                         // 153: snakecommon.AiBornPool
+	(*ScorePool)(nil),                          // 154: snakecommon.ScorePool
+	(*ScorePoolItem)(nil),                      // 155: snakecommon.ScorePoolItem
+	(*AiBorn)(nil),                             // 156: snakecommon.AiBorn
+	(*BonusTriggerCondition)(nil),              // 157: snakecommon.BonusTriggerCondition
+	(*BonusFood)(nil),                          // 158: snakecommon.BonusFood
+	(*HoleFood)(nil),                           // 159: snakecommon.HoleFood
+	(*DotFood)(nil),                            // 160: snakecommon.DotFood
+	(*BonusFoodLevel)(nil),                     // 161: snakecommon.BonusFoodLevel
+	(*BonusLevel)(nil),                         // 162: snakecommon.BonusLevel
+	(*BonusLevelSettings)(nil),                 // 163: snakecommon.BonusLevelSettings
+	(*EndlessBonusNew)(nil),                    // 164: snakecommon.EndlessBonusNew
+	(*SpringSugarInfo)(nil),                    // 165: snakecommon.SpringSugarInfo
+	(*MapBorder)(nil),                          // 166: snakecommon.MapBorder
+	(*AiNickListItem)(nil),                     // 167: snakecommon.AiNickListItem
+	(*AiSkinListItem)(nil),                     // 168: snakecommon.AiSkinListItem
+	(*AiConfigV3)(nil),                         // 169: snakecommon.AiConfigV3
+	(*LimitAiConfigV3)(nil),                    // 170: snakecommon.LimitAiConfigV3
+	(*GameConfig)(nil),                         // 171: snakecommon.GameConfig
+	(*SystemConfig)(nil),                       // 172: snakecommon.SystemConfig
+	(*RewardConfig)(nil),                       // 173: snakecommon.RewardConfig
+	(*RegisterReward)(nil),                     // 174: snakecommon.RegisterReward
+	(*InterfaceExpire)(nil),                    // 175: snakecommon.InterfaceExpire
+	(*ActivityAPI)(nil),                        // 176: snakecommon.ActivityAPI
+	(*ClanAPI)(nil),                            // 177: snakecommon.ClanAPI
+	(*ExpireConfig)(nil),                       // 178: snakecommon.ExpireConfig
+	(*EventAPI)(nil),                           // 179: snakecommon.EventAPI
+	(*FriendAPI)(nil),                          // 180: snakecommon.FriendAPI
+	(*InboxAPI)(nil),                           // 181: snakecommon.InboxAPI
+	(*NearbyAPI)(nil),                          // 182: snakecommon.NearbyAPI
+	(*ScoreAPI)(nil),                           // 183: snakecommon.ScoreAPI
+	(*ShareAPI)(nil),                           // 184: snakecommon.ShareAPI
+	(*TopListV2)(nil),                          // 185: snakecommon.TopListV2
+	(*VoiceRoomAPI)(nil),                       // 186: snakecommon.VoiceRoomAPI
+	(*MsConfig)(nil),                           // 187: snakecommon.MsConfig
+	(*MsAddr)(nil),                             // 188: snakecommon.MsAddr
+	(*ProvinceConfig)(nil),                     // 189: snakecommon.ProvinceConfig
+	(*ExciteModeConfig)(nil),                   // 190: snakecommon.ExciteModeConfig
+	(*GamePropList)(nil),                       // 191: snakecommon.GamePropList
+	(*ModeLevelInfo)(nil),                      // 192: snakecommon.ModeLevelInfo
+	(*ParamConfig)(nil),                        // 193: snakecommon.ParamConfig
+	(*InGame)(nil),                             // 194: snakecommon.InGame
+	(*PropRate)(nil),                           // 195: snakecommon.PropRate
+	(*Ai)(nil),                                 // 196: snakecommon.Ai
+	(*Map)(nil),                                // 197: snakecommon.Map
+	(*Stone)(nil),                              // 198: snakecommon.Stone
+	(*RateConfig)(nil),                         // 199: snakecommon.RateConfig
+	(*ModeGameConfig)(nil),                     // 200: snakecommon.ModeGameConfig
+	(*AiLevelList)(nil),                        // 201: snakecommon.AiLevelList
+	(*BrainAttackTime)(nil),                    // 202: snakecommon.BrainAttackTime
+	(*SelfElectricityConfig)(nil),              // 203: snakecommon.SelfElectricityConfig
+	(*ShockConfig)(nil),                        // 204: snakecommon.ShockConfig
+	(*AiTypeList)(nil),                         // 205: snakecommon.AiTypeList
+	(*ElectricityConfig)(nil),                  // 206: snakecommon.ElectricityConfig
+	(*MissileConfig)(nil),                      // 207: snakecommon.MissileConfig
+	(*AiConfig)(nil),                           // 208: snakecommon.AiConfig
+	(*PropBornInfos)(nil),                      // 209: snakecommon.PropBornInfos
+	(*PropWeightList)(nil),                     // 210: snakecommon.PropWeightList
+	(*PropConfig)(nil),                         // 211: snakecommon.PropConfig
+	(*StageConfigs)(nil),                       // 212: snakecommon.StageConfigs
+	(*Emulator)(nil),                           // 213: snakecommon.Emulator
+	(*AppCheck)(nil),                           // 214: snakecommon.AppCheck
+	(*CheatAppCheck)(nil),                      // 215: snakecommon.CheatAppCheck
+	(*ShellCheck)(nil),                         // 216: snakecommon.ShellCheck
+	(*LittleGame)(nil),                         // 217: snakecommon.LittleGame
+	(*LittleGameSrc)(nil),                      // 218: snakecommon.LittleGameSrc
+	(*LittleGameSrcItem)(nil),                  // 219: snakecommon.LittleGameSrcItem
+	(*ReviewMarket)(nil),                       // 220: snakecommon.ReviewMarket
+	(*LittleGameUiConf)(nil),                   // 221: snakecommon.LittleGameUiConf
+	(*LittleGameUi)(nil),                       // 222: snakecommon.LittleGameUi
+	(*GameList)(nil),                           // 223: snakecommon.GameList
+	(*ScoreInfoConfig)(nil),                    // 224: snakecommon.ScoreInfoConfig
+	(*QualifyingDisplayScoreConfig)(nil),       // 225: snakecommon.QualifyingDisplayScoreConfig
+	(*SnakeCoinConfig)(nil),                    // 226: snakecommon.SnakeCoinConfig
+	(*EscapePointRule)(nil),                    // 227: snakecommon.EscapePointRule
+	(*KVInt)(nil),                              // 228: snakecommon.KVInt
+	(*DisplayScoreCalcConfig)(nil),             // 229: snakecommon.DisplayScoreCalcConfig
+	(*SeasonNotifyConfig)(nil),                 // 230: snakecommon.SeasonNotifyConfig
+	(*SingleDoubleSnakeCoin)(nil),              // 231: snakecommon.SingleDoubleSnakeCoin
+	(*SnakeCoinAdCalcConfig)(nil),              // 232: snakecommon.SnakeCoinAdCalcConfig
+	(*SnakeCoinCalcConfig)(nil),                // 233: snakecommon.SnakeCoinCalcConfig
+	(*AndroidMarket)(nil),                      // 234: snakecommon.AndroidMarket
+	(*SimulConfig)(nil),                        // 235: snakecommon.SimulConfig
+	(*SimulRewardConfig)(nil),                  // 236: snakecommon.SimulRewardConfig
+	(*SimulRewardCondition)(nil),               // 237: snakecommon.SimulRewardCondition
+	(*SimulRewardMail)(nil),                    // 238: snakecommon.SimulRewardMail
+	(*SimulTaskItem)(nil),                      // 239: snakecommon.SimulTaskItem
+	(*SimulReward)(nil),                        // 240: snakecommon.SimulReward
+	(*BuildingSet)(nil),                        // 241: snakecommon.BuildingSet
+	(*Detail)(nil),                             // 242: snakecommon.Detail
+	(*StaffSet)(nil),                           // 243: snakecommon.StaffSet
+	(*TimedTaskInfo)(nil),                      // 244: snakecommon.TimedTaskInfo
+	(*TimedTaskCoinConfig)(nil),                // 245: snakecommon.TimedTaskCoinConfig
+	(*SummonConfig)(nil),                       // 246: snakecommon.SummonConfig
+	(*SummonAiConfig)(nil),                     // 247: snakecommon.SummonAiConfig
+	(*SummonConfigItem)(nil),                   // 248: snakecommon.SummonConfigItem
+	(*MapConfig)(nil),                          // 249: snakecommon.MapConfig
+	(*IosPatch)(nil),                           // 250: snakecommon.IosPatch
+	(*IosPatchList)(nil),                       // 251: snakecommon.IosPatchList
+	(*IosPatchItem)(nil),                       // 252: snakecommon.IosPatchItem
+	(*UnityAssets)(nil),                        // 253: snakecommon.UnityAssets
+	(*AssetMap)(nil),                           // 254: snakecommon.AssetMap
+	(*Asset)(nil),                              // 255: snakecommon.Asset
+	(*AssetItem)(nil),                          // 256: snakecommon.AssetItem
+	(*TeamEndlessConfig)(nil),                  // 257: snakecommon.TeamEndlessConfig
+	(*CoupleSkinActivity)(nil),                 // 258: snakecommon.CoupleSkinActivity
+	(*NativeQualifyAIPool)(nil),                // 259: snakecommon.NativeQualifyAIPool
+	(*BannerInfo)(nil),                         // 260: snakecommon.BannerInfo
+	(*CartonList)(nil),                         // 261: snakecommon.CartonList
+	(*BannerExtraInfo)(nil),                    // 262: snakecommon.BannerExtraInfo
+	nil,                                        // 263: snakecommon.ConfigVersionInfo.FlagsEntry
+	nil,                                        // 264: snakecommon.ClanConfig.ClanRaceRewardEntry
+	nil,                                        // 265: snakecommon.DailyGameRewards.BoxPoolEntry
+	nil,                                        // 266: snakecommon.PingConfig.PingIpListEntry
+	nil,                                        // 267: snakecommon.ShowAdConfig.AdPercentEntry
+	nil,                                        // 268: snakecommon.ShowAdConfig.AbAdPopupsConfigsEntry
+	nil,                                        // 269: snakecommon.AdPopupsConfig.PopupPositionConfigEntry
+	nil,                                        // 270: snakecommon.SystemConfig.GameConfigsEntry
+	nil,                                        // 271: snakecommon.SystemConfig.EndlessExpEntry
+	nil,                                        // 272: snakecommon.SystemConfig.OlEndlessPkEntry
+	nil,                                        // 273: snakecommon.SystemConfig.VoiceRoomUidsEntry
+	nil,                                        // 274: snakecommon.SystemConfig.TelephoneBlackListEntry
+	nil,                                        // 275: snakecommon.SystemConfig.IdcardBlackListEntry
+	nil,                                        // 276: snakecommon.SystemConfig.VoiceWhiteOwnerListEntry
+	nil,                                        // 277: snakecommon.SystemConfig.OlEndlessEntranceEntry
+	nil,                                        // 278: snakecommon.SystemConfig.IosShakeEntry
+	nil,                                        // 279: snakecommon.LittleGame.LittleGamesEntry
+	nil,                                        // 280: snakecommon.ReviewMarket.ReviewMarketEntry
+	nil,                                        // 281: snakecommon.LittleGameUiConf.ConfigEntry
+	nil,                                        // 282: snakecommon.SimulConfig.BuildingSetEntry
+	nil,                                        // 283: snakecommon.SimulConfig.StaffSetEntry
+	nil,                                        // 284: snakecommon.IosPatch.PathEntry
+	nil,                                        // 285: snakecommon.UnityAssets.VersionsEntry
+	nil,                                        // 286: snakecommon.AssetMap.PlatformsEntry
+	(*TeamEndlessConfig_Guide)(nil),            // 287: snakecommon.TeamEndlessConfig.Guide
+	(*TeamEndlessConfig_SeasonRewardItem)(nil), // 288: snakecommon.TeamEndlessConfig.SeasonRewardItem
+	(*TeamEndlessConfig_Season)(nil),           // 289: snakecommon.TeamEndlessConfig.Season
+	(*TeamEndlessConfig_BigRankItem)(nil),      // 290: snakecommon.TeamEndlessConfig.BigRankItem
+	(*TeamEndlessConfig_SmallRankItem)(nil),    // 291: snakecommon.TeamEndlessConfig.SmallRankItem
+	(*TeamEndlessConfig_Rank)(nil),             // 292: snakecommon.TeamEndlessConfig.Rank
+	(*CPriceInfo)(nil),                         // 293: snakecommon.CPriceInfo
+	(*config.RewardConfig)(nil),                // 294: SnakeMain.Config.RewardConfig
+	(*CConvert)(nil),                           // 295: snakecommon.CConvert
+	(*RMBPackGoodsInfo)(nil),                   // 296: snakecommon.RMBPackGoodsInfo
+	(*config.PackModel)(nil),                   // 297: SnakeMain.Config.PackModel
+	(*config.Property)(nil),                    // 298: SnakeMain.Config.Property
+	(*config.CurrencyStore)(nil),               // 299: SnakeMain.Config.CurrencyStore
+	(*config.MiddleItem)(nil),                  // 300: SnakeMain.Config.MiddleItem
+	(*config.DrawCardGuideConfig)(nil),         // 301: SnakeMain.Config.DrawCardGuideConfig
+	(*config.StoreConfig)(nil),                 // 302: SnakeMain.Config.StoreConfig
+	(*CRewardItem)(nil),                        // 303: snakecommon.CRewardItem
 }
 var file_snakecommon_project_config_proto_depIdxs = []int32{
-	255, // 0: snakecommon.ConfigVersionInfo.flags:type_name -> snakecommon.ConfigVersionInfo.FlagsEntry
-	3,   // 1: snakecommon.EndLessBuffPropConfigV2.list:type_name -> snakecommon.EndLessBuffPropInfo
-	284, // 2: snakecommon.EndLessBuffPropInfo.price_list:type_name -> snakecommon.CPriceInfo
-	4,   // 3: snakecommon.EndLessBuffPropInfo.prop_list:type_name -> snakecommon.RandomPropInfo
-	6,   // 4: snakecommon.HuaweiHighlight.highlight_list:type_name -> snakecommon.HighLightInfo
-	10,  // 5: snakecommon.OlGameConfig.game_status_track:type_name -> snakecommon.GameStatusTrack
-	11,  // 6: snakecommon.OlGameConfig.grass_config:type_name -> snakecommon.GrassConfig
-	13,  // 7: snakecommon.OlGameConfig.team_suit:type_name -> snakecommon.TeamSuit
-	15,  // 8: snakecommon.OlGameConfig.team_kill_config:type_name -> snakecommon.TeamKillConfig
-	16,  // 9: snakecommon.OlGameConfig.team_melee_config:type_name -> snakecommon.TeamMeleeConfig
-	17,  // 10: snakecommon.OlGameConfig.qualifying_config:type_name -> snakecommon.QualifyingConfig
-	18,  // 11: snakecommon.OlGameConfig.race_normal_config:type_name -> snakecommon.RaceNormalConfig
-	19,  // 12: snakecommon.OlGameConfig.team_kill_prop:type_name -> snakecommon.TeamKillProp
-	9,   // 13: snakecommon.OlGameConfig.match_background:type_name -> snakecommon.MatchBackgroundConfig
-	8,   // 14: snakecommon.OlGameConfig.jump_icon:type_name -> snakecommon.JumpIcon
-	12,  // 15: snakecommon.GrassConfig.grass:type_name -> snakecommon.GrassInfo
-	14,  // 16: snakecommon.TeamSuit.new_suit:type_name -> snakecommon.TeamSuitNewSuitInfo
-	284, // 17: snakecommon.TeamKillProp.price_list:type_name -> snakecommon.CPriceInfo
-	285, // 18: snakecommon.TeamKillProp.prop_list:type_name -> SnakeMain.Config.RewardConfig
-	21,  // 19: snakecommon.ClanConfig.rule_desc:type_name -> snakecommon.RuleDesc
-	23,  // 20: snakecommon.ClanConfig.race_time_config:type_name -> snakecommon.RaceTimeConfig
-	256, // 21: snakecommon.ClanConfig.clan_race_reward:type_name -> snakecommon.ClanConfig.ClanRaceRewardEntry
-	25,  // 22: snakecommon.ClanConfig.level_config:type_name -> snakecommon.ClanLevelInfo
-	26,  // 23: snakecommon.ClanConfig.reward_config:type_name -> snakecommon.NewClanRewardItem
-	26,  // 24: snakecommon.ClanConfig.reward_explain_config:type_name -> snakecommon.NewClanRewardItem
-	22,  // 25: snakecommon.RuleDesc.active_point_addition:type_name -> snakecommon.ActivePointAddition
-	285, // 26: snakecommon.NewClanRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
-	29,  // 27: snakecommon.RankConfig.level:type_name -> snakecommon.RankLevel
-	28,  // 28: snakecommon.RankConfig.rank_reward:type_name -> snakecommon.RankReward
-	285, // 29: snakecommon.RankReward.reward_list:type_name -> SnakeMain.Config.RewardConfig
-	35,  // 30: snakecommon.ShareConfig.channel_config:type_name -> snakecommon.ChannelConfig
-	36,  // 31: snakecommon.ShareConfig.game_invite:type_name -> snakecommon.GameInvite
-	34,  // 32: snakecommon.ShareConfig.video_share_icon:type_name -> snakecommon.VideoShareIcon
-	33,  // 33: snakecommon.ShareConfig.clipboard_check:type_name -> snakecommon.ClipBoardCheck
-	32,  // 34: snakecommon.ShareConfig.share_tag:type_name -> snakecommon.ShareTag
-	39,  // 35: snakecommon.SocialConfig.charm_level:type_name -> snakecommon.CharmLevelItem
-	38,  // 36: snakecommon.SocialConfig.charm_top_config:type_name -> snakecommon.CharmTopConfig
-	285, // 37: snakecommon.SocialConfig.marry_rewards:type_name -> SnakeMain.Config.RewardConfig
-	40,  // 38: snakecommon.SocialConfig.unlock_send_gift:type_name -> snakecommon.SocialThreshold
-	40,  // 39: snakecommon.SocialConfig.unlock_clan:type_name -> snakecommon.SocialThreshold
-	40,  // 40: snakecommon.SocialConfig.unlock_world_chat:type_name -> snakecommon.SocialThreshold
-	41,  // 41: snakecommon.SocialThreshold.ios:type_name -> snakecommon.SocialThresholdPlatform
-	41,  // 42: snakecommon.SocialThreshold.android:type_name -> snakecommon.SocialThresholdPlatform
-	43,  // 43: snakecommon.CharmExpConfig.charm_exp_ranks:type_name -> snakecommon.CharmExpRank
-	44,  // 44: snakecommon.CharmExpConfig.privilege_config:type_name -> snakecommon.CharmPrivilegeItem
-	46,  // 45: snakecommon.TextConfig.gift_like_text_list:type_name -> snakecommon.GiftLikeTextList
-	47,  // 46: snakecommon.TextConfig.quick_phrase_text_list:type_name -> snakecommon.ShortCutConfig
-	48,  // 47: snakecommon.TextConfig.report_behavior_list:type_name -> snakecommon.ReportBehavior
-	48,  // 48: snakecommon.TextConfig.ad_report_behavior_list:type_name -> snakecommon.ReportBehavior
-	50,  // 49: snakecommon.UiConfigV3.endless_icon_v2:type_name -> snakecommon.GameIcon
-	50,  // 50: snakecommon.UiConfigV3.qualifying_icon_v2:type_name -> snakecommon.GameIcon
-	50,  // 51: snakecommon.UiConfigV3.left_corner:type_name -> snakecommon.GameIcon
-	50,  // 52: snakecommon.UiConfigV3.right_corner:type_name -> snakecommon.GameIcon
-	50,  // 53: snakecommon.UiConfigV3.more_game:type_name -> snakecommon.GameIcon
-	53,  // 54: snakecommon.UiConfigV3.newbie_condition:type_name -> snakecommon.NewbieCondition
-	50,  // 55: snakecommon.UiConfigV3.endless_huge_icon:type_name -> snakecommon.GameIcon
-	50,  // 56: snakecommon.UiConfigV3.game_slide_list:type_name -> snakecommon.GameIcon
-	50,  // 57: snakecommon.UiConfigV3.endless_icon:type_name -> snakecommon.GameIcon
-	50,  // 58: snakecommon.UiConfigV3.qualifying_icon:type_name -> snakecommon.GameIcon
-	54,  // 59: snakecommon.UiConfigV3.home_background:type_name -> snakecommon.HomeBackground
-	50,  // 60: snakecommon.UiConfigV3.ar_icon:type_name -> snakecommon.GameIcon
-	50,  // 61: snakecommon.UiConfigV3.plant_icon:type_name -> snakecommon.GameIcon
-	50,  // 62: snakecommon.UiConfigV3.fallguys_icon:type_name -> snakecommon.GameIcon
-	51,  // 63: snakecommon.UiConfigV3.little_game_icon:type_name -> snakecommon.LittleGameIcon
-	50,  // 64: snakecommon.UiConfigV3.compose:type_name -> snakecommon.GameIcon
-	50,  // 65: snakecommon.UiConfigV3.couple_passcheck:type_name -> snakecommon.GameIcon
-	50,  // 66: snakecommon.UiConfigV3.points_champ_icon:type_name -> snakecommon.GameIcon
-	52,  // 67: snakecommon.GameIcon.bubble:type_name -> snakecommon.Bubble
-	50,  // 68: snakecommon.LittleGameIcon.game_icon:type_name -> snakecommon.GameIcon
-	257, // 69: snakecommon.PingConfig.ping_ip_list:type_name -> snakecommon.PingConfig.PingIpListEntry
-	57,  // 70: snakecommon.RewardMarkConfig.reward_marks:type_name -> snakecommon.RewardMark
-	65,  // 71: snakecommon.ShowAdConfig.snake_coin_ad_config:type_name -> snakecommon.AdRewardModel
-	65,  // 72: snakecommon.ShowAdConfig.coupon_ad_config:type_name -> snakecommon.AdRewardModel
-	65,  // 73: snakecommon.ShowAdConfig.happycoin_ad_config:type_name -> snakecommon.AdRewardModel
-	66,  // 74: snakecommon.ShowAdConfig.goods_list:type_name -> snakecommon.AdGoodsItem
-	61,  // 75: snakecommon.ShowAdConfig.endless_buff:type_name -> snakecommon.EndlessBuff
-	63,  // 76: snakecommon.ShowAdConfig.ad_popups_config:type_name -> snakecommon.AdPopupsConfig
-	63,  // 77: snakecommon.ShowAdConfig.android_ad_popups_config:type_name -> snakecommon.AdPopupsConfig
-	63,  // 78: snakecommon.ShowAdConfig.ab_ad_popups_config:type_name -> snakecommon.AdPopupsConfig
-	64,  // 79: snakecommon.ShowAdConfig.endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
-	64,  // 80: snakecommon.ShowAdConfig.noad_endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
-	64,  // 81: snakecommon.ShowAdConfig.melee_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
-	258, // 82: snakecommon.ShowAdConfig.ad_percent:type_name -> snakecommon.ShowAdConfig.AdPercentEntry
-	59,  // 83: snakecommon.ShowAdConfig.cross_promotions:type_name -> snakecommon.CrossPromotions
-	259, // 84: snakecommon.ShowAdConfig.ab_ad_popups_configs:type_name -> snakecommon.ShowAdConfig.AbAdPopupsConfigsEntry
-	60,  // 85: snakecommon.CrossPromotions.source:type_name -> snakecommon.CrossPromotionsSource
-	260, // 86: snakecommon.AdPopupsConfig.popup_position_config:type_name -> snakecommon.AdPopupsConfig.PopupPositionConfigEntry
-	286, // 87: snakecommon.OrderConfig.pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
-	286, // 88: snakecommon.OrderConfig.diamond_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
-	69,  // 89: snakecommon.OrderConfig.first_charge_popup:type_name -> snakecommon.FirstChargePopup
-	286, // 90: snakecommon.OrderConfig.red_pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
-	70,  // 91: snakecommon.OrderConfig.random_double_client_info:type_name -> snakecommon.RandomDoubleClientInfo
-	68,  // 92: snakecommon.OrderConfig.alipay_discount:type_name -> snakecommon.AlipayDiscount
-	76,  // 93: snakecommon.ShowConfig.level_config:type_name -> snakecommon.ShowLevelConfig
-	77,  // 94: snakecommon.ShowConfig.skill_name:type_name -> snakecommon.ShowSkillName
-	75,  // 95: snakecommon.ShowConfig.icon_style:type_name -> snakecommon.ShowIconStyle
-	74,  // 96: snakecommon.ShowConfig.pack_config:type_name -> snakecommon.ShowPackItem
-	287, // 97: snakecommon.ShowPackItem.pack_info:type_name -> SnakeMain.Config.PackModel
-	285, // 98: snakecommon.ShowLevelConfig.reward:type_name -> SnakeMain.Config.RewardConfig
-	78,  // 99: snakecommon.ShowLevelConfig.game_skill_list:type_name -> snakecommon.ShowSkillBuff
-	96,  // 100: snakecommon.UserConfig.abnormal_store:type_name -> snakecommon.DeviceConfig
-	97,  // 101: snakecommon.UserConfig.anti_addiction:type_name -> snakecommon.AntiAddiction
-	95,  // 102: snakecommon.UserConfig.game_end_skin:type_name -> snakecommon.GameEndSkin
-	92,  // 103: snakecommon.UserConfig.rename_popup_rule:type_name -> snakecommon.RenamePopupRule
-	91,  // 104: snakecommon.UserConfig.bind_config:type_name -> snakecommon.BindConfig
-	85,  // 105: snakecommon.UserConfig.setting_conf:type_name -> snakecommon.SettingConfig
-	84,  // 106: snakecommon.UserConfig.feedback:type_name -> snakecommon.FeedbackConfig
-	83,  // 107: snakecommon.UserConfig.flags:type_name -> snakecommon.FlagsConfig
-	285, // 108: snakecommon.UserConfig.certify_reward:type_name -> SnakeMain.Config.RewardConfig
-	107, // 109: snakecommon.UserConfig.register_survey:type_name -> snakecommon.RegisterSurvey
-	108, // 110: snakecommon.UserConfig.recruit_popup:type_name -> snakecommon.RecruitPopup
-	81,  // 111: snakecommon.UserConfig.minor_limit:type_name -> snakecommon.MinorLimit
-	109, // 112: snakecommon.UserConfig.new_user_config:type_name -> snakecommon.NewUserConfig
-	106, // 113: snakecommon.UserConfig.comment_config:type_name -> snakecommon.CommentConfig
-	80,  // 114: snakecommon.UserConfig.unity_flags:type_name -> snakecommon.UnityFlags
-	105, // 115: snakecommon.UserConfig.idfa_config:type_name -> snakecommon.IdfaConfig
-	285, // 116: snakecommon.UserConfig.certify_reward_v2:type_name -> SnakeMain.Config.RewardConfig
-	82,  // 117: snakecommon.MinorLimit.order_curator:type_name -> snakecommon.OrderCurator
-	86,  // 118: snakecommon.SettingConfig.doc_version:type_name -> snakecommon.DocVersion
-	87,  // 119: snakecommon.SettingConfig.network_check:type_name -> snakecommon.NetworkCheck
-	88,  // 120: snakecommon.SettingConfig.prometheus:type_name -> snakecommon.Prometheus
-	89,  // 121: snakecommon.SettingConfig.okhttp_dispatcher:type_name -> snakecommon.OkhttpDispatcher
-	90,  // 122: snakecommon.SettingConfig.mem_switch:type_name -> snakecommon.MemSwitch
-	94,  // 123: snakecommon.RenamePopupRule.newbie_club:type_name -> snakecommon.NewbieClub
-	93,  // 124: snakecommon.RenamePopupRule.qualifying_match:type_name -> snakecommon.QualifyingMatch
-	98,  // 125: snakecommon.AntiAddiction.notify:type_name -> snakecommon.Notify
-	100, // 126: snakecommon.AntiAddiction.minor_notify:type_name -> snakecommon.MinorNotify
-	101, // 127: snakecommon.AntiAddiction.pay_notify:type_name -> snakecommon.PayNotify
-	102, // 128: snakecommon.AntiAddiction.social_desc:type_name -> snakecommon.SocialDesc
-	103, // 129: snakecommon.AntiAddiction.identity_age:type_name -> snakecommon.IdentityAge
-	104, // 130: snakecommon.AntiAddiction.certify_notify:type_name -> snakecommon.CertifyNotify
-	100, // 131: snakecommon.AntiAddiction.infant_notify:type_name -> snakecommon.MinorNotify
-	99,  // 132: snakecommon.Notify.uncertified:type_name -> snakecommon.CertifyGameConfig
-	99,  // 133: snakecommon.Notify.minor:type_name -> snakecommon.CertifyGameConfig
-	285, // 134: snakecommon.IdfaConfig.reward:type_name -> SnakeMain.Config.RewardConfig
-	285, // 135: snakecommon.RegisterSurvey.reward:type_name -> SnakeMain.Config.RewardConfig
-	285, // 136: snakecommon.NewUserConfig.guide_reward:type_name -> SnakeMain.Config.RewardConfig
-	117, // 137: snakecommon.WildStormConfig.wild_storm_list:type_name -> snakecommon.WildStormListItem
-	110, // 138: snakecommon.OfflineGameConfig.endless_revive_config:type_name -> snakecommon.ReviveConfigItem
-	110, // 139: snakecommon.OfflineGameConfig.endless_revive_config_ab1:type_name -> snakecommon.ReviveConfigItem
-	110, // 140: snakecommon.OfflineGameConfig.endless_revive_config_ab2:type_name -> snakecommon.ReviveConfigItem
-	110, // 141: snakecommon.OfflineGameConfig.excite_revive_config:type_name -> snakecommon.ReviveConfigItem
-	110, // 142: snakecommon.OfflineGameConfig.limit_revive_config:type_name -> snakecommon.ReviveConfigItem
-	112, // 143: snakecommon.OfflineGameConfig.floater_config:type_name -> snakecommon.FloaterConfigOld
-	114, // 144: snakecommon.OfflineGameConfig.endless_limit_config:type_name -> snakecommon.EndlessLimitConfig
-	113, // 145: snakecommon.OfflineGameConfig.activity_map_config:type_name -> snakecommon.ActivityMapConfig
-	115, // 146: snakecommon.OfflineGameConfig.endless_bubble:type_name -> snakecommon.EndlessBubbleConfig
-	116, // 147: snakecommon.OfflineGameConfig.endless_track:type_name -> snakecommon.EndlessTrackConfig
-	118, // 148: snakecommon.OfflineGameConfig.wild_storm:type_name -> snakecommon.WildStormConfig
-	3,   // 149: snakecommon.OfflineGameConfig.endless_buff_prop:type_name -> snakecommon.EndLessBuffPropInfo
-	121, // 150: snakecommon.MentorshipConfig.master_privilege_config:type_name -> snakecommon.MentorPrivilegeInfo
-	123, // 151: snakecommon.MentorshipConfig.bond_title_config:type_name -> snakecommon.MentorshipBondTitleItem
-	124, // 152: snakecommon.MentorshipConfig.finish_reward:type_name -> snakecommon.MentorFinishReward
-	125, // 153: snakecommon.MentorshipConfig.master_prentice_strategy:type_name -> snakecommon.MasterPrenticeStrategyItem
-	122, // 154: snakecommon.MentorPrivilegeInfo.privilege:type_name -> snakecommon.PrivilegeDetailInfo
-	285, // 155: snakecommon.MentorPrivilegeInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
-	285, // 156: snakecommon.MentorFinishReward.master_reward:type_name -> SnakeMain.Config.RewardConfig
-	285, // 157: snakecommon.MentorFinishReward.prentice_reward:type_name -> SnakeMain.Config.RewardConfig
-	288, // 158: snakecommon.ProductConfig.property:type_name -> SnakeMain.Config.Property
-	289, // 159: snakecommon.ProductConfig.currency_store:type_name -> SnakeMain.Config.CurrencyStore
-	290, // 160: snakecommon.ProductConfig.middle_item_list:type_name -> SnakeMain.Config.MiddleItem
-	291, // 161: snakecommon.ProductConfig.draw_card_guide_config:type_name -> SnakeMain.Config.DrawCardGuideConfig
-	292, // 162: snakecommon.ProductConfig.store_config:type_name -> SnakeMain.Config.StoreConfig
-	129, // 163: snakecommon.WeddingConfig.template_list:type_name -> snakecommon.WeddingTemplate
-	129, // 164: snakecommon.WeddingConfig.limited_template_list:type_name -> snakecommon.WeddingTemplate
-	130, // 165: snakecommon.WeddingConfig.music_list:type_name -> snakecommon.WeddingMusic
-	132, // 166: snakecommon.HappyModeRace.length_config:type_name -> snakecommon.LengthFee
-	131, // 167: snakecommon.HappyModeConfig.happycoin_list:type_name -> snakecommon.HappycoinConfig
-	134, // 168: snakecommon.HappyModeConfig.low_income_config:type_name -> snakecommon.LowIncomeConfig
-	133, // 169: snakecommon.HappyModeConfig.race_config:type_name -> snakecommon.HappyModeRace
-	135, // 170: snakecommon.HappyModeConfig.title_config:type_name -> snakecommon.HappyModeTitleConfig
-	23,  // 171: snakecommon.HappyModeConfig.race_time_config:type_name -> snakecommon.RaceTimeConfig
-	137, // 172: snakecommon.StarSnake.snake_list:type_name -> snakecommon.StarSnakeItem
-	141, // 173: snakecommon.AiLevel.attack_times:type_name -> snakecommon.AttackTime
-	142, // 174: snakecommon.AiLengthRange.level_list:type_name -> snakecommon.AiLevelWeight
-	143, // 175: snakecommon.AiDifficultyConfig.ai_length_range:type_name -> snakecommon.AiLengthRange
-	149, // 176: snakecommon.AiDifficultyConfig.ai_born:type_name -> snakecommon.AiBorn
-	142, // 177: snakecommon.AiBornPool.level_list:type_name -> snakecommon.AiLevelWeight
-	148, // 178: snakecommon.ScorePool.pool_list:type_name -> snakecommon.ScorePoolItem
-	146, // 179: snakecommon.AiBorn.ai_born_pools:type_name -> snakecommon.AiBornPool
-	147, // 180: snakecommon.AiBorn.score_pools:type_name -> snakecommon.ScorePool
-	151, // 181: snakecommon.HoleFood.food_list:type_name -> snakecommon.BonusFood
-	152, // 182: snakecommon.BonusFoodLevel.hole_food:type_name -> snakecommon.HoleFood
-	153, // 183: snakecommon.BonusFoodLevel.dot_food:type_name -> snakecommon.DotFood
-	142, // 184: snakecommon.BonusLevel.bonus_ai_level_list:type_name -> snakecommon.AiLevelWeight
-	155, // 185: snakecommon.BonusLevelSettings.bonus_levels:type_name -> snakecommon.BonusLevel
-	159, // 186: snakecommon.EndlessBonusNew.map_border:type_name -> snakecommon.MapBorder
-	150, // 187: snakecommon.EndlessBonusNew.bonus_trigger_condition:type_name -> snakecommon.BonusTriggerCondition
-	154, // 188: snakecommon.EndlessBonusNew.bonus_food_level_list:type_name -> snakecommon.BonusFoodLevel
-	156, // 189: snakecommon.EndlessBonusNew.bonus_level_settings:type_name -> snakecommon.BonusLevelSettings
-	151, // 190: snakecommon.SpringSugarInfo.food_list:type_name -> snakecommon.BonusFood
-	138, // 191: snakecommon.AiConfigV3.star_snake:type_name -> snakecommon.StarSnake
-	139, // 192: snakecommon.AiConfigV3.ai_wreck_node_score_range:type_name -> snakecommon.AiWreckNodeScoreRange
-	139, // 193: snakecommon.AiConfigV3.ai_wreck_node_score_range_low:type_name -> snakecommon.AiWreckNodeScoreRange
-	140, // 194: snakecommon.AiConfigV3.ai_level_list:type_name -> snakecommon.AiLevel
-	143, // 195: snakecommon.AiConfigV3.ai_length_range:type_name -> snakecommon.AiLengthRange
-	144, // 196: snakecommon.AiConfigV3.floater_config:type_name -> snakecommon.FloaterConfig
-	145, // 197: snakecommon.AiConfigV3.ai_difficulty_config_list:type_name -> snakecommon.AiDifficultyConfig
-	157, // 198: snakecommon.AiConfigV3.endless_bonus_new:type_name -> snakecommon.EndlessBonusNew
-	158, // 199: snakecommon.AiConfigV3.spring_sugar_info:type_name -> snakecommon.SpringSugarInfo
-	160, // 200: snakecommon.AiConfigV3.ai_nick_lists:type_name -> snakecommon.AiNickListItem
-	161, // 201: snakecommon.AiConfigV3.ai_skin_lists:type_name -> snakecommon.AiSkinListItem
-	162, // 202: snakecommon.LimitAiConfigV3.base:type_name -> snakecommon.AiConfigV3
-	261, // 203: snakecommon.SystemConfig.game_configs:type_name -> snakecommon.SystemConfig.GameConfigsEntry
-	262, // 204: snakecommon.SystemConfig.endless_exp:type_name -> snakecommon.SystemConfig.EndlessExpEntry
-	263, // 205: snakecommon.SystemConfig.ol_endless_pk:type_name -> snakecommon.SystemConfig.OlEndlessPkEntry
-	264, // 206: snakecommon.SystemConfig.voice_room_uids:type_name -> snakecommon.SystemConfig.VoiceRoomUidsEntry
-	265, // 207: snakecommon.SystemConfig.telephone_black_list:type_name -> snakecommon.SystemConfig.TelephoneBlackListEntry
-	266, // 208: snakecommon.SystemConfig.idcard_black_list:type_name -> snakecommon.SystemConfig.IdcardBlackListEntry
-	267, // 209: snakecommon.SystemConfig.voice_white_owner_list:type_name -> snakecommon.SystemConfig.VoiceWhiteOwnerListEntry
-	268, // 210: snakecommon.SystemConfig.ol_endless_entrance:type_name -> snakecommon.SystemConfig.OlEndlessEntranceEntry
-	269, // 211: snakecommon.SystemConfig.ios_shake:type_name -> snakecommon.SystemConfig.IosShakeEntry
-	167, // 212: snakecommon.RewardConfig.register_reward:type_name -> snakecommon.RegisterReward
-	169, // 213: snakecommon.InterfaceExpire.activity_api:type_name -> snakecommon.ActivityAPI
-	170, // 214: snakecommon.InterfaceExpire.clan_api:type_name -> snakecommon.ClanAPI
-	171, // 215: snakecommon.InterfaceExpire.config:type_name -> snakecommon.ExpireConfig
-	172, // 216: snakecommon.InterfaceExpire.event_api:type_name -> snakecommon.EventAPI
-	173, // 217: snakecommon.InterfaceExpire.friend_api:type_name -> snakecommon.FriendAPI
-	174, // 218: snakecommon.InterfaceExpire.inbox_api:type_name -> snakecommon.InboxAPI
-	175, // 219: snakecommon.InterfaceExpire.nearby_api:type_name -> snakecommon.NearbyAPI
-	176, // 220: snakecommon.InterfaceExpire.score_api:type_name -> snakecommon.ScoreAPI
-	177, // 221: snakecommon.InterfaceExpire.share_api:type_name -> snakecommon.ShareAPI
-	178, // 222: snakecommon.InterfaceExpire.top_list_v2:type_name -> snakecommon.TopListV2
-	179, // 223: snakecommon.InterfaceExpire.voice_room_api:type_name -> snakecommon.VoiceRoomAPI
-	181, // 224: snakecommon.MsConfig.ms_addr:type_name -> snakecommon.MsAddr
-	181, // 225: snakecommon.MsConfig.ms_addr2:type_name -> snakecommon.MsAddr
-	184, // 226: snakecommon.ExciteModeConfig.game_prop_list:type_name -> snakecommon.GamePropList
-	184, // 227: snakecommon.ExciteModeConfig.game_prop_list2:type_name -> snakecommon.GamePropList
-	186, // 228: snakecommon.ExciteModeConfig.param_config:type_name -> snakecommon.ParamConfig
-	193, // 229: snakecommon.ExciteModeConfig.game_config:type_name -> snakecommon.ModeGameConfig
-	185, // 230: snakecommon.GamePropList.level_info:type_name -> snakecommon.ModeLevelInfo
-	187, // 231: snakecommon.ParamConfig.in_game:type_name -> snakecommon.InGame
-	188, // 232: snakecommon.ParamConfig.prop_rate:type_name -> snakecommon.PropRate
-	192, // 233: snakecommon.ParamConfig.rate_config:type_name -> snakecommon.RateConfig
-	189, // 234: snakecommon.RateConfig.AI:type_name -> snakecommon.Ai
-	190, // 235: snakecommon.RateConfig.map:type_name -> snakecommon.Map
-	191, // 236: snakecommon.RateConfig.stone:type_name -> snakecommon.Stone
-	194, // 237: snakecommon.ModeGameConfig.ai_level_list:type_name -> snakecommon.AiLevelList
-	196, // 238: snakecommon.ModeGameConfig.self_electricity_config:type_name -> snakecommon.SelfElectricityConfig
-	197, // 239: snakecommon.ModeGameConfig.shock_config:type_name -> snakecommon.ShockConfig
-	205, // 240: snakecommon.ModeGameConfig.stage_configs:type_name -> snakecommon.StageConfigs
-	195, // 241: snakecommon.AiLevelList.brain_attack_time:type_name -> snakecommon.BrainAttackTime
-	198, // 242: snakecommon.AiConfig.ai_type_list:type_name -> snakecommon.AiTypeList
-	199, // 243: snakecommon.AiConfig.electricity_config:type_name -> snakecommon.ElectricityConfig
-	200, // 244: snakecommon.AiConfig.missile_config:type_name -> snakecommon.MissileConfig
-	202, // 245: snakecommon.PropConfig.prop_born_infos:type_name -> snakecommon.PropBornInfos
-	203, // 246: snakecommon.PropConfig.prop_weight_list:type_name -> snakecommon.PropWeightList
-	201, // 247: snakecommon.StageConfigs.ai_config:type_name -> snakecommon.AiConfig
-	204, // 248: snakecommon.StageConfigs.prop_config:type_name -> snakecommon.PropConfig
-	207, // 249: snakecommon.Emulator.app_check:type_name -> snakecommon.AppCheck
-	208, // 250: snakecommon.Emulator.cheat_app_check:type_name -> snakecommon.CheatAppCheck
-	209, // 251: snakecommon.Emulator.shell_check:type_name -> snakecommon.ShellCheck
-	270, // 252: snakecommon.LittleGame.little_games:type_name -> snakecommon.LittleGame.LittleGamesEntry
-	212, // 253: snakecommon.LittleGameSrc.items:type_name -> snakecommon.LittleGameSrcItem
-	271, // 254: snakecommon.ReviewMarket.review_market:type_name -> snakecommon.ReviewMarket.ReviewMarketEntry
-	272, // 255: snakecommon.LittleGameUiConf.config:type_name -> snakecommon.LittleGameUiConf.ConfigEntry
-	216, // 256: snakecommon.LittleGameUi.game_list:type_name -> snakecommon.GameList
-	218, // 257: snakecommon.ScoreInfoConfig.qualifying_display_score_rule:type_name -> snakecommon.QualifyingDisplayScoreConfig
-	219, // 258: snakecommon.ScoreInfoConfig.qualifying_score_coin_rule:type_name -> snakecommon.SnakeCoinConfig
-	219, // 259: snakecommon.ScoreInfoConfig.escape_score_coin_rule:type_name -> snakecommon.SnakeCoinConfig
-	220, // 260: snakecommon.ScoreInfoConfig.escape_point_rule:type_name -> snakecommon.EscapePointRule
-	221, // 261: snakecommon.ScoreInfoConfig.escape_cup_map:type_name -> snakecommon.KVInt
-	223, // 262: snakecommon.ScoreInfoConfig.season_notify:type_name -> snakecommon.SeasonNotifyConfig
-	224, // 263: snakecommon.ScoreInfoConfig.single_double_snake_coin_rule:type_name -> snakecommon.SingleDoubleSnakeCoin
-	226, // 264: snakecommon.ScoreInfoConfig.endless_snake_coin_rule:type_name -> snakecommon.SnakeCoinCalcConfig
-	226, // 265: snakecommon.ScoreInfoConfig.limit_snake_coin_rule:type_name -> snakecommon.SnakeCoinCalcConfig
-	222, // 266: snakecommon.QualifyingDisplayScoreConfig.length_config:type_name -> snakecommon.DisplayScoreCalcConfig
-	222, // 267: snakecommon.QualifyingDisplayScoreConfig.kill_config:type_name -> snakecommon.DisplayScoreCalcConfig
-	222, // 268: snakecommon.QualifyingDisplayScoreConfig.eat_config:type_name -> snakecommon.DisplayScoreCalcConfig
-	222, // 269: snakecommon.QualifyingDisplayScoreConfig.killed_config:type_name -> snakecommon.DisplayScoreCalcConfig
-	222, // 270: snakecommon.QualifyingDisplayScoreConfig.destroy_config:type_name -> snakecommon.DisplayScoreCalcConfig
-	222, // 271: snakecommon.QualifyingDisplayScoreConfig.boss_kill_config:type_name -> snakecommon.DisplayScoreCalcConfig
-	221, // 272: snakecommon.EscapePointRule.rank_point:type_name -> snakecommon.KVInt
-	221, // 273: snakecommon.EscapePointRule.action_point:type_name -> snakecommon.KVInt
-	221, // 274: snakecommon.EscapePointRule.kill_point:type_name -> snakecommon.KVInt
-	225, // 275: snakecommon.SingleDoubleSnakeCoin.calc_config:type_name -> snakecommon.SnakeCoinAdCalcConfig
-	232, // 276: snakecommon.SimulConfig.task_list:type_name -> snakecommon.SimulTaskItem
-	273, // 277: snakecommon.SimulConfig.building_set:type_name -> snakecommon.SimulConfig.BuildingSetEntry
-	274, // 278: snakecommon.SimulConfig.staff_set:type_name -> snakecommon.SimulConfig.StaffSetEntry
-	229, // 279: snakecommon.SimulConfig.reward_config:type_name -> snakecommon.SimulRewardConfig
-	237, // 280: snakecommon.SimulConfig.timed_task_list:type_name -> snakecommon.TimedTaskInfo
-	238, // 281: snakecommon.SimulConfig.timed_task_coin_config:type_name -> snakecommon.TimedTaskCoinConfig
-	230, // 282: snakecommon.SimulRewardConfig.reward_condition:type_name -> snakecommon.SimulRewardCondition
-	231, // 283: snakecommon.SimulRewardConfig.reward_mail:type_name -> snakecommon.SimulRewardMail
-	285, // 284: snakecommon.SimulRewardMail.reward_list:type_name -> SnakeMain.Config.RewardConfig
-	233, // 285: snakecommon.SimulTaskItem.reward:type_name -> snakecommon.SimulReward
-	235, // 286: snakecommon.BuildingSet.detail:type_name -> snakecommon.Detail
-	235, // 287: snakecommon.StaffSet.detail:type_name -> snakecommon.Detail
-	240, // 288: snakecommon.SummonConfig.aiConfig:type_name -> snakecommon.SummonAiConfig
-	242, // 289: snakecommon.SummonConfig.mapConfig:type_name -> snakecommon.MapConfig
-	241, // 290: snakecommon.SummonAiConfig.config:type_name -> snakecommon.SummonConfigItem
-	275, // 291: snakecommon.IosPatch.path:type_name -> snakecommon.IosPatch.PathEntry
-	245, // 292: snakecommon.IosPatchList.ios_patch:type_name -> snakecommon.IosPatchItem
-	276, // 293: snakecommon.UnityAssets.versions:type_name -> snakecommon.UnityAssets.VersionsEntry
-	277, // 294: snakecommon.AssetMap.platforms:type_name -> snakecommon.AssetMap.PlatformsEntry
-	249, // 295: snakecommon.Asset.assets:type_name -> snakecommon.AssetItem
-	278, // 296: snakecommon.TeamEndlessConfig.guide:type_name -> snakecommon.TeamEndlessConfig.Guide
-	280, // 297: snakecommon.TeamEndlessConfig.seasons:type_name -> snakecommon.TeamEndlessConfig.Season
-	283, // 298: snakecommon.TeamEndlessConfig.rank:type_name -> snakecommon.TeamEndlessConfig.Rank
-	254, // 299: snakecommon.BannerInfo.extra:type_name -> snakecommon.BannerExtraInfo
-	253, // 300: snakecommon.BannerInfo.carton_list:type_name -> snakecommon.CartonList
-	24,  // 301: snakecommon.ClanConfig.ClanRaceRewardEntry.value:type_name -> snakecommon.ClanRaceReward
-	63,  // 302: snakecommon.ShowAdConfig.AbAdPopupsConfigsEntry.value:type_name -> snakecommon.AdPopupsConfig
-	62,  // 303: snakecommon.AdPopupsConfig.PopupPositionConfigEntry.value:type_name -> snakecommon.PopupPosition
-	164, // 304: snakecommon.SystemConfig.GameConfigsEntry.value:type_name -> snakecommon.GameConfig
-	211, // 305: snakecommon.LittleGame.LittleGamesEntry.value:type_name -> snakecommon.LittleGameSrc
-	215, // 306: snakecommon.LittleGameUiConf.ConfigEntry.value:type_name -> snakecommon.LittleGameUi
-	234, // 307: snakecommon.SimulConfig.BuildingSetEntry.value:type_name -> snakecommon.BuildingSet
-	236, // 308: snakecommon.SimulConfig.StaffSetEntry.value:type_name -> snakecommon.StaffSet
-	244, // 309: snakecommon.IosPatch.PathEntry.value:type_name -> snakecommon.IosPatchList
-	247, // 310: snakecommon.UnityAssets.VersionsEntry.value:type_name -> snakecommon.AssetMap
-	248, // 311: snakecommon.AssetMap.PlatformsEntry.value:type_name -> snakecommon.Asset
-	293, // 312: snakecommon.TeamEndlessConfig.SeasonRewardItem.reward_list:type_name -> snakecommon.CRewardItem
-	279, // 313: snakecommon.TeamEndlessConfig.Season.reward_list:type_name -> snakecommon.TeamEndlessConfig.SeasonRewardItem
-	281, // 314: snakecommon.TeamEndlessConfig.Rank.big_rank:type_name -> snakecommon.TeamEndlessConfig.BigRankItem
-	282, // 315: snakecommon.TeamEndlessConfig.Rank.small_rank:type_name -> snakecommon.TeamEndlessConfig.SmallRankItem
-	316, // [316:316] is the sub-list for method output_type
-	316, // [316:316] is the sub-list for method input_type
-	316, // [316:316] is the sub-list for extension type_name
-	316, // [316:316] is the sub-list for extension extendee
-	0,   // [0:316] is the sub-list for field type_name
+	263, // 0: snakecommon.ConfigVersionInfo.flags:type_name -> snakecommon.ConfigVersionInfo.FlagsEntry
+	4,   // 1: snakecommon.EndLessBuffPropConfigV2.list:type_name -> snakecommon.EndLessBuffPropInfo
+	293, // 2: snakecommon.EndLessBuffPropInfo.price_list:type_name -> snakecommon.CPriceInfo
+	5,   // 3: snakecommon.EndLessBuffPropInfo.prop_list:type_name -> snakecommon.RandomPropInfo
+	7,   // 4: snakecommon.HuaweiHighlight.highlight_list:type_name -> snakecommon.HighLightInfo
+	11,  // 5: snakecommon.OlGameConfig.game_status_track:type_name -> snakecommon.GameStatusTrack
+	12,  // 6: snakecommon.OlGameConfig.grass_config:type_name -> snakecommon.GrassConfig
+	14,  // 7: snakecommon.OlGameConfig.team_suit:type_name -> snakecommon.TeamSuit
+	16,  // 8: snakecommon.OlGameConfig.team_kill_config:type_name -> snakecommon.TeamKillConfig
+	17,  // 9: snakecommon.OlGameConfig.team_melee_config:type_name -> snakecommon.TeamMeleeConfig
+	18,  // 10: snakecommon.OlGameConfig.qualifying_config:type_name -> snakecommon.QualifyingConfig
+	19,  // 11: snakecommon.OlGameConfig.race_normal_config:type_name -> snakecommon.RaceNormalConfig
+	20,  // 12: snakecommon.OlGameConfig.team_kill_prop:type_name -> snakecommon.TeamKillProp
+	10,  // 13: snakecommon.OlGameConfig.match_background:type_name -> snakecommon.MatchBackgroundConfig
+	9,   // 14: snakecommon.OlGameConfig.jump_icon:type_name -> snakecommon.JumpIcon
+	13,  // 15: snakecommon.GrassConfig.grass:type_name -> snakecommon.GrassInfo
+	15,  // 16: snakecommon.TeamSuit.new_suit:type_name -> snakecommon.TeamSuitNewSuitInfo
+	293, // 17: snakecommon.TeamKillProp.price_list:type_name -> snakecommon.CPriceInfo
+	294, // 18: snakecommon.TeamKillProp.prop_list:type_name -> SnakeMain.Config.RewardConfig
+	22,  // 19: snakecommon.ClanConfig.rule_desc:type_name -> snakecommon.RuleDesc
+	24,  // 20: snakecommon.ClanConfig.race_time_config:type_name -> snakecommon.RaceTimeConfig
+	264, // 21: snakecommon.ClanConfig.clan_race_reward:type_name -> snakecommon.ClanConfig.ClanRaceRewardEntry
+	26,  // 22: snakecommon.ClanConfig.level_config:type_name -> snakecommon.ClanLevelInfo
+	27,  // 23: snakecommon.ClanConfig.reward_config:type_name -> snakecommon.NewClanRewardItem
+	27,  // 24: snakecommon.ClanConfig.reward_explain_config:type_name -> snakecommon.NewClanRewardItem
+	23,  // 25: snakecommon.RuleDesc.active_point_addition:type_name -> snakecommon.ActivePointAddition
+	294, // 26: snakecommon.NewClanRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
+	31,  // 27: snakecommon.RankConfig.level:type_name -> snakecommon.RankLevel
+	29,  // 28: snakecommon.RankConfig.rank_reward:type_name -> snakecommon.RankReward
+	32,  // 29: snakecommon.RankConfig.daily_game_rewards:type_name -> snakecommon.DailyGameRewards
+	36,  // 30: snakecommon.RankConfig.newer_guide:type_name -> snakecommon.NewerGuide
+	30,  // 31: snakecommon.RankConfig.rank_reward_v2:type_name -> snakecommon.RankRewardV2
+	294, // 32: snakecommon.RankReward.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	294, // 33: snakecommon.RankRewardV2.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	33,  // 34: snakecommon.DailyGameRewards.list:type_name -> snakecommon.DailyGameRewardItem
+	265, // 35: snakecommon.DailyGameRewards.box_pool:type_name -> snakecommon.DailyGameRewards.BoxPoolEntry
+	35,  // 36: snakecommon.BoxPool.pool:type_name -> snakecommon.BoxPoolItem
+	295, // 37: snakecommon.BoxPoolItem.convert:type_name -> snakecommon.CConvert
+	0,   // 38: snakecommon.BoxPoolItem.reward_type:type_name -> snakecommon.BoxPoolItemType
+	32,  // 39: snakecommon.SeasonInfo.daily_game_rewards:type_name -> snakecommon.DailyGameRewards
+	30,  // 40: snakecommon.SeasonInfo.rank_reward_v2:type_name -> snakecommon.RankRewardV2
+	42,  // 41: snakecommon.ShareConfig.channel_config:type_name -> snakecommon.ChannelConfig
+	43,  // 42: snakecommon.ShareConfig.game_invite:type_name -> snakecommon.GameInvite
+	41,  // 43: snakecommon.ShareConfig.video_share_icon:type_name -> snakecommon.VideoShareIcon
+	40,  // 44: snakecommon.ShareConfig.clipboard_check:type_name -> snakecommon.ClipBoardCheck
+	39,  // 45: snakecommon.ShareConfig.share_tag:type_name -> snakecommon.ShareTag
+	46,  // 46: snakecommon.SocialConfig.charm_level:type_name -> snakecommon.CharmLevelItem
+	45,  // 47: snakecommon.SocialConfig.charm_top_config:type_name -> snakecommon.CharmTopConfig
+	294, // 48: snakecommon.SocialConfig.marry_rewards:type_name -> SnakeMain.Config.RewardConfig
+	47,  // 49: snakecommon.SocialConfig.unlock_send_gift:type_name -> snakecommon.SocialThreshold
+	47,  // 50: snakecommon.SocialConfig.unlock_clan:type_name -> snakecommon.SocialThreshold
+	47,  // 51: snakecommon.SocialConfig.unlock_world_chat:type_name -> snakecommon.SocialThreshold
+	48,  // 52: snakecommon.SocialThreshold.ios:type_name -> snakecommon.SocialThresholdPlatform
+	48,  // 53: snakecommon.SocialThreshold.android:type_name -> snakecommon.SocialThresholdPlatform
+	50,  // 54: snakecommon.CharmExpConfig.charm_exp_ranks:type_name -> snakecommon.CharmExpRank
+	51,  // 55: snakecommon.CharmExpConfig.privilege_config:type_name -> snakecommon.CharmPrivilegeItem
+	53,  // 56: snakecommon.TextConfig.gift_like_text_list:type_name -> snakecommon.GiftLikeTextList
+	54,  // 57: snakecommon.TextConfig.quick_phrase_text_list:type_name -> snakecommon.ShortCutConfig
+	55,  // 58: snakecommon.TextConfig.report_behavior_list:type_name -> snakecommon.ReportBehavior
+	55,  // 59: snakecommon.TextConfig.ad_report_behavior_list:type_name -> snakecommon.ReportBehavior
+	57,  // 60: snakecommon.UiConfigV3.endless_icon_v2:type_name -> snakecommon.GameIcon
+	57,  // 61: snakecommon.UiConfigV3.qualifying_icon_v2:type_name -> snakecommon.GameIcon
+	57,  // 62: snakecommon.UiConfigV3.left_corner:type_name -> snakecommon.GameIcon
+	57,  // 63: snakecommon.UiConfigV3.right_corner:type_name -> snakecommon.GameIcon
+	57,  // 64: snakecommon.UiConfigV3.more_game:type_name -> snakecommon.GameIcon
+	60,  // 65: snakecommon.UiConfigV3.newbie_condition:type_name -> snakecommon.NewbieCondition
+	57,  // 66: snakecommon.UiConfigV3.endless_huge_icon:type_name -> snakecommon.GameIcon
+	57,  // 67: snakecommon.UiConfigV3.game_slide_list:type_name -> snakecommon.GameIcon
+	57,  // 68: snakecommon.UiConfigV3.endless_icon:type_name -> snakecommon.GameIcon
+	57,  // 69: snakecommon.UiConfigV3.qualifying_icon:type_name -> snakecommon.GameIcon
+	61,  // 70: snakecommon.UiConfigV3.home_background:type_name -> snakecommon.HomeBackground
+	57,  // 71: snakecommon.UiConfigV3.ar_icon:type_name -> snakecommon.GameIcon
+	57,  // 72: snakecommon.UiConfigV3.plant_icon:type_name -> snakecommon.GameIcon
+	57,  // 73: snakecommon.UiConfigV3.fallguys_icon:type_name -> snakecommon.GameIcon
+	58,  // 74: snakecommon.UiConfigV3.little_game_icon:type_name -> snakecommon.LittleGameIcon
+	57,  // 75: snakecommon.UiConfigV3.compose:type_name -> snakecommon.GameIcon
+	57,  // 76: snakecommon.UiConfigV3.couple_passcheck:type_name -> snakecommon.GameIcon
+	57,  // 77: snakecommon.UiConfigV3.points_champ_icon:type_name -> snakecommon.GameIcon
+	59,  // 78: snakecommon.GameIcon.bubble:type_name -> snakecommon.Bubble
+	57,  // 79: snakecommon.LittleGameIcon.game_icon:type_name -> snakecommon.GameIcon
+	266, // 80: snakecommon.PingConfig.ping_ip_list:type_name -> snakecommon.PingConfig.PingIpListEntry
+	64,  // 81: snakecommon.RewardMarkConfig.reward_marks:type_name -> snakecommon.RewardMark
+	72,  // 82: snakecommon.ShowAdConfig.snake_coin_ad_config:type_name -> snakecommon.AdRewardModel
+	72,  // 83: snakecommon.ShowAdConfig.coupon_ad_config:type_name -> snakecommon.AdRewardModel
+	72,  // 84: snakecommon.ShowAdConfig.happycoin_ad_config:type_name -> snakecommon.AdRewardModel
+	73,  // 85: snakecommon.ShowAdConfig.goods_list:type_name -> snakecommon.AdGoodsItem
+	68,  // 86: snakecommon.ShowAdConfig.endless_buff:type_name -> snakecommon.EndlessBuff
+	70,  // 87: snakecommon.ShowAdConfig.ad_popups_config:type_name -> snakecommon.AdPopupsConfig
+	70,  // 88: snakecommon.ShowAdConfig.android_ad_popups_config:type_name -> snakecommon.AdPopupsConfig
+	70,  // 89: snakecommon.ShowAdConfig.ab_ad_popups_config:type_name -> snakecommon.AdPopupsConfig
+	71,  // 90: snakecommon.ShowAdConfig.endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
+	71,  // 91: snakecommon.ShowAdConfig.noad_endless_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
+	71,  // 92: snakecommon.ShowAdConfig.melee_checkout_recommend:type_name -> snakecommon.EndlessAdRecommend
+	267, // 93: snakecommon.ShowAdConfig.ad_percent:type_name -> snakecommon.ShowAdConfig.AdPercentEntry
+	66,  // 94: snakecommon.ShowAdConfig.cross_promotions:type_name -> snakecommon.CrossPromotions
+	268, // 95: snakecommon.ShowAdConfig.ab_ad_popups_configs:type_name -> snakecommon.ShowAdConfig.AbAdPopupsConfigsEntry
+	67,  // 96: snakecommon.CrossPromotions.source:type_name -> snakecommon.CrossPromotionsSource
+	269, // 97: snakecommon.AdPopupsConfig.popup_position_config:type_name -> snakecommon.AdPopupsConfig.PopupPositionConfigEntry
+	296, // 98: snakecommon.OrderConfig.pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	296, // 99: snakecommon.OrderConfig.diamond_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	76,  // 100: snakecommon.OrderConfig.first_charge_popup:type_name -> snakecommon.FirstChargePopup
+	296, // 101: snakecommon.OrderConfig.red_pack_goods_list:type_name -> snakecommon.RMBPackGoodsInfo
+	77,  // 102: snakecommon.OrderConfig.random_double_client_info:type_name -> snakecommon.RandomDoubleClientInfo
+	75,  // 103: snakecommon.OrderConfig.alipay_discount:type_name -> snakecommon.AlipayDiscount
+	83,  // 104: snakecommon.ShowConfig.level_config:type_name -> snakecommon.ShowLevelConfig
+	84,  // 105: snakecommon.ShowConfig.skill_name:type_name -> snakecommon.ShowSkillName
+	82,  // 106: snakecommon.ShowConfig.icon_style:type_name -> snakecommon.ShowIconStyle
+	81,  // 107: snakecommon.ShowConfig.pack_config:type_name -> snakecommon.ShowPackItem
+	297, // 108: snakecommon.ShowPackItem.pack_info:type_name -> SnakeMain.Config.PackModel
+	294, // 109: snakecommon.ShowLevelConfig.reward:type_name -> SnakeMain.Config.RewardConfig
+	85,  // 110: snakecommon.ShowLevelConfig.game_skill_list:type_name -> snakecommon.ShowSkillBuff
+	103, // 111: snakecommon.UserConfig.abnormal_store:type_name -> snakecommon.DeviceConfig
+	104, // 112: snakecommon.UserConfig.anti_addiction:type_name -> snakecommon.AntiAddiction
+	102, // 113: snakecommon.UserConfig.game_end_skin:type_name -> snakecommon.GameEndSkin
+	99,  // 114: snakecommon.UserConfig.rename_popup_rule:type_name -> snakecommon.RenamePopupRule
+	98,  // 115: snakecommon.UserConfig.bind_config:type_name -> snakecommon.BindConfig
+	92,  // 116: snakecommon.UserConfig.setting_conf:type_name -> snakecommon.SettingConfig
+	91,  // 117: snakecommon.UserConfig.feedback:type_name -> snakecommon.FeedbackConfig
+	90,  // 118: snakecommon.UserConfig.flags:type_name -> snakecommon.FlagsConfig
+	294, // 119: snakecommon.UserConfig.certify_reward:type_name -> SnakeMain.Config.RewardConfig
+	114, // 120: snakecommon.UserConfig.register_survey:type_name -> snakecommon.RegisterSurvey
+	115, // 121: snakecommon.UserConfig.recruit_popup:type_name -> snakecommon.RecruitPopup
+	88,  // 122: snakecommon.UserConfig.minor_limit:type_name -> snakecommon.MinorLimit
+	116, // 123: snakecommon.UserConfig.new_user_config:type_name -> snakecommon.NewUserConfig
+	113, // 124: snakecommon.UserConfig.comment_config:type_name -> snakecommon.CommentConfig
+	87,  // 125: snakecommon.UserConfig.unity_flags:type_name -> snakecommon.UnityFlags
+	112, // 126: snakecommon.UserConfig.idfa_config:type_name -> snakecommon.IdfaConfig
+	294, // 127: snakecommon.UserConfig.certify_reward_v2:type_name -> SnakeMain.Config.RewardConfig
+	89,  // 128: snakecommon.MinorLimit.order_curator:type_name -> snakecommon.OrderCurator
+	93,  // 129: snakecommon.SettingConfig.doc_version:type_name -> snakecommon.DocVersion
+	94,  // 130: snakecommon.SettingConfig.network_check:type_name -> snakecommon.NetworkCheck
+	95,  // 131: snakecommon.SettingConfig.prometheus:type_name -> snakecommon.Prometheus
+	96,  // 132: snakecommon.SettingConfig.okhttp_dispatcher:type_name -> snakecommon.OkhttpDispatcher
+	97,  // 133: snakecommon.SettingConfig.mem_switch:type_name -> snakecommon.MemSwitch
+	101, // 134: snakecommon.RenamePopupRule.newbie_club:type_name -> snakecommon.NewbieClub
+	100, // 135: snakecommon.RenamePopupRule.qualifying_match:type_name -> snakecommon.QualifyingMatch
+	105, // 136: snakecommon.AntiAddiction.notify:type_name -> snakecommon.Notify
+	107, // 137: snakecommon.AntiAddiction.minor_notify:type_name -> snakecommon.MinorNotify
+	108, // 138: snakecommon.AntiAddiction.pay_notify:type_name -> snakecommon.PayNotify
+	109, // 139: snakecommon.AntiAddiction.social_desc:type_name -> snakecommon.SocialDesc
+	110, // 140: snakecommon.AntiAddiction.identity_age:type_name -> snakecommon.IdentityAge
+	111, // 141: snakecommon.AntiAddiction.certify_notify:type_name -> snakecommon.CertifyNotify
+	107, // 142: snakecommon.AntiAddiction.infant_notify:type_name -> snakecommon.MinorNotify
+	106, // 143: snakecommon.Notify.uncertified:type_name -> snakecommon.CertifyGameConfig
+	106, // 144: snakecommon.Notify.minor:type_name -> snakecommon.CertifyGameConfig
+	294, // 145: snakecommon.IdfaConfig.reward:type_name -> SnakeMain.Config.RewardConfig
+	294, // 146: snakecommon.RegisterSurvey.reward:type_name -> SnakeMain.Config.RewardConfig
+	294, // 147: snakecommon.NewUserConfig.guide_reward:type_name -> SnakeMain.Config.RewardConfig
+	124, // 148: snakecommon.WildStormConfig.wild_storm_list:type_name -> snakecommon.WildStormListItem
+	117, // 149: snakecommon.OfflineGameConfig.endless_revive_config:type_name -> snakecommon.ReviveConfigItem
+	117, // 150: snakecommon.OfflineGameConfig.endless_revive_config_ab1:type_name -> snakecommon.ReviveConfigItem
+	117, // 151: snakecommon.OfflineGameConfig.endless_revive_config_ab2:type_name -> snakecommon.ReviveConfigItem
+	117, // 152: snakecommon.OfflineGameConfig.excite_revive_config:type_name -> snakecommon.ReviveConfigItem
+	117, // 153: snakecommon.OfflineGameConfig.limit_revive_config:type_name -> snakecommon.ReviveConfigItem
+	119, // 154: snakecommon.OfflineGameConfig.floater_config:type_name -> snakecommon.FloaterConfigOld
+	121, // 155: snakecommon.OfflineGameConfig.endless_limit_config:type_name -> snakecommon.EndlessLimitConfig
+	120, // 156: snakecommon.OfflineGameConfig.activity_map_config:type_name -> snakecommon.ActivityMapConfig
+	122, // 157: snakecommon.OfflineGameConfig.endless_bubble:type_name -> snakecommon.EndlessBubbleConfig
+	123, // 158: snakecommon.OfflineGameConfig.endless_track:type_name -> snakecommon.EndlessTrackConfig
+	125, // 159: snakecommon.OfflineGameConfig.wild_storm:type_name -> snakecommon.WildStormConfig
+	4,   // 160: snakecommon.OfflineGameConfig.endless_buff_prop:type_name -> snakecommon.EndLessBuffPropInfo
+	128, // 161: snakecommon.MentorshipConfig.master_privilege_config:type_name -> snakecommon.MentorPrivilegeInfo
+	130, // 162: snakecommon.MentorshipConfig.bond_title_config:type_name -> snakecommon.MentorshipBondTitleItem
+	131, // 163: snakecommon.MentorshipConfig.finish_reward:type_name -> snakecommon.MentorFinishReward
+	132, // 164: snakecommon.MentorshipConfig.master_prentice_strategy:type_name -> snakecommon.MasterPrenticeStrategyItem
+	129, // 165: snakecommon.MentorPrivilegeInfo.privilege:type_name -> snakecommon.PrivilegeDetailInfo
+	294, // 166: snakecommon.MentorPrivilegeInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	294, // 167: snakecommon.MentorFinishReward.master_reward:type_name -> SnakeMain.Config.RewardConfig
+	294, // 168: snakecommon.MentorFinishReward.prentice_reward:type_name -> SnakeMain.Config.RewardConfig
+	298, // 169: snakecommon.ProductConfig.property:type_name -> SnakeMain.Config.Property
+	299, // 170: snakecommon.ProductConfig.currency_store:type_name -> SnakeMain.Config.CurrencyStore
+	300, // 171: snakecommon.ProductConfig.middle_item_list:type_name -> SnakeMain.Config.MiddleItem
+	301, // 172: snakecommon.ProductConfig.draw_card_guide_config:type_name -> SnakeMain.Config.DrawCardGuideConfig
+	302, // 173: snakecommon.ProductConfig.store_config:type_name -> SnakeMain.Config.StoreConfig
+	136, // 174: snakecommon.WeddingConfig.template_list:type_name -> snakecommon.WeddingTemplate
+	136, // 175: snakecommon.WeddingConfig.limited_template_list:type_name -> snakecommon.WeddingTemplate
+	137, // 176: snakecommon.WeddingConfig.music_list:type_name -> snakecommon.WeddingMusic
+	139, // 177: snakecommon.HappyModeRace.length_config:type_name -> snakecommon.LengthFee
+	138, // 178: snakecommon.HappyModeConfig.happycoin_list:type_name -> snakecommon.HappycoinConfig
+	141, // 179: snakecommon.HappyModeConfig.low_income_config:type_name -> snakecommon.LowIncomeConfig
+	140, // 180: snakecommon.HappyModeConfig.race_config:type_name -> snakecommon.HappyModeRace
+	142, // 181: snakecommon.HappyModeConfig.title_config:type_name -> snakecommon.HappyModeTitleConfig
+	24,  // 182: snakecommon.HappyModeConfig.race_time_config:type_name -> snakecommon.RaceTimeConfig
+	144, // 183: snakecommon.StarSnake.snake_list:type_name -> snakecommon.StarSnakeItem
+	148, // 184: snakecommon.AiLevel.attack_times:type_name -> snakecommon.AttackTime
+	149, // 185: snakecommon.AiLengthRange.level_list:type_name -> snakecommon.AiLevelWeight
+	150, // 186: snakecommon.AiDifficultyConfig.ai_length_range:type_name -> snakecommon.AiLengthRange
+	156, // 187: snakecommon.AiDifficultyConfig.ai_born:type_name -> snakecommon.AiBorn
+	149, // 188: snakecommon.AiBornPool.level_list:type_name -> snakecommon.AiLevelWeight
+	155, // 189: snakecommon.ScorePool.pool_list:type_name -> snakecommon.ScorePoolItem
+	153, // 190: snakecommon.AiBorn.ai_born_pools:type_name -> snakecommon.AiBornPool
+	154, // 191: snakecommon.AiBorn.score_pools:type_name -> snakecommon.ScorePool
+	158, // 192: snakecommon.HoleFood.food_list:type_name -> snakecommon.BonusFood
+	159, // 193: snakecommon.BonusFoodLevel.hole_food:type_name -> snakecommon.HoleFood
+	160, // 194: snakecommon.BonusFoodLevel.dot_food:type_name -> snakecommon.DotFood
+	149, // 195: snakecommon.BonusLevel.bonus_ai_level_list:type_name -> snakecommon.AiLevelWeight
+	162, // 196: snakecommon.BonusLevelSettings.bonus_levels:type_name -> snakecommon.BonusLevel
+	166, // 197: snakecommon.EndlessBonusNew.map_border:type_name -> snakecommon.MapBorder
+	157, // 198: snakecommon.EndlessBonusNew.bonus_trigger_condition:type_name -> snakecommon.BonusTriggerCondition
+	161, // 199: snakecommon.EndlessBonusNew.bonus_food_level_list:type_name -> snakecommon.BonusFoodLevel
+	163, // 200: snakecommon.EndlessBonusNew.bonus_level_settings:type_name -> snakecommon.BonusLevelSettings
+	158, // 201: snakecommon.SpringSugarInfo.food_list:type_name -> snakecommon.BonusFood
+	145, // 202: snakecommon.AiConfigV3.star_snake:type_name -> snakecommon.StarSnake
+	146, // 203: snakecommon.AiConfigV3.ai_wreck_node_score_range:type_name -> snakecommon.AiWreckNodeScoreRange
+	146, // 204: snakecommon.AiConfigV3.ai_wreck_node_score_range_low:type_name -> snakecommon.AiWreckNodeScoreRange
+	147, // 205: snakecommon.AiConfigV3.ai_level_list:type_name -> snakecommon.AiLevel
+	150, // 206: snakecommon.AiConfigV3.ai_length_range:type_name -> snakecommon.AiLengthRange
+	151, // 207: snakecommon.AiConfigV3.floater_config:type_name -> snakecommon.FloaterConfig
+	152, // 208: snakecommon.AiConfigV3.ai_difficulty_config_list:type_name -> snakecommon.AiDifficultyConfig
+	164, // 209: snakecommon.AiConfigV3.endless_bonus_new:type_name -> snakecommon.EndlessBonusNew
+	165, // 210: snakecommon.AiConfigV3.spring_sugar_info:type_name -> snakecommon.SpringSugarInfo
+	167, // 211: snakecommon.AiConfigV3.ai_nick_lists:type_name -> snakecommon.AiNickListItem
+	168, // 212: snakecommon.AiConfigV3.ai_skin_lists:type_name -> snakecommon.AiSkinListItem
+	169, // 213: snakecommon.LimitAiConfigV3.base:type_name -> snakecommon.AiConfigV3
+	270, // 214: snakecommon.SystemConfig.game_configs:type_name -> snakecommon.SystemConfig.GameConfigsEntry
+	271, // 215: snakecommon.SystemConfig.endless_exp:type_name -> snakecommon.SystemConfig.EndlessExpEntry
+	272, // 216: snakecommon.SystemConfig.ol_endless_pk:type_name -> snakecommon.SystemConfig.OlEndlessPkEntry
+	273, // 217: snakecommon.SystemConfig.voice_room_uids:type_name -> snakecommon.SystemConfig.VoiceRoomUidsEntry
+	274, // 218: snakecommon.SystemConfig.telephone_black_list:type_name -> snakecommon.SystemConfig.TelephoneBlackListEntry
+	275, // 219: snakecommon.SystemConfig.idcard_black_list:type_name -> snakecommon.SystemConfig.IdcardBlackListEntry
+	276, // 220: snakecommon.SystemConfig.voice_white_owner_list:type_name -> snakecommon.SystemConfig.VoiceWhiteOwnerListEntry
+	277, // 221: snakecommon.SystemConfig.ol_endless_entrance:type_name -> snakecommon.SystemConfig.OlEndlessEntranceEntry
+	278, // 222: snakecommon.SystemConfig.ios_shake:type_name -> snakecommon.SystemConfig.IosShakeEntry
+	174, // 223: snakecommon.RewardConfig.register_reward:type_name -> snakecommon.RegisterReward
+	176, // 224: snakecommon.InterfaceExpire.activity_api:type_name -> snakecommon.ActivityAPI
+	177, // 225: snakecommon.InterfaceExpire.clan_api:type_name -> snakecommon.ClanAPI
+	178, // 226: snakecommon.InterfaceExpire.config:type_name -> snakecommon.ExpireConfig
+	179, // 227: snakecommon.InterfaceExpire.event_api:type_name -> snakecommon.EventAPI
+	180, // 228: snakecommon.InterfaceExpire.friend_api:type_name -> snakecommon.FriendAPI
+	181, // 229: snakecommon.InterfaceExpire.inbox_api:type_name -> snakecommon.InboxAPI
+	182, // 230: snakecommon.InterfaceExpire.nearby_api:type_name -> snakecommon.NearbyAPI
+	183, // 231: snakecommon.InterfaceExpire.score_api:type_name -> snakecommon.ScoreAPI
+	184, // 232: snakecommon.InterfaceExpire.share_api:type_name -> snakecommon.ShareAPI
+	185, // 233: snakecommon.InterfaceExpire.top_list_v2:type_name -> snakecommon.TopListV2
+	186, // 234: snakecommon.InterfaceExpire.voice_room_api:type_name -> snakecommon.VoiceRoomAPI
+	188, // 235: snakecommon.MsConfig.ms_addr:type_name -> snakecommon.MsAddr
+	188, // 236: snakecommon.MsConfig.ms_addr2:type_name -> snakecommon.MsAddr
+	191, // 237: snakecommon.ExciteModeConfig.game_prop_list:type_name -> snakecommon.GamePropList
+	191, // 238: snakecommon.ExciteModeConfig.game_prop_list2:type_name -> snakecommon.GamePropList
+	193, // 239: snakecommon.ExciteModeConfig.param_config:type_name -> snakecommon.ParamConfig
+	200, // 240: snakecommon.ExciteModeConfig.game_config:type_name -> snakecommon.ModeGameConfig
+	192, // 241: snakecommon.GamePropList.level_info:type_name -> snakecommon.ModeLevelInfo
+	194, // 242: snakecommon.ParamConfig.in_game:type_name -> snakecommon.InGame
+	195, // 243: snakecommon.ParamConfig.prop_rate:type_name -> snakecommon.PropRate
+	199, // 244: snakecommon.ParamConfig.rate_config:type_name -> snakecommon.RateConfig
+	196, // 245: snakecommon.RateConfig.AI:type_name -> snakecommon.Ai
+	197, // 246: snakecommon.RateConfig.map:type_name -> snakecommon.Map
+	198, // 247: snakecommon.RateConfig.stone:type_name -> snakecommon.Stone
+	201, // 248: snakecommon.ModeGameConfig.ai_level_list:type_name -> snakecommon.AiLevelList
+	203, // 249: snakecommon.ModeGameConfig.self_electricity_config:type_name -> snakecommon.SelfElectricityConfig
+	204, // 250: snakecommon.ModeGameConfig.shock_config:type_name -> snakecommon.ShockConfig
+	212, // 251: snakecommon.ModeGameConfig.stage_configs:type_name -> snakecommon.StageConfigs
+	202, // 252: snakecommon.AiLevelList.brain_attack_time:type_name -> snakecommon.BrainAttackTime
+	205, // 253: snakecommon.AiConfig.ai_type_list:type_name -> snakecommon.AiTypeList
+	206, // 254: snakecommon.AiConfig.electricity_config:type_name -> snakecommon.ElectricityConfig
+	207, // 255: snakecommon.AiConfig.missile_config:type_name -> snakecommon.MissileConfig
+	209, // 256: snakecommon.PropConfig.prop_born_infos:type_name -> snakecommon.PropBornInfos
+	210, // 257: snakecommon.PropConfig.prop_weight_list:type_name -> snakecommon.PropWeightList
+	208, // 258: snakecommon.StageConfigs.ai_config:type_name -> snakecommon.AiConfig
+	211, // 259: snakecommon.StageConfigs.prop_config:type_name -> snakecommon.PropConfig
+	214, // 260: snakecommon.Emulator.app_check:type_name -> snakecommon.AppCheck
+	215, // 261: snakecommon.Emulator.cheat_app_check:type_name -> snakecommon.CheatAppCheck
+	216, // 262: snakecommon.Emulator.shell_check:type_name -> snakecommon.ShellCheck
+	279, // 263: snakecommon.LittleGame.little_games:type_name -> snakecommon.LittleGame.LittleGamesEntry
+	219, // 264: snakecommon.LittleGameSrc.items:type_name -> snakecommon.LittleGameSrcItem
+	280, // 265: snakecommon.ReviewMarket.review_market:type_name -> snakecommon.ReviewMarket.ReviewMarketEntry
+	281, // 266: snakecommon.LittleGameUiConf.config:type_name -> snakecommon.LittleGameUiConf.ConfigEntry
+	223, // 267: snakecommon.LittleGameUi.game_list:type_name -> snakecommon.GameList
+	225, // 268: snakecommon.ScoreInfoConfig.qualifying_display_score_rule:type_name -> snakecommon.QualifyingDisplayScoreConfig
+	226, // 269: snakecommon.ScoreInfoConfig.qualifying_score_coin_rule:type_name -> snakecommon.SnakeCoinConfig
+	226, // 270: snakecommon.ScoreInfoConfig.escape_score_coin_rule:type_name -> snakecommon.SnakeCoinConfig
+	227, // 271: snakecommon.ScoreInfoConfig.escape_point_rule:type_name -> snakecommon.EscapePointRule
+	228, // 272: snakecommon.ScoreInfoConfig.escape_cup_map:type_name -> snakecommon.KVInt
+	230, // 273: snakecommon.ScoreInfoConfig.season_notify:type_name -> snakecommon.SeasonNotifyConfig
+	231, // 274: snakecommon.ScoreInfoConfig.single_double_snake_coin_rule:type_name -> snakecommon.SingleDoubleSnakeCoin
+	233, // 275: snakecommon.ScoreInfoConfig.endless_snake_coin_rule:type_name -> snakecommon.SnakeCoinCalcConfig
+	233, // 276: snakecommon.ScoreInfoConfig.limit_snake_coin_rule:type_name -> snakecommon.SnakeCoinCalcConfig
+	229, // 277: snakecommon.QualifyingDisplayScoreConfig.length_config:type_name -> snakecommon.DisplayScoreCalcConfig
+	229, // 278: snakecommon.QualifyingDisplayScoreConfig.kill_config:type_name -> snakecommon.DisplayScoreCalcConfig
+	229, // 279: snakecommon.QualifyingDisplayScoreConfig.eat_config:type_name -> snakecommon.DisplayScoreCalcConfig
+	229, // 280: snakecommon.QualifyingDisplayScoreConfig.killed_config:type_name -> snakecommon.DisplayScoreCalcConfig
+	229, // 281: snakecommon.QualifyingDisplayScoreConfig.destroy_config:type_name -> snakecommon.DisplayScoreCalcConfig
+	229, // 282: snakecommon.QualifyingDisplayScoreConfig.boss_kill_config:type_name -> snakecommon.DisplayScoreCalcConfig
+	228, // 283: snakecommon.EscapePointRule.rank_point:type_name -> snakecommon.KVInt
+	228, // 284: snakecommon.EscapePointRule.action_point:type_name -> snakecommon.KVInt
+	228, // 285: snakecommon.EscapePointRule.kill_point:type_name -> snakecommon.KVInt
+	232, // 286: snakecommon.SingleDoubleSnakeCoin.calc_config:type_name -> snakecommon.SnakeCoinAdCalcConfig
+	239, // 287: snakecommon.SimulConfig.task_list:type_name -> snakecommon.SimulTaskItem
+	282, // 288: snakecommon.SimulConfig.building_set:type_name -> snakecommon.SimulConfig.BuildingSetEntry
+	283, // 289: snakecommon.SimulConfig.staff_set:type_name -> snakecommon.SimulConfig.StaffSetEntry
+	236, // 290: snakecommon.SimulConfig.reward_config:type_name -> snakecommon.SimulRewardConfig
+	244, // 291: snakecommon.SimulConfig.timed_task_list:type_name -> snakecommon.TimedTaskInfo
+	245, // 292: snakecommon.SimulConfig.timed_task_coin_config:type_name -> snakecommon.TimedTaskCoinConfig
+	237, // 293: snakecommon.SimulRewardConfig.reward_condition:type_name -> snakecommon.SimulRewardCondition
+	238, // 294: snakecommon.SimulRewardConfig.reward_mail:type_name -> snakecommon.SimulRewardMail
+	294, // 295: snakecommon.SimulRewardMail.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	240, // 296: snakecommon.SimulTaskItem.reward:type_name -> snakecommon.SimulReward
+	242, // 297: snakecommon.BuildingSet.detail:type_name -> snakecommon.Detail
+	242, // 298: snakecommon.StaffSet.detail:type_name -> snakecommon.Detail
+	247, // 299: snakecommon.SummonConfig.aiConfig:type_name -> snakecommon.SummonAiConfig
+	249, // 300: snakecommon.SummonConfig.mapConfig:type_name -> snakecommon.MapConfig
+	248, // 301: snakecommon.SummonAiConfig.config:type_name -> snakecommon.SummonConfigItem
+	284, // 302: snakecommon.IosPatch.path:type_name -> snakecommon.IosPatch.PathEntry
+	252, // 303: snakecommon.IosPatchList.ios_patch:type_name -> snakecommon.IosPatchItem
+	285, // 304: snakecommon.UnityAssets.versions:type_name -> snakecommon.UnityAssets.VersionsEntry
+	286, // 305: snakecommon.AssetMap.platforms:type_name -> snakecommon.AssetMap.PlatformsEntry
+	256, // 306: snakecommon.Asset.assets:type_name -> snakecommon.AssetItem
+	287, // 307: snakecommon.TeamEndlessConfig.guide:type_name -> snakecommon.TeamEndlessConfig.Guide
+	289, // 308: snakecommon.TeamEndlessConfig.seasons:type_name -> snakecommon.TeamEndlessConfig.Season
+	292, // 309: snakecommon.TeamEndlessConfig.rank:type_name -> snakecommon.TeamEndlessConfig.Rank
+	258, // 310: snakecommon.TeamEndlessConfig.couple_skin_activity:type_name -> snakecommon.CoupleSkinActivity
+	262, // 311: snakecommon.BannerInfo.extra:type_name -> snakecommon.BannerExtraInfo
+	261, // 312: snakecommon.BannerInfo.carton_list:type_name -> snakecommon.CartonList
+	25,  // 313: snakecommon.ClanConfig.ClanRaceRewardEntry.value:type_name -> snakecommon.ClanRaceReward
+	34,  // 314: snakecommon.DailyGameRewards.BoxPoolEntry.value:type_name -> snakecommon.BoxPool
+	70,  // 315: snakecommon.ShowAdConfig.AbAdPopupsConfigsEntry.value:type_name -> snakecommon.AdPopupsConfig
+	69,  // 316: snakecommon.AdPopupsConfig.PopupPositionConfigEntry.value:type_name -> snakecommon.PopupPosition
+	171, // 317: snakecommon.SystemConfig.GameConfigsEntry.value:type_name -> snakecommon.GameConfig
+	218, // 318: snakecommon.LittleGame.LittleGamesEntry.value:type_name -> snakecommon.LittleGameSrc
+	222, // 319: snakecommon.LittleGameUiConf.ConfigEntry.value:type_name -> snakecommon.LittleGameUi
+	241, // 320: snakecommon.SimulConfig.BuildingSetEntry.value:type_name -> snakecommon.BuildingSet
+	243, // 321: snakecommon.SimulConfig.StaffSetEntry.value:type_name -> snakecommon.StaffSet
+	251, // 322: snakecommon.IosPatch.PathEntry.value:type_name -> snakecommon.IosPatchList
+	254, // 323: snakecommon.UnityAssets.VersionsEntry.value:type_name -> snakecommon.AssetMap
+	255, // 324: snakecommon.AssetMap.PlatformsEntry.value:type_name -> snakecommon.Asset
+	303, // 325: snakecommon.TeamEndlessConfig.SeasonRewardItem.reward_list:type_name -> snakecommon.CRewardItem
+	288, // 326: snakecommon.TeamEndlessConfig.Season.reward_list:type_name -> snakecommon.TeamEndlessConfig.SeasonRewardItem
+	290, // 327: snakecommon.TeamEndlessConfig.Rank.big_rank:type_name -> snakecommon.TeamEndlessConfig.BigRankItem
+	291, // 328: snakecommon.TeamEndlessConfig.Rank.small_rank:type_name -> snakecommon.TeamEndlessConfig.SmallRankItem
+	329, // [329:329] is the sub-list for method output_type
+	329, // [329:329] is the sub-list for method input_type
+	329, // [329:329] is the sub-list for extension type_name
+	329, // [329:329] is the sub-list for extension extendee
+	0,   // [0:329] is the sub-list for field type_name
 }
 
 func init() { file_snakecommon_project_config_proto_init() }
@@ -27291,7 +28100,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RankLevel); i {
+			switch v := v.(*RankRewardV2); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27303,7 +28112,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SeasonInfo); i {
+			switch v := v.(*RankLevel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27315,7 +28124,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShareConfig); i {
+			switch v := v.(*DailyGameRewards); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27327,7 +28136,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShareTag); i {
+			switch v := v.(*DailyGameRewardItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27339,7 +28148,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ClipBoardCheck); i {
+			switch v := v.(*BoxPool); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27351,7 +28160,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*VideoShareIcon); i {
+			switch v := v.(*BoxPoolItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27363,7 +28172,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ChannelConfig); i {
+			switch v := v.(*NewerGuide); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27375,7 +28184,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GameInvite); i {
+			switch v := v.(*SeasonInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27387,7 +28196,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SocialConfig); i {
+			switch v := v.(*ShareConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27399,7 +28208,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CharmTopConfig); i {
+			switch v := v.(*ShareTag); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27411,7 +28220,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CharmLevelItem); i {
+			switch v := v.(*ClipBoardCheck); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27423,7 +28232,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SocialThreshold); i {
+			switch v := v.(*VideoShareIcon); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27435,7 +28244,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SocialThresholdPlatform); i {
+			switch v := v.(*ChannelConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27447,7 +28256,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CharmExpConfig); i {
+			switch v := v.(*GameInvite); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27459,7 +28268,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CharmExpRank); i {
+			switch v := v.(*SocialConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27471,7 +28280,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CharmPrivilegeItem); i {
+			switch v := v.(*CharmTopConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27483,7 +28292,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TextConfig); i {
+			switch v := v.(*CharmLevelItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27495,7 +28304,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GiftLikeTextList); i {
+			switch v := v.(*SocialThreshold); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27507,7 +28316,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShortCutConfig); i {
+			switch v := v.(*SocialThresholdPlatform); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27519,7 +28328,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[47].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReportBehavior); i {
+			switch v := v.(*CharmExpConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27531,7 +28340,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[48].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UiConfigV3); i {
+			switch v := v.(*CharmExpRank); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27543,7 +28352,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[49].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GameIcon); i {
+			switch v := v.(*CharmPrivilegeItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27555,7 +28364,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[50].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LittleGameIcon); i {
+			switch v := v.(*TextConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27567,7 +28376,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[51].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Bubble); i {
+			switch v := v.(*GiftLikeTextList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27579,7 +28388,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[52].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NewbieCondition); i {
+			switch v := v.(*ShortCutConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27591,7 +28400,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[53].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HomeBackground); i {
+			switch v := v.(*ReportBehavior); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27603,7 +28412,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[54].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PingConfig); i {
+			switch v := v.(*UiConfigV3); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27615,7 +28424,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RewardMarkConfig); i {
+			switch v := v.(*GameIcon); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27627,7 +28436,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RewardMark); i {
+			switch v := v.(*LittleGameIcon); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27639,7 +28448,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShowAdConfig); i {
+			switch v := v.(*Bubble); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27651,7 +28460,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CrossPromotions); i {
+			switch v := v.(*NewbieCondition); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27663,7 +28472,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CrossPromotionsSource); i {
+			switch v := v.(*HomeBackground); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27675,7 +28484,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessBuff); i {
+			switch v := v.(*PingConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27687,7 +28496,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[61].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PopupPosition); i {
+			switch v := v.(*RewardMarkConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27699,7 +28508,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[62].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdPopupsConfig); i {
+			switch v := v.(*RewardMark); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27711,7 +28520,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[63].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessAdRecommend); i {
+			switch v := v.(*ShowAdConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27723,7 +28532,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[64].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdRewardModel); i {
+			switch v := v.(*CrossPromotions); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27735,7 +28544,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[65].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AdGoodsItem); i {
+			switch v := v.(*CrossPromotionsSource); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27747,7 +28556,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[66].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OrderConfig); i {
+			switch v := v.(*EndlessBuff); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27759,7 +28568,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[67].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AlipayDiscount); i {
+			switch v := v.(*PopupPosition); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27771,7 +28580,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[68].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FirstChargePopup); i {
+			switch v := v.(*AdPopupsConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27783,7 +28592,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[69].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RandomDoubleClientInfo); i {
+			switch v := v.(*EndlessAdRecommend); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27795,7 +28604,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[70].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UnityQualifyingOpenConfig); i {
+			switch v := v.(*AdRewardModel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27807,7 +28616,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[71].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TopListConfig); i {
+			switch v := v.(*AdGoodsItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27819,7 +28628,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[72].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShowConfig); i {
+			switch v := v.(*OrderConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27831,7 +28640,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[73].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShowPackItem); i {
+			switch v := v.(*AlipayDiscount); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27843,7 +28652,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[74].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShowIconStyle); i {
+			switch v := v.(*FirstChargePopup); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27855,7 +28664,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[75].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShowLevelConfig); i {
+			switch v := v.(*RandomDoubleClientInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27867,7 +28676,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[76].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShowSkillName); i {
+			switch v := v.(*UnityQualifyingOpenConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27879,7 +28688,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[77].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShowSkillBuff); i {
+			switch v := v.(*TopListConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27891,7 +28700,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[78].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserConfig); i {
+			switch v := v.(*ShowConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27903,7 +28712,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[79].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UnityFlags); i {
+			switch v := v.(*ShowPackItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27915,7 +28724,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[80].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MinorLimit); i {
+			switch v := v.(*ShowIconStyle); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27927,7 +28736,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[81].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OrderCurator); i {
+			switch v := v.(*ShowLevelConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27939,7 +28748,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[82].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FlagsConfig); i {
+			switch v := v.(*ShowSkillName); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27951,7 +28760,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[83].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FeedbackConfig); i {
+			switch v := v.(*ShowSkillBuff); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27963,7 +28772,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[84].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SettingConfig); i {
+			switch v := v.(*UserConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27975,7 +28784,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[85].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DocVersion); i {
+			switch v := v.(*UnityFlags); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27987,7 +28796,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[86].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NetworkCheck); i {
+			switch v := v.(*MinorLimit); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -27999,7 +28808,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[87].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Prometheus); i {
+			switch v := v.(*OrderCurator); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28011,7 +28820,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[88].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OkhttpDispatcher); i {
+			switch v := v.(*FlagsConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28023,7 +28832,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[89].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MemSwitch); i {
+			switch v := v.(*FeedbackConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28035,7 +28844,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[90].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BindConfig); i {
+			switch v := v.(*SettingConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28047,7 +28856,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[91].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RenamePopupRule); i {
+			switch v := v.(*DocVersion); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28059,7 +28868,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[92].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QualifyingMatch); i {
+			switch v := v.(*NetworkCheck); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28071,7 +28880,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[93].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NewbieClub); i {
+			switch v := v.(*Prometheus); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28083,7 +28892,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[94].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GameEndSkin); i {
+			switch v := v.(*OkhttpDispatcher); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28095,7 +28904,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[95].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeviceConfig); i {
+			switch v := v.(*MemSwitch); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28107,7 +28916,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[96].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AntiAddiction); i {
+			switch v := v.(*BindConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28119,7 +28928,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[97].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Notify); i {
+			switch v := v.(*RenamePopupRule); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28131,7 +28940,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[98].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CertifyGameConfig); i {
+			switch v := v.(*QualifyingMatch); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28143,7 +28952,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[99].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MinorNotify); i {
+			switch v := v.(*NewbieClub); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28155,7 +28964,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[100].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PayNotify); i {
+			switch v := v.(*GameEndSkin); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28167,7 +28976,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[101].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SocialDesc); i {
+			switch v := v.(*DeviceConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28179,7 +28988,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[102].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IdentityAge); i {
+			switch v := v.(*AntiAddiction); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28191,7 +29000,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[103].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CertifyNotify); i {
+			switch v := v.(*Notify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28203,7 +29012,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[104].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IdfaConfig); i {
+			switch v := v.(*CertifyGameConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28215,7 +29024,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[105].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CommentConfig); i {
+			switch v := v.(*MinorNotify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28227,7 +29036,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[106].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RegisterSurvey); i {
+			switch v := v.(*PayNotify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28239,7 +29048,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[107].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecruitPopup); i {
+			switch v := v.(*SocialDesc); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28251,7 +29060,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[108].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NewUserConfig); i {
+			switch v := v.(*IdentityAge); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28263,7 +29072,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[109].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReviveConfigItem); i {
+			switch v := v.(*CertifyNotify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28275,7 +29084,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[110].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SingleGameAiConfigItem); i {
+			switch v := v.(*IdfaConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28287,7 +29096,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[111].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FloaterConfigOld); i {
+			switch v := v.(*CommentConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28299,7 +29108,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[112].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ActivityMapConfig); i {
+			switch v := v.(*RegisterSurvey); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28311,7 +29120,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[113].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessLimitConfig); i {
+			switch v := v.(*RecruitPopup); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28323,7 +29132,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[114].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessBubbleConfig); i {
+			switch v := v.(*NewUserConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28335,7 +29144,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[115].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessTrackConfig); i {
+			switch v := v.(*ReviveConfigItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28347,7 +29156,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[116].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WildStormListItem); i {
+			switch v := v.(*SingleGameAiConfigItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28359,7 +29168,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[117].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WildStormConfig); i {
+			switch v := v.(*FloaterConfigOld); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28371,7 +29180,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[118].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OfflineGameConfig); i {
+			switch v := v.(*ActivityMapConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28383,7 +29192,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[119].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MentorshipConfig); i {
+			switch v := v.(*EndlessLimitConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28395,7 +29204,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[120].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MentorPrivilegeInfo); i {
+			switch v := v.(*EndlessBubbleConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28407,7 +29216,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[121].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PrivilegeDetailInfo); i {
+			switch v := v.(*EndlessTrackConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28419,7 +29228,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[122].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MentorshipBondTitleItem); i {
+			switch v := v.(*WildStormListItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28431,7 +29240,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[123].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MentorFinishReward); i {
+			switch v := v.(*WildStormConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28443,7 +29252,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[124].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MasterPrenticeStrategyItem); i {
+			switch v := v.(*OfflineGameConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28455,7 +29264,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[125].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HotConfig); i {
+			switch v := v.(*MentorshipConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28467,7 +29276,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[126].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProductConfig); i {
+			switch v := v.(*MentorPrivilegeInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28479,7 +29288,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[127].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WeddingConfig); i {
+			switch v := v.(*PrivilegeDetailInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28491,7 +29300,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[128].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WeddingTemplate); i {
+			switch v := v.(*MentorshipBondTitleItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28503,7 +29312,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[129].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WeddingMusic); i {
+			switch v := v.(*MentorFinishReward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28515,7 +29324,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[130].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HappycoinConfig); i {
+			switch v := v.(*MasterPrenticeStrategyItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28527,7 +29336,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[131].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LengthFee); i {
+			switch v := v.(*HotConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28539,7 +29348,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[132].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HappyModeRace); i {
+			switch v := v.(*ProductConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28551,7 +29360,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[133].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LowIncomeConfig); i {
+			switch v := v.(*WeddingConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28563,7 +29372,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[134].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HappyModeTitleConfig); i {
+			switch v := v.(*WeddingTemplate); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28575,7 +29384,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[135].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HappyModeConfig); i {
+			switch v := v.(*WeddingMusic); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28587,7 +29396,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[136].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StarSnakeItem); i {
+			switch v := v.(*HappycoinConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28599,7 +29408,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[137].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StarSnake); i {
+			switch v := v.(*LengthFee); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28611,7 +29420,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[138].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiWreckNodeScoreRange); i {
+			switch v := v.(*HappyModeRace); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28623,7 +29432,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[139].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiLevel); i {
+			switch v := v.(*LowIncomeConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28635,7 +29444,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[140].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AttackTime); i {
+			switch v := v.(*HappyModeTitleConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28647,7 +29456,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[141].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiLevelWeight); i {
+			switch v := v.(*HappyModeConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28659,7 +29468,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[142].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiLengthRange); i {
+			switch v := v.(*StarSnakeItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28671,7 +29480,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[143].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FloaterConfig); i {
+			switch v := v.(*StarSnake); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28683,7 +29492,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[144].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiDifficultyConfig); i {
+			switch v := v.(*AiWreckNodeScoreRange); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28695,7 +29504,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[145].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiBornPool); i {
+			switch v := v.(*AiLevel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28707,7 +29516,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[146].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScorePool); i {
+			switch v := v.(*AttackTime); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28719,7 +29528,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[147].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScorePoolItem); i {
+			switch v := v.(*AiLevelWeight); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28731,7 +29540,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[148].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiBorn); i {
+			switch v := v.(*AiLengthRange); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28743,7 +29552,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[149].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BonusTriggerCondition); i {
+			switch v := v.(*FloaterConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28755,7 +29564,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[150].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BonusFood); i {
+			switch v := v.(*AiDifficultyConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28767,7 +29576,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[151].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HoleFood); i {
+			switch v := v.(*AiBornPool); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28779,7 +29588,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[152].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DotFood); i {
+			switch v := v.(*ScorePool); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28791,7 +29600,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[153].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BonusFoodLevel); i {
+			switch v := v.(*ScorePoolItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28803,7 +29612,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[154].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BonusLevel); i {
+			switch v := v.(*AiBorn); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28815,7 +29624,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[155].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BonusLevelSettings); i {
+			switch v := v.(*BonusTriggerCondition); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28827,7 +29636,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[156].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EndlessBonusNew); i {
+			switch v := v.(*BonusFood); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28839,7 +29648,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[157].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SpringSugarInfo); i {
+			switch v := v.(*HoleFood); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28851,7 +29660,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[158].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MapBorder); i {
+			switch v := v.(*DotFood); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28863,7 +29672,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[159].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiNickListItem); i {
+			switch v := v.(*BonusFoodLevel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28875,7 +29684,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[160].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiSkinListItem); i {
+			switch v := v.(*BonusLevel); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28887,7 +29696,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[161].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiConfigV3); i {
+			switch v := v.(*BonusLevelSettings); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28899,7 +29708,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[162].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LimitAiConfigV3); i {
+			switch v := v.(*EndlessBonusNew); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28911,7 +29720,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[163].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GameConfig); i {
+			switch v := v.(*SpringSugarInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28923,7 +29732,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[164].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SystemConfig); i {
+			switch v := v.(*MapBorder); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28935,7 +29744,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[165].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RewardConfig); i {
+			switch v := v.(*AiNickListItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28947,7 +29756,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[166].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RegisterReward); i {
+			switch v := v.(*AiSkinListItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28959,7 +29768,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[167].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InterfaceExpire); i {
+			switch v := v.(*AiConfigV3); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28971,7 +29780,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[168].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ActivityAPI); i {
+			switch v := v.(*LimitAiConfigV3); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28983,7 +29792,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[169].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ClanAPI); i {
+			switch v := v.(*GameConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -28995,7 +29804,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[170].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExpireConfig); i {
+			switch v := v.(*SystemConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29007,7 +29816,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[171].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EventAPI); i {
+			switch v := v.(*RewardConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29019,7 +29828,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[172].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FriendAPI); i {
+			switch v := v.(*RegisterReward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29031,7 +29840,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[173].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InboxAPI); i {
+			switch v := v.(*InterfaceExpire); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29043,7 +29852,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[174].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NearbyAPI); i {
+			switch v := v.(*ActivityAPI); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29055,7 +29864,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[175].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScoreAPI); i {
+			switch v := v.(*ClanAPI); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29067,7 +29876,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[176].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShareAPI); i {
+			switch v := v.(*ExpireConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29079,7 +29888,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[177].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TopListV2); i {
+			switch v := v.(*EventAPI); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29091,7 +29900,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[178].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*VoiceRoomAPI); i {
+			switch v := v.(*FriendAPI); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29103,7 +29912,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[179].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsConfig); i {
+			switch v := v.(*InboxAPI); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29115,7 +29924,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[180].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsAddr); i {
+			switch v := v.(*NearbyAPI); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29127,7 +29936,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[181].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ProvinceConfig); i {
+			switch v := v.(*ScoreAPI); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29139,7 +29948,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[182].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExciteModeConfig); i {
+			switch v := v.(*ShareAPI); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29151,7 +29960,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[183].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GamePropList); i {
+			switch v := v.(*TopListV2); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29163,7 +29972,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[184].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModeLevelInfo); i {
+			switch v := v.(*VoiceRoomAPI); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29175,7 +29984,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[185].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ParamConfig); i {
+			switch v := v.(*MsConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29187,7 +29996,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[186].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InGame); i {
+			switch v := v.(*MsAddr); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29199,7 +30008,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[187].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PropRate); i {
+			switch v := v.(*ProvinceConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29211,7 +30020,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[188].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Ai); i {
+			switch v := v.(*ExciteModeConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29223,7 +30032,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[189].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Map); i {
+			switch v := v.(*GamePropList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29235,7 +30044,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[190].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Stone); i {
+			switch v := v.(*ModeLevelInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29247,7 +30056,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[191].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RateConfig); i {
+			switch v := v.(*ParamConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29259,7 +30068,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[192].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModeGameConfig); i {
+			switch v := v.(*InGame); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29271,7 +30080,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[193].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiLevelList); i {
+			switch v := v.(*PropRate); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29283,7 +30092,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[194].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BrainAttackTime); i {
+			switch v := v.(*Ai); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29295,7 +30104,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[195].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SelfElectricityConfig); i {
+			switch v := v.(*Map); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29307,7 +30116,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[196].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShockConfig); i {
+			switch v := v.(*Stone); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29319,7 +30128,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[197].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiTypeList); i {
+			switch v := v.(*RateConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29331,7 +30140,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[198].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ElectricityConfig); i {
+			switch v := v.(*ModeGameConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29343,7 +30152,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[199].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MissileConfig); i {
+			switch v := v.(*AiLevelList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29355,7 +30164,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[200].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AiConfig); i {
+			switch v := v.(*BrainAttackTime); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29367,7 +30176,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[201].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PropBornInfos); i {
+			switch v := v.(*SelfElectricityConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29379,7 +30188,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[202].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PropWeightList); i {
+			switch v := v.(*ShockConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29391,7 +30200,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[203].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PropConfig); i {
+			switch v := v.(*AiTypeList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29403,7 +30212,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[204].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StageConfigs); i {
+			switch v := v.(*ElectricityConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29415,7 +30224,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[205].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Emulator); i {
+			switch v := v.(*MissileConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29427,7 +30236,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[206].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AppCheck); i {
+			switch v := v.(*AiConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29439,7 +30248,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[207].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CheatAppCheck); i {
+			switch v := v.(*PropBornInfos); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29451,7 +30260,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[208].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ShellCheck); i {
+			switch v := v.(*PropWeightList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29463,7 +30272,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[209].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LittleGame); i {
+			switch v := v.(*PropConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29475,7 +30284,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[210].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LittleGameSrc); i {
+			switch v := v.(*StageConfigs); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29487,7 +30296,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[211].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LittleGameSrcItem); i {
+			switch v := v.(*Emulator); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29499,7 +30308,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[212].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReviewMarket); i {
+			switch v := v.(*AppCheck); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29511,7 +30320,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[213].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LittleGameUiConf); i {
+			switch v := v.(*CheatAppCheck); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29523,7 +30332,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[214].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LittleGameUi); i {
+			switch v := v.(*ShellCheck); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29535,7 +30344,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[215].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GameList); i {
+			switch v := v.(*LittleGame); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29547,7 +30356,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[216].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ScoreInfoConfig); i {
+			switch v := v.(*LittleGameSrc); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29559,7 +30368,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[217].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QualifyingDisplayScoreConfig); i {
+			switch v := v.(*LittleGameSrcItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29571,7 +30380,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[218].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SnakeCoinConfig); i {
+			switch v := v.(*ReviewMarket); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29583,7 +30392,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[219].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EscapePointRule); i {
+			switch v := v.(*LittleGameUiConf); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29595,7 +30404,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[220].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*KVInt); i {
+			switch v := v.(*LittleGameUi); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29607,7 +30416,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[221].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DisplayScoreCalcConfig); i {
+			switch v := v.(*GameList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29619,7 +30428,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[222].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SeasonNotifyConfig); i {
+			switch v := v.(*ScoreInfoConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29631,7 +30440,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[223].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SingleDoubleSnakeCoin); i {
+			switch v := v.(*QualifyingDisplayScoreConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29643,7 +30452,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[224].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SnakeCoinAdCalcConfig); i {
+			switch v := v.(*SnakeCoinConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29655,7 +30464,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[225].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SnakeCoinCalcConfig); i {
+			switch v := v.(*EscapePointRule); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29667,7 +30476,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[226].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AndroidMarket); i {
+			switch v := v.(*KVInt); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29679,7 +30488,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[227].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SimulConfig); i {
+			switch v := v.(*DisplayScoreCalcConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29691,7 +30500,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[228].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SimulRewardConfig); i {
+			switch v := v.(*SeasonNotifyConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29703,7 +30512,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[229].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SimulRewardCondition); i {
+			switch v := v.(*SingleDoubleSnakeCoin); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29715,7 +30524,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[230].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SimulRewardMail); i {
+			switch v := v.(*SnakeCoinAdCalcConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29727,7 +30536,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[231].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SimulTaskItem); i {
+			switch v := v.(*SnakeCoinCalcConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29739,7 +30548,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[232].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SimulReward); i {
+			switch v := v.(*AndroidMarket); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29751,7 +30560,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[233].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BuildingSet); i {
+			switch v := v.(*SimulConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29763,7 +30572,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[234].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Detail); i {
+			switch v := v.(*SimulRewardConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29775,7 +30584,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[235].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StaffSet); i {
+			switch v := v.(*SimulRewardCondition); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29787,7 +30596,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[236].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TimedTaskInfo); i {
+			switch v := v.(*SimulRewardMail); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29799,7 +30608,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[237].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TimedTaskCoinConfig); i {
+			switch v := v.(*SimulTaskItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29811,7 +30620,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[238].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SummonConfig); i {
+			switch v := v.(*SimulReward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29823,7 +30632,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[239].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SummonAiConfig); i {
+			switch v := v.(*BuildingSet); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29835,7 +30644,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[240].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SummonConfigItem); i {
+			switch v := v.(*Detail); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29847,7 +30656,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[241].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MapConfig); i {
+			switch v := v.(*StaffSet); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29859,7 +30668,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[242].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IosPatch); i {
+			switch v := v.(*TimedTaskInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29871,7 +30680,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[243].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IosPatchList); i {
+			switch v := v.(*TimedTaskCoinConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29883,7 +30692,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[244].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IosPatchItem); i {
+			switch v := v.(*SummonConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29895,7 +30704,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[245].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UnityAssets); i {
+			switch v := v.(*SummonAiConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29907,7 +30716,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[246].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AssetMap); i {
+			switch v := v.(*SummonConfigItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29919,7 +30728,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[247].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Asset); i {
+			switch v := v.(*MapConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29931,7 +30740,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[248].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AssetItem); i {
+			switch v := v.(*IosPatch); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29943,7 +30752,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[249].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TeamEndlessConfig); i {
+			switch v := v.(*IosPatchList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29955,7 +30764,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[250].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*NativeQualifyAIPool); i {
+			switch v := v.(*IosPatchItem); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29967,7 +30776,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[251].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BannerInfo); i {
+			switch v := v.(*UnityAssets); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29979,7 +30788,7 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[252].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CartonList); i {
+			switch v := v.(*AssetMap); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -29991,6 +30800,90 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 		file_snakecommon_project_config_proto_msgTypes[253].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Asset); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[254].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AssetItem); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[255].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TeamEndlessConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[256].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CoupleSkinActivity); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[257].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*NativeQualifyAIPool); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[258].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BannerInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[259].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CartonList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_project_config_proto_msgTypes[260].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BannerExtraInfo); i {
 			case 0:
 				return &v.state
@@ -30002,7 +30895,7 @@ func file_snakecommon_project_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_project_config_proto_msgTypes[277].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_project_config_proto_msgTypes[285].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TeamEndlessConfig_Guide); i {
 			case 0:
 				return &v.state
@@ -30014,7 +30907,7 @@ func file_snakecommon_project_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_project_config_proto_msgTypes[278].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_project_config_proto_msgTypes[286].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TeamEndlessConfig_SeasonRewardItem); i {
 			case 0:
 				return &v.state
@@ -30026,7 +30919,7 @@ func file_snakecommon_project_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_project_config_proto_msgTypes[279].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_project_config_proto_msgTypes[287].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TeamEndlessConfig_Season); i {
 			case 0:
 				return &v.state
@@ -30038,7 +30931,7 @@ func file_snakecommon_project_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_project_config_proto_msgTypes[280].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_project_config_proto_msgTypes[288].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TeamEndlessConfig_BigRankItem); i {
 			case 0:
 				return &v.state
@@ -30050,7 +30943,7 @@ func file_snakecommon_project_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_project_config_proto_msgTypes[281].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_project_config_proto_msgTypes[289].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TeamEndlessConfig_SmallRankItem); i {
 			case 0:
 				return &v.state
@@ -30062,7 +30955,7 @@ func file_snakecommon_project_config_proto_init() {
 				return nil
 			}
 		}
-		file_snakecommon_project_config_proto_msgTypes[282].Exporter = func(v interface{}, i int) interface{} {
+		file_snakecommon_project_config_proto_msgTypes[290].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TeamEndlessConfig_Rank); i {
 			case 0:
 				return &v.state
@@ -30075,13 +30968,14 @@ func file_snakecommon_project_config_proto_init() {
 			}
 		}
 	}
+	file_snakecommon_project_config_proto_msgTypes[33].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_project_config_proto_rawDesc,
-			NumEnums:      1,
-			NumMessages:   283,
+			NumEnums:      2,
+			NumMessages:   291,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

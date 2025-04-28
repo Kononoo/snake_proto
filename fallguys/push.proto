@@ -3,7 +3,7 @@ syntax = "proto3";
 package fallguys;
 option go_package = "git.17zjh.com/snake/snake_proto/fallguys";
 
-enum PushType { // push消息类型
+enum PushType {// push消息类型
   SyncGameInfo = 0; //初始化房间
   StartStressTest = 1; // 开始压测
 }
@@ -15,22 +15,22 @@ enum PlayerType {
   Ai = 2; // ai
 }
 message PlayerInfo{
-    string uid = 1;  //玩家uid
-    PlayerType playerType = 2; //玩家类型
-    int32 platform = 3; // 平台
-    string market = 4; // 应用市场
-    string version = 5; // 客户端版本
-    int32 skin_id = 6; // 皮肤 ID
+  string uid = 1;  //玩家uid
+  PlayerType playerType = 2; //玩家类型
+  int32 platform = 3; // 平台
+  string market = 4; // 应用市场
+  string version = 5; // 客户端版本
+  int32 skin_id = 6; // 皮肤 ID
 }
 
 // TCPServer 向UnityServer同步房间信息
 message PuSyncGameInfo {
-    sint32 gamMode = 1;  //游戏模式,903 糖豆人大逃杀，904 大逃杀娱乐
-    int32 playerCnt = 2;    //玩家数量
-    repeated PlayerInfo players = 3;  //玩家信息
-    int32 rid = 4; // 房间id
-    bool is_newbie = 5; // 是否是新手匹配
-    int32 match_pool_id = 6; // 匹配池 ID，用于确定关卡
+  sint32 gamMode = 1;  //游戏模式,903 糖豆人大逃杀，904 大逃杀娱乐
+  int32 playerCnt = 2;    //玩家数量
+  repeated PlayerInfo players = 3;  //玩家信息
+  int32 rid = 4; // 房间id
+  bool is_newbie = 5; // 是否是新手匹配
+  int32 match_pool_id = 6; // 匹配池 ID，用于确定关卡
 }
 
 // 通知压测开始
