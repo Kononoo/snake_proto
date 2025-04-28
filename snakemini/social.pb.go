@@ -1140,7 +1140,7 @@ type GetSingleChatListResp struct {
 	unknownFields protoimpl.UnknownFields
 
 	SingleChatList []*SingleChat `protobuf:"bytes,1,rep,name=singleChatList,proto3" json:"singleChatList,omitempty"`
-	Cursor         int64         `protobuf:"varint,2,opt,name=cursor,proto3" json:"cursor,omitempty"` // 扫描游标，下次请求时带上此值
+	Cursor         int64         `protobuf:"varint,2,opt,name=cursor,proto3" json:"cursor,omitempty"` // 扫描游标，下次请求时带上此值，如果是0则结束了
 }
 
 func (x *GetSingleChatListResp) Reset() {
