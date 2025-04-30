@@ -516,6 +516,7 @@ message SkinUgcV2Config {
   string title_url = 10;
   bool hide_on_homepage = 11;
   repeated string topic_white_list = 12; // 主题白名单
+  repeated UgcTopic candy_house_topic_list = 13; // 糖果屋主题列表
 }
 
 message UgcTopic {
