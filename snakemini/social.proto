@@ -158,6 +158,12 @@ message LeaveRoomChatResp {}
 message PushCreateRoomChat {
     int64 rid =1; // 房间ID
     repeated int64 uidList=2; // 用户列表
+    repeated TeamInfo teamList =3; // 队伍信息
+}
+
+message TeamInfo {
+    int32 teamId=1;// 队伍ID
+    repeated int64 uidList=2; // 用户列表
 }
 
 // commandId=deleteroomchat
