@@ -896,6 +896,7 @@ message PropInfo {
   int32 speed_end_time = 14; // 道具可加成结束时间
   int32 speed_ratio = 15; // 加速比例
   int32 reward_type = 16; // 关联活动道具奖励类型
+  repeated int32 support_game_mode = 17; // 支持的游戏模式
 }
 // prop end
 
