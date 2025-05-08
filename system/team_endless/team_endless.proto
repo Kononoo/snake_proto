@@ -158,7 +158,7 @@ message EndGameNotify {
   int64 kill_boss_delta_rank_score = 42; // 击杀boss增加的段位分
   int32 kill_boss_count = 43; // 击杀boss次数
   double speed_card_rate = 44; // 加速卡倍率
-  int64 speed_card_rank_score = 45; // 加速卡获得的积分
+  int64 speed_card_rank_score = 45; // 加速卡获得的段位分
 }
 
 message EndlessTeammate {
