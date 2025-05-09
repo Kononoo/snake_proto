@@ -204,6 +204,7 @@ message ChatUserInfo {
     int64  charm = 8; // 魅力值
     int64  star = 9; // 段位
     int32  chat_bubble_id = 10; // 聊天气泡
+    int32  follow_state=11; // 关注状态
 }
 
 
