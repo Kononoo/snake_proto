@@ -1992,6 +1992,83 @@ func (*OpenChatRsp) Descriptor() ([]byte, []int) {
 	return file_snakemini_social_proto_rawDescGZIP(), []int{29}
 }
 
+// commandId=closechat
+type CloseChatReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *CloseChatReq) Reset() {
+	*x = CloseChatReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_social_proto_msgTypes[30]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CloseChatReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CloseChatReq) ProtoMessage() {}
+
+func (x *CloseChatReq) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_social_proto_msgTypes[30]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CloseChatReq.ProtoReflect.Descriptor instead.
+func (*CloseChatReq) Descriptor() ([]byte, []int) {
+	return file_snakemini_social_proto_rawDescGZIP(), []int{30}
+}
+
+type CloseChatRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *CloseChatRsp) Reset() {
+	*x = CloseChatRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_social_proto_msgTypes[31]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CloseChatRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CloseChatRsp) ProtoMessage() {}
+
+func (x *CloseChatRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_social_proto_msgTypes[31]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CloseChatRsp.ProtoReflect.Descriptor instead.
+func (*CloseChatRsp) Descriptor() ([]byte, []int) {
+	return file_snakemini_social_proto_rawDescGZIP(), []int{31}
+}
+
 var File_snakemini_social_proto protoreflect.FileDescriptor
 
 var file_snakemini_social_proto_rawDesc = []byte{
@@ -2179,7 +2256,9 @@ var file_snakemini_social_proto_rawDesc = []byte{
 	0x6f, 0x77, 0x5f, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b,
 	0x66, 0x6f, 0x6c, 0x6c, 0x6f, 0x77, 0x53, 0x74, 0x61, 0x74, 0x65, 0x22, 0x0d, 0x0a, 0x0b, 0x4f,
 	0x70, 0x65, 0x6e, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x71, 0x22, 0x0d, 0x0a, 0x0b, 0x4f, 0x70,
-	0x65, 0x6e, 0x43, 0x68, 0x61, 0x74, 0x52, 0x73, 0x70, 0x2a, 0x5f, 0x0a, 0x0b, 0x43, 0x68, 0x61,
+	0x65, 0x6e, 0x43, 0x68, 0x61, 0x74, 0x52, 0x73, 0x70, 0x22, 0x0e, 0x0a, 0x0c, 0x43, 0x6c, 0x6f,
+	0x73, 0x65, 0x43, 0x68, 0x61, 0x74, 0x52, 0x65, 0x71, 0x22, 0x0e, 0x0a, 0x0c, 0x43, 0x6c, 0x6f,
+	0x73, 0x65, 0x43, 0x68, 0x61, 0x74, 0x52, 0x73, 0x70, 0x2a, 0x5f, 0x0a, 0x0b, 0x43, 0x68, 0x61,
 	0x6e, 0x6e, 0x65, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x12, 0x15, 0x0a, 0x11, 0x55, 0x6e, 0x6b, 0x6f,
 	0x77, 0x6e, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x54, 0x79, 0x70, 0x65, 0x10, 0x00, 0x12,
 	0x09, 0x0a, 0x05, 0x57, 0x6f, 0x72, 0x6c, 0x64, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x53, 0x69,
@@ -2216,7 +2295,7 @@ func file_snakemini_social_proto_rawDescGZIP() []byte {
 }
 
 var file_snakemini_social_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_snakemini_social_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_snakemini_social_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_snakemini_social_proto_goTypes = []interface{}{
 	(ChannelType)(0),              // 0: pb.ChannelType
 	(MessageType)(0),              // 1: pb.MessageType
@@ -2251,6 +2330,8 @@ var file_snakemini_social_proto_goTypes = []interface{}{
 	(*ChatUserInfo)(nil),          // 30: pb.ChatUserInfo
 	(*OpenChatReq)(nil),           // 31: pb.OpenChatReq
 	(*OpenChatRsp)(nil),           // 32: pb.OpenChatRsp
+	(*CloseChatReq)(nil),          // 33: pb.CloseChatReq
+	(*CloseChatRsp)(nil),          // 34: pb.CloseChatRsp
 }
 var file_snakemini_social_proto_depIdxs = []int32{
 	1,  // 0: pb.Message.messageType:type_name -> pb.MessageType
@@ -2639,6 +2720,30 @@ func file_snakemini_social_proto_init() {
 				return nil
 			}
 		}
+		file_snakemini_social_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CloseChatReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_social_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CloseChatRsp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -2646,7 +2751,7 @@ func file_snakemini_social_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakemini_social_proto_rawDesc,
 			NumEnums:      3,
-			NumMessages:   30,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
