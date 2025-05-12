@@ -207,4 +207,9 @@ message ChatUserInfo {
     int32  follow_state=11; // 关注状态
 }
 
+// commandId=openchat
+message  OpenChatReq {}
+
+message OpenChatRsp {}
+
 
