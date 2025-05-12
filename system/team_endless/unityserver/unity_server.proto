@@ -41,6 +41,7 @@ message TeamEndlessEndGameRsp {
   int64 new_rank_id = 3; // 新的段位id
   int64 add_rank_score = 4; // 增加的段位分
   AiInfo ai = 5; // 中途加入的ai,没有ai时为空
+  int64 speed_card_rank_score = 6; // 加速卡获得的段位分
 }
 
 message TeamEndlessExitGameReq {
