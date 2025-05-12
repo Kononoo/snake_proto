@@ -14,6 +14,7 @@ message UnityQualifyUploadAttr { // Unity 团战：上传用户额外属性，�
   int64 team_bubble_id = 4;
   repeated SkinSkill skin_skill_list = 5;
   int64 prop_id = 6;
+  bool is_unity_game = 7; // 游戏内是否使用unity
 }
 
 message ReportRoomScoreNotify {
@@ -29,6 +30,7 @@ message UnityQualifyMatchSuccessNotify { // 团战: 匹配成功 Push 额外信�
   double room_rank_score = 2; // 房间段位分（目前只有原生团战有用）
   int64 team_voice = 3; // 组队语音（目前只有原生团战有用）
   int64 ai_config_version = 4; // AI 行为配置版本
+  bool is_unity_game = 5; // 游戏内是否使用unity
 }
 
 message UnityQualifyRoomMember { // Unity 团战：房间内玩家额外信息，存储在RoomMember的payload中
