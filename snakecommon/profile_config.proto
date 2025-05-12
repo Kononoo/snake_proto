@@ -516,6 +516,7 @@ message SkinUgcV2Config {
   string title_url = 10;
   bool hide_on_homepage = 11;
   repeated string topic_white_list = 12; // 主题白名单
+  repeated UgcTopic bonus_topic_list = 13; // 糖果屋主题列表
 }
 
 message UgcTopic {
@@ -1269,3 +1270,29 @@ message GiftPkRank {
   int64 need_score = 4; // 段位所需总段位分
 }
 // ======== gift pk end ====================================================
+
+
+
+// ====   新首充活动（链式任务） Start =====
+message ChainChargeConfig {
+  string act_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+}
+// ======  新首充活动（链式任务） End ======
+
+
+
+// === 跳转规则配置集合  Start =====
+message ClipBoardLinkConfig {
+  LittleTeamClipBoardLink team_link = 1; // 蛇蛇小队口令跳转
+}
+
+message LittleTeamClipBoardLink {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string jump_url = 3;
+  string key_word = 4;
+}
+
+// == 跳转规则配置集合 End =====

@@ -12,6 +12,8 @@ enum ChannelType {
     World = 1; // 世界频道
     Single = 2; // 私聊
     Room = 3; // 赛后频道
+    TmpTeam = 4; // 临时小队频道
+    AreaTop = 5; // 地域榜
 }
 
 // 消息类型
@@ -22,6 +24,7 @@ enum MessageType {
     EmojiMessage = 3; // 表情消息
     InviteMessage =4; // 组队邀请消息
     GiftMessage = 5; // 礼物消息
+    TmpTeamInviteMessage =6; // 临时小队邀请消息
 }
 
 enum MessageSubType {
@@ -75,6 +78,14 @@ message GiftContent {
     string dedication = 8; // 送礼赠言
 }
 
+message TmpTeamInviteContent {
+    int64 teamId = 1; // 队伍ID
+    int32 limit =5;// 人数上限
+    int32 count =6; // 当前人数
+    int64 expireTs = 7; // 邀请过期时间，毫秒
+    int64 owner = 8; // 房主
+}
+
 // commandId=sendmsg
 message SendMessageReq {// 发送消息
     ChannelType channelType = 1; // 频道类型
@@ -114,7 +125,8 @@ message SingleChat {
 }
 
 // commandId=singlechatlist
-message GetSingleChatListReq {} // 获取全部私聊列表
+message GetSingleChatListReq {
+} // 获取全部私聊列表
 
 message GetSingleChatListResp {
     repeated SingleChat singleChatList = 1;
@@ -145,6 +157,12 @@ message LeaveRoomChatResp {}
 // commandId=createroomchat
 message PushCreateRoomChat {
     int64 rid =1; // 房间ID
+    repeated int64 uidList=2; // 用户列表
+    repeated TeamInfo teamList =3; // 队伍信息
+}
+
+message TeamInfo {
+    int32 teamId=1;// 队伍ID
     repeated int64 uidList=2; // 用户列表
 }
 
@@ -185,6 +203,19 @@ message ChatUserInfo {
     string area = 7; // 用户地区
     int64  charm = 8; // 魅力值
     int64  star = 9; // 段位
+    int32  chat_bubble_id = 10; // 聊天气泡
+    int32  follow_state=11; // 关注状态
 }
+
+// commandId=openchat
+message  OpenChatReq {}
+
+message OpenChatRsp {}
+
+
+// commandId=closechat
+message CloseChatReq {}
+
+message CloseChatRsp {}
 
 

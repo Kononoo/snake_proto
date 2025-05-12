@@ -3,6 +3,8 @@ syntax = "proto3";
 option go_package="../snakemini";
 option objc_class_prefix = "PROTO";
 
+import "snakemini/social.proto";
+
 
 package pb;
 
@@ -10,6 +12,9 @@ package pb;
 message CreateRoomChatReq {
     int64 rid =1; // 房间ID
     repeated int64 uidList=2; // 用户列表
+    repeated TeamInfo teamList =3; // 队伍信息
+    repeated int64  mvp =4; // mvp
+    repeated int64 aiList =5; // ai列表
 }
 
 message CreateRoomChatRsp {}

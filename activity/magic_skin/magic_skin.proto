@@ -19,6 +19,7 @@ message Section {
   string style_name = 3; // 样式名
   int64 worth_level = 4;
   int64 is_default = 5;  // 是否为默认样式
+  int64 magic_value = 6; // 幻化值
 }
 
 message GetInfoReq {
@@ -35,6 +36,7 @@ message GetInfoRsp {
   message DescItem {
     string title = 1; // 标题
     string content = 2; // 内容
+    int32 type = 3; //1 文字 2 图片 3 视频
   }
   message Link {
     string title = 1; // 标题
@@ -64,6 +66,7 @@ message GetInfoRsp {
     string source = 19; // 活动source
     string free_coin_get_link = 20; // 免费代币领取
     string save_desc = 21; // 保存文案
+    repeated int64 display_skin_ids = 22; // 轮播展示的皮肤列表
   }
 
   Config config = 1; // 配置数据
@@ -77,6 +80,8 @@ message GetInfoRsp {
   repeated int64 locked_section = 9; // 已锁定的组件类型
   int64 transform_cnt  = 10; //幻化次数
   bool can_restore = 11; // 能否复原
+  int64 total_cost = 12; // 玩家代币花费
+  int64 restore_need_cost = 13; // 复原所需要的花费 0为不能复原
 }
 
 message Skin {
@@ -114,6 +119,9 @@ message RefreshSkinRsp {
   Skin skin = 1; //幻化后的皮肤id
   int64 coin = 2; // 更新幻化币数量
   bool can_restore = 3; // 能否复原
+  int64 total_cost = 4; // 玩家代币花费
+  int64 total_score = 5; // 累计幻化值
+  int64 restore_need_cost = 6; // 复原所需要的花费 0为不能复原
 }
 
 message SaveSkinReq {
@@ -125,6 +133,9 @@ message SaveSkinRsp {
   Skin current_skin = 2; // 更新当前皮肤信息
   snakeapi.RewardItem RewardItem = 3; // 奖励
   bool can_restore = 4; // 能否复原
+  int64 total_cost = 5; // 玩家代币花费
+  int64 total_score = 6; // 累计幻化值
+  int64 restore_need_cost = 7; // 复原所需要的花费 0为不能复原
 }
 
 message RestoreSkinReq {
@@ -136,6 +147,8 @@ message RestoreSkinRsp {
   bool can_restore = 2; // 能否复原
   int64 total_score = 3; // 累计幻化值
   Skin pending_skin = 4;  // 待保存的皮肤
+  int64 total_cost = 5; // 玩家代币花费
+  int64 restore_need_cost = 7; // 复原所需要的花费 0为不能复原
 }
 
 message GetTopListReq {
