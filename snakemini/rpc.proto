@@ -244,6 +244,13 @@ message GroupInfoRsp {
     int64 Owner =8; // 房主
 }
 
+message ReturnGroupReq {
+    int64 uid=1;// 用户ID
+    int32 gid = 2; // 队伍ID
+}
+
+message ReturnGroupRsp {}
+
 //-------------------------relay-----------------------------
 
 message RelayBindUserInfo {

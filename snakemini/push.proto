@@ -91,3 +91,16 @@ message PushSendGift {
     int32 count = 7; // 送礼个数
     string dedication = 8; // 送礼赠言
 }
+
+message  PushCallReturnGroup {
+    int32 gid = 1; // 队伍ID
+    repeated SimpleUserInfo list=2; // 已经回到房间的玩家
+}
+
+message SimpleUserInfo {
+    int64  uid=1;
+    string nickname =2;
+    string avatar=3;
+    int32 gender=4;
+    int32 boxId=5;
+}
