@@ -249,7 +249,9 @@ message ReturnGroupReq {
     int32 gid = 2; // 队伍ID
 }
 
-message ReturnGroupRsp {}
+message ReturnGroupRsp {
+    GroupInfo group_info = 1;
+}
 
 //-------------------------relay-----------------------------
 
