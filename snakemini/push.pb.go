@@ -824,6 +824,140 @@ func (x *PushSendGift) GetDedication() string {
 	return ""
 }
 
+type PushCallReturnGroup struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Gid  int32             `protobuf:"varint,1,opt,name=gid,proto3" json:"gid,omitempty"`  // 队伍ID
+	List []*SimpleUserInfo `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"` // 已经回到房间的玩家
+}
+
+func (x *PushCallReturnGroup) Reset() {
+	*x = PushCallReturnGroup{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_push_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PushCallReturnGroup) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PushCallReturnGroup) ProtoMessage() {}
+
+func (x *PushCallReturnGroup) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_push_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PushCallReturnGroup.ProtoReflect.Descriptor instead.
+func (*PushCallReturnGroup) Descriptor() ([]byte, []int) {
+	return file_snakemini_push_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *PushCallReturnGroup) GetGid() int32 {
+	if x != nil {
+		return x.Gid
+	}
+	return 0
+}
+
+func (x *PushCallReturnGroup) GetList() []*SimpleUserInfo {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+type SimpleUserInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid      int64  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Nickname string `protobuf:"bytes,2,opt,name=nickname,proto3" json:"nickname,omitempty"`
+	Avatar   string `protobuf:"bytes,3,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	Gender   int32  `protobuf:"varint,4,opt,name=gender,proto3" json:"gender,omitempty"`
+	BoxId    int32  `protobuf:"varint,5,opt,name=boxId,proto3" json:"boxId,omitempty"`
+}
+
+func (x *SimpleUserInfo) Reset() {
+	*x = SimpleUserInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_push_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SimpleUserInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SimpleUserInfo) ProtoMessage() {}
+
+func (x *SimpleUserInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_push_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SimpleUserInfo.ProtoReflect.Descriptor instead.
+func (*SimpleUserInfo) Descriptor() ([]byte, []int) {
+	return file_snakemini_push_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *SimpleUserInfo) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *SimpleUserInfo) GetNickname() string {
+	if x != nil {
+		return x.Nickname
+	}
+	return ""
+}
+
+func (x *SimpleUserInfo) GetAvatar() string {
+	if x != nil {
+		return x.Avatar
+	}
+	return ""
+}
+
+func (x *SimpleUserInfo) GetGender() int32 {
+	if x != nil {
+		return x.Gender
+	}
+	return 0
+}
+
+func (x *SimpleUserInfo) GetBoxId() int32 {
+	if x != nil {
+		return x.BoxId
+	}
+	return 0
+}
+
 var File_snakemini_push_proto protoreflect.FileDescriptor
 
 var file_snakemini_push_proto_rawDesc = []byte{
@@ -915,9 +1049,22 @@ var file_snakemini_push_proto_rawDesc = []byte{
 	0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x63,
 	0x6f, 0x75, 0x6e, 0x74, 0x12, 0x1e, 0x0a, 0x0a, 0x64, 0x65, 0x64, 0x69, 0x63, 0x61, 0x74, 0x69,
 	0x6f, 0x6e, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x64, 0x65, 0x64, 0x69, 0x63, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x42, 0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x6d, 0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x69, 0x6f, 0x6e, 0x22, 0x4f, 0x0a, 0x13, 0x50, 0x75, 0x73, 0x68, 0x43, 0x61, 0x6c, 0x6c,
+	0x52, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x10, 0x0a, 0x03, 0x67,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x67, 0x69, 0x64, 0x12, 0x26, 0x0a,
+	0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x70, 0x62,
+	0x2e, 0x53, 0x69, 0x6d, 0x70, 0x6c, 0x65, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52,
+	0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0x84, 0x01, 0x0a, 0x0e, 0x53, 0x69, 0x6d, 0x70, 0x6c, 0x65,
+	0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x6e, 0x69,
+	0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x69,
+	0x63, 0x6b, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x76, 0x61, 0x74, 0x61, 0x72, 0x12, 0x16,
+	0x0a, 0x06, 0x67, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06,
+	0x67, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x62, 0x6f, 0x78, 0x49, 0x64, 0x18,
+	0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x62, 0x6f, 0x78, 0x49, 0x64, 0x42, 0x16, 0x5a, 0x0c,
+	0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d, 0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50,
+	0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -932,7 +1079,7 @@ func file_snakemini_push_proto_rawDescGZIP() []byte {
 	return file_snakemini_push_proto_rawDescData
 }
 
-var file_snakemini_push_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_snakemini_push_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_snakemini_push_proto_goTypes = []interface{}{
 	(*PushMsg)(nil),              // 0: pb.PushMsg
 	(*GroupInfoPush)(nil),        // 1: pb.GroupInfoPush
@@ -947,19 +1094,22 @@ var file_snakemini_push_proto_goTypes = []interface{}{
 	(*PushKicked)(nil),           // 10: pb.PushKicked
 	(*PushGameEndLike)(nil),      // 11: pb.PushGameEndLike
 	(*PushSendGift)(nil),         // 12: pb.PushSendGift
-	(*GroupInfo)(nil),            // 13: pb.GroupInfo
-	(*MatchInfo)(nil),            // 14: pb.MatchInfo
-	(*RelayStartInfo)(nil),       // 15: pb.RelayStartInfo
+	(*PushCallReturnGroup)(nil),  // 13: pb.PushCallReturnGroup
+	(*SimpleUserInfo)(nil),       // 14: pb.SimpleUserInfo
+	(*GroupInfo)(nil),            // 15: pb.GroupInfo
+	(*MatchInfo)(nil),            // 16: pb.MatchInfo
+	(*RelayStartInfo)(nil),       // 17: pb.RelayStartInfo
 }
 var file_snakemini_push_proto_depIdxs = []int32{
-	13, // 0: pb.GroupInfoPush.group_info:type_name -> pb.GroupInfo
-	14, // 1: pb.MatchSucPush.match_info:type_name -> pb.MatchInfo
-	15, // 2: pb.RelayPushStart.start_info:type_name -> pb.RelayStartInfo
-	3,  // [3:3] is the sub-list for method output_type
-	3,  // [3:3] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	15, // 0: pb.GroupInfoPush.group_info:type_name -> pb.GroupInfo
+	16, // 1: pb.MatchSucPush.match_info:type_name -> pb.MatchInfo
+	17, // 2: pb.RelayPushStart.start_info:type_name -> pb.RelayStartInfo
+	14, // 3: pb.PushCallReturnGroup.list:type_name -> pb.SimpleUserInfo
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_snakemini_push_proto_init() }
@@ -1125,6 +1275,30 @@ func file_snakemini_push_proto_init() {
 				return nil
 			}
 		}
+		file_snakemini_push_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PushCallReturnGroup); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_push_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SimpleUserInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1132,7 +1306,7 @@ func file_snakemini_push_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakemini_push_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
