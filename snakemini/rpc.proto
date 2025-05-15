@@ -252,6 +252,13 @@ message ReturnGroupRsp {
     GroupInfo group_info = 1;
 }
 
+message SyncUserStateReq {
+    int64 uid=1; // 用户ID
+    int32 state =2;// 状态
+}
+
+message SyncUserStateRsp {}
+
 //-------------------------relay-----------------------------
 
 message RelayBindUserInfo {
