@@ -2480,6 +2480,12 @@ message RelationConfig {
   repeated int32 level_event_ids = 8; // 等级奖励任务活动ID列表
   repeated EventTask challenge_events = 9;         // 特殊成就任务配置，服务器读取填充
   repeated EventTask level_events = 10;             // 等级奖励任务配置，服务器读取填充
+  repeated RelationNumRewardItem relation_num_reward_list = 11; // 关系数量奖励列表
+}
+
+message RelationNumRewardItem {
+  int64 num = 1; // 关系数量
+  repeated SnakeMain.Config.RewardConfig reward_list = 2; // 奖励列表
 }
 
 message RelationLimitItem {
