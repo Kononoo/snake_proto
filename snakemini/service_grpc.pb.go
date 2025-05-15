@@ -107,6 +107,7 @@ type MatchClient interface {
 	Disconnect(ctx context.Context, in *UidRequest, opts ...grpc.CallOption) (*InGameStateReply, error)
 	MatchHandle(ctx context.Context, in *InternalReq, opts ...grpc.CallOption) (*RpcResponse, error)
 	GroupInfo(ctx context.Context, in *GroupInfoReq, opts ...grpc.CallOption) (*GroupInfoRsp, error)
+	SyncUserState(ctx context.Context, in *SyncUserStateReq, opts ...grpc.CallOption) (*SyncUserStateRsp, error)
 }
 
 type matchClient struct {
@@ -162,6 +163,15 @@ func (c *matchClient) GroupInfo(ctx context.Context, in *GroupInfoReq, opts ...g
 	return out, nil
 }
 
+func (c *matchClient) SyncUserState(ctx context.Context, in *SyncUserStateReq, opts ...grpc.CallOption) (*SyncUserStateRsp, error) {
+	out := new(SyncUserStateRsp)
+	err := c.cc.Invoke(ctx, "/pb.Match/SyncUserState", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MatchServer is the server API for Match service.
 // All implementations should embed UnimplementedMatchServer
 // for forward compatibility
@@ -171,6 +181,7 @@ type MatchServer interface {
 	Disconnect(context.Context, *UidRequest) (*InGameStateReply, error)
 	MatchHandle(context.Context, *InternalReq) (*RpcResponse, error)
 	GroupInfo(context.Context, *GroupInfoReq) (*GroupInfoRsp, error)
+	SyncUserState(context.Context, *SyncUserStateReq) (*SyncUserStateRsp, error)
 }
 
 // UnimplementedMatchServer should be embedded to have forward compatible implementations.
@@ -191,6 +202,9 @@ func (UnimplementedMatchServer) MatchHandle(context.Context, *InternalReq) (*Rpc
 }
 func (UnimplementedMatchServer) GroupInfo(context.Context, *GroupInfoReq) (*GroupInfoRsp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GroupInfo not implemented")
+}
+func (UnimplementedMatchServer) SyncUserState(context.Context, *SyncUserStateReq) (*SyncUserStateRsp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SyncUserState not implemented")
 }
 
 // UnsafeMatchServer may be embedded to opt out of forward compatibility for this service.
@@ -294,6 +308,24 @@ func _Match_GroupInfo_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Match_SyncUserState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SyncUserStateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MatchServer).SyncUserState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.Match/SyncUserState",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MatchServer).SyncUserState(ctx, req.(*SyncUserStateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Match_ServiceDesc is the grpc.ServiceDesc for Match service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -320,6 +352,10 @@ var Match_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GroupInfo",
 			Handler:    _Match_GroupInfo_Handler,
+		},
+		{
+			MethodName: "SyncUserState",
+			Handler:    _Match_SyncUserState_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

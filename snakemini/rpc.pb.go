@@ -2495,6 +2495,99 @@ func (x *ReturnGroupRsp) GetGroupInfo() *GroupInfo {
 	return nil
 }
 
+type SyncUserStateReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid   int64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`     // 用户ID
+	State int32 `protobuf:"varint,2,opt,name=state,proto3" json:"state,omitempty"` // 状态
+}
+
+func (x *SyncUserStateReq) Reset() {
+	*x = SyncUserStateReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[38]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SyncUserStateReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SyncUserStateReq) ProtoMessage() {}
+
+func (x *SyncUserStateReq) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[38]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SyncUserStateReq.ProtoReflect.Descriptor instead.
+func (*SyncUserStateReq) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *SyncUserStateReq) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *SyncUserStateReq) GetState() int32 {
+	if x != nil {
+		return x.State
+	}
+	return 0
+}
+
+type SyncUserStateRsp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *SyncUserStateRsp) Reset() {
+	*x = SyncUserStateRsp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[39]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SyncUserStateRsp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SyncUserStateRsp) ProtoMessage() {}
+
+func (x *SyncUserStateRsp) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[39]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SyncUserStateRsp.ProtoReflect.Descriptor instead.
+func (*SyncUserStateRsp) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{39}
+}
+
 type RelayBindUserInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2517,7 +2610,7 @@ type RelayBindUserInfo struct {
 func (x *RelayBindUserInfo) Reset() {
 	*x = RelayBindUserInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[38]
+		mi := &file_snakemini_rpc_proto_msgTypes[40]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2530,7 +2623,7 @@ func (x *RelayBindUserInfo) String() string {
 func (*RelayBindUserInfo) ProtoMessage() {}
 
 func (x *RelayBindUserInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[38]
+	mi := &file_snakemini_rpc_proto_msgTypes[40]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2543,7 +2636,7 @@ func (x *RelayBindUserInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayBindUserInfo.ProtoReflect.Descriptor instead.
 func (*RelayBindUserInfo) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{38}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *RelayBindUserInfo) GetUid() int64 {
@@ -2652,7 +2745,7 @@ type RelayBindRequest struct {
 func (x *RelayBindRequest) Reset() {
 	*x = RelayBindRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[39]
+		mi := &file_snakemini_rpc_proto_msgTypes[41]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2665,7 +2758,7 @@ func (x *RelayBindRequest) String() string {
 func (*RelayBindRequest) ProtoMessage() {}
 
 func (x *RelayBindRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[39]
+	mi := &file_snakemini_rpc_proto_msgTypes[41]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2678,7 +2771,7 @@ func (x *RelayBindRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayBindRequest.ProtoReflect.Descriptor instead.
 func (*RelayBindRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{39}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *RelayBindRequest) GetUid() int64 {
@@ -2778,7 +2871,7 @@ type RelayStartInfo struct {
 func (x *RelayStartInfo) Reset() {
 	*x = RelayStartInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[40]
+		mi := &file_snakemini_rpc_proto_msgTypes[42]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2791,7 +2884,7 @@ func (x *RelayStartInfo) String() string {
 func (*RelayStartInfo) ProtoMessage() {}
 
 func (x *RelayStartInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[40]
+	mi := &file_snakemini_rpc_proto_msgTypes[42]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2804,7 +2897,7 @@ func (x *RelayStartInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayStartInfo.ProtoReflect.Descriptor instead.
 func (*RelayStartInfo) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{40}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *RelayStartInfo) GetStartTime() int64 {
@@ -2842,7 +2935,7 @@ type RelayBindResponse struct {
 func (x *RelayBindResponse) Reset() {
 	*x = RelayBindResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[41]
+		mi := &file_snakemini_rpc_proto_msgTypes[43]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2855,7 +2948,7 @@ func (x *RelayBindResponse) String() string {
 func (*RelayBindResponse) ProtoMessage() {}
 
 func (x *RelayBindResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[41]
+	mi := &file_snakemini_rpc_proto_msgTypes[43]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2868,7 +2961,7 @@ func (x *RelayBindResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayBindResponse.ProtoReflect.Descriptor instead.
 func (*RelayBindResponse) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{41}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *RelayBindResponse) GetStartInfo() *RelayStartInfo {
@@ -2914,7 +3007,7 @@ type RelayCommandRequest struct {
 func (x *RelayCommandRequest) Reset() {
 	*x = RelayCommandRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[42]
+		mi := &file_snakemini_rpc_proto_msgTypes[44]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2927,7 +3020,7 @@ func (x *RelayCommandRequest) String() string {
 func (*RelayCommandRequest) ProtoMessage() {}
 
 func (x *RelayCommandRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[42]
+	mi := &file_snakemini_rpc_proto_msgTypes[44]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2940,7 +3033,7 @@ func (x *RelayCommandRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayCommandRequest.ProtoReflect.Descriptor instead.
 func (*RelayCommandRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{42}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *RelayCommandRequest) GetUid() int64 {
@@ -2991,7 +3084,7 @@ type RelayGetHistoryFrameRequest struct {
 func (x *RelayGetHistoryFrameRequest) Reset() {
 	*x = RelayGetHistoryFrameRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[43]
+		mi := &file_snakemini_rpc_proto_msgTypes[45]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3004,7 +3097,7 @@ func (x *RelayGetHistoryFrameRequest) String() string {
 func (*RelayGetHistoryFrameRequest) ProtoMessage() {}
 
 func (x *RelayGetHistoryFrameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[43]
+	mi := &file_snakemini_rpc_proto_msgTypes[45]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3017,7 +3110,7 @@ func (x *RelayGetHistoryFrameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayGetHistoryFrameRequest.ProtoReflect.Descriptor instead.
 func (*RelayGetHistoryFrameRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{43}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *RelayGetHistoryFrameRequest) GetStartActionNo() int64 {
@@ -3054,7 +3147,7 @@ type RelayGetHistoryFrameResponse struct {
 func (x *RelayGetHistoryFrameResponse) Reset() {
 	*x = RelayGetHistoryFrameResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[44]
+		mi := &file_snakemini_rpc_proto_msgTypes[46]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3067,7 +3160,7 @@ func (x *RelayGetHistoryFrameResponse) String() string {
 func (*RelayGetHistoryFrameResponse) ProtoMessage() {}
 
 func (x *RelayGetHistoryFrameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[44]
+	mi := &file_snakemini_rpc_proto_msgTypes[46]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3080,7 +3173,7 @@ func (x *RelayGetHistoryFrameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayGetHistoryFrameResponse.ProtoReflect.Descriptor instead.
 func (*RelayGetHistoryFrameResponse) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{44}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *RelayGetHistoryFrameResponse) GetFrameCommandList() []*FrameCommand {
@@ -3102,7 +3195,7 @@ type RelaySignalRequest struct {
 func (x *RelaySignalRequest) Reset() {
 	*x = RelaySignalRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[45]
+		mi := &file_snakemini_rpc_proto_msgTypes[47]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3115,7 +3208,7 @@ func (x *RelaySignalRequest) String() string {
 func (*RelaySignalRequest) ProtoMessage() {}
 
 func (x *RelaySignalRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[45]
+	mi := &file_snakemini_rpc_proto_msgTypes[47]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3128,7 +3221,7 @@ func (x *RelaySignalRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelaySignalRequest.ProtoReflect.Descriptor instead.
 func (*RelaySignalRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{45}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *RelaySignalRequest) GetUid() int64 {
@@ -3157,7 +3250,7 @@ type RelayExitGameRequest struct {
 func (x *RelayExitGameRequest) Reset() {
 	*x = RelayExitGameRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[46]
+		mi := &file_snakemini_rpc_proto_msgTypes[48]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3170,7 +3263,7 @@ func (x *RelayExitGameRequest) String() string {
 func (*RelayExitGameRequest) ProtoMessage() {}
 
 func (x *RelayExitGameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[46]
+	mi := &file_snakemini_rpc_proto_msgTypes[48]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3183,7 +3276,7 @@ func (x *RelayExitGameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayExitGameRequest.ProtoReflect.Descriptor instead.
 func (*RelayExitGameRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{46}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *RelayExitGameRequest) GetUid() int64 {
@@ -3213,7 +3306,7 @@ type RelaySnapShotRequest struct {
 func (x *RelaySnapShotRequest) Reset() {
 	*x = RelaySnapShotRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[47]
+		mi := &file_snakemini_rpc_proto_msgTypes[49]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3226,7 +3319,7 @@ func (x *RelaySnapShotRequest) String() string {
 func (*RelaySnapShotRequest) ProtoMessage() {}
 
 func (x *RelaySnapShotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[47]
+	mi := &file_snakemini_rpc_proto_msgTypes[49]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3239,7 +3332,7 @@ func (x *RelaySnapShotRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelaySnapShotRequest.ProtoReflect.Descriptor instead.
 func (*RelaySnapShotRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{47}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *RelaySnapShotRequest) GetActionNo() int64 {
@@ -3276,7 +3369,7 @@ type RelayReportRoomStateRequest struct {
 func (x *RelayReportRoomStateRequest) Reset() {
 	*x = RelayReportRoomStateRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[48]
+		mi := &file_snakemini_rpc_proto_msgTypes[50]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3289,7 +3382,7 @@ func (x *RelayReportRoomStateRequest) String() string {
 func (*RelayReportRoomStateRequest) ProtoMessage() {}
 
 func (x *RelayReportRoomStateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[48]
+	mi := &file_snakemini_rpc_proto_msgTypes[50]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3302,7 +3395,7 @@ func (x *RelayReportRoomStateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayReportRoomStateRequest.ProtoReflect.Descriptor instead.
 func (*RelayReportRoomStateRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{48}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *RelayReportRoomStateRequest) GetActionNo() int64 {
@@ -3340,7 +3433,7 @@ type RelayChecksumRequest struct {
 func (x *RelayChecksumRequest) Reset() {
 	*x = RelayChecksumRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[49]
+		mi := &file_snakemini_rpc_proto_msgTypes[51]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3353,7 +3446,7 @@ func (x *RelayChecksumRequest) String() string {
 func (*RelayChecksumRequest) ProtoMessage() {}
 
 func (x *RelayChecksumRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[49]
+	mi := &file_snakemini_rpc_proto_msgTypes[51]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3366,7 +3459,7 @@ func (x *RelayChecksumRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayChecksumRequest.ProtoReflect.Descriptor instead.
 func (*RelayChecksumRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{49}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *RelayChecksumRequest) GetActionNo() int64 {
@@ -3410,7 +3503,7 @@ type RelayUdpSyncTimeRequest struct {
 func (x *RelayUdpSyncTimeRequest) Reset() {
 	*x = RelayUdpSyncTimeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[50]
+		mi := &file_snakemini_rpc_proto_msgTypes[52]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3423,7 +3516,7 @@ func (x *RelayUdpSyncTimeRequest) String() string {
 func (*RelayUdpSyncTimeRequest) ProtoMessage() {}
 
 func (x *RelayUdpSyncTimeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[50]
+	mi := &file_snakemini_rpc_proto_msgTypes[52]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3436,7 +3529,7 @@ func (x *RelayUdpSyncTimeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayUdpSyncTimeRequest.ProtoReflect.Descriptor instead.
 func (*RelayUdpSyncTimeRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{50}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *RelayUdpSyncTimeRequest) GetUid() int64 {
@@ -3472,7 +3565,7 @@ type RelayUdpSyncTimeResponse struct {
 func (x *RelayUdpSyncTimeResponse) Reset() {
 	*x = RelayUdpSyncTimeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[51]
+		mi := &file_snakemini_rpc_proto_msgTypes[53]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3485,7 +3578,7 @@ func (x *RelayUdpSyncTimeResponse) String() string {
 func (*RelayUdpSyncTimeResponse) ProtoMessage() {}
 
 func (x *RelayUdpSyncTimeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[51]
+	mi := &file_snakemini_rpc_proto_msgTypes[53]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3498,7 +3591,7 @@ func (x *RelayUdpSyncTimeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayUdpSyncTimeResponse.ProtoReflect.Descriptor instead.
 func (*RelayUdpSyncTimeResponse) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{51}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *RelayUdpSyncTimeResponse) GetServerTime() int64 {
@@ -3530,7 +3623,7 @@ type RelayReportScoreRequest struct {
 func (x *RelayReportScoreRequest) Reset() {
 	*x = RelayReportScoreRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[52]
+		mi := &file_snakemini_rpc_proto_msgTypes[54]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3543,7 +3636,7 @@ func (x *RelayReportScoreRequest) String() string {
 func (*RelayReportScoreRequest) ProtoMessage() {}
 
 func (x *RelayReportScoreRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[52]
+	mi := &file_snakemini_rpc_proto_msgTypes[54]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3556,7 +3649,7 @@ func (x *RelayReportScoreRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelayReportScoreRequest.ProtoReflect.Descriptor instead.
 func (*RelayReportScoreRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{52}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *RelayReportScoreRequest) GetScoreList() []int64 {
@@ -3611,7 +3704,7 @@ type RpcReportScoreRequest struct {
 func (x *RpcReportScoreRequest) Reset() {
 	*x = RpcReportScoreRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[53]
+		mi := &file_snakemini_rpc_proto_msgTypes[55]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3624,7 +3717,7 @@ func (x *RpcReportScoreRequest) String() string {
 func (*RpcReportScoreRequest) ProtoMessage() {}
 
 func (x *RpcReportScoreRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[53]
+	mi := &file_snakemini_rpc_proto_msgTypes[55]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3637,7 +3730,7 @@ func (x *RpcReportScoreRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RpcReportScoreRequest.ProtoReflect.Descriptor instead.
 func (*RpcReportScoreRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{53}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *RpcReportScoreRequest) GetScoreList() []int64 {
@@ -3702,7 +3795,7 @@ type RpcReportRoomStateRequest struct {
 func (x *RpcReportRoomStateRequest) Reset() {
 	*x = RpcReportRoomStateRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[54]
+		mi := &file_snakemini_rpc_proto_msgTypes[56]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3715,7 +3808,7 @@ func (x *RpcReportRoomStateRequest) String() string {
 func (*RpcReportRoomStateRequest) ProtoMessage() {}
 
 func (x *RpcReportRoomStateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[54]
+	mi := &file_snakemini_rpc_proto_msgTypes[56]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3728,7 +3821,7 @@ func (x *RpcReportRoomStateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RpcReportRoomStateRequest.ProtoReflect.Descriptor instead.
 func (*RpcReportRoomStateRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{54}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *RpcReportRoomStateRequest) GetRid() int32 {
@@ -3765,7 +3858,7 @@ type RpcReportRoomAvailNumsRequest struct {
 func (x *RpcReportRoomAvailNumsRequest) Reset() {
 	*x = RpcReportRoomAvailNumsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[55]
+		mi := &file_snakemini_rpc_proto_msgTypes[57]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3778,7 +3871,7 @@ func (x *RpcReportRoomAvailNumsRequest) String() string {
 func (*RpcReportRoomAvailNumsRequest) ProtoMessage() {}
 
 func (x *RpcReportRoomAvailNumsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[55]
+	mi := &file_snakemini_rpc_proto_msgTypes[57]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3791,7 +3884,7 @@ func (x *RpcReportRoomAvailNumsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RpcReportRoomAvailNumsRequest.ProtoReflect.Descriptor instead.
 func (*RpcReportRoomAvailNumsRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{55}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *RpcReportRoomAvailNumsRequest) GetRid() int32 {
@@ -3828,7 +3921,7 @@ type RpcReportAbnormalRequest struct {
 func (x *RpcReportAbnormalRequest) Reset() {
 	*x = RpcReportAbnormalRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[56]
+		mi := &file_snakemini_rpc_proto_msgTypes[58]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3841,7 +3934,7 @@ func (x *RpcReportAbnormalRequest) String() string {
 func (*RpcReportAbnormalRequest) ProtoMessage() {}
 
 func (x *RpcReportAbnormalRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[56]
+	mi := &file_snakemini_rpc_proto_msgTypes[58]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3854,7 +3947,7 @@ func (x *RpcReportAbnormalRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RpcReportAbnormalRequest.ProtoReflect.Descriptor instead.
 func (*RpcReportAbnormalRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{56}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *RpcReportAbnormalRequest) GetRid() int32 {
@@ -3890,7 +3983,7 @@ type RpcReportAbnormalNotifyRequest struct {
 func (x *RpcReportAbnormalNotifyRequest) Reset() {
 	*x = RpcReportAbnormalNotifyRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[57]
+		mi := &file_snakemini_rpc_proto_msgTypes[59]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3903,7 +3996,7 @@ func (x *RpcReportAbnormalNotifyRequest) String() string {
 func (*RpcReportAbnormalNotifyRequest) ProtoMessage() {}
 
 func (x *RpcReportAbnormalNotifyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[57]
+	mi := &file_snakemini_rpc_proto_msgTypes[59]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3916,7 +4009,7 @@ func (x *RpcReportAbnormalNotifyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RpcReportAbnormalNotifyRequest.ProtoReflect.Descriptor instead.
 func (*RpcReportAbnormalNotifyRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{57}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *RpcReportAbnormalNotifyRequest) GetRid() int32 {
@@ -3946,7 +4039,7 @@ type RpcReportRoomLockRequest struct {
 func (x *RpcReportRoomLockRequest) Reset() {
 	*x = RpcReportRoomLockRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[58]
+		mi := &file_snakemini_rpc_proto_msgTypes[60]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3959,7 +4052,7 @@ func (x *RpcReportRoomLockRequest) String() string {
 func (*RpcReportRoomLockRequest) ProtoMessage() {}
 
 func (x *RpcReportRoomLockRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[58]
+	mi := &file_snakemini_rpc_proto_msgTypes[60]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3972,7 +4065,7 @@ func (x *RpcReportRoomLockRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RpcReportRoomLockRequest.ProtoReflect.Descriptor instead.
 func (*RpcReportRoomLockRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{58}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *RpcReportRoomLockRequest) GetRid() int32 {
@@ -4007,7 +4100,7 @@ type GetUserStateRequest struct {
 func (x *GetUserStateRequest) Reset() {
 	*x = GetUserStateRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[59]
+		mi := &file_snakemini_rpc_proto_msgTypes[61]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4020,7 +4113,7 @@ func (x *GetUserStateRequest) String() string {
 func (*GetUserStateRequest) ProtoMessage() {}
 
 func (x *GetUserStateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[59]
+	mi := &file_snakemini_rpc_proto_msgTypes[61]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4033,7 +4126,7 @@ func (x *GetUserStateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserStateRequest.ProtoReflect.Descriptor instead.
 func (*GetUserStateRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{59}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *GetUserStateRequest) GetUids() []int64 {
@@ -4055,7 +4148,7 @@ type UserStateInfo struct {
 func (x *UserStateInfo) Reset() {
 	*x = UserStateInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[60]
+		mi := &file_snakemini_rpc_proto_msgTypes[62]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4068,7 +4161,7 @@ func (x *UserStateInfo) String() string {
 func (*UserStateInfo) ProtoMessage() {}
 
 func (x *UserStateInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[60]
+	mi := &file_snakemini_rpc_proto_msgTypes[62]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4081,7 +4174,7 @@ func (x *UserStateInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserStateInfo.ProtoReflect.Descriptor instead.
 func (*UserStateInfo) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{60}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *UserStateInfo) GetUid() int64 {
@@ -4109,7 +4202,7 @@ type GetUserStateResponse struct {
 func (x *GetUserStateResponse) Reset() {
 	*x = GetUserStateResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[61]
+		mi := &file_snakemini_rpc_proto_msgTypes[63]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4122,7 +4215,7 @@ func (x *GetUserStateResponse) String() string {
 func (*GetUserStateResponse) ProtoMessage() {}
 
 func (x *GetUserStateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[61]
+	mi := &file_snakemini_rpc_proto_msgTypes[63]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4135,7 +4228,7 @@ func (x *GetUserStateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserStateResponse.ProtoReflect.Descriptor instead.
 func (*GetUserStateResponse) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{61}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *GetUserStateResponse) GetStates() []*UserStateInfo {
@@ -4157,7 +4250,7 @@ type UpdateUserOnlineStateRequest struct {
 func (x *UpdateUserOnlineStateRequest) Reset() {
 	*x = UpdateUserOnlineStateRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[62]
+		mi := &file_snakemini_rpc_proto_msgTypes[64]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4170,7 +4263,7 @@ func (x *UpdateUserOnlineStateRequest) String() string {
 func (*UpdateUserOnlineStateRequest) ProtoMessage() {}
 
 func (x *UpdateUserOnlineStateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[62]
+	mi := &file_snakemini_rpc_proto_msgTypes[64]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4183,7 +4276,7 @@ func (x *UpdateUserOnlineStateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserOnlineStateRequest.ProtoReflect.Descriptor instead.
 func (*UpdateUserOnlineStateRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{62}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *UpdateUserOnlineStateRequest) GetUid() int64 {
@@ -4212,7 +4305,7 @@ type UpdateUserStateRequest struct {
 func (x *UpdateUserStateRequest) Reset() {
 	*x = UpdateUserStateRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[63]
+		mi := &file_snakemini_rpc_proto_msgTypes[65]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4225,7 +4318,7 @@ func (x *UpdateUserStateRequest) String() string {
 func (*UpdateUserStateRequest) ProtoMessage() {}
 
 func (x *UpdateUserStateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[63]
+	mi := &file_snakemini_rpc_proto_msgTypes[65]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4238,7 +4331,7 @@ func (x *UpdateUserStateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserStateRequest.ProtoReflect.Descriptor instead.
 func (*UpdateUserStateRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{63}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *UpdateUserStateRequest) GetUidList() []int64 {
@@ -4268,7 +4361,7 @@ type InviteFriendRequest struct {
 func (x *InviteFriendRequest) Reset() {
 	*x = InviteFriendRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[64]
+		mi := &file_snakemini_rpc_proto_msgTypes[66]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4281,7 +4374,7 @@ func (x *InviteFriendRequest) String() string {
 func (*InviteFriendRequest) ProtoMessage() {}
 
 func (x *InviteFriendRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[64]
+	mi := &file_snakemini_rpc_proto_msgTypes[66]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4294,7 +4387,7 @@ func (x *InviteFriendRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InviteFriendRequest.ProtoReflect.Descriptor instead.
 func (*InviteFriendRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{64}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *InviteFriendRequest) GetInviteUid() int64 {
@@ -4333,7 +4426,7 @@ type HandleInviteRequest struct {
 func (x *HandleInviteRequest) Reset() {
 	*x = HandleInviteRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[65]
+		mi := &file_snakemini_rpc_proto_msgTypes[67]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4346,7 +4439,7 @@ func (x *HandleInviteRequest) String() string {
 func (*HandleInviteRequest) ProtoMessage() {}
 
 func (x *HandleInviteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[65]
+	mi := &file_snakemini_rpc_proto_msgTypes[67]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4359,7 +4452,7 @@ func (x *HandleInviteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HandleInviteRequest.ProtoReflect.Descriptor instead.
 func (*HandleInviteRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{65}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *HandleInviteRequest) GetResponse() int32 {
@@ -4412,7 +4505,7 @@ type BindUserInfo struct {
 func (x *BindUserInfo) Reset() {
 	*x = BindUserInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[66]
+		mi := &file_snakemini_rpc_proto_msgTypes[68]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4425,7 +4518,7 @@ func (x *BindUserInfo) String() string {
 func (*BindUserInfo) ProtoMessage() {}
 
 func (x *BindUserInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[66]
+	mi := &file_snakemini_rpc_proto_msgTypes[68]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4438,7 +4531,7 @@ func (x *BindUserInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BindUserInfo.ProtoReflect.Descriptor instead.
 func (*BindUserInfo) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{66}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *BindUserInfo) GetUid() int64 {
@@ -4487,7 +4580,7 @@ type GetUserConnectorInfoResponse struct {
 func (x *GetUserConnectorInfoResponse) Reset() {
 	*x = GetUserConnectorInfoResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[67]
+		mi := &file_snakemini_rpc_proto_msgTypes[69]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4500,7 +4593,7 @@ func (x *GetUserConnectorInfoResponse) String() string {
 func (*GetUserConnectorInfoResponse) ProtoMessage() {}
 
 func (x *GetUserConnectorInfoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[67]
+	mi := &file_snakemini_rpc_proto_msgTypes[69]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4513,7 +4606,7 @@ func (x *GetUserConnectorInfoResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserConnectorInfoResponse.ProtoReflect.Descriptor instead.
 func (*GetUserConnectorInfoResponse) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{67}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *GetUserConnectorInfoResponse) GetUserInfo() *BindUserInfo {
@@ -4549,7 +4642,7 @@ type SendGiftRequest struct {
 func (x *SendGiftRequest) Reset() {
 	*x = SendGiftRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[68]
+		mi := &file_snakemini_rpc_proto_msgTypes[70]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4562,7 +4655,7 @@ func (x *SendGiftRequest) String() string {
 func (*SendGiftRequest) ProtoMessage() {}
 
 func (x *SendGiftRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[68]
+	mi := &file_snakemini_rpc_proto_msgTypes[70]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4575,7 +4668,7 @@ func (x *SendGiftRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendGiftRequest.ProtoReflect.Descriptor instead.
 func (*SendGiftRequest) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{68}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *SendGiftRequest) GetSendUid() int64 {
@@ -4703,7 +4796,7 @@ type SendGiftResponse struct {
 func (x *SendGiftResponse) Reset() {
 	*x = SendGiftResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakemini_rpc_proto_msgTypes[69]
+		mi := &file_snakemini_rpc_proto_msgTypes[71]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -4716,7 +4809,7 @@ func (x *SendGiftResponse) String() string {
 func (*SendGiftResponse) ProtoMessage() {}
 
 func (x *SendGiftResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_snakemini_rpc_proto_msgTypes[69]
+	mi := &file_snakemini_rpc_proto_msgTypes[71]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4729,7 +4822,7 @@ func (x *SendGiftResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendGiftResponse.ProtoReflect.Descriptor instead.
 func (*SendGiftResponse) Descriptor() ([]byte, []int) {
-	return file_snakemini_rpc_proto_rawDescGZIP(), []int{69}
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *SendGiftResponse) GetRemainDiamond() int64 {
@@ -5011,7 +5104,12 @@ var file_snakemini_rpc_proto_rawDesc = []byte{
 	0x52, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x73, 0x70, 0x12, 0x2c,
 	0x0a, 0x0a, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x0d, 0x2e, 0x70, 0x62, 0x2e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x66,
-	0x6f, 0x52, 0x09, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x66, 0x6f, 0x22, 0xdd, 0x02, 0x0a,
+	0x6f, 0x52, 0x09, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x66, 0x6f, 0x22, 0x3a, 0x0a, 0x10,
+	0x53, 0x79, 0x6e, 0x63, 0x55, 0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71,
+	0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75,
+	0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x12, 0x0a, 0x10, 0x53, 0x79, 0x6e, 0x63,
+	0x55, 0x73, 0x65, 0x72, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x73, 0x70, 0x22, 0xdd, 0x02, 0x0a,
 	0x11, 0x52, 0x65, 0x6c, 0x61, 0x79, 0x42, 0x69, 0x6e, 0x64, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e,
 	0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
 	0x03, 0x75, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
@@ -5306,7 +5404,7 @@ func file_snakemini_rpc_proto_rawDescGZIP() []byte {
 }
 
 var file_snakemini_rpc_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_snakemini_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 71)
+var file_snakemini_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 73)
 var file_snakemini_rpc_proto_goTypes = []interface{}{
 	(SendGiftCost)(0),                      // 0: pb.SendGiftCost
 	(*UidList)(nil),                        // 1: pb.UidList
@@ -5347,48 +5445,50 @@ var file_snakemini_rpc_proto_goTypes = []interface{}{
 	(*GroupInfoRsp)(nil),                   // 36: pb.GroupInfoRsp
 	(*ReturnGroupReq)(nil),                 // 37: pb.ReturnGroupReq
 	(*ReturnGroupRsp)(nil),                 // 38: pb.ReturnGroupRsp
-	(*RelayBindUserInfo)(nil),              // 39: pb.RelayBindUserInfo
-	(*RelayBindRequest)(nil),               // 40: pb.RelayBindRequest
-	(*RelayStartInfo)(nil),                 // 41: pb.RelayStartInfo
-	(*RelayBindResponse)(nil),              // 42: pb.RelayBindResponse
-	(*RelayCommandRequest)(nil),            // 43: pb.RelayCommandRequest
-	(*RelayGetHistoryFrameRequest)(nil),    // 44: pb.RelayGetHistoryFrameRequest
-	(*RelayGetHistoryFrameResponse)(nil),   // 45: pb.RelayGetHistoryFrameResponse
-	(*RelaySignalRequest)(nil),             // 46: pb.RelaySignalRequest
-	(*RelayExitGameRequest)(nil),           // 47: pb.RelayExitGameRequest
-	(*RelaySnapShotRequest)(nil),           // 48: pb.RelaySnapShotRequest
-	(*RelayReportRoomStateRequest)(nil),    // 49: pb.RelayReportRoomStateRequest
-	(*RelayChecksumRequest)(nil),           // 50: pb.RelayChecksumRequest
-	(*RelayUdpSyncTimeRequest)(nil),        // 51: pb.RelayUdpSyncTimeRequest
-	(*RelayUdpSyncTimeResponse)(nil),       // 52: pb.RelayUdpSyncTimeResponse
-	(*RelayReportScoreRequest)(nil),        // 53: pb.RelayReportScoreRequest
-	(*RpcReportScoreRequest)(nil),          // 54: pb.RpcReportScoreRequest
-	(*RpcReportRoomStateRequest)(nil),      // 55: pb.RpcReportRoomStateRequest
-	(*RpcReportRoomAvailNumsRequest)(nil),  // 56: pb.RpcReportRoomAvailNumsRequest
-	(*RpcReportAbnormalRequest)(nil),       // 57: pb.RpcReportAbnormalRequest
-	(*RpcReportAbnormalNotifyRequest)(nil), // 58: pb.RpcReportAbnormalNotifyRequest
-	(*RpcReportRoomLockRequest)(nil),       // 59: pb.RpcReportRoomLockRequest
-	(*GetUserStateRequest)(nil),            // 60: pb.GetUserStateRequest
-	(*UserStateInfo)(nil),                  // 61: pb.UserStateInfo
-	(*GetUserStateResponse)(nil),           // 62: pb.GetUserStateResponse
-	(*UpdateUserOnlineStateRequest)(nil),   // 63: pb.UpdateUserOnlineStateRequest
-	(*UpdateUserStateRequest)(nil),         // 64: pb.UpdateUserStateRequest
-	(*InviteFriendRequest)(nil),            // 65: pb.InviteFriendRequest
-	(*HandleInviteRequest)(nil),            // 66: pb.HandleInviteRequest
-	(*BindUserInfo)(nil),                   // 67: pb.BindUserInfo
-	(*GetUserConnectorInfoResponse)(nil),   // 68: pb.GetUserConnectorInfoResponse
-	(*SendGiftRequest)(nil),                // 69: pb.SendGiftRequest
-	(*SendGiftResponse)(nil),               // 70: pb.SendGiftResponse
-	nil,                                    // 71: pb.UidRequest.CmdMapEntry
-	(*FrameCommand)(nil),                   // 72: pb.FrameCommand
-	(*ItemInfo)(nil),                       // 73: pb.ItemInfo
+	(*SyncUserStateReq)(nil),               // 39: pb.SyncUserStateReq
+	(*SyncUserStateRsp)(nil),               // 40: pb.SyncUserStateRsp
+	(*RelayBindUserInfo)(nil),              // 41: pb.RelayBindUserInfo
+	(*RelayBindRequest)(nil),               // 42: pb.RelayBindRequest
+	(*RelayStartInfo)(nil),                 // 43: pb.RelayStartInfo
+	(*RelayBindResponse)(nil),              // 44: pb.RelayBindResponse
+	(*RelayCommandRequest)(nil),            // 45: pb.RelayCommandRequest
+	(*RelayGetHistoryFrameRequest)(nil),    // 46: pb.RelayGetHistoryFrameRequest
+	(*RelayGetHistoryFrameResponse)(nil),   // 47: pb.RelayGetHistoryFrameResponse
+	(*RelaySignalRequest)(nil),             // 48: pb.RelaySignalRequest
+	(*RelayExitGameRequest)(nil),           // 49: pb.RelayExitGameRequest
+	(*RelaySnapShotRequest)(nil),           // 50: pb.RelaySnapShotRequest
+	(*RelayReportRoomStateRequest)(nil),    // 51: pb.RelayReportRoomStateRequest
+	(*RelayChecksumRequest)(nil),           // 52: pb.RelayChecksumRequest
+	(*RelayUdpSyncTimeRequest)(nil),        // 53: pb.RelayUdpSyncTimeRequest
+	(*RelayUdpSyncTimeResponse)(nil),       // 54: pb.RelayUdpSyncTimeResponse
+	(*RelayReportScoreRequest)(nil),        // 55: pb.RelayReportScoreRequest
+	(*RpcReportScoreRequest)(nil),          // 56: pb.RpcReportScoreRequest
+	(*RpcReportRoomStateRequest)(nil),      // 57: pb.RpcReportRoomStateRequest
+	(*RpcReportRoomAvailNumsRequest)(nil),  // 58: pb.RpcReportRoomAvailNumsRequest
+	(*RpcReportAbnormalRequest)(nil),       // 59: pb.RpcReportAbnormalRequest
+	(*RpcReportAbnormalNotifyRequest)(nil), // 60: pb.RpcReportAbnormalNotifyRequest
+	(*RpcReportRoomLockRequest)(nil),       // 61: pb.RpcReportRoomLockRequest
+	(*GetUserStateRequest)(nil),            // 62: pb.GetUserStateRequest
+	(*UserStateInfo)(nil),                  // 63: pb.UserStateInfo
+	(*GetUserStateResponse)(nil),           // 64: pb.GetUserStateResponse
+	(*UpdateUserOnlineStateRequest)(nil),   // 65: pb.UpdateUserOnlineStateRequest
+	(*UpdateUserStateRequest)(nil),         // 66: pb.UpdateUserStateRequest
+	(*InviteFriendRequest)(nil),            // 67: pb.InviteFriendRequest
+	(*HandleInviteRequest)(nil),            // 68: pb.HandleInviteRequest
+	(*BindUserInfo)(nil),                   // 69: pb.BindUserInfo
+	(*GetUserConnectorInfoResponse)(nil),   // 70: pb.GetUserConnectorInfoResponse
+	(*SendGiftRequest)(nil),                // 71: pb.SendGiftRequest
+	(*SendGiftResponse)(nil),               // 72: pb.SendGiftResponse
+	nil,                                    // 73: pb.UidRequest.CmdMapEntry
+	(*FrameCommand)(nil),                   // 74: pb.FrameCommand
+	(*ItemInfo)(nil),                       // 75: pb.ItemInfo
 }
 var file_snakemini_rpc_proto_depIdxs = []int32{
 	2,  // 0: pb.RpcResponse.err:type_name -> pb.ErrInfo
 	2,  // 1: pb.ReplyEmpty.err:type_name -> pb.ErrInfo
 	21, // 2: pb.BindMatchInfo.group_info:type_name -> pb.GroupInfo
 	26, // 3: pb.BindMatchInfo.match_info:type_name -> pb.MatchInfo
-	71, // 4: pb.UidRequest.cmdMap:type_name -> pb.UidRequest.CmdMapEntry
+	73, // 4: pb.UidRequest.cmdMap:type_name -> pb.UidRequest.CmdMapEntry
 	2,  // 5: pb.InGameStateReply.err:type_name -> pb.ErrInfo
 	12, // 6: pb.CreateGroupRequest.user_info:type_name -> pb.MatchUserInfo
 	12, // 7: pb.JoinGroupRequest.user_info:type_name -> pb.MatchUserInfo
@@ -5399,14 +5499,14 @@ var file_snakemini_rpc_proto_depIdxs = []int32{
 	31, // 12: pb.UploadScoreRequest.score_list:type_name -> pb.UserScore
 	31, // 13: pb.ReportRoomScore.score_list:type_name -> pb.UserScore
 	21, // 14: pb.ReturnGroupRsp.group_info:type_name -> pb.GroupInfo
-	41, // 15: pb.RelayBindResponse.start_info:type_name -> pb.RelayStartInfo
+	43, // 15: pb.RelayBindResponse.start_info:type_name -> pb.RelayStartInfo
 	27, // 16: pb.RelayCommandRequest.user_attr:type_name -> pb.UserAttribute
-	72, // 17: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
-	61, // 18: pb.GetUserStateResponse.states:type_name -> pb.UserStateInfo
+	74, // 17: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
+	63, // 18: pb.GetUserStateResponse.states:type_name -> pb.UserStateInfo
 	12, // 19: pb.HandleInviteRequest.user_info:type_name -> pb.MatchUserInfo
-	67, // 20: pb.GetUserConnectorInfoResponse.user_info:type_name -> pb.BindUserInfo
+	69, // 20: pb.GetUserConnectorInfoResponse.user_info:type_name -> pb.BindUserInfo
 	0,  // 21: pb.SendGiftRequest.cost_type:type_name -> pb.SendGiftCost
-	73, // 22: pb.SendGiftResponse.reward_list:type_name -> pb.ItemInfo
+	75, // 22: pb.SendGiftResponse.reward_list:type_name -> pb.ItemInfo
 	23, // [23:23] is the sub-list for method output_type
 	23, // [23:23] is the sub-list for method input_type
 	23, // [23:23] is the sub-list for extension type_name
@@ -5879,7 +5979,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayBindUserInfo); i {
+			switch v := v.(*SyncUserStateReq); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5891,7 +5991,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayBindRequest); i {
+			switch v := v.(*SyncUserStateRsp); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5903,7 +6003,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayStartInfo); i {
+			switch v := v.(*RelayBindUserInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5915,7 +6015,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayBindResponse); i {
+			switch v := v.(*RelayBindRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5927,7 +6027,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayCommandRequest); i {
+			switch v := v.(*RelayStartInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5939,7 +6039,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayGetHistoryFrameRequest); i {
+			switch v := v.(*RelayBindResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5951,7 +6051,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayGetHistoryFrameResponse); i {
+			switch v := v.(*RelayCommandRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5963,7 +6063,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelaySignalRequest); i {
+			switch v := v.(*RelayGetHistoryFrameRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5975,7 +6075,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayExitGameRequest); i {
+			switch v := v.(*RelayGetHistoryFrameResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5987,7 +6087,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[47].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelaySnapShotRequest); i {
+			switch v := v.(*RelaySignalRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -5999,7 +6099,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[48].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayReportRoomStateRequest); i {
+			switch v := v.(*RelayExitGameRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6011,7 +6111,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[49].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayChecksumRequest); i {
+			switch v := v.(*RelaySnapShotRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6023,7 +6123,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[50].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayUdpSyncTimeRequest); i {
+			switch v := v.(*RelayReportRoomStateRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6035,7 +6135,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[51].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayUdpSyncTimeResponse); i {
+			switch v := v.(*RelayChecksumRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6047,7 +6147,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[52].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RelayReportScoreRequest); i {
+			switch v := v.(*RelayUdpSyncTimeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6059,7 +6159,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[53].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RpcReportScoreRequest); i {
+			switch v := v.(*RelayUdpSyncTimeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6071,7 +6171,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[54].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RpcReportRoomStateRequest); i {
+			switch v := v.(*RelayReportScoreRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6083,7 +6183,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RpcReportRoomAvailNumsRequest); i {
+			switch v := v.(*RpcReportScoreRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6095,7 +6195,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RpcReportAbnormalRequest); i {
+			switch v := v.(*RpcReportRoomStateRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6107,7 +6207,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RpcReportAbnormalNotifyRequest); i {
+			switch v := v.(*RpcReportRoomAvailNumsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6119,7 +6219,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RpcReportRoomLockRequest); i {
+			switch v := v.(*RpcReportAbnormalRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6131,7 +6231,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserStateRequest); i {
+			switch v := v.(*RpcReportAbnormalNotifyRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6143,7 +6243,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UserStateInfo); i {
+			switch v := v.(*RpcReportRoomLockRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6155,7 +6255,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[61].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserStateResponse); i {
+			switch v := v.(*GetUserStateRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6167,7 +6267,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[62].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateUserOnlineStateRequest); i {
+			switch v := v.(*UserStateInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6179,7 +6279,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[63].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateUserStateRequest); i {
+			switch v := v.(*GetUserStateResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6191,7 +6291,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[64].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InviteFriendRequest); i {
+			switch v := v.(*UpdateUserOnlineStateRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6203,7 +6303,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[65].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HandleInviteRequest); i {
+			switch v := v.(*UpdateUserStateRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6215,7 +6315,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[66].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BindUserInfo); i {
+			switch v := v.(*InviteFriendRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6227,7 +6327,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[67].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserConnectorInfoResponse); i {
+			switch v := v.(*HandleInviteRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6239,7 +6339,7 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[68].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SendGiftRequest); i {
+			switch v := v.(*BindUserInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -6251,6 +6351,30 @@ func file_snakemini_rpc_proto_init() {
 			}
 		}
 		file_snakemini_rpc_proto_msgTypes[69].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetUserConnectorInfoResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[70].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SendGiftRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[71].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SendGiftResponse); i {
 			case 0:
 				return &v.state
@@ -6269,7 +6393,7 @@ func file_snakemini_rpc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakemini_rpc_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   71,
+			NumMessages:   73,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
