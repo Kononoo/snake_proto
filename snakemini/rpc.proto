@@ -129,6 +129,7 @@ message GroupInfo {
     int32 game_mode = 4;
     int32 mode_version = 5;
     repeated GroupUserInfo user_infos = 6;
+    repeated int64  last_user=7; // 上一局玩家
 }
 
 message GroupUserInfo {
