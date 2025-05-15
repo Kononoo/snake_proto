@@ -4,6 +4,7 @@ option go_package = "git.17zjh.com/snake/snake_proto/snakecommon";
 
 import "snakecommon/config.proto";
 import "snakeapi/config/SKStore.Proto";
+import "snakecommon/task.proto";
 
 
 message ConfigVersionInfo {
