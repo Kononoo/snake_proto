@@ -2467,3 +2467,33 @@ message BannerExtraInfo {
   int32 finish = 9;
   string limit_type = 10;
 }
+
+message RelationConfig {
+  repeated SingleRelationConfig relation_list = 1; // 关系列表
+  int64 first_cold_sec = 2; // 首次冷却时间,单位秒
+  int64 second_cold_sec = 3; // 第二次冷却时间,单位秒
+  int64 send_coin_daily_limit = 4; // 每日赠送道具上限
+  int64 receive_coin_daily_limit= 5; // 每日领取道具上限
+  repeated RelationLimitItem relation_limit_list = 6; // 关系数量增加列表
+  repeated int32 challenge_event_ids = 7; // 特殊成就任务活动ID列表
+  repeated int32 level_event_ids = 8; // 等级奖励任务活动ID列表
+  repeated EventTask challenge_events = 9;         // 特殊成就任务配置，服务器读取填充
+  repeated EventTask level_events = 10;             // 等级奖励任务配置，服务器读取填充
+}
+
+message RelationLimitItem {
+  int64 level = 1; // 关系上限等级,从0开始
+  int64 need_diamond = 2; // 需要苹果数
+  int64 num = 3; // 关系上限
+}
+
+message SingleRelationConfig {
+  int64 relation_type = 1; // 关系类型
+  string name = 2; // 关系名称
+  repeated RelationLevelItem level_config = 3; // 关系等级配置
+}
+
+message RelationLevelItem {
+  int64 level = 1; // 关系等级
+  int64 need = 2; // 需要守护值
+}
