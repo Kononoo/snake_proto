@@ -1352,6 +1352,9 @@ message HotConfig {
   int32 market_state = 1;
   string sub_config = 2; // 小秘书配置
   string unity_loading_url = 3; // unity loading配置资源包
+  int64 maintenance_start_time = 4;
+  int64 maintenance_end_time = 5;
+  string maintenance_toast = 6;
 }
 // === hot_config end ========================================
 
