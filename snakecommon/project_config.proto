@@ -2476,14 +2476,15 @@ message RelationConfig {
   repeated SingleRelationConfig relation_list = 1; // 关系列表
   int64 first_cold_sec = 2; // 首次冷却时间,单位秒
   int64 second_cold_sec = 3; // 第二次冷却时间,单位秒
-  int64 send_coin_daily_limit = 4; // 每日赠送道具上限
-  int64 receive_coin_daily_limit= 5; // 每日领取道具上限
+  int64 send_coin_daily_limit = 4; // 每日赠送代币上限
+  int64 receive_coin_daily_limit= 5; // 每日领取代币上限
   repeated RelationLimitItem relation_limit_list = 6; // 关系数量增加列表
   repeated int32 challenge_event_ids = 7; // 特殊成就任务活动ID列表
   repeated int32 level_event_ids = 8; // 等级奖励任务活动ID列表
   repeated EventTask challenge_events = 9;         // 特殊成就任务配置，服务器读取填充
   repeated EventTask level_events = 10;             // 等级奖励任务配置，服务器读取填充
   repeated RelationNumRewardItem relation_num_reward_list = 11; // 关系数量奖励列表
+  int64 send_coin_num = 12; // 单次赠送代币数量
 }
 
 message RelationNumRewardItem {
