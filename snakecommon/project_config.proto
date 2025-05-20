@@ -2485,6 +2485,10 @@ message RelationConfig {
   repeated EventTask level_events = 10;             // 等级奖励任务配置，服务器读取填充
   repeated RelationNumRewardItem relation_num_reward_list = 11; // 关系数量奖励列表
   int64 send_coin_num = 12; // 单次赠送代币数量
+  string empty_reward_bg = 13; // 空奖励背景图
+  string shop_reward_bg = 14; // 兑换商店背景图
+  string gift_reward_bg = 15; // 专属好礼背景图
+  int64 msg_expire_sec = 16; // 消息过期时间,单位秒
 }
 
 message RelationNumRewardItem {
