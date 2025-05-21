@@ -14,6 +14,7 @@ enum ChannelType {
     Room = 3; // 赛后频道
     TmpTeam = 4; // 临时小队频道
     AreaTop = 5; // 地域榜
+    Clan = 6; // 战队频道
 }
 
 // 消息类型
@@ -25,6 +26,7 @@ enum MessageType {
     InviteMessage =4; // 组队邀请消息
     GiftMessage = 5; // 礼物消息
     TmpTeamInviteMessage =6; // 临时小队邀请消息
+    ClanInviteMessage = 7; // 战队邀请消息
 }
 
 enum MessageSubType {
@@ -84,6 +86,15 @@ message TmpTeamInviteContent {
     int32 count =6; // 当前人数
     int64 expireTs = 7; // 邀请过期时间，毫秒
     int64 owner = 8; // 房主
+}
+
+message ClanInviteContent {
+    int64 clanId = 1; // 战队ID
+    string name = 2; // 战队名称
+    string avatar = 3; // 战队头像
+    int64 memberLimit = 4; // 战队人数上限
+    int64 memberCount = 5; // 战队人数
+    int64 honor = 6; // 战队荣誉-结算等级
 }
 
 // commandId=sendmsg
@@ -182,6 +193,16 @@ message PushUpdateInvite {
     int64 expireTs = 7; // 邀请过期时间，毫秒
     int64 Owner =8; // 房主
     string messageId=9;// 消息ID
+}
+
+// commandId=updateclaninvite
+message PushUpdateClanInvite {  
+    int64 clanId = 1; // 战队ID
+    string name = 2; // 战队名称
+    string avatar = 3; // 战队头像
+    int64 memberLimit = 4; // 战队人数上限
+    int64 memberCount = 5; // 战队人数
+    int64 honor = 6; // 战队荣誉-结算等级
 }
 
 // commandId=invitelist
