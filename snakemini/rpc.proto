@@ -247,6 +247,7 @@ message GroupInfoRsp {
 
 message ReturnGroupReq {
     int64 uid=1;// 用户ID
+    MatchUserInfo user_info = 2;
 }
 
 message ReturnGroupRsp {
