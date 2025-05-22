@@ -2414,7 +2414,8 @@ type ReturnGroupReq struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uid int64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"` // 用户ID
+	Uid      int64          `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"` // 用户ID
+	UserInfo *MatchUserInfo `protobuf:"bytes,2,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
 }
 
 func (x *ReturnGroupReq) Reset() {
@@ -2454,6 +2455,13 @@ func (x *ReturnGroupReq) GetUid() int64 {
 		return x.Uid
 	}
 	return 0
+}
+
+func (x *ReturnGroupReq) GetUserInfo() *MatchUserInfo {
+	if x != nil {
+		return x.UserInfo
+	}
+	return nil
 }
 
 type ReturnGroupRsp struct {
@@ -5108,9 +5116,12 @@ var file_snakemini_rpc_proto_rawDesc = []byte{
 	0x6e, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x5f, 0x74, 0x73, 0x18,
 	0x07, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x54, 0x73, 0x12,
 	0x14, 0x0a, 0x05, 0x4f, 0x77, 0x6e, 0x65, 0x72, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05,
-	0x4f, 0x77, 0x6e, 0x65, 0x72, 0x22, 0x22, 0x0a, 0x0e, 0x52, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x47,
+	0x4f, 0x77, 0x6e, 0x65, 0x72, 0x22, 0x52, 0x0a, 0x0e, 0x52, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x47,
 	0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75, 0x69, 0x64, 0x22, 0x3e, 0x0a, 0x0e, 0x52, 0x65, 0x74,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x2e, 0x0a, 0x09, 0x75, 0x73, 0x65,
+	0x72, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x70,
+	0x62, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52,
+	0x08, 0x75, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x22, 0x3e, 0x0a, 0x0e, 0x52, 0x65, 0x74,
 	0x75, 0x72, 0x6e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x73, 0x70, 0x12, 0x2c, 0x0a, 0x0a, 0x67,
 	0x72, 0x6f, 0x75, 0x70, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
 	0x0d, 0x2e, 0x70, 0x62, 0x2e, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x09,
@@ -5508,20 +5519,21 @@ var file_snakemini_rpc_proto_depIdxs = []int32{
 	27, // 11: pb.MatchInfo.user_attr:type_name -> pb.UserAttribute
 	31, // 12: pb.UploadScoreRequest.score_list:type_name -> pb.UserScore
 	31, // 13: pb.ReportRoomScore.score_list:type_name -> pb.UserScore
-	21, // 14: pb.ReturnGroupRsp.group_info:type_name -> pb.GroupInfo
-	43, // 15: pb.RelayBindResponse.start_info:type_name -> pb.RelayStartInfo
-	27, // 16: pb.RelayCommandRequest.user_attr:type_name -> pb.UserAttribute
-	74, // 17: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
-	63, // 18: pb.GetUserStateResponse.states:type_name -> pb.UserStateInfo
-	12, // 19: pb.HandleInviteRequest.user_info:type_name -> pb.MatchUserInfo
-	69, // 20: pb.GetUserConnectorInfoResponse.user_info:type_name -> pb.BindUserInfo
-	0,  // 21: pb.SendGiftRequest.cost_type:type_name -> pb.SendGiftCost
-	75, // 22: pb.SendGiftResponse.reward_list:type_name -> pb.ItemInfo
-	23, // [23:23] is the sub-list for method output_type
-	23, // [23:23] is the sub-list for method input_type
-	23, // [23:23] is the sub-list for extension type_name
-	23, // [23:23] is the sub-list for extension extendee
-	0,  // [0:23] is the sub-list for field type_name
+	12, // 14: pb.ReturnGroupReq.user_info:type_name -> pb.MatchUserInfo
+	21, // 15: pb.ReturnGroupRsp.group_info:type_name -> pb.GroupInfo
+	43, // 16: pb.RelayBindResponse.start_info:type_name -> pb.RelayStartInfo
+	27, // 17: pb.RelayCommandRequest.user_attr:type_name -> pb.UserAttribute
+	74, // 18: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
+	63, // 19: pb.GetUserStateResponse.states:type_name -> pb.UserStateInfo
+	12, // 20: pb.HandleInviteRequest.user_info:type_name -> pb.MatchUserInfo
+	69, // 21: pb.GetUserConnectorInfoResponse.user_info:type_name -> pb.BindUserInfo
+	0,  // 22: pb.SendGiftRequest.cost_type:type_name -> pb.SendGiftCost
+	75, // 23: pb.SendGiftResponse.reward_list:type_name -> pb.ItemInfo
+	24, // [24:24] is the sub-list for method output_type
+	24, // [24:24] is the sub-list for method input_type
+	24, // [24:24] is the sub-list for extension type_name
+	24, // [24:24] is the sub-list for extension extendee
+	0,  // [0:24] is the sub-list for field type_name
 }
 
 func init() { file_snakemini_rpc_proto_init() }
