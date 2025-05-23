@@ -1162,6 +1162,7 @@ message ChestRewardInfo {
   int32 personal_remain = 22; // 个人剩余数量
   int32 reward_type = 23; // 奖励类型：必得、随机、自选、实物
   string popup_desc = 24; // 弹窗文案
+  bool  un_show_global_limit = 25; // 是否不展示全服数量上限（默认展示）
 }
 // chest end
 
