@@ -2489,6 +2489,23 @@ message RelationConfig {
   string shop_reward_bg = 14; // 兑换商店背景图
   string gift_reward_bg = 15; // 专属好礼背景图
   int64 msg_expire_sec = 16; // 消息过期时间,单位秒
+  RelationCareConfig relation_care_config = 17; // 关系亲密度配置
+}
+
+message RelationCareConfig {
+  int64 send_gift_add_care = 1; // 赠送礼物增加亲密度
+  int64 single_chat_add_care = 2; // 单次聊天增加亲密度
+  int64 single_chat_add_care_limit = 3; // 单次聊天增加亲密度上限
+  int64 game_zan_add_care = 4; // 游戏点赞增加亲密度
+  int64 game_zan_add_care_limit = 5; // 游戏点赞增加亲密度上限
+  int64 tacit_add_care = 6; // 默契次数增加亲密度
+  int64 tacit_add_care_limit = 7; // 默契次数增加亲密度上限
+  int64 photo_wall_add_care = 8; // 照片墙点赞增加亲密度
+  int64 photo_wall_add_care_limit = 9; // 照片墙点赞增加亲密度上限
+  int64 show_window_add_care = 10; // 橱窗点赞增加亲密度
+  int64 show_window_add_care_limit = 11; // 橱窗点赞增加亲密度上限
+  int64 broadcast_zan_add_care = 12; // 广播点赞增加亲密度
+  int64 broadcast_zan_add_care_limit = 13; // 广播点赞增加亲密度上限
 }
 
 message RelationNumRewardItem {
