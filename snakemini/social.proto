@@ -203,6 +203,7 @@ message PushUpdateClanInvite {
     int64 memberLimit = 4; // 战队人数上限
     int64 memberCount = 5; // 战队人数
     int64 honor = 6; // 战队荣誉-结算等级
+    string messageId = 7; // 消息ID
 }
 
 // commandId=invitelist
