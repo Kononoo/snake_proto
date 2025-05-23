@@ -1436,6 +1436,8 @@ enum RewardType {
   REWARD_TYPE_FALLGUY_COIN = 52; // 2d派对代币
   REWARD_TYPE_FALLGUY_SKIN = 53; // 2d派对套装
   REWARD_INTIMATE_APPELLATION = 54; // 亲密称谓
+  REWARD_TYPE_RELATION_ACTION = 55; // 亲密关系动作
+  REWARD_TYPE_RELATION_BACKGROUND = 56; // 亲密关系背景
 
   REWARD_MENTOR_POINT_ID = 158; // 名师点id
   REWARD_MENTOR_BOND_ID = 159; // 羁绊值id
@@ -1502,3 +1504,36 @@ message IntimateAppellationAnimationItem {
 }
 // intimate_appellation end
 
+message RelationActionList {
+  repeated RelationActionModel relation_action_list = 1;
+}
+
+message RelationActionModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  RelationActionInfo info = 5;
+}
+
+message RelationActionInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+}
+
+message RelationBackgroundList {
+  repeated RelationBackgroundModel relation_background_list = 1;
+}
+
+message RelationBackgroundModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  RelationBackgroundInfo info = 5;
+}
+
+message RelationBackgroundInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+}
