@@ -95,6 +95,7 @@ message ClanInviteContent {
     int64 memberLimit = 4; // 战队人数上限
     int64 memberCount = 5; // 战队人数
     int64 honor = 6; // 战队荣誉-结算等级
+    int32 needApprove = 7; // 是否需要审批
 }
 
 // commandId=sendmsg
@@ -204,6 +205,7 @@ message PushUpdateClanInvite {
     int64 memberCount = 5; // 战队人数
     int64 honor = 6; // 战队荣誉-结算等级
     string messageId = 7; // 消息ID
+    int32 needApprove = 8; // 是否需要审批
 }
 
 // commandId=invitelist
