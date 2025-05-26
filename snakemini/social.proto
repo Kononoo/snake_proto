@@ -206,6 +206,7 @@ message PushUpdateClanInvite {
     int64 honor = 6; // 战队荣誉-结算等级
     string messageId = 7; // 消息ID
     int32 needApprove = 8; // 是否需要审批
+    ChannelType channelType = 9; // 频道类型
 }
 
 // commandId=invitelist
