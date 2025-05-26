@@ -31,6 +31,7 @@ message MagicSkinConfig {
   string btn_link = 3;
   repeated MagicSkinData data = 4;
   repeated DescItem desc = 5; //  幻化屋活动说明
+  repeated int64 perfect_skin_ids = 6; // 所有完美皮肤id列表
 }
 
 message MagicSkinData{
