@@ -194,6 +194,10 @@ message ClanConfig {
   repeated NewClanRewardItem reward_config = 16; // 这是老的，结算的时候用，服务器返回从大到小的顺序，客户端从小到大展示
   repeated NewClanRewardItem reward_explain_config = 17; // 这是新的，预览的时候用，服务器返回从大到小的顺序，客户端从小到大展示
   string desc_url_v2 = 18;
+  int64  clan_box_start_time = 19; // 战队宝箱活动开启时间
+  int64  clan_box_end_time = 20;   // 战队宝箱活动结束时间
+  string clan_box_jump_url = 21;   // 战队宝箱活动挑战链接
+  string clan_box_img_url = 22;    // 战队宝箱活动跳转图标
 }
 
 message RuleDesc {
@@ -2529,12 +2533,4 @@ message SingleRelationConfig {
 message RelationLevelItem {
   int64 level = 1; // 关系等级
   int64 need = 2; // 需要守护值
-}
-
-
-message ClanBoxConfig {
-  int64 start_time = 1; // 开始时间
-  int64 end_time = 2;   // 结束时间
-  string jump_url = 3;  // 跳转链接
-  string img_url = 4;   // 图标
 }
