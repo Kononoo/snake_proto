@@ -2530,3 +2530,11 @@ message RelationLevelItem {
   int64 level = 1; // 关系等级
   int64 need = 2; // 需要守护值
 }
+
+
+message ClanBoxConfig {
+  int64 start_time = 1; // 开始时间
+  int64 end_time = 2;   // 结束时间
+  string jump_url = 3;  // 跳转链接
+  string img_url = 4;   // 图标
+}
