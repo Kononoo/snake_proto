@@ -2495,6 +2495,12 @@ message RelationConfig {
   int64 msg_expire_sec = 16; // 消息过期时间,单位秒
   RelationCareConfig relation_care_config = 17; // 关系亲密度配置
   int64 comment_words_limit = 18; // 留言字数上限
+  repeated RelationAddCareItem relation_add_care_list = 19; // 关系增加亲密度列表
+}
+
+message RelationAddCareItem {
+  string desc = 1; // 描述
+  string jump_url = 2; // 跳转链接
 }
 
 message RelationCareConfig {
