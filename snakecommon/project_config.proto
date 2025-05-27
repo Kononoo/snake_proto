@@ -2492,6 +2492,7 @@ message RelationConfig {
   RelationCareConfig relation_care_config = 17; // 关系亲密度配置
   int64 comment_words_limit = 18; // 留言字数上限
   repeated RelationAddCareItem relation_add_care_list = 19; // 关系增加亲密度列表
+  string gift_reward_desc = 20; // 专属好礼描述
 }
 
 message RelationAddCareItem {
