@@ -28,6 +28,8 @@ service Match {
     }
     rpc GroupInfo (GroupInfoReq) returns (GroupInfoRsp) {
     }
+    rpc SyncUserState(SyncUserStateReq) returns (SyncUserStateRsp) {
+    }
 }
 
 // ------------------------------------- GatewayServer service definition --------------------------------------------

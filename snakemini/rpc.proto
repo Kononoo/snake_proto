@@ -129,6 +129,7 @@ message GroupInfo {
     int32 game_mode = 4;
     int32 mode_version = 5;
     repeated GroupUserInfo user_infos = 6;
+    repeated int64  last_user=7; // 上一局玩家
 }
 
 message GroupUserInfo {
@@ -243,6 +244,22 @@ message GroupInfoRsp {
     int64 expire_ts = 7; // 邀请过期时间，unix秒
     int64 Owner =8; // 房主
 }
+
+message ReturnGroupReq {
+    int64 uid=1;// 用户ID
+    MatchUserInfo user_info = 2;
+}
+
+message ReturnGroupRsp {
+    GroupInfo group_info = 1;
+}
+
+message SyncUserStateReq {
+    int64 uid=1; // 用户ID
+    int32 state =2;// 状态
+}
+
+message SyncUserStateRsp {}
 
 //-------------------------relay-----------------------------
 
