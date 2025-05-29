@@ -2510,6 +2510,7 @@ message RelationAddCareItem {
 message RelationCareConfig {
   int64 send_coin_add_care = 1; // 赠送代币增加守护值
   int64 daily_care_add_care_limit = 2; // 每日增加守护值上限
+  int64 care_change_time = 3; // 守护值规则变化时间戳
 }
 
 message RelationNumRewardItem {
