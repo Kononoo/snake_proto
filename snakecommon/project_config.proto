@@ -2500,6 +2500,7 @@ message RelationConfig {
   repeated string share_msg_list = 21; // 分享文案列表
   repeated string comment_msg_list = 22; // 评论文案列表
   string relation_space_desc = 23; // 关系空间描述
+  string relation_toast_desc = 24; // 关系弹窗描述
 }
 
 message RelationAddCareItem {
