@@ -22,7 +22,8 @@ message Section {
   int64 magic_value = 6; // 幻化值
   int64 weight = 7; // 权重
   int64 weight_after_x = 8; // 花费x后的权重
-  int64 guaranteed = 9; // 保底
+  int64 weight_after_y = 9; // 花费y后的权重
+  int64 guaranteed = 10; // 保底
 }
 
 message GetInfoReq {
