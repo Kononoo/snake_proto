@@ -2501,6 +2501,7 @@ message RelationConfig {
   repeated string comment_msg_list = 22; // 评论文案列表
   string relation_space_desc = 23; // 关系空间描述
   string relation_toast_desc = 24; // 关系弹窗描述
+  string social_desc = 25; // 社交关系页描述
 }
 
 message RelationAddCareItem {
