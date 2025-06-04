@@ -27,6 +27,8 @@ enum MessageType {
     GiftMessage = 5; // 礼物消息
     TmpTeamInviteMessage =6; // 临时小队邀请消息
     ClanInviteMessage = 7; // 战队邀请消息
+    CPApplyMessage = 8; // CP申请消息
+    CPShareMessage = 9; // CP分享消息
 }
 
 enum MessageSubType {
@@ -97,6 +99,21 @@ message ClanInviteContent {
     int64 honor = 6; // 战队荣誉-结算等级
     int32 needApprove = 7; // 是否需要审批
 }
+
+message CPApplyContent {
+    int64 uid = 1; // 申请人uid
+    int64 giftId = 2; // 礼物ID
+    int64 giftNum = 3; // 礼物数量
+}
+
+message CPShareContent {
+    int64 cpId = 1; // CP ID
+    repeated ChatUserInfo userInfos = 2; // 双方信息
+    int64 care = 3; // 守护值
+    int64 level = 4; // 等级
+    string content = 5; // 分享文案
+}
+
 
 // commandId=sendmsg
 message SendMessageReq {// 发送消息
