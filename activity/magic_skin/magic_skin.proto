@@ -20,10 +20,6 @@ message Section {
   int64 worth_level = 4;
   int64 is_default = 5;  // 是否为默认样式
   int64 magic_value = 6; // 幻化值
-  int64 weight = 7; // 权重
-  int64 weight_after_x = 8; // 花费x后的权重
-  int64 weight_after_y = 9; // 花费y后的权重
-  int64 guaranteed = 10; // 保底
 }
 
 message GetInfoReq {
