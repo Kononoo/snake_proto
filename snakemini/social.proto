@@ -112,6 +112,7 @@ message CPShareContent {
     int64 care = 3; // 守护值
     int64 level = 4; // 等级
     string content = 5; // 分享文案
+    int64 designationId = 6; // 亲密称谓ID
 }
 
 
