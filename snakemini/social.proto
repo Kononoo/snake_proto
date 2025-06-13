@@ -106,6 +106,7 @@ message CPApplyContent {
     int64 uid = 1; // 申请人uid
     int64 giftId = 2; // 礼物ID
     int64 giftNum = 3; // 礼物数量
+    string content = 4; // 留言内容
 }
 
 message CPShareContent {
