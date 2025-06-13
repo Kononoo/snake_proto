@@ -1538,3 +1538,37 @@ message RelationBackgroundInfo {
   string anim_url = 1;
   int32 anim_type = 2;
 }
+message ColorfulNicknameList {
+  repeated ColorfulNicknameModel relation_background_list = 1;
+}
+
+message ColorfulNicknameModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  ColorfulNicknameInfo info = 5;
+}
+
+message ColorfulNicknameInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+}
+
+
+message ColorfulShowList {
+  repeated ColorfulShowModel relation_background_list = 1;
+}
+
+message ColorfulShowModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  ColorfulShowInfo info = 5;
+}
+
+message ColorfulShowInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+}
