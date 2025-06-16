@@ -1296,3 +1296,11 @@ message LittleTeamClipBoardLink {
 }
 
 // == 跳转规则配置集合 End =====
+
+message EndlessCollectConfig {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string act_id = 3;
+  string desc = 4; // 活动描述
+  repeated SnakeMain.Config.RewardConfig illustrate_reward = 5; // 图鉴奖励
+}
