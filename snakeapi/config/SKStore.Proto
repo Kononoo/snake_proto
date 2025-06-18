@@ -1573,7 +1573,7 @@ message ColorfulShowInfo {
   int32 anim_type = 2;
 }
 message HomepageTitleList {
-  repeated HomepageTittleModel colorful_nickname_list = 1;
+  repeated HomepageTittleModel homepage_title_list = 1;
 }
 
 message HomepageTittleModel {
@@ -1590,7 +1590,7 @@ message HomepageTitleInfo {
 }
 
 message HomepageBackList {
-  repeated HomepageBackModel colorful_nickname_list = 1;
+  repeated HomepageBackModel homepage_back_list = 1;
 }
 
 message HomepageBackModel {
@@ -1607,7 +1607,7 @@ message HomepageBackInfo {
 }
 
 message HomepageBaseList {
-  repeated HomepageBaseModel colorful_nickname_list = 1;
+  repeated HomepageBaseModel homepage_base_list = 1;
 }
 
 message HomepageBaseModel {
@@ -1624,7 +1624,7 @@ message HomepageBaseInfo {
 }
 
 message HomepageTopEdgeList {
-  repeated HomepageTopEdgeModel colorful_nickname_list = 1;
+  repeated HomepageTopEdgeModel homepage_top_edge_list = 1;
 }
 
 message HomepageTopEdgeModel {
@@ -1641,7 +1641,7 @@ message HomepageTopEdgeInfo {
 }
 
 message HomepageSideEdgeList {
-  repeated HomepageSideEdgeModel colorful_nickname_list = 1;
+  repeated HomepageSideEdgeModel homepage_side_edge_list = 1;
 }
 
 message HomepageSideEdgeModel {
@@ -1657,7 +1657,7 @@ message HomepageSideEdgeInfo {
   int32 anim_type = 2;
 }
 message HomepageBottomEdgeList {
-  repeated HomepageBottomEdgeModel colorful_nickname_list = 1;
+  repeated HomepageBottomEdgeModel homepage_bottom_edge_list = 1;
 }
 
 message HomepageBottomEdgeModel {
@@ -1674,7 +1674,7 @@ message HomepageBottomEdgeInfo {
 }
 
 message HomepageFrameList {
-  repeated HomepageFrameModel colorful_nickname_list = 1;
+  repeated HomepageFrameModel homepage_frame_list = 1;
 }
 
 message HomepageFrameModel {
