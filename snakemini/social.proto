@@ -107,6 +107,8 @@ message CPApplyContent {
     int64 giftId = 2; // 礼物ID
     int64 giftNum = 3; // 礼物数量
     string content = 4; // 留言内容
+    ChatUserInfo userInfo = 5; // 申请人信息
+    int64 expireTs = 6; // 过期时间
 }
 
 message CPShareContent {
