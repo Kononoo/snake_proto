@@ -478,6 +478,7 @@ enum SendGiftCost {
     Ad = 3; // 广告
     Share =4; // 分享
     DouyinDiamond=5;// 抖音钻石
+    CP = 6; // CP申请
 }
 
 message SendGiftRequest {
