@@ -119,9 +119,9 @@ message CPShareContent {
 
 message CrazyWeekendHelpContent {
     int64 star = 1; // 皮肤星级
-    int64 skin_imgurl = 2; // 皮肤图片
+    string skin_imgurl = 2; // 皮肤图片
     string skin_name = 3; // 皮肤名称
-    string jump_ur = 4; // 跳转链接
+    string jump_url = 4; // 跳转链接
 }
 
 // commandId=sendmsg
