@@ -1520,6 +1520,7 @@ message RelationActionModel {
 message RelationActionInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
 }
 
 message RelationBackgroundList {
@@ -1553,6 +1554,7 @@ message ColorfulNicknameModel {
 message ColorfulNicknameInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
 }
 
 
@@ -1571,6 +1573,7 @@ message ColorfulShowModel {
 message ColorfulShowInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
 }
 message HomepageTitleList {
   repeated HomepageTittleModel homepage_title_list = 1;
@@ -1587,6 +1590,7 @@ message HomepageTittleModel {
 message HomepageTitleInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
 }
 
 message HomepageBackList {
@@ -1604,6 +1608,7 @@ message HomepageBackModel {
 message HomepageBackInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
 }
 
 message HomepageBaseList {
@@ -1621,6 +1626,7 @@ message HomepageBaseModel {
 message HomepageBaseInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
 }
 
 message HomepageTopEdgeList {
@@ -1638,6 +1644,7 @@ message HomepageTopEdgeModel {
 message HomepageTopEdgeInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
 }
 
 message HomepageSideEdgeList {
@@ -1655,6 +1662,7 @@ message HomepageSideEdgeModel {
 message HomepageSideEdgeInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
 }
 message HomepageBottomEdgeList {
   repeated HomepageBottomEdgeModel homepage_bottom_edge_list = 1;
@@ -1671,6 +1679,7 @@ message HomepageBottomEdgeModel {
 message HomepageBottomEdgeInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
 }
 
 message HomepageFrameList {
@@ -1688,4 +1697,26 @@ message HomepageFrameModel {
 message HomepageFrameInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
+}
+
+
+message HomepageSubjectList {
+  repeated HomepageSubjectModel homepage_subject_list = 1;
+}
+
+message HomepageSubjectModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  HomepageSubjectInfo info = 5;
+}
+
+message HomepageSubjectInfo {
+  string signature_color=1;
+  string team_name_color=2;
+  string charm_color=3;
+  int32 back_unity_anim_id=4;
+  int32 panel_unity_anim_id=5;
 }
