@@ -1575,24 +1575,6 @@ message ColorfulShowInfo {
   int32 anim_type = 2;
   int32 unity_anim_id=3;
 }
-message HomepageTitleList {
-  repeated HomepageTittleModel homepage_title_list = 1;
-}
-
-message HomepageTittleModel {
-  int32 item_id = 1; // 商品id
-  int32 active = 2;
-  int64 update_time = 3;
-  StoreInfo store = 4;
-  HomepageTitleInfo info = 5;
-}
-
-message HomepageTitleInfo {
-  string anim_url = 1;
-  int32 anim_type = 2;
-  int32 unity_anim_id=3;
-}
-
 message HomepageBackList {
   repeated HomepageBackModel homepage_back_list = 1;
 }
@@ -1714,9 +1696,8 @@ message HomepageSubjectModel {
 }
 
 message HomepageSubjectInfo {
-  string signature_color=1;
-  string team_name_color=2;
-  string charm_color=3;
-  int32 back_unity_anim_id=4;
-  int32 panel_unity_anim_id=5;
+  string team_name_color=1;
+  string charm_color=2;
+  int32 back_unity_anim_id=3;
+  int32 panel_unity_anim_id=4;
 }
