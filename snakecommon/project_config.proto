@@ -1359,6 +1359,7 @@ message HotConfig {
   int64 maintenance_start_time = 4;
   int64 maintenance_end_time = 5;
   string maintenance_toast = 6;
+  bool open_kugou_game_sound = 7; // 是否开启酷狗游戏音效
 }
 // === hot_config end ========================================
 
