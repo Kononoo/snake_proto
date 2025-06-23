@@ -274,6 +274,7 @@ message RankConfig {
   DailyGameRewards daily_game_rewards = 17; // 每日游戏奖励
   NewerGuide newer_guide = 18; // 新手引导
   repeated RankRewardV2 rank_reward_v2 = 19; // 段位奖励v2
+  NewerGuide season_start = 20; // 赛季开启奖励
 }
 
 message RankReward {
