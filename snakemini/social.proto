@@ -223,6 +223,7 @@ message PushUpdateInvite {
     int64 expireTs = 7; // 邀请过期时间，毫秒
     int64 Owner =8; // 房主
     string messageId=9;// 消息ID
+    ChannelType channelType = 10; // 频道类型
 }
 
 // commandId=updateclaninvite
