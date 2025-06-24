@@ -224,6 +224,7 @@ message PushUpdateInvite {
     int64 Owner =8; // 房主
     string messageId=9;// 消息ID
     ChannelType channelType = 10; // 频道类型
+    string channelId = 11; // 频道ID
 }
 
 // commandId=updateclaninvite
