@@ -599,6 +599,7 @@ message SkinInfo {
   repeated MagicSkinSection sections = 29; // 幻化皮肤组件
   int32 team_unity_show = 30; // 团战unity动效， 1 展示，0 不展示
   int32 advanced_skin_id = 31; // 皮肤特性 id
+  int32 homepage_big_anim_enable = 32; // 首页大图动效开关，0 关闭，1 开启
 }
 
 message MagicSkinSection {
