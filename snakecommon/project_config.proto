@@ -365,6 +365,8 @@ message SeasonInfo {
   int32 skin_id = 10;
   DailyGameRewards daily_game_rewards = 12; // 每日游戏奖励
   repeated RankRewardV2 rank_reward_v2 = 13; // 段位奖励v2
+  int32 season_start_box_id = 14; // 赛季开始宝箱id
+  int64 season_start_box_num = 15; // 赛季开始宝箱数量
 }
 // === rank_config end ======================================
 
