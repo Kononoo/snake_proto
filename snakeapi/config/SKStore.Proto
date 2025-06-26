@@ -1556,7 +1556,7 @@ message ColorfulNicknameModel {
 message ColorfulNicknameInfo {
   string anim_url = 1;
   int32 anim_type = 2;
-  string unity_anim_type=3;
+  string unity_anim_key=3;
 }
 
 
@@ -1575,7 +1575,7 @@ message ColorfulShowModel {
 message ColorfulShowInfo {
   string anim_url = 1;
   int32 anim_type = 2;
-  string unity_anim_type=3;
+  string unity_anim_key=3;
 }
 message HomepageBackList {
   repeated HomepageBackModel homepage_back_list = 1;
@@ -1592,7 +1592,7 @@ message HomepageBackModel {
 message HomepageBackInfo {
   string anim_url = 1;
   int32 anim_type = 2;
-  string unity_anim_type=3;
+  string unity_anim_key=3;
 }
 
 message HomepageBaseList {
@@ -1610,7 +1610,7 @@ message HomepageBaseModel {
 message HomepageBaseInfo {
   string anim_url = 1;
   int32 anim_type = 2;
-  string unity_anim_type=3;
+  string unity_anim_key=3;
 }
 
 message HomepageTopEdgeList {
@@ -1628,7 +1628,7 @@ message HomepageTopEdgeModel {
 message HomepageTopEdgeInfo {
   string anim_url = 1;
   int32 anim_type = 2;
-  string unity_anim_type=3;
+  string unity_anim_key=3;
 }
 
 message HomepageSideEdgeList {
@@ -1646,7 +1646,7 @@ message HomepageSideEdgeModel {
 message HomepageSideEdgeInfo {
   string anim_url = 1;
   int32 anim_type = 2;
-  string unity_anim_type=3;
+  string unity_anim_key=3;
 }
 message HomepageBottomEdgeList {
   repeated HomepageBottomEdgeModel homepage_bottom_edge_list = 1;
@@ -1663,7 +1663,7 @@ message HomepageBottomEdgeModel {
 message HomepageBottomEdgeInfo {
   string anim_url = 1;
   int32 anim_type = 2;
-  string unity_anim_type=3;
+  string unity_anim_key=3;
 }
 
 message HomepageFrameList {
@@ -1681,7 +1681,7 @@ message HomepageFrameModel {
 message HomepageFrameInfo {
   string anim_url = 1;
   int32 anim_type = 2;
-  string unity_anim_type=3;
+  string unity_anim_key=3;
 }
 
 
@@ -1700,6 +1700,6 @@ message HomepageSubjectModel {
 message HomepageSubjectInfo {
   string team_name_color=1;
   string charm_color=2;
-  string back_unity_anim_type=3;
-  string panel_unity_anim_type=4;
+  string back_unity_anim_key=3;
+  string panel_unity_anim_key=4;
 }
