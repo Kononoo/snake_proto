@@ -1080,7 +1080,7 @@ message HomepageDecorateInfo {
   int32 scale_type = 3;
   int32 lottie_scale_type = 4;
   string font_color = 5;
-  int32  unity_anim_key = 6;
+  string unity_anim_key = 6;
 }
 // home decorate end
 
