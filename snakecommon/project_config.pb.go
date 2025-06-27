@@ -558,11 +558,11 @@ type OlGameConfig struct {
 	QualifyingGuide              int32                  `protobuf:"varint,23,opt,name=qualifying_guide,json=qualifyingGuide,proto3" json:"qualifying_guide,omitempty"` //1:强引导，2：弱引导
 	OlGamePredictDataCountNew    int32                  `protobuf:"varint,24,opt,name=ol_game_predict_data_count_new,json=olGamePredictDataCountNew,proto3" json:"ol_game_predict_data_count_new,omitempty"`
 	MatchBackground              *MatchBackgroundConfig `protobuf:"bytes,25,opt,name=match_background,json=matchBackground,proto3" json:"match_background,omitempty"`
-	JumpIcon                     *JumpIcon              `protobuf:"bytes,26,opt,name=jump_icon,json=jumpIcon,proto3" json:"jump_icon,omitempty"`                                                                     // 匹配界面跳转按钮
-	UnityAndroidRenderDelay      float64                `protobuf:"fixed64,27,opt,name=unity_android_render_delay,json=unityAndroidRenderDelay,proto3" json:"unity_android_render_delay,omitempty"`                  // unity 团战 android 渲染延迟
-	UnityIosRenderDelay          float64                `protobuf:"fixed64,28,opt,name=unity_ios_render_delay,json=unityIosRenderDelay,proto3" json:"unity_ios_render_delay,omitempty"`                              // unity 团战 ios 渲染延迟
-	UnityAndroidPredictDataCount float64                `protobuf:"fixed64,29,opt,name=unity_android_predict_data_count,json=unityAndroidPredictDataCount,proto3" json:"unity_android_predict_data_count,omitempty"` // unity 团战 android 预测数据数量
-	UnityIosPredictDataCount     float64                `protobuf:"fixed64,30,opt,name=unity_ios_predict_data_count,json=unityIosPredictDataCount,proto3" json:"unity_ios_predict_data_count,omitempty"`             // unity 团战 ios 预测数据数量
+	JumpIcon                     *JumpIcon              `protobuf:"bytes,26,opt,name=jump_icon,json=jumpIcon,proto3" json:"jump_icon,omitempty"`                                                                    // 匹配界面跳转按钮
+	UnityAndroidRenderDelay      float64                `protobuf:"fixed64,27,opt,name=unity_android_render_delay,json=unityAndroidRenderDelay,proto3" json:"unity_android_render_delay,omitempty"`                 // unity 团战 android 渲染延迟
+	UnityIosRenderDelay          float64                `protobuf:"fixed64,28,opt,name=unity_ios_render_delay,json=unityIosRenderDelay,proto3" json:"unity_ios_render_delay,omitempty"`                             // unity 团战 ios 渲染延迟
+	UnityAndroidPredictDataCount int32                  `protobuf:"varint,29,opt,name=unity_android_predict_data_count,json=unityAndroidPredictDataCount,proto3" json:"unity_android_predict_data_count,omitempty"` // unity 团战 android 预测数据数量
+	UnityIosPredictDataCount     int32                  `protobuf:"varint,30,opt,name=unity_ios_predict_data_count,json=unityIosPredictDataCount,proto3" json:"unity_ios_predict_data_count,omitempty"`             // unity 团战 ios 预测数据数量
 }
 
 func (x *OlGameConfig) Reset() {
@@ -793,14 +793,14 @@ func (x *OlGameConfig) GetUnityIosRenderDelay() float64 {
 	return 0
 }
 
-func (x *OlGameConfig) GetUnityAndroidPredictDataCount() float64 {
+func (x *OlGameConfig) GetUnityAndroidPredictDataCount() int32 {
 	if x != nil {
 		return x.UnityAndroidPredictDataCount
 	}
 	return 0
 }
 
-func (x *OlGameConfig) GetUnityIosPredictDataCount() float64 {
+func (x *OlGameConfig) GetUnityIosPredictDataCount() int32 {
 	if x != nil {
 		return x.UnityIosPredictDataCount
 	}
@@ -23590,11 +23590,11 @@ var file_snakecommon_project_config_proto_rawDesc = []byte{
 	0x49, 0x6f, 0x73, 0x52, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x44, 0x65, 0x6c, 0x61, 0x79, 0x12, 0x46,
 	0x0a, 0x20, 0x75, 0x6e, 0x69, 0x74, 0x79, 0x5f, 0x61, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x5f,
 	0x70, 0x72, 0x65, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x63, 0x6f, 0x75,
-	0x6e, 0x74, 0x18, 0x1d, 0x20, 0x01, 0x28, 0x01, 0x52, 0x1c, 0x75, 0x6e, 0x69, 0x74, 0x79, 0x41,
+	0x6e, 0x74, 0x18, 0x1d, 0x20, 0x01, 0x28, 0x05, 0x52, 0x1c, 0x75, 0x6e, 0x69, 0x74, 0x79, 0x41,
 	0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x50, 0x72, 0x65, 0x64, 0x69, 0x63, 0x74, 0x44, 0x61, 0x74,
 	0x61, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x3e, 0x0a, 0x1c, 0x75, 0x6e, 0x69, 0x74, 0x79, 0x5f,
 	0x69, 0x6f, 0x73, 0x5f, 0x70, 0x72, 0x65, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x64, 0x61, 0x74, 0x61,
-	0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x1e, 0x20, 0x01, 0x28, 0x01, 0x52, 0x18, 0x75, 0x6e,
+	0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x1e, 0x20, 0x01, 0x28, 0x05, 0x52, 0x18, 0x75, 0x6e,
 	0x69, 0x74, 0x79, 0x49, 0x6f, 0x73, 0x50, 0x72, 0x65, 0x64, 0x69, 0x63, 0x74, 0x44, 0x61, 0x74,
 	0x61, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x95, 0x01, 0x0a, 0x08, 0x4a, 0x75, 0x6d, 0x70, 0x49,
 	0x63, 0x6f, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28,
