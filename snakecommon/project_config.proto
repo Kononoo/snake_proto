@@ -77,6 +77,10 @@ message OlGameConfig {
   int32 ol_game_predict_data_count_new = 24;
   MatchBackgroundConfig match_background = 25;
   JumpIcon jump_icon = 26; // 匹配界面跳转按钮
+  double unity_android_render_delay = 27; // unity 团战 android 渲染延迟
+  double unity_ios_render_delay = 28; // unity 团战 ios 渲染延迟
+  double unity_android_predict_data_count = 29; // unity 团战 android 预测数据数量
+  double unity_ios_predict_data_count = 30; // unity 团战 ios 预测数据数量
 }
 
 message JumpIcon {
