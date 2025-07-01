@@ -1524,8 +1524,9 @@ message RelationActionModel {
 message RelationActionInfo {
   string anim_url = 1;
   int32 anim_type = 2;
-  string unity_anim_key=3;
+  int32 unity_anim_id=3;
   int32 code_template_id = 4;
+  string unity_anim_key=5;
 }
 
 message RelationBackgroundList {
