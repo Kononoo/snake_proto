@@ -2399,6 +2399,7 @@ message TeamEndlessConfig {
   string ios_unlock_tip = 7; // ios解锁提示
   int32 boss = 18; // 是否开启boss功能，0: 未开启 1: 开启
   CoupleSkinActivity couple_skin_activity = 19; // cp皮肤直售活动
+  int32 graph=20; // 双人无尽地图实验，0：未开启，1:开启
 }
 
 message CoupleSkinActivity {
