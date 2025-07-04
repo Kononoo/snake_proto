@@ -164,6 +164,8 @@ message PushNewMessage {
 message SingleChat {
     int64 targetUid = 1; // 目标用户uid
     string relationType = 2; // 关系类型  "" 自己 "1" 被关注 "2" 已关注 "3" 互相关注 "4" 陌生人
+    int32 state=3;// 在线状态
+    int64 lastChatTs=4;// 最后聊天时间
 }
 
 // commandId=singlechatlist
