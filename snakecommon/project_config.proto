@@ -2400,6 +2400,7 @@ message TeamEndlessConfig {
   int32 boss = 18; // 是否开启boss功能，0: 未开启 1: 开启
   CoupleSkinActivity couple_skin_activity = 19; // cp皮肤直售活动
   int32 graph=20; // 双人无尽地图实验，0：未开启，1:开启
+  SssSkinFree sss_skin_free=21; //sss皮肤限免
 }
 
 message CoupleSkinActivity {
@@ -2408,7 +2409,12 @@ message CoupleSkinActivity {
   int64 end_time = 3;
   string jump_url = 4;
 }
-
+message SssSkinFree{
+  string activity_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+  string jump_url = 4;
+}
 //----------------------------------------------------------------------------------------------------------------------
 // 多人无尽 end
 // ---------------------------------------------------------------------------------------------------------------------
