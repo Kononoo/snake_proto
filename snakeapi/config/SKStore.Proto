@@ -600,7 +600,7 @@ message SkinInfo {
   int32 team_unity_show = 30; // 团战unity动效， 1 展示，0 不展示
   int32 advanced_skin_id = 31; // 皮肤特性 id
   int32 homepage_big_anim_enable = 32; // 首页大图动效开关，0 关闭，1 开启
-  string unity_realm_key = 33; // unity 出场领域动效 key
+  int32 unity_realm_id = 33; // unity 出场领域动效 key
 }
 
 message MagicSkinSection {
