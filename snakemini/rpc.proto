@@ -211,6 +211,7 @@ message UserScore {
     int32 relive = 5;
     int32 hit_wall = 6;
     int32 eat_star = 7;
+    int32 kill_boss = 8;
 }
 
 message GameEndResponse {
