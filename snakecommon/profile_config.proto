@@ -1304,3 +1304,18 @@ message EndlessCollectConfig {
   string desc = 4; // 活动描述
   repeated SnakeMain.Config.RewardConfig illustrate_reward = 5; // 图鉴奖励
 }
+
+// ======== car battle start ====================================================
+message CarBattleConfig {
+  string  act_id = 1;
+  int64   start_time = 2;
+  int64   end_time = 3;
+  float   score_gap_percent = 4;
+  bool    show_banner_after_endless = 5; // 是否展示弹窗（ab）
+  int64   target_score = 6;              // 成为蛇王的目标分数
+  string  reward_img = 7;                // 弹窗展示奖励图
+  string  pop_bg_has_team = 8;           // 弹窗背景（无车队版）
+  string  pop_bg_no_team = 9;            // 弹窗背景（有车队版）
+  string  act_link = 10;                 // 活动跳转链接
+}
+// ======== car battle end ====================================================
