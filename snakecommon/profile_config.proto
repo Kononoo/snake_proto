@@ -1286,9 +1286,17 @@ message ChainChargeConfig {
 // === 跳转规则配置集合  Start =====
 message ClipBoardLinkConfig {
   LittleTeamClipBoardLink team_link = 1; // 蛇蛇小队口令跳转
+  CarBattleClipBoardLink  car_link = 2;  // 车队争霸跳转
 }
 
 message LittleTeamClipBoardLink {
+  int64 start_time = 1;
+  int64 end_time = 2;
+  string jump_url = 3;
+  string key_word = 4;
+}
+
+message CarBattleClipBoardLink {
   int64 start_time = 1;
   int64 end_time = 2;
   string jump_url = 3;
