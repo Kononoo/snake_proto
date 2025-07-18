@@ -2553,3 +2553,28 @@ message RelationLevelItem {
   int64 need = 2; // 需要守护值
   int64 day = 3; // 需要天数
 }
+
+
+// =====  pass check v3 start =====
+
+message PassCheckV3 {
+  repeated PassCheckV3HomeEntrance home_entrance = 1; // 首页入口
+  repeated PassCheckV3Popup popup = 2; // 弹窗
+}
+
+message PassCheckV3HomeEntrance {
+  int64 act_id = 1; // 活动 ID
+  int64 season_id = 2;  // 赛季 ID
+  int64 res_id = 3; // 资源 ID
+  int64 start = 4; // 开始时间
+  int64 end = 5; // 结束时间
+  string anim = 6; // 动效链接
+}
+
+message PassCheckV3Popup {
+  int64 act_id = 1; // 活动 ID
+  string jump_link = 2; // 跳转链接
+  string bg_url = 3; // 背景图
+}
+
+// =====  pass check v3 end =====
