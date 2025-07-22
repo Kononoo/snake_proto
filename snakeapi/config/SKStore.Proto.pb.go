@@ -7,11 +7,12 @@
 package config
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	snakeapi "git.17zjh.com/snake/snake_proto/snakeapi"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -11189,6 +11190,8 @@ type CoupleBgInfo struct {
 	WeddingOathColor    string `protobuf:"bytes,8,opt,name=wedding_oath_color,json=weddingOathColor,proto3" json:"wedding_oath_color,omitempty"`          // 婚礼誓言色值
 	HeartImgUrl         string `protobuf:"bytes,9,opt,name=heart_img_url,json=heartImgUrl,proto3" json:"heart_img_url,omitempty"`
 	FrontColor          string `protobuf:"bytes,10,opt,name=front_color,json=frontColor,proto3" json:"front_color,omitempty"`
+	BgUrl               string `protobuf:"bytes,11,opt,name=bg_url,json=bgUrl,proto3" json:"bg_url,omitempty"`
+	CpTimeBgColor       string `protobuf:"bytes,12,opt,name=cp_time_bg_color,json=cpTimeBgColor,proto3" json:"cp_time_bg_color,omitempty"`
 }
 
 func (x *CoupleBgInfo) Reset() {

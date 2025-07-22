@@ -1192,6 +1192,8 @@ message CoupleBgInfo {
   string wedding_oath_color = 8;// 婚礼誓言色值
   string heart_img_url = 9;
   string front_color = 10;
+  string bg_url = 11; // 背景底图
+  string cp_time_bg_color = 12; //日期背景颜色
 }
 // couple bg end
 
