@@ -2558,8 +2558,13 @@ message RelationLevelItem {
 // =====  pass check v3 start =====
 
 message PassCheckV3 {
-  repeated PassCheckV3HomeEntrance home_entrance = 1; // 首页入口
-  repeated PassCheckV3Popup popup = 2; // 弹窗
+  repeated PassCheckV3Item pass_check_v3_list = 1; // 通行证配置
+}
+
+message PassCheckV3Item {
+  PassCheckV3HomeEntrance home_entrance = 1; // 首页入口
+  int64 exp_per_level = 2; // 每级经验值
+  int64 day_exp_limit = 3; // 每日经验上限
 }
 
 message PassCheckV3HomeEntrance {
@@ -2569,12 +2574,8 @@ message PassCheckV3HomeEntrance {
   int64 start = 4; // 开始时间
   int64 end = 5; // 结束时间
   string anim = 6; // 动效链接
+  string outline_color = 7; // 外框颜色
 }
 
-message PassCheckV3Popup {
-  int64 act_id = 1; // 活动 ID
-  string jump_link = 2; // 跳转链接
-  string bg_url = 3; // 背景图
-}
 
 // =====  pass check v3 end =====
