@@ -1531,6 +1531,8 @@ message RelationActionInfo {
   int32 unity_animation_template = 4;
   string unity_anim_key=5;
   int32 appear_time = 6;
+  string card_anim_url = 7;
+  int32 card_anim_type = 8;
 }
 
 message RelationBackgroundList {
