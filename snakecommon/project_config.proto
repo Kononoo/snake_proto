@@ -2575,6 +2575,7 @@ message PassCheckV3HomeEntrance {
   int64 end = 5; // 结束时间
   string anim = 6; // 动效链接
   string outline_color = 7; // 外框颜色
+  string static_url = 8; // 静态预览图
 }
 
 
