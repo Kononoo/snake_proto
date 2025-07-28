@@ -7,11 +7,12 @@
 package config
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	snakeapi "git.17zjh.com/snake/snake_proto/snakeapi"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -13389,6 +13390,9 @@ type RelationActionInfo struct {
 	UnityAnimationTemplate int32  `protobuf:"varint,4,opt,name=unity_animation_template,json=unityAnimationTemplate,proto3" json:"unity_animation_template,omitempty"`
 	UnityAnimKey           string `protobuf:"bytes,5,opt,name=unity_anim_key,json=unityAnimKey,proto3" json:"unity_anim_key,omitempty"`
 	AppearTime             int32  `protobuf:"varint,6,opt,name=appear_time,json=appearTime,proto3" json:"appear_time,omitempty"`
+	CardAnimUrl            string `protobuf:"bytes,7,opt,name=card_anim_url,json=cardAnimUrl,proto3" json:"card_anim_url,omitempty"`	
+	CardAnimType           int32    `protobuf:"bytes,8,opt,name=card_anim_type,json=cardAnimType,proto3" json:"card_anim_type,omitempty"`	
+
 }
 
 func (x *RelationActionInfo) Reset() {
@@ -13464,6 +13468,21 @@ func (x *RelationActionInfo) GetAppearTime() int32 {
 	}
 	return 0
 }
+
+func (x *RelationActionInfo) GetCardAnimUrl() string {
+	if x != nil {
+		return x.CardAnimUrl
+	}
+	return ""
+}
+
+func (x *RelationActionInfo) GetCardAnimType() int32 {
+	if x != nil {
+		return x.CardAnimType
+	}
+	return 0
+}
+
 
 type RelationBackgroundList struct {
 	state         protoimpl.MessageState
