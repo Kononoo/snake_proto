@@ -7,11 +7,12 @@
 package config
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	snakeapi "git.17zjh.com/snake/snake_proto/snakeapi"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -11189,8 +11190,9 @@ type CoupleBgInfo struct {
 	WeddingOathColor    string `protobuf:"bytes,8,opt,name=wedding_oath_color,json=weddingOathColor,proto3" json:"wedding_oath_color,omitempty"`          // 婚礼誓言色值
 	HeartImgUrl         string `protobuf:"bytes,9,opt,name=heart_img_url,json=heartImgUrl,proto3" json:"heart_img_url,omitempty"`
 	FrontColor          string `protobuf:"bytes,10,opt,name=front_color,json=frontColor,proto3" json:"front_color,omitempty"`
-	BgUrl               string `protobuf:"bytes,11,opt,name=bg_url,json=bgUrl,proto3" json:"bg_url,omitempty"`                             // 背景底图
-	CpTimeBgColor       string `protobuf:"bytes,12,opt,name=cp_time_bg_color,json=cpTimeBgColor,proto3" json:"cp_time_bg_color,omitempty"` //日期背景颜色
+	BgUrl               string `protobuf:"bytes,11,opt,name=bg_url,json=bgUrl,proto3" json:"bg_url,omitempty"`                                            // 背景底图
+	CpTimeBgColor       string `protobuf:"bytes,12,opt,name=cp_time_bg_color,json=cpTimeBgColor,proto3" json:"cp_time_bg_color,omitempty"`                //日期背景颜色
+	SourceUrlNew        string `protobuf:"bytes,13,opt,name=source_url_new,json=sourceUrlNew,proto3" json:"source_url_new,omitempty"`                     //资源图（新）
 }
 
 func (x *CoupleBgInfo) Reset() {
@@ -11305,6 +11307,13 @@ func (x *CoupleBgInfo) GetBgUrl() string {
 func (x *CoupleBgInfo) GetCpTimeBgColor() string {
 	if x != nil {
 		return x.CpTimeBgColor
+	}
+	return ""
+}
+
+func (x *CoupleBgInfo) GetSourceUrlNew() string {
+	if x != nil {
+		return x.SourceUrlNew
 	}
 	return ""
 }

@@ -1194,6 +1194,7 @@ message CoupleBgInfo {
   string front_color = 10;
   string bg_url = 11; // 背景底图
   string cp_time_bg_color = 12; //日期背景颜色
+  string source_url_new = 13; //资源图（新）
 }
 // couple bg end
 
