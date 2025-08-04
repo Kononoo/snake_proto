@@ -30,6 +30,8 @@ message PlayerInfo{
   string nickname = 10; // 玩家昵称
   int64 kill_effect = 11; // 击杀效果
   int64 rank_score = 12; // 段位分
+  int64 skin_id = 13; // 皮肤id
+  string limit_time = 14; // 皮肤时间, 0永久1限时
 }
 
 // 向UnityServer同步房间信息
