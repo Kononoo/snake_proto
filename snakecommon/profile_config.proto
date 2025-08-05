@@ -1311,6 +1311,7 @@ message EndlessCollectConfig {
   string act_id = 3;
   string desc = 4; // 活动描述
   repeated SnakeMain.Config.RewardConfig illustrate_reward = 5; // 图鉴奖励
+  int64 boss = 6;//是否开启boss实验
 }
 
 // ======== car battle start ====================================================

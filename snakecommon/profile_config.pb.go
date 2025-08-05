@@ -2556,9 +2556,9 @@ type PassCommonConfig struct {
 	AdvanceBgAnimType int32  `protobuf:"varint,22,opt,name=advance_bg_anim_type,json=advanceBgAnimType,proto3" json:"advance_bg_anim_type,omitempty"` // 进阶通行证背景动效类型
 	AdvanceHonorUrl   string `protobuf:"bytes,23,opt,name=advance_honor_url,json=advanceHonorUrl,proto3" json:"advance_honor_url,omitempty"`          // 荣耀通行证卡片
 	AdvanceLuxuryUrl  string `protobuf:"bytes,24,opt,name=advance_luxury_url,json=advanceLuxuryUrl,proto3" json:"advance_luxury_url,omitempty"`       // 豪华通行证卡片
-	RuleDescTmpl string `protobuf:"bytes,25,opt,name=rule_desc_tmpl,json=ruleDescTmpl,proto3" json:"rule_desc_tmpl,omitempty"`
-	Desc         string `protobuf:"bytes,26,opt,name=desc,proto3" json:"desc,omitempty"`
-	TaskCardId   int32  `protobuf:"varint,27,opt,name=task_card_id,json=taskCardId,proto3" json:"task_card_id,omitempty"` // 任务卡id
+	RuleDescTmpl      string `protobuf:"bytes,25,opt,name=rule_desc_tmpl,json=ruleDescTmpl,proto3" json:"rule_desc_tmpl,omitempty"`
+	Desc              string `protobuf:"bytes,26,opt,name=desc,proto3" json:"desc,omitempty"`
+	TaskCardId        int32  `protobuf:"varint,27,opt,name=task_card_id,json=taskCardId,proto3" json:"task_card_id,omitempty"` // 任务卡id
 	// 游戏首页icon
 	LevelColor         string `protobuf:"bytes,28,opt,name=level_color,json=levelColor,proto3" json:"level_color,omitempty"`                            // 等级数值的颜色
 	Icon               string `protobuf:"bytes,29,opt,name=icon,proto3" json:"icon,omitempty"`                                                          // 首页icon
