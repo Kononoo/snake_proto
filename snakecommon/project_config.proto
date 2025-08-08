@@ -572,6 +572,7 @@ message UiConfigV3 {
   bool use_5275_icon_layout = 20; // 是否使用5275版本优化后的首页icon布局
   string teamendless_bgurl = 21; // 多人无尽按钮背景
   GameIcon points_champ_icon = 22; // 新春大赏入口 icon https://wepie.feishu.cn/docx/LFuLdbWnco1DjuxVi9AcRUdfnyc
+  GameIcon treasure_box_icon = 23; // 珍宝箱入口 icon
 }
 
 message GameIcon {
