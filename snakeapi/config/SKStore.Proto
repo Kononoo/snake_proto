@@ -1337,6 +1337,7 @@ message PriceInfo {
   int32 num = 2; //RMB 类型时候  这个字段 代表 goodsid
   int32 discount = 3;
   int32 discountPrice = 4;
+  int32 old_num = 5; //折前价
 }
 
 message RewardConfig { // 服务器配置奖励的通用结构
