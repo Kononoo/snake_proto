@@ -975,6 +975,7 @@ message FlagsConfig {
   int32 gift_anim_single_flag = 42; // 礼物动效 0：同时播放多个 1：同时只能播放一个
   int32 join_snake_area_team = 43; // 今天是否进入过蛇蛇小队
   int32 team_endless_new_icon = 44; // 双人无尽新图标，0：不显示 1：显示
+  int32 arrow_and_area =45;// 无尽玩法内皮肤显示方向箭头/碰撞范围圈实验
 }
 
 message FeedbackConfig {
