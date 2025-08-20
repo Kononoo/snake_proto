@@ -1327,5 +1327,6 @@ message CarBattleConfig {
   string  pop_bg_no_team = 9;            // 弹窗背景（有车队版）
   string  act_link = 10;                 // 活动跳转链接
   int64   min_score_gap = 11;            // 展示上一名车队的最小分差
+  string  pop_link=12;                   // 弹窗跳转链接
 }
 // ======== car battle end ====================================================
