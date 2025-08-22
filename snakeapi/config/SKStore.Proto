@@ -775,6 +775,8 @@ message GiftInfo {
   int64 act_show_end = 33;
   GiftType type = 34;            // 礼物类型
   RelatedGift related_gift = 35; // 盲盒关联的礼物
+  string naming_img_android = 36; // 安卓冠名图
+  string naming_img_ios = 37; // ios冠名图
 }
 
 enum GiftType {

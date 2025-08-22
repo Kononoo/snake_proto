@@ -7,11 +7,12 @@
 package config
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	snakeapi "git.17zjh.com/snake/snake_proto/snakeapi"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -7175,6 +7176,8 @@ type GiftInfo struct {
 	ActShowEnd        int64               `protobuf:"varint,33,opt,name=act_show_end,json=actShowEnd,proto3" json:"act_show_end,omitempty"`
 	Type              GiftType            `protobuf:"varint,34,opt,name=type,proto3,enum=SnakeMain.Config.GiftType" json:"type,omitempty"`  // 礼物类型
 	RelatedGift       *RelatedGift        `protobuf:"bytes,35,opt,name=related_gift,json=relatedGift,proto3" json:"related_gift,omitempty"` // 盲盒关联的礼物
+	NamingImgAndroid  string              `protobuf:"bytes,36,opt,name=naming_img_android,json=namingImgAndroid,proto3" json:"naming_img_android,omitempty"`
+	NamingImgIOS      string              `protobuf:"bytes,37,opt,name=naming_img_ios,json=namingImgIOS,proto3" json:"naming_img_ios,omitempty"`
 }
 
 func (x *GiftInfo) Reset() {
