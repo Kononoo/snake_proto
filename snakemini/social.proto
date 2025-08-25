@@ -32,7 +32,8 @@ enum MessageType {
     CPShareMessage = 9; // CP分享消息
     CrazyWeekendHelpMessage = 10; // 互助消息
     RelationApplyMessage = 11; // 关系申请消息
-    RelationCoinMessage = 12; // 赠送知音币消息
+    RelationShareMessage = 12; // 关系分享消息
+    RelationCoinMessage = 13; // 赠送知音币消息
 }
 
 enum MessageSubType {
@@ -137,6 +138,14 @@ message RelationApplyContent {
     ChatUserInfo userInfo = 5; // 申请人信息
     int64 expireTs = 6; // 过期时间
     int32 relationType = 7; // 关系类型
+}
+
+message RelationShareContent {
+    repeated ChatUserInfo userInfos = 1; // 双方信息
+    int64 care = 2; // 守护值
+    int64 level = 3; // 等级
+    string content = 4; // 分享文案
+    int64 designationId = 5; // 亲密称谓ID
 }
 
 message RelationCoinContent {
