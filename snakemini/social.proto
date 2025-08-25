@@ -146,6 +146,7 @@ message RelationShareContent {
     int64 level = 3; // 等级
     string content = 4; // 分享文案
     int64 designationId = 5; // 亲密称谓ID
+    int32 relationType = 6; // 关系类型
 }
 
 message RelationCoinContent {
