@@ -31,6 +31,8 @@ enum MessageType {
     CPApplyMessage = 8; // CP申请消息
     CPShareMessage = 9; // CP分享消息
     CrazyWeekendHelpMessage = 10; // 互助消息
+    RelationApplyMessage = 11; // 关系申请消息
+    RelationCoinMessage = 12; // 赠送知音币消息
 }
 
 enum MessageSubType {
@@ -125,6 +127,21 @@ message CrazyWeekendHelpContent {
     string skin_imgurl = 2; // 皮肤图片
     string skin_name = 3; // 皮肤名称
     string jump_url = 4; // 跳转链接
+}
+
+message RelationApplyContent {
+    int64 uid = 1; // 申请人uid
+    int64 giftId = 2; // 礼物ID
+    int64 giftNum = 3; // 礼物数量
+    string content = 4; // 留言内容
+    ChatUserInfo userInfo = 5; // 申请人信息
+    int64 expireTs = 6; // 过期时间
+    int32 relationType = 7; // 关系类型
+}
+
+message RelationCoinContent {
+    int64 uid = 1; // 赠送人
+    int64 num = 2; // 赠送数量
 }
 
 // commandId=sendmsg
