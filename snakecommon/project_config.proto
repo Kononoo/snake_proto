@@ -2587,8 +2587,6 @@ message PassCheckV3HomeEntrance {
 // =====  snake  mini game start =====
 
 message SmallGame {
-  string id = 1;               // ID
-  string desc = 2;             // 说明
   repeated MiniGameItem game_list = 3; // 游戏配置列表
 }
 
