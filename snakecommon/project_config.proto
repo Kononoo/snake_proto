@@ -2582,3 +2582,21 @@ message PassCheckV3HomeEntrance {
 
 
 // =====  pass check v3 end =====
+
+
+// =====  snake  mini game start =====
+
+message SmallGame {
+  string id = 1;               // ID
+  string desc = 2;             // 说明
+  repeated MiniGameItem game_list = 3; // 游戏配置列表
+}
+
+message MiniGameItem {
+  string game_id = 1;      // 游戏 ID
+  string asset_url = 2;    // 小游戏 URL
+  string dll_name = 3;     // 小游戏读取的 Dll bundle name
+  string cdn = 4;          // CDN 地址
+}
+
+// =====  snake mini game end =====
