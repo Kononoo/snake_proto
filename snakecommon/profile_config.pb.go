@@ -11461,6 +11461,7 @@ type ClipBoardLinkConfig struct {
 	unknownFields protoimpl.UnknownFields
 
 	TeamLink *LittleTeamClipBoardLink `protobuf:"bytes,1,opt,name=team_link,json=teamLink,proto3" json:"team_link,omitempty"` // 蛇蛇小队口令跳转
+	CarLink  *CarBattleClipBoardLink  `protobuf:"bytes,2,opt,name=car_link,json=carLink,proto3" json:"car_link,omitempty"`    // 车队争霸跳转
 }
 
 func (x *ClipBoardLinkConfig) Reset() {
@@ -11498,6 +11499,13 @@ func (*ClipBoardLinkConfig) Descriptor() ([]byte, []int) {
 func (x *ClipBoardLinkConfig) GetTeamLink() *LittleTeamClipBoardLink {
 	if x != nil {
 		return x.TeamLink
+	}
+	return nil
+}
+
+func (x *ClipBoardLinkConfig) GetCarLink() *CarBattleClipBoardLink {
+	if x != nil {
+		return x.CarLink
 	}
 	return nil
 }
@@ -11573,6 +11581,300 @@ func (x *LittleTeamClipBoardLink) GetKeyWord() string {
 	return ""
 }
 
+type CarBattleClipBoardLink struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StartTime int64  `protobuf:"varint,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime   int64  `protobuf:"varint,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	JumpUrl   string `protobuf:"bytes,3,opt,name=jump_url,json=jumpUrl,proto3" json:"jump_url,omitempty"`
+	KeyWord   string `protobuf:"bytes,4,opt,name=key_word,json=keyWord,proto3" json:"key_word,omitempty"`
+}
+
+func (x *CarBattleClipBoardLink) Reset() {
+	*x = CarBattleClipBoardLink{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[133]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CarBattleClipBoardLink) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CarBattleClipBoardLink) ProtoMessage() {}
+
+func (x *CarBattleClipBoardLink) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[133]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CarBattleClipBoardLink.ProtoReflect.Descriptor instead.
+func (*CarBattleClipBoardLink) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{133}
+}
+
+func (x *CarBattleClipBoardLink) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *CarBattleClipBoardLink) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *CarBattleClipBoardLink) GetJumpUrl() string {
+	if x != nil {
+		return x.JumpUrl
+	}
+	return ""
+}
+
+func (x *CarBattleClipBoardLink) GetKeyWord() string {
+	if x != nil {
+		return x.KeyWord
+	}
+	return ""
+}
+
+type EndlessCollectConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StartTime        int64                  `protobuf:"varint,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime          int64                  `protobuf:"varint,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	ActId            string                 `protobuf:"bytes,3,opt,name=act_id,json=actId,proto3" json:"act_id,omitempty"`
+	Desc             string                 `protobuf:"bytes,4,opt,name=desc,proto3" json:"desc,omitempty"`                                                 // 活动描述
+	IllustrateReward []*config.RewardConfig `protobuf:"bytes,5,rep,name=illustrate_reward,json=illustrateReward,proto3" json:"illustrate_reward,omitempty"` // 图鉴奖励
+	Boss             int64                  `protobuf:"varint,6,opt,name=boss,proto3" json:"boss,omitempty"`                                                //是否开启boss实验
+}
+
+func (x *EndlessCollectConfig) Reset() {
+	*x = EndlessCollectConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[134]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EndlessCollectConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EndlessCollectConfig) ProtoMessage() {}
+
+func (x *EndlessCollectConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[134]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EndlessCollectConfig.ProtoReflect.Descriptor instead.
+func (*EndlessCollectConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{134}
+}
+
+func (x *EndlessCollectConfig) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *EndlessCollectConfig) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *EndlessCollectConfig) GetActId() string {
+	if x != nil {
+		return x.ActId
+	}
+	return ""
+}
+
+func (x *EndlessCollectConfig) GetDesc() string {
+	if x != nil {
+		return x.Desc
+	}
+	return ""
+}
+
+func (x *EndlessCollectConfig) GetIllustrateReward() []*config.RewardConfig {
+	if x != nil {
+		return x.IllustrateReward
+	}
+	return nil
+}
+
+func (x *EndlessCollectConfig) GetBoss() int64 {
+	if x != nil {
+		return x.Boss
+	}
+	return 0
+}
+
+// ======== car battle start ====================================================
+type CarBattleConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ActId                  string  `protobuf:"bytes,1,opt,name=act_id,json=actId,proto3" json:"act_id,omitempty"`
+	StartTime              int64   `protobuf:"varint,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime                int64   `protobuf:"varint,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	ScoreGapPercent        float32 `protobuf:"fixed32,4,opt,name=score_gap_percent,json=scoreGapPercent,proto3" json:"score_gap_percent,omitempty"`
+	ShowBannerAfterEndless bool    `protobuf:"varint,5,opt,name=show_banner_after_endless,json=showBannerAfterEndless,proto3" json:"show_banner_after_endless,omitempty"` // 是否展示弹窗（ab）
+	TargetScore            int64   `protobuf:"varint,6,opt,name=target_score,json=targetScore,proto3" json:"target_score,omitempty"`                                      // 成为蛇王的目标分数
+	RewardImg              string  `protobuf:"bytes,7,opt,name=reward_img,json=rewardImg,proto3" json:"reward_img,omitempty"`                                             // 弹窗展示奖励图
+	PopBgHasTeam           string  `protobuf:"bytes,8,opt,name=pop_bg_has_team,json=popBgHasTeam,proto3" json:"pop_bg_has_team,omitempty"`                                // 弹窗背景（无车队版）
+	PopBgNoTeam            string  `protobuf:"bytes,9,opt,name=pop_bg_no_team,json=popBgNoTeam,proto3" json:"pop_bg_no_team,omitempty"`                                   // 弹窗背景（有车队版）
+	ActLink                string  `protobuf:"bytes,10,opt,name=act_link,json=actLink,proto3" json:"act_link,omitempty"`                                                  // 活动跳转链接
+	MinScoreGap            int64   `protobuf:"varint,11,opt,name=min_score_gap,json=minScoreGap,proto3" json:"min_score_gap,omitempty"`                                   // 展示上一名车队的最小分差
+	PopLink                string  `protobuf:"bytes,12,opt,name=pop_link,json=popLink,proto3" json:"pop_link,omitempty"`                                                  // 弹窗跳转链接
+}
+
+func (x *CarBattleConfig) Reset() {
+	*x = CarBattleConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakecommon_profile_config_proto_msgTypes[135]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CarBattleConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CarBattleConfig) ProtoMessage() {}
+
+func (x *CarBattleConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_snakecommon_profile_config_proto_msgTypes[135]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CarBattleConfig.ProtoReflect.Descriptor instead.
+func (*CarBattleConfig) Descriptor() ([]byte, []int) {
+	return file_snakecommon_profile_config_proto_rawDescGZIP(), []int{135}
+}
+
+func (x *CarBattleConfig) GetActId() string {
+	if x != nil {
+		return x.ActId
+	}
+	return ""
+}
+
+func (x *CarBattleConfig) GetStartTime() int64 {
+	if x != nil {
+		return x.StartTime
+	}
+	return 0
+}
+
+func (x *CarBattleConfig) GetEndTime() int64 {
+	if x != nil {
+		return x.EndTime
+	}
+	return 0
+}
+
+func (x *CarBattleConfig) GetScoreGapPercent() float32 {
+	if x != nil {
+		return x.ScoreGapPercent
+	}
+	return 0
+}
+
+func (x *CarBattleConfig) GetShowBannerAfterEndless() bool {
+	if x != nil {
+		return x.ShowBannerAfterEndless
+	}
+	return false
+}
+
+func (x *CarBattleConfig) GetTargetScore() int64 {
+	if x != nil {
+		return x.TargetScore
+	}
+	return 0
+}
+
+func (x *CarBattleConfig) GetRewardImg() string {
+	if x != nil {
+		return x.RewardImg
+	}
+	return ""
+}
+
+func (x *CarBattleConfig) GetPopBgHasTeam() string {
+	if x != nil {
+		return x.PopBgHasTeam
+	}
+	return ""
+}
+
+func (x *CarBattleConfig) GetPopBgNoTeam() string {
+	if x != nil {
+		return x.PopBgNoTeam
+	}
+	return ""
+}
+
+func (x *CarBattleConfig) GetActLink() string {
+	if x != nil {
+		return x.ActLink
+	}
+	return ""
+}
+
+func (x *CarBattleConfig) GetMinScoreGap() int64 {
+	if x != nil {
+		return x.MinScoreGap
+	}
+	return 0
+}
+
+func (x *CarBattleConfig) GetPopLink() string {
+	if x != nil {
+		return x.PopLink
+	}
+	return ""
+}
+
 type GiftWallConfig_NamePlate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -11588,7 +11890,7 @@ type GiftWallConfig_NamePlate struct {
 func (x *GiftWallConfig_NamePlate) Reset() {
 	*x = GiftWallConfig_NamePlate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_profile_config_proto_msgTypes[133]
+		mi := &file_snakecommon_profile_config_proto_msgTypes[136]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11601,7 +11903,7 @@ func (x *GiftWallConfig_NamePlate) String() string {
 func (*GiftWallConfig_NamePlate) ProtoMessage() {}
 
 func (x *GiftWallConfig_NamePlate) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_profile_config_proto_msgTypes[133]
+	mi := &file_snakecommon_profile_config_proto_msgTypes[136]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -11667,7 +11969,7 @@ type ExtraBuff_ExtraBuffInfo struct {
 func (x *ExtraBuff_ExtraBuffInfo) Reset() {
 	*x = ExtraBuff_ExtraBuffInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_snakecommon_profile_config_proto_msgTypes[135]
+		mi := &file_snakecommon_profile_config_proto_msgTypes[138]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -11680,7 +11982,7 @@ func (x *ExtraBuff_ExtraBuffInfo) String() string {
 func (*ExtraBuff_ExtraBuffInfo) ProtoMessage() {}
 
 func (x *ExtraBuff_ExtraBuffInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_snakecommon_profile_config_proto_msgTypes[135]
+	mi := &file_snakecommon_profile_config_proto_msgTypes[138]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -13847,25 +14149,79 @@ var file_snakecommon_profile_config_proto_rawDesc = []byte{
 	0x63, 0x74, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69,
 	0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54,
 	0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x58,
-	0x0a, 0x13, 0x43, 0x6c, 0x69, 0x70, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x6e, 0x6b, 0x43,
-	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x41, 0x0a, 0x09, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x6c, 0x69,
-	0x6e, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x73, 0x6e, 0x61, 0x6b, 0x65,
-	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4c, 0x69, 0x74, 0x74, 0x6c, 0x65, 0x54, 0x65, 0x61,
-	0x6d, 0x43, 0x6c, 0x69, 0x70, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x6e, 0x6b, 0x52, 0x08,
-	0x74, 0x65, 0x61, 0x6d, 0x4c, 0x69, 0x6e, 0x6b, 0x22, 0x89, 0x01, 0x0a, 0x17, 0x4c, 0x69, 0x74,
-	0x74, 0x6c, 0x65, 0x54, 0x65, 0x61, 0x6d, 0x43, 0x6c, 0x69, 0x70, 0x42, 0x6f, 0x61, 0x72, 0x64,
-	0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69,
-	0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54,
-	0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19,
-	0x0a, 0x08, 0x6a, 0x75, 0x6d, 0x70, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x07, 0x6a, 0x75, 0x6d, 0x70, 0x55, 0x72, 0x6c, 0x12, 0x19, 0x0a, 0x08, 0x6b, 0x65, 0x79,
-	0x5f, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6b, 0x65, 0x79,
-	0x57, 0x6f, 0x72, 0x64, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a,
-	0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
-	0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x22, 0x98,
+	0x01, 0x0a, 0x13, 0x43, 0x6c, 0x69, 0x70, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x6e, 0x6b,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x41, 0x0a, 0x09, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x6c,
+	0x69, 0x6e, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x4c, 0x69, 0x74, 0x74, 0x6c, 0x65, 0x54, 0x65,
+	0x61, 0x6d, 0x43, 0x6c, 0x69, 0x70, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x6e, 0x6b, 0x52,
+	0x08, 0x74, 0x65, 0x61, 0x6d, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x3e, 0x0a, 0x08, 0x63, 0x61, 0x72,
+	0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x73, 0x6e,
+	0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x43, 0x61, 0x72, 0x42, 0x61, 0x74,
+	0x74, 0x6c, 0x65, 0x43, 0x6c, 0x69, 0x70, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x6e, 0x6b,
+	0x52, 0x07, 0x63, 0x61, 0x72, 0x4c, 0x69, 0x6e, 0x6b, 0x22, 0x89, 0x01, 0x0a, 0x17, 0x4c, 0x69,
+	0x74, 0x74, 0x6c, 0x65, 0x54, 0x65, 0x61, 0x6d, 0x43, 0x6c, 0x69, 0x70, 0x42, 0x6f, 0x61, 0x72,
+	0x64, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74,
+	0x69, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74,
+	0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12,
+	0x19, 0x0a, 0x08, 0x6a, 0x75, 0x6d, 0x70, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x07, 0x6a, 0x75, 0x6d, 0x70, 0x55, 0x72, 0x6c, 0x12, 0x19, 0x0a, 0x08, 0x6b, 0x65,
+	0x79, 0x5f, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6b, 0x65,
+	0x79, 0x57, 0x6f, 0x72, 0x64, 0x22, 0x88, 0x01, 0x0a, 0x16, 0x43, 0x61, 0x72, 0x42, 0x61, 0x74,
+	0x74, 0x6c, 0x65, 0x43, 0x6c, 0x69, 0x70, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x4c, 0x69, 0x6e, 0x6b,
+	0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12,
+	0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x6a, 0x75,
+	0x6d, 0x70, 0x5f, 0x75, 0x72, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6a, 0x75,
+	0x6d, 0x70, 0x55, 0x72, 0x6c, 0x12, 0x19, 0x0a, 0x08, 0x6b, 0x65, 0x79, 0x5f, 0x77, 0x6f, 0x72,
+	0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6b, 0x65, 0x79, 0x57, 0x6f, 0x72, 0x64,
+	0x22, 0xdc, 0x01, 0x0a, 0x14, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x43, 0x6f, 0x6c, 0x6c,
+	0x65, 0x63, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74, 0x61,
+	0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73,
+	0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64, 0x5f,
+	0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64, 0x54,
+	0x69, 0x6d, 0x65, 0x12, 0x15, 0x0a, 0x06, 0x61, 0x63, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x05, 0x61, 0x63, 0x74, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x65,
+	0x73, 0x63, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x65, 0x73, 0x63, 0x12, 0x4b,
+	0x0a, 0x11, 0x69, 0x6c, 0x6c, 0x75, 0x73, 0x74, 0x72, 0x61, 0x74, 0x65, 0x5f, 0x72, 0x65, 0x77,
+	0x61, 0x72, 0x64, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x53, 0x6e, 0x61, 0x6b,
+	0x65, 0x4d, 0x61, 0x69, 0x6e, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x52, 0x65, 0x77,
+	0x61, 0x72, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x10, 0x69, 0x6c, 0x6c, 0x75, 0x73,
+	0x74, 0x72, 0x61, 0x74, 0x65, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x62,
+	0x6f, 0x73, 0x73, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x62, 0x6f, 0x73, 0x73, 0x22,
+	0xb1, 0x03, 0x0a, 0x0f, 0x43, 0x61, 0x72, 0x42, 0x61, 0x74, 0x74, 0x6c, 0x65, 0x43, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x12, 0x15, 0x0a, 0x06, 0x61, 0x63, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x05, 0x61, 0x63, 0x74, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x74,
+	0x61, 0x72, 0x74, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09,
+	0x73, 0x74, 0x61, 0x72, 0x74, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x65, 0x6e, 0x64,
+	0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x65, 0x6e, 0x64,
+	0x54, 0x69, 0x6d, 0x65, 0x12, 0x2a, 0x0a, 0x11, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x5f, 0x67, 0x61,
+	0x70, 0x5f, 0x70, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x02, 0x52,
+	0x0f, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x47, 0x61, 0x70, 0x50, 0x65, 0x72, 0x63, 0x65, 0x6e, 0x74,
+	0x12, 0x39, 0x0a, 0x19, 0x73, 0x68, 0x6f, 0x77, 0x5f, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x5f,
+	0x61, 0x66, 0x74, 0x65, 0x72, 0x5f, 0x65, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x18, 0x05, 0x20,
+	0x01, 0x28, 0x08, 0x52, 0x16, 0x73, 0x68, 0x6f, 0x77, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x41,
+	0x66, 0x74, 0x65, 0x72, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x12, 0x21, 0x0a, 0x0c, 0x74,
+	0x61, 0x72, 0x67, 0x65, 0x74, 0x5f, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x0b, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x53, 0x63, 0x6f, 0x72, 0x65, 0x12, 0x1d,
+	0x0a, 0x0a, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x69, 0x6d, 0x67, 0x18, 0x07, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x09, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x49, 0x6d, 0x67, 0x12, 0x25, 0x0a,
+	0x0f, 0x70, 0x6f, 0x70, 0x5f, 0x62, 0x67, 0x5f, 0x68, 0x61, 0x73, 0x5f, 0x74, 0x65, 0x61, 0x6d,
+	0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x70, 0x6f, 0x70, 0x42, 0x67, 0x48, 0x61, 0x73,
+	0x54, 0x65, 0x61, 0x6d, 0x12, 0x23, 0x0a, 0x0e, 0x70, 0x6f, 0x70, 0x5f, 0x62, 0x67, 0x5f, 0x6e,
+	0x6f, 0x5f, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x6f,
+	0x70, 0x42, 0x67, 0x4e, 0x6f, 0x54, 0x65, 0x61, 0x6d, 0x12, 0x19, 0x0a, 0x08, 0x61, 0x63, 0x74,
+	0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x63, 0x74,
+	0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x22, 0x0a, 0x0d, 0x6d, 0x69, 0x6e, 0x5f, 0x73, 0x63, 0x6f, 0x72,
+	0x65, 0x5f, 0x67, 0x61, 0x70, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x6d, 0x69, 0x6e,
+	0x53, 0x63, 0x6f, 0x72, 0x65, 0x47, 0x61, 0x70, 0x12, 0x19, 0x0a, 0x08, 0x70, 0x6f, 0x70, 0x5f,
+	0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x70, 0x6f, 0x70, 0x4c,
+	0x69, 0x6e, 0x6b, 0x42, 0x2d, 0x5a, 0x2b, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65,
+	0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x63, 0x6f, 0x6d, 0x6d,
+	0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -13880,7 +14236,7 @@ func file_snakecommon_profile_config_proto_rawDescGZIP() []byte {
 	return file_snakecommon_profile_config_proto_rawDescData
 }
 
-var file_snakecommon_profile_config_proto_msgTypes = make([]protoimpl.MessageInfo, 138)
+var file_snakecommon_profile_config_proto_msgTypes = make([]protoimpl.MessageInfo, 141)
 var file_snakecommon_profile_config_proto_goTypes = []interface{}{
 	(*ChargeVipConfig)(nil),                 // 0: snakecommon.ChargeVipConfig
 	(*VipLevel)(nil),                        // 1: snakecommon.VipLevel
@@ -14015,48 +14371,51 @@ var file_snakecommon_profile_config_proto_goTypes = []interface{}{
 	(*ChainChargeConfig)(nil),               // 130: snakecommon.ChainChargeConfig
 	(*ClipBoardLinkConfig)(nil),             // 131: snakecommon.ClipBoardLinkConfig
 	(*LittleTeamClipBoardLink)(nil),         // 132: snakecommon.LittleTeamClipBoardLink
-	(*GiftWallConfig_NamePlate)(nil),        // 133: snakecommon.GiftWallConfig.NamePlate
-	nil,                                     // 134: snakecommon.NewMeetupV3Config.ShowConfigEntry
-	(*ExtraBuff_ExtraBuffInfo)(nil),         // 135: snakecommon.ExtraBuff.ExtraBuffInfo
-	nil,                                     // 136: snakecommon.StarFieldBp.ConstellationNameEntry
-	nil,                                     // 137: snakecommon.StarFieldLevelConf.MainRewardsEntry
-	(*config.RewardConfig)(nil),             // 138: SnakeMain.Config.RewardConfig
-	(*CConvert)(nil),                        // 139: snakecommon.CConvert
-	(*CPriceInfo)(nil),                      // 140: snakecommon.CPriceInfo
-	(*config.PackModel)(nil),                // 141: SnakeMain.Config.PackModel
-	(*CRewardItem)(nil),                     // 142: snakecommon.CRewardItem
-	(*EventTask)(nil),                       // 143: snakecommon.EventTask
-	(*GameIcon)(nil),                        // 144: snakecommon.GameIcon
+	(*CarBattleClipBoardLink)(nil),          // 133: snakecommon.CarBattleClipBoardLink
+	(*EndlessCollectConfig)(nil),            // 134: snakecommon.EndlessCollectConfig
+	(*CarBattleConfig)(nil),                 // 135: snakecommon.CarBattleConfig
+	(*GiftWallConfig_NamePlate)(nil),        // 136: snakecommon.GiftWallConfig.NamePlate
+	nil,                                     // 137: snakecommon.NewMeetupV3Config.ShowConfigEntry
+	(*ExtraBuff_ExtraBuffInfo)(nil),         // 138: snakecommon.ExtraBuff.ExtraBuffInfo
+	nil,                                     // 139: snakecommon.StarFieldBp.ConstellationNameEntry
+	nil,                                     // 140: snakecommon.StarFieldLevelConf.MainRewardsEntry
+	(*config.RewardConfig)(nil),             // 141: SnakeMain.Config.RewardConfig
+	(*CConvert)(nil),                        // 142: snakecommon.CConvert
+	(*CPriceInfo)(nil),                      // 143: snakecommon.CPriceInfo
+	(*config.PackModel)(nil),                // 144: SnakeMain.Config.PackModel
+	(*CRewardItem)(nil),                     // 145: snakecommon.CRewardItem
+	(*EventTask)(nil),                       // 146: snakecommon.EventTask
+	(*GameIcon)(nil),                        // 147: snakecommon.GameIcon
 }
 var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	1,   // 0: snakecommon.ChargeVipConfig.level_list:type_name -> snakecommon.VipLevel
 	2,   // 1: snakecommon.VipLevel.privilege:type_name -> snakecommon.VipPrivilege
-	138, // 2: snakecommon.VipLevel.reward_list:type_name -> SnakeMain.Config.RewardConfig
-	138, // 3: snakecommon.VipLevel.week_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 2: snakecommon.VipLevel.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	141, // 3: snakecommon.VipLevel.week_reward:type_name -> SnakeMain.Config.RewardConfig
 	4,   // 4: snakecommon.MonthCardConfig.little_month_card:type_name -> snakecommon.MonthCardInfo
 	4,   // 5: snakecommon.MonthCardConfig.super_month_card:type_name -> snakecommon.MonthCardInfo
-	138, // 6: snakecommon.MonthCardInfo.daily_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 6: snakecommon.MonthCardInfo.daily_reward:type_name -> SnakeMain.Config.RewardConfig
 	5,   // 7: snakecommon.MonthCardInfo.pack_list:type_name -> snakecommon.MonthCardPackItem
 	7,   // 8: snakecommon.ShowBadgeConfig.title_list:type_name -> snakecommon.BadgeTitle
-	138, // 9: snakecommon.BadgeTitle.rewards:type_name -> SnakeMain.Config.RewardConfig
+	141, // 9: snakecommon.BadgeTitle.rewards:type_name -> SnakeMain.Config.RewardConfig
 	9,   // 10: snakecommon.CharmTourConfig.charm_title_list:type_name -> snakecommon.CharmTourTitleItem
 	10,  // 11: snakecommon.CharmTourConfig.charm_level_list:type_name -> snakecommon.CharmTourLevelItem
 	11,  // 12: snakecommon.CharmTourConfig.nameplate_list:type_name -> snakecommon.NameplateItem
-	138, // 13: snakecommon.CharmTourTitleItem.rewards:type_name -> SnakeMain.Config.RewardConfig
-	133, // 14: snakecommon.GiftWallConfig.nameplate_list:type_name -> snakecommon.GiftWallConfig.NamePlate
-	138, // 15: snakecommon.HatchEgg.reward_review_list:type_name -> SnakeMain.Config.RewardConfig
+	141, // 13: snakecommon.CharmTourTitleItem.rewards:type_name -> SnakeMain.Config.RewardConfig
+	136, // 14: snakecommon.GiftWallConfig.nameplate_list:type_name -> snakecommon.GiftWallConfig.NamePlate
+	141, // 15: snakecommon.HatchEgg.reward_review_list:type_name -> SnakeMain.Config.RewardConfig
 	14,  // 16: snakecommon.HatchEgg.egg_list:type_name -> snakecommon.EggLevelInfo
-	138, // 17: snakecommon.EggLevelInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	141, // 17: snakecommon.EggLevelInfo.reward_list:type_name -> SnakeMain.Config.RewardConfig
 	17,  // 18: snakecommon.NewMeetupV3Config.list:type_name -> snakecommon.MeetupConfigItem
-	134, // 19: snakecommon.NewMeetupV3Config.show_config:type_name -> snakecommon.NewMeetupV3Config.ShowConfigEntry
+	137, // 19: snakecommon.NewMeetupV3Config.show_config:type_name -> snakecommon.NewMeetupV3Config.ShowConfigEntry
 	18,  // 20: snakecommon.MeetupConfigItem.days_list:type_name -> snakecommon.SingleDayReward
 	20,  // 21: snakecommon.MeetupConfigItem.buff:type_name -> snakecommon.MeetupBuffItem
 	19,  // 22: snakecommon.SingleDayReward.length_list:type_name -> snakecommon.SingleRewardItem
-	138, // 23: snakecommon.SingleRewardItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
-	138, // 24: snakecommon.SingleRewardItem.extra_reward:type_name -> SnakeMain.Config.RewardConfig
-	138, // 25: snakecommon.MeetupBuffItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	141, // 23: snakecommon.SingleRewardItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	141, // 24: snakecommon.SingleRewardItem.extra_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 25: snakecommon.MeetupBuffItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
 	22,  // 26: snakecommon.EndlessGameRewardConfig.list:type_name -> snakecommon.EndlessGameRewardItem
-	138, // 27: snakecommon.EndlessGameRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 27: snakecommon.EndlessGameRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
 	27,  // 28: snakecommon.PassCheckV2.common:type_name -> snakecommon.PassCommonConfig
 	28,  // 29: snakecommon.PassCheckV2.reward_config:type_name -> snakecommon.PassRewardConfig
 	33,  // 30: snakecommon.PassCheckV2.task_config:type_name -> snakecommon.PassTaskConfig
@@ -14065,20 +14424,20 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	26,  // 33: snakecommon.PassCheckV2.season_notify:type_name -> snakecommon.PassSeasonNotifyConfig
 	24,  // 34: snakecommon.PassCheckV2.daily_welfare:type_name -> snakecommon.PassCheckDailyWelfare
 	25,  // 35: snakecommon.PassCheckV2.break_reward:type_name -> snakecommon.PassCheckBreakReward
-	138, // 36: snakecommon.PassCheckDailyWelfare.reward:type_name -> SnakeMain.Config.RewardConfig
-	138, // 37: snakecommon.PassCheckBreakReward.reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 36: snakecommon.PassCheckDailyWelfare.reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 37: snakecommon.PassCheckBreakReward.reward:type_name -> SnakeMain.Config.RewardConfig
 	30,  // 38: snakecommon.PassRewardConfig.reward_list:type_name -> snakecommon.PassCheckRankItem
 	31,  // 39: snakecommon.PassRewardConfig.reward_preview:type_name -> snakecommon.PassCheckRewardPreview
-	138, // 40: snakecommon.PassRewardConfig.reward_sort:type_name -> SnakeMain.Config.RewardConfig
+	141, // 40: snakecommon.PassRewardConfig.reward_sort:type_name -> SnakeMain.Config.RewardConfig
 	29,  // 41: snakecommon.PassRewardConfig.icon_list:type_name -> snakecommon.PassCheckIcon
-	138, // 42: snakecommon.PassCheckRankItem.free_reward:type_name -> SnakeMain.Config.RewardConfig
-	138, // 43: snakecommon.PassCheckRankItem.high_reward:type_name -> SnakeMain.Config.RewardConfig
-	138, // 44: snakecommon.PassCheckRewardPreview.free_reward:type_name -> SnakeMain.Config.RewardConfig
-	138, // 45: snakecommon.PassCheckRewardPreview.high_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 42: snakecommon.PassCheckRankItem.free_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 43: snakecommon.PassCheckRankItem.high_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 44: snakecommon.PassCheckRewardPreview.free_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 45: snakecommon.PassCheckRewardPreview.high_reward:type_name -> SnakeMain.Config.RewardConfig
 	32,  // 46: snakecommon.PassCheckRewardPreview.window_reward:type_name -> snakecommon.PassCheckWindowReward
-	138, // 47: snakecommon.PassCheckRewardPreview.honor_reward:type_name -> SnakeMain.Config.RewardConfig
-	138, // 48: snakecommon.PassCheckRewardPreview.luxury_reward:type_name -> SnakeMain.Config.RewardConfig
-	139, // 49: snakecommon.PassCheckWindowReward.convert:type_name -> snakecommon.CConvert
+	141, // 47: snakecommon.PassCheckRewardPreview.honor_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 48: snakecommon.PassCheckRewardPreview.luxury_reward:type_name -> SnakeMain.Config.RewardConfig
+	142, // 49: snakecommon.PassCheckWindowReward.convert:type_name -> snakecommon.CConvert
 	36,  // 50: snakecommon.PassTaskConfig.season_task:type_name -> snakecommon.SeasonTask
 	37,  // 51: snakecommon.PassTaskConfig.grade_task:type_name -> snakecommon.GradeTask
 	35,  // 52: snakecommon.PassTaskConfig.weekly_task:type_name -> snakecommon.WeeklyTask
@@ -14086,11 +14445,11 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	38,  // 54: snakecommon.WeeklyTask.task_list:type_name -> snakecommon.PassTaskModel
 	38,  // 55: snakecommon.SeasonTask.task_list:type_name -> snakecommon.PassTaskModel
 	38,  // 56: snakecommon.GradeTask.task_list:type_name -> snakecommon.PassTaskModel
-	140, // 57: snakecommon.PassStoreConfig.rank_price:type_name -> snakecommon.CPriceInfo
+	143, // 57: snakecommon.PassStoreConfig.rank_price:type_name -> snakecommon.CPriceInfo
 	40,  // 58: snakecommon.PassStoreConfig.exchange_store:type_name -> snakecommon.ExchangeStore
-	141, // 59: snakecommon.PassStoreConfig.high_store:type_name -> SnakeMain.Config.PackModel
-	140, // 60: snakecommon.ExchangeStore.price:type_name -> snakecommon.CPriceInfo
-	138, // 61: snakecommon.PassTotalRankReward.reward:type_name -> SnakeMain.Config.RewardConfig
+	144, // 59: snakecommon.PassStoreConfig.high_store:type_name -> SnakeMain.Config.PackModel
+	143, // 60: snakecommon.ExchangeStore.price:type_name -> snakecommon.CPriceInfo
+	141, // 61: snakecommon.PassTotalRankReward.reward:type_name -> SnakeMain.Config.RewardConfig
 	43,  // 62: snakecommon.TurntableConfig.reward_table:type_name -> snakecommon.TurntableRewardTable
 	44,  // 63: snakecommon.TurntableConfig.config:type_name -> snakecommon.TurntableSubConfig
 	46,  // 64: snakecommon.SkinUgcV2Config.skin_topic_list:type_name -> snakecommon.UgcTopic
@@ -14100,7 +14459,7 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	46,  // 68: snakecommon.SkinUgcV2Config.bonus_topic_list:type_name -> snakecommon.UgcTopic
 	48,  // 69: snakecommon.ShowIllustrationConfig.title_list:type_name -> snakecommon.ShowIllustrationTitle
 	49,  // 70: snakecommon.ShowIllustrationConfig.season_list:type_name -> snakecommon.ShowIllustrationSeason
-	138, // 71: snakecommon.ShowIllustrationSeason.rewards:type_name -> SnakeMain.Config.RewardConfig
+	141, // 71: snakecommon.ShowIllustrationSeason.rewards:type_name -> SnakeMain.Config.RewardConfig
 	50,  // 72: snakecommon.ShowIllustrationSeason.resources:type_name -> snakecommon.SeasonResource
 	52,  // 73: snakecommon.GiftIllustrationConfig.title_list:type_name -> snakecommon.GiftTitleItemConfig
 	55,  // 74: snakecommon.EndlessFloatingV2.floating_refresh_config_v2:type_name -> snakecommon.IllustrateFloatingRefreshConfig
@@ -14115,7 +14474,7 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	64,  // 83: snakecommon.EndlessFloatingV2.main_map_theme:type_name -> snakecommon.FloatingMainMapTheme
 	54,  // 84: snakecommon.EndlessFloatingV2.illustrate_config:type_name -> snakecommon.IllustrateConfig
 	56,  // 85: snakecommon.IllustrateFloatingRefreshConfig.floating_refresh_config:type_name -> snakecommon.FloatingRefreshConfig
-	135, // 86: snakecommon.ExtraBuff.buff_list:type_name -> snakecommon.ExtraBuff.ExtraBuffInfo
+	138, // 86: snakecommon.ExtraBuff.buff_list:type_name -> snakecommon.ExtraBuff.ExtraBuffInfo
 	66,  // 87: snakecommon.SeasonActivity.caidan_list:type_name -> snakecommon.SeasonCaiDan
 	68,  // 88: snakecommon.SeasonActivity.roll_skin:type_name -> snakecommon.SeasonRollSkin
 	70,  // 89: snakecommon.PhotoWallConfig.activity:type_name -> snakecommon.PhotoWallActivityConfig
@@ -14124,7 +14483,7 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	73,  // 92: snakecommon.PhotoWallActivityConfig.guardian:type_name -> snakecommon.PhotoWallGuardian
 	78,  // 93: snakecommon.FirstChargeConfig.skin_list:type_name -> snakecommon.FirstChargeSkinRewardInfo
 	79,  // 94: snakecommon.FirstChargeConfig.unlock_rewards:type_name -> snakecommon.FirstChargeUnlockRewardInfo
-	142, // 95: snakecommon.FirstChargeUnlockRewardInfo.rewards:type_name -> snakecommon.CRewardItem
+	145, // 95: snakecommon.FirstChargeUnlockRewardInfo.rewards:type_name -> snakecommon.CRewardItem
 	81,  // 96: snakecommon.CouplePassCheck.prompt:type_name -> snakecommon.CPCPrompt
 	82,  // 97: snakecommon.CouplePassCheck.main_skins:type_name -> snakecommon.CPCMainSkin
 	83,  // 98: snakecommon.CouplePassCheck.level_conf:type_name -> snakecommon.CPCLevelConf
@@ -14135,31 +14494,31 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	96,  // 103: snakecommon.CouplePassCheck.intimate_relationship:type_name -> snakecommon.CPCIntimateRelationship
 	98,  // 104: snakecommon.CouplePassCheck.match_chat:type_name -> snakecommon.CouplePassCheckMatchChat
 	99,  // 105: snakecommon.CouplePassCheck.couple_space:type_name -> snakecommon.CouplePassCheckSpace
-	138, // 106: snakecommon.CPCLevelConf.repeat_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 106: snakecommon.CPCLevelConf.repeat_reward:type_name -> SnakeMain.Config.RewardConfig
 	84,  // 107: snakecommon.CPCLevelConf.levels:type_name -> snakecommon.CPCLevel
 	85,  // 108: snakecommon.CPCLevelConf.milestones:type_name -> snakecommon.CPCMilestone
-	138, // 109: snakecommon.CPCLevel.free_rewards:type_name -> SnakeMain.Config.RewardConfig
-	138, // 110: snakecommon.CPCLevel.pay_rewards:type_name -> SnakeMain.Config.RewardConfig
+	141, // 109: snakecommon.CPCLevel.free_rewards:type_name -> SnakeMain.Config.RewardConfig
+	141, // 110: snakecommon.CPCLevel.pay_rewards:type_name -> SnakeMain.Config.RewardConfig
 	87,  // 111: snakecommon.CPCPackConf.basic_pack:type_name -> snakecommon.CPCPackInfo
 	87,  // 112: snakecommon.CPCPackConf.advanced_pack:type_name -> snakecommon.CPCPackInfo
 	87,  // 113: snakecommon.CPCPackConf.luxury_pack:type_name -> snakecommon.CPCPackInfo
-	138, // 114: snakecommon.CPCPackInfo.rewards:type_name -> SnakeMain.Config.RewardConfig
+	141, // 114: snakecommon.CPCPackInfo.rewards:type_name -> SnakeMain.Config.RewardConfig
 	91,  // 115: snakecommon.CPCTaskConf.main_skins:type_name -> snakecommon.CPCTaskSkin
 	92,  // 116: snakecommon.CPCTaskConf.daily_task:type_name -> snakecommon.CPCTaskInfo
 	92,  // 117: snakecommon.CPCTaskConf.weekly_task:type_name -> snakecommon.CPCTaskInfo
 	92,  // 118: snakecommon.CPCTaskConf.gift_task:type_name -> snakecommon.CPCTaskInfo
 	93,  // 119: snakecommon.CPCTaskConf.gift:type_name -> snakecommon.CPCGiftInfo
 	90,  // 120: snakecommon.CPCTaskConf.gift_intimacy_list:type_name -> snakecommon.CPCGiftIntimacyItem
-	143, // 121: snakecommon.CPCTaskInfo.event_infos:type_name -> snakecommon.EventTask
+	146, // 121: snakecommon.CPCTaskInfo.event_infos:type_name -> snakecommon.EventTask
 	95,  // 122: snakecommon.CPCExchangeStore.items:type_name -> snakecommon.CPCExchangeItem
-	138, // 123: snakecommon.CPCExchangeItem.reward_info:type_name -> SnakeMain.Config.RewardConfig
+	141, // 123: snakecommon.CPCExchangeItem.reward_info:type_name -> SnakeMain.Config.RewardConfig
 	97,  // 124: snakecommon.CPCIntimateRelationship.level_config:type_name -> snakecommon.CPCIntimateLevelItem
 	100, // 125: snakecommon.CouplePassCheckSpace.challenge:type_name -> snakecommon.CouplePassCheckSpaceChallenge
 	101, // 126: snakecommon.CouplePassCheckSpace.treasure:type_name -> snakecommon.CouplePassCheckSpaceTreasure
-	143, // 127: snakecommon.CouplePassCheckSpaceChallenge.event_infos:type_name -> snakecommon.EventTask
-	138, // 128: snakecommon.CouplePassCheckSpaceTreasure.reward:type_name -> SnakeMain.Config.RewardConfig
-	136, // 129: snakecommon.StarFieldBp.constellation_name:type_name -> snakecommon.StarFieldBp.ConstellationNameEntry
-	144, // 130: snakecommon.StarFieldBp.icon_config:type_name -> snakecommon.GameIcon
+	146, // 127: snakecommon.CouplePassCheckSpaceChallenge.event_infos:type_name -> snakecommon.EventTask
+	141, // 128: snakecommon.CouplePassCheckSpaceTreasure.reward:type_name -> SnakeMain.Config.RewardConfig
+	139, // 129: snakecommon.StarFieldBp.constellation_name:type_name -> snakecommon.StarFieldBp.ConstellationNameEntry
+	147, // 130: snakecommon.StarFieldBp.icon_config:type_name -> snakecommon.GameIcon
 	103, // 131: snakecommon.StarFieldBp.main_rewards:type_name -> snakecommon.StarFieldBpMainReward
 	104, // 132: snakecommon.StarFieldBp.level_conf:type_name -> snakecommon.StarFieldLevelConf
 	106, // 133: snakecommon.StarFieldBp.pack_conf:type_name -> snakecommon.StarFieldPackConf
@@ -14169,50 +14528,52 @@ var file_snakecommon_profile_config_proto_depIdxs = []int32{
 	116, // 137: snakecommon.StarFieldBp.lottery:type_name -> snakecommon.StarFieldLottery
 	121, // 138: snakecommon.StarFieldBp.task_conf:type_name -> snakecommon.StarFieldTask
 	124, // 139: snakecommon.StarFieldBp.wish_conf:type_name -> snakecommon.StarFieldWish
-	138, // 140: snakecommon.StarFieldLevelConf.repeat_reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 140: snakecommon.StarFieldLevelConf.repeat_reward:type_name -> SnakeMain.Config.RewardConfig
 	105, // 141: snakecommon.StarFieldLevelConf.levels:type_name -> snakecommon.StarFieldLevel
-	137, // 142: snakecommon.StarFieldLevelConf.main_rewards:type_name -> snakecommon.StarFieldLevelConf.MainRewardsEntry
-	138, // 143: snakecommon.StarFieldLevel.free_rewards:type_name -> SnakeMain.Config.RewardConfig
-	138, // 144: snakecommon.StarFieldLevel.pay_rewards:type_name -> SnakeMain.Config.RewardConfig
+	140, // 142: snakecommon.StarFieldLevelConf.main_rewards:type_name -> snakecommon.StarFieldLevelConf.MainRewardsEntry
+	141, // 143: snakecommon.StarFieldLevel.free_rewards:type_name -> SnakeMain.Config.RewardConfig
+	141, // 144: snakecommon.StarFieldLevel.pay_rewards:type_name -> SnakeMain.Config.RewardConfig
 	107, // 145: snakecommon.StarFieldPackConf.basic_pack:type_name -> snakecommon.StarFieldPackInfo
 	107, // 146: snakecommon.StarFieldPackConf.luxury_pack:type_name -> snakecommon.StarFieldPackInfo
-	138, // 147: snakecommon.StarFieldPackInfo.rewards:type_name -> SnakeMain.Config.RewardConfig
+	141, // 147: snakecommon.StarFieldPackInfo.rewards:type_name -> SnakeMain.Config.RewardConfig
 	109, // 148: snakecommon.StarFieldRankConf.level_total_rank:type_name -> snakecommon.SFRankSettleConf
 	109, // 149: snakecommon.StarFieldRankConf.level_daily_rank:type_name -> snakecommon.SFRankSettleConf
 	109, // 150: snakecommon.StarFieldRankConf.gift_total_rank:type_name -> snakecommon.SFRankSettleConf
 	109, // 151: snakecommon.StarFieldRankConf.gift_daily_rank:type_name -> snakecommon.SFRankSettleConf
 	110, // 152: snakecommon.SFRankSettleConf.settle_rewards:type_name -> snakecommon.SFSettleReward
-	138, // 153: snakecommon.SFSettleReward.rewards:type_name -> SnakeMain.Config.RewardConfig
+	141, // 153: snakecommon.SFSettleReward.rewards:type_name -> SnakeMain.Config.RewardConfig
 	112, // 154: snakecommon.StarFieldHonorPage.send_reward:type_name -> snakecommon.SFHonorSendReward
 	113, // 155: snakecommon.SFHonorSendReward.reward_pool:type_name -> snakecommon.SFHonorSendRewardItem
-	138, // 156: snakecommon.SFHonorSendRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 156: snakecommon.SFHonorSendRewardItem.reward:type_name -> SnakeMain.Config.RewardConfig
 	115, // 157: snakecommon.StarFieldExchangeStore.items:type_name -> snakecommon.SFExchangeItem
-	138, // 158: snakecommon.SFExchangeItem.reward_info:type_name -> SnakeMain.Config.RewardConfig
+	141, // 158: snakecommon.SFExchangeItem.reward_info:type_name -> SnakeMain.Config.RewardConfig
 	117, // 159: snakecommon.StarFieldLottery.reward_pool:type_name -> snakecommon.SFLotteryRewardItem
 	118, // 160: snakecommon.StarFieldLottery.guaranteed_config:type_name -> snakecommon.SFLotteryGuaranteed
 	119, // 161: snakecommon.StarFieldLottery.guaranteed_reward:type_name -> snakecommon.SFLotteryGuaranteedPool
 	120, // 162: snakecommon.StarFieldLottery.accu_rewards:type_name -> snakecommon.SFLotteryAccuReward
-	138, // 163: snakecommon.SFLotteryRewardItem.reward_info:type_name -> SnakeMain.Config.RewardConfig
+	141, // 163: snakecommon.SFLotteryRewardItem.reward_info:type_name -> SnakeMain.Config.RewardConfig
 	117, // 164: snakecommon.SFLotteryGuaranteedPool.reward_pool:type_name -> snakecommon.SFLotteryRewardItem
-	138, // 165: snakecommon.SFLotteryAccuReward.reward:type_name -> SnakeMain.Config.RewardConfig
+	141, // 165: snakecommon.SFLotteryAccuReward.reward:type_name -> SnakeMain.Config.RewardConfig
 	122, // 166: snakecommon.StarFieldTask.daily_task:type_name -> snakecommon.SFDailyTask
 	123, // 167: snakecommon.StarFieldTask.week_task_list:type_name -> snakecommon.SFWeeklyTaskItem
 	122, // 168: snakecommon.StarFieldTask.weekly_task:type_name -> snakecommon.SFDailyTask
-	143, // 169: snakecommon.SFDailyTask.event_infos:type_name -> snakecommon.EventTask
-	143, // 170: snakecommon.SFWeeklyTaskItem.event_infos:type_name -> snakecommon.EventTask
+	146, // 169: snakecommon.SFDailyTask.event_infos:type_name -> snakecommon.EventTask
+	146, // 170: snakecommon.SFWeeklyTaskItem.event_infos:type_name -> snakecommon.EventTask
 	125, // 171: snakecommon.StarFieldWish.reward_pool:type_name -> snakecommon.SFWishItem
-	138, // 172: snakecommon.SFWishItem.reward_info:type_name -> SnakeMain.Config.RewardConfig
+	141, // 172: snakecommon.SFWishItem.reward_info:type_name -> SnakeMain.Config.RewardConfig
 	127, // 173: snakecommon.NewbieCheckinConfig.day_list:type_name -> snakecommon.NewbieCheckinDayItem
-	138, // 174: snakecommon.NewbieCheckinDayItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
+	141, // 174: snakecommon.NewbieCheckinDayItem.reward_list:type_name -> SnakeMain.Config.RewardConfig
 	129, // 175: snakecommon.GiftPkConfig.rank_config:type_name -> snakecommon.GiftPkRank
 	132, // 176: snakecommon.ClipBoardLinkConfig.team_link:type_name -> snakecommon.LittleTeamClipBoardLink
-	16,  // 177: snakecommon.NewMeetupV3Config.ShowConfigEntry.value:type_name -> snakecommon.MeetupShowItem
-	138, // 178: snakecommon.StarFieldLevelConf.MainRewardsEntry.value:type_name -> SnakeMain.Config.RewardConfig
-	179, // [179:179] is the sub-list for method output_type
-	179, // [179:179] is the sub-list for method input_type
-	179, // [179:179] is the sub-list for extension type_name
-	179, // [179:179] is the sub-list for extension extendee
-	0,   // [0:179] is the sub-list for field type_name
+	133, // 177: snakecommon.ClipBoardLinkConfig.car_link:type_name -> snakecommon.CarBattleClipBoardLink
+	141, // 178: snakecommon.EndlessCollectConfig.illustrate_reward:type_name -> SnakeMain.Config.RewardConfig
+	16,  // 179: snakecommon.NewMeetupV3Config.ShowConfigEntry.value:type_name -> snakecommon.MeetupShowItem
+	141, // 180: snakecommon.StarFieldLevelConf.MainRewardsEntry.value:type_name -> SnakeMain.Config.RewardConfig
+	181, // [181:181] is the sub-list for method output_type
+	181, // [181:181] is the sub-list for method input_type
+	181, // [181:181] is the sub-list for extension type_name
+	181, // [181:181] is the sub-list for extension extendee
+	0,   // [0:181] is the sub-list for field type_name
 }
 
 func init() { file_snakecommon_profile_config_proto_init() }
@@ -15821,7 +16182,19 @@ func file_snakecommon_profile_config_proto_init() {
 			}
 		}
 		file_snakecommon_profile_config_proto_msgTypes[133].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GiftWallConfig_NamePlate); i {
+			switch v := v.(*CarBattleClipBoardLink); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[134].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EndlessCollectConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -15833,6 +16206,30 @@ func file_snakecommon_profile_config_proto_init() {
 			}
 		}
 		file_snakecommon_profile_config_proto_msgTypes[135].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CarBattleConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[136].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GiftWallConfig_NamePlate); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakecommon_profile_config_proto_msgTypes[138].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ExtraBuff_ExtraBuffInfo); i {
 			case 0:
 				return &v.state
@@ -15852,7 +16249,7 @@ func file_snakecommon_profile_config_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakecommon_profile_config_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   138,
+			NumMessages:   141,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

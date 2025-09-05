@@ -15,6 +15,7 @@ enum ChannelType {
     TmpTeam = 4; // 临时小队频道
     AreaTop = 5; // 地域榜
     Clan = 6; // 战队频道
+    CrazyWeekend = 7; // 互助频道
 }
 
 // 消息类型
@@ -27,6 +28,12 @@ enum MessageType {
     GiftMessage = 5; // 礼物消息
     TmpTeamInviteMessage =6; // 临时小队邀请消息
     ClanInviteMessage = 7; // 战队邀请消息
+    CPApplyMessage = 8; // CP申请消息
+    CPShareMessage = 9; // CP分享消息
+    CrazyWeekendHelpMessage = 10; // 互助消息
+    RelationApplyMessage = 11; // 关系申请消息
+    RelationShareMessage = 12; // 关系分享消息
+    RelationCoinMessage = 13; // 赠送知音币消息
 }
 
 enum MessageSubType {
@@ -98,6 +105,50 @@ message ClanInviteContent {
     int32 needApprove = 7; // 是否需要审批
 }
 
+message CPApplyContent {
+    int64 uid = 1; // 申请人uid
+    int64 giftId = 2; // 礼物ID
+    int64 giftNum = 3; // 礼物数量
+    string content = 4; // 留言内容
+    ChatUserInfo userInfo = 5; // 申请人信息
+    int64 expireTs = 6; // 过期时间
+}
+
+message CPShareContent {
+    int64 cpId = 1; // CP ID
+    repeated ChatUserInfo userInfos = 2; // 双方信息
+    int64 care = 3; // 守护值
+    int64 level = 4; // 等级
+    string content = 5; // 分享文案
+    int64 designationId = 6; // 亲密称谓ID
+}
+
+message CrazyWeekendHelpContent {
+    int64 star = 1; // 皮肤星级
+    string skin_imgurl = 2; // 皮肤图片
+    string skin_name = 3; // 皮肤名称
+    string jump_url = 4; // 跳转链接
+}
+
+message RelationApplyContent {
+    int64 uid = 1; // 申请人uid
+    int64 giftId = 2; // 礼物ID
+    int64 giftNum = 3; // 礼物数量
+    string content = 4; // 留言内容
+    ChatUserInfo userInfo = 5; // 申请人信息
+    int64 expireTs = 6; // 过期时间
+    int32 relationType = 7; // 关系类型
+}
+
+message RelationShareContent {
+   int32 coin = 1; // 赠送数量
+}
+
+message RelationCoinContent {
+    int64 uid = 1; // 赠送人
+    int64 num = 2; // 赠送数量
+}
+
 // commandId=sendmsg
 message SendMessageReq {// 发送消息
     ChannelType channelType = 1; // 频道类型
@@ -134,6 +185,9 @@ message PushNewMessage {
 
 message SingleChat {
     int64 targetUid = 1; // 目标用户uid
+    string relationType = 2; // 关系类型  "" 自己 "1" 被关注 "2" 已关注 "3" 互相关注 "4" 陌生人
+    int32 state=3;// 在线状态
+    int64 lastChatTs=4;// 最后聊天时间
 }
 
 // commandId=singlechatlist
@@ -194,6 +248,8 @@ message PushUpdateInvite {
     int64 expireTs = 7; // 邀请过期时间，毫秒
     int64 Owner =8; // 房主
     string messageId=9;// 消息ID
+    ChannelType channelType = 10; // 频道类型
+    string channelId = 11; // 频道ID
 }
 
 // commandId=updateclaninvite

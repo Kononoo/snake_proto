@@ -77,6 +77,10 @@ message OlGameConfig {
   int32 ol_game_predict_data_count_new = 24;
   MatchBackgroundConfig match_background = 25;
   JumpIcon jump_icon = 26; // 匹配界面跳转按钮
+  double unity_android_render_delay = 27; // unity 团战 android 渲染延迟
+  double unity_ios_render_delay = 28; // unity 团战 ios 渲染延迟
+  int32 unity_android_predict_data_count = 29; // unity 团战 android 预测数据数量
+  int32 unity_ios_predict_data_count = 30; // unity 团战 ios 预测数据数量
 }
 
 message JumpIcon {
@@ -274,6 +278,7 @@ message RankConfig {
   DailyGameRewards daily_game_rewards = 17; // 每日游戏奖励
   NewerGuide newer_guide = 18; // 新手引导
   repeated RankRewardV2 rank_reward_v2 = 19; // 段位奖励v2
+  NewerGuide season_start = 20; // 赛季开启奖励
 }
 
 message RankReward {
@@ -364,6 +369,8 @@ message SeasonInfo {
   int32 skin_id = 10;
   DailyGameRewards daily_game_rewards = 12; // 每日游戏奖励
   repeated RankRewardV2 rank_reward_v2 = 13; // 段位奖励v2
+  int32 season_start_box_id = 14; // 赛季开始宝箱id
+  int64 season_start_box_num = 15; // 赛季开始宝箱数量
 }
 // === rank_config end ======================================
 
@@ -565,6 +572,7 @@ message UiConfigV3 {
   bool use_5275_icon_layout = 20; // 是否使用5275版本优化后的首页icon布局
   string teamendless_bgurl = 21; // 多人无尽按钮背景
   GameIcon points_champ_icon = 22; // 新春大赏入口 icon https://wepie.feishu.cn/docx/LFuLdbWnco1DjuxVi9AcRUdfnyc
+  GameIcon treasure_box_icon = 23; // 珍宝箱入口 icon
 }
 
 message GameIcon {
@@ -967,6 +975,7 @@ message FlagsConfig {
   int32 gift_anim_single_flag = 42; // 礼物动效 0：同时播放多个 1：同时只能播放一个
   int32 join_snake_area_team = 43; // 今天是否进入过蛇蛇小队
   int32 team_endless_new_icon = 44; // 双人无尽新图标，0：不显示 1：显示
+  int32 arrow_and_area =45;// 无尽玩法内皮肤显示方向箭头/碰撞范围圈实验
 }
 
 message FeedbackConfig {
@@ -1359,6 +1368,7 @@ message HotConfig {
   int64 maintenance_start_time = 4;
   int64 maintenance_end_time = 5;
   string maintenance_toast = 6;
+  bool open_kugou_game_sound = 7; // 是否开启酷狗游戏音效
 }
 // === hot_config end ========================================
 
@@ -2391,6 +2401,8 @@ message TeamEndlessConfig {
   string ios_unlock_tip = 7; // ios解锁提示
   int32 boss = 18; // 是否开启boss功能，0: 未开启 1: 开启
   CoupleSkinActivity couple_skin_activity = 19; // cp皮肤直售活动
+  int32 graph=20; // 双人无尽地图实验，0：未开启，1:开启
+  SssSkinFree sss_skin_free=21; //sss皮肤限免
 }
 
 message CoupleSkinActivity {
@@ -2399,7 +2411,12 @@ message CoupleSkinActivity {
   int64 end_time = 3;
   string jump_url = 4;
 }
-
+message SssSkinFree{
+  string activity_id = 1;
+  int64 start_time = 2;
+  int64 end_time = 3;
+  string jump_url = 4;
+}
 //----------------------------------------------------------------------------------------------------------------------
 // 多人无尽 end
 // ---------------------------------------------------------------------------------------------------------------------
@@ -2538,3 +2555,46 @@ message RelationLevelItem {
   int64 need = 2; // 需要守护值
   int64 day = 3; // 需要天数
 }
+
+
+// =====  pass check v3 start =====
+
+message PassCheckV3 {
+  repeated PassCheckV3Item pass_check_v3_list = 1; // 通行证配置
+}
+
+message PassCheckV3Item {
+  PassCheckV3HomeEntrance home_entrance = 1; // 首页入口
+  int64 exp_per_level = 2; // 每级经验值
+  int64 day_exp_limit = 3; // 每日经验上限
+}
+
+message PassCheckV3HomeEntrance {
+  int64 act_id = 1; // 活动 ID
+  int64 season_id = 2;  // 赛季 ID
+  int64 res_id = 3; // 资源 ID
+  int64 start = 4; // 开始时间
+  int64 end = 5; // 结束时间
+  string anim = 6; // 动效链接
+  string outline_color = 7; // 外框颜色
+  string static_url = 8; // 静态预览图
+}
+
+
+// =====  pass check v3 end =====
+
+
+// =====  snake  mini game start =====
+
+message SmallGame {
+  repeated MiniGameItem game_list = 1; // 游戏配置列表
+}
+
+message MiniGameItem {
+  string game_id = 1;      // 游戏 ID
+  string asset_url = 2;    // 小游戏 URL
+  string dll_name = 3;     // 小游戏读取的 Dll bundle name
+  string cdn = 4;          // CDN 地址
+}
+
+// =====  snake mini game end =====

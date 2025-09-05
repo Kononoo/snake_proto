@@ -599,6 +599,12 @@ message SkinInfo {
   repeated MagicSkinSection sections = 29; // 幻化皮肤组件
   int32 team_unity_show = 30; // 团战unity动效， 1 展示，0 不展示
   int32 advanced_skin_id = 31; // 皮肤特性 id
+  int32 homepage_big_anim_enable = 32; // 首页大图动效开关，0 关闭，1 开启
+  string unity_realm_key = 33; // unity 出场领域动效 key
+  int32 team_fight_anim_type = 34;// 团战结算演绎类型
+  string team_fight_anim_url = 35;// 团战结算演绎
+  int32 team_fight_bg_type = 36; //演绎背景类型
+  string team_fight_bg_url = 37; //演绎背景
 }
 
 message MagicSkinSection {
@@ -773,6 +779,8 @@ message GiftInfo {
   int64 act_show_end = 33;
   GiftType type = 34;            // 礼物类型
   RelatedGift related_gift = 35; // 盲盒关联的礼物
+  string naming_img_android = 36; // 安卓冠名图
+  string naming_img_ios = 37; // ios冠名图
 }
 
 enum GiftType {
@@ -1079,6 +1087,7 @@ message HomepageDecorateInfo {
   int32 scale_type = 3;
   int32 lottie_scale_type = 4;
   string font_color = 5;
+  string unity_anim_key = 6;
 }
 // home decorate end
 
@@ -1189,6 +1198,9 @@ message CoupleBgInfo {
   string wedding_oath_color = 8;// 婚礼誓言色值
   string heart_img_url = 9;
   string front_color = 10;
+  string bg_url = 11; // 背景底图
+  string cp_time_bg_color = 12; //日期背景颜色
+  string source_url_new = 13; //资源图（新）
 }
 // couple bg end
 
@@ -1331,6 +1343,7 @@ message PriceInfo {
   int32 num = 2; //RMB 类型时候  这个字段 代表 goodsid
   int32 discount = 3;
   int32 discountPrice = 4;
+  int32 old_num = 5; //折前价
 }
 
 message RewardConfig { // 服务器配置奖励的通用结构
@@ -1439,6 +1452,8 @@ enum RewardType {
   REWARD_INTIMATE_APPELLATION = 54; // 亲密称谓
   REWARD_TYPE_RELATION_ACTION = 55; // 亲密关系动作
   REWARD_TYPE_RELATION_BACKGROUND = 56; // 亲密关系背景
+  REWARD_TYPE_COLORFUL_NICKNAME=57; //炫彩昵称
+  REWARD_TYPE_COLORFUL_SHOW=58; //炫彩show
 
   REWARD_MENTOR_POINT_ID = 158; // 名师点id
   REWARD_MENTOR_BOND_ID = 159; // 羁绊值id
@@ -1520,6 +1535,12 @@ message RelationActionModel {
 message RelationActionInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+  int32 unity_anim_id=3;
+  int32 unity_animation_template = 4;
+  string unity_anim_key=5;
+  int32 appear_time = 6;
+  string card_anim_url = 7;
+  int32 card_anim_type = 8;
 }
 
 message RelationBackgroundList {
@@ -1537,4 +1558,166 @@ message RelationBackgroundModel {
 message RelationBackgroundInfo {
   string anim_url = 1;
   int32 anim_type = 2;
+}
+message ColorfulNicknameList {
+  repeated ColorfulNicknameModel colorful_nickname_list = 1;
+}
+
+message ColorfulNicknameModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  ColorfulNicknameInfo info = 5;
+}
+
+message ColorfulNicknameInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+  string unity_anim_key=3;
+}
+
+
+message ColorfulShowList {
+  repeated ColorfulShowModel colorful_show_list = 1;
+}
+
+message ColorfulShowModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  ColorfulShowInfo info = 5;
+}
+
+message ColorfulShowInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+  string unity_anim_key=3;
+}
+message HomepageBackList {
+  repeated HomepageBackModel homepage_back_list = 1;
+}
+
+message HomepageBackModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  HomepageBackInfo info = 5;
+}
+
+message HomepageBackInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+  string unity_anim_key=3;
+}
+
+message HomepageBaseList {
+  repeated HomepageBaseModel homepage_base_list = 1;
+}
+
+message HomepageBaseModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  HomepageBaseInfo info = 5;
+}
+
+message HomepageBaseInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+  string unity_anim_key=3;
+}
+
+message HomepageTopEdgeList {
+  repeated HomepageTopEdgeModel homepage_top_edge_list = 1;
+}
+
+message HomepageTopEdgeModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  HomepageTopEdgeInfo info = 5;
+}
+
+message HomepageTopEdgeInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+  string unity_anim_key=3;
+}
+
+message HomepageSideEdgeList {
+  repeated HomepageSideEdgeModel homepage_side_edge_list = 1;
+}
+
+message HomepageSideEdgeModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  HomepageSideEdgeInfo info = 5;
+}
+
+message HomepageSideEdgeInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+  string unity_anim_key=3;
+}
+message HomepageBottomEdgeList {
+  repeated HomepageBottomEdgeModel homepage_bottom_edge_list = 1;
+}
+
+message HomepageBottomEdgeModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  HomepageBottomEdgeInfo info = 5;
+}
+
+message HomepageBottomEdgeInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+  string unity_anim_key=3;
+}
+
+message HomepageFrameList {
+  repeated HomepageFrameModel homepage_frame_list = 1;
+}
+
+message HomepageFrameModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  HomepageFrameInfo info = 5;
+}
+
+message HomepageFrameInfo {
+  string anim_url = 1;
+  int32 anim_type = 2;
+  string unity_anim_key=3;
+}
+
+
+message HomepageSubjectList {
+  repeated HomepageSubjectModel homepage_subject_list = 1;
+}
+
+message HomepageSubjectModel {
+  int32 item_id = 1; // 商品id
+  int32 active = 2;
+  int64 update_time = 3;
+  StoreInfo store = 4;
+  HomepageSubjectInfo info = 5;
+}
+
+message HomepageSubjectInfo {
+  string team_name_color=1;
+  string charm_color=2;
+  string back_unity_anim_key=3;
+  string panel_unity_anim_key=4;
 }
