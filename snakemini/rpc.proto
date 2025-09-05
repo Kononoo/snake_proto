@@ -481,6 +481,7 @@ enum SendGiftCost {
     Share =4; // 分享
     DouyinDiamond=5;// 抖音钻石
     CP = 6; // CP申请
+    Relation = 7; // 关系申请
 }
 
 message SendGiftRequest {
