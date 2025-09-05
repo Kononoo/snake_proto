@@ -603,6 +603,8 @@ message SkinInfo {
   string unity_realm_key = 33; // unity 出场领域动效 key
   int32 team_fight_anim_type = 34;// 团战结算演绎类型
   string team_fight_anim_url = 35;// 团战结算演绎
+  int32 team_fight_bg_type = 36; //演绎背景类型
+  string team_fight_bg_url = 37; //演绎背景
 }
 
 message MagicSkinSection {
