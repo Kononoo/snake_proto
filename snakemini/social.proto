@@ -141,7 +141,12 @@ message RelationApplyContent {
 }
 
 message RelationShareContent {
-   int32 coin = 1; // 赠送数量
+    repeated ChatUserInfo userInfos = 2; // 双方信息
+    int64 care = 3; // 守护值
+    int64 level = 4; // 等级
+    string content = 5; // 分享文案
+    int64 designationId = 6; // 亲密称谓ID
+    int32 relationType = 7; // 关系类型
 }
 
 message RelationCoinContent {
