@@ -65,6 +65,7 @@ message PointsChampConfig {
   repeated PointsChampPhase phases = 10; // 阶段配置
   int64 cur_phase_num = 11; // 当前阶段
   string toplist_item_link = 12; // 情缘排行榜中的按钮跳转链接
+  string default_task_display_reward_img = 13; // 任务奖励默认展示图片
 }
 
 message PointsChampPhase {

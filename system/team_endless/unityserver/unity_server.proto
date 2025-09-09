@@ -81,33 +81,3 @@ message BestTeammate{
   int32 partner_length=6;
   int32 partner_kill_boss_together_count=7;
 }
-
-// 玩家结算时的一些数据
-message DreamGameEndGame { // todo
-  string uid = 1; // 结算的玩家uid
-  int32 platform = 3;
-  string market = 4;
-  string version = 5;
-  string device_id = 6;
-  int32 kill = 9;
-  int32 length = 10;
-  TeamEndlessSettleType settle_type = 11; // 结算类型
-  repeated DreamGameTeammate teammates = 12; // 队友
-  string rid = 13; // 本局游戏的rid
-  int64 game_count = 14; // 对局次数
-}
-
-message DreamGameTeammate {
-  string uid = 1;
-  int32 score = 2;
-  int32 skinId = 3;
-}
-
-message DreamGameEndGameRsp { // todo
-}
-
-message DreamGameExitGameReq {
-}
-
-message DreamGameExitGameRsp {
-}

@@ -2595,6 +2595,7 @@ message MiniGameItem {
   string asset_url = 2;    // 小游戏 URL
   string dll_name = 3;     // 小游戏读取的 Dll bundle name
   string cdn = 4;          // CDN 地址
+  int32  platform = 5;     // 平台
 }
 
 // =====  snake mini game end =====
