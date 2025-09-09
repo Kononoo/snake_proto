@@ -94,6 +94,7 @@ message DreamGameEndGame { // todo
   TeamEndlessSettleType settle_type = 11; // 结算类型
   repeated DreamGameTeammate teammates = 12; // 队友
   string rid = 13; // 本局游戏的rid
+  int64 game_count = 14; // 对局次数
 }
 
 message DreamGameTeammate {
