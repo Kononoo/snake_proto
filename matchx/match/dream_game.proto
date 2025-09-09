@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package match;
+option go_package = "git.17zjh.com/snake/snake_proto/matchx/match";
+
+// 多人搜打撤玩法额外信息定义
+
+message DreamGameGroupMember {// 多人搜打撤：队伍成员额外信息，存储在GroupMember的payload中
+
+}
+
+message DreamGameSyncGroupMemberNotify {
+}
+
+message DreamGameMatchSuccess {// 多人搜打撤：匹配成功额外数据，存储在payload中
+  string host = 1; // unityserver房间ip地址和端口信息
+}
+
+message DreamGameUploadAttr {// 多人搜打撤：上传用户额外属性，存储在payload中
+  // 根据实际需要来添加字段
+}
+
+message DreamGameRoomMember {// 多人搜打撤：房间内玩家额外信息，存储在RoomMember的payload中
+}
+
+message DreamGameJoinRoom {
+  int64 source = 1; // 枚举：1(世界频道邀请加入)
+  int64 game_mode = 2;
+  int64 mode_version = 3;
+  int64 skin_id = 4; // 当前穿戴的皮肤
+  bytes payload = 5; // 额外的数据
+}
