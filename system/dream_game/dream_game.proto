@@ -35,6 +35,7 @@ message DreamGameEndGameRsp { // todo
 
 message DreamGameEndGameNotify {
   string rid = 1; // 本局游戏的rid
+  repeated DreamGameTeammate teammates = 2; // 队友信息
 }
 
 message DreamGameExitGameReq {
