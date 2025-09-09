@@ -751,303 +751,6 @@ func (x *BestTeammate) GetPartnerKillBossTogetherCount() int32 {
 	return 0
 }
 
-// 玩家结算时的一些数据
-type DreamGameEndGame struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Uid        string                `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"` // 结算的玩家uid
-	Platform   int32                 `protobuf:"varint,3,opt,name=platform,proto3" json:"platform,omitempty"`
-	Market     string                `protobuf:"bytes,4,opt,name=market,proto3" json:"market,omitempty"`
-	Version    string                `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty"`
-	DeviceId   string                `protobuf:"bytes,6,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
-	Kill       int32                 `protobuf:"varint,9,opt,name=kill,proto3" json:"kill,omitempty"`
-	Length     int32                 `protobuf:"varint,10,opt,name=length,proto3" json:"length,omitempty"`
-	SettleType TeamEndlessSettleType `protobuf:"varint,11,opt,name=settle_type,json=settleType,proto3,enum=unityserver.TeamEndlessSettleType" json:"settle_type,omitempty"` // 结算类型
-	Teammates  []*DreamGameTeammate  `protobuf:"bytes,12,rep,name=teammates,proto3" json:"teammates,omitempty"`                                                             // 队友
-	Rid        string                `protobuf:"bytes,13,opt,name=rid,proto3" json:"rid,omitempty"`                                                                         // 本局游戏的rid
-}
-
-func (x *DreamGameEndGame) Reset() {
-	*x = DreamGameEndGame{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DreamGameEndGame) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DreamGameEndGame) ProtoMessage() {}
-
-func (x *DreamGameEndGame) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DreamGameEndGame.ProtoReflect.Descriptor instead.
-func (*DreamGameEndGame) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_unityserver_unity_server_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *DreamGameEndGame) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-func (x *DreamGameEndGame) GetPlatform() int32 {
-	if x != nil {
-		return x.Platform
-	}
-	return 0
-}
-
-func (x *DreamGameEndGame) GetMarket() string {
-	if x != nil {
-		return x.Market
-	}
-	return ""
-}
-
-func (x *DreamGameEndGame) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
-
-func (x *DreamGameEndGame) GetDeviceId() string {
-	if x != nil {
-		return x.DeviceId
-	}
-	return ""
-}
-
-func (x *DreamGameEndGame) GetKill() int32 {
-	if x != nil {
-		return x.Kill
-	}
-	return 0
-}
-
-func (x *DreamGameEndGame) GetLength() int32 {
-	if x != nil {
-		return x.Length
-	}
-	return 0
-}
-
-func (x *DreamGameEndGame) GetSettleType() TeamEndlessSettleType {
-	if x != nil {
-		return x.SettleType
-	}
-	return TeamEndlessSettleType_Normal
-}
-
-func (x *DreamGameEndGame) GetTeammates() []*DreamGameTeammate {
-	if x != nil {
-		return x.Teammates
-	}
-	return nil
-}
-
-func (x *DreamGameEndGame) GetRid() string {
-	if x != nil {
-		return x.Rid
-	}
-	return ""
-}
-
-type DreamGameTeammate struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Uid    string `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
-	Score  int32  `protobuf:"varint,2,opt,name=score,proto3" json:"score,omitempty"`
-	SkinId int32  `protobuf:"varint,3,opt,name=skinId,proto3" json:"skinId,omitempty"`
-}
-
-func (x *DreamGameTeammate) Reset() {
-	*x = DreamGameTeammate{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DreamGameTeammate) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DreamGameTeammate) ProtoMessage() {}
-
-func (x *DreamGameTeammate) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DreamGameTeammate.ProtoReflect.Descriptor instead.
-func (*DreamGameTeammate) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_unityserver_unity_server_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *DreamGameTeammate) GetUid() string {
-	if x != nil {
-		return x.Uid
-	}
-	return ""
-}
-
-func (x *DreamGameTeammate) GetScore() int32 {
-	if x != nil {
-		return x.Score
-	}
-	return 0
-}
-
-func (x *DreamGameTeammate) GetSkinId() int32 {
-	if x != nil {
-		return x.SkinId
-	}
-	return 0
-}
-
-type DreamGameEndGameRsp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *DreamGameEndGameRsp) Reset() {
-	*x = DreamGameEndGameRsp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DreamGameEndGameRsp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DreamGameEndGameRsp) ProtoMessage() {}
-
-func (x *DreamGameEndGameRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DreamGameEndGameRsp.ProtoReflect.Descriptor instead.
-func (*DreamGameEndGameRsp) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_unityserver_unity_server_proto_rawDescGZIP(), []int{9}
-}
-
-type DreamGameExitGameReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *DreamGameExitGameReq) Reset() {
-	*x = DreamGameExitGameReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[10]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DreamGameExitGameReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DreamGameExitGameReq) ProtoMessage() {}
-
-func (x *DreamGameExitGameReq) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[10]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DreamGameExitGameReq.ProtoReflect.Descriptor instead.
-func (*DreamGameExitGameReq) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_unityserver_unity_server_proto_rawDescGZIP(), []int{10}
-}
-
-type DreamGameExitGameRsp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *DreamGameExitGameRsp) Reset() {
-	*x = DreamGameExitGameRsp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[11]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DreamGameExitGameRsp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DreamGameExitGameRsp) ProtoMessage() {}
-
-func (x *DreamGameExitGameRsp) ProtoReflect() protoreflect.Message {
-	mi := &file_system_team_endless_unityserver_unity_server_proto_msgTypes[11]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DreamGameExitGameRsp.ProtoReflect.Descriptor instead.
-func (*DreamGameExitGameRsp) Descriptor() ([]byte, []int) {
-	return file_system_team_endless_unityserver_unity_server_proto_rawDescGZIP(), []int{11}
-}
-
 var File_system_team_endless_unityserver_unity_server_proto protoreflect.FileDescriptor
 
 var file_system_team_endless_unityserver_unity_server_proto_rawDesc = []byte{
@@ -1171,47 +874,16 @@ var file_system_team_endless_unityserver_unity_server_proto_rawDesc = []byte{
 	0x5f, 0x6b, 0x69, 0x6c, 0x6c, 0x5f, 0x62, 0x6f, 0x73, 0x73, 0x5f, 0x74, 0x6f, 0x67, 0x65, 0x74,
 	0x68, 0x65, 0x72, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x05, 0x52,
 	0x1c, 0x70, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72, 0x4b, 0x69, 0x6c, 0x6c, 0x42, 0x6f, 0x73, 0x73,
-	0x54, 0x6f, 0x67, 0x65, 0x74, 0x68, 0x65, 0x72, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0xd0, 0x02,
-	0x0a, 0x10, 0x44, 0x72, 0x65, 0x61, 0x6d, 0x47, 0x61, 0x6d, 0x65, 0x45, 0x6e, 0x64, 0x47, 0x61,
-	0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x03, 0x75, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d,
-	0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d,
-	0x12, 0x16, 0x0a, 0x06, 0x6d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x06, 0x6d, 0x61, 0x72, 0x6b, 0x65, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73,
-	0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69,
-	0x6f, 0x6e, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x5f, 0x69, 0x64, 0x18,
-	0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x64, 0x65, 0x76, 0x69, 0x63, 0x65, 0x49, 0x64, 0x12,
-	0x12, 0x0a, 0x04, 0x6b, 0x69, 0x6c, 0x6c, 0x18, 0x09, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x6b,
-	0x69, 0x6c, 0x6c, 0x12, 0x16, 0x0a, 0x06, 0x6c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x18, 0x0a, 0x20,
-	0x01, 0x28, 0x05, 0x52, 0x06, 0x6c, 0x65, 0x6e, 0x67, 0x74, 0x68, 0x12, 0x43, 0x0a, 0x0b, 0x73,
-	0x65, 0x74, 0x74, 0x6c, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x0e,
-	0x32, 0x22, 0x2e, 0x75, 0x6e, 0x69, 0x74, 0x79, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2e, 0x54,
-	0x65, 0x61, 0x6d, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x53, 0x65, 0x74, 0x74, 0x6c, 0x65,
-	0x54, 0x79, 0x70, 0x65, 0x52, 0x0a, 0x73, 0x65, 0x74, 0x74, 0x6c, 0x65, 0x54, 0x79, 0x70, 0x65,
-	0x12, 0x3c, 0x0a, 0x09, 0x74, 0x65, 0x61, 0x6d, 0x6d, 0x61, 0x74, 0x65, 0x73, 0x18, 0x0c, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x75, 0x6e, 0x69, 0x74, 0x79, 0x73, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x2e, 0x44, 0x72, 0x65, 0x61, 0x6d, 0x47, 0x61, 0x6d, 0x65, 0x54, 0x65, 0x61, 0x6d, 0x6d,
-	0x61, 0x74, 0x65, 0x52, 0x09, 0x74, 0x65, 0x61, 0x6d, 0x6d, 0x61, 0x74, 0x65, 0x73, 0x12, 0x10,
-	0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x72, 0x69, 0x64,
-	0x22, 0x53, 0x0a, 0x11, 0x44, 0x72, 0x65, 0x61, 0x6d, 0x47, 0x61, 0x6d, 0x65, 0x54, 0x65, 0x61,
-	0x6d, 0x6d, 0x61, 0x74, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x63, 0x6f, 0x72, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x12, 0x16, 0x0a,
-	0x06, 0x73, 0x6b, 0x69, 0x6e, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73,
-	0x6b, 0x69, 0x6e, 0x49, 0x64, 0x22, 0x15, 0x0a, 0x13, 0x44, 0x72, 0x65, 0x61, 0x6d, 0x47, 0x61,
-	0x6d, 0x65, 0x45, 0x6e, 0x64, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x73, 0x70, 0x22, 0x16, 0x0a, 0x14,
-	0x44, 0x72, 0x65, 0x61, 0x6d, 0x47, 0x61, 0x6d, 0x65, 0x45, 0x78, 0x69, 0x74, 0x47, 0x61, 0x6d,
-	0x65, 0x52, 0x65, 0x71, 0x22, 0x16, 0x0a, 0x14, 0x44, 0x72, 0x65, 0x61, 0x6d, 0x47, 0x61, 0x6d,
-	0x65, 0x45, 0x78, 0x69, 0x74, 0x47, 0x61, 0x6d, 0x65, 0x52, 0x73, 0x70, 0x2a, 0x40, 0x0a, 0x15,
-	0x54, 0x65, 0x61, 0x6d, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x53, 0x65, 0x74, 0x74, 0x6c,
-	0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0a, 0x0a, 0x06, 0x4e, 0x6f, 0x72, 0x6d, 0x61, 0x6c, 0x10,
-	0x00, 0x12, 0x0c, 0x0a, 0x08, 0x41, 0x62, 0x6e, 0x6f, 0x72, 0x6d, 0x61, 0x6c, 0x10, 0x01, 0x12,
-	0x0d, 0x0a, 0x09, 0x45, 0x78, 0x63, 0x65, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x10, 0x02, 0x42, 0x41,
-	0x5a, 0x3f, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
-	0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x65, 0x6e,
-	0x64, 0x6c, 0x65, 0x73, 0x73, 0x2f, 0x75, 0x6e, 0x69, 0x74, 0x79, 0x73, 0x65, 0x72, 0x76, 0x65,
-	0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x54, 0x6f, 0x67, 0x65, 0x74, 0x68, 0x65, 0x72, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x2a, 0x40, 0x0a,
+	0x15, 0x54, 0x65, 0x61, 0x6d, 0x45, 0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x53, 0x65, 0x74, 0x74,
+	0x6c, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x0a, 0x0a, 0x06, 0x4e, 0x6f, 0x72, 0x6d, 0x61, 0x6c,
+	0x10, 0x00, 0x12, 0x0c, 0x0a, 0x08, 0x41, 0x62, 0x6e, 0x6f, 0x72, 0x6d, 0x61, 0x6c, 0x10, 0x01,
+	0x12, 0x0d, 0x0a, 0x09, 0x45, 0x78, 0x63, 0x65, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x10, 0x02, 0x42,
+	0x41, 0x5a, 0x3f, 0x67, 0x69, 0x74, 0x2e, 0x31, 0x37, 0x7a, 0x6a, 0x68, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x5f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2f, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x65,
+	0x6e, 0x64, 0x6c, 0x65, 0x73, 0x73, 0x2f, 0x75, 0x6e, 0x69, 0x74, 0x79, 0x73, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1227,7 +899,7 @@ func file_system_team_endless_unityserver_unity_server_proto_rawDescGZIP() []byt
 }
 
 var file_system_team_endless_unityserver_unity_server_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_system_team_endless_unityserver_unity_server_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_system_team_endless_unityserver_unity_server_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_system_team_endless_unityserver_unity_server_proto_goTypes = []interface{}{
 	(TeamEndlessSettleType)(0),     // 0: unityserver.TeamEndlessSettleType
 	(*TeamEndlessEndGame)(nil),     // 1: unityserver.TeamEndlessEndGame
@@ -1237,11 +909,6 @@ var file_system_team_endless_unityserver_unity_server_proto_goTypes = []interfac
 	(*AiInfo)(nil),                 // 5: unityserver.AiInfo
 	(*EndlessTeammate)(nil),        // 6: unityserver.EndlessTeammate
 	(*BestTeammate)(nil),           // 7: unityserver.BestTeammate
-	(*DreamGameEndGame)(nil),       // 8: unityserver.DreamGameEndGame
-	(*DreamGameTeammate)(nil),      // 9: unityserver.DreamGameTeammate
-	(*DreamGameEndGameRsp)(nil),    // 10: unityserver.DreamGameEndGameRsp
-	(*DreamGameExitGameReq)(nil),   // 11: unityserver.DreamGameExitGameReq
-	(*DreamGameExitGameRsp)(nil),   // 12: unityserver.DreamGameExitGameRsp
 }
 var file_system_team_endless_unityserver_unity_server_proto_depIdxs = []int32{
 	0, // 0: unityserver.TeamEndlessEndGame.settle_type:type_name -> unityserver.TeamEndlessSettleType
@@ -1249,13 +916,11 @@ var file_system_team_endless_unityserver_unity_server_proto_depIdxs = []int32{
 	7, // 2: unityserver.TeamEndlessEndGame.best_teammate:type_name -> unityserver.BestTeammate
 	5, // 3: unityserver.TeamEndlessEndGameRsp.ai:type_name -> unityserver.AiInfo
 	5, // 4: unityserver.TeamEndlessExitGameRsp.ai:type_name -> unityserver.AiInfo
-	0, // 5: unityserver.DreamGameEndGame.settle_type:type_name -> unityserver.TeamEndlessSettleType
-	9, // 6: unityserver.DreamGameEndGame.teammates:type_name -> unityserver.DreamGameTeammate
-	7, // [7:7] is the sub-list for method output_type
-	7, // [7:7] is the sub-list for method input_type
-	7, // [7:7] is the sub-list for extension type_name
-	7, // [7:7] is the sub-list for extension extendee
-	0, // [0:7] is the sub-list for field type_name
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_system_team_endless_unityserver_unity_server_proto_init() }
@@ -1348,66 +1013,6 @@ func file_system_team_endless_unityserver_unity_server_proto_init() {
 				return nil
 			}
 		}
-		file_system_team_endless_unityserver_unity_server_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DreamGameEndGame); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_system_team_endless_unityserver_unity_server_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DreamGameTeammate); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_system_team_endless_unityserver_unity_server_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DreamGameEndGameRsp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_system_team_endless_unityserver_unity_server_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DreamGameExitGameReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_system_team_endless_unityserver_unity_server_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DreamGameExitGameRsp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1415,7 +1020,7 @@ func file_system_team_endless_unityserver_unity_server_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_system_team_endless_unityserver_unity_server_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   12,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
