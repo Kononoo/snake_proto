@@ -706,6 +706,7 @@ message TitleInfo {
   int32 home_lottie_scale_type = 6;//缩放方式
   string static_imgurl = 7;
   string mail_text = 8;
+  string unity_anim_key = 9; // unity资源路径
 }
 //title end
 
