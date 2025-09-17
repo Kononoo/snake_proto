@@ -37,7 +37,7 @@ message DreamGameEndGameRsp {
 
 message DreamGameEndGameNotify {
   string rid = 1;                    // 本局游戏的rid
-  int32 rank = 2;                    // 评级
+  string score = 2;                  // 评级
   repeated DreamGameLoot loots = 3;  // 战利品列表
 }
 
