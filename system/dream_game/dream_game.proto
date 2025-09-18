@@ -42,12 +42,12 @@ message DreamGameEndGameNotify {
   repeated string teammates = 4;     // 队友列表
 }
 
-message DreamGameEnterGameReq {
-  string uid = 1;    // 进入游戏的玩家uid
-  string rid = 2;    // 游戏房间ID
+message DreamGameDeductPropReq {
+  repeated string uid = 1;    // 进入游戏的玩家uid
+  string rid = 2;             // 游戏房间ID
 }
 
-message DreamGameEnterGameRsp {
+message DreamGameDeductPropRsp {
 }
 
 message DreamGameExitGameReq {
