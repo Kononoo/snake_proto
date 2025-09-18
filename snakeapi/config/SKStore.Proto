@@ -706,6 +706,7 @@ message TitleInfo {
   int32 home_lottie_scale_type = 6;//缩放方式
   string static_imgurl = 7;
   string mail_text = 8;
+  string unity_anim_key = 9; // unity资源路径
 }
 //title end
 
@@ -905,6 +906,13 @@ message PropInfo {
   int32 speed_ratio = 15; // 加速比例
   int32 reward_type = 16; // 关联活动道具奖励类型
   repeated int32 support_game_mode = 17; // 支持的游戏模式
+  int64 use_end_time = 18; // 道具使用结束时间
+  repeated NiceNumber nice_numbers = 19; // 靓号列表
+}
+
+message NiceNumber {
+  string nice_title = 1; // 靓号标题
+  repeated int64 nice_numbers = 2; // 靓号列表
 }
 // prop end
 

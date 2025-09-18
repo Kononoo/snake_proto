@@ -138,6 +138,7 @@ message RelationApplyContent {
     ChatUserInfo userInfo = 5; // 申请人信息
     int64 expireTs = 6; // 过期时间
     int32 relationType = 7; // 关系类型
+    int64 msgId = 8; // 消息ID
 }
 
 message RelationShareContent {
