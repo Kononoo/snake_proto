@@ -16,17 +16,15 @@ message DreamGameMatchSuccess {// 多人搜打撤：匹配成功额外数据，�
   string host = 1; // unityserver房间ip地址和端口信息
 }
 
-message DreamGameUploadAttr {// 多人搜打撤：上传用户额外属性，存储在payload中
-  // 根据实际需要来添加字段
+message DreamGameUploadAttr {// 多人搜打撤：上传用户额外属性，存储在payload中，根据实际需要来添加字段
+  repeated DreamGameProps props = 1; // 道具列表
+}
+
+message DreamGameProps {
+  int64 item_id = 1;       // 物品ID
+  int64 count = 2;         // 数量
+  int64 durability = 3;    // 持久度
 }
 
 message DreamGameRoomMember {// 多人搜打撤：房间内玩家额外信息，存储在RoomMember的payload中
-}
-
-message DreamGameJoinRoom {
-  int64 source = 1; // 枚举：1(世界频道邀请加入)
-  int64 game_mode = 2;
-  int64 mode_version = 3;
-  int64 skin_id = 4; // 当前穿戴的皮肤
-  bytes payload = 5; // 额外的数据
 }
