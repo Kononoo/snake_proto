@@ -1338,5 +1338,6 @@ message KillBossGiftConfig {
   int64   start_time = 2;
   int64   end_time = 3;
   string  entrance_icon = 4; // 入口图标
+  int64   gift_id = 5;
 }
 // ======== kill boss gift end ====================================================
