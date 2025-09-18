@@ -27,4 +27,5 @@ message DreamGameProps {
 }
 
 message DreamGameRoomMember {// 多人搜打撤：房间内玩家额外信息，存储在RoomMember的payload中
+  repeated DreamGameProps props = 1; // 道具列表
 }
