@@ -39,6 +39,15 @@ message DreamGameEndGameNotify {
   string rid = 1;                    // 本局游戏的rid
   string score = 2;                  // 评级
   repeated DreamGameLoot loots = 3;  // 战利品列表
+  repeated string teammates = 4;     // 队友列表
+}
+
+message DreamGameDeductPropReq {
+  repeated string uid = 1;    // 进入游戏的玩家uid
+  string rid = 2;             // 游戏房间ID
+}
+
+message DreamGameDeductPropRsp {
 }
 
 message DreamGameExitGameReq {
