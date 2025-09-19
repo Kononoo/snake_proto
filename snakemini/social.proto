@@ -156,6 +156,13 @@ message RelationCoinContent {
   int64 num = 2; // 赠送数量
 }
 
+message LuckyBagContent {
+  string Title   = 1;  // 标题
+  string Content = 2;  // 描述内容
+  string Imgurl  = 3;  // 图片链接
+  int64  ItemId  = 4;  // 福袋ID
+}
+
 // commandId=sendmsg
 message SendMessageReq {// 发送消息
   ChannelType channelType = 1; // 频道类型
