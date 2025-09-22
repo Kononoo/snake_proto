@@ -32,6 +32,7 @@ message PlayerInfo{
   int64 rank_score = 12; // 段位分
   int64 skin_id = 13; // 皮肤id
   string limit_time = 14; // 皮肤时间, 0永久1限时
+  bytes payload = 15; // 额外数据
 }
 
 // 向UnityServer同步房间信息
