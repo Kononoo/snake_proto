@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package="../snakemini";
+option go_package = "../snakemini";
 option objc_class_prefix = "PROTO";
 
 
@@ -8,192 +8,201 @@ package pb;
 
 // 聊天频道类型
 enum ChannelType {
-    UnkownChannelType = 0; // 未知
-    World = 1; // 世界频道
-    Single = 2; // 私聊
-    Room = 3; // 赛后频道
-    TmpTeam = 4; // 临时小队频道
-    AreaTop = 5; // 地域榜
-    Clan = 6; // 战队频道
-    CrazyWeekend = 7; // 互助频道
+  UnkownChannelType = 0; // 未知
+  World = 1; // 世界频道
+  Single = 2; // 私聊
+  Room = 3; // 赛后频道
+  TmpTeam = 4; // 临时小队频道
+  AreaTop = 5; // 地域榜
+  Clan = 6; // 战队频道
+  CrazyWeekend = 7; // 互助频道
 }
 
 // 消息类型
 enum MessageType {
-    UnkownMessageType = 0; // 未知
-    SystemMessage = 1; // 系统消息
-    TextMessage = 2; // 文本消息
-    EmojiMessage = 3; // 表情消息
-    InviteMessage =4; // 组队邀请消息
-    GiftMessage = 5; // 礼物消息
-    TmpTeamInviteMessage =6; // 临时小队邀请消息
-    ClanInviteMessage = 7; // 战队邀请消息
-    CPApplyMessage = 8; // CP申请消息
-    CPShareMessage = 9; // CP分享消息
-    CrazyWeekendHelpMessage = 10; // 互助消息
-    RelationApplyMessage = 11; // 关系申请消息
-    RelationShareMessage = 12; // 关系分享消息
-    RelationCoinMessage = 13; // 赠送知音币消息
+  UnkownMessageType = 0; // 未知
+  SystemMessage = 1; // 系统消息
+  TextMessage = 2; // 文本消息
+  EmojiMessage = 3; // 表情消息
+  InviteMessage = 4; // 组队邀请消息
+  GiftMessage = 5; // 礼物消息
+  TmpTeamInviteMessage = 6; // 临时小队邀请消息
+  ClanInviteMessage = 7; // 战队邀请消息
+  CPApplyMessage = 8; // CP申请消息
+  CPShareMessage = 9; // CP分享消息
+  CrazyWeekendHelpMessage = 10; // 互助消息
+  RelationApplyMessage = 11; // 关系申请消息
+  RelationShareMessage = 12; // 关系分享消息
+  RelationCoinMessage = 13; // 赠送知音币消息
+  LuckyBagMessage = 14; // 欧皇福袋消息
 }
 
 enum MessageSubType {
-    DefaultSubType = 0; // 默认
-    Quik = 1; // 快捷语
-    Hello=2; // 打招呼,对sender不可见
+  DefaultSubType = 0; // 默认
+  Quik = 1; // 快捷语
+  Hello = 2; // 打招呼,对sender不可见
 }
 
 message Message {
-    string messageId = 1; // 消息ID，全局唯一
-    int64 sender = 2; // 发送人uid
-    MessageType messageType = 3; // 消息类型
-    bytes content = 4; // 根据 messageType 确定为不同的 Content 序列化
-    int64 time = 6; // 消息发送时间，unix微秒时间戳
-    MessageSubType messageSubType = 7; // 消息子类型
+  string messageId = 1; // 消息ID，全局唯一
+  int64 sender = 2; // 发送人uid
+  MessageType messageType = 3; // 消息类型
+  bytes content = 4; // 根据 messageType 确定为不同的 Content 序列化
+  int64 time = 6; // 消息发送时间，unix微秒时间戳
+  MessageSubType messageSubType = 7; // 消息子类型
 }
 
 // 系统消息
 message SystemContent {
-    string value = 1; // 文本内容
+  string value = 1; // 文本内容
 }
 
 // 普通文本消息
 message TextContent {
-    string value = 1; // 文本内容
+  string value = 1; // 文本内容
 }
 
 message EmojiContent {
-    string emojiId = 1; // 表情ID
+  string emojiId = 1; // 表情ID
 }
 
 message InviteContent {
-    int64 groupId = 1; // 队伍ID
-    int32 gameMode = 2; // 游戏模式
-    int64 modeVersion = 3; // 游戏版本，不同版本需屏蔽
-    int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
-    int32 limit =5;// 人数上限
-    int32 count =6; // 当前人数
-    int64 expireTs = 7; // 邀请过期时间，毫秒
-    int64 owner = 8; // 房主
+  int64 groupId = 1; // 队伍ID
+  int32 gameMode = 2; // 游戏模式
+  int64 modeVersion = 3; // 游戏版本，不同版本需屏蔽
+  int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
+  int32 limit = 5;// 人数上限
+  int32 count = 6; // 当前人数
+  int64 expireTs = 7; // 邀请过期时间，毫秒
+  int64 owner = 8; // 房主
 }
 
 message GiftContent {
-    int64 sendUid = 1; // 送礼人uid
-    int64 receiveUid = 2; // 收礼人uid
-    string sendNickname = 3; // 送礼人昵称
-    string receiveNickname = 4; // 收礼人昵称
-    int32 giftId = 5; // 礼物ID
-    string giftName = 6; // 礼物名称
-    int32 count = 7; // 送礼个数
-    string dedication = 8; // 送礼赠言
+  int64 sendUid = 1; // 送礼人uid
+  int64 receiveUid = 2; // 收礼人uid
+  string sendNickname = 3; // 送礼人昵称
+  string receiveNickname = 4; // 收礼人昵称
+  int32 giftId = 5; // 礼物ID
+  string giftName = 6; // 礼物名称
+  int32 count = 7; // 送礼个数
+  string dedication = 8; // 送礼赠言
 }
 
 message TmpTeamInviteContent {
-    int64 teamId = 1; // 队伍ID
-    int32 limit =5;// 人数上限
-    int32 count =6; // 当前人数
-    int64 expireTs = 7; // 邀请过期时间，毫秒
-    int64 owner = 8; // 房主
+  int64 teamId = 1; // 队伍ID
+  int32 limit = 5;// 人数上限
+  int32 count = 6; // 当前人数
+  int64 expireTs = 7; // 邀请过期时间，毫秒
+  int64 owner = 8; // 房主
 }
 
 message ClanInviteContent {
-    int64 clanId = 1; // 战队ID
-    string name = 2; // 战队名称
-    string avatar = 3; // 战队头像
-    int64 memberLimit = 4; // 战队人数上限
-    int64 memberCount = 5; // 战队人数
-    int64 honor = 6; // 战队荣誉-结算等级
-    int32 needApprove = 7; // 是否需要审批
+  int64 clanId = 1; // 战队ID
+  string name = 2; // 战队名称
+  string avatar = 3; // 战队头像
+  int64 memberLimit = 4; // 战队人数上限
+  int64 memberCount = 5; // 战队人数
+  int64 honor = 6; // 战队荣誉-结算等级
+  int32 needApprove = 7; // 是否需要审批
 }
 
 message CPApplyContent {
-    int64 uid = 1; // 申请人uid
-    int64 giftId = 2; // 礼物ID
-    int64 giftNum = 3; // 礼物数量
-    string content = 4; // 留言内容
-    ChatUserInfo userInfo = 5; // 申请人信息
-    int64 expireTs = 6; // 过期时间
+  int64 uid = 1; // 申请人uid
+  int64 giftId = 2; // 礼物ID
+  int64 giftNum = 3; // 礼物数量
+  string content = 4; // 留言内容
+  ChatUserInfo userInfo = 5; // 申请人信息
+  int64 expireTs = 6; // 过期时间
 }
 
 message CPShareContent {
-    int64 cpId = 1; // CP ID
-    repeated ChatUserInfo userInfos = 2; // 双方信息
-    int64 care = 3; // 守护值
-    int64 level = 4; // 等级
-    string content = 5; // 分享文案
-    int64 designationId = 6; // 亲密称谓ID
+  int64 cpId = 1; // CP ID
+  repeated ChatUserInfo userInfos = 2; // 双方信息
+  int64 care = 3; // 守护值
+  int64 level = 4; // 等级
+  string content = 5; // 分享文案
+  int64 designationId = 6; // 亲密称谓ID
 }
 
 message CrazyWeekendHelpContent {
-    int64 star = 1; // 皮肤星级
-    string skin_imgurl = 2; // 皮肤图片
-    string skin_name = 3; // 皮肤名称
-    string jump_url = 4; // 跳转链接
+  int64 star = 1; // 皮肤星级
+  string skin_imgurl = 2; // 皮肤图片
+  string skin_name = 3; // 皮肤名称
+  string jump_url = 4; // 跳转链接
 }
 
 message RelationApplyContent {
-    int64 uid = 1; // 申请人uid
-    int64 giftId = 2; // 礼物ID
-    int64 giftNum = 3; // 礼物数量
-    string content = 4; // 留言内容
-    ChatUserInfo userInfo = 5; // 申请人信息
-    int64 expireTs = 6; // 过期时间
-    int32 relationType = 7; // 关系类型
-    int64 msgId = 8; // 消息ID
+  int64 uid = 1; // 申请人uid
+  int64 giftId = 2; // 礼物ID
+  int64 giftNum = 3; // 礼物数量
+  string content = 4; // 留言内容
+  ChatUserInfo userInfo = 5; // 申请人信息
+  int64 expireTs = 6; // 过期时间
+  int32 relationType = 7; // 关系类型
+  int64 msgId = 8; // 消息ID
 }
 
 message RelationShareContent {
-    repeated ChatUserInfo userInfos = 2; // 双方信息
-    int64 care = 3; // 守护值
-    int64 level = 4; // 等级
-    string content = 5; // 分享文案
-    int64 designationId = 6; // 亲密称谓ID
-    int32 relationType = 7; // 关系类型
+  repeated ChatUserInfo userInfos = 2; // 双方信息
+  int64 care = 3; // 守护值
+  int64 level = 4; // 等级
+  string content = 5; // 分享文案
+  int64 designationId = 6; // 亲密称谓ID
+  int32 relationType = 7; // 关系类型
 }
 
 message RelationCoinContent {
-    int64 uid = 1; // 赠送人
-    int64 num = 2; // 赠送数量
+  int64 uid = 1; // 赠送人
+  int64 num = 2; // 赠送数量
+}
+
+message LuckyBagContent {
+  string Title   = 1;  // 标题
+  string Content = 2;  // 描述内容
+  string Imgurl  = 3;  // 图片链接
+  int64  ItemId  = 4;  // 福袋ID
+  int64  Type    = 5;  // 资源类型
 }
 
 // commandId=sendmsg
 message SendMessageReq {// 发送消息
-    ChannelType channelType = 1; // 频道类型
-    string target = 2; // 发送目标，私聊为目标用户uid，其余不填
-    MessageType messageType = 3; // 消息类型
-    bytes content = 4; // 消息内容，用对应MessageType的Content解析
-    MessageSubType messageSubType = 6; // 消息子类型
+  ChannelType channelType = 1; // 频道类型
+  string target = 2; // 发送目标，私聊为目标用户uid，其余不填
+  MessageType messageType = 3; // 消息类型
+  bytes content = 4; // 消息内容，用对应MessageType的Content解析
+  MessageSubType messageSubType = 6; // 消息子类型
 }
 
 message SendMessageResp {
-    string messageId = 1; // 消息ID
+  string messageId = 1; // 消息ID
 }
 
 // commandId=getmsglist
 message GetMessageListReq {// 拉取消息列表
-    ChannelType channelType = 1; // 频道类型
-    string target = 2; // 发送目标，私聊为目标用户uid，其余不填
-    int64 maxMsgTime =3; // 最新一条消息时间戳，默认0，翻看历史记录
-    int64 page = 21;
-    int64 pageSize = 22;
+  ChannelType channelType = 1; // 频道类型
+  string target = 2; // 发送目标，私聊为目标用户uid，其余不填
+  int64 maxMsgTime = 3; // 最新一条消息时间戳，默认0，翻看历史记录
+  int64 page = 21;
+  int64 pageSize = 22;
 }
 
 message GetMessageListResp {
-    repeated Message messageList = 1;
+  repeated Message messageList = 1;
 }
 
 // commandId=newmessage
 message PushNewMessage {
-    Message message = 1; // 消息内容
-    ChannelType channelType = 2; // 频道类型
-    string channelId = 3; // 发送频道ID，私聊为目标用户uid，赛后为房间ID
-    ChatUserInfo senderInfo = 4; // 发送人信息
+  Message message = 1; // 消息内容
+  ChannelType channelType = 2; // 频道类型
+  string channelId = 3; // 发送频道ID，私聊为目标用户uid，赛后为房间ID
+  ChatUserInfo senderInfo = 4; // 发送人信息
 }
 
 message SingleChat {
-    int64 targetUid = 1; // 目标用户uid
-    string relationType = 2; // 关系类型  "" 自己 "1" 被关注 "2" 已关注 "3" 互相关注 "4" 陌生人
-    int32 state=3;// 在线状态
-    int64 lastChatTs=4;// 最后聊天时间
+  int64 targetUid = 1; // 目标用户uid
+  string relationType = 2; // 关系类型  "" 自己 "1" 被关注 "2" 已关注 "3" 互相关注 "4" 陌生人
+  int32 state = 3;// 在线状态
+  int64 lastChatTs = 4;// 最后聊天时间
 }
 
 // commandId=singlechatlist
@@ -201,74 +210,74 @@ message GetSingleChatListReq {
 } // 获取全部私聊列表
 
 message GetSingleChatListResp {
-    repeated SingleChat singleChatList = 1;
+  repeated SingleChat singleChatList = 1;
 }
 
 // commandId=createsinglechat
 message CreateSingleChatReq {// 创建私聊
-    int64 targetUid = 1; // 目标用户uid
+  int64 targetUid = 1; // 目标用户uid
 }
 
 message CreateSingleChatResp {}
 
 // commandId=deletesinglechat
 message DeleteSingleChatReq {// 删除私聊
-    int64 targetUid = 1; // 目标用户uid
+  int64 targetUid = 1; // 目标用户uid
 }
 
 message DeleteSingleChatResp {}
 
 
 // commandId=leaveroomchat
-message LeaveRoomChatReq { // 退出赛后频道
-    int64 roomId = 1; // 房间ID
+message LeaveRoomChatReq {// 退出赛后频道
+  int64 roomId = 1; // 房间ID
 }
 
 message LeaveRoomChatResp {}
 
 // commandId=createroomchat
 message PushCreateRoomChat {
-    int64 rid =1; // 房间ID
-    repeated int64 uidList=2; // 用户列表
-    repeated TeamInfo teamList =3; // 队伍信息
+  int64 rid = 1; // 房间ID
+  repeated int64 uidList = 2; // 用户列表
+  repeated TeamInfo teamList = 3; // 队伍信息
 }
 
 message TeamInfo {
-    int32 teamId=1;// 队伍ID
-    repeated int64 uidList=2; // 用户列表
+  int32 teamId = 1;// 队伍ID
+  repeated int64 uidList = 2; // 用户列表
 }
 
 // commandId=deleteroomchat
 message PushDeleteRoomChat {
-    int64 rid =1; // 房间ID
+  int64 rid = 1; // 房间ID
 }
 
 // commandId=updateinvite
 message PushUpdateInvite {
-    int64 groupId = 1; // 队伍ID
-    int32 gameMode = 2; // 游戏模式
-    int64 modeVersion = 3; // 游戏版本，不同版本需屏蔽
-    int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
-    int32 limit =5;// 人数上限
-    int32 count =6; // 当前人数
-    int64 expireTs = 7; // 邀请过期时间，毫秒
-    int64 Owner =8; // 房主
-    string messageId=9;// 消息ID
-    ChannelType channelType = 10; // 频道类型
-    string channelId = 11; // 频道ID
+  int64 groupId = 1; // 队伍ID
+  int32 gameMode = 2; // 游戏模式
+  int64 modeVersion = 3; // 游戏版本，不同版本需屏蔽
+  int32 state = 4;// 队伍状态 1 组队中 2 匹配中 3 解散(过期)
+  int32 limit = 5;// 人数上限
+  int32 count = 6; // 当前人数
+  int64 expireTs = 7; // 邀请过期时间，毫秒
+  int64 Owner = 8; // 房主
+  string messageId = 9;// 消息ID
+  ChannelType channelType = 10; // 频道类型
+  string channelId = 11; // 频道ID
 }
 
 // commandId=updateclaninvite
-message PushUpdateClanInvite {  
-    int64 clanId = 1; // 战队ID
-    string name = 2; // 战队名称
-    string avatar = 3; // 战队头像
-    int64 memberLimit = 4; // 战队人数上限
-    int64 memberCount = 5; // 战队人数
-    int64 honor = 6; // 战队荣誉-结算等级
-    string messageId = 7; // 消息ID
-    int32 needApprove = 8; // 是否需要审批
-    ChannelType channelType = 9; // 频道类型
+message PushUpdateClanInvite {
+  int64 clanId = 1; // 战队ID
+  string name = 2; // 战队名称
+  string avatar = 3; // 战队头像
+  int64 memberLimit = 4; // 战队人数上限
+  int64 memberCount = 5; // 战队人数
+  int64 honor = 6; // 战队荣誉-结算等级
+  string messageId = 7; // 消息ID
+  int32 needApprove = 8; // 是否需要审批
+  ChannelType channelType = 9; // 频道类型
 }
 
 // commandId=invitelist
@@ -276,22 +285,22 @@ message InviteListReq {
 }
 
 message InviteListRsp {
-    repeated PushUpdateInvite groupInfoList = 2; // 队伍信息列表
+  repeated PushUpdateInvite groupInfoList = 2; // 队伍信息列表
 }
 
 // 聊天窗口显示的用户信息
 message ChatUserInfo {
-    int64 uid = 1; // 用户uid
-    string nickname = 2; // 用户昵称
-    string avatar = 3; // 用户头像
-    int32 gender = 4; // 用户性别
-    int64 show  = 5; // show值
-    int32 box_id = 6; // 头像框
-    string area = 7; // 用户地区
-    int64  charm = 8; // 魅力值
-    int64  star = 9; // 段位
-    int32  chat_bubble_id = 10; // 聊天气泡
-    int32  follow_state=11; // 关注状态
+  int64 uid = 1; // 用户uid
+  string nickname = 2; // 用户昵称
+  string avatar = 3; // 用户头像
+  int32 gender = 4; // 用户性别
+  int64 show = 5; // show值
+  int32 box_id = 6; // 头像框
+  string area = 7; // 用户地区
+  int64  charm = 8; // 魅力值
+  int64  star = 9; // 段位
+  int32  chat_bubble_id = 10; // 聊天气泡
+  int32  follow_state = 11; // 关注状态
 }
 
 // commandId=openchat
