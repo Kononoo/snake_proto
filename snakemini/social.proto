@@ -161,6 +161,7 @@ message LuckyBagContent {
   string Content = 2;  // 描述内容
   string Imgurl  = 3;  // 图片链接
   int64  ItemId  = 4;  // 福袋ID
+  int64  Type    = 5;  // 资源类型
 }
 
 // commandId=sendmsg
