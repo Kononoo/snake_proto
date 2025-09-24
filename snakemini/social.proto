@@ -279,6 +279,7 @@ message PushUpdateClanInvite {
   string messageId = 7; // 消息ID
   int32 needApprove = 8; // 是否需要审批
   ChannelType channelType = 9; // 频道类型
+  int64 avatarBox = 10; // 战队头像框
 }
 
 // commandId=invitelist
