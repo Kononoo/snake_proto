@@ -18,6 +18,7 @@ message DreamGameMatchSuccess {// 多人搜打撤：匹配成功额外数据，�
 
 message DreamGameUploadAttr {// 多人搜打撤：上传用户额外属性，存储在payload中，根据实际需要来添加字段
   repeated DreamGameProps props = 1; // 道具列表
+  int64 coin = 2; // 金币
 }
 
 message DreamGameProps {
@@ -27,4 +28,6 @@ message DreamGameProps {
 }
 
 message DreamGameRoomMember {// 多人搜打撤：房间内玩家额外信息，存储在RoomMember的payload中
+  repeated DreamGameProps props = 1; // 道具列表
+  int64 coin = 2; // 金币
 }

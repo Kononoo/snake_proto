@@ -16,6 +16,7 @@ message InternalReq {
     string reqExt = 7;
     int32 user_type = 8;
     string serverHost =9;
+    string ip = 10;
 }
 
 

@@ -38,9 +38,9 @@ message DreamGameEndGameRsp {
 }
 
 message DreamGameEndGameNotify {
-  string rid = 1;                    // 本局游戏的rid
-  string score = 2;                  // 评级
-  repeated DreamGameLoot loots = 3;  // 战利品列表
+  string rid = 1;                               // 本局游戏的rid
+  string score = 2;                             // 评级
+  repeated DreamGameLoot loots = 3;             // 战利品列表
   repeated DreamGameTeammate teammates = 4;     // 队友列表
 }
 
