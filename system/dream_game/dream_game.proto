@@ -23,6 +23,8 @@ message DreamGameEndGame {
   DreamGameSettleType settle_type = 13; // 结算类型, 0: 正常主动结算, 1: 异常结算, 2: 发生未知错误，默认不进行结算
   repeated string teammates = 14;       // 队友
   repeated DreamGameLoot loots = 15;    // 战利品列表
+  int64 coin = 16;                      // 当前金币
+  int32 status = 17;                    // 结算状态，0-未结算 1-成功 2-失败
 }
 
 // 战利品信息
@@ -39,8 +41,14 @@ message DreamGameEndGameNotify {
   string rid = 1;                    // 本局游戏的rid
   string score = 2;                  // 评级
   repeated DreamGameLoot loots = 3;  // 战利品列表
-  repeated string teammates = 4;     // 队友列表
+  repeated DreamGameTeammate teammates = 4;     // 队友列表
 }
+
+message DreamGameTeammate {
+  string uid = 1;              // 玩家uid
+  string status = 2;           // 结算状态
+}
+
 
 message DreamGameDeductPropReq {
   repeated string uid = 1;    // 进入游戏的玩家uid
