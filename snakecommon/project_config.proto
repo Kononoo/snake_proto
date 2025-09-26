@@ -1706,6 +1706,7 @@ message AiConfigV3 {
   string ai_skin_list_id = 41;
   int64 ai_skin_num = 42;
   int64 direction_limit = 43;
+  int32 anchor_mode_revive_time = 44;
 }
 
 // ai_config_v3 end
