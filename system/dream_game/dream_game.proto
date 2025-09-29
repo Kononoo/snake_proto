@@ -18,13 +18,13 @@ message DreamGameEndGame {
   string device_id = 6;
   int64 kill = 9;
   int64 length = 10;
-  string rid = 11;                      // 本局游戏的rid
-  int64 game_count = 12;                // 对局次数
-  DreamGameSettleType settle_type = 13; // 结算类型, 0: 正常主动结算, 1: 异常结算, 2: 发生未知错误，默认不进行结算
-  repeated string teammates = 14;       // 队友
-  repeated DreamGameLoot loots = 15;    // 战利品列表
-  int64 coin = 16;                      // 当前金币
-  int32 status = 17;                    // 结算状态，0-未结算 1-成功 2-失败
+  string rid = 11;                           // 本局游戏的rid
+  int64 game_count = 12;                     // 对局次数
+  DreamGameSettleType settle_type = 13;      // 结算类型, 0: 正常主动结算, 1: 异常结算, 2: 发生未知错误，默认不进行结算
+  repeated DreamGameTeammate teammates = 14; // 队友
+  repeated DreamGameLoot loots = 15;         // 战利品列表
+  int64 coin = 16;                           // 当前金币
+  int32 status = 17;                         // 结算状态，0-未结算 1-成功 2-失败
 }
 
 // 战利品信息
