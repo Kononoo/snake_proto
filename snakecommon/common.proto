@@ -20,6 +20,8 @@ message LoadingConfig {
   repeated string loading_animation     = 2; // loading动效
   repeated string activity_text         = 3; // 活动文案
   repeated string base_text             = 4; // 兜底文案
+  repeated string unity_background_animation = 5; // unity入场背景
+  repeated string unity_loading_animation = 6; // unity入场loading
 }
 
 message PVConfig{

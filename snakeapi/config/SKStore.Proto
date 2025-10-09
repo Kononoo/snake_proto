@@ -1074,6 +1074,7 @@ message RoomEnterEffectInfo {
   string nick_name_color = 10;
   string sign_color = 11;
   string sign_back_ground_color = 12;
+  string unity_anim_key = 13; // unity动效key
 }
 // card user info bg end
 
