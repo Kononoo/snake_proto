@@ -47,6 +47,7 @@ message DreamGameEndGameNotify {
 message DreamGameTeammate {
   string uid = 1;              // 玩家uid
   int32  status = 2;           // 结算状态
+  int64  value = 3;            // 战利品价值
 }
 
 
