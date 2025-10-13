@@ -67,6 +67,18 @@ service RelayMonitor {
 }
 
 
+// ------------------------------------- MultiUgc service definition --------------------------------------------
+service MultiUgc {
+    rpc Handle (InternalReq) returns (RpcResponse) {
+    }
+}
+
+service MultiUgcMonitor {
+    rpc Update (BroadcastConfigs) returns (ReplyEmpty) {
+    }
+}
+
+
 // ------------------------------------- SocialServer service definition --------------------------------------------
 service Social {
     rpc Handle (InternalReq) returns (RpcResponse) {
