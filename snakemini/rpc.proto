@@ -594,3 +594,12 @@ message MultiUgcUserScore {
     int32 length = 2; // 长度
     int32 kill = 3; // 击杀
 }
+
+
+message MultiUgcFrame {
+    int32 actionNo = 1; // 帧号
+    map<int64, int32> actions = 2; // uid=>action
+    repeated MultiUgcUserAttribute joinUsers = 3; // 加入玩家
+    repeated int64 exitUsers = 4; // 退出玩家
+    int64 new_owner = 5; // 新房主
+}
