@@ -2601,3 +2601,23 @@ message MiniGameItem {
 }
 
 // =====  snake mini game end =====
+
+// === dream_game begin ======================================
+message DreamGameConfig {
+  DreamGameMatch match = 1;
+  DreamGameCondition condition = 2;
+}
+
+message DreamGameMatch {
+  int64 match_timeout = 1;        // 匹配多少秒后直接匹配成功
+  int32 group_member_limit = 2;   // 队伍人数
+  int32 room_member_limit = 3;    // 房间人数
+  int32 newbie_game_count = 4;    // 新手局数
+}
+
+message DreamGameCondition {
+  int64 account_days = 1;         // 创建账号天数
+  int64 endless_play_count = 2;   // 累计游玩无尽次数
+  int64 high_score_limit = 3;     // 单局最高分条件
+}
+// === dream_game end ======================================
