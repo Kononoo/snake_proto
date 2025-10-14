@@ -890,6 +890,174 @@ var RelayMonitor_ServiceDesc = grpc.ServiceDesc{
 	Metadata: "snakemini/service.proto",
 }
 
+// MultiUgcClient is the client API for MultiUgc service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type MultiUgcClient interface {
+	Handle(ctx context.Context, in *InternalReq, opts ...grpc.CallOption) (*RpcResponse, error)
+}
+
+type multiUgcClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewMultiUgcClient(cc grpc.ClientConnInterface) MultiUgcClient {
+	return &multiUgcClient{cc}
+}
+
+func (c *multiUgcClient) Handle(ctx context.Context, in *InternalReq, opts ...grpc.CallOption) (*RpcResponse, error) {
+	out := new(RpcResponse)
+	err := c.cc.Invoke(ctx, "/pb.MultiUgc/Handle", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// MultiUgcServer is the server API for MultiUgc service.
+// All implementations should embed UnimplementedMultiUgcServer
+// for forward compatibility
+type MultiUgcServer interface {
+	Handle(context.Context, *InternalReq) (*RpcResponse, error)
+}
+
+// UnimplementedMultiUgcServer should be embedded to have forward compatible implementations.
+type UnimplementedMultiUgcServer struct {
+}
+
+func (UnimplementedMultiUgcServer) Handle(context.Context, *InternalReq) (*RpcResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Handle not implemented")
+}
+
+// UnsafeMultiUgcServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MultiUgcServer will
+// result in compilation errors.
+type UnsafeMultiUgcServer interface {
+	mustEmbedUnimplementedMultiUgcServer()
+}
+
+func RegisterMultiUgcServer(s grpc.ServiceRegistrar, srv MultiUgcServer) {
+	s.RegisterService(&MultiUgc_ServiceDesc, srv)
+}
+
+func _MultiUgc_Handle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InternalReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MultiUgcServer).Handle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.MultiUgc/Handle",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MultiUgcServer).Handle(ctx, req.(*InternalReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// MultiUgc_ServiceDesc is the grpc.ServiceDesc for MultiUgc service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MultiUgc_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "pb.MultiUgc",
+	HandlerType: (*MultiUgcServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Handle",
+			Handler:    _MultiUgc_Handle_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "snakemini/service.proto",
+}
+
+// MultiUgcMonitorClient is the client API for MultiUgcMonitor service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type MultiUgcMonitorClient interface {
+	Update(ctx context.Context, in *BroadcastConfigs, opts ...grpc.CallOption) (*ReplyEmpty, error)
+}
+
+type multiUgcMonitorClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewMultiUgcMonitorClient(cc grpc.ClientConnInterface) MultiUgcMonitorClient {
+	return &multiUgcMonitorClient{cc}
+}
+
+func (c *multiUgcMonitorClient) Update(ctx context.Context, in *BroadcastConfigs, opts ...grpc.CallOption) (*ReplyEmpty, error) {
+	out := new(ReplyEmpty)
+	err := c.cc.Invoke(ctx, "/pb.MultiUgcMonitor/Update", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// MultiUgcMonitorServer is the server API for MultiUgcMonitor service.
+// All implementations should embed UnimplementedMultiUgcMonitorServer
+// for forward compatibility
+type MultiUgcMonitorServer interface {
+	Update(context.Context, *BroadcastConfigs) (*ReplyEmpty, error)
+}
+
+// UnimplementedMultiUgcMonitorServer should be embedded to have forward compatible implementations.
+type UnimplementedMultiUgcMonitorServer struct {
+}
+
+func (UnimplementedMultiUgcMonitorServer) Update(context.Context, *BroadcastConfigs) (*ReplyEmpty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
+}
+
+// UnsafeMultiUgcMonitorServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to MultiUgcMonitorServer will
+// result in compilation errors.
+type UnsafeMultiUgcMonitorServer interface {
+	mustEmbedUnimplementedMultiUgcMonitorServer()
+}
+
+func RegisterMultiUgcMonitorServer(s grpc.ServiceRegistrar, srv MultiUgcMonitorServer) {
+	s.RegisterService(&MultiUgcMonitor_ServiceDesc, srv)
+}
+
+func _MultiUgcMonitor_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BroadcastConfigs)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MultiUgcMonitorServer).Update(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.MultiUgcMonitor/Update",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MultiUgcMonitorServer).Update(ctx, req.(*BroadcastConfigs))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// MultiUgcMonitor_ServiceDesc is the grpc.ServiceDesc for MultiUgcMonitor service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var MultiUgcMonitor_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "pb.MultiUgcMonitor",
+	HandlerType: (*MultiUgcMonitorServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Update",
+			Handler:    _MultiUgcMonitor_Update_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "snakemini/service.proto",
+}
+
 // SocialClient is the client API for Social service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
