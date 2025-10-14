@@ -5,6 +5,7 @@ option objc_class_prefix = "PROTO";
 
 import "snakemini/export.proto";
 import "snakemini/internal.proto";
+import "snakemini/social.proto";
 
 
 package pb;
@@ -528,13 +529,39 @@ message MultiUgcUserAttribute {
     int32 kill_id = 4;
 }
 
+message MultiUgcRoomListRequest {
+    int64 rid = 1; // 房间ID
+    int32 topic = 2; // 主题ID
+    bool refresh = 3; // 是否刷新
+}
+
+message MultiUgcRoomListResponse {
+    repeated MultiUgcRoomInfo room_list = 1;
+}
+
+
+message MultiUgcRoomInfo {
+    int64 rid = 1; // 房间ID
+    string name =2; // 房间名称
+    int32 limit = 3; // 房间人数上限
+    int32 count = 4; // 房间当前人数
+    int64 start_time = 5; // 房间开始时间
+    int32 user_type = 6; // 房间用户类型
+    int32 topic = 7; // 主题ID
+
+    ChatUserInfo owner = 8; // 房主信息
+}
+
+
 // 创建房间
 message MultiUgcCreateRoomRequest {
-    int64 uid = 1;
+    int64 uid = 1; // 创建者uid
+    int32 topic = 2; // 主题ID
+    string name = 3; // 房间名称
 }
 
 message MultiUgcCreateRoomResponse {
-    int64 rid = 1; // 房间ID
+    MultiUgcInfo multi_ugc_info = 1; // 房间信息
 }
 
 // 加入房间
@@ -554,9 +581,4 @@ message MultiUgcLeaveRoomRequest {
 }
 
 message MultiUgcLeaveRoomResponse {
-}
-
-message MultiUgcReportScoreRequest {
-    int64 uid = 1;
-    int32 score = 2;
 }
