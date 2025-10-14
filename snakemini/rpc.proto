@@ -581,4 +581,13 @@ message MultiUgcLeaveRoomRequest {
 }
 
 message MultiUgcLeaveRoomResponse {
+    MultiUgcUserScore self = 1; // 自己得分
+    repeated MultiUgcUserScore top3 = 2; // 同时存在时长top3
+}
+
+
+message MultiUgcUserScore {
+    int64 uid = 1;
+    int32 length = 2; // 长度
+    int32 kill = 3; // 击杀
 }
