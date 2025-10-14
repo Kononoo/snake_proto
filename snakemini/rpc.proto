@@ -71,6 +71,9 @@ message InGameStateReply {
     int32 rid = 3;
     int32 relay_server_id = 4;
     string relay_host = 5;
+
+    int64 ugc_rid = 6;
+    string ugc_host = 7;
 }
 
 message MatchUserInfo {
