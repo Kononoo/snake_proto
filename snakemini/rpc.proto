@@ -45,6 +45,7 @@ message BindMatchInfo {
     int32 state = 1;
     GroupInfo group_info = 2;
     MatchInfo match_info = 3;
+    MultiUgcInfo multi_ugc_info = 4;
 }
 
 message UidRequest {
@@ -509,3 +510,53 @@ message SendGiftResponse {
     repeated ItemInfo reward_list=3; // 奖励列表
 }
 
+// -----------------------------multiugc-----------------------------
+
+// 多ugc信息
+message MultiUgcInfo {
+    int64 rid = 1; // 房间ID
+    repeated int64 uid_list = 2; // 玩家列表
+    repeated MultiUgcUserAttribute user_attr = 3; // 玩家属性
+    string ws_addr = 4; // ws地址
+}
+
+
+message MultiUgcUserAttribute {
+    int64 uid = 1;
+    int32 skin_id = 2;
+    int32 ai_level = 3;
+    int32 kill_id = 4;
+}
+
+// 创建房间
+message MultiUgcCreateRoomRequest {
+    int64 uid = 1;
+}
+
+message MultiUgcCreateRoomResponse {
+    int64 rid = 1; // 房间ID
+}
+
+// 加入房间
+message MultiUgcJoinRoomRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+}
+
+message MultiUgcJoinRoomResponse {
+    MultiUgcInfo multi_ugc_info = 1;
+}
+
+// 离开房间
+message MultiUgcLeaveRoomRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+}
+
+message MultiUgcLeaveRoomResponse {
+}
+
+message MultiUgcReportScoreRequest {
+    int64 uid = 1;
+    int32 score = 2;
+}
