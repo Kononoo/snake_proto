@@ -48,6 +48,7 @@ message RecommendItem {
   int32 default_sub_index = 14;
   repeated SubItem sub_list = 15;
   repeated PackItem pack_list = 16;
+  string support_version = 17; // 最低适用版本
 }
 
 message PackItem {
@@ -76,6 +77,7 @@ message SubLeftItem {
   int32 item_id = 5;
   int32 item_type = 6;
   string item_name = 7;
+  float scale = 8; // 缩放系数
 }
 
 message SkinSet {
