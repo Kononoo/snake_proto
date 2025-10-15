@@ -5051,6 +5051,7 @@ func (x *MultiUgcUserAttribute) GetKillId() int32 {
 	return 0
 }
 
+// multiugc_list
 type MultiUgcRoomListRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -5264,7 +5265,7 @@ func (x *MultiUgcRoomInfo) GetOwner() *ChatUserInfo {
 	return nil
 }
 
-// 创建房间
+// multiugc_create
 type MultiUgcCreateRoomRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -5375,7 +5376,7 @@ func (x *MultiUgcCreateRoomResponse) GetMultiUgcInfo() *MultiUgcInfo {
 	return nil
 }
 
-// 加入房间
+// multiugc_join
 type MultiUgcJoinRoomRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -5478,7 +5479,7 @@ func (x *MultiUgcJoinRoomResponse) GetMultiUgcInfo() *MultiUgcInfo {
 	return nil
 }
 
-// 离开房间
+// multiugc_leave
 type MultiUgcLeaveRoomRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -5729,6 +5730,558 @@ func (x *MultiUgcFrame) GetNewOwner() int64 {
 		return x.NewOwner
 	}
 	return 0
+}
+
+// multiugc_bind
+type MultiUgcBindRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid  int64  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Rid  int32  `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+	Seed int32  `protobuf:"varint,3,opt,name=seed,proto3" json:"seed,omitempty"`
+	Sign []byte `protobuf:"bytes,4,opt,name=sign,proto3" json:"sign,omitempty"`
+}
+
+func (x *MultiUgcBindRequest) Reset() {
+	*x = MultiUgcBindRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[85]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcBindRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcBindRequest) ProtoMessage() {}
+
+func (x *MultiUgcBindRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[85]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcBindRequest.ProtoReflect.Descriptor instead.
+func (*MultiUgcBindRequest) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{85}
+}
+
+func (x *MultiUgcBindRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *MultiUgcBindRequest) GetRid() int32 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+func (x *MultiUgcBindRequest) GetSeed() int32 {
+	if x != nil {
+		return x.Seed
+	}
+	return 0
+}
+
+func (x *MultiUgcBindRequest) GetSign() []byte {
+	if x != nil {
+		return x.Sign
+	}
+	return nil
+}
+
+type MultiUgcBindResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *MultiUgcBindResponse) Reset() {
+	*x = MultiUgcBindResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[86]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcBindResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcBindResponse) ProtoMessage() {}
+
+func (x *MultiUgcBindResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[86]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcBindResponse.ProtoReflect.Descriptor instead.
+func (*MultiUgcBindResponse) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{86}
+}
+
+// multiugc_action 帧上报
+type MultiUgcActionRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid      int64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Rid      int64 `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+	ActionNo int32 `protobuf:"varint,3,opt,name=action_no,json=actionNo,proto3" json:"action_no,omitempty"` // 当前帧号
+	Action   int32 `protobuf:"varint,4,opt,name=action,proto3" json:"action,omitempty"`                     // 动作
+}
+
+func (x *MultiUgcActionRequest) Reset() {
+	*x = MultiUgcActionRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[87]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcActionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcActionRequest) ProtoMessage() {}
+
+func (x *MultiUgcActionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[87]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcActionRequest.ProtoReflect.Descriptor instead.
+func (*MultiUgcActionRequest) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{87}
+}
+
+func (x *MultiUgcActionRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *MultiUgcActionRequest) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+func (x *MultiUgcActionRequest) GetActionNo() int32 {
+	if x != nil {
+		return x.ActionNo
+	}
+	return 0
+}
+
+func (x *MultiUgcActionRequest) GetAction() int32 {
+	if x != nil {
+		return x.Action
+	}
+	return 0
+}
+
+type MultiUgcActionResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *MultiUgcActionResponse) Reset() {
+	*x = MultiUgcActionResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[88]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcActionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcActionResponse) ProtoMessage() {}
+
+func (x *MultiUgcActionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[88]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcActionResponse.ProtoReflect.Descriptor instead.
+func (*MultiUgcActionResponse) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{88}
+}
+
+// multiugc_upload_snapshot 快照上报
+type MultiUgcUploadSnapshotRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid      int64  `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Rid      int64  `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+	ActionNo int32  `protobuf:"varint,3,opt,name=action_no,json=actionNo,proto3" json:"action_no,omitempty"` // 当前帧号
+	Snapshot []byte `protobuf:"bytes,4,opt,name=snapshot,proto3" json:"snapshot,omitempty"`
+}
+
+func (x *MultiUgcUploadSnapshotRequest) Reset() {
+	*x = MultiUgcUploadSnapshotRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[89]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcUploadSnapshotRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcUploadSnapshotRequest) ProtoMessage() {}
+
+func (x *MultiUgcUploadSnapshotRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[89]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcUploadSnapshotRequest.ProtoReflect.Descriptor instead.
+func (*MultiUgcUploadSnapshotRequest) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{89}
+}
+
+func (x *MultiUgcUploadSnapshotRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *MultiUgcUploadSnapshotRequest) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+func (x *MultiUgcUploadSnapshotRequest) GetActionNo() int32 {
+	if x != nil {
+		return x.ActionNo
+	}
+	return 0
+}
+
+func (x *MultiUgcUploadSnapshotRequest) GetSnapshot() []byte {
+	if x != nil {
+		return x.Snapshot
+	}
+	return nil
+}
+
+type MultiUgcUploadSnapshotResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *MultiUgcUploadSnapshotResponse) Reset() {
+	*x = MultiUgcUploadSnapshotResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[90]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcUploadSnapshotResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcUploadSnapshotResponse) ProtoMessage() {}
+
+func (x *MultiUgcUploadSnapshotResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[90]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcUploadSnapshotResponse.ProtoReflect.Descriptor instead.
+func (*MultiUgcUploadSnapshotResponse) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{90}
+}
+
+// multiugc_get_snapshot 最新快照获取
+type MultiUgcGetSnapshotRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid int64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Rid int64 `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+}
+
+func (x *MultiUgcGetSnapshotRequest) Reset() {
+	*x = MultiUgcGetSnapshotRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[91]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcGetSnapshotRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcGetSnapshotRequest) ProtoMessage() {}
+
+func (x *MultiUgcGetSnapshotRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[91]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcGetSnapshotRequest.ProtoReflect.Descriptor instead.
+func (*MultiUgcGetSnapshotRequest) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{91}
+}
+
+func (x *MultiUgcGetSnapshotRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *MultiUgcGetSnapshotRequest) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+type MultiUgcGetSnapshotResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ActionNo int32  `protobuf:"varint,1,opt,name=action_no,json=actionNo,proto3" json:"action_no,omitempty"` // 快照对应帧号
+	Snapshot []byte `protobuf:"bytes,2,opt,name=snapshot,proto3" json:"snapshot,omitempty"`
+}
+
+func (x *MultiUgcGetSnapshotResponse) Reset() {
+	*x = MultiUgcGetSnapshotResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[92]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcGetSnapshotResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcGetSnapshotResponse) ProtoMessage() {}
+
+func (x *MultiUgcGetSnapshotResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[92]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcGetSnapshotResponse.ProtoReflect.Descriptor instead.
+func (*MultiUgcGetSnapshotResponse) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{92}
+}
+
+func (x *MultiUgcGetSnapshotResponse) GetActionNo() int32 {
+	if x != nil {
+		return x.ActionNo
+	}
+	return 0
+}
+
+func (x *MultiUgcGetSnapshotResponse) GetSnapshot() []byte {
+	if x != nil {
+		return x.Snapshot
+	}
+	return nil
+}
+
+// multiugc_history_frame
+type MultiUgcHistoryFrameRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid      int64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Rid      int64 `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+	ActionNo int32 `protobuf:"varint,3,opt,name=action_no,json=actionNo,proto3" json:"action_no,omitempty"` // 从哪一帧开始获取
+}
+
+func (x *MultiUgcHistoryFrameRequest) Reset() {
+	*x = MultiUgcHistoryFrameRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[93]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcHistoryFrameRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcHistoryFrameRequest) ProtoMessage() {}
+
+func (x *MultiUgcHistoryFrameRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[93]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcHistoryFrameRequest.ProtoReflect.Descriptor instead.
+func (*MultiUgcHistoryFrameRequest) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{93}
+}
+
+func (x *MultiUgcHistoryFrameRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *MultiUgcHistoryFrameRequest) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+func (x *MultiUgcHistoryFrameRequest) GetActionNo() int32 {
+	if x != nil {
+		return x.ActionNo
+	}
+	return 0
+}
+
+type MultiUgcHistoryFrameResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Frames []*MultiUgcFrame `protobuf:"bytes,1,rep,name=frames,proto3" json:"frames,omitempty"`
+}
+
+func (x *MultiUgcHistoryFrameResponse) Reset() {
+	*x = MultiUgcHistoryFrameResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[94]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MultiUgcHistoryFrameResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MultiUgcHistoryFrameResponse) ProtoMessage() {}
+
+func (x *MultiUgcHistoryFrameResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[94]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MultiUgcHistoryFrameResponse.ProtoReflect.Descriptor instead.
+func (*MultiUgcHistoryFrameResponse) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{94}
+}
+
+func (x *MultiUgcHistoryFrameResponse) GetFrames() []*MultiUgcFrame {
+	if x != nil {
+		return x.Frames
+	}
+	return nil
 }
 
 var File_snakemini_rpc_proto protoreflect.FileDescriptor
@@ -6378,16 +6931,63 @@ var file_snakemini_rpc_proto_rawDesc = []byte{
 	0x0c, 0x41, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a,
 	0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12,
 	0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05,
-	0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x2a, 0x6b, 0x0a, 0x0c, 0x53, 0x65, 0x6e,
-	0x64, 0x47, 0x69, 0x66, 0x74, 0x43, 0x6f, 0x73, 0x74, 0x12, 0x08, 0x0a, 0x04, 0x46, 0x72, 0x65,
-	0x65, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x43, 0x6f, 0x69, 0x6e, 0x10, 0x01, 0x12, 0x0b, 0x0a,
-	0x07, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x02, 0x12, 0x06, 0x0a, 0x02, 0x41, 0x64,
-	0x10, 0x03, 0x12, 0x09, 0x0a, 0x05, 0x53, 0x68, 0x61, 0x72, 0x65, 0x10, 0x04, 0x12, 0x11, 0x0a,
-	0x0d, 0x44, 0x6f, 0x75, 0x79, 0x69, 0x6e, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x05,
-	0x12, 0x06, 0x0a, 0x02, 0x43, 0x50, 0x10, 0x06, 0x12, 0x0c, 0x0a, 0x08, 0x52, 0x65, 0x6c, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x10, 0x07, 0x42, 0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61,
-	0x6b, 0x65, 0x6d, 0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x61, 0x0a, 0x13, 0x4d, 0x75, 0x6c,
+	0x74, 0x69, 0x55, 0x67, 0x63, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75,
+	0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x03, 0x72, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x65, 0x65, 0x64, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x04, 0x73, 0x65, 0x65, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x69, 0x67, 0x6e,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x04, 0x73, 0x69, 0x67, 0x6e, 0x22, 0x16, 0x0a, 0x14,
+	0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x42, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x70, 0x0a, 0x15, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67, 0x63,
+	0x41, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a,
+	0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12,
+	0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x72, 0x69,
+	0x64, 0x12, 0x1b, 0x0a, 0x09, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x6e, 0x6f, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x6f, 0x12, 0x16,
+	0x0a, 0x06, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06,
+	0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x18, 0x0a, 0x16, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55,
+	0x67, 0x63, 0x41, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x7c, 0x0a, 0x1d, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x55, 0x70, 0x6c, 0x6f,
+	0x61, 0x64, 0x53, 0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03,
+	0x75, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x03, 0x72, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f,
+	0x6e, 0x6f, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e,
+	0x4e, 0x6f, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x18, 0x04,
+	0x20, 0x01, 0x28, 0x0c, 0x52, 0x08, 0x73, 0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x22, 0x20,
+	0x0a, 0x1e, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64,
+	0x53, 0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x40, 0x0a, 0x1a, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x47, 0x65, 0x74, 0x53,
+	0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10,
+	0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75, 0x69, 0x64,
+	0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x72,
+	0x69, 0x64, 0x22, 0x56, 0x0a, 0x1b, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x47, 0x65,
+	0x74, 0x53, 0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x12, 0x1b, 0x0a, 0x09, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x6e, 0x6f, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x6f, 0x12, 0x1a,
+	0x0a, 0x08, 0x73, 0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0c,
+	0x52, 0x08, 0x73, 0x6e, 0x61, 0x70, 0x73, 0x68, 0x6f, 0x74, 0x22, 0x5e, 0x0a, 0x1b, 0x4d, 0x75,
+	0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x46, 0x72, 0x61,
+	0x6d, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x72,
+	0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x72, 0x69, 0x64, 0x12, 0x1b, 0x0a,
+	0x09, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x6e, 0x6f, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x08, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4e, 0x6f, 0x22, 0x49, 0x0a, 0x1c, 0x4d, 0x75,
+	0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x79, 0x46, 0x72, 0x61,
+	0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x29, 0x0a, 0x06, 0x66, 0x72,
+	0x61, 0x6d, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x70, 0x62, 0x2e,
+	0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x46, 0x72, 0x61, 0x6d, 0x65, 0x52, 0x06, 0x66,
+	0x72, 0x61, 0x6d, 0x65, 0x73, 0x2a, 0x6b, 0x0a, 0x0c, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66,
+	0x74, 0x43, 0x6f, 0x73, 0x74, 0x12, 0x08, 0x0a, 0x04, 0x46, 0x72, 0x65, 0x65, 0x10, 0x00, 0x12,
+	0x08, 0x0a, 0x04, 0x43, 0x6f, 0x69, 0x6e, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x44, 0x69, 0x61,
+	0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x02, 0x12, 0x06, 0x0a, 0x02, 0x41, 0x64, 0x10, 0x03, 0x12, 0x09,
+	0x0a, 0x05, 0x53, 0x68, 0x61, 0x72, 0x65, 0x10, 0x04, 0x12, 0x11, 0x0a, 0x0d, 0x44, 0x6f, 0x75,
+	0x79, 0x69, 0x6e, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x05, 0x12, 0x06, 0x0a, 0x02,
+	0x43, 0x50, 0x10, 0x06, 0x12, 0x0c, 0x0a, 0x08, 0x52, 0x65, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x10, 0x07, 0x42, 0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d, 0x69,
+	0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -6403,7 +7003,7 @@ func file_snakemini_rpc_proto_rawDescGZIP() []byte {
 }
 
 var file_snakemini_rpc_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_snakemini_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 87)
+var file_snakemini_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 97)
 var file_snakemini_rpc_proto_goTypes = []interface{}{
 	(SendGiftCost)(0),                      // 0: pb.SendGiftCost
 	(*UidList)(nil),                        // 1: pb.UidList
@@ -6491,52 +7091,63 @@ var file_snakemini_rpc_proto_goTypes = []interface{}{
 	(*MultiUgcLeaveRoomResponse)(nil),      // 83: pb.MultiUgcLeaveRoomResponse
 	(*MultiUgcUserScore)(nil),              // 84: pb.MultiUgcUserScore
 	(*MultiUgcFrame)(nil),                  // 85: pb.MultiUgcFrame
-	nil,                                    // 86: pb.UidRequest.CmdMapEntry
-	nil,                                    // 87: pb.MultiUgcFrame.ActionsEntry
-	(*FrameCommand)(nil),                   // 88: pb.FrameCommand
-	(*ItemInfo)(nil),                       // 89: pb.ItemInfo
-	(*ChatUserInfo)(nil),                   // 90: pb.ChatUserInfo
+	(*MultiUgcBindRequest)(nil),            // 86: pb.MultiUgcBindRequest
+	(*MultiUgcBindResponse)(nil),           // 87: pb.MultiUgcBindResponse
+	(*MultiUgcActionRequest)(nil),          // 88: pb.MultiUgcActionRequest
+	(*MultiUgcActionResponse)(nil),         // 89: pb.MultiUgcActionResponse
+	(*MultiUgcUploadSnapshotRequest)(nil),  // 90: pb.MultiUgcUploadSnapshotRequest
+	(*MultiUgcUploadSnapshotResponse)(nil), // 91: pb.MultiUgcUploadSnapshotResponse
+	(*MultiUgcGetSnapshotRequest)(nil),     // 92: pb.MultiUgcGetSnapshotRequest
+	(*MultiUgcGetSnapshotResponse)(nil),    // 93: pb.MultiUgcGetSnapshotResponse
+	(*MultiUgcHistoryFrameRequest)(nil),    // 94: pb.MultiUgcHistoryFrameRequest
+	(*MultiUgcHistoryFrameResponse)(nil),   // 95: pb.MultiUgcHistoryFrameResponse
+	nil,                                    // 96: pb.UidRequest.CmdMapEntry
+	nil,                                    // 97: pb.MultiUgcFrame.ActionsEntry
+	(*FrameCommand)(nil),                   // 98: pb.FrameCommand
+	(*ItemInfo)(nil),                       // 99: pb.ItemInfo
+	(*ChatUserInfo)(nil),                   // 100: pb.ChatUserInfo
 }
 var file_snakemini_rpc_proto_depIdxs = []int32{
-	2,  // 0: pb.RpcResponse.err:type_name -> pb.ErrInfo
-	2,  // 1: pb.ReplyEmpty.err:type_name -> pb.ErrInfo
-	21, // 2: pb.BindMatchInfo.group_info:type_name -> pb.GroupInfo
-	26, // 3: pb.BindMatchInfo.match_info:type_name -> pb.MatchInfo
-	73, // 4: pb.BindMatchInfo.multi_ugc_info:type_name -> pb.MultiUgcInfo
-	86, // 5: pb.UidRequest.cmdMap:type_name -> pb.UidRequest.CmdMapEntry
-	2,  // 6: pb.InGameStateReply.err:type_name -> pb.ErrInfo
-	12, // 7: pb.CreateGroupRequest.user_info:type_name -> pb.MatchUserInfo
-	12, // 8: pb.JoinGroupRequest.user_info:type_name -> pb.MatchUserInfo
-	21, // 9: pb.JoinGroupResponse.group_info:type_name -> pb.GroupInfo
-	22, // 10: pb.GroupInfo.user_infos:type_name -> pb.GroupUserInfo
-	12, // 11: pb.StartMatchRequest.user_info:type_name -> pb.MatchUserInfo
-	27, // 12: pb.MatchInfo.user_attr:type_name -> pb.UserAttribute
-	31, // 13: pb.UploadScoreRequest.score_list:type_name -> pb.UserScore
-	31, // 14: pb.ReportRoomScore.score_list:type_name -> pb.UserScore
-	12, // 15: pb.ReturnGroupReq.user_info:type_name -> pb.MatchUserInfo
-	21, // 16: pb.ReturnGroupRsp.group_info:type_name -> pb.GroupInfo
-	43, // 17: pb.RelayBindResponse.start_info:type_name -> pb.RelayStartInfo
-	27, // 18: pb.RelayCommandRequest.user_attr:type_name -> pb.UserAttribute
-	88, // 19: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
-	63, // 20: pb.GetUserStateResponse.states:type_name -> pb.UserStateInfo
-	12, // 21: pb.HandleInviteRequest.user_info:type_name -> pb.MatchUserInfo
-	69, // 22: pb.GetUserConnectorInfoResponse.user_info:type_name -> pb.BindUserInfo
-	0,  // 23: pb.SendGiftRequest.cost_type:type_name -> pb.SendGiftCost
-	89, // 24: pb.SendGiftResponse.reward_list:type_name -> pb.ItemInfo
-	74, // 25: pb.MultiUgcInfo.user_attr:type_name -> pb.MultiUgcUserAttribute
-	77, // 26: pb.MultiUgcRoomListResponse.room_list:type_name -> pb.MultiUgcRoomInfo
-	90, // 27: pb.MultiUgcRoomInfo.owner:type_name -> pb.ChatUserInfo
-	73, // 28: pb.MultiUgcCreateRoomResponse.multi_ugc_info:type_name -> pb.MultiUgcInfo
-	73, // 29: pb.MultiUgcJoinRoomResponse.multi_ugc_info:type_name -> pb.MultiUgcInfo
-	84, // 30: pb.MultiUgcLeaveRoomRequest.scores:type_name -> pb.MultiUgcUserScore
-	84, // 31: pb.MultiUgcLeaveRoomResponse.top3:type_name -> pb.MultiUgcUserScore
-	87, // 32: pb.MultiUgcFrame.actions:type_name -> pb.MultiUgcFrame.ActionsEntry
-	74, // 33: pb.MultiUgcFrame.joinUsers:type_name -> pb.MultiUgcUserAttribute
-	34, // [34:34] is the sub-list for method output_type
-	34, // [34:34] is the sub-list for method input_type
-	34, // [34:34] is the sub-list for extension type_name
-	34, // [34:34] is the sub-list for extension extendee
-	0,  // [0:34] is the sub-list for field type_name
+	2,   // 0: pb.RpcResponse.err:type_name -> pb.ErrInfo
+	2,   // 1: pb.ReplyEmpty.err:type_name -> pb.ErrInfo
+	21,  // 2: pb.BindMatchInfo.group_info:type_name -> pb.GroupInfo
+	26,  // 3: pb.BindMatchInfo.match_info:type_name -> pb.MatchInfo
+	73,  // 4: pb.BindMatchInfo.multi_ugc_info:type_name -> pb.MultiUgcInfo
+	96,  // 5: pb.UidRequest.cmdMap:type_name -> pb.UidRequest.CmdMapEntry
+	2,   // 6: pb.InGameStateReply.err:type_name -> pb.ErrInfo
+	12,  // 7: pb.CreateGroupRequest.user_info:type_name -> pb.MatchUserInfo
+	12,  // 8: pb.JoinGroupRequest.user_info:type_name -> pb.MatchUserInfo
+	21,  // 9: pb.JoinGroupResponse.group_info:type_name -> pb.GroupInfo
+	22,  // 10: pb.GroupInfo.user_infos:type_name -> pb.GroupUserInfo
+	12,  // 11: pb.StartMatchRequest.user_info:type_name -> pb.MatchUserInfo
+	27,  // 12: pb.MatchInfo.user_attr:type_name -> pb.UserAttribute
+	31,  // 13: pb.UploadScoreRequest.score_list:type_name -> pb.UserScore
+	31,  // 14: pb.ReportRoomScore.score_list:type_name -> pb.UserScore
+	12,  // 15: pb.ReturnGroupReq.user_info:type_name -> pb.MatchUserInfo
+	21,  // 16: pb.ReturnGroupRsp.group_info:type_name -> pb.GroupInfo
+	43,  // 17: pb.RelayBindResponse.start_info:type_name -> pb.RelayStartInfo
+	27,  // 18: pb.RelayCommandRequest.user_attr:type_name -> pb.UserAttribute
+	98,  // 19: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
+	63,  // 20: pb.GetUserStateResponse.states:type_name -> pb.UserStateInfo
+	12,  // 21: pb.HandleInviteRequest.user_info:type_name -> pb.MatchUserInfo
+	69,  // 22: pb.GetUserConnectorInfoResponse.user_info:type_name -> pb.BindUserInfo
+	0,   // 23: pb.SendGiftRequest.cost_type:type_name -> pb.SendGiftCost
+	99,  // 24: pb.SendGiftResponse.reward_list:type_name -> pb.ItemInfo
+	74,  // 25: pb.MultiUgcInfo.user_attr:type_name -> pb.MultiUgcUserAttribute
+	77,  // 26: pb.MultiUgcRoomListResponse.room_list:type_name -> pb.MultiUgcRoomInfo
+	100, // 27: pb.MultiUgcRoomInfo.owner:type_name -> pb.ChatUserInfo
+	73,  // 28: pb.MultiUgcCreateRoomResponse.multi_ugc_info:type_name -> pb.MultiUgcInfo
+	73,  // 29: pb.MultiUgcJoinRoomResponse.multi_ugc_info:type_name -> pb.MultiUgcInfo
+	84,  // 30: pb.MultiUgcLeaveRoomRequest.scores:type_name -> pb.MultiUgcUserScore
+	84,  // 31: pb.MultiUgcLeaveRoomResponse.top3:type_name -> pb.MultiUgcUserScore
+	97,  // 32: pb.MultiUgcFrame.actions:type_name -> pb.MultiUgcFrame.ActionsEntry
+	74,  // 33: pb.MultiUgcFrame.joinUsers:type_name -> pb.MultiUgcUserAttribute
+	85,  // 34: pb.MultiUgcHistoryFrameResponse.frames:type_name -> pb.MultiUgcFrame
+	35,  // [35:35] is the sub-list for method output_type
+	35,  // [35:35] is the sub-list for method input_type
+	35,  // [35:35] is the sub-list for extension type_name
+	35,  // [35:35] is the sub-list for extension extendee
+	0,   // [0:35] is the sub-list for field type_name
 }
 
 func init() { file_snakemini_rpc_proto_init() }
@@ -7568,6 +8179,126 @@ func file_snakemini_rpc_proto_init() {
 				return nil
 			}
 		}
+		file_snakemini_rpc_proto_msgTypes[85].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcBindRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[86].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcBindResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[87].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcActionRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[88].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcActionResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[89].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcUploadSnapshotRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[90].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcUploadSnapshotResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[91].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcGetSnapshotRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[92].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcGetSnapshotResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[93].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcHistoryFrameRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[94].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MultiUgcHistoryFrameResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -7575,7 +8306,7 @@ func file_snakemini_rpc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakemini_rpc_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   87,
+			NumMessages:   97,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
