@@ -514,7 +514,7 @@ message SendGiftResponse {
     repeated ItemInfo reward_list=3; // 奖励列表
 }
 
-// -----------------------------multiugc-----------------------------
+// -----------------------------multiugc-match-----------------------------
 
 // 多ugc信息
 message MultiUgcInfo {
@@ -532,6 +532,7 @@ message MultiUgcUserAttribute {
     int32 kill_id = 4;
 }
 
+// multiugc_list
 message MultiUgcRoomListRequest {
     int64 rid = 1; // 房间ID
     int32 topic = 2; // 主题ID
@@ -556,7 +557,7 @@ message MultiUgcRoomInfo {
 }
 
 
-// 创建房间
+// multiugc_create
 message MultiUgcCreateRoomRequest {
     int64 uid = 1; // 创建者uid
     int32 topic = 2; // 主题ID
@@ -567,7 +568,7 @@ message MultiUgcCreateRoomResponse {
     MultiUgcInfo multi_ugc_info = 1; // 房间信息
 }
 
-// 加入房间
+// multiugc_join
 message MultiUgcJoinRoomRequest {
     int64 uid = 1;
     int64 rid = 2;
@@ -577,7 +578,7 @@ message MultiUgcJoinRoomResponse {
     MultiUgcInfo multi_ugc_info = 1;
 }
 
-// 离开房间
+// multiugc_leave
 message MultiUgcLeaveRoomRequest {
     int64 uid = 1;
     int64 rid = 2;
@@ -596,10 +597,67 @@ message MultiUgcUserScore {
 }
 
 
+// -----------------------------multiugc-relay-----------------------------
+
 message MultiUgcFrame {
     int32 actionNo = 1; // 帧号
     map<int64, int32> actions = 2; // uid=>action
     repeated MultiUgcUserAttribute joinUsers = 3; // 加入玩家
     repeated int64 exitUsers = 4; // 退出玩家
     int64 new_owner = 5; // 新房主
+}
+
+// multiugc_bind
+message MultiUgcBindRequest {
+    int64 uid = 1;
+    int32 rid = 2;
+    int32 seed = 3;
+    bytes sign = 4;
+}
+
+message MultiUgcBindResponse {
+}
+
+// multiugc_action 帧上报
+message MultiUgcActionRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+    int32 action_no = 3; // 当前帧号
+    int32 action = 4; // 动作
+}
+
+message MultiUgcActionResponse {
+}
+
+// multiugc_upload_snapshot 快照上报
+message MultiUgcUploadSnapshotRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+    int32 action_no = 3; // 当前帧号
+    bytes snapshot = 4;
+}
+
+message MultiUgcUploadSnapshotResponse {
+}
+
+// multiugc_get_snapshot 最新快照获取
+message MultiUgcGetSnapshotRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+}
+
+message MultiUgcGetSnapshotResponse {
+    int32 action_no = 1; // 快照对应帧号
+    bytes snapshot = 2;
+}
+
+// multiugc_history_frame
+message MultiUgcHistoryFrameRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+    int32 action_no = 3; // 从哪一帧开始获取
+}
+
+message MultiUgcHistoryFrameResponse {
+    repeated MultiUgcFrame frames = 1;
 }
