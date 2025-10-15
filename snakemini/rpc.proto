@@ -600,7 +600,7 @@ message MultiUgcUserScore {
 // -----------------------------multiugc-relay-----------------------------
 
 message MultiUgcFrame {
-    int32 actionNo = 1; // 帧号
+    int32 action_no = 1; // 帧号
     map<int64, int32> actions = 2; // uid=>action
     repeated MultiUgcUserAttribute joinUsers = 3; // 加入玩家
     repeated int64 exitUsers = 4; // 退出玩家
@@ -634,7 +634,7 @@ message MultiUgcUploadSnapshotRequest {
     int64 uid = 1;
     int64 rid = 2;
     int32 action_no = 3; // 当前帧号
-    bytes snapshot = 4;
+    bytes snapshot = 4; // 透传
 }
 
 message MultiUgcUploadSnapshotResponse {
@@ -660,4 +660,50 @@ message MultiUgcHistoryFrameRequest {
 
 message MultiUgcHistoryFrameResponse {
     repeated MultiUgcFrame frames = 1;
+}
+
+// multiugc_checksum
+message MultiUgcChecksumRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+    int32 action_no = 3; // 当前帧号
+    double checksum = 4; // 校验和
+}
+
+message MultiUgcChecksumResponse {
+}
+
+// request 结构
+message PbMultiUgcRequest {
+    string command_id = 1;
+    MultiUgcAction action = 2;
+}
+
+message MultiUgcAction {
+    MultiUgcBindRequest bind = 1;
+    MultiUgcActionRequest action = 2;
+    MultiUgcUploadSnapshotRequest snapshot = 3;
+    MultiUgcHistoryFrameRequest history_frame = 4;
+    MultiUgcChecksumRequest checksum = 5;
+}
+
+// push 结构
+message PbMultiUgcPush {
+    string command_id = 1;
+    MultiUgcPushAction push_action = 2;
+}
+
+// multiugc_checksum_abnormal
+message PushMultiUgcChecksumAbnormal {
+    int32 action_no = 1; // 异常帧号，给所有人发
+}
+
+// multiugc_frames
+message PushMultiUgcFrames {
+    repeated MultiUgcFrame actions = 1; // 帧列表
+}
+
+message MultiUgcPushAction {
+    PushMultiUgcChecksumAbnormal checksum_abnormal = 1;
+    PushMultiUgcFrames frames = 2;
 }
