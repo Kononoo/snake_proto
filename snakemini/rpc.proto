@@ -581,11 +581,11 @@ message MultiUgcJoinRoomResponse {
 message MultiUgcLeaveRoomRequest {
     int64 uid = 1;
     int64 rid = 2;
+    repeated MultiUgcUserScore scores = 3; // 玩家成绩列表
 }
 
 message MultiUgcLeaveRoomResponse {
-    MultiUgcUserScore self = 1; // 自己得分
-    repeated MultiUgcUserScore top3 = 2; // 同时存在时长top3
+    repeated MultiUgcUserScore top3 = 1; // 同时存在时长top3
 }
 
 
