@@ -676,34 +676,22 @@ message MultiUgcChecksumResponse {
 // request 结构
 message PbMultiUgcRequest {
     string command_id = 1;
-    MultiUgcAction action = 2;
+    bytes body = 2; // 根据command_id解析
 }
 
-message MultiUgcAction {
-    MultiUgcBindRequest bind = 1;
-    MultiUgcActionRequest action = 2;
-    MultiUgcUploadSnapshotRequest snapshot = 3;
-    MultiUgcHistoryFrameRequest history_frame = 4;
-    MultiUgcChecksumRequest checksum = 5;
-}
 
 // push 结构
 message PbMultiUgcPush {
     string command_id = 1;
-    MultiUgcPushAction push_action = 2;
+    bytes body = 2; // 根据command_id解析
 }
 
-// multiugc_checksum_abnormal
+// multiugc_push_checksum_abnormal
 message PushMultiUgcChecksumAbnormal {
     int32 action_no = 1; // 异常帧号，给所有人发
 }
 
-// multiugc_frames
+// multiugc_push_frames
 message PushMultiUgcFrames {
     repeated MultiUgcFrame actions = 1; // 帧列表
-}
-
-message MultiUgcPushAction {
-    PushMultiUgcChecksumAbnormal checksum_abnormal = 1;
-    PushMultiUgcFrames frames = 2;
 }
