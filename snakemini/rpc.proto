@@ -616,6 +616,7 @@ message MultiUgcBindRequest {
 }
 
 message MultiUgcBindResponse {
+    int32 state = 1; // 状态 0 绑定成功 1 绑定失败
 }
 
 // multiugc_action 帧上报
@@ -676,14 +677,16 @@ message MultiUgcChecksumResponse {
 // request 结构
 message PbMultiUgcRequest {
     string command_id = 1;
-    bytes body = 2; // 根据command_id解析
+    int32 pack_id = 2; // 包ID
+    bytes body = 3; // 根据command_id解析
 }
 
 
 // push 结构
 message PbMultiUgcPush {
     string command_id = 1;
-    bytes body = 2; // 根据command_id解析
+    int32 pack_id = 2; // 包ID
+    bytes body = 3; // 根据command_id解析
 }
 
 // multiugc_push_checksum_abnormal
