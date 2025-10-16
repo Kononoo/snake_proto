@@ -698,3 +698,20 @@ message PushMultiUgcChecksumAbnormal {
 message PushMultiUgcFrames {
     repeated MultiUgcFrame actions = 1; // 帧列表
 }
+
+
+// 内部RPC请求协议
+message RpcMultiUgcCreateRoomRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+}
+
+message RpcMultiUgcJoinRoomRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+}
+
+message RpcMultiUgcLeaveRoomRequest {
+    int64 uid = 1;
+    int64 rid = 2;
+}
