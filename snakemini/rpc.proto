@@ -522,6 +522,8 @@ message MultiUgcInfo {
     repeated int64 uid_list = 2; // 玩家列表
     repeated MultiUgcUserAttribute user_attr = 3; // 玩家属性
     string ws_addr = 4; // ws地址
+    int64 owner = 5; // 房主
+    int32 seed = 6; // 随机种子
 }
 
 
@@ -675,20 +677,17 @@ message MultiUgcChecksumRequest {
 message MultiUgcChecksumResponse {
 }
 
-// request 结构
+
 message PbMultiUgcRequest {
-    string command_id = 1;
-    int32 pack_id = 2; // 包ID
-    bytes body = 3; // 根据command_id解析
+    RequestHeader header = 1;
+    bytes body = 2;
 }
 
-
-// 响应结构，包括回包和Push
 message PbMultiUgcResponse {
-    string command_id = 1;
-    int32 pack_id = 2; // 包ID
-    bytes body = 3; // 根据command_id解析
+    ResponseHeader header = 1;
+    bytes body = 2;
 }
+
 
 // multiugc_push_checksum_abnormal
 message PushMultiUgcChecksumAbnormal {
