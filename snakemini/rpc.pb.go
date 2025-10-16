@@ -6627,6 +6627,172 @@ func (x *PushMultiUgcFrames) GetActions() []*MultiUgcFrame {
 	return nil
 }
 
+// 内部RPC请求协议
+type RpcMultiUgcCreateRoomRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid int64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Rid int64 `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+}
+
+func (x *RpcMultiUgcCreateRoomRequest) Reset() {
+	*x = RpcMultiUgcCreateRoomRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[101]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RpcMultiUgcCreateRoomRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RpcMultiUgcCreateRoomRequest) ProtoMessage() {}
+
+func (x *RpcMultiUgcCreateRoomRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[101]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RpcMultiUgcCreateRoomRequest.ProtoReflect.Descriptor instead.
+func (*RpcMultiUgcCreateRoomRequest) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{101}
+}
+
+func (x *RpcMultiUgcCreateRoomRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *RpcMultiUgcCreateRoomRequest) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+type RpcMultiUgcJoinRoomRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid int64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Rid int64 `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+}
+
+func (x *RpcMultiUgcJoinRoomRequest) Reset() {
+	*x = RpcMultiUgcJoinRoomRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[102]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RpcMultiUgcJoinRoomRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RpcMultiUgcJoinRoomRequest) ProtoMessage() {}
+
+func (x *RpcMultiUgcJoinRoomRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[102]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RpcMultiUgcJoinRoomRequest.ProtoReflect.Descriptor instead.
+func (*RpcMultiUgcJoinRoomRequest) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{102}
+}
+
+func (x *RpcMultiUgcJoinRoomRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *RpcMultiUgcJoinRoomRequest) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
+type RpcMultiUgcLeaveRoomRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid int64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Rid int64 `protobuf:"varint,2,opt,name=rid,proto3" json:"rid,omitempty"`
+}
+
+func (x *RpcMultiUgcLeaveRoomRequest) Reset() {
+	*x = RpcMultiUgcLeaveRoomRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_snakemini_rpc_proto_msgTypes[103]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RpcMultiUgcLeaveRoomRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RpcMultiUgcLeaveRoomRequest) ProtoMessage() {}
+
+func (x *RpcMultiUgcLeaveRoomRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_snakemini_rpc_proto_msgTypes[103]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RpcMultiUgcLeaveRoomRequest.ProtoReflect.Descriptor instead.
+func (*RpcMultiUgcLeaveRoomRequest) Descriptor() ([]byte, []int) {
+	return file_snakemini_rpc_proto_rawDescGZIP(), []int{103}
+}
+
+func (x *RpcMultiUgcLeaveRoomRequest) GetUid() int64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *RpcMultiUgcLeaveRoomRequest) GetRid() int64 {
+	if x != nil {
+		return x.Rid
+	}
+	return 0
+}
+
 var File_snakemini_rpc_proto protoreflect.FileDescriptor
 
 var file_snakemini_rpc_proto_rawDesc = []byte{
@@ -7351,16 +7517,29 @@ var file_snakemini_rpc_proto_rawDesc = []byte{
 	0x50, 0x75, 0x73, 0x68, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x46, 0x72, 0x61, 0x6d,
 	0x65, 0x73, 0x12, 0x2b, 0x0a, 0x07, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x01, 0x20,
 	0x03, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x70, 0x62, 0x2e, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67,
-	0x63, 0x46, 0x72, 0x61, 0x6d, 0x65, 0x52, 0x07, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2a,
-	0x6b, 0x0a, 0x0c, 0x53, 0x65, 0x6e, 0x64, 0x47, 0x69, 0x66, 0x74, 0x43, 0x6f, 0x73, 0x74, 0x12,
-	0x08, 0x0a, 0x04, 0x46, 0x72, 0x65, 0x65, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x43, 0x6f, 0x69,
-	0x6e, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x02,
-	0x12, 0x06, 0x0a, 0x02, 0x41, 0x64, 0x10, 0x03, 0x12, 0x09, 0x0a, 0x05, 0x53, 0x68, 0x61, 0x72,
-	0x65, 0x10, 0x04, 0x12, 0x11, 0x0a, 0x0d, 0x44, 0x6f, 0x75, 0x79, 0x69, 0x6e, 0x44, 0x69, 0x61,
-	0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x05, 0x12, 0x06, 0x0a, 0x02, 0x43, 0x50, 0x10, 0x06, 0x12, 0x0c,
-	0x0a, 0x08, 0x52, 0x65, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x10, 0x07, 0x42, 0x16, 0x5a, 0x0c,
-	0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b, 0x65, 0x6d, 0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50,
-	0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x63, 0x46, 0x72, 0x61, 0x6d, 0x65, 0x52, 0x07, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22,
+	0x42, 0x0a, 0x1c, 0x52, 0x70, 0x63, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55, 0x67, 0x63, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x75, 0x69,
+	0x64, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03,
+	0x72, 0x69, 0x64, 0x22, 0x40, 0x0a, 0x1a, 0x52, 0x70, 0x63, 0x4d, 0x75, 0x6c, 0x74, 0x69, 0x55,
+	0x67, 0x63, 0x4a, 0x6f, 0x69, 0x6e, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03,
+	0x75, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x03, 0x72, 0x69, 0x64, 0x22, 0x41, 0x0a, 0x1b, 0x52, 0x70, 0x63, 0x4d, 0x75, 0x6c, 0x74,
+	0x69, 0x55, 0x67, 0x63, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x72, 0x69, 0x64, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x03, 0x72, 0x69, 0x64, 0x2a, 0x6b, 0x0a, 0x0c, 0x53, 0x65, 0x6e, 0x64,
+	0x47, 0x69, 0x66, 0x74, 0x43, 0x6f, 0x73, 0x74, 0x12, 0x08, 0x0a, 0x04, 0x46, 0x72, 0x65, 0x65,
+	0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x43, 0x6f, 0x69, 0x6e, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07,
+	0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x02, 0x12, 0x06, 0x0a, 0x02, 0x41, 0x64, 0x10,
+	0x03, 0x12, 0x09, 0x0a, 0x05, 0x53, 0x68, 0x61, 0x72, 0x65, 0x10, 0x04, 0x12, 0x11, 0x0a, 0x0d,
+	0x44, 0x6f, 0x75, 0x79, 0x69, 0x6e, 0x44, 0x69, 0x61, 0x6d, 0x6f, 0x6e, 0x64, 0x10, 0x05, 0x12,
+	0x06, 0x0a, 0x02, 0x43, 0x50, 0x10, 0x06, 0x12, 0x0c, 0x0a, 0x08, 0x52, 0x65, 0x6c, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x10, 0x07, 0x42, 0x16, 0x5a, 0x0c, 0x2e, 0x2e, 0x2f, 0x73, 0x6e, 0x61, 0x6b,
+	0x65, 0x6d, 0x69, 0x6e, 0x69, 0xa2, 0x02, 0x05, 0x50, 0x52, 0x4f, 0x54, 0x4f, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -7376,7 +7555,7 @@ func file_snakemini_rpc_proto_rawDescGZIP() []byte {
 }
 
 var file_snakemini_rpc_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_snakemini_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 103)
+var file_snakemini_rpc_proto_msgTypes = make([]protoimpl.MessageInfo, 106)
 var file_snakemini_rpc_proto_goTypes = []interface{}{
 	(SendGiftCost)(0),                      // 0: pb.SendGiftCost
 	(*UidList)(nil),                        // 1: pb.UidList
@@ -7480,11 +7659,14 @@ var file_snakemini_rpc_proto_goTypes = []interface{}{
 	(*PbMultiUgcPush)(nil),                 // 99: pb.PbMultiUgcPush
 	(*PushMultiUgcChecksumAbnormal)(nil),   // 100: pb.PushMultiUgcChecksumAbnormal
 	(*PushMultiUgcFrames)(nil),             // 101: pb.PushMultiUgcFrames
-	nil,                                    // 102: pb.UidRequest.CmdMapEntry
-	nil,                                    // 103: pb.MultiUgcFrame.ActionsEntry
-	(*FrameCommand)(nil),                   // 104: pb.FrameCommand
-	(*ItemInfo)(nil),                       // 105: pb.ItemInfo
-	(*ChatUserInfo)(nil),                   // 106: pb.ChatUserInfo
+	(*RpcMultiUgcCreateRoomRequest)(nil),   // 102: pb.RpcMultiUgcCreateRoomRequest
+	(*RpcMultiUgcJoinRoomRequest)(nil),     // 103: pb.RpcMultiUgcJoinRoomRequest
+	(*RpcMultiUgcLeaveRoomRequest)(nil),    // 104: pb.RpcMultiUgcLeaveRoomRequest
+	nil,                                    // 105: pb.UidRequest.CmdMapEntry
+	nil,                                    // 106: pb.MultiUgcFrame.ActionsEntry
+	(*FrameCommand)(nil),                   // 107: pb.FrameCommand
+	(*ItemInfo)(nil),                       // 108: pb.ItemInfo
+	(*ChatUserInfo)(nil),                   // 109: pb.ChatUserInfo
 }
 var file_snakemini_rpc_proto_depIdxs = []int32{
 	2,   // 0: pb.RpcResponse.err:type_name -> pb.ErrInfo
@@ -7492,7 +7674,7 @@ var file_snakemini_rpc_proto_depIdxs = []int32{
 	21,  // 2: pb.BindMatchInfo.group_info:type_name -> pb.GroupInfo
 	26,  // 3: pb.BindMatchInfo.match_info:type_name -> pb.MatchInfo
 	73,  // 4: pb.BindMatchInfo.multi_ugc_info:type_name -> pb.MultiUgcInfo
-	102, // 5: pb.UidRequest.cmdMap:type_name -> pb.UidRequest.CmdMapEntry
+	105, // 5: pb.UidRequest.cmdMap:type_name -> pb.UidRequest.CmdMapEntry
 	2,   // 6: pb.InGameStateReply.err:type_name -> pb.ErrInfo
 	12,  // 7: pb.CreateGroupRequest.user_info:type_name -> pb.MatchUserInfo
 	12,  // 8: pb.JoinGroupRequest.user_info:type_name -> pb.MatchUserInfo
@@ -7506,20 +7688,20 @@ var file_snakemini_rpc_proto_depIdxs = []int32{
 	21,  // 16: pb.ReturnGroupRsp.group_info:type_name -> pb.GroupInfo
 	43,  // 17: pb.RelayBindResponse.start_info:type_name -> pb.RelayStartInfo
 	27,  // 18: pb.RelayCommandRequest.user_attr:type_name -> pb.UserAttribute
-	104, // 19: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
+	107, // 19: pb.RelayGetHistoryFrameResponse.frame_command_list:type_name -> pb.FrameCommand
 	63,  // 20: pb.GetUserStateResponse.states:type_name -> pb.UserStateInfo
 	12,  // 21: pb.HandleInviteRequest.user_info:type_name -> pb.MatchUserInfo
 	69,  // 22: pb.GetUserConnectorInfoResponse.user_info:type_name -> pb.BindUserInfo
 	0,   // 23: pb.SendGiftRequest.cost_type:type_name -> pb.SendGiftCost
-	105, // 24: pb.SendGiftResponse.reward_list:type_name -> pb.ItemInfo
+	108, // 24: pb.SendGiftResponse.reward_list:type_name -> pb.ItemInfo
 	74,  // 25: pb.MultiUgcInfo.user_attr:type_name -> pb.MultiUgcUserAttribute
 	77,  // 26: pb.MultiUgcRoomListResponse.room_list:type_name -> pb.MultiUgcRoomInfo
-	106, // 27: pb.MultiUgcRoomInfo.owner:type_name -> pb.ChatUserInfo
+	109, // 27: pb.MultiUgcRoomInfo.owner:type_name -> pb.ChatUserInfo
 	73,  // 28: pb.MultiUgcCreateRoomResponse.multi_ugc_info:type_name -> pb.MultiUgcInfo
 	73,  // 29: pb.MultiUgcJoinRoomResponse.multi_ugc_info:type_name -> pb.MultiUgcInfo
 	84,  // 30: pb.MultiUgcLeaveRoomRequest.scores:type_name -> pb.MultiUgcUserScore
 	84,  // 31: pb.MultiUgcLeaveRoomResponse.top3:type_name -> pb.MultiUgcUserScore
-	103, // 32: pb.MultiUgcFrame.actions:type_name -> pb.MultiUgcFrame.ActionsEntry
+	106, // 32: pb.MultiUgcFrame.actions:type_name -> pb.MultiUgcFrame.ActionsEntry
 	74,  // 33: pb.MultiUgcFrame.joinUsers:type_name -> pb.MultiUgcUserAttribute
 	85,  // 34: pb.MultiUgcHistoryFrameResponse.frames:type_name -> pb.MultiUgcFrame
 	85,  // 35: pb.PushMultiUgcFrames.actions:type_name -> pb.MultiUgcFrame
@@ -8751,6 +8933,42 @@ func file_snakemini_rpc_proto_init() {
 				return nil
 			}
 		}
+		file_snakemini_rpc_proto_msgTypes[101].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RpcMultiUgcCreateRoomRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[102].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RpcMultiUgcJoinRoomRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_snakemini_rpc_proto_msgTypes[103].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RpcMultiUgcLeaveRoomRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -8758,7 +8976,7 @@ func file_snakemini_rpc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_snakemini_rpc_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   103,
+			NumMessages:   106,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
